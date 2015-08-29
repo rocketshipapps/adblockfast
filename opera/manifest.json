@@ -1,0 +1,70 @@
+{
+  "manifest_version": 2,
+  "name": "Adblock Fast",
+  "version": "1.0.0",
+  "description":
+      "The world’s fastest ad blocker! Same ad blocking, faster webpage loading.",
+  "icons": {
+    "16": "chrome/images/16.png",
+    "48": "chrome/images/48.png",
+    "128": "chrome/images/128.png"
+  },
+  "developer": {"name": "Rocketship", "url": "http://rocketshipapps.com/"},
+  "permissions": [
+    "<all_urls>",
+    "activeTab",
+    "alarms",
+    "browsingData",
+    "chrome://favicon/",
+    "clipboardWrite",
+    "contextMenus",
+    "cookies",
+    "declarativeContent",
+    "fontSettings",
+    "history",
+    "identity",
+    "idle",
+    "notifications",
+    "pageCapture",
+    "power",
+    "proxy",
+    "storage",
+    "system.cpu",
+    "system.display",
+    "system.memory",
+    "system.storage",
+    "tabs",
+    "tts",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "content_security_policy":
+      "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "background": {
+    "scripts": [
+      "chrome/scripts/host.js",
+      "chrome/scripts/blocking.js",
+      "chrome/scripts/background.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "css": ["chrome/stylesheets/content.css"],
+    "js": [
+      "chrome/scripts/host.js",
+      "chrome/scripts/blocking.js",
+      "chrome/scripts/hiding.js",
+      "chrome/scripts/content.js"
+    ],
+    "run_at": "document_start",
+    "all_frames": true
+  }],
+  "browser_action": {
+    "default_icon": {
+      "19": "chrome/images/blocked/19.png", "38": "chrome/images/blocked/38.png"
+    },
+    "default_title": "Unblock ads on this site"
+  }
+}

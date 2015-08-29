@@ -1,0 +1,69 @@
+{
+  "manifest_version": 2,
+  "name": "Adblock Fast",
+  "version": "1.0.0",
+  "description":
+      "The world’s fastest ad blocker! Same ad blocking, faster webpage loading.",
+  "icons": {
+    "16": "images/16.png", "48": "images/48.png", "128": "images/128.png"
+  },
+  "permissions": [
+    "<all_urls>",
+    "activeTab",
+    "alarms",
+    "background",
+    "browsingData",
+    "chrome://favicon/",
+    "clipboardWrite",
+    "contextMenus",
+    "cookies",
+    "declarativeContent",
+    "fontSettings",
+    "gcm",
+    "history",
+    "identity",
+    "idle",
+    "notifications",
+    "pageCapture",
+    "power",
+    "proxy",
+    "storage",
+    "system.cpu",
+    "system.display",
+    "system.memory",
+    "system.storage",
+    "tabCapture",
+    "tabs",
+    "topSites",
+    "tts",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "content_security_policy":
+      "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "background": {
+    "scripts": [
+      "scripts/host.js", "scripts/blocking.js", "scripts/background.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "css": ["stylesheets/content.css"],
+    "js": [
+      "scripts/host.js",
+      "scripts/blocking.js",
+      "scripts/hiding.js",
+      "scripts/content.js"
+    ],
+    "run_at": "document_start",
+    "all_frames": true
+  }],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/blocked/19.png", "38": "images/blocked/38.png"
+    },
+    "default_title": "Unblock ads on this site"
+  }
+}
