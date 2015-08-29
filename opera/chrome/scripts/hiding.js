@@ -144,10 +144,27 @@ const SELECTORS = {
   'www.luxist.com': '#topleader-wrap, .medrect',
   'www.tuaw.com': '.medrec, .medrect',
   'www.wow.com': '#topleader-wrap, .SLL, .medrect',
+  // Vice Media
+  'motherboard.vice.com': '.native-block',
+  'www.vice.com': '.banner',
   // Vox Media
   'www.sbnation.com': '.harmony-sponsorship',
   'www.theverge.com':
       '#fishtank, .-ad, .harmony-sponsorship, .m-feature__intro > aside, .vert300, .m-ad, .m-review__intro > aside',
+  // The Walt Disney Company
+  'abc.go.com': '.footerRow, .adBlockSpot',
+  'abcnews.go.com':
+      '.index-quigo, .story-embed-left.box, .ad_728, .ad_300, #bannerad, #homead',
+  'www.babble.com': '.bb-ad',
+  'disney.com': '.gpt',
+  'disney.go.com': '#banner, #gutter, #superBanner',
+  'espn.go.com':
+      '#sponsored-by, div[style="height: 325px;"], .ad-slot, .ad-300, #sponsored',
+  'family.disney.com': '.ad',
+  'familyfun.go.com':
+      '#skyscraperIframeContainer, .table[width="300"][height="250"]',
+  'go.com': '.ad',
+  'wondertime.go.com': '#superBannerContainer',
   // Yahoo!
   'answers.yahoo.com': '#ya-darla-LREC, #ya-qpage-textads',
   'au.news.yahoo.com':
