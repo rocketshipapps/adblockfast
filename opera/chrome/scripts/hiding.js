@@ -221,5 +221,65 @@ const SELECTORS = {
   'us-mg6.mail.yahoo.com':
       '#MIP4, #MNW, #SKY, #modal-upsell, #northbanner, #nwPane, #slot_LREC, #slot_MB, #slot_REC, #swPane, #tgtMNW, .avLogo, .left_mb, .mb > .tbl, div#msg-list .list-view .ml-bg:not(.list-view-item-container), #slot_TL1, .mb-list-ad',
   'www.yahoo.com':
-      '#LREC, #MREC, #YSLUG, #ad, #banner, #boxLREC, #darla-ad__LREC, #darla-ad__LREC2, #default-p_24457750, #eyebrow > #ypromo, #genie-widgetgroup, #leftGutter, #lrec2, #lrec_mod, #marketplace, #mbAds, #mw-ysm-cm, #my-promo-hover, #paas-lrec, #paas-mrec, #promo_links_list, #rec, #reg-promos, #rightGutter, #sponsor, #sponsored, #theMNWAd, #tiles-container > #row-2[style="height: 389.613px; padding-bottom: 10px;"], #u_2588582-p, #y708-ad-lrec1, #y708-sponmid, #y_provider_promo, #ya-center-rail > [id^="ya-q-"][id$="-textads"], #yahooPN_CM, #yahoovideo_ysmlinks, #yfi_pf_ysm, #yfi_ysm, #ygmapromo, #yh-ysm, #yl_pf_ysm, #ylf-ysm, #ymh-invitational-recs, #yn-darla2, #yn-gmy-promo-answers, #yn-gmy-promo-groups, #yschsec, .ad, .ad-active, .ads, .astro-promo, .fpad, .lrec, .marketplace, .mballads, .more-sponsors, .sharing-toolbar, .spns, .spon.clearfix, .spons, .wdpa1, .y7-breakout-bracket, .y708-ad-eyebrow, .y708-commpartners, .y708-promo-middle, .y7moneyhound, .y7partners, .ya-LDRB, .ya-darla-LREC, .yad, .yad-cpa, .yschspns, .ysm-cont, .ysptblbdr3, [data-ad-enhanced="card"], [data-ad-enhanced="pencil"], [data-ad-enhanced="text"], a[href^="https://beap.adss.yahoo.com/"], div[data-type="ADS"], div[id^="tile-A"][data-beacon-url^="https://beap.gemini.yahoo.com/mbcsc?"], div[id^="tile-mb-"], li[data-beacon^="https://beap.adss.yahoo.com/"], li[data-beacon^="https://beap.gemini.yahoo.com/"], li[id^="ad-"], .ad-tl1, .ad-wrap, .yom-ad, .rmx-ad, .darla-container, .moneyball-ad, .js-stream-ad'
+      '#LREC, #MREC, #YSLUG, #ad, #banner, #boxLREC, #darla-ad__LREC, #darla-ad__LREC2, #default-p_24457750, #eyebrow > #ypromo, #genie-widgetgroup, #leftGutter, #lrec2, #lrec_mod, #marketplace, #mbAds, #mw-ysm-cm, #my-promo-hover, #paas-lrec, #paas-mrec, #promo_links_list, #rec, #reg-promos, #rightGutter, #sponsor, #sponsored, #theMNWAd, #tiles-container > #row-2[style="height: 389.613px; padding-bottom: 10px;"], #u_2588582-p, #y708-ad-lrec1, #y708-sponmid, #y_provider_promo, #ya-center-rail > [id^="ya-q-"][id$="-textads"], #yahooPN_CM, #yahoovideo_ysmlinks, #yfi_pf_ysm, #yfi_ysm, #ygmapromo, #yh-ysm, #yl_pf_ysm, #ylf-ysm, #ymh-invitational-recs, #yn-darla2, #yn-gmy-promo-answers, #yn-gmy-promo-groups, #yschsec, .ad, .ad-active, .ads, .astro-promo, .fpad, .lrec, .marketplace, .mballads, .more-sponsors, .sharing-toolbar, .spns, .spon.clearfix, .spons, .wdpa1, .y7-breakout-bracket, .y708-ad-eyebrow, .y708-commpartners, .y708-promo-middle, .y7moneyhound, .y7partners, .ya-LDRB, .ya-darla-LREC, .yad, .yad-cpa, .yschspns, .ysm-cont, .ysptblbdr3, [data-ad-enhanced="card"], [data-ad-enhanced="pencil"], [data-ad-enhanced="text"], a[href^="https://beap.adss.yahoo.com/"], div[data-type="ADS"], div[id^="tile-A"][data-beacon-url^="https://beap.gemini.yahoo.com/mbcsc?"], div[id^="tile-mb-"], li[data-beacon^="https://beap.adss.yahoo.com/"], li[data-beacon^="https://beap.gemini.yahoo.com/"], li[id^="ad-"], .ad-tl1, .ad-wrap, .yom-ad, .rmx-ad, .darla-container, .moneyball-ad, .js-stream-ad',
+  'mail.ru':
+      '.w-banner, .text-banner',
+  'sport.mail.ru':
+      '.ban',
+  'news.mail.ru':
+      '.ban',
+  'auto.mail.ru':
+      '.ban',
+  'afisha.mail.ru':
+      '.ban',
+  'lady.mail.ru':
+      '.ban',
+  'games.mail.ru':
+      '.ban',
+  'hi-tech.mail.ru':
+      '.ban',
+  'imgur.com':
+      '.advertisement',
+  'www.sohu.com':
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N',
+  'mil.sohu.com':
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N',
+  'news.sohu.com':
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N',
+  'www.xvideos.com':
+      '#video-ad, #ad-bottom, .ad',
+  'www.imdb.com':
+      '.cornerstone_slot',
+  'stackoverflow.com':
+      '.adzerk-vote',
+  'www.phonearena.com':
+      'ins, #top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner',
+  'www.nytimes.com':
+      '.ad, .text-ad, .g-ad',
+  'www.amazon.de':
+      '.displayAd, #ADPlaceholder, div[data-campaign], .bannerImage',
+  'diply.com':
+      '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
+  'www.dpreview.com':
+      '.widget iframe, .ad',
+  'www.cafemom.com':
+      '.bottom-ad, ins',
+  'thestir.cafemom.com':
+      '.bottom-ad, ins',
+  'www.tmz.com':
+      '.masthead-ad, .inline-promo, .ad-container, .trc-content-sponsored, .adbadge, .disqus_thread iframe',
+  'bleacherreport.com':
+      '.br-ad-wrapper',
+  'www.mediaite.com':
+      'div[data-adid]',
+  'www.theblaze.com':
+      'iframe[name="adblade_ad_iframe"], .ad',
+  'www.google.es':
+      '.ads-ad, ._Ak',
+  'www.google.ru':
+      '.ads-ad, ._Ak',
+  'www.google.ca':
+      '.ads-ad, ._Ak',
+  'www.google.it':
+      '.ads-ad, ._Ak',
 };
