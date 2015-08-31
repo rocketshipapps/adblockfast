@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Adblock Fast",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description":
       "The world’s fastest ad blocker! Same ad blocking, faster webpage loading.",
   "icons": {
@@ -21,13 +21,11 @@
     "cookies",
     "declarativeContent",
     "fontSettings",
-    "history",
     "identity",
     "idle",
     "notifications",
     "pageCapture",
     "power",
-    "proxy",
     "storage",
     "system.cpu",
     "system.display",
