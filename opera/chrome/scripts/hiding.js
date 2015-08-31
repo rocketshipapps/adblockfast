@@ -517,4 +517,89 @@ const SELECTORS = {
   // Times of India
   'timesofindia.indiatimes.com':
       '.ad1, .adsdivlyr, .top_ad, #adbreak-adspdbl',
+	'xinhuanet.com': 
+		'.adv, [style="z-index:5;"], #topAdv, [id^=adBody], #promotionItem, [id^=Full], .scrollAd, [class^=ad]',
+	'www.bbc.co.uk': 
+		'#bbccom_leaderboard_container, ##bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
+	'www.bbc.com': 
+		'#bbccom_leaderboard_container, ##bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
+	'people.com.cn': 
+		'.top_ad, .mt15, .ad_banner, .city dl', 
+	'www.people.com.cn': 
+		'.top_ad, .mt15, .ad_banner, .city dl',
+	'spanish.peopledaily.com.cn': 
+		'.ad01, .ad02',
+	'www.cntv.cn': 
+		'.adv, [id^=div-gpt-ad-]',
+	'www.pixnet.net': 
+		'.ad',
+	'www.dailymotion.com': 
+		'.affiliation_cont, .dmpi_masscast, .masscast_box, .masscast_middle_box, #mc_Middle, #top_banner',
+	'www.google.pl': 
+		'#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
+	'www.ebay.de': 
+		'.ft-btyle, [id^=rtm_html_], #gf-mrecs-ads',
+	'www.google.co.kr': 
+		'#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
+	'www.dailymail.co.uk': 
+		'.editors-choice.ccox.link-ccox.linkro-darkred, .googleAds, #wideCommentAdvert, .adHolder, [id^=taboola-stream-thumbnails-]',
+	'www.usatoday.com': 
+		'.partner, #usat_PosterBlog, #divMarketplace, #footerSponsorOne, #footerSponsorTwo, #header-leaderboard, #marketplace2, #prerollOverlayPlayer, #side-banner1, #side-banner2, .bottom-google-links, [id^=taboola-], .taboola-related-module',
+	'www.accuweather.com': 
+		'[id^=aad]',
+	'time.com': 
+		'.sep, [id^=ad-unit-], [class$=-ad]',
+	'www.reuters.com': 
+		'#bannerStrip, #marchex, .slide-ad',
+	'www.nbcnews.com': 
+		'#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey, .ad-container',
+	'www.nbcsports.com': 
+		'#top_90h, [id^=block-dart-dart-tag-dart-tag]',
+	'economictimes.indiatimes.com': 
+		'.colombiaAd, .flt #sideBar.adsbg300:first-of-type, #sideBar.flt .adsbg300:nth-child(4), .adContainer, .flr .adsbg300, [title=Advertisement]',
+	'www.wunderground.com': 
+		'.spotBox, .header-ad-wrap, #top-ad-wrapper, .ad-box, .report-ad',
+	'thinkprogress.org': 
+		'[id^=ad_zone], .yad-sponsored, .sidebar-ad',
+	'laughingsquid.com': 
+		'.sharethrough-placement, .adsbygoogle, [id^=div-gpt-ad], [id^=taboola]',
+	'bits.blogs.nytimes.com': 
+		'.ad, .text-ad, #SponLink',
+	'venturebeat.com': 
+		'.widget_vb_dfp_ad, .vb-ad-leaderboard, .advertorial',
+	'www.chinadaily.com.cn': 
+		'.w980.pt10, [class^=ad], iframe[name^=ad], img[src*=adpic]',
+	'news.livedoor.com': 
+		'iframe[src*=unthem], .ads-block-link, .rakutenAff, aside.subSec:first-of-type',
+	'www.livedoor.com': 
+		'iframe[src*=unthem], .ads-block-link',
+	'www.gmw.cn': 
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'gmw.cn': 
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'guancha.gmw.cn': 
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'politics.gmw.cn': 
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'news.gmw.cn': 
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'sports.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'culture.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'health.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'sports.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'tech.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'edu.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'legal.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'theory.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+	'travel.gmw.cn':
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]'
+
 };
