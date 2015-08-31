@@ -241,11 +241,11 @@ const SELECTORS = {
   'imgur.com':
       '.advertisement',
   'www.sohu.com':
-      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N',
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'mil.sohu.com':
-      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N',
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'news.sohu.com':
-      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N',
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'www.xvideos.com':
       '#video-ad, #ad-bottom, .ad',
   'www.imdb.com':
