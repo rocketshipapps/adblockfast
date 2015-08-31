@@ -339,5 +339,95 @@ const SELECTORS = {
   'www.google.com.mx':
         'mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.hk':
-        'mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad'
+        'mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+  'mail.live.com':
+      '#RadAd_Skyscraper',
+  'www.linkedin.com':
+      '#ad-container, .ad, #bottom-ads-container > .attribution, .ad-hrc',
+  'www.yelp.com':
+      '.googlead-sponsor-wrapper, .googlead-bigbox-wrapper, .yloca-search-result',
+  'www.groupon.com':
+      '.ad-container, .ad, .da-gallery-160-600',
+  'www.gsmarena.com':
+      'a[href^="http://www.cellpex.com/affiliates/"], .adsbygoogle, .adv, .topAdv',
+  'money.cnn.com':
+      '#adsquare, #ad_ns_btf_03, #quigo628, .cnnoutbrain, #quigo336',
+  'www.instructables.com':
+      '.aspace, .newrightbar_div_10, #gpt-ad-leaderboard, .side-ad, .collection-adspot, .explore-ad',
+  'allrecipes.com':
+      '#ads-right, .rrAdPad, .bottom-ad2, .advertise_txt, .ad-text, .topads-spacer',
+  'www.marketwatch.com':
+      '#BrokerButtons, #story-premiumbanner, #supposedlytemporaryad, #tradingcenter, [width="120"][bgcolor="#d7d7d6"], .advertisement, .ad-extra-text, #ad-display-ad-placeholder, .ad',
+  'www.google.co.in':
+      '.ads-ad, .ads-bbl-container, .ads-bbl-triangle',
+  'news.yahoo.co.jp':
+      '[name^=yads]',
+  'news.search.yahoo.co.jp':
+      '.ss',
+  'headlines.yahoo.co.jp':
+      '[name^=yads]',
+  'www.yahoo.co.jp':
+      '[name^=yads], #brandpanel, #ad-lrec',
+  'weather.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'loco.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'fortune.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'movies.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'bookstore.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'partner.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'loco.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'beauty.yahoo.co.jp':
+      '[name^=yads], .sidebar-pr-banner, #ad-lrec',
+  'blogs.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'textream.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'carview.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'ucar.carview.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'realestate.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'job.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'transit.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'map.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'tv.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'finance.yahoo.co.jp':
+      '[name^=yads], #ad-lrec, #pos-lrec',
+  'news.finance.yahoo.co.jp':
+      '[name^=yads], #ad-lrec, #pos-lrec',
+  'sports.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'auctions.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'list1.auctions.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'list2.auctions.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'list3.auctions.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'list4.auctions.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'list5.auctions.yahoo.co.jp':
+      '[name^=yads], #ad-lrec',
+  'www.google.co.jp':
+      '#rhs_block, .ads-ad',
+  'yandex.ru':
+      '.serp-adv__block, .serp-block-o7',
+  'www.sina.com.cn':
+      '.sinaads-couplet-side, .sinaad-toolkit-box, .top-ads-fwrap, .palm01-ad, .mod-08, .ad-banner, .sinaads, .tit01, .mod03',
+  'news.sina.com.cn':
+      '.pip00adNone, .adNone, .sinaad-toolkit-box, .sinaads, [class^=ad_], .tb0827, div[name^=_AdSame], [class^=Ad_]',
+  'www.baidu.com':
+      '#ec_im_container',
 };
