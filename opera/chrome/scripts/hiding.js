@@ -430,4 +430,91 @@ const SELECTORS = {
       '.pip00adNone, .adNone, .sinaad-toolkit-box, .sinaads, [class^=ad_], .tb0827, div[name^=_AdSame], [class^=Ad_]',
   'www.baidu.com':
       '#ec_im_container',
+  // Pornhub
+  'pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'www.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'de.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'fr.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'it.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'pt.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'pl.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'ru.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'jp.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  'es.pornhub.com':
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+  // naver.com
+  'www.naver.com':
+      '.img_style, #ad_top, #ad_branding_hide, #ad_branding, #ad_timesquare, .ad_area2',
+  'naver.com':
+      '.img_style, #ad_top, #ad_branding_hide, #ad_branding, #ad_timesquare, .ad_area2',
+  // xhamster.com
+  'xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'es.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'de.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'fr.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'it.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'ru.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'pt.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'jp.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'nl.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'pl.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  'www.xhamster.com':
+      '.sponsorBottom, .vAds, #adBottom, .adVideo',
+  // kat.cr
+  'kat.cr':
+      '#bt_bf, #partner1_button, #promoLeechmonster, #sp2, .advertising, .directDownloadButton, .partner2Button, .partner3Button, .promoPartner, .torrentEasyButton, .advertising',
+  'cnn.com':
+      '.vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
+  'edition.cnn.com':
+      '.vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
+  // soso.com
+  'soso.com':
+      '.ad-box, .ad_top_banner',
+  // sogou
+  'www.sogou.com':
+      '.ad-box, .ad_top_banner',
+  //  nicovideo
+  'nicovideo.jp':
+      '.googleAds',
+  'www.nicovideo.jp':
+      '.googleAds',
+  // the guardian
+  'www.theguardian.com':
+      '#tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
+  'theguardian.com':
+      '#tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
+  // Fox news
+  'foxnews.com':
+      '.ad-unit, .advert, .ad-container, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .advert, .block-fox_yume',
+  'www.foxnews.com':
+      '.ad-unit, .advert, .ad-container, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .advert, .block-fox_yume',
+  // Amazon.in
+  'www.amazon.in':
+      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop',
+  'www.amazon.in':
+      '#DAadrp, #ad, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop',
+  'amazon.in':
+      '#DAadrp, #ad, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop',
+  // Times of India
+  'timesofindia.indiatimes.com':
+      '.ad1, .adsdivlyr, .top_ad, #adbreak-adspdbl',
 };
