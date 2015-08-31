@@ -249,11 +249,11 @@ const SELECTORS = {
   'www.xvideos.com':
       '#video-ad, #ad-bottom, .ad',
   'www.imdb.com':
-      '.cornerstone_slot',
+      '.cornerstone_slot, .dfp_slot',
   'stackoverflow.com':
       '.adzerk-vote',
   'www.phonearena.com':
-      'ins, #top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner',
+      'ins, #top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]',
   'www.nytimes.com':
       '.ad, .text-ad, .g-ad',
   'www.amazon.de':
@@ -285,7 +285,7 @@ const SELECTORS = {
   'cn.hao123.com':
       '.hao123-banner',
   'www.msn.com':
-      '.providerupsell',
+      '.providerupsell, .todayshowcasead',
   'www.microsoft.com':
       '.hp-large-carousel',
   'www.amazon.co.jp':
