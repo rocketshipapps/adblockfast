@@ -186,6 +186,8 @@ const SELECTORS = {
   'homes.yahoo.com': '.ad-wrap, .yom-ad, .rmx-ad, .media-native-ad',
   'images.search.yahoo.com':
       '#right > div > .searchRightMiddle + div[id]:last-child, #right > div > .searchRightTop + [id]:last-child, #right > div:first-child:last-child > [id]:first-child:last-child, div[id^="wp_bannerize-"], div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class], div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"], .ads',
+  'news.search.yahoo.com':
+      '.searchCenterBottomAds',
   'local.yahoo.com': '#yls-dt-ysm, .yls-rs-paid, #dmRosAdWrapper-East',
   'maps.yahoo.com': '#ymap_main_footer, .listing > .ysm, .yui3-widget-stacked',
   'movies.yahoo.com':
@@ -267,7 +269,7 @@ const SELECTORS = {
   'thestir.cafemom.com':
       '.bottom-ad, ins',
   'www.tmz.com':
-      '.masthead-ad, .inline-promo, .ad-container, .trc-content-sponsored, .adbadge, .disqus_thread iframe',
+      '.masthead-ad, .inline-promo, .ad-container, .trc-content-sponsored, .adbadge, .disqus_thread iframe, .iab-ad__wrapper, .quigo-permalink ',
   'bleacherreport.com':
       '.br-ad-wrapper',
   'www.mediaite.com':
