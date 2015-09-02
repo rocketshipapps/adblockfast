@@ -84,7 +84,7 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
             break;
           }
   return blockingResponse;
-}, {urls: ['<all_urls>']}, ['blocking']);
+}, {urls: ['http://*/*', 'https://*/*']}, ['blocking']);
 
 chrome.webNavigation.onCommitted.addListener(function(details) {
   if (!details.frameId) {
