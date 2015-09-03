@@ -34,6 +34,7 @@ if (!PREVIOUS_BUILD) {
   localStorage.firstBuild = CURRENT_BUILD;
   localStorage.build = CURRENT_BUILD;
   localStorage.whitelist = JSON.stringify({});
+  TABS.create({url: PATH + 'markup/firstrun.html'});
 }
 
 TABS.query({}, function(tabs) {

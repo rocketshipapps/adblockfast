@@ -1,0 +1,97 @@
+/*
+  Copyright 2015 Rocketship <http://rocketshipapps.com/>
+
+  This program is free software: you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  this program. If not, see <http://www.gnu.org/licenses/>.
+
+  Authors (one per line):
+
+    Brian Kennish <brian@rocketshipapps.com>
+*/
+@font-face {
+  font-family: HudsonNY;
+  src: url(../fonts/2F0E63_0_0.eot);
+  src: url(
+    ../fonts/2F0E63_0_0.eot?#iefix
+  ) format(embedded-opentype), url(
+    ../fonts/2F0E63_0_0.woff2
+  ) format(woff2), url(
+    ../fonts/2F0E63_0_0.woff
+  ) format(woff), url(
+    ../fonts/2F0E63_0_0.ttf
+  ) format(truetype)
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url(../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix);
+  src: url(
+    ../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix
+  ) format(eot), url(
+    ../fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff
+  ) format(woff), url(
+    ../fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf
+  ) format(truetype), url(
+    ../fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f
+  ) format(svg)
+}
+
+body {
+  margin: 60px auto 80px;
+  width: 640px;
+  font: 16px 'Avenir Next';
+  color: #2c2c2c
+}
+
+a, a:hover, a:focus, a:active, a:visited {
+  text-decoration: none;
+  color: #b6594a
+}
+
+a:hover, a:focus, a:active { border-bottom: 2px solid #b6594a }
+
+h1, h3 {
+  text-align: center;
+  font-family: HudsonNY
+}
+
+h1 {
+  font-size: 30px;
+  color: #d4d4d4
+}
+
+h2, h3 { margin-top: 40px }
+
+h3 { font-size: 16px }
+
+p, ul { margin-top: 30px }
+
+p { line-height: 1.5 }
+
+ul { padding-left: 15px }
+
+li {
+  list-style: none;
+  margin-top: 20px;
+  height: 38px;
+  line-height: 38px;
+  text-indent: 125px;
+  font-size: 15px
+}
+
+#blocked-ads { background: url(../images/blocked-ads.png) no-repeat }
+
+#blocked { background: url(../images/blocked.png) no-repeat }
+
+#unblocked-ads { background: url(../images/unblocked-ads.png) no-repeat }
+
+#unblocked { background: url(../images/unblocked.png) no-repeat }
