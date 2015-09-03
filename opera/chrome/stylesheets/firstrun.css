@@ -19,30 +19,12 @@
 */
 @font-face {
   font-family: HudsonNY;
-  src: url(../fonts/2F0E63_0_0.eot);
-  src: url(
-    ../fonts/2F0E63_0_0.eot?#iefix
-  ) format(embedded-opentype), url(
-    ../fonts/2F0E63_0_0.woff2
-  ) format(woff2), url(
-    ../fonts/2F0E63_0_0.woff
-  ) format(woff), url(
-    ../fonts/2F0E63_0_0.ttf
-  ) format(truetype)
+  src: url(../fonts/2F0E63_0_0.woff2) format(woff2)
 }
 
 @font-face {
   font-family: 'Avenir Next';
-  src: url(../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix);
-  src: url(
-    ../fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix
-  ) format(eot), url(
-    ../fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff
-  ) format(woff), url(
-    ../fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf
-  ) format(truetype), url(
-    ../fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f
-  ) format(svg)
+  src: url(../fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff) format(woff)
 }
 
 body {
