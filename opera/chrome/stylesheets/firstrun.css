@@ -17,41 +17,40 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
 @font-face {
   font-family: HudsonNY;
   src: url(../fonts/2F0E63_0_0.woff2) format(woff2)
 }
 
-@font-face {
-  font-family: 'Avenir Next';
-  src: url(../fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff) format(woff)
-}
-
 body {
-  margin: 60px auto 80px;
+  margin: 50px auto 80px;
   width: 640px;
-  font: 16px 'Avenir Next';
+  font: 16px 'Open Sans', sans-serif;
   color: #2c2c2c
 }
 
-a, a:hover, a:focus, a:active, a:visited {
-  text-decoration: none;
-  color: #b6594a
+img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto
 }
-
-a:hover, a:focus, a:active { border-bottom: 2px solid #b6594a }
 
 h1, h3 {
   text-align: center;
-  font-family: HudsonNY
+  font-family: HudsonNY, sans-serif
 }
 
 h1 {
+  margin-top: 10px;
   font-size: 30px;
   color: #d4d4d4
 }
 
 h2, h3 { margin-top: 40px }
+
+h2 { font-size: 22px }
 
 h3 { font-size: 16px }
 
@@ -67,7 +66,7 @@ li {
   height: 38px;
   line-height: 38px;
   text-indent: 125px;
-  font-size: 15px
+  font-size: 14px
 }
 
 #blocked-ads { background: url(../images/blocked-ads.png) no-repeat }
@@ -77,3 +76,10 @@ li {
 #unblocked-ads { background: url(../images/unblocked-ads.png) no-repeat }
 
 #unblocked { background: url(../images/unblocked.png) no-repeat }
+
+a, a:hover, a:focus, a:active, a:visited {
+  text-decoration: none;
+  color: #b6594a
+}
+
+a:hover, a:focus, a:active { border-bottom: 2px solid #b6594a }
