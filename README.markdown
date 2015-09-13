@@ -1,4 +1,4 @@
-# ![Adblock Fast](assets/adblockfast.png)
+# ![Adblock Fast](assets/promo/adblockfast.png)
 
 The world’s fastest ad blocker<em>!</em> Same ad blocking, faster webpage
 loading.
