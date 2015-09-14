@@ -604,6 +604,9 @@ const SELECTORS = {
 	'theory.gmw.cn':
 		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
 	'travel.gmw.cn':
-		'[class^=bannerArea], [class^=ad], [class^=contentadBox]'
-
+		'[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'time.com':
+    '.left-rail-ad__wrapper, .right-rail__container--ad',
+  '9gag.com':
+    '.block-ad, .badge-gag-ads-container'
 };
