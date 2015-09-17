@@ -1,0 +1,829 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A30CE721BA3F50F00465842 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE711BA3F50F00465842 /* main.m */; };
+		4A30CE751BA3F50F00465842 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE741BA3F50F00465842 /* AppDelegate.m */; };
+		4A30CE781BA3F50F00465842 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE771BA3F50F00465842 /* ViewController.m */; };
+		4A30CE7B1BA3F50F00465842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CE791BA3F50F00465842 /* Main.storyboard */; };
+		4A30CE7D1BA3F50F00465842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CE7C1BA3F50F00465842 /* Assets.xcassets */; };
+		4A30CE801BA3F50F00465842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */; };
+		4A30CE8B1BA3F50F00465842 /* adblockfastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE8A1BA3F50F00465842 /* adblockfastTests.m */; };
+		4A30CE961BA3F50F00465842 /* adblockfastUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE951BA3F50F00465842 /* adblockfastUITests.m */; };
+		4A30CEAA1BA3F59E00465842 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CEA91BA3F59E00465842 /* blockerList.json */; };
+		4A30CEAD1BA3F59E00465842 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CEAC1BA3F59E00465842 /* ActionRequestHandler.m */; };
+		4A30CEB11BA3F59E00465842 /* blocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4A30CEA71BA3F59E00465842 /* blocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A45501E1BA40424002C0CAD /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A45501D1BA40424002C0CAD /* Defaults.plist */; settings = {ASSET_TAGS = (); }; };
+		4A45501F1BA40424002C0CAD /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A45501D1BA40424002C0CAD /* Defaults.plist */; settings = {ASSET_TAGS = (); }; };
+		4A4550211BA40489002C0CAD /* noopList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4550201BA40489002C0CAD /* noopList.json */; settings = {ASSET_TAGS = (); }; };
+		4A79E3621BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3611BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3641BA3FDC300A8388C /* AvenirNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3631BA3FDC300A8388C /* AvenirNextLTPro-Light.otf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3751BA3FDD600A8388C /* blocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3651BA3FDD600A8388C /* blocked-0.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3761BA3FDD600A8388C /* blocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3661BA3FDD600A8388C /* blocked-1.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3771BA3FDD600A8388C /* blocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3671BA3FDD600A8388C /* blocked-2.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3781BA3FDD600A8388C /* blocked-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3681BA3FDD600A8388C /* blocked-3.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3791BA3FDD600A8388C /* blocked-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3691BA3FDD600A8388C /* blocked-4.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E37A1BA3FDD600A8388C /* blocked-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E36A1BA3FDD600A8388C /* blocked-5.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E37B1BA3FDD600A8388C /* blocked-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E36B1BA3FDD600A8388C /* blocked-6.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E37C1BA3FDD600A8388C /* blocked-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E36C1BA3FDD600A8388C /* blocked-7.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E37D1BA3FDD600A8388C /* blocked-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E36D1BA3FDD600A8388C /* blocked-8.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E37E1BA3FDD600A8388C /* blocked-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E36E1BA3FDD600A8388C /* blocked-9.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E37F1BA3FDD600A8388C /* blocked-10.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E36F1BA3FDD600A8388C /* blocked-10.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3801BA3FDD600A8388C /* blocked-11.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3701BA3FDD600A8388C /* blocked-11.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3811BA3FDD600A8388C /* blocked-12.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3711BA3FDD600A8388C /* blocked-12.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3821BA3FDD600A8388C /* blocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3721BA3FDD600A8388C /* blocked-13.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3831BA3FDD600A8388C /* blocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3731BA3FDD600A8388C /* blocked-14.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3841BA3FDD600A8388C /* blocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3741BA3FDD600A8388C /* blocked-15.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3951BA3FDFC00A8388C /* unblocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3851BA3FDFC00A8388C /* unblocked-0.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3961BA3FDFC00A8388C /* unblocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3861BA3FDFC00A8388C /* unblocked-1.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3971BA3FDFC00A8388C /* unblocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3871BA3FDFC00A8388C /* unblocked-2.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3981BA3FDFC00A8388C /* unblocked-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3881BA3FDFC00A8388C /* unblocked-3.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3991BA3FDFC00A8388C /* unblocked-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3891BA3FDFC00A8388C /* unblocked-4.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E39A1BA3FDFC00A8388C /* unblocked-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E38A1BA3FDFC00A8388C /* unblocked-5.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E39B1BA3FDFC00A8388C /* unblocked-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E38B1BA3FDFC00A8388C /* unblocked-6.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E39C1BA3FDFC00A8388C /* unblocked-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E38C1BA3FDFC00A8388C /* unblocked-7.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E39D1BA3FDFC00A8388C /* unblocked-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E38D1BA3FDFC00A8388C /* unblocked-8.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E39E1BA3FDFC00A8388C /* unblocked-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E38E1BA3FDFC00A8388C /* unblocked-9.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E39F1BA3FDFC00A8388C /* unblocked-10.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E38F1BA3FDFC00A8388C /* unblocked-10.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3A01BA3FDFC00A8388C /* unblocked-11.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3901BA3FDFC00A8388C /* unblocked-11.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3A11BA3FDFC00A8388C /* unblocked-12.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3911BA3FDFC00A8388C /* unblocked-12.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3A21BA3FDFC00A8388C /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3921BA3FDFC00A8388C /* unblocked-13.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3A31BA3FDFC00A8388C /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3931BA3FDFC00A8388C /* unblocked-14.pdf */; settings = {ASSET_TAGS = (); }; };
+		4A79E3A41BA3FDFC00A8388C /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3941BA3FDFC00A8388C /* unblocked-15.pdf */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A30CE871BA3F50F00465842 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A30CE651BA3F50F00465842 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A30CE6C1BA3F50F00465842;
+			remoteInfo = adblockfast;
+		};
+		4A30CE921BA3F50F00465842 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A30CE651BA3F50F00465842 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A30CE6C1BA3F50F00465842;
+			remoteInfo = adblockfast;
+		};
+		4A30CEAF1BA3F59E00465842 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A30CE651BA3F50F00465842 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A30CEA61BA3F59E00465842;
+			remoteInfo = blocker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A30CEB51BA3F59E00465842 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4A30CEB11BA3F59E00465842 /* blocker.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4A30CE6D1BA3F50F00465842 /* adblockfast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adblockfast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A30CE711BA3F50F00465842 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A30CE731BA3F50F00465842 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4A30CE741BA3F50F00465842 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4A30CE761BA3F50F00465842 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4A30CE771BA3F50F00465842 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4A30CE7A1BA3F50F00465842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4A30CE7C1BA3F50F00465842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A30CE7F1BA3F50F00465842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A30CE811BA3F50F00465842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A30CE861BA3F50F00465842 /* adblockfastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adblockfastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A30CE8A1BA3F50F00465842 /* adblockfastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = adblockfastTests.m; sourceTree = "<group>"; };
+		4A30CE8C1BA3F50F00465842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A30CE911BA3F50F00465842 /* adblockfastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adblockfastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A30CE951BA3F50F00465842 /* adblockfastUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = adblockfastUITests.m; sourceTree = "<group>"; };
+		4A30CE971BA3F50F00465842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A30CEA71BA3F59E00465842 /* blocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = blocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A30CEA91BA3F59E00465842 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
+		4A30CEAB1BA3F59E00465842 /* ActionRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionRequestHandler.h; sourceTree = "<group>"; };
+		4A30CEAC1BA3F59E00465842 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
+		4A30CEAE1BA3F59E00465842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A45501D1BA40424002C0CAD /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		4A4550201BA40489002C0CAD /* noopList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noopList.json; sourceTree = "<group>"; };
+		4A79E3611BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Andrew Footit - Hudson NY.otf"; sourceTree = "<group>"; };
+		4A79E3631BA3FDC300A8388C /* AvenirNextLTPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Light.otf"; sourceTree = "<group>"; };
+		4A79E3651BA3FDD600A8388C /* blocked-0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-0.pdf"; sourceTree = "<group>"; };
+		4A79E3661BA3FDD600A8388C /* blocked-1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-1.pdf"; sourceTree = "<group>"; };
+		4A79E3671BA3FDD600A8388C /* blocked-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-2.pdf"; sourceTree = "<group>"; };
+		4A79E3681BA3FDD600A8388C /* blocked-3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-3.pdf"; sourceTree = "<group>"; };
+		4A79E3691BA3FDD600A8388C /* blocked-4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-4.pdf"; sourceTree = "<group>"; };
+		4A79E36A1BA3FDD600A8388C /* blocked-5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-5.pdf"; sourceTree = "<group>"; };
+		4A79E36B1BA3FDD600A8388C /* blocked-6.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-6.pdf"; sourceTree = "<group>"; };
+		4A79E36C1BA3FDD600A8388C /* blocked-7.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-7.pdf"; sourceTree = "<group>"; };
+		4A79E36D1BA3FDD600A8388C /* blocked-8.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-8.pdf"; sourceTree = "<group>"; };
+		4A79E36E1BA3FDD600A8388C /* blocked-9.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-9.pdf"; sourceTree = "<group>"; };
+		4A79E36F1BA3FDD600A8388C /* blocked-10.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-10.pdf"; sourceTree = "<group>"; };
+		4A79E3701BA3FDD600A8388C /* blocked-11.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-11.pdf"; sourceTree = "<group>"; };
+		4A79E3711BA3FDD600A8388C /* blocked-12.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-12.pdf"; sourceTree = "<group>"; };
+		4A79E3721BA3FDD600A8388C /* blocked-13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-13.pdf"; sourceTree = "<group>"; };
+		4A79E3731BA3FDD600A8388C /* blocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-14.pdf"; sourceTree = "<group>"; };
+		4A79E3741BA3FDD600A8388C /* blocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-15.pdf"; sourceTree = "<group>"; };
+		4A79E3851BA3FDFC00A8388C /* unblocked-0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-0.pdf"; sourceTree = "<group>"; };
+		4A79E3861BA3FDFC00A8388C /* unblocked-1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-1.pdf"; sourceTree = "<group>"; };
+		4A79E3871BA3FDFC00A8388C /* unblocked-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-2.pdf"; sourceTree = "<group>"; };
+		4A79E3881BA3FDFC00A8388C /* unblocked-3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-3.pdf"; sourceTree = "<group>"; };
+		4A79E3891BA3FDFC00A8388C /* unblocked-4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-4.pdf"; sourceTree = "<group>"; };
+		4A79E38A1BA3FDFC00A8388C /* unblocked-5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-5.pdf"; sourceTree = "<group>"; };
+		4A79E38B1BA3FDFC00A8388C /* unblocked-6.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-6.pdf"; sourceTree = "<group>"; };
+		4A79E38C1BA3FDFC00A8388C /* unblocked-7.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-7.pdf"; sourceTree = "<group>"; };
+		4A79E38D1BA3FDFC00A8388C /* unblocked-8.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-8.pdf"; sourceTree = "<group>"; };
+		4A79E38E1BA3FDFC00A8388C /* unblocked-9.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-9.pdf"; sourceTree = "<group>"; };
+		4A79E38F1BA3FDFC00A8388C /* unblocked-10.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-10.pdf"; sourceTree = "<group>"; };
+		4A79E3901BA3FDFC00A8388C /* unblocked-11.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-11.pdf"; sourceTree = "<group>"; };
+		4A79E3911BA3FDFC00A8388C /* unblocked-12.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-12.pdf"; sourceTree = "<group>"; };
+		4A79E3921BA3FDFC00A8388C /* unblocked-13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-13.pdf"; sourceTree = "<group>"; };
+		4A79E3931BA3FDFC00A8388C /* unblocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-14.pdf"; sourceTree = "<group>"; };
+		4A79E3941BA3FDFC00A8388C /* unblocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-15.pdf"; sourceTree = "<group>"; };
+		4A79E3A51BA3FE8700A8388C /* adblockfast.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = adblockfast.entitlements; sourceTree = "<group>"; };
+		4AAFB4641BA4005700A2BB15 /* blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = blocker.entitlements; sourceTree = "<group>"; };
+		4AAFB4651BA4034400A2BB15 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A30CE6A1BA3F50F00465842 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CE831BA3F50F00465842 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CE8E1BA3F50F00465842 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CEA41BA3F59E00465842 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A30CE641BA3F50F00465842 = {
+			isa = PBXGroup;
+			children = (
+				4A30CE6F1BA3F50F00465842 /* adblockfast */,
+				4A30CE891BA3F50F00465842 /* adblockfastTests */,
+				4A30CE941BA3F50F00465842 /* adblockfastUITests */,
+				4A30CEA81BA3F59E00465842 /* blocker */,
+				4A30CE6E1BA3F50F00465842 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A30CE6E1BA3F50F00465842 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A30CE6D1BA3F50F00465842 /* adblockfast.app */,
+				4A30CE861BA3F50F00465842 /* adblockfastTests.xctest */,
+				4A30CE911BA3F50F00465842 /* adblockfastUITests.xctest */,
+				4A30CEA71BA3F59E00465842 /* blocker.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A30CE6F1BA3F50F00465842 /* adblockfast */ = {
+			isa = PBXGroup;
+			children = (
+				4A79E3A51BA3FE8700A8388C /* adblockfast.entitlements */,
+				4AAFB4651BA4034400A2BB15 /* Constants.h */,
+				4A30CE761BA3F50F00465842 /* ViewController.h */,
+				4A30CE771BA3F50F00465842 /* ViewController.m */,
+				4A30CE7C1BA3F50F00465842 /* Assets.xcassets */,
+				4A30CE811BA3F50F00465842 /* Info.plist */,
+				4A45501D1BA40424002C0CAD /* Defaults.plist */,
+				4A30CE701BA3F50F00465842 /* Supporting Files */,
+			);
+			path = adblockfast;
+			sourceTree = "<group>";
+		};
+		4A30CE701BA3F50F00465842 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A30CE711BA3F50F00465842 /* main.m */,
+				4A30CE731BA3F50F00465842 /* AppDelegate.h */,
+				4A30CE741BA3F50F00465842 /* AppDelegate.m */,
+				4A30CE791BA3F50F00465842 /* Main.storyboard */,
+				4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */,
+				4A79E3611BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf */,
+				4A79E3631BA3FDC300A8388C /* AvenirNextLTPro-Light.otf */,
+				4A79E3651BA3FDD600A8388C /* blocked-0.pdf */,
+				4A79E3661BA3FDD600A8388C /* blocked-1.pdf */,
+				4A79E3671BA3FDD600A8388C /* blocked-2.pdf */,
+				4A79E3681BA3FDD600A8388C /* blocked-3.pdf */,
+				4A79E3691BA3FDD600A8388C /* blocked-4.pdf */,
+				4A79E36A1BA3FDD600A8388C /* blocked-5.pdf */,
+				4A79E36B1BA3FDD600A8388C /* blocked-6.pdf */,
+				4A79E36C1BA3FDD600A8388C /* blocked-7.pdf */,
+				4A79E36D1BA3FDD600A8388C /* blocked-8.pdf */,
+				4A79E36E1BA3FDD600A8388C /* blocked-9.pdf */,
+				4A79E36F1BA3FDD600A8388C /* blocked-10.pdf */,
+				4A79E3701BA3FDD600A8388C /* blocked-11.pdf */,
+				4A79E3711BA3FDD600A8388C /* blocked-12.pdf */,
+				4A79E3721BA3FDD600A8388C /* blocked-13.pdf */,
+				4A79E3731BA3FDD600A8388C /* blocked-14.pdf */,
+				4A79E3741BA3FDD600A8388C /* blocked-15.pdf */,
+				4A79E3851BA3FDFC00A8388C /* unblocked-0.pdf */,
+				4A79E3861BA3FDFC00A8388C /* unblocked-1.pdf */,
+				4A79E3871BA3FDFC00A8388C /* unblocked-2.pdf */,
+				4A79E3881BA3FDFC00A8388C /* unblocked-3.pdf */,
+				4A79E3891BA3FDFC00A8388C /* unblocked-4.pdf */,
+				4A79E38A1BA3FDFC00A8388C /* unblocked-5.pdf */,
+				4A79E38B1BA3FDFC00A8388C /* unblocked-6.pdf */,
+				4A79E38C1BA3FDFC00A8388C /* unblocked-7.pdf */,
+				4A79E38D1BA3FDFC00A8388C /* unblocked-8.pdf */,
+				4A79E38E1BA3FDFC00A8388C /* unblocked-9.pdf */,
+				4A79E38F1BA3FDFC00A8388C /* unblocked-10.pdf */,
+				4A79E3901BA3FDFC00A8388C /* unblocked-11.pdf */,
+				4A79E3911BA3FDFC00A8388C /* unblocked-12.pdf */,
+				4A79E3921BA3FDFC00A8388C /* unblocked-13.pdf */,
+				4A79E3931BA3FDFC00A8388C /* unblocked-14.pdf */,
+				4A79E3941BA3FDFC00A8388C /* unblocked-15.pdf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A30CE891BA3F50F00465842 /* adblockfastTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A30CE8A1BA3F50F00465842 /* adblockfastTests.m */,
+				4A30CE8C1BA3F50F00465842 /* Info.plist */,
+			);
+			path = adblockfastTests;
+			sourceTree = "<group>";
+		};
+		4A30CE941BA3F50F00465842 /* adblockfastUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4A30CE951BA3F50F00465842 /* adblockfastUITests.m */,
+				4A30CE971BA3F50F00465842 /* Info.plist */,
+			);
+			path = adblockfastUITests;
+			sourceTree = "<group>";
+		};
+		4A30CEA81BA3F59E00465842 /* blocker */ = {
+			isa = PBXGroup;
+			children = (
+				4AAFB4641BA4005700A2BB15 /* blocker.entitlements */,
+				4A30CEA91BA3F59E00465842 /* blockerList.json */,
+				4A4550201BA40489002C0CAD /* noopList.json */,
+				4A30CEAB1BA3F59E00465842 /* ActionRequestHandler.h */,
+				4A30CEAC1BA3F59E00465842 /* ActionRequestHandler.m */,
+				4A30CEAE1BA3F59E00465842 /* Info.plist */,
+			);
+			path = blocker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A30CE6C1BA3F50F00465842 /* adblockfast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A30CE9A1BA3F50F00465842 /* Build configuration list for PBXNativeTarget "adblockfast" */;
+			buildPhases = (
+				4A30CE691BA3F50F00465842 /* Sources */,
+				4A30CE6A1BA3F50F00465842 /* Frameworks */,
+				4A30CE6B1BA3F50F00465842 /* Resources */,
+				4A30CEB51BA3F59E00465842 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A30CEB01BA3F59E00465842 /* PBXTargetDependency */,
+			);
+			name = adblockfast;
+			productName = adblockfast;
+			productReference = 4A30CE6D1BA3F50F00465842 /* adblockfast.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4A30CE851BA3F50F00465842 /* adblockfastTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A30CE9D1BA3F50F00465842 /* Build configuration list for PBXNativeTarget "adblockfastTests" */;
+			buildPhases = (
+				4A30CE821BA3F50F00465842 /* Sources */,
+				4A30CE831BA3F50F00465842 /* Frameworks */,
+				4A30CE841BA3F50F00465842 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A30CE881BA3F50F00465842 /* PBXTargetDependency */,
+			);
+			name = adblockfastTests;
+			productName = adblockfastTests;
+			productReference = 4A30CE861BA3F50F00465842 /* adblockfastTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4A30CE901BA3F50F00465842 /* adblockfastUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A30CEA01BA3F50F00465842 /* Build configuration list for PBXNativeTarget "adblockfastUITests" */;
+			buildPhases = (
+				4A30CE8D1BA3F50F00465842 /* Sources */,
+				4A30CE8E1BA3F50F00465842 /* Frameworks */,
+				4A30CE8F1BA3F50F00465842 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A30CE931BA3F50F00465842 /* PBXTargetDependency */,
+			);
+			name = adblockfastUITests;
+			productName = adblockfastUITests;
+			productReference = 4A30CE911BA3F50F00465842 /* adblockfastUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		4A30CEA61BA3F59E00465842 /* blocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A30CEB21BA3F59E00465842 /* Build configuration list for PBXNativeTarget "blocker" */;
+			buildPhases = (
+				4A30CEA31BA3F59E00465842 /* Sources */,
+				4A30CEA41BA3F59E00465842 /* Frameworks */,
+				4A30CEA51BA3F59E00465842 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = blocker;
+			productName = blocker;
+			productReference = 4A30CEA71BA3F59E00465842 /* blocker.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A30CE651BA3F50F00465842 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Rocketship;
+				TargetAttributes = {
+					4A30CE6C1BA3F50F00465842 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3UMZLWG642;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					4A30CE851BA3F50F00465842 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 4A30CE6C1BA3F50F00465842;
+					};
+					4A30CE901BA3F50F00465842 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 4A30CE6C1BA3F50F00465842;
+					};
+					4A30CEA61BA3F59E00465842 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3UMZLWG642;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 4A30CE681BA3F50F00465842 /* Build configuration list for PBXProject "adblockfast" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A30CE641BA3F50F00465842;
+			productRefGroup = 4A30CE6E1BA3F50F00465842 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A30CE6C1BA3F50F00465842 /* adblockfast */,
+				4A30CE851BA3F50F00465842 /* adblockfastTests */,
+				4A30CE901BA3F50F00465842 /* adblockfastUITests */,
+				4A30CEA61BA3F59E00465842 /* blocker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A30CE6B1BA3F50F00465842 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A79E3831BA3FDD600A8388C /* blocked-14.pdf in Resources */,
+				4A79E3771BA3FDD600A8388C /* blocked-2.pdf in Resources */,
+				4A30CE801BA3F50F00465842 /* LaunchScreen.storyboard in Resources */,
+				4A79E3981BA3FDFC00A8388C /* unblocked-3.pdf in Resources */,
+				4A79E37E1BA3FDD600A8388C /* blocked-9.pdf in Resources */,
+				4A79E3791BA3FDD600A8388C /* blocked-4.pdf in Resources */,
+				4A79E3811BA3FDD600A8388C /* blocked-12.pdf in Resources */,
+				4A79E3991BA3FDFC00A8388C /* unblocked-4.pdf in Resources */,
+				4A30CE7D1BA3F50F00465842 /* Assets.xcassets in Resources */,
+				4A79E3951BA3FDFC00A8388C /* unblocked-0.pdf in Resources */,
+				4A79E3751BA3FDD600A8388C /* blocked-0.pdf in Resources */,
+				4A30CE7B1BA3F50F00465842 /* Main.storyboard in Resources */,
+				4A79E37D1BA3FDD600A8388C /* blocked-8.pdf in Resources */,
+				4A79E3A11BA3FDFC00A8388C /* unblocked-12.pdf in Resources */,
+				4A79E3A01BA3FDFC00A8388C /* unblocked-11.pdf in Resources */,
+				4A79E39D1BA3FDFC00A8388C /* unblocked-8.pdf in Resources */,
+				4A79E3841BA3FDD600A8388C /* blocked-15.pdf in Resources */,
+				4A79E39C1BA3FDFC00A8388C /* unblocked-7.pdf in Resources */,
+				4A79E37F1BA3FDD600A8388C /* blocked-10.pdf in Resources */,
+				4A79E39E1BA3FDFC00A8388C /* unblocked-9.pdf in Resources */,
+				4A79E3971BA3FDFC00A8388C /* unblocked-2.pdf in Resources */,
+				4A79E3621BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf in Resources */,
+				4A45501E1BA40424002C0CAD /* Defaults.plist in Resources */,
+				4A79E39B1BA3FDFC00A8388C /* unblocked-6.pdf in Resources */,
+				4A79E3641BA3FDC300A8388C /* AvenirNextLTPro-Light.otf in Resources */,
+				4A79E3A41BA3FDFC00A8388C /* unblocked-15.pdf in Resources */,
+				4A79E37B1BA3FDD600A8388C /* blocked-6.pdf in Resources */,
+				4A79E3A31BA3FDFC00A8388C /* unblocked-14.pdf in Resources */,
+				4A79E3761BA3FDD600A8388C /* blocked-1.pdf in Resources */,
+				4A79E3961BA3FDFC00A8388C /* unblocked-1.pdf in Resources */,
+				4A79E37A1BA3FDD600A8388C /* blocked-5.pdf in Resources */,
+				4A79E39A1BA3FDFC00A8388C /* unblocked-5.pdf in Resources */,
+				4A79E3821BA3FDD600A8388C /* blocked-13.pdf in Resources */,
+				4A79E3781BA3FDD600A8388C /* blocked-3.pdf in Resources */,
+				4A79E39F1BA3FDFC00A8388C /* unblocked-10.pdf in Resources */,
+				4A79E3A21BA3FDFC00A8388C /* unblocked-13.pdf in Resources */,
+				4A79E3801BA3FDD600A8388C /* blocked-11.pdf in Resources */,
+				4A79E37C1BA3FDD600A8388C /* blocked-7.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CE841BA3F50F00465842 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CE8F1BA3F50F00465842 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CEA51BA3F59E00465842 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A45501F1BA40424002C0CAD /* Defaults.plist in Resources */,
+				4A30CEAA1BA3F59E00465842 /* blockerList.json in Resources */,
+				4A4550211BA40489002C0CAD /* noopList.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A30CE691BA3F50F00465842 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A30CE781BA3F50F00465842 /* ViewController.m in Sources */,
+				4A30CE751BA3F50F00465842 /* AppDelegate.m in Sources */,
+				4A30CE721BA3F50F00465842 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CE821BA3F50F00465842 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A30CE8B1BA3F50F00465842 /* adblockfastTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CE8D1BA3F50F00465842 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A30CE961BA3F50F00465842 /* adblockfastUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A30CEA31BA3F59E00465842 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A30CEAD1BA3F59E00465842 /* ActionRequestHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A30CE881BA3F50F00465842 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A30CE6C1BA3F50F00465842 /* adblockfast */;
+			targetProxy = 4A30CE871BA3F50F00465842 /* PBXContainerItemProxy */;
+		};
+		4A30CE931BA3F50F00465842 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A30CE6C1BA3F50F00465842 /* adblockfast */;
+			targetProxy = 4A30CE921BA3F50F00465842 /* PBXContainerItemProxy */;
+		};
+		4A30CEB01BA3F59E00465842 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A30CEA61BA3F59E00465842 /* blocker */;
+			targetProxy = 4A30CEAF1BA3F59E00465842 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4A30CE791BA3F50F00465842 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A30CE7A1BA3F50F00465842 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A30CE7F1BA3F50F00465842 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4A30CE981BA3F50F00465842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A30CE991BA3F50F00465842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A30CE9B1BA3F50F00465842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = adblockfast/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4A30CE9C1BA3F50F00465842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = adblockfast/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4A30CE9E1BA3F50F00465842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = adblockfastTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfastTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/adblockfast.app/adblockfast";
+			};
+			name = Debug;
+		};
+		4A30CE9F1BA3F50F00465842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = adblockfastTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfastTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/adblockfast.app/adblockfast";
+			};
+			name = Release;
+		};
+		4A30CEA11BA3F50F00465842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = adblockfastUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfastUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = adblockfast;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		4A30CEA21BA3F50F00465842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = adblockfastUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfastUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = adblockfast;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		4A30CEB31BA3F59E00465842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = blocker/blocker.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = blocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast.blocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4A30CEB41BA3F59E00465842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = blocker/blocker.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = blocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast.blocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A30CE681BA3F50F00465842 /* Build configuration list for PBXProject "adblockfast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A30CE981BA3F50F00465842 /* Debug */,
+				4A30CE991BA3F50F00465842 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A30CE9A1BA3F50F00465842 /* Build configuration list for PBXNativeTarget "adblockfast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A30CE9B1BA3F50F00465842 /* Debug */,
+				4A30CE9C1BA3F50F00465842 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A30CE9D1BA3F50F00465842 /* Build configuration list for PBXNativeTarget "adblockfastTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A30CE9E1BA3F50F00465842 /* Debug */,
+				4A30CE9F1BA3F50F00465842 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A30CEA01BA3F50F00465842 /* Build configuration list for PBXNativeTarget "adblockfastUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A30CEA11BA3F50F00465842 /* Debug */,
+				4A30CEA21BA3F50F00465842 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A30CEB21BA3F59E00465842 /* Build configuration list for PBXNativeTarget "blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A30CEB31BA3F59E00465842 /* Debug */,
+				4A30CEB41BA3F59E00465842 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A30CE651BA3F50F00465842 /* Project object */;
+}
