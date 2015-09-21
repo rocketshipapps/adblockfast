@@ -11,7 +11,7 @@ the system resources that other ad blockers do.
 Exactly how much faster, you ask, is Adblock Fast compared with those other ad
 blockers? Let’s take a gander.
 
-### 1. Adblock Fast runs 6,963x fewer filtering rules per webpage.
+### 1. Adblock Fast runs 6,963x fewer filtering rules per page.
 
 * AdBlock: 48,746 rules
 * Adblock Plus: 48,746 rules
@@ -51,6 +51,44 @@ I.e., other apps run faster still.
 
 I.e., we reply to email faster
 ([ping us](mailto:help@adblockfast.com))<em>!</em>
+
+## Owner’s manual
+
+Adblock Fast is so fast that even reading the effing manual takes no time flat.
+Here’s everything you need to know:
+
+### In Chrome or Opera
+
+Adblock Fast installs a button in your browser’s toolbar. The button indicates
+the status of the site and page that you’re on:
+
+![Blocked ads](opera/chrome/images/blocked-ads.png) Ads are being blocked on the
+site and ads were found on the page.
+
+![Blocked](opera/chrome/images/blocked.png) Ads are being blocked on the site,
+but no ads were found on the page.
+
+![Unblocked ads](opera/chrome/images/unblocked-ads.png) Ads aren’t being blocked
+on the site, but ads were found on the page.
+
+![Unblocked](opera/chrome/images/unblocked.png) Ads aren’t being blocked on the
+site and no ads were found on the page.
+
+If Adblock Fast is interfering with the behavior of the page (or if you’re a
+masochist), you can click the button to unblock ads. Your setting will be
+remembered whenever you go back to the site.
+
+### In iOS
+
+Adblock Fast blocks ads in Safari not in other apps. To allow Adblock Fast to
+block in Safari:
+
+1. press the Home button on your iPhone or iPad,
+2. tap the **Settings** app,
+3. tap **Safari** > (under <small>GENERAL</small>) **Content Blockers**, then
+4. toggle the **Adblock Fast** switch on.
+
+To unblock ads, navigate to the **Adblock Fast** app.
 
 Copyright 2015 [Rocketship](http://rocketshipapps.com/)
 
