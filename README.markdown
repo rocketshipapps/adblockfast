@@ -1,7 +1,6 @@
 # ![Adblock Fast](assets/promo/adblockfast.png)
 
-*The world’s fastest ad blocker! Same ad blocking, 8x more accelerated webpage
-loading.*
+*Same ad blocking, 8x more accelerated webpage loading.*
 
 Adblock Fast is available for:
 
@@ -104,7 +103,7 @@ To see the effect of Adblock Fast on a particular page, you may have to clear
 Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
 Data**) before reloading the page.
 
-## Questions, possibly to be asked frequently
+## Questions (possibly to be asked frequently)
 
 ### Who created Adblock Fast<em>?</em>
 
@@ -163,7 +162,7 @@ for a hand getting started.
         git clone https://github.com/rocketshipapps/adblockfast.git
 
 4. Open or switch to Chrome.
-5. Go to Chrome’s hamburger menu > **More Tools** > **Extensions**.
+5. Go to **Window** > **Extensions**.
 6. Check the **Developer mode** box then press the **Load unpacked extension…**
    button.
 7. Find your working directory.
