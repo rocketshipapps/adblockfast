@@ -90,6 +90,34 @@ block in Safari:
 
 To unblock ads, navigate to the **Adblock Fast** app.
 
+## Questions, possibly to be asked frequently
+
+### Who created Adblock Fast<em>?</em>
+
+Adblock Fast was created and is maintained by
+[Rocketship](http://rocketshipapps.com/), an award-winning app studio based in
+Palo Alto and San Francisco. Our aim is to design and develop only the finest
+mobile and web experiences, of our own and for clients.
+
+### Where is Adblock Fast’s filtering ruleset from<em>?</em>
+
+Adblock Fast’s filtering ruleset is derived from
+[EasyList](https://easylist.adblockplus.org/en/) and that of
+[Bluhell Firewall](https://addons.mozilla.org/en-Us/firefox/addon/bluhell-firewall/).
+We’re also testing a new, alternative ruleset that we expect to improve ad
+blocking yet another order of magnitude.
+
+### How does Adblock Fast make money<em>?</em>
+
+Adblock Fast doesn’t, nor do we intend for Adblock Fast to ever, make any money.
+We operate an ([aforementioned](#who-created-adblock-fast)) app studio that’s
+bootstrapped and quite profitable. Yesterday, you probably didn’t know we
+existed. Today, you do and, someday, perhaps you’ll be creating the next killer
+app and will consider hiring us. (Hmm, maybe doing good work and shipping good
+products ought to replace advertising<em>!</em>) Unlike
+[other ad blockers](http://techcrunch.com/2013/07/06/google-and-others-reportedly-pay-adblock-plus-to-show-you-ads-anyway/),
+we don’t have to compromise to support our project.
+
 Copyright 2015 [Rocketship](http://rocketshipapps.com/)
 
 This program is free software, excluding the brand features and third-party
