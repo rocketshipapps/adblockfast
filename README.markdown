@@ -4,11 +4,12 @@
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated
 with little-used filtering rules and features that hog your computer or device’s
-disk space, CPU cycles, and memory. Adblock Fast is a minimal, optimized ad
-blocker that blocks more than 80% of the ads but consumes less than 20% of the
-system resources that older ad blockers do.
+disk space, CPU cycles, and memory. Adblock Fast runs a mere 7 optimized
+filtering rules to block more than 80% of the ads but consume less than 20% of
+the system resources that other ad blockers do.
 
-Exactly how much faster, you ask, is Adblock Fast? Let’s compare the numbers.
+Exactly how much faster, you ask, is Adblock Fast compared with those other ad
+blockers? Let’s take a gander.
 
 ### 1. Adblock Fast runs 6,963x fewer filtering rules per webpage.
 
