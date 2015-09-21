@@ -1,56 +1,57 @@
 # ![Adblock Fast](assets/promo/adblockfast.png)
 
-*The world’s fastest ad blocker! Same ad blocking, faster webpage loading.*
+*The world’s fastest ad blocker! Same ad blocking, 8x more accelerated webpage
+loading.*
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated
-with little-used filtering rules and features that hog your computer or device’s
-disk space, CPU cycles, and memory. Adblock Fast runs a mere 7 optimized
-filtering rules to block more than 80% of the ads but consume less than 20% of
-the system resources that other ad blockers do.
+with little-used filtering rules and features that sap their would-be speed and
+hog your computer or device’s disk space, CPU cycles, and memory. Adblock Fast
+runs a mere 7 optimized filtering rules to accelerate pages 8x more but consume
+6x less system resources than other ad blockers do.
 
-Exactly how much faster, you ask, is Adblock Fast compared with those other ad
-blockers? Let’s take a gander.
+Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch the
+numbers.
 
-### Adblock Fast runs 6,963x fewer filtering rules per page.
+### 1. Adblock Fast runs 7,000x fewer filtering rules per page.
 
-* AdBlock: 48,746 rules
-* Adblock Plus: 48,746 rules
+* AdBlock: 49,002 rules
+* Adblock Plus: 49,002 rules
 * **Adblock Fast: 7 rules**
 
-I.e., pages load faster.
+I.e., the app is more efficient.
 
-### Adblock Fast consumes <em>n</em>x less kilobytes of disk.
+### 2. Adblock Fast consumes 11x less kilobytes of disk.
 
-* AdBlock: <em>n</em> KB
-* Adblock Plus: <em>n</em> KB
-* **Adblock Fast: <em>n</em> KB**
+* AdBlock: Size: 843 KB
+* Adblock Plus: Size: 543 KB
+* **Adblock Fast: 61 KB**
 
 I.e., the app installs faster.
 
-### Adblock Fast consumes a <em>n</em>x lower percentage of CPU.
+### 3. Adblock Fast accelerates page loading 8x as many seconds.
 
-* AdBlock: <em>n</em>%
-* Adblock Plus: <em>n</em>%
-* **Adblock Fast: <em>n</em>%**
+* No ad blocker: 3.17s (control)
+* AdBlock: 2.84s (0.33s faster)
+* Adblock Plus: 3.23s (0.06s slower)
+* **Adblock Fast: 2.10s (1.07s faster)**
+
+I.e., pages load faster.
+
+### 4. Adblock Fast consumes a 3x lower percentage of CPU.
+
+* AdBlock: 19.4%
+* Adblock Plus: 20.3%
+* **Adblock Fast: 6.6%**
 
 I.e., other apps run faster.
 
-### Adblock Fast consumes <em>n</em>x less megabytes of memory.
+### 5. Adblock Fast consumes 3x less megabytes of memory.
 
-* AdBlock: <em>n</em> MB
-* Adblock Plus: <em>n</em> MB
-* **Adblock Fast: <em>n</em> MB**
+* AdBlock: 162.5 MB
+* Adblock Plus: 158.0 MB
+* **Adblock Fast: 58.5 MB**
 
 I.e., other apps run faster still.
-
-### Adblock Fast has ∞x fewer users to support.
-
-* AdBlock: 10,000,000+ users
-* Adblock Plus: 10,000,000+ users
-* **Adblock Fast: 0 users**
-
-I.e., we reply to email faster
-([ping us](mailto:help@adblockfast.com))<em>!</em>
 
 ## Owner’s manual
 
