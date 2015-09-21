@@ -9,7 +9,7 @@ hog your computer or device’s disk space, CPU cycles, and memory. Adblock Fast
 runs a mere 7 optimized filtering rules to accelerate pages 8x more but consume
 6x less system resources than other ad blockers do.
 
-Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch the
+Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch some
 numbers.
 
 ### 1. Adblock Fast runs 7,000x fewer filtering rules per page.
@@ -20,11 +20,11 @@ numbers.
 
 I.e., the app is more efficient.
 
-### 2. Adblock Fast consumes 11x less kilobytes of disk.
+### 2. Adblock Fast consumes 7x less kilobytes of disk.
 
 * AdBlock: Size: 843 KB
 * Adblock Plus: Size: 543 KB
-* **Adblock Fast: 61 KB**
+* **Adblock Fast: 97 KB**
 
 I.e., the app installs faster.
 
@@ -56,7 +56,7 @@ I.e., other apps run faster still.
 ## Owner’s manual
 
 Adblock Fast is so fast that even reading the effing manual takes no time flat.
-Here’s everything you need to know:
+Here’s everything you need to know.
 
 ### In Chrome or Opera
 
@@ -91,7 +91,7 @@ block in Safari:
 
 To unblock ads, navigate to the **Adblock Fast** app.
 
-## Questions (possibly to be asked frequently)
+## Questions, possibly to be asked frequently
 
 ### Who created Adblock Fast<em>?</em>
 
@@ -100,13 +100,30 @@ Adblock Fast was created and is maintained by
 Palo Alto and San Francisco. Our aim is to design and develop only the finest
 mobile and web experiences, of our own and for clients.
 
+### What are the install permissions Adblock Fast requires for<em>?</em>
+
+Like all (functional) ad blockers, Adblock Fast prompts you for the permissions
+required to block ad requests by intercepting your HTTP traffic and to hide ad
+resources by injecting CSS into the webpages you go to.
+
 ### Where is Adblock Fast’s filtering ruleset from<em>?</em>
 
-Adblock Fast’s filtering ruleset is derived from
+Adblock Fast’s ruleset is derived from
 [EasyList](https://easylist.adblockplus.org/en/) and that of
 [Bluhell Firewall](https://addons.mozilla.org/en-Us/firefox/addon/bluhell-firewall/).
 We’re also testing a new, alternative ruleset that we expect to improve ad
 blocking yet another order of magnitude.
+
+### When will Adblock Fast be available on [insert platform here]<em>?</em>
+
+Adblock Fast is available on the Chrome and Opera browsers and on iOS 9 (on
+64-bit devices, iPhone 5s and up and iPad mini 2 and up). Follow us on
+[Twitter](https://twitter.com/adblockfast) for news about additional platforms.
+
+### Why is Adblock Fast called ”AB Fast” in the Chrome Web Store<em>?</em>
+
+”AB Fast” is Adblock Fast<em>!</em> We hope to get the name updated in the Web
+Store soon.
 
 ### How does Adblock Fast make money<em>?</em>
 
