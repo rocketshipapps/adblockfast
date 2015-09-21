@@ -11,7 +11,7 @@ the system resources that other ad blockers do.
 Exactly how much faster, you ask, is Adblock Fast compared with those other ad
 blockers? Let’s take a gander.
 
-### 1. Adblock Fast runs 6,963x fewer filtering rules per page.
+### Adblock Fast runs 6,963x fewer filtering rules per page.
 
 * AdBlock: 48,746 rules
 * Adblock Plus: 48,746 rules
@@ -19,7 +19,7 @@ blockers? Let’s take a gander.
 
 I.e., pages load faster.
 
-### 2. Adblock Fast consumes <em>n</em>x less kilobytes of disk.
+### Adblock Fast consumes <em>n</em>x less kilobytes of disk.
 
 * AdBlock: <em>n</em> KB
 * Adblock Plus: <em>n</em> KB
@@ -27,7 +27,7 @@ I.e., pages load faster.
 
 I.e., the app installs faster.
 
-### 3. Adblock Fast consumes a <em>n</em>x lower percentage of CPU.
+### Adblock Fast consumes a <em>n</em>x lower percentage of CPU.
 
 * AdBlock: <em>n</em>%
 * Adblock Plus: <em>n</em>%
@@ -35,7 +35,7 @@ I.e., the app installs faster.
 
 I.e., other apps run faster.
 
-### 4. Adblock Fast consumes <em>n</em>x less megabytes of memory.
+### Adblock Fast consumes <em>n</em>x less megabytes of memory.
 
 * AdBlock: <em>n</em> MB
 * Adblock Plus: <em>n</em> MB
@@ -43,7 +43,7 @@ I.e., other apps run faster.
 
 I.e., other apps run faster still.
 
-### 5. Adblock Fast has ∞x fewer users to support.
+### Adblock Fast has ∞x fewer users to support.
 
 * AdBlock: 10,000,000+ users
 * Adblock Plus: 10,000,000+ users
@@ -90,7 +90,7 @@ block in Safari:
 
 To unblock ads, navigate to the **Adblock Fast** app.
 
-## Questions, possibly to be asked frequently
+## Questions (possibly to be asked frequently)
 
 ### Who created Adblock Fast<em>?</em>
 
@@ -116,7 +116,7 @@ existed. Today, you do and, someday, perhaps you’ll be creating the next kille
 app and will consider hiring us. (Hmm, maybe doing good work and shipping good
 products ought to replace advertising<em>!</em>) Unlike
 [other ad blockers](http://techcrunch.com/2013/07/06/google-and-others-reportedly-pay-adblock-plus-to-show-you-ads-anyway/),
-we don’t have to compromise to support our project.
+we don’t have to sell out to support our project.
 
 Copyright 2015 [Rocketship](http://rocketshipapps.com/)
 
