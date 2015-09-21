@@ -10,40 +10,46 @@ of the system resources compared with older ad blockers.
 
 Exactly how much faster, you ask, is this Adblock Fast? Let’s tally the numbers:
 
-### 1. Adblock Fast runs 6,963x fewer filtering rules per webpage, so pages load
-faster.
+### 1. Adblock Fast runs 6,963x fewer filtering rules per webpage.
 
 * AdBlock: 48,746 rules
 * Adblock Plus: 48,746 rules
 * **Adblock Fast: 7 rules**
 
-### 2. Adblock Fast consumes <em>n</em>x less kilobytes of disk, so the app
-installs faster.
+I.e., pages load faster.
+
+### 2. Adblock Fast consumes <em>n</em>x less kilobytes of disk.
 
 * AdBlock: <em>n</em> KB
 * Adblock Plus: <em>n</em> KB
 * **Adblock Fast: <em>n</em> KB**
 
-### 3. Adblock Fast consumes a <em>n</em>x lower percentage of CPU, so other
-apps run faster.
+I.e., the app installs faster.
+
+### 3. Adblock Fast consumes a <em>n</em>x lower percentage of CPU.
 
 * AdBlock: <em>n</em>%
 * Adblock Plus: <em>n</em>%
 * **Adblock Fast: <em>n</em>%**
 
-### 4. Adblock Fast consumes <em>n</em>x less megabytes of memory, so other apps
-run faster still.
+I.e., other apps run faster.
+
+### 4. Adblock Fast consumes <em>n</em>x less megabytes of memory.
 
 * AdBlock: <em>n</em> MB
 * Adblock Plus: <em>n</em> MB
 * **Adblock Fast: <em>n</em> MB**
 
-### 5. Adblock Fast has ∞x fewer users to support, so we reply to email faster
-([ping us](help@adblockfast.com))<em>!</em>
+I.e., other apps run faster still.
+
+### 5. Adblock Fast has ∞x fewer users to support.
 
 * AdBlock: 10,000,000+ users
 * Adblock Plus: 10,000,000+ users
 * **Adblock Fast: 0 users**
+
+I.e., we reply to email faster
+([ping us](mailto:help@adblockfast.com))<em>!</em>
 
 Copyright 2015 [Rocketship](http://rocketshipapps.com/)
 
