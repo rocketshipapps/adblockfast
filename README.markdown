@@ -3,11 +3,18 @@
 *The world’s fastest ad blocker! Same ad blocking, 8x more accelerated webpage
 loading.*
 
+Adblock Fast is available for:
+
+* [Chrome](https://chrome.google.com/webstore/detail/ab-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
+* [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
+* [iOS 9](https://itunes.apple.com/us/app/adblock-fast/id1032930802) (64-bit
+  devices, iPhone 5s and up and iPad mini 2 and up)
+
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated
-with little-used filtering rules and features that sap their would-be speed and
-hog your computer or device’s disk space, CPU cycles, and memory. Adblock Fast
-runs a mere 7 optimized filtering rules to accelerate pages 8x more but consume
-6x less system resources than other ad blockers do.
+with little-used filtering rules and features that sap their speed and hog your
+computer or device’s disk space, CPU cycles, and memory. Adblock Fast runs a
+mere 7 optimized filtering rules to accelerate pages 8x more but consume 6x less
+system resources than other ad blockers do.
 
 Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch some
 numbers.
@@ -91,6 +98,10 @@ block in Safari:
 
 To unblock ads, navigate to the **Adblock Fast** app.
 
+To see the effect of Adblock Fast on a particular page, you may have to clear
+Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
+Data**) before reloading the page.
+
 ## Questions, possibly to be asked frequently
 
 ### Who created Adblock Fast<em>?</em>
@@ -133,19 +144,94 @@ bootstrapped and quite profitable. Yesterday, you probably didn’t know we
 existed. Today, you do and, someday, perhaps you’ll be creating the next killer
 app and will consider hiring us. (Hmm, maybe doing good work and shipping good
 products ought to replace advertising<em>!</em>) Unlike
-[other ad blockers](http://techcrunch.com/2013/07/06/google-and-others-reportedly-pay-adblock-plus-to-show-you-ads-anyway/),
-we don’t have to sell out to support our project.
+[other ad blockers](https://news.ycombinator.com/item?id=5995140), we don’t have
+to sell out to support our project.
 
-Copyright 2015 [Rocketship](http://rocketshipapps.com/)
+## Contributing (and so can you<em>!</em>)
+
+Adblock Fast is open for pull-request business<em>!</em> Follow the steps below
+for a hand getting started.
+
+### In Chrome
+
+1. Fork this repository.
+2. Switch to your working directory of choice.
+3. Clone the repo locally:
+
+        git clone https://github.com/rocketshipapps/adblockfast.git
+
+4. Open or switch to Chrome.
+5. Go to Chrome’s hamburger menu > **More Tools** > **Extensions**.
+6. Check the **Developer mode** box then press the **Load unpacked extension…**
+   button.
+7. Find your working directory.
+8. Under `opera`, select `chrome`.
+9. To test after you make a change, under the extension listing, press the
+   **Reload** link.
+10. Push your changes.
+11. Send us pull requests<em>!</em>
+
+### In Opera
+
+1. Fork this repository.
+2. Switch to your working directory of choice.
+3. Clone the repo locally:
+
+        git clone https://github.com/rocketshipapps/adblockfast.git
+
+4. Open or switch to Opera.
+5. Go to **View** > **Show Extensions**.
+6. Press the **Developer Mode** button then the **Load Unpacked Extension…**
+   button.
+7. Find your working directory.
+8. Select `opera`.
+9. To test after you make a change, under the extension listing, press the
+   **Reload** button.
+10. Push your changes.
+11. Send us pull requests<em>!</em>
+
+### In iOS
+
+1. Fork this repository.
+2. Switch to your working directory of choice.
+3. Clone the repo locally:
+
+        git clone https://github.com/rocketshipapps/adblockfast.git
+
+4. Open or switch to Xcode.
+5. Go to **File** > **Open…** .
+6. Find your working directory.
+7. Select `ios`.
+8. Go to **Product** > **Run**.
+9. To test after you make a change, go to **Product** > **Stop** then
+   **Product** > **Run**.
+10. Push your changes.
+11. Send us pull requests<em>!</em>
+
+## License
+
+Copyright 2015 Rocketship Apps, LLC
 
 This program is free software, excluding the brand features and third-party
-portions of the program: you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
+portions of the program identified in the [Exceptions](#exceptions) below: you
+can redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE. See the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) for more
 details.
+
+## Exceptions
+
+The Adblock Fast and Rocketship logos, trademarks, domain names, and other brand
+features used in this program cannot be reused without permission and no license
+is granted thereto.
+
+Further, the following third-party portions of the program and any use thereof
+are subject to their own license terms:
+
+* [Hudson NY](https://www.myfonts.com/fonts/virtuecreative/hudson-ny/)
+* [Avenir Next](http://www.linotype.com/2090/avenirnext.html)
