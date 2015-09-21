@@ -19,6 +19,8 @@ system resources than other ad blockers do.
 Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch some
 numbers.
 
+![Benchmarks](assets/promo/benchmarks-optimized.png)
+
 ### 1. Adblock Fast runs 7,000x fewer filtering rules per page.
 
 * AdBlock: 49,002 rules
