@@ -1,8 +1,8 @@
 # ![Adblock Fast](assets/promo/adblockfast.png)
 
-*Same ad blocking, 8x more accelerated webpage loading.*
+*A new, faster ad blocker for Chrome, Opera, and iOS 9.*
 
-Adblock Fast is available for:
+Try Adblock Fast:
 
 * [Chrome](https://chrome.google.com/webstore/detail/ab-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 * [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
