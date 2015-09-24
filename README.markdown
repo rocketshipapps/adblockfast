@@ -30,8 +30,8 @@ I.e., the app is more efficient.
 
 ### 2. Adblock Fast consumes 7x less kilobytes of disk.
 
-* AdBlock: Size: 843 KB
-* Adblock Plus: Size: 543 KB
+* AdBlock: 843 KB
+* Adblock Plus: 543 KB
 * **Adblock Fast: 97 KB**
 
 I.e., the app installs faster.
