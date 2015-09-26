@@ -5,9 +5,9 @@
 	<key>NotificationRequestText</key>
 	<string>Adblock Fast should be kept up to date to block new types of ads. Do you want to be notified (infrequently) when important updates are available?&lt;br&gt;</string>
 	<key>HelpText</key>
-	<string>**To** **allow** **Adblock** **Fast** **to** **block** **ads** **in** **Safari:**&lt;br&gt;&lt;br&gt;1. press the Home button,&lt;br&gt;2. tap the **Settings** app,&lt;br&gt;3. tap **Safari** &gt; (under &lt;small&gt;GENERAL) **Content** **Blockers**, then&lt;br&gt;4. toggle the **Adblock** **Fast** switch on.&lt;br&gt;&lt;br&gt;To unblock ads, navigate back to this screen.&lt;br&gt;&lt;br&gt;You can send mail to &lt;help@adblockfast.com&gt;.&lt;br&gt;</string>
+	<string>**To** **allow** **Adblock** **Fast** **to** **block** **ads** **in** **Safari:**&lt;br&gt;&lt;br&gt;1. press the Home button,&lt;br&gt;2. tap the **Settings** app,&lt;br&gt;3. tap **Safari** &gt; (under &lt;small&gt;GENERAL) **Content** **Blockers**, then&lt;br&gt;4. toggle the **Adblock** **Fast** switch on.&lt;br&gt;&lt;br&gt;To unblock ads, navigate back to this screen.&lt;br&gt;&lt;br&gt;Message us at https://twitter.com/adblockfast.&lt;br&gt;</string>
 	<key>AboutText</key>
-	<string>**Adblock** **Fast**&lt;br&gt;The World’s Fastest Ad Blocker&lt;br&gt;1.0.0&lt;br&gt;&lt;br&gt;© Rocketship &lt;http://rocketshipapps.com/&gt;.&lt;br&gt;All rights reserved.&lt;br&gt;</string>
+	<string>**Adblock** **Fast**&lt;br&gt;The World’s Fastest Ad Blocker&lt;br&gt;1.1.0&lt;br&gt;&lt;br&gt;© Rocketship &lt;http://rocketshipapps.com/&gt;.&lt;br&gt;All rights reserved.&lt;br&gt;</string>
 	<key>AppOpenCount</key>
 	<integer>0</integer>
 	<key>NotificationRequestCount</key>
