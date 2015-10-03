@@ -16,6 +16,16 @@
 # Authors (one per line):
 #
 #   Brian Kennish <brian@rocketshipapps.com>
-rm -f builds/adblockfast.zip
-cd opera
-zip -r ../builds/adblockfast chrome -x \*.DS_Store
+cd builds
+rm -fR adblockfast
+cp -R ../opera adblockfast
+java -jar htmlcompressor-1.5.3.jar -o adblockfast/chrome/markup/firstrun.html \
+                                   --remove-intertag-spaces \
+                                   --remove-quotes \
+                                   adblockfast/chrome/markup/firstrun.html
+java -jar yuicompressor-2.4.8.jar -o '.js$:.js' adblockfast/chrome/scripts/*.js
+java -jar yuicompressor-2.4.8.jar -o '.css$:.css' \
+                                  adblockfast/chrome/stylesheets/*.css
+cd adblockfast
+zip -r ../adblockfast chrome -x \*.DS_Store
+rm -f chrome/manifest.json
