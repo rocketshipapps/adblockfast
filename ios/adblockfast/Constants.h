@@ -16,5 +16,6 @@
 #define PREFERENCES_FILE_EXTENSION @"plist"
 #define BLOCKER_PERMISSION_KEY @"IsBlockerAllowed"
 #define BLOCKING_STATUS_KEY @"IsBlockingOn"
+#define STATUS_LABEL @"Status: "
 
 #endif

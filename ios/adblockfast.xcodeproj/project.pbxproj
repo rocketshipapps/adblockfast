@@ -55,6 +55,9 @@
 		4A79E3A21BA3FDFC00A8388C /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3921BA3FDFC00A8388C /* unblocked-13.pdf */; settings = {ASSET_TAGS = (); }; };
 		4A79E3A31BA3FDFC00A8388C /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3931BA3FDFC00A8388C /* unblocked-14.pdf */; settings = {ASSET_TAGS = (); }; };
 		4A79E3A41BA3FDFC00A8388C /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4A79E3941BA3FDFC00A8388C /* unblocked-15.pdf */; settings = {ASSET_TAGS = (); }; };
+		4AA4132A1BC1F0ED002EA57A /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA413291BC1F0ED002EA57A /* Label.m */; settings = {ASSET_TAGS = (); }; };
+		4AA4132D1BC2034B002EA57A /* StatusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA4132C1BC2034B002EA57A /* StatusLabel.m */; settings = {ASSET_TAGS = (); }; };
+		4AA413301BC20CEA002EA57A /* ActionLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA4132F1BC20CEA002EA57A /* ActionLabel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,12 @@
 		4A79E3931BA3FDFC00A8388C /* unblocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-14.pdf"; sourceTree = "<group>"; };
 		4A79E3941BA3FDFC00A8388C /* unblocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-15.pdf"; sourceTree = "<group>"; };
 		4A79E3A51BA3FE8700A8388C /* adblockfast.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = adblockfast.entitlements; sourceTree = "<group>"; };
+		4AA413281BC1F0ED002EA57A /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
+		4AA413291BC1F0ED002EA57A /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		4AA4132B1BC2034B002EA57A /* StatusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusLabel.h; sourceTree = "<group>"; };
+		4AA4132C1BC2034B002EA57A /* StatusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusLabel.m; sourceTree = "<group>"; };
+		4AA4132E1BC20CEA002EA57A /* ActionLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionLabel.h; sourceTree = "<group>"; };
+		4AA4132F1BC20CEA002EA57A /* ActionLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionLabel.m; sourceTree = "<group>"; };
 		4AAFB4641BA4005700A2BB15 /* blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = blocker.entitlements; sourceTree = "<group>"; };
 		4AAFB4651BA4034400A2BB15 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +226,12 @@
 			children = (
 				4A79E3A51BA3FE8700A8388C /* adblockfast.entitlements */,
 				4AAFB4651BA4034400A2BB15 /* Constants.h */,
+				4AA413281BC1F0ED002EA57A /* Label.h */,
+				4AA413291BC1F0ED002EA57A /* Label.m */,
+				4AA4132B1BC2034B002EA57A /* StatusLabel.h */,
+				4AA4132C1BC2034B002EA57A /* StatusLabel.m */,
+				4AA4132E1BC20CEA002EA57A /* ActionLabel.h */,
+				4AA4132F1BC20CEA002EA57A /* ActionLabel.m */,
 				4A30CE761BA3F50F00465842 /* ViewController.h */,
 				4A30CE771BA3F50F00465842 /* ViewController.m */,
 				4A30CE7C1BA3F50F00465842 /* Assets.xcassets */,
@@ -517,8 +532,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AA413301BC20CEA002EA57A /* ActionLabel.m in Sources */,
+				4AA4132D1BC2034B002EA57A /* StatusLabel.m in Sources */,
 				4A30CE781BA3F50F00465842 /* ViewController.m in Sources */,
 				4A30CE751BA3F50F00465842 /* AppDelegate.m in Sources */,
+				4AA4132A1BC1F0ED002EA57A /* Label.m in Sources */,
 				4A30CE721BA3F50F00465842 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

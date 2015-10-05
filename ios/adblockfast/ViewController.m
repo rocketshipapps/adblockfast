@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import <SafariServices/SFContentBlockerManager.h>
 #import "Constants.h"
+#import "StatusLabel.h"
+#import "ActionLabel.h"
 
 #define CONTENT_BLOCKER_ID (REVERSE_DOMAIN_NAME @".adblockfast.blocker")
 #define APP_OPEN_COUNT_KEY @"AppOpenCount"
@@ -22,7 +24,6 @@
 #define UNBLOCKED_FILENAME_PREFIX @"unblocked-"
 #define VECTOR_GRAPHIC_FILE_EXTENSION @"pdf"
 #define NAME @"Adblock Fast"
-#define STATUS_LABEL @"Status: "
 #define DISALLOWED_STATUS_MESSAGE @"Waiting for permission"
 #define BLOCKED_STATUS_MESSAGE @"Blocking ads"
 #define UNBLOCKED_STATUS_MESSAGE @"Not blocking ads"
@@ -72,13 +73,13 @@
 @property (nonatomic) CGRect onOffButtonFrame;
 @property (nonatomic) UIFont *bodyBoldFont;
 @property (nonatomic) UIFont *bodyFont;
-@property (nonatomic) UILabel *disallowedStatusLabel;
-@property (nonatomic) UILabel *blockedStatusLabel;
-@property (nonatomic) UILabel *unblockedStatusLabel;
+@property (nonatomic) StatusLabel *disallowedStatusLabel;
+@property (nonatomic) StatusLabel *blockedStatusLabel;
+@property (nonatomic) StatusLabel *unblockedStatusLabel;
 @property (nonatomic) UIButton *onOffButton;
-@property (nonatomic) UILabel *disallowedActionLabel;
-@property (nonatomic) UILabel *blockedActionLabel;
-@property (nonatomic) UILabel *unblockedActionLabel;
+@property (nonatomic) ActionLabel *disallowedActionLabel;
+@property (nonatomic) ActionLabel *blockedActionLabel;
+@property (nonatomic) ActionLabel *unblockedActionLabel;
 @property (nonatomic) UIButton *helpButton;
 @property (nonatomic) UIButton *aboutButton;
 @property (nonatomic) UIColor *lightColor;
@@ -492,10 +493,10 @@
                                                           MINIMUM_FRAME_DIMENSION_TO_NAVBAR_HEIGHT
                                                       )];
         if (VERBOSE) _nameLabel.layer.borderWidth = 1;
-        _nameLabel.textAlignment = NSTextAlignmentCenter;
+        _nameLabel.text = NAME;
         _nameLabel.font = self.headingFont;
         _nameLabel.textColor = self.darkColor;
-        _nameLabel.text = NAME;
+        _nameLabel.textAlignment = NSTextAlignmentCenter;
         _nameLabel.alpha = 0;
     }
 
@@ -549,109 +550,43 @@
     return _bodyFont;
 }
 
-- (UILabel *)disallowedStatusLabel
+- (StatusLabel *)disallowedStatusLabel
 {
-    if (!_disallowedStatusLabel) {
-        UIColor *color = self.darkColor;
-        NSMutableAttributedString *text =
-            [[NSMutableAttributedString alloc] initWithString:STATUS_LABEL
-                                                   attributes:@{
-                                                                NSFontAttributeName:
-                                                                    self.bodyBoldFont,
-                                                                NSForegroundColorAttributeName:
-                                                                    color
-                                                                }];
-        [text appendAttributedString:
-            [[NSAttributedString alloc] initWithString:DISALLOWED_STATUS_MESSAGE
-                                            attributes:@{
-                                                         NSFontAttributeName: self.bodyFont,
-                                                         NSForegroundColorAttributeName: color
-                                                         }]];
-        CGFloat height = text.size.height;
-        _disallowedStatusLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(
-                                                      0,
-                                                      self.onOffButtonFrame.origin.y - 2 * height,
-                                                      self.view.frame.size.width,
-                                                      height
-                                                      )];
-        if (VERBOSE) _disallowedStatusLabel.layer.borderWidth = 1;
-        _disallowedStatusLabel.textAlignment = NSTextAlignmentCenter;
-        _disallowedStatusLabel.attributedText = text;
-        _disallowedStatusLabel.alpha = 0;
-    }
-
+    _disallowedStatusLabel ||
+        (_disallowedStatusLabel =
+             [[StatusLabel alloc] initWithYTerminus:self.onOffButtonFrame.origin.y
+                                              width:self.view.frame.size.width
+                                            message:DISALLOWED_STATUS_MESSAGE
+                                               font:self.bodyFont
+                                           boldFont:self.bodyBoldFont
+                                              color:self.darkColor]);
     return _disallowedStatusLabel;
 }
 
-- (UILabel *)blockedStatusLabel
+- (StatusLabel *)blockedStatusLabel
 {
-    if (!_blockedStatusLabel) {
-        UIColor *color = self.darkColor;
-        NSMutableAttributedString *text =
-            [[NSMutableAttributedString alloc] initWithString:STATUS_LABEL
-                                                   attributes:@{
-                                                                NSFontAttributeName:
-                                                                    self.bodyBoldFont,
-                                                                NSForegroundColorAttributeName:
-                                                                    color
-                                                                }];
-        [text appendAttributedString:
-            [[NSAttributedString alloc] initWithString:BLOCKED_STATUS_MESSAGE
-                                            attributes:@{
-                                                         NSFontAttributeName: self.bodyFont,
-                                                         NSForegroundColorAttributeName: color
-                                                         }]];
-        CGFloat height = text.size.height;
-        _blockedStatusLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(
-                                                      0,
-                                                      self.onOffButtonFrame.origin.y - 2 * height,
-                                                      self.view.frame.size.width,
-                                                      height
-                                                      )];
-        if (VERBOSE) _blockedStatusLabel.layer.borderWidth = 1;
-        _blockedStatusLabel.textAlignment = NSTextAlignmentCenter;
-        _blockedStatusLabel.attributedText = text;
-        _blockedStatusLabel.alpha = 0;
-    }
-
-    return _blockedStatusLabel;
+    _blockedStatusLabel ||
+        (_blockedStatusLabel =
+             [[StatusLabel alloc] initWithYTerminus:self.onOffButtonFrame.origin.y
+                                              width:self.view.frame.size.width
+                                            message:BLOCKED_STATUS_MESSAGE
+                                               font:self.bodyFont
+                                           boldFont:self.bodyBoldFont
+                                              color:self.darkColor]);
+        return _blockedStatusLabel;
 }
 
-- (UILabel *)unblockedStatusLabel
+- (StatusLabel *)unblockedStatusLabel
 {
-    if (!_unblockedStatusLabel) {
-        UIColor *color = self.darkColor;
-        NSMutableAttributedString *text =
-            [[NSMutableAttributedString alloc] initWithString:STATUS_LABEL
-                                                   attributes:@{
-                                                                NSFontAttributeName:
-                                                                    self.bodyBoldFont,
-                                                                NSForegroundColorAttributeName:
-                                                                    color
-                                                                }];
-        [text appendAttributedString:
-            [[NSAttributedString alloc] initWithString:UNBLOCKED_STATUS_MESSAGE
-                                            attributes:@{
-                                                         NSFontAttributeName: self.bodyFont,
-                                                         NSForegroundColorAttributeName: color
-                                                         }]];
-        CGFloat height = text.size.height;
-        _unblockedStatusLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(
-                                                      0,
-                                                      self.onOffButtonFrame.origin.y - 2 * height,
-                                                      self.view.frame.size.width,
-                                                      height
-                                                      )];
-        if (VERBOSE) _unblockedStatusLabel.layer.borderWidth = 1;
-        _unblockedStatusLabel.textAlignment = NSTextAlignmentCenter;
-        _unblockedStatusLabel.attributedText = text;
-        _unblockedStatusLabel.alpha = 0;
-    }
-
-    return _unblockedStatusLabel;
+    _unblockedStatusLabel ||
+        (_unblockedStatusLabel =
+             [[StatusLabel alloc] initWithYTerminus:self.onOffButtonFrame.origin.y
+                                              width:self.view.frame.size.width
+                                            message:UNBLOCKED_STATUS_MESSAGE
+                                               font:self.bodyFont
+                                           boldFont:self.bodyBoldFont
+                                              color:self.darkColor]);
+        return _unblockedStatusLabel;
 }
 
 - (UIButton *)onOffButton
@@ -667,88 +602,49 @@
     return _onOffButton;
 }
 
-- (UILabel *)disallowedActionLabel
+- (ActionLabel *)disallowedActionLabel
 {
     if (!_disallowedActionLabel) {
         CGRect onOffButtonFrame = self.onOffButtonFrame;
-        NSAttributedString *text =
-            [[NSAttributedString alloc] initWithString:DISALLOWED_ACTION_HINT
-                                            attributes:@{
-                                                         NSFontAttributeName: self.bodyFont,
-                                                         NSForegroundColorAttributeName:
-                                                             self.darkColor
-                                                         }];
-        CGFloat height = text.size.height;
         _disallowedActionLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(
-                                                      0,
-                                                      onOffButtonFrame.origin.y +
-                                                          onOffButtonFrame.size.height + height,
-                                                      self.view.frame.size.width,
-                                                      height
-                                                      )];
-        if (VERBOSE) _disallowedActionLabel.layer.borderWidth = 1;
-        _disallowedActionLabel.textAlignment = NSTextAlignmentCenter;
-        _disallowedActionLabel.attributedText = text;
-        _disallowedActionLabel.alpha = 0;
+            [[ActionLabel alloc] initWithYOrigin:onOffButtonFrame.origin.y +
+                                                     onOffButtonFrame.size.height
+                                           width:self.view.frame.size.width
+                                            hint:DISALLOWED_ACTION_HINT
+                                            font:self.bodyFont
+                                           color:self.darkColor];
     }
 
     return _disallowedActionLabel;
 }
 
-- (UILabel *)blockedActionLabel
+- (ActionLabel *)blockedActionLabel
 {
     if (!_blockedActionLabel) {
         CGRect onOffButtonFrame = self.onOffButtonFrame;
-        NSAttributedString *text =
-            [[NSAttributedString alloc] initWithString:BLOCKED_ACTION_HINT
-                                            attributes:@{
-                                                         NSFontAttributeName: self.bodyFont,
-                                                         NSForegroundColorAttributeName:
-                                                             self.darkColor
-                                                         }];
-        CGFloat height = text.size.height;
         _blockedActionLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(
-                                                      0,
-                                                      onOffButtonFrame.origin.y +
-                                                          onOffButtonFrame.size.height + height,
-                                                      self.view.frame.size.width,
-                                                      height
-                                                      )];
-        if (VERBOSE) _blockedActionLabel.layer.borderWidth = 1;
-        _blockedActionLabel.textAlignment = NSTextAlignmentCenter;
-        _blockedActionLabel.attributedText = text;
-        _blockedActionLabel.alpha = 0;
+            [[ActionLabel alloc] initWithYOrigin:onOffButtonFrame.origin.y +
+                                                     onOffButtonFrame.size.height
+                                           width:self.view.frame.size.width
+                                            hint:BLOCKED_ACTION_HINT
+                                            font:self.bodyFont
+                                           color:self.darkColor];
     }
 
     return _blockedActionLabel;
 }
 
-- (UILabel *)unblockedActionLabel
+- (ActionLabel *)unblockedActionLabel
 {
     if (!_unblockedActionLabel) {
         CGRect onOffButtonFrame = self.onOffButtonFrame;
-        NSAttributedString *text =
-            [[NSAttributedString alloc] initWithString:UNBLOCKED_ACTION_HINT
-                                            attributes:@{
-                                                         NSFontAttributeName: self.bodyFont,
-                                                         NSForegroundColorAttributeName:
-                                                             self.darkColor
-                                                         }];
-        CGFloat height = text.size.height;
         _unblockedActionLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(
-                                                      0,
-                                                      onOffButtonFrame.origin.y +
-                                                          onOffButtonFrame.size.height + height,
-                                                      self.view.frame.size.width,
-                                                      height
-                                                      )];
-        if (VERBOSE) _unblockedActionLabel.layer.borderWidth = 1;
-        _unblockedActionLabel.textAlignment = NSTextAlignmentCenter;
-        _unblockedActionLabel.attributedText = text;
-        _unblockedActionLabel.alpha = 0;
+            [[ActionLabel alloc] initWithYOrigin:onOffButtonFrame.origin.y +
+                                                     onOffButtonFrame.size.height
+                                           width:self.view.frame.size.width
+                                            hint:UNBLOCKED_ACTION_HINT
+                                            font:self.bodyFont
+                                           color:self.darkColor];
     }
 
     return _unblockedActionLabel;
