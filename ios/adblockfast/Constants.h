@@ -17,5 +17,7 @@
 #define BLOCKER_PERMISSION_KEY @"IsBlockerAllowed"
 #define BLOCKING_STATUS_KEY @"IsBlockingOn"
 #define STATUS_LABEL @"Status: "
+#define TAB_BAR_BUTTON_COUNT 3
+#define MINIMUM_FRAME_DIMENSION_TO_TAB_BAR_HEIGHT (32. / 7)
 
 #endif

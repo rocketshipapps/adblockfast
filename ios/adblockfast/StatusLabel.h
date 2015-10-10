@@ -13,8 +13,8 @@
 - (StatusLabel *)initWithYTerminus:(CGFloat)yTerminus
                              width:(CGFloat)width
                            message:(NSString *)message
-                              font:font
-                          boldFont:boldFont
-                             color:color;
+                              font:(UIFont *)font
+                          boldFont:(UIFont *)boldFont
+                             color:(UIColor *)color;
 
 @end

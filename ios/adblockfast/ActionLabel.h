@@ -13,7 +13,7 @@
 - (ActionLabel *)initWithYOrigin:(CGFloat)yOrigin
                            width:(CGFloat)width
                             hint:(NSString *)hint
-                            font:font
-                           color:color;
+                            font:(UIFont *)font
+                           color:(UIColor *)color;
 
 @end

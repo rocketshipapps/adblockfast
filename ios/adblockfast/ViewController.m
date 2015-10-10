@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "StatusLabel.h"
 #import "ActionLabel.h"
+#import "Button.h"
 
 #define CONTENT_BLOCKER_ID (REVERSE_DOMAIN_NAME @".adblockfast.blocker")
 #define APP_OPEN_COUNT_KEY @"AppOpenCount"
@@ -33,7 +34,6 @@
 #define HELP_LABEL @"Help"
 #define ABOUT_LABEL @"About"
 #define CLOSE_LABEL @"Okay"
-#define TAB_BAR_BUTTON_COUNT 3
 #define OVERLAY_BORDER_WIDTH 1
 #define OVERLAY_LINE_SPACING 2
 #define LIGHT_COLOR_R (255. / 255)
@@ -57,7 +57,6 @@
 #define MINIMUM_FRAME_DIMENSION_TO_NAVBAR_HEIGHT (16. / 3)
 #define MINIMUM_FRAME_DIMENSION_TO_HEADING_FONT_SIZE 16.
 #define MINIMUM_FRAME_DIMENSION_TO_BODY_FONT_SIZE (320. / 13)
-#define MINIMUM_FRAME_DIMENSION_TO_TAB_BAR_HEIGHT (32. / 7)
 #define MARGIN_TO_CORNER_RADIUS 1.5
 #define NAME_HEIGHT_TO_MARGIN 3.
 #define HEAD_INDENT_TO_FONT_SIZE (14. / 13)
@@ -80,8 +79,8 @@
 @property (nonatomic) ActionLabel *disallowedActionLabel;
 @property (nonatomic) ActionLabel *blockedActionLabel;
 @property (nonatomic) ActionLabel *unblockedActionLabel;
-@property (nonatomic) UIButton *helpButton;
-@property (nonatomic) UIButton *aboutButton;
+@property (nonatomic) Button *helpButton;
+@property (nonatomic) Button *aboutButton;
 @property (nonatomic) UIColor *lightColor;
 @property (nonatomic) NSMutableAttributedString *helpViewText;
 @property (nonatomic) NSAttributedString *closeButtonText;
@@ -650,27 +649,15 @@
     return _unblockedActionLabel;
 }
 
-- (UIButton *)helpButton
+- (Button *)helpButton
 {
     if (!_helpButton) {
-        CGSize frameSize = self.view.frame.size;
-        CGFloat height = self.minimumFrameDimension / MINIMUM_FRAME_DIMENSION_TO_TAB_BAR_HEIGHT;
-        _helpButton =
-            [[UIButton alloc] initWithFrame:CGRectMake(0,
-                                                       frameSize.height - height,
-                                                       frameSize.width / TAB_BAR_BUTTON_COUNT,
-                                                       height
-                                                       )];
-        if (VERBOSE) _helpButton.layer.borderWidth = 1;
-        [_helpButton setAttributedTitle:
-            [[NSAttributedString alloc] initWithString:HELP_LABEL
-                                            attributes:@{
-                                                         NSFontAttributeName: self.headingFont,
-                                                         NSForegroundColorAttributeName:
-                                                             self.darkColor
-                                                         }]
-                               forState:UIControlStateNormal];
-        _helpButton.alpha = 0;
+        _helpButton = [[Button alloc] initWithFrameSize:self.view.frame.size
+                                  minimumFrameDimension:self.minimumFrameDimension
+                                                  index:0
+                                                  label:HELP_LABEL
+                                                   font:self.headingFont
+                                                  color:self.darkColor];
         [_helpButton addTarget:self
                         action:@selector(openHelp)
               forControlEvents:UIControlEventTouchUpInside];
@@ -679,28 +666,15 @@
     return _helpButton;
 }
 
-- (UIButton *)aboutButton
+- (Button *)aboutButton
 {
     if (!_aboutButton) {
-        CGSize frameSize = self.view.frame.size;
-        CGFloat frameWidth = frameSize.width;
-        CGFloat width = frameWidth / TAB_BAR_BUTTON_COUNT;
-        CGFloat height = self.minimumFrameDimension / MINIMUM_FRAME_DIMENSION_TO_TAB_BAR_HEIGHT;
-        _aboutButton = [[UIButton alloc] initWithFrame:CGRectMake(frameWidth - width,
-                                                                  frameSize.height - height,
-                                                                  width,
-                                                                  height
-                                                                  )];
-        if (VERBOSE) _aboutButton.layer.borderWidth = 1;
-        [_aboutButton setAttributedTitle:
-            [[NSAttributedString alloc] initWithString:ABOUT_LABEL
-                                            attributes:@{
-                                                         NSFontAttributeName: self.headingFont,
-                                                         NSForegroundColorAttributeName:
-                                                             self.darkColor
-                                                         }]
-                                forState:UIControlStateNormal];
-        _aboutButton.alpha = 0;
+        _aboutButton = [[Button alloc] initWithFrameSize:self.view.frame.size
+                                   minimumFrameDimension:self.minimumFrameDimension
+                                                   index:2
+                                                   label:ABOUT_LABEL
+                                                    font:self.headingFont
+                                                   color:self.darkColor];
         [_aboutButton addTarget:self
                          action:@selector(openAbout)
                forControlEvents:UIControlEventTouchUpInside];
