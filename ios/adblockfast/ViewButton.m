@@ -1,22 +1,22 @@
 //
-//  Button.m
+//  ViewButton.m
 //  adblockfast
 //
 //  Created by Brian Kennish on 10/9/15.
 //  Copyright © 2015 Rocketship. All rights reserved.
 //
 
-#import "Button.h"
+#import "ViewButton.h"
 #import "Constants.h"
 
-@implementation Button
+@implementation ViewButton
 
-- (Button *)initWithFrameSize:(CGSize)frameSize
-        minimumFrameDimension:(CGFloat)minimumFrameDimension
-                        index:(NSUInteger)index
-                        label:(NSString *)label
-                         font:(UIFont *)font
-                        color:(UIColor *)color
+- (ViewButton *)initWithFrameSize:(CGSize)frameSize
+            minimumFrameDimension:(CGFloat)minimumFrameDimension
+                            index:(NSUInteger)index
+                            label:(NSString *)label
+                             font:(UIFont *)font
+                            color:(UIColor *)color
 {
     CGFloat frameWidth = frameSize.width;
     CGFloat width = frameWidth / TAB_BAR_BUTTON_COUNT;

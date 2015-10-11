@@ -11,8 +11,9 @@
 #import "Constants.h"
 #import "StatusLabel.h"
 #import "ActionLabel.h"
-#import "Button.h"
+#import "ViewButton.h"
 #import "Overlay.h"
+#import "OverlayButton.h"
 
 #define CONTENT_BLOCKER_ID (REVERSE_DOMAIN_NAME @".adblockfast.blocker")
 #define APP_OPEN_COUNT_KEY @"AppOpenCount"
@@ -73,11 +74,11 @@
 @property (nonatomic) ActionLabel *disallowedActionLabel;
 @property (nonatomic) ActionLabel *blockedActionLabel;
 @property (nonatomic) ActionLabel *unblockedActionLabel;
-@property (nonatomic) Button *helpButton;
-@property (nonatomic) Button *aboutButton;
+@property (nonatomic) ViewButton *helpButton;
+@property (nonatomic) ViewButton *aboutButton;
 @property (nonatomic) UIColor *lightColor;
 @property (nonatomic) NSMutableAttributedString *helpOverlayText;
-@property (nonatomic) NSAttributedString *closeButtonText;
+@property (nonatomic) NSAttributedString *closeButtonLabel;
 @property (nonatomic) CGFloat closeButtonHeight;
 @property (nonatomic) CGFloat helpOverlayHeight;
 @property (nonatomic) Overlay *helpOverlay;
@@ -103,7 +104,7 @@
                                                  fontName:(NSString *)fontName
                                              boldFontName:(NSString *)boldFontName
                                                  fontSize:(NSUInteger)fontSize
-                                                textColor:(UIColor *)textColor
+                                                    color:(UIColor *)color
 {
     NSArray *words = [markdown componentsSeparatedByString:@" "];
     NSUInteger wordCount = words.count;
@@ -115,7 +116,7 @@
             [[NSAttributedString alloc] initWithString:i ? @" " : @""
                                             attributes:@{
                                                          NSFontAttributeName: font,
-                                                         NSForegroundColorAttributeName: textColor
+                                                         NSForegroundColorAttributeName: color
                                                          }]];
         NSString *word = words[i];
         NSArray *tokens = [word componentsSeparatedByString:@"**"];
@@ -153,7 +154,7 @@
                                                             [UIFont fontWithName:fontName
                                                                             size:smallCapsFontSize]
                                                             : font,
-                                                NSForegroundColorAttributeName: textColor
+                                                NSForegroundColorAttributeName: color
                                                 }]];
         if ([leftovers length])
             [attributedString appendAttributedString:
@@ -161,8 +162,7 @@
                     [ViewController expandMarkdownLineBreaks:leftovers]
                                                 attributes:@{
                                                              NSFontAttributeName: font,
-                                                             NSForegroundColorAttributeName:
-                                                                 textColor
+                                                             NSForegroundColorAttributeName: color
                                                              }]];
     }
 
@@ -643,15 +643,15 @@
     return _unblockedActionLabel;
 }
 
-- (Button *)helpButton
+- (ViewButton *)helpButton
 {
     if (!_helpButton) {
-        _helpButton = [[Button alloc] initWithFrameSize:self.view.frame.size
-                                  minimumFrameDimension:self.minimumFrameDimension
-                                                  index:0
-                                                  label:HELP_LABEL
-                                                   font:self.headingFont
-                                                  color:self.darkColor];
+        _helpButton = [[ViewButton alloc] initWithFrameSize:self.view.frame.size
+                                      minimumFrameDimension:self.minimumFrameDimension
+                                                      index:0
+                                                      label:HELP_LABEL
+                                                       font:self.headingFont
+                                                      color:self.darkColor];
         [_helpButton addTarget:self
                         action:@selector(openHelp)
               forControlEvents:UIControlEventTouchUpInside];
@@ -660,15 +660,15 @@
     return _helpButton;
 }
 
-- (Button *)aboutButton
+- (ViewButton *)aboutButton
 {
     if (!_aboutButton) {
-        _aboutButton = [[Button alloc] initWithFrameSize:self.view.frame.size
-                                   minimumFrameDimension:self.minimumFrameDimension
-                                                   index:2
-                                                   label:ABOUT_LABEL
-                                                    font:self.headingFont
-                                                   color:self.darkColor];
+        _aboutButton = [[ViewButton alloc] initWithFrameSize:self.view.frame.size
+                                       minimumFrameDimension:self.minimumFrameDimension
+                                                       index:2
+                                                       label:ABOUT_LABEL
+                                                        font:self.headingFont
+                                                       color:self.darkColor];
         [_aboutButton addTarget:self
                          action:@selector(openAbout)
                forControlEvents:UIControlEventTouchUpInside];
@@ -696,7 +696,7 @@
                                               fontName:BODY_FONT_NAME
                                           boldFontName:BODY_BOLD_FONT_NAME
                                               fontSize:fontSize
-                                             textColor:self.lightColor];
+                                                 color:self.lightColor];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setLineSpacing:OVERLAY_LINE_SPACING];
         [paragraphStyle setHeadIndent:HEAD_INDENT_TO_FONT_SIZE * fontSize];
@@ -708,17 +708,17 @@
     return _helpOverlayText;
 }
 
-- (NSAttributedString *)closeButtonText
+- (NSAttributedString *)closeButtonLabel
 {
-    _closeButtonText ||
-        (_closeButtonText =
+    _closeButtonLabel ||
+        (_closeButtonLabel =
              [[NSAttributedString alloc] initWithString:CLOSE_LABEL
                                              attributes:@{
                                                           NSFontAttributeName: self.bodyFont,
                                                           NSForegroundColorAttributeName:
                                                               self.lightColor
                                                           }]);
-    return _closeButtonText;
+    return _closeButtonLabel;
 }
 
 - (CGFloat)closeButtonHeight
@@ -726,7 +726,7 @@
     _closeButtonHeight ||
         (_closeButtonHeight =
              2 * self.view.frame.size.width / FRAME_WIDTH_TO_MARGIN +
-                 self.closeButtonText.size.height);
+                 self.closeButtonLabel.size.height);
     return _closeButtonHeight;
 }
 
@@ -752,27 +752,17 @@
 - (Overlay *)helpOverlay
 {
     if (!_helpOverlay) {
+        CGSize frameSize = self.view.frame.size;
         CGFloat height = self.helpOverlayHeight;
-        _helpOverlay = [[Overlay alloc] initWithFrameSize:self.view.frame.size
+        _helpOverlay = [[Overlay alloc] initWithFrameSize:frameSize
                                                    height:height
                                                      text:self.helpOverlayText];
-        CGFloat frameWidth = self.view.frame.size.width;
-        CGFloat margin = frameWidth / FRAME_WIDTH_TO_MARGIN;
-        CGFloat width = frameWidth - 2 * margin;
-        NSAttributedString *closeButtonText = self.closeButtonText;
-        CGFloat closeButtonWidth = 2 * margin + closeButtonText.size.width;
-        CGFloat closeButtonHeight = self.closeButtonHeight;
-        UIButton *closeButton =
-            [[UIButton alloc] initWithFrame:CGRectMake(
-                                                       (width - closeButtonWidth) / 2,
-                                                       height - closeButtonHeight - margin,
-                                                       closeButtonWidth,
-                                                       closeButtonHeight
-                                                       )];
-        closeButton.layer.borderWidth = 1;
-        closeButton.layer.cornerRadius = margin / MARGIN_TO_CORNER_RADIUS;
-        closeButton.layer.borderColor = self.lightColor.CGColor;
-        [closeButton setAttributedTitle:closeButtonText forState:UIControlStateNormal];
+        OverlayButton *closeButton =
+            [[OverlayButton alloc] initWithFrameWidth:frameSize.width
+                                        overlayHeight:height
+                                               height:self.closeButtonHeight
+                                                label:self.closeButtonLabel
+                                                color:self.lightColor];
         [_helpOverlay addSubview:closeButton];
         [_helpOverlay addGestureRecognizer:
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeHelp)]];
@@ -794,7 +784,7 @@
                                               fontName:BODY_FONT_NAME
                                           boldFontName:BODY_BOLD_FONT_NAME
                                               fontSize:fontSize
-                                             textColor:self.lightColor];
+                                                 color:self.lightColor];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setLineSpacing:OVERLAY_LINE_SPACING];
         [paragraphStyle setHeadIndent:HEAD_INDENT_TO_FONT_SIZE * fontSize];
@@ -828,28 +818,17 @@
 - (Overlay *)aboutOverlay
 {
     if (!_aboutOverlay) {
+        CGSize frameSize = self.view.frame.size;
         CGFloat height = self.aboutOverlayHeight;
-        _aboutOverlay =
-            [[Overlay alloc] initWithFrameSize:self.view.frame.size
-                                        height:height
-                                          text:self.aboutOverlayText];
-        CGFloat frameWidth = self.view.frame.size.width;
-        CGFloat margin = frameWidth / FRAME_WIDTH_TO_MARGIN;
-        CGFloat width = frameWidth - 2 * margin;
-        NSAttributedString *closeButtonText = self.closeButtonText;
-        CGFloat closeButtonWidth = 2 * margin + closeButtonText.size.width;
-        CGFloat closeButtonHeight = self.closeButtonHeight;
-        UIButton *closeButton =
-            [[UIButton alloc] initWithFrame:CGRectMake(
-                                                       (width - closeButtonWidth) / 2,
-                                                       height - closeButtonHeight - margin,
-                                                       closeButtonWidth,
-                                                       closeButtonHeight
-                                                       )];
-        closeButton.layer.borderWidth = 1;
-        closeButton.layer.cornerRadius = margin / MARGIN_TO_CORNER_RADIUS;
-        closeButton.layer.borderColor = self.lightColor.CGColor;
-        [closeButton setAttributedTitle:closeButtonText forState:UIControlStateNormal];
+        _aboutOverlay = [[Overlay alloc] initWithFrameSize:frameSize
+                                                    height:height
+                                                      text:self.aboutOverlayText];
+        OverlayButton *closeButton =
+            [[OverlayButton alloc] initWithFrameWidth:frameSize.width
+                                        overlayHeight:height
+                                               height:self.closeButtonHeight
+                                                label:self.closeButtonLabel
+                                                color:self.lightColor];
         [_aboutOverlay addSubview:closeButton];
         [_aboutOverlay addGestureRecognizer:
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeAbout)]];
