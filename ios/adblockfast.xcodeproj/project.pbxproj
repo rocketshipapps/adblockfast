@@ -59,6 +59,7 @@
 		4AA4132A1BC1F0ED002EA57A /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA413291BC1F0ED002EA57A /* Label.m */; settings = {ASSET_TAGS = (); }; };
 		4AA4132D1BC2034B002EA57A /* StatusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA4132C1BC2034B002EA57A /* StatusLabel.m */; settings = {ASSET_TAGS = (); }; };
 		4AA413301BC20CEA002EA57A /* ActionLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA4132F1BC20CEA002EA57A /* ActionLabel.m */; settings = {ASSET_TAGS = (); }; };
+		4AA453121BC9B6B30011AE2A /* Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA453111BC9B6B30011AE2A /* Overlay.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,8 @@
 		4AA4132C1BC2034B002EA57A /* StatusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusLabel.m; sourceTree = "<group>"; };
 		4AA4132E1BC20CEA002EA57A /* ActionLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionLabel.h; sourceTree = "<group>"; };
 		4AA4132F1BC20CEA002EA57A /* ActionLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionLabel.m; sourceTree = "<group>"; };
+		4AA453101BC9B6B30011AE2A /* Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Overlay.h; sourceTree = "<group>"; };
+		4AA453111BC9B6B30011AE2A /* Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Overlay.m; sourceTree = "<group>"; };
 		4AAFB4641BA4005700A2BB15 /* blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = blocker.entitlements; sourceTree = "<group>"; };
 		4AAFB4651BA4034400A2BB15 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,6 +240,8 @@
 				4AA4132F1BC20CEA002EA57A /* ActionLabel.m */,
 				4A8340621BC8943000564507 /* Button.h */,
 				4A8340631BC8943000564507 /* Button.m */,
+				4AA453101BC9B6B30011AE2A /* Overlay.h */,
+				4AA453111BC9B6B30011AE2A /* Overlay.m */,
 				4A30CE761BA3F50F00465842 /* ViewController.h */,
 				4A30CE771BA3F50F00465842 /* ViewController.m */,
 				4A30CE7C1BA3F50F00465842 /* Assets.xcassets */,
@@ -543,6 +548,7 @@
 				4A30CE781BA3F50F00465842 /* ViewController.m in Sources */,
 				4A30CE751BA3F50F00465842 /* AppDelegate.m in Sources */,
 				4AA4132A1BC1F0ED002EA57A /* Label.m in Sources */,
+				4AA453121BC9B6B30011AE2A /* Overlay.m in Sources */,
 				4A30CE721BA3F50F00465842 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
