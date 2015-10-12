@@ -10,10 +10,12 @@
 
 @interface OverlayButton : UIButton
 
-- (OverlayButton *)initWithFrameWidth:(CGFloat)frameWidth
-                        overlayHeight:(CGFloat)overlayHeight
-                               height:(CGFloat)height
-                                label:(NSAttributedString *)label
-                                color:(UIColor *)color;
+- (OverlayButton *)initWithIndex:(NSUInteger)index
+                          height:(CGFloat)height
+                           label:(NSAttributedString *)label
+                           color:(UIColor *)color
+                     buttonCount:(NSUInteger)buttonCount
+                   overlayHeight:(CGFloat)overlayHeight
+                      frameWidth:(CGFloat)frameWidth;
 
 @end

@@ -11,12 +11,12 @@
 
 @implementation ViewButton
 
-- (ViewButton *)initWithFrameSize:(CGSize)frameSize
-            minimumFrameDimension:(CGFloat)minimumFrameDimension
-                            index:(NSUInteger)index
-                            label:(NSString *)label
-                             font:(UIFont *)font
-                            color:(UIColor *)color
+- (ViewButton *)initWithIndex:(NSUInteger)index
+                        label:(NSString *)label
+                         font:(UIFont *)font
+                        color:(UIColor *)color
+                    frameSize:(CGSize)frameSize
+        minimumFrameDimension:(CGFloat)minimumFrameDimension
 {
     CGFloat frameWidth = frameSize.width;
     CGFloat width = frameWidth / TAB_BAR_BUTTON_COUNT;

@@ -11,17 +11,20 @@
 
 @implementation OverlayButton
 
-- (OverlayButton *)initWithFrameWidth:(CGFloat)frameWidth
-                        overlayHeight:(CGFloat)overlayHeight
-                               height:(CGFloat)height
-                                label:(NSAttributedString *)label
-                                color:(UIColor *)color
+- (OverlayButton *)initWithIndex:(NSUInteger)index
+                          height:(CGFloat)height
+                           label:(NSAttributedString *)label
+                           color:(UIColor *)color
+                     buttonCount:(NSUInteger)buttonCount
+                   overlayHeight:(CGFloat)overlayHeight
+                      frameWidth:(CGFloat)frameWidth
 {
     CGFloat margin = frameWidth / FRAME_WIDTH_TO_MARGIN;
+    CGFloat slotWidth = (frameWidth - 2 * margin) / buttonCount;
     CGFloat width = 2 * margin + label.size.width;
 
     if (self = [super initWithFrame:CGRectMake(
-                                               (frameWidth - 2 * margin - width) / 2,
+                                               index * slotWidth + (slotWidth - width) / 2,
                                                overlayHeight - height - margin,
                                                width,
                                                height

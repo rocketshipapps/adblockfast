@@ -10,11 +10,11 @@
 
 @interface ViewButton : UIButton
 
-- (ViewButton *)initWithFrameSize:(CGSize)frameSize
-            minimumFrameDimension:(CGFloat)minimumFrameDimension
-                            index:(NSUInteger)index
-                            label:(NSString *)label
-                             font:(UIFont *)font
-                            color:(UIColor *)color;
+- (ViewButton *)initWithIndex:(NSUInteger)index
+                        label:(NSString *)label
+                         font:(UIFont *)font
+                        color:(UIColor *)color
+                    frameSize:(CGSize)frameSize
+        minimumFrameDimension:(CGFloat)minimumFrameDimension;
 
 @end

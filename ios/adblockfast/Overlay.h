@@ -10,8 +10,11 @@
 
 @interface Overlay : UIButton
 
-- (Overlay *)initWithFrameSize:(CGSize)frameSize
-                        height:(CGFloat)height
-                          text:(NSAttributedString *)text;
++ (Overlay *)open;
+- (Overlay *)initWithHeight:(CGFloat)height
+                       text:(NSAttributedString *)text
+                  frameSize:(CGSize)frameSize;
+- (void)open;
+- (void)close;
 
 @end
