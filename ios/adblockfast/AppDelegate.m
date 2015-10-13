@@ -7,16 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //Background fetch for badge count update
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
+    // Parse ID
     [Parse setApplicationId:@"c4BdheEFIaDAXBQu7ZtRmDNR2WZHnyyOlzIy5V54"
                   clientKey:@"YehK1OwFeDMpKABYEGAYiRDgGIUOc857pEBp7oXS"];
     
@@ -26,6 +30,7 @@
                                                     UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
                                                                              categories:nil];
+    
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
@@ -76,6 +81,19 @@
         currentInstallation.badge = 0;
         [currentInstallation saveEventually];
     }
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSUserDefaults *preferences = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_ID];
+    NSInteger notificationRequestCount = [preferences integerForKey:@"NotificationRequestCount"];
+    
+    //NSLog(@"########### >> Notification count = %lu", notificationRequestCount);
+    // Show this badge number update only to old users who have never received a notification.
+    if (notificationRequestCount == 0) {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
+    }
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end

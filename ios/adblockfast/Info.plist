@@ -29,6 +29,11 @@
 		<string>Andrew Footit - Hudson NY.otf</string>
 		<string>AvenirNextLTPro-Light.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

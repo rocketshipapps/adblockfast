@@ -256,7 +256,9 @@
     [preferences setInteger:++notificationRequestCount forKey:NOTIFICATION_REQUEST_COUNT_KEY];
 }
 
-- (void)openHelp { [self.helpOverlay open]; }
+- (void)openHelp {
+    [self.helpOverlay open];
+}
 
 - (void)denyNotifications
 {
@@ -270,7 +272,9 @@
     [self.notificationOverlay close];
 }
 
-- (void)closeHelp { [self.helpOverlay close]; }
+- (void)closeHelp {
+    [self.helpOverlay close];
+}
 
 - (void)onOffButtonWasTapped
 {
