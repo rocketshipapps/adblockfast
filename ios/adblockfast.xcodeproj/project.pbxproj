@@ -258,20 +258,7 @@
 				4A30CE941BA3F50F00465842 /* adblockfastUITests */,
 				4A30CEA81BA3F59E00465842 /* blocker */,
 				4A30CE6E1BA3F50F00465842 /* Products */,
-				8378FCF81BCBF0E500E0D0D9 /* Bolts.framework */,
-				8378FCDD1BCBEEEA00E0D0D9 /* Parse.framework */,
-				8378FCF51BCBEFCF00E0D0D9 /* Social.framework */,
-				8378FCF31BCBEFCA00E0D0D9 /* Accounts.framework */,
-				8378FCF11BCBEFC000E0D0D9 /* libsqlite3.tbd */,
-				8378FCEF1BCBEFA200E0D0D9 /* libz.tbd */,
-				8378FCED1BCBEF9700E0D0D9 /* SystemConfiguration.framework */,
-				8378FCEB1BCBEF9200E0D0D9 /* StoreKit.framework */,
-				8378FCE91BCBEF8D00E0D0D9 /* Security.framework */,
-				8378FCE71BCBEF8800E0D0D9 /* QuartzCore.framework */,
-				8378FCE51BCBEF8100E0D0D9 /* CoreLocation.framework */,
-				8378FCE31BCBEF7C00E0D0D9 /* CoreGraphics.framework */,
-				8378FCE11BCBEF7400E0D0D9 /* CFNetwork.framework */,
-				8378FCDF1BCBEF6A00E0D0D9 /* AudioToolbox.framework */,
+				83442AD61BCD43AF008A69B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				4A79E3A51BA3FE8700A8388C /* adblockfast.entitlements */,
+				4A30CE731BA3F50F00465842 /* AppDelegate.h */,
+				4A30CE741BA3F50F00465842 /* AppDelegate.m */,
 				4AAFB4651BA4034400A2BB15 /* Constants.h */,
 				4AA413281BC1F0ED002EA57A /* Label.h */,
 				4AA413291BC1F0ED002EA57A /* Label.m */,
@@ -317,8 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				4A30CE711BA3F50F00465842 /* main.m */,
-				4A30CE731BA3F50F00465842 /* AppDelegate.h */,
-				4A30CE741BA3F50F00465842 /* AppDelegate.m */,
 				4A30CE791BA3F50F00465842 /* Main.storyboard */,
 				4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */,
 				4A79E3611BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf */,
@@ -388,6 +375,27 @@
 				4A30CEAE1BA3F59E00465842 /* Info.plist */,
 			);
 			path = blocker;
+			sourceTree = "<group>";
+		};
+		83442AD61BCD43AF008A69B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8378FCF81BCBF0E500E0D0D9 /* Bolts.framework */,
+				8378FCDD1BCBEEEA00E0D0D9 /* Parse.framework */,
+				8378FCF51BCBEFCF00E0D0D9 /* Social.framework */,
+				8378FCF31BCBEFCA00E0D0D9 /* Accounts.framework */,
+				8378FCF11BCBEFC000E0D0D9 /* libsqlite3.tbd */,
+				8378FCEF1BCBEFA200E0D0D9 /* libz.tbd */,
+				8378FCED1BCBEF9700E0D0D9 /* SystemConfiguration.framework */,
+				8378FCEB1BCBEF9200E0D0D9 /* StoreKit.framework */,
+				8378FCE91BCBEF8D00E0D0D9 /* Security.framework */,
+				8378FCE71BCBEF8800E0D0D9 /* QuartzCore.framework */,
+				8378FCE51BCBEF8100E0D0D9 /* CoreLocation.framework */,
+				8378FCE31BCBEF7C00E0D0D9 /* CoreGraphics.framework */,
+				8378FCE11BCBEF7400E0D0D9 /* CFNetwork.framework */,
+				8378FCDF1BCBEF6A00E0D0D9 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
