@@ -23,6 +23,9 @@
     // Parse ID
     [Parse setApplicationId:@"c4BdheEFIaDAXBQu7ZtRmDNR2WZHnyyOlzIy5V54"
                   clientKey:@"YehK1OwFeDMpKABYEGAYiRDgGIUOc857pEBp7oXS"];
+
+    // Send the dimensions to Parse along with the 'OpenApp' event
+    [PFAnalytics trackEvent:@"OpenApp" dimensions:nil];
     
     if (application.applicationState != UIApplicationStateBackground) {
         // Track an app open here if we launch with a push, unless "content_available" was used to trigger a background push (introduced in iOS 7). In that case, we skip tracking here to avoid double counting the app-open.
@@ -79,7 +82,7 @@
     NSUserDefaults *preferences = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_ID];
     NSInteger notificationRequestCount = [preferences integerForKey:@"NotificationRequestCount"];
     
-    NSLog(@"########### >> Notification count = %lu", notificationRequestCount);
+    //NSLog(@"########### >> Notification count = %lu", notificationRequestCount);
     // Show this badge number update only to old users who have never received a notification.
     if (notificationRequestCount == 0) {
         [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
