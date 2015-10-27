@@ -26,16 +26,6 @@
     [Parse setApplicationId:@"c4BdheEFIaDAXBQu7ZtRmDNR2WZHnyyOlzIy5V54"
                   clientKey:@"YehK1OwFeDMpKABYEGAYiRDgGIUOc857pEBp7oXS"];
     
-    // Register for Push Notitications
-    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                    UIUserNotificationTypeBadge |
-                                                    UIUserNotificationTypeSound);
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                             categories:nil];
-    
-    [application registerUserNotificationSettings:settings];
-    [application registerForRemoteNotifications];
-    
     if (application.applicationState != UIApplicationStateBackground) {
         // Track an app open here if we launch with a push, unless "content_available" was used to trigger a background push (introduced in iOS 7). In that case, we skip tracking here to avoid double counting the app-open.
         BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];

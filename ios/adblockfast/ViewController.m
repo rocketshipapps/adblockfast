@@ -270,6 +270,17 @@
 {
     [self.preferences setBool:YES forKey:NOTIFICATION_PERMISSION_KEY];
     [self.notificationOverlay close];
+
+    NSLog(@"User wants notifications.");
+    
+    BOOL needsPermissions = [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)];
+    
+    if (needsPermissions)
+    {
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *notifSettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notifSettings];
+    }
 }
 
 - (void)closeHelp {
