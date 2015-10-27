@@ -17,8 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    NSLog(@"%@", launchOptions);
-    
     //Background fetch for badge count update
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
@@ -60,8 +58,6 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    NSLog(@"%@", userInfo);
     
     if (application.applicationState == UIApplicationStateInactive) {
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
