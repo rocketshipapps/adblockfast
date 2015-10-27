@@ -79,7 +79,7 @@
     NSUserDefaults *preferences = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_ID];
     NSInteger notificationRequestCount = [preferences integerForKey:@"NotificationRequestCount"];
     
-    //NSLog(@"########### >> Notification count = %lu", notificationRequestCount);
+    NSLog(@"########### >> Notification count = %lu", notificationRequestCount);
     // Show this badge number update only to old users who have never received a notification.
     if (notificationRequestCount == 0) {
         [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
