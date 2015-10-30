@@ -48,7 +48,6 @@
     currentInstallation.channels = @[@"global"];
     currentInstallation[@"osVersion"] = [UIDevice currentDevice].systemVersion;
     [currentInstallation saveInBackground];
-
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
