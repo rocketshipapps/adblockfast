@@ -246,7 +246,7 @@
 - (void)animateOnOffButton
 { [self animateOnOffButtonWithIndex:
       self.hasLaunchScreen || [self.preferences boolForKey:BLOCKING_STATUS_KEY] ?
-   0 : FRAME_COUNT / 2]; }
+          0 : FRAME_COUNT / 2]; }
 
 - (void)openNotificationRequest
 {
@@ -256,9 +256,7 @@
     [preferences setInteger:++notificationRequestCount forKey:NOTIFICATION_REQUEST_COUNT_KEY];
 }
 
-- (void)openHelp {
-    [self.helpOverlay open];
-}
+- (void)openHelp { [self.helpOverlay open]; }
 
 - (void)denyNotifications
 {
@@ -270,22 +268,20 @@
 {
     [self.preferences setBool:YES forKey:NOTIFICATION_PERMISSION_KEY];
     [self.notificationOverlay close];
-
-    NSLog(@"User wants notifications.");
-    
-    BOOL needsPermissions = [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)];
-    
-    if (needsPermissions)
-    {
-        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *notifSettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notifSettings];
-    }
+    UIApplication *app = [UIApplication sharedApplication];
+    if ([app respondsToSelector:@selector(registerUserNotificationSettings:)])
+        dispatch_after(
+                       dispatch_time(DISPATCH_TIME_NOW, MEDIUM_DURATION * NSEC_PER_SEC),
+                       dispatch_get_main_queue(),
+                       ^{ [app registerUserNotificationSettings:
+                              [UIUserNotificationSettings settingsForTypes:
+                                  UIUserNotificationTypeBadge | UIUserNotificationTypeSound |
+                                      UIUserNotificationTypeAlert
+                                                                categories:nil]]; }
+                       );
 }
 
-- (void)closeHelp {
-    [self.helpOverlay close];
-}
+- (void)closeHelp { [self.helpOverlay close]; }
 
 - (void)onOffButtonWasTapped
 {
