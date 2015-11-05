@@ -81,6 +81,7 @@
 @property (nonatomic) CGFloat closeButtonHeight;
 @property (nonatomic) Overlay *helpOverlay;
 @property (nonatomic) Overlay *aboutOverlay;
+@property (nonatomic) NSUInteger magicCookie;
 @property (nonatomic) BOOL hasLaunchScreen;
 @property (nonatomic) BOOL isOnOffButtonAnimating;
 @property (nonatomic) BOOL isRulesetCompiling;
@@ -207,37 +208,41 @@
                                               inFrame:self.onOffButtonFrame];
     [button setImage:image forState:UIControlStateNormal];
     [button setImage:image forState:UIControlStateHighlighted];
+    NSUInteger magicCookie = self.magicCookie;
     index++;
     dispatch_after(
                    dispatch_time(DISPATCH_TIME_NOW, 1. / FPS * NSEC_PER_SEC),
                    dispatch_get_main_queue(),
                    ^{
-                       NSUserDefaults *preferences = self.preferences;
+                       if (magicCookie == self.magicCookie) {
+                           NSUserDefaults *preferences = self.preferences;
 
-                       if (
-                           self.isRulesetCompiling ||
-                               isAlternateStatus ==
-                                   [preferences boolForKey:BLOCKING_STATUS_KEY] || indexForStatus
-                           ) [self animateOnOffButtonWithIndex:index];
-                       else if ([preferences boolForKey:BLOCKER_PERMISSION_KEY]) {
-                           BOOL isBlockingOn = [preferences boolForKey:BLOCKING_STATUS_KEY];
-                           [UIView animateWithDuration:SMALL_DURATION
-                                            animations:^{
-                                                self.blockedStatusLabel.alpha = isBlockingOn;
-                                                self.unblockedStatusLabel.alpha = !isBlockingOn;
-                                            }];
-                           [UIView animateWithDuration:SMALL_DURATION
-                                                 delay:SMALL_DURATION
-                                               options:UIViewAnimationOptionCurveEaseInOut
-                                            animations:^{
-                                                self.blockedActionLabel.alpha = isBlockingOn;
-                                                self.unblockedActionLabel.alpha = !isBlockingOn;
-                                            }
-                                            completion:^(BOOL finished) {
-                                                self.isOnOffButtonAnimating = NO;
-                                            }];
+                           if (
+                               self.isRulesetCompiling ||
+                                   isAlternateStatus ==
+                                       [preferences boolForKey:BLOCKING_STATUS_KEY] ||
+                                           indexForStatus
+                               ) [self animateOnOffButtonWithIndex:index];
+                           else if ([preferences boolForKey:BLOCKER_PERMISSION_KEY]) {
+                               BOOL isBlockingOn = [preferences boolForKey:BLOCKING_STATUS_KEY];
+                               [UIView animateWithDuration:SMALL_DURATION
+                                                animations:^{
+                                                    self.blockedStatusLabel.alpha = isBlockingOn;
+                                                    self.unblockedStatusLabel.alpha = !isBlockingOn;
+                                                }];
+                               [UIView animateWithDuration:SMALL_DURATION
+                                                     delay:SMALL_DURATION
+                                                   options:UIViewAnimationOptionCurveEaseInOut
+                                                animations:^{
+                                                    self.blockedActionLabel.alpha = isBlockingOn;
+                                                    self.unblockedActionLabel.alpha = !isBlockingOn;
+                                                }
+                                                completion:^(BOOL finished) {
+                                                    self.isOnOffButtonAnimating = NO;
+                                                }];
+                           }
+                           else self.isOnOffButtonAnimating = NO;
                        }
-                       else self.isOnOffButtonAnimating = NO;
                    }
                    );
 }
@@ -251,7 +256,7 @@
 {
     [self.notificationOverlay open];
     NSUserDefaults *preferences = self.preferences;
-    NSInteger notificationRequestCount = [preferences integerForKey:NOTIFICATION_REQUEST_COUNT_KEY];
+    NSUInteger notificationRequestCount = [preferences integerForKey:NOTIFICATION_REQUEST_COUNT_KEY];
     [preferences setInteger:++notificationRequestCount forKey:NOTIFICATION_REQUEST_COUNT_KEY];
 }
 
@@ -749,6 +754,7 @@
 
 - (void)viewDidBecomeActive
 {
+    self.magicCookie = arc4random_uniform(RAND_MAX);
     self.hasLaunchScreen = YES;
     self.isOnOffButtonAnimating = YES;
     self.isRulesetCompiling = YES;
@@ -776,7 +782,7 @@
                          else self.unblockedActionLabel.alpha = self.unblockedStatusLabel.alpha = 1;
                      }
                      completion:nil];
-    NSInteger appOpenCount = [preferences integerForKey:APP_OPEN_COUNT_KEY];
+    NSUInteger appOpenCount = [preferences integerForKey:APP_OPEN_COUNT_KEY];
     dispatch_after(
                    dispatch_time(DISPATCH_TIME_NOW, MEGA_DURATION * NSEC_PER_SEC),
                    dispatch_get_main_queue(),
