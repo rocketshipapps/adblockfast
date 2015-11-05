@@ -83,7 +83,6 @@
 @property (nonatomic) Overlay *aboutOverlay;
 @property (nonatomic) BOOL hasLaunchScreen;
 @property (nonatomic) BOOL isOnOffButtonAnimating;
-@property (nonatomic) BOOL areNotificationsAllowed;
 @property (nonatomic) BOOL isRulesetCompiling;
 
 @end
