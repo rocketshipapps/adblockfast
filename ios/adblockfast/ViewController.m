@@ -750,56 +750,48 @@
 
 - (void)viewDidBecomeActive
 {
-    if (
-        !self.areNotificationsAllowed &&
-            [[UIApplication sharedApplication] currentUserNotificationSettings].types
-        ) self.areNotificationsAllowed = YES;
-    else {
-        self.hasLaunchScreen = YES;
-        self.isOnOffButtonAnimating = YES;
-        self.isRulesetCompiling = YES;
-        [self animateOnOffButton];
-        dispatch_after(
-                       dispatch_time(
-                                     DISPATCH_TIME_NOW,
-                                     (LARGE_DURATION + SMALL_DURATION) * NSEC_PER_SEC
-                                     ),
-                       dispatch_get_main_queue(),
-                       ^{ self.isRulesetCompiling = NO; }
-                       );
-        NSUserDefaults *preferences = self.preferences;
-        BOOL isBlockerAllowed = [preferences boolForKey:BLOCKER_PERMISSION_KEY];
-        [UIView animateWithDuration:1
-                              delay:MEGA_DURATION
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             self.aboutButton.alpha =
-                                 self.helpButton.alpha = self.nameLabel.alpha = 1;
-                             if (!isBlockerAllowed)
-                                 self.disallowedActionLabel.alpha =
-                                     self.disallowedStatusLabel.alpha = 1;
-                             else if ([preferences boolForKey:BLOCKING_STATUS_KEY])
-                                 self.blockedActionLabel.alpha = self.blockedStatusLabel.alpha = 1;
-                             else self.unblockedActionLabel.alpha =
-                                      self.unblockedStatusLabel.alpha = 1;
-                         }
-                         completion:nil];
-        NSInteger appOpenCount = [preferences integerForKey:APP_OPEN_COUNT_KEY];
-        dispatch_after(
-                       dispatch_time(DISPATCH_TIME_NOW, MEGA_DURATION * NSEC_PER_SEC),
-                       dispatch_get_main_queue(),
-                       ^{
-                           self.hasLaunchScreen = NO;
-                           if (
-                               ![preferences boolForKey:NOTIFICATION_PERMISSION_KEY] &&
-                                   (![preferences integerForKey:NOTIFICATION_REQUEST_COUNT_KEY] ||
-                                        !fmod(appOpenCount, NOTIFICATION_REQUEST_FREQUENCY))
-                               ) [self openNotificationRequest];
-                           else if (!isBlockerAllowed) [self openHelp];
-                       }
-                       );
-        [preferences setInteger:++appOpenCount forKey:APP_OPEN_COUNT_KEY];
-    }
+    self.hasLaunchScreen = YES;
+    self.isOnOffButtonAnimating = YES;
+    self.isRulesetCompiling = YES;
+    [self animateOnOffButton];
+    dispatch_after(
+                   dispatch_time(
+                                 DISPATCH_TIME_NOW,
+                                 (LARGE_DURATION + SMALL_DURATION) * NSEC_PER_SEC
+                                 ),
+                   dispatch_get_main_queue(),
+                   ^{ self.isRulesetCompiling = NO; }
+                   );
+    NSUserDefaults *preferences = self.preferences;
+    BOOL isBlockerAllowed = [preferences boolForKey:BLOCKER_PERMISSION_KEY];
+    [UIView animateWithDuration:1
+                          delay:MEGA_DURATION
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.aboutButton.alpha = self.helpButton.alpha = self.nameLabel.alpha = 1;
+                         if (!isBlockerAllowed)
+                             self.disallowedActionLabel.alpha =
+                                 self.disallowedStatusLabel.alpha = 1;
+                         else if ([preferences boolForKey:BLOCKING_STATUS_KEY])
+                             self.blockedActionLabel.alpha = self.blockedStatusLabel.alpha = 1;
+                         else self.unblockedActionLabel.alpha = self.unblockedStatusLabel.alpha = 1;
+                     }
+                     completion:nil];
+    NSInteger appOpenCount = [preferences integerForKey:APP_OPEN_COUNT_KEY];
+    dispatch_after(
+                   dispatch_time(DISPATCH_TIME_NOW, MEGA_DURATION * NSEC_PER_SEC),
+                   dispatch_get_main_queue(),
+                   ^{
+                       self.hasLaunchScreen = NO;
+                       if (
+                           ![preferences boolForKey:NOTIFICATION_PERMISSION_KEY] &&
+                               (![preferences integerForKey:NOTIFICATION_REQUEST_COUNT_KEY] ||
+                                    !fmod(appOpenCount, NOTIFICATION_REQUEST_FREQUENCY))
+                           ) [self openNotificationRequest];
+                       else if (!isBlockerAllowed) [self openHelp];
+                   }
+                   );
+    [preferences setInteger:++appOpenCount forKey:APP_OPEN_COUNT_KEY];
 }
 
 - (void)viewDidResignActive
