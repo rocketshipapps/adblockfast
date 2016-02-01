@@ -11,7 +11,7 @@ public class AdblockfastApplication extends Application {
     synchronized public Tracker getDefaultTracker() {
         if (tracker == null) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            tracker = analytics.newTracker(R.xml.global_tracker);
+            tracker = analytics.newTracker(BuildConfig.GA_TRAKING_ID);
         }
 
         return tracker;

@@ -13,6 +13,7 @@ import com.github.kittinunf.fuel.core.Request;
 import com.github.kittinunf.fuel.core.Response;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
+import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 import com.rocketshipapps.adblockfast.utils.Preferences;
 
@@ -58,9 +59,9 @@ public class RegistrationIntentService extends IntentService {
         params.add(new Pair<>("token", token));
         params.add(new Pair<>("os", "android"));
 
-        Pair<String, String> header = new Pair<>("x-application-secret", Preferences.SECRET);
+        Pair<String, String> header = new Pair<>("x-application-secret", BuildConfig.APP_SECRET);
 
-        Fuel.post(Preferences.HOST + "/installations", params)
+        Fuel.post(BuildConfig.HOST + "/installations", params)
             .header(header)
             .responseString(new Handler<String>() {
                 @Override

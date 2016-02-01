@@ -116,3 +116,5 @@ captures/
 
 ### Android Patch ###
 gen-external-apklibs
+
+gradle.properties

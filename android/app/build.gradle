@@ -4,6 +4,19 @@ repositories {
     jcenter()
 }
 
+//Add these lines
+def APP_SECRET = '"' + AppSecret + '"' ?: '"Define application secret into grandle.properties"';
+def HOST = '"' + Host + '"' ?: '"Define your host into grandle.properties"';
+def GA_TRAKING_ID = '"' + GATrackingId+ '"' ?: '"Define Google Analytics tracking ID into grandle.properties"';
+def GCM_DEFAULT_SENDER_ID = '"' + GCMDefaultSenderId + '"' ?: '"Define Google Cloud Message sender ID into grandle.properties"';
+
+android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'APP_SECRET', APP_SECRET
+    type.buildConfigField 'String', 'HOST', HOST
+    type.buildConfigField 'String', 'GA_TRAKING_ID', GA_TRAKING_ID
+    type.buildConfigField 'String', 'GCM_DEFAULT_SENDER_ID', GCM_DEFAULT_SENDER_ID
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
