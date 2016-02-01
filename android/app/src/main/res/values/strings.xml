@@ -1,0 +1,19 @@
+<resources>
+    <string name="name">Adblock Fast</string>
+    <string name="status">Status: </string>
+    <string name="blocked_message">Blocking ads</string>
+    <string name="unblocked_message">Not blocking ads</string>
+    <string name="blocked_hint">Tap to unblock</string>
+    <string name="unblocked_hint">Tap to block</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="settings_summary">To block ads in Samsung Internet:</string>
+    <string name="install_summary">Adblock Fast requires Samsung Internet 4.0+.</string>
+    <string name="settings_details"><![CDATA[Go to <font color="#de0421"><u>your Home screen > Internet > <small>MORE</small> > Settings > Advanced > Block content</u></font> then toggle the switch on and make sure <b>Adblock Fast</b> is selected.<br><br>To unblock ads, come back to this app then press the Adblock Fast button.]]></string>
+    <string name="install_details"><![CDATA[To block ads, install or update the <a href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung Internet browser</a> then come back to this screen and follow the setup instructions.]]></string>
+    <string name="contact"><![CDATA[If you have questions or comments, follow and message us <a href="https://www.facebook.com/adblockfast">on Facebook</a> or <a href="https://twitter.com/adblockfast">Twitter</a>.]]></string>
+    <string name="tagline">The World’s Fastest Ad Blocker</string>
+    <string name="copyright"><![CDATA[© <a href="http://rocketshipapps.com/">Rocketship</a>. All rights reserved.]]></string>
+    <string name="dismiss">Okay</string>
+    <string name="gcm_defaultSenderId">553609670560</string>
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.rocketshipapps.adblockfast.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/name"
+        style="@style/Title"
+        fontPath="fonts/HudsonNY.ttf" />
+
+    <ImageButton
+        android:id="@+id/btn_adblock"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@null"
+        android:src="@null"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"
+        android:scaleType="centerInside"
+        android:onClick="onAdBlockPressed" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/btn_adblock"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status"
+            android:layout_marginEnd="3dp"
+            android:textStyle="bold"
+            fontPath="fonts/AvenirNext-Medium.ttf" />
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blocked_message"
+            fontPath="fonts/AvenirNextLTPro-Light.ttf"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_tap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blocked_hint"
+        android:layout_below="@id/btn_adblock"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        fontPath="fonts/AvenirNextLTPro-Light.ttf"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/help"
+        style="@style/Title"
+        android:background="@null"
+        android:onClick="onHelpPressed"
+        fontPath="fonts/HudsonNY.ttf" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/about"
+        style="@style/Title"
+        android:background="@null"
+        android:onClick="onAboutPressed"
+        fontPath="fonts/HudsonNY.ttf" />
+
+</RelativeLayout>
