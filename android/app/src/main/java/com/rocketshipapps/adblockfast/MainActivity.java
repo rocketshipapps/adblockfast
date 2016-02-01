@@ -112,27 +112,18 @@ public class MainActivity extends AppCompatActivity {
     public void onAdBlockPressed(View v) {
         if (animating) return;
 
-        String action;
-
         if (Rule.active(this)) {
             Rule.disable(this);
             disableAnimtaion();
-            action = "Disable";
         } else {
             Rule.enable(this);
             enableAnimtaion();
-            action = "Enable";
         }
 
         Intent intent = new Intent();
         intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
         intent.setData(Uri.parse("package:" + packageName));
         sendBroadcast(intent);
-
-        tracker.send(new HitBuilders.EventBuilder()
-            .setCategory("Action")
-            .setAction(action)
-            .build());
     }
 
     public void onAboutPressed(View v) {
@@ -153,13 +144,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                tracker.setScreenName("/");
-                tracker.send(new HitBuilders.ScreenViewBuilder().build());
             }
         });
-
-        tracker.setScreenName("/about");
-        tracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     public void onHelpPressed(View v) {
@@ -195,13 +181,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                tracker.setScreenName("/");
-                tracker.send(new HitBuilders.ScreenViewBuilder().build());
             }
         });
-
-        tracker.setScreenName("/help");
-        tracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     //endregion
