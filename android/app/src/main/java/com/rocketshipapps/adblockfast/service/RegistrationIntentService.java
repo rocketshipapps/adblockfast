@@ -53,7 +53,7 @@ public class RegistrationIntentService extends IntentService {
     }
 
     private void sendRegistrationTokenToServer(String token) {
-        //if (sharedPreferences.getBoolean(Preferences.SENT_TOKEN_TO_SERVER, false)) return;
+        if (sharedPreferences.getBoolean(Preferences.SENT_TOKEN_TO_SERVER, false)) return;
 
         List<Pair<String,String>> params = new ArrayList<>();
         params.add(new Pair<>("token", token));
