@@ -3,12 +3,14 @@ package com.rocketshipapps.adblockfast;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     String version;
 
     Tracker tracker;
+
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     @Override
@@ -90,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
         tracker.setScreenName("/");
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        if (preferences.getBoolean("first_run", true)) {
+            preferences.edit().putBoolean("first_run", false).apply();
+            onHelpPressed(null);
+        }
     }
 
     private boolean checkPlayServices() {
