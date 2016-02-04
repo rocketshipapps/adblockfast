@@ -15,5 +15,4 @@
     <string name="tagline">The World’s Fastest Ad Blocker</string>
     <string name="copyright"><![CDATA[© <a href="http://rocketshipapps.com/">Rocketship</a>. All rights reserved.]]></string>
     <string name="dismiss">Okay</string>
-    <string name="gcm_defaultSenderId">553609670560</string>
 </resources>
