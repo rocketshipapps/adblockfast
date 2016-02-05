@@ -22,10 +22,10 @@ android {
     buildToolsVersion "23.0.2"
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
-        minSdkVersion 17
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 3
-        versionName "1.2.0"
+        versionName "1.1.0"
     }
     buildTypes {
         release {
