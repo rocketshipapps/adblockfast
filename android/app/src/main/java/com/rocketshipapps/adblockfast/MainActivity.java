@@ -100,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
         if (preferences.getBoolean("first_run", true)) {
             preferences.edit().putBoolean("first_run", false).apply();
             onHelpPressed(null);
+        } else {
+            final Intent intent = new Intent();
+            intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+            List<ResolveInfo> list = getPackageManager().queryIntentActivities(intent, 0);
+            if (list.size() == 0) {
+                onHelpPressed(null);
+            }
         }
     }
 
