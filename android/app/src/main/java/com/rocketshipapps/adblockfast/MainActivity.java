@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         CalligraphyConfig.initDefault(
                 new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.ttf")
+                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
                         .setFontAttrId(R.attr.fontPath)
                         .build()
         );

@@ -25,7 +25,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                fontPath="fonts/AvenirNext-Medium.ttf" />
+                fontPath="fonts/AvenirNext-Medium.otf" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                fontPath="fonts/AvenirNext-Medium.ttf" />
+                fontPath="fonts/AvenirNext-Medium.otf" />
 
             <TextView
                 android:id="@+id/txt_version"
@@ -44,7 +44,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                fontPath="fonts/AvenirNext-Medium.ttf" />
+                fontPath="fonts/AvenirNext-Medium.otf" />
         </LinearLayout>
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="@string/tagline"
             android:textColor="@android:color/white"
-            fontPath="fonts/AvenirNextLTPro-Light.ttf"
+            fontPath="fonts/AvenirNextLTPro-Light.otf"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
         <TextView
@@ -63,7 +63,7 @@
             android:text="@string/copyright"
             android:textColor="@android:color/white"
             android:textColorLink="#de0421"
-            fontPath="fonts/AvenirNextLTPro-Light.ttf" />
+            fontPath="fonts/AvenirNextLTPro-Light.otf" />
 
         <RelativeLayout
             android:layout_width="match_parent"

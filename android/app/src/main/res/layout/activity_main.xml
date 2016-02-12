@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/name"
         style="@style/Title"
-        fontPath="fonts/HudsonNY.ttf" />
+        fontPath="fonts/HudsonNY.otf" />
 
     <ImageButton
         android:id="@+id/btn_adblock"
@@ -41,13 +41,13 @@
             android:text="@string/status"
             android:layout_marginEnd="3dp"
             android:textStyle="bold"
-            fontPath="fonts/AvenirNext-Medium.ttf" />
+            fontPath="fonts/AvenirNext-Medium.otf" />
         <TextView
             android:id="@+id/txt_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/blocked_message"
-            fontPath="fonts/AvenirNextLTPro-Light.ttf"/>
+            fontPath="fonts/AvenirNextLTPro-Light.otf"/>
     </LinearLayout>
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_below="@id/btn_adblock"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        fontPath="fonts/AvenirNextLTPro-Light.ttf"/>
+        fontPath="fonts/AvenirNextLTPro-Light.otf"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
         style="@style/Title"
         android:background="@null"
         android:onClick="onHelpPressed"
-        fontPath="fonts/HudsonNY.ttf" />
+        fontPath="fonts/HudsonNY.otf" />
 
     <Button
         android:layout_width="wrap_content"
@@ -80,6 +80,6 @@
         style="@style/Title"
         android:background="@null"
         android:onClick="onAboutPressed"
-        fontPath="fonts/HudsonNY.ttf" />
+        fontPath="fonts/HudsonNY.otf" />
 
 </RelativeLayout>
