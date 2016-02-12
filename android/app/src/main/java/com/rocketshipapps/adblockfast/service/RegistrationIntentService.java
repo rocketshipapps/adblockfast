@@ -3,7 +3,11 @@ package com.rocketshipapps.adblockfast.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.github.kittinunf.fuel.Fuel;
@@ -14,8 +18,6 @@ import com.github.kittinunf.fuel.core.Response;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 import com.rocketshipapps.adblockfast.BuildConfig;
-import com.rocketshipapps.adblockfast.R;
-import com.rocketshipapps.adblockfast.utils.Preferences;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class RegistrationIntentService extends IntentService {
     private static final String TAG = "RegIntentService";
 
     SharedPreferences sharedPreferences;
+    String samsungBrowserVersion = "0";
 
     public RegistrationIntentService() {
         super(TAG);
@@ -43,21 +46,25 @@ public class RegistrationIntentService extends IntentService {
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
 
             sendRegistrationTokenToServer(token);
-
-            sharedPreferences.edit().putBoolean(Preferences.SENT_TOKEN_TO_SERVER, true).apply();
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            sharedPreferences.edit().putBoolean(Preferences.SENT_TOKEN_TO_SERVER, false).apply();
-        }
+        } catch (IOException ignore) {}
     }
 
     private void sendRegistrationTokenToServer(String token) {
-        if (sharedPreferences.getBoolean(Preferences.SENT_TOKEN_TO_SERVER, false)) return;
+        try {
+            PackageInfo pinfo = getPackageManager().getPackageInfo("com.sec.android.app.sbrowser", 0);
+            samsungBrowserVersion = pinfo.versionName;
+        } catch (PackageManager.NameNotFoundException ignore) {}
+
+        if (sharedPreferences.getString("RELEASE", "").equals(Build.VERSION.RELEASE) &&
+                sharedPreferences.getString("samsungBrowserVersion", "").equals(samsungBrowserVersion)) return;
 
         List<Pair<String,String>> params = new ArrayList<>();
         params.add(new Pair<>("token", token));
         params.add(new Pair<>("os", "android"));
+        params.add(new Pair<>("os_version", Build.VERSION.RELEASE));
+        params.add(new Pair<>("device_manufacturer", Build.MANUFACTURER));
+        params.add(new Pair<>("device_model", Build.MODEL));
+        params.add(new Pair<>("samsung_browser_version", samsungBrowserVersion));
 
         Pair<String, String> header = new Pair<>("x-application-secret", BuildConfig.APP_SECRET);
 
@@ -65,14 +72,19 @@ public class RegistrationIntentService extends IntentService {
             .header(header)
             .responseString(new Handler<String>() {
                 @Override
-                public void success(Request request, Response response, String s) {
+                public void success(@NonNull Request request, @NonNull Response response, String s) {
                     Log.d(TAG, "reponseMessage: " + response.getHttpResponseMessage());
                     Log.d(TAG, "reponseUrl: " + response.getUrl());
                     Log.d(TAG, "response: " + s);
+
+                    sharedPreferences.edit()
+                        .putString("RELEASE", Build.VERSION.RELEASE)
+                        .putString("samsungBrowserVersion", samsungBrowserVersion)
+                        .apply();
                 }
 
                 @Override
-                public void failure(Request request, Response response, FuelError fuelError) {
+                public void failure(@NonNull Request request, @NonNull Response response, @NonNull FuelError fuelError) {
                     Log.d(TAG, "fuelError: " + fuelError.getMessage());
                     Log.d(TAG, "reponseMessage: " + response.getHttpResponseMessage());
                     Log.d(TAG, "reponseUrl: " + response.getUrl());
