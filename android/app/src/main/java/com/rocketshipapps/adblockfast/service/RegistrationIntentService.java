@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -30,7 +31,7 @@ public class RegistrationIntentService extends IntentService {
     private static final String TAG = "RegIntentService";
 
     SharedPreferences sharedPreferences;
-    String samsungBrowserVersion = "0";
+    boolean hasBlockingBrowser = false;
 
     public RegistrationIntentService() {
         super(TAG);
@@ -50,25 +51,25 @@ public class RegistrationIntentService extends IntentService {
     }
 
     private void sendRegistrationTokenToServer(String token) {
-        try {
-            PackageInfo pinfo = getPackageManager().getPackageInfo("com.sec.android.app.sbrowser", 0);
-            samsungBrowserVersion = pinfo.versionName;
-        } catch (PackageManager.NameNotFoundException ignore) {}
+        final Intent intent = new Intent();
+        intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+        List<ResolveInfo> list = getPackageManager().queryIntentActivities(intent, 0);
+        if (list.size() > 0) hasBlockingBrowser = true;
 
         if (sharedPreferences.getString("RELEASE", "").equals(Build.VERSION.RELEASE) &&
-                sharedPreferences.getString("samsungBrowserVersion", "").equals(samsungBrowserVersion)) return;
+                sharedPreferences.getBoolean("hasBlockingBrowser", false) == hasBlockingBrowser) return;
 
         List<Pair<String,String>> params = new ArrayList<>();
         params.add(new Pair<>("token", token));
-        params.add(new Pair<>("os", "android"));
+        params.add(new Pair<>("os_name", "Android"));
         params.add(new Pair<>("os_version", Build.VERSION.RELEASE));
         params.add(new Pair<>("device_manufacturer", Build.MANUFACTURER));
         params.add(new Pair<>("device_model", Build.MODEL));
-        params.add(new Pair<>("samsung_browser_version", samsungBrowserVersion));
+        params.add(new Pair<>("has_blocking_browser", hasBlockingBrowser + ""));
 
         Pair<String, String> header = new Pair<>("x-application-secret", BuildConfig.APP_SECRET);
 
-        Fuel.post(BuildConfig.HOST + "/installations", params)
+        Fuel.post(BuildConfig.HOST + "/install", params)
             .header(header)
             .responseString(new Handler<String>() {
                 @Override
@@ -79,7 +80,7 @@ public class RegistrationIntentService extends IntentService {
 
                     sharedPreferences.edit()
                         .putString("RELEASE", Build.VERSION.RELEASE)
-                        .putString("samsungBrowserVersion", samsungBrowserVersion)
+                        .putBoolean("hasBlockingBrowser", hasBlockingBrowser)
                         .apply();
                 }
 

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
 
-    int samsungBrowserVersion = 0;
+    boolean hasBlockingBrowser = false;
     Intent samsungBrowserIntent;
 
     @Override
@@ -107,16 +107,9 @@ public class MainActivity extends AppCompatActivity {
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         List<ResolveInfo> list = getPackageManager().queryIntentActivities(samsungBrowserIntent, 0);
-        if (list.size() > 0) {
-            try {
-                PackageInfo pinfo = getPackageManager().getPackageInfo("com.sec.android.app.sbrowser", 0);
-                samsungBrowserVersion = Integer.parseInt(pinfo.versionName.split("\\.")[0]);
-            } catch (PackageManager.NameNotFoundException ignore) {}
-        } else {
-            samsungBrowserVersion = 0;
-        }
+        if (list.size() > 0) hasBlockingBrowser = true;
 
-        if (samsungBrowserVersion < 4 || preferences.getBoolean("first_run", true)) {
+        if (preferences.getBoolean("first_run", true) || !hasBlockingBrowser) {
             showHelpDialog(false);
             preferences.edit().putBoolean("first_run", false).apply();
         }
@@ -197,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         TextView summary = (TextView) dialog.findViewById(R.id.summary);
         TextView details = (TextView) dialog.findViewById(R.id.details);
 
-        if (samsungBrowserVersion >= 4) {
+        if (hasBlockingBrowser) {
             summary.setText(R.string.settings_summary);
             details.setText(Html.fromHtml(getString(R.string.settings_details)));
             details.setOnClickListener(new View.OnClickListener() {
@@ -236,43 +229,43 @@ public class MainActivity extends AppCompatActivity {
 
     void disableAnimtaion() {
         animator(new int[]{
-                R.drawable.blocked_0,
-                R.drawable.blocked_1,
-                R.drawable.blocked_2,
-                R.drawable.blocked_3,
-                R.drawable.blocked_4,
-                R.drawable.blocked_5,
-                R.drawable.blocked_6,
-                R.drawable.blocked_7,
-                R.drawable.blocked_8,
-                R.drawable.blocked_9,
-                R.drawable.blocked_10,
-                R.drawable.blocked_11,
-                R.drawable.blocked_12,
-                R.drawable.blocked_13,
-                R.drawable.blocked_14,
-                R.drawable.blocked_15
+            R.drawable.blocked_0,
+            R.drawable.blocked_1,
+            R.drawable.blocked_2,
+            R.drawable.blocked_3,
+            R.drawable.blocked_4,
+            R.drawable.blocked_5,
+            R.drawable.blocked_6,
+            R.drawable.blocked_7,
+            R.drawable.blocked_8,
+            R.drawable.blocked_9,
+            R.drawable.blocked_10,
+            R.drawable.blocked_11,
+            R.drawable.blocked_12,
+            R.drawable.blocked_13,
+            R.drawable.blocked_14,
+            R.drawable.blocked_15
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
     void enableAnimtaion() {
         animator(new int[]{
-                R.drawable.unblocked_0,
-                R.drawable.unblocked_1,
-                R.drawable.unblocked_2,
-                R.drawable.unblocked_3,
-                R.drawable.unblocked_4,
-                R.drawable.unblocked_5,
-                R.drawable.unblocked_6,
-                R.drawable.unblocked_7,
-                R.drawable.unblocked_8,
-                R.drawable.unblocked_9,
-                R.drawable.unblocked_10,
-                R.drawable.unblocked_11,
-                R.drawable.unblocked_12,
-                R.drawable.unblocked_13,
-                R.drawable.unblocked_14,
-                R.drawable.unblocked_15
+            R.drawable.unblocked_0,
+            R.drawable.unblocked_1,
+            R.drawable.unblocked_2,
+            R.drawable.unblocked_3,
+            R.drawable.unblocked_4,
+            R.drawable.unblocked_5,
+            R.drawable.unblocked_6,
+            R.drawable.unblocked_7,
+            R.drawable.unblocked_8,
+            R.drawable.unblocked_9,
+            R.drawable.unblocked_10,
+            R.drawable.unblocked_11,
+            R.drawable.unblocked_12,
+            R.drawable.unblocked_13,
+            R.drawable.unblocked_14,
+            R.drawable.unblocked_15
         }, R.string.blocked_message, R.string.blocked_hint);
     }
 
