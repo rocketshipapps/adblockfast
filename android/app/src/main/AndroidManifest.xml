@@ -43,6 +43,13 @@
                 <category android:name="com.example.gcm" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".service.UpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />
+                <data android:scheme="package" android:path="com.sec.android.app.sbrowser" />
+            </intent-filter>
+        </receiver>
         <service
             android:name=".service.NotificationService"
             android:exported="false">
