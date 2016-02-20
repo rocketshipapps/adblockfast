@@ -107,8 +107,10 @@ public class MainActivity extends AppCompatActivity {
         List<ResolveInfo> list = getPackageManager().queryIntentActivities(samsungBrowserIntent, 0);
         if (list.size() > 0) hasBlockingBrowser = true;
 
-        if (preferences.getBoolean("first_run", true) || !hasBlockingBrowser) {
+        if (!hasBlockingBrowser) {
             showHelpDialog(false);
+        } else if (preferences.getBoolean("first_run", true)) {
+            showHelpDialog(true);
             preferences.edit().putBoolean("first_run", false).apply();
         }
 
