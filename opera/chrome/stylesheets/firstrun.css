@@ -79,7 +79,7 @@ li {
 
 a, a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
-  color: #b6594a
+  color: #de0421
 }
 
-a:hover, a:focus, a:active { border-bottom: 2px solid #b6594a }
+a:hover, a:focus, a:active { border-bottom: 2px solid #de0421 }
