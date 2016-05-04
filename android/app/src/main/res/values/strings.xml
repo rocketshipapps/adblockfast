@@ -1,4 +1,5 @@
 <resources>
+    <string name="google_app_id">18676242394</string>
     <string name="name">Adblock Fast</string>
     <string name="status">Status: </string>
     <string name="blocked_message">Blocking ads</string>
