@@ -148,13 +148,8 @@ BROWSER_ACTION.onClicked.addListener(function(tab) {
   const HOST = getHost(tab.url);
   const ID = tab.id;
 
-  if (WHITELIST[HOST]) {
-    delete WHITELIST[HOST];
-    localStorage.whitelist = JSON.stringify(WHITELIST);
-    TABS.reload(ID);
-  } else {
-    WHITELIST[HOST] = true;
-    localStorage.whitelist = JSON.stringify(WHITELIST);
-    TABS.reload(ID);
-  }
+  WHITELIST[url] = !WHITELIST[url];
+
+  localStorage.whitelist = JSON.stringify(WHITELIST);
+  TABS.reload(ID);
 });
