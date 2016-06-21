@@ -144,7 +144,7 @@ remembered whenever you go back to the site.
 ### Who created Adblock Fast<em>?</em>
 
 Adblock Fast was created and is maintained by
-[Rocketship](http://rocketshipapps.com/), an award-winning app studio based in
+[Rocketship](https://rocketshipapps.com/), an award-winning app studio based in
 Palo Alto and San Francisco. Our mission is to design and develop the finest
 mobile and web experiences, of our own and for clients.
 
@@ -274,4 +274,4 @@ Further, the following third-party portions of the program and any use thereof
 are subject to their own license terms:
 
 * [Hudson NY](https://www.myfonts.com/fonts/virtuecreative/hudson-ny/)
-* [Avenir Next](http://www.linotype.com/2090/avenirnext.html)
+* [Avenir Next](https://www.linotype.com/2090/avenir-next.html)
