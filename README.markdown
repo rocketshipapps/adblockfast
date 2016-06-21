@@ -75,27 +75,24 @@ I.e., other apps run faster still.
 3. Load times were measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
-   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News),
-   (4) recording the elapsed time shown by the
+   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News)
+   over three trials, (4) recording the elapsed time shown by the
    [Developer Tools](https://developer.chrome.com/devtools) when the `load`
-   event fired, (5) repeating these steps over three trials, and (6) calculating
-   the mean time for each extension.
+   event fired, and (5) calculating the mean time for each extension.
 4. CPU use was measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
-   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News),
-   (4) recording the peak **CPU** percentage shown by the
+   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News)
+   over three trials, (4) recording the peak **CPU** percentage shown by the
    [Task Manager](https://developer.chrome.com/devtools/docs/javascript-memory-profiling),
-   (5) repeating these steps over three trials, and (6) calculating the mean
-   percentage for each extension.
+   and (5) calculating the mean percentage for each extension.
 5. Memory use was measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
-   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News),
-   (4) recording the peak **Memory** size shown by the
+   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News)
+   over three trials, (4) recording the peak **Memory** size shown by the
    [Task Manager](https://developer.chrome.com/devtools/docs/javascript-memory-profiling),
-   (5) repeating these steps over three trials, and (6) calculating the mean
-   size for each extension.
+   and (5) calculating the mean size for each extension.
 
 See the
 [raw benchmark data](https://docs.google.com/spreadsheets/u/1/d/1ve_1zzTuwSRy8FMlZJZ8PHu3wZp7ApegMt6fyRLv19U/pubhtml).
