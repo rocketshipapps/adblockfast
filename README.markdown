@@ -264,6 +264,17 @@ PARTICULAR PURPOSE. See the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) for more
 details.
 
+## Additional permissions for App Store submission
+
+Provided that you are otherwise in compliance with version 3 or a later version
+of the GNU General Public License for each covered work that you convey
+(including, without limitation, making the Corresponding Source available in
+compliance with section 6 of the License), you are also granted the permission
+to convey, through Apple’s App Store, non-source executable versions of this
+program as incorporated into each applicable covered work as executable versions
+only under
+[version 2.0 of the Mozilla Public License](https://www.mozilla.org/en-US/MPL/2.0/).
+
 ## Exceptions
 
 The Adblock Fast and Rocketship logos, trademarks, domain names, and other brand
