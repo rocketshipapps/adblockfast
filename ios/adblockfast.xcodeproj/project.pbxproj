@@ -41,38 +41,38 @@
 		8378FCF01BCBEFA200E0D0D9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCEF1BCBEFA200E0D0D9 /* libz.tbd */; };
 		8378FCF41BCBEFCA00E0D0D9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCF31BCBEFCA00E0D0D9 /* Accounts.framework */; };
 		8378FCF91BCBF0E500E0D0D9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCF81BCBF0E500E0D0D9 /* Bolts.framework */; };
-		CD2B5C241C4CC82600C7B550 /* blocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C141C4CC82600C7B550 /* blocked-0.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C251C4CC82600C7B550 /* blocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C151C4CC82600C7B550 /* blocked-1.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C261C4CC82600C7B550 /* blocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C161C4CC82600C7B550 /* blocked-2.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C271C4CC82600C7B550 /* blocked-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C171C4CC82600C7B550 /* blocked-3.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C281C4CC82600C7B550 /* blocked-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C181C4CC82600C7B550 /* blocked-4.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C291C4CC82600C7B550 /* blocked-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C191C4CC82600C7B550 /* blocked-5.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C2A1C4CC82600C7B550 /* blocked-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1A1C4CC82600C7B550 /* blocked-6.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C2B1C4CC82600C7B550 /* blocked-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1B1C4CC82600C7B550 /* blocked-7.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C2C1C4CC82600C7B550 /* blocked-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1C1C4CC82600C7B550 /* blocked-8.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C2D1C4CC82600C7B550 /* blocked-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1D1C4CC82600C7B550 /* blocked-9.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C2E1C4CC82600C7B550 /* blocked-10.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1E1C4CC82600C7B550 /* blocked-10.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C2F1C4CC82600C7B550 /* blocked-11.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1F1C4CC82600C7B550 /* blocked-11.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C301C4CC82600C7B550 /* blocked-12.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C201C4CC82600C7B550 /* blocked-12.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C311C4CC82600C7B550 /* blocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C211C4CC82600C7B550 /* blocked-13.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C321C4CC82600C7B550 /* blocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C221C4CC82600C7B550 /* blocked-14.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C331C4CC82600C7B550 /* blocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C231C4CC82600C7B550 /* blocked-15.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C441C4CC93600C7B550 /* unblocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C341C4CC93600C7B550 /* unblocked-0.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C451C4CC93600C7B550 /* unblocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C351C4CC93600C7B550 /* unblocked-1.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C461C4CC93600C7B550 /* unblocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C361C4CC93600C7B550 /* unblocked-2.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C471C4CC93600C7B550 /* unblocked-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C371C4CC93600C7B550 /* unblocked-3.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C481C4CC93600C7B550 /* unblocked-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C381C4CC93600C7B550 /* unblocked-4.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C491C4CC93600C7B550 /* unblocked-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C391C4CC93600C7B550 /* unblocked-5.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C4A1C4CC93600C7B550 /* unblocked-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3A1C4CC93600C7B550 /* unblocked-6.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C4B1C4CC93600C7B550 /* unblocked-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3B1C4CC93600C7B550 /* unblocked-7.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C4C1C4CC93600C7B550 /* unblocked-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3C1C4CC93600C7B550 /* unblocked-8.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C4D1C4CC93600C7B550 /* unblocked-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3D1C4CC93600C7B550 /* unblocked-9.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C4E1C4CC93600C7B550 /* unblocked-10.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3E1C4CC93600C7B550 /* unblocked-10.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C4F1C4CC93600C7B550 /* unblocked-11.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3F1C4CC93600C7B550 /* unblocked-11.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C501C4CC93600C7B550 /* unblocked-12.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C401C4CC93600C7B550 /* unblocked-12.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C511C4CC93600C7B550 /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C521C4CC93600C7B550 /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */; settings = {ASSET_TAGS = (); }; };
-		CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */; settings = {ASSET_TAGS = (); }; };
+		CD2B5C241C4CC82600C7B550 /* blocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C141C4CC82600C7B550 /* blocked-0.pdf */; };
+		CD2B5C251C4CC82600C7B550 /* blocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C151C4CC82600C7B550 /* blocked-1.pdf */; };
+		CD2B5C261C4CC82600C7B550 /* blocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C161C4CC82600C7B550 /* blocked-2.pdf */; };
+		CD2B5C271C4CC82600C7B550 /* blocked-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C171C4CC82600C7B550 /* blocked-3.pdf */; };
+		CD2B5C281C4CC82600C7B550 /* blocked-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C181C4CC82600C7B550 /* blocked-4.pdf */; };
+		CD2B5C291C4CC82600C7B550 /* blocked-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C191C4CC82600C7B550 /* blocked-5.pdf */; };
+		CD2B5C2A1C4CC82600C7B550 /* blocked-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1A1C4CC82600C7B550 /* blocked-6.pdf */; };
+		CD2B5C2B1C4CC82600C7B550 /* blocked-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1B1C4CC82600C7B550 /* blocked-7.pdf */; };
+		CD2B5C2C1C4CC82600C7B550 /* blocked-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1C1C4CC82600C7B550 /* blocked-8.pdf */; };
+		CD2B5C2D1C4CC82600C7B550 /* blocked-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1D1C4CC82600C7B550 /* blocked-9.pdf */; };
+		CD2B5C2E1C4CC82600C7B550 /* blocked-10.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1E1C4CC82600C7B550 /* blocked-10.pdf */; };
+		CD2B5C2F1C4CC82600C7B550 /* blocked-11.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C1F1C4CC82600C7B550 /* blocked-11.pdf */; };
+		CD2B5C301C4CC82600C7B550 /* blocked-12.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C201C4CC82600C7B550 /* blocked-12.pdf */; };
+		CD2B5C311C4CC82600C7B550 /* blocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C211C4CC82600C7B550 /* blocked-13.pdf */; };
+		CD2B5C321C4CC82600C7B550 /* blocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C221C4CC82600C7B550 /* blocked-14.pdf */; };
+		CD2B5C331C4CC82600C7B550 /* blocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C231C4CC82600C7B550 /* blocked-15.pdf */; };
+		CD2B5C441C4CC93600C7B550 /* unblocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C341C4CC93600C7B550 /* unblocked-0.pdf */; };
+		CD2B5C451C4CC93600C7B550 /* unblocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C351C4CC93600C7B550 /* unblocked-1.pdf */; };
+		CD2B5C461C4CC93600C7B550 /* unblocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C361C4CC93600C7B550 /* unblocked-2.pdf */; };
+		CD2B5C471C4CC93600C7B550 /* unblocked-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C371C4CC93600C7B550 /* unblocked-3.pdf */; };
+		CD2B5C481C4CC93600C7B550 /* unblocked-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C381C4CC93600C7B550 /* unblocked-4.pdf */; };
+		CD2B5C491C4CC93600C7B550 /* unblocked-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C391C4CC93600C7B550 /* unblocked-5.pdf */; };
+		CD2B5C4A1C4CC93600C7B550 /* unblocked-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3A1C4CC93600C7B550 /* unblocked-6.pdf */; };
+		CD2B5C4B1C4CC93600C7B550 /* unblocked-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3B1C4CC93600C7B550 /* unblocked-7.pdf */; };
+		CD2B5C4C1C4CC93600C7B550 /* unblocked-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3C1C4CC93600C7B550 /* unblocked-8.pdf */; };
+		CD2B5C4D1C4CC93600C7B550 /* unblocked-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3D1C4CC93600C7B550 /* unblocked-9.pdf */; };
+		CD2B5C4E1C4CC93600C7B550 /* unblocked-10.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3E1C4CC93600C7B550 /* unblocked-10.pdf */; };
+		CD2B5C4F1C4CC93600C7B550 /* unblocked-11.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C3F1C4CC93600C7B550 /* unblocked-11.pdf */; };
+		CD2B5C501C4CC93600C7B550 /* unblocked-12.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C401C4CC93600C7B550 /* unblocked-12.pdf */; };
+		CD2B5C511C4CC93600C7B550 /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */; };
+		CD2B5C521C4CC93600C7B550 /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */; };
+		CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -471,12 +471,12 @@
 		4A30CE651BA3F50F00465842 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Rocketship;
 				TargetAttributes = {
 					4A30CE6C1BA3F50F00465842 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3UMZLWG642;
+						DevelopmentTeam = X3GWZFREMG;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -496,7 +496,7 @@
 					};
 					4A30CEA61BA3F59E00465842 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3UMZLWG642;
+						DevelopmentTeam = X3GWZFREMG;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -766,7 +766,6 @@
 		4A30CE9B1BA3F50F00465842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
@@ -787,7 +786,6 @@
 		4A30CE9C1BA3F50F00465842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
@@ -856,7 +854,6 @@
 		4A30CEB31BA3F59E00465842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = blocker/blocker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = blocker/Info.plist;
@@ -870,7 +867,6 @@
 		4A30CEB41BA3F59E00465842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = blocker/blocker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = blocker/Info.plist;
