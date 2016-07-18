@@ -300,8 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				4A30CE711BA3F50F00465842 /* main.m */,
-				4A30CE791BA3F50F00465842 /* Main.storyboard */,
 				4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */,
+				4A30CE791BA3F50F00465842 /* Main.storyboard */,
 				4A79E3611BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf */,
 				4A79E3631BA3FDC300A8388C /* AvenirNextLTPro-Light.otf */,
 				CD2B5C141C4CC82600C7B550 /* blocked-0.pdf */,
@@ -362,11 +362,11 @@
 			isa = PBXGroup;
 			children = (
 				4AAFB4641BA4005700A2BB15 /* blocker.entitlements */,
-				4A30CEA91BA3F59E00465842 /* blockerList.json */,
-				4A4550201BA40489002C0CAD /* noopList.json */,
 				4A30CEAB1BA3F59E00465842 /* ActionRequestHandler.h */,
 				4A30CEAC1BA3F59E00465842 /* ActionRequestHandler.m */,
 				4A30CEAE1BA3F59E00465842 /* Info.plist */,
+				4A30CEA91BA3F59E00465842 /* blockerList.json */,
+				4A4550201BA40489002C0CAD /* noopList.json */,
 			);
 			path = blocker;
 			sourceTree = "<group>";

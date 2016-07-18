@@ -1,9 +1,9 @@
 //
 //  ActionLabel.m
-//  adblockfast
+//  Adblock Fast
 //
 //  Created by Brian Kennish on 10/4/15.
-//  Copyright © 2015 Rocketship. All rights reserved.
+//  Copyright © 2015, 2016 Rocketship. All rights reserved.
 //
 
 #import "ActionLabel.h"
