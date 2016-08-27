@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <SafariServices/SFContentBlockerManager.h>
+#import <OneSignal/OneSignal.h>
 #import "Constants.h"
 #import "StatusLabel.h"
 #import "ActionLabel.h"
@@ -20,7 +21,6 @@
 #define HELP_TEXT_KEY @"HelpText"
 #define ABOUT_TEXT_KEY @"AboutText"
 #define APP_OPEN_COUNT_KEY @"AppOpenCount"
-#define NOTIFICATION_REQUEST_COUNT_KEY @"NotificationRequestCount"
 #define NOTIFICATION_PERMISSION_KEY @"AreNotificationsAllowed"
 #define HEADING_FONT_NAME @"HudsonNY"
 #define BODY_FONT_NAME @"AvenirNextLTPro-Light"
@@ -272,16 +272,11 @@
 {
     [self.preferences setBool:YES forKey:NOTIFICATION_PERMISSION_KEY];
     [self.notificationOverlay close];
-    UIApplication *app = [UIApplication sharedApplication];
-    if ([app respondsToSelector:@selector(registerUserNotificationSettings:)])
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
         dispatch_after(
                        dispatch_time(DISPATCH_TIME_NOW, MEDIUM_DURATION * NSEC_PER_SEC),
                        dispatch_get_main_queue(),
-                       ^{ [app registerUserNotificationSettings:
-                              [UIUserNotificationSettings settingsForTypes:
-                                  UIUserNotificationTypeBadge | UIUserNotificationTypeSound |
-                                      UIUserNotificationTypeAlert
-                                                                categories:nil]]; }
+                       ^{ [OneSignal registerForPushNotifications]; }
                        );
 }
 

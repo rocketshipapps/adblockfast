@@ -31,7 +31,6 @@
 		4AE9A81D1BCA020D004D5899 /* OverlayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE9A81C1BCA020D004D5899 /* OverlayButton.m */; };
 		83590EA61BDEA23B00CA224E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 83590EA51BDEA23B00CA224E /* libsqlite3.0.tbd */; };
 		83590EA81BDEA24A00CA224E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83590EA71BDEA24A00CA224E /* AudioToolbox.framework */; };
-		8378FCDE1BCBEEEA00E0D0D9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCDD1BCBEEEA00E0D0D9 /* Parse.framework */; };
 		8378FCE21BCBEF7400E0D0D9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCE11BCBEF7400E0D0D9 /* CFNetwork.framework */; };
 		8378FCE61BCBEF8100E0D0D9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCE51BCBEF8100E0D0D9 /* CoreLocation.framework */; };
 		8378FCE81BCBEF8800E0D0D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCE71BCBEF8800E0D0D9 /* QuartzCore.framework */; };
@@ -40,7 +39,6 @@
 		8378FCEE1BCBEF9700E0D0D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCED1BCBEF9700E0D0D9 /* SystemConfiguration.framework */; };
 		8378FCF01BCBEFA200E0D0D9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCEF1BCBEFA200E0D0D9 /* libz.tbd */; };
 		8378FCF41BCBEFCA00E0D0D9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCF31BCBEFCA00E0D0D9 /* Accounts.framework */; };
-		8378FCF91BCBF0E500E0D0D9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378FCF81BCBF0E500E0D0D9 /* Bolts.framework */; };
 		CD2B5C241C4CC82600C7B550 /* blocked-0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C141C4CC82600C7B550 /* blocked-0.pdf */; };
 		CD2B5C251C4CC82600C7B550 /* blocked-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C151C4CC82600C7B550 /* blocked-1.pdf */; };
 		CD2B5C261C4CC82600C7B550 /* blocked-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C161C4CC82600C7B550 /* blocked-2.pdf */; };
@@ -73,6 +71,7 @@
 		CD2B5C511C4CC93600C7B550 /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */; };
 		CD2B5C521C4CC93600C7B550 /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */; };
 		CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */; };
+		CD38E5691D70473F00EA2220 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD38E5681D70473F00EA2220 /* OneSignal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +155,6 @@
 		4AE9A81C1BCA020D004D5899 /* OverlayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayButton.m; sourceTree = "<group>"; };
 		83590EA51BDEA23B00CA224E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		83590EA71BDEA24A00CA224E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		8378FCDD1BCBEEEA00E0D0D9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8378FCE11BCBEF7400E0D0D9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8378FCE51BCBEF8100E0D0D9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8378FCE71BCBEF8800E0D0D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -165,7 +163,6 @@
 		8378FCED1BCBEF9700E0D0D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8378FCEF1BCBEFA200E0D0D9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8378FCF31BCBEFCA00E0D0D9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		8378FCF81BCBF0E500E0D0D9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CD2B5C141C4CC82600C7B550 /* blocked-0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-0.pdf"; sourceTree = "<group>"; };
 		CD2B5C151C4CC82600C7B550 /* blocked-1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-1.pdf"; sourceTree = "<group>"; };
 		CD2B5C161C4CC82600C7B550 /* blocked-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "blocked-2.pdf"; sourceTree = "<group>"; };
@@ -198,6 +195,7 @@
 		CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-13.pdf"; sourceTree = "<group>"; };
 		CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-14.pdf"; sourceTree = "<group>"; };
 		CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-15.pdf"; sourceTree = "<group>"; };
+		CD38E5681D70473F00EA2220 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,8 +213,7 @@
 				8378FCE81BCBEF8800E0D0D9 /* QuartzCore.framework in Frameworks */,
 				8378FCE61BCBEF8100E0D0D9 /* CoreLocation.framework in Frameworks */,
 				8378FCE21BCBEF7400E0D0D9 /* CFNetwork.framework in Frameworks */,
-				8378FCDE1BCBEEEA00E0D0D9 /* Parse.framework in Frameworks */,
-				8378FCF91BCBF0E500E0D0D9 /* Bolts.framework in Frameworks */,
+				CD38E5691D70473F00EA2220 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,8 +373,6 @@
 			children = (
 				83590EA71BDEA24A00CA224E /* AudioToolbox.framework */,
 				83590EA51BDEA23B00CA224E /* libsqlite3.0.tbd */,
-				8378FCF81BCBF0E500E0D0D9 /* Bolts.framework */,
-				8378FCDD1BCBEEEA00E0D0D9 /* Parse.framework */,
 				8378FCF31BCBEFCA00E0D0D9 /* Accounts.framework */,
 				8378FCEF1BCBEFA200E0D0D9 /* libz.tbd */,
 				8378FCED1BCBEF9700E0D0D9 /* SystemConfiguration.framework */,
@@ -386,6 +381,7 @@
 				8378FCE71BCBEF8800E0D0D9 /* QuartzCore.framework */,
 				8378FCE51BCBEF8100E0D0D9 /* CoreLocation.framework */,
 				8378FCE11BCBEF7400E0D0D9 /* CFNetwork.framework */,
+				CD38E5681D70473F00EA2220 /* OneSignal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -777,6 +773,7 @@
 				);
 				INFOPLIST_FILE = adblockfast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -797,6 +794,7 @@
 				);
 				INFOPLIST_FILE = adblockfast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

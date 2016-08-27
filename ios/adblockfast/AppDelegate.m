@@ -7,86 +7,49 @@
 //
 
 #import "AppDelegate.h"
+#import <OneSignal/OneSignal.h>
 #import "Constants.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic) NSUserDefaults *preferences;
+
 @end
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    //Background fetch for badge count update
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    
-    // Parse ID
-    [Parse setApplicationId:@"c4BdheEFIaDAXBQu7ZtRmDNR2WZHnyyOlzIy5V54"
-                  clientKey:@"YehK1OwFeDMpKABYEGAYiRDgGIUOc857pEBp7oXS"];
-
-    // Send the dimensions to Parse along with the 'OpenApp' event
-    [PFAnalytics trackEvent:@"OpenApp" dimensions:nil];
-    
-    if (application.applicationState != UIApplicationStateBackground) {
-        // Track an app open here if we launch with a push, unless "content_available" was used to trigger a background push (introduced in iOS 7). In that case, we skip tracking here to avoid double counting the app-open.
-        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
-        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
-        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        }
+- (NSUserDefaults *)preferences
+{
+    if (!_preferences) {
+        _preferences = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_ID];
+        [_preferences registerDefaults:
+            [NSDictionary dictionaryWithContentsOfFile:
+                [[NSBundle mainBundle] pathForResource:DEFAULT_PREFERENCES_FILENAME
+                                                ofType:PREFERENCES_FILE_EXTENSION]]];
     }
-    
+
+    return _preferences;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:@"0490dddc-22c0-47b8-b9b2-26bfa035ce0c"
+            handleNotificationAction:nil
+                            settings:@{kOSSettingsKeyAutoPrompt: @NO}];
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[@"global"];
-    currentInstallation[@"osVersion"] = [UIDevice currentDevice].systemVersion;
-    [currentInstallation saveInBackground];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
-    
-    if (application.applicationState == UIApplicationStateInactive) {
-        // The application was just brought from the background to the foreground, so we consider the app as having been "opened by a push notification."
-        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    }
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    if (application.applicationState == UIApplicationStateInactive) {
-        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    }
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
- 
-    //Parse: reset badge count
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    if (currentInstallation.badge != 0) {
-        currentInstallation.badge = 0;
-        [currentInstallation saveEventually];
-    }
-}
-
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+- (void)application:(UIApplication *)application
+        performFetchWithCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler
 {
-    NSUserDefaults *preferences = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_ID];
-    NSInteger notificationRequestCount = [preferences integerForKey:@"NotificationRequestCount"];
-    
-    //NSLog(@"########### >> Notification count = %lu", notificationRequestCount);
-    // Show this badge number update only to old users who have never received a notification.
-    if (notificationRequestCount == 0) {
-        [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
-    }
+    [self.preferences integerForKey:NOTIFICATION_REQUEST_COUNT_KEY] ||
+        (application.applicationIconBadgeNumber = 1);
     completionHandler(UIBackgroundFetchResultNewData);
 }
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{ if (application.applicationIconBadgeNumber) application.applicationIconBadgeNumber = 0; }
 
 @end
