@@ -29,6 +29,8 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>ActionRequestHandler</string>
 	</dict>
+	<key>NSHumanReadableDescription</key>
+	<string>Adblock Fast is a faster, open-source ad blocker!</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>

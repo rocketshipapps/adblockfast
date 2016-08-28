@@ -777,6 +777,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -798,6 +799,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -859,6 +861,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast.blocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -872,6 +875,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast.blocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
