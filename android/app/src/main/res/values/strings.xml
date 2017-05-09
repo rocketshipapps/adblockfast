@@ -10,10 +10,10 @@
     <string name="about">About</string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
     <string name="install_summary">Adblock Fast requires Samsung Internet 4.0+.</string>
-    <string name="settings_details"><![CDATA[Go to <font color="#de0421"><u>your Home screen > Internet > <small>MORE</small> > Settings > Advanced > Block content</u></font> then toggle the switch on and make sure <b>Adblock Fast</b> is selected.<br><br>To unblock ads, come back to this app then press the Adblock Fast button.]]></string>
+    <string name="settings_details"><![CDATA[Go to <font color="#de0421"><u>your home screen > Internet > <small>MORE</small> > Extensions > Block content</u></font> then turn the switch on and make sure <b>Adblock Fast</b> is selected.<br><br>To unblock ads, come back to this app then tap the Adblock Fast button.]]></string>
     <string name="install_details"><![CDATA[Install or update to the latest version of the <a href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung Internet browser from Google Play</a> then come back to this app for instructions on how to block ads.]]></string>
     <string name="contact"><![CDATA[If you have any questions or comments, follow and message <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a href="https://twitter.com/adblockfast">on Twitter</a>.]]></string>
-    <string name="tagline">The World’s Fastest Ad Blocker</string>
-    <string name="copyright"><![CDATA[© <a href="http://rocketshipapps.com/">Rocketship</a>.]]></string>
-    <string name="dismiss">Okay</string>
+    <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
+    <string name="copyright"><![CDATA[© <a href="https://rocketshipapps.com/">Rocketship</a>.]]></string>
+    <string name="dismiss">Close</string>
 </resources>

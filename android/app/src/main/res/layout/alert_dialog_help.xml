@@ -53,6 +53,7 @@
                 android:background="@drawable/background_button"
                 android:text="@string/dismiss"
                 android:layout_centerInParent="true"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
     </LinearLayout>

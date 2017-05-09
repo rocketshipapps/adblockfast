@@ -156,10 +156,13 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.alert_dialog_about);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        ((TextView)dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
+
         TextView copyright = (TextView) dialog.findViewById(R.id.copyright);
         copyright.setText(Html.fromHtml(getString(R.string.copyright)));
         copyright.setMovementMethod(LinkMovementMethod.getInstance());
 
+        dialog.setCancelable(false);
         dialog.show();
 
         ((TextView) dialog.findViewById(R.id.txt_version)).setText(version);
@@ -184,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.alert_dialog_help);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setCancelable(cancelable);
+        dialog.setCancelable(false);
         dialog.show();
 
         TextView summary = (TextView) dialog.findViewById(R.id.summary);
