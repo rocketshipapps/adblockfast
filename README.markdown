@@ -99,8 +99,8 @@ See the
 
 ## Owner’s manual
 
-Adblock Fast is so fast that even reading the effing manual takes no time flat.
-Here’s everything you need to know.
+Adblock Fast is so fast that even reading the manual takes no time flat. Here’s
+everything you need to know.
 
 ### In iOS
 
