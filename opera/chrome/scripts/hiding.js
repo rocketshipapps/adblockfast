@@ -611,5 +611,6 @@ const SELECTORS = {
   'time.com':
     '.left-rail-ad__wrapper, .right-rail__container--ad',
   '9gag.com':
-    '.block-ad, .badge-gag-ads-container'
+    '.block-ad, .badge-gag-ads-container',
+  'www.washingtonpost.com': '.ad-hideable'
 };
