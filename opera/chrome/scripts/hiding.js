@@ -247,6 +247,7 @@ const SELECTORS = {
       '#post_unit_medrec, .ad-top-mobile, .header-ad, .river-block-native-ad, .native-ad-mobile, .ad-unit, .ad-cluster-container, .ad-300x250, .l-sidebar li:last-child, .ad-sponsored-aside, .fmvps-player-ad-ribbon, .ad-unit__ad, .gallery-slide--ad',
   'us.wow.com': '.side-ad, .googleAFCAds, .ADS',
   'www.aolsearch.com': '.SLL, .ADS',
+  'www.crunchbase.com': '.display-ad',
   'www.engadget.com':
       '#outerslice, .ad, .skyscraper, .sponsoredcontent, .sponsor-logo-post, .rail-ad > div:first-child > div:first-child, .rail-ad aside:nth-of-type(2), .rail-asl-line, #adSkyScraper, .pb-25, .mb-40, .mb-15, .inlineLb, .mb-20',
   'www.huffingtonpost.co.uk':
