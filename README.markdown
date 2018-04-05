@@ -250,7 +250,7 @@ to get started.
 
 ## License
 
-Copyright 2015–2017 Rocketship Apps, LLC
+Copyright 2015–2018 Rocketship Apps, LLC
 
 This program is free software, excluding the brand features and third-party
 portions of the program identified in the [Exceptions](#exceptions) below: you
