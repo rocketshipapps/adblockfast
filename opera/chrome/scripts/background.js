@@ -183,6 +183,7 @@ firebase.initializeApp({
                 const GROUP_COUNT = GROUPS.count;
                 const FIRST_GROUP = GROUPS.first;
                 var experiment;
+                var iterator = 0;
 
                 do {
                   localStorage.experimentalGroup =
@@ -190,6 +191,13 @@ firebase.initializeApp({
                         Math.floor(Math.random() * GROUP_COUNT) + FIRST_GROUP :
                         0;
                   experiment = EXPERIMENTS[localStorage.experimentalGroup];
+                  iterator++;
+
+                  if (iterator > 99) {
+                    localStorage.experimentalGroup = 0;
+                    experiment = undefined;
+                    break;
+                  }
                 } while (
                   experiment &&
                       (BUILD == localStorage.firstBuild || !experiment.isActive)
