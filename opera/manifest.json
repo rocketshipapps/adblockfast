@@ -38,9 +38,10 @@
     "https://*/*"
   ],
   "content_security_policy":
-      "script-src 'self' 'unsafe-eval'; object-src 'self'",
+      "script-src 'self' https://*.firebaseio.com 'unsafe-eval'; object-src 'self'",
   "background": {
     "scripts": [
+      "chrome/scripts/vendor/firebase.js",
       "chrome/scripts/host.js",
       "chrome/scripts/blocking.js",
       "chrome/scripts/background.js"
@@ -50,6 +51,7 @@
     "matches": ["http://*/*", "https://*/*"],
     "css": ["chrome/stylesheets/content.css"],
     "js": [
+      "chrome/scripts/ready.js",
       "chrome/scripts/host.js",
       "chrome/scripts/blocking.js",
       "chrome/scripts/hiding.js",

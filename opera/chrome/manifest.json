@@ -42,16 +42,20 @@
     "https://*/*"
   ],
   "content_security_policy":
-      "script-src 'self' 'unsafe-eval'; object-src 'self'",
+      "script-src 'self' https://*.firebaseio.com 'unsafe-eval'; object-src 'self'",
   "background": {
     "scripts": [
-      "scripts/host.js", "scripts/blocking.js", "scripts/background.js"
+      "scripts/vendor/firebase.js",
+      "scripts/host.js",
+      "scripts/blocking.js",
+      "scripts/background.js"
     ]
   },
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],
     "css": ["stylesheets/content.css"],
     "js": [
+      "scripts/ready.js",
       "scripts/host.js",
       "scripts/blocking.js",
       "scripts/hiding.js",

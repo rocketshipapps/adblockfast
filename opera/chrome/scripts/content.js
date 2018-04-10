@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2017 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2018 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -17,11 +17,6 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function onReady(callback) {
-  if (document.readyState == 'complete') callback();
-  else addEventListener('load', callback);
-}
-
 function populate(style, selector) {
   const SHEET = style.sheet;
   if (SHEET) SHEET.insertRule(selector + ' { display: none !important }', 0);
@@ -30,23 +25,23 @@ function populate(style, selector) {
 
 const EXTENSION = chrome.extension;
 
-EXTENSION.sendRequest({initialized: true}, function(response) {
+EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
   const PARENT_HOST = response.parentHost;
-  const WHITELISTED = response.whitelisted;
-  var ads;
+  const IS_WHITELISTED = response.isWhitelisted;
+  var wereAdsFound;
 
   if (PARENT_HOST) {
     const SELECTOR = SELECTORS[PARENT_HOST];
 
     if (SELECTOR) {
-      if (!WHITELISTED) {
+      if (!IS_WHITELISTED) {
         const STYLE = document.createElement('style');
         (document.head || document.documentElement).insertBefore(STYLE, null);
         populate(STYLE, SELECTOR);
       }
 
       onReady(function() {
-        if (document.querySelectorAll(SELECTOR).length) ads = true;
+        if (document.querySelectorAll(SELECTOR).length) wereAdsFound = true;
       });
     }
 
@@ -60,7 +55,7 @@ EXTENSION.sendRequest({initialized: true}, function(response) {
         if (childHost != PARENT_HOST)
             for (var j = DOMAINS_LENGTH - 1; j + 1; j--)
                 if (DOMAINS[j].test(childHost)) {
-                  if (!WHITELISTED) {
+                  if (!IS_WHITELISTED) {
                     var className = iframe.className;
                     iframe.className =
                         (className ? className + ' ' : '') +
@@ -80,7 +75,7 @@ EXTENSION.sendRequest({initialized: true}, function(response) {
         if (childHost != PARENT_HOST)
             for (var j = DOMAINS_LENGTH - 1; j + 1; j--)
                 if (DOMAINS[j].test(childHost)) {
-                  if (!WHITELISTED) {
+                  if (!IS_WHITELISTED) {
                     var className = image.className;
                     image.className =
                         (className ? className + ' ' : '') +
@@ -93,5 +88,5 @@ EXTENSION.sendRequest({initialized: true}, function(response) {
     });
   }
 
-  onReady(function() { EXTENSION.sendRequest({ads: ads}); });
+  onReady(function() { EXTENSION.sendRequest({wereAdsFound: wereAdsFound}); });
 });
