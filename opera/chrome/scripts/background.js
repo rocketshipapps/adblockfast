@@ -31,19 +31,18 @@ function saveError(error) {
 }
 
 function saveUser() {
-  if (uid)
-      database.ref('users/' + uid).set({
-        uids: uids,
-        platform: BROWSER,
-        build: BUILD,
-        firstBuild: localStorage.firstBuild,
-        experimentalGroup: localStorage.experimentalGroup,
-        toastViewCount: localStorage.toastViewCount,
-        toastClickCount: localStorage.toastClickCount,
-        mainViewCount: localStorage.mainViewCount,
-        mainClickCount: localStorage.mainClickCount,
-        timestamp: timestamp
-      });
+  if (uid) database.ref('users/' + uid).set({
+    uids: uids,
+    platform: BROWSER,
+    build: BUILD,
+    firstBuild: localStorage.firstBuild,
+    experimentalGroup: localStorage.experimentalGroup,
+    toastViewCount: localStorage.toastViewCount,
+    toastClickCount: localStorage.toastClickCount,
+    mainViewCount: localStorage.mainViewCount,
+    mainClickCount: localStorage.mainClickCount,
+    timestamp: timestamp
+  });
   else saveError({message: 'No user ID'});
 }
 
@@ -124,6 +123,7 @@ function whitelist(tab) {
 
 const BUILD = 5;
 const PREVIOUS_BUILD = localStorage.build;
+const RUNTIME = chrome.runtime;
 const TABS = chrome.tabs;
 const BROWSER_ACTION = chrome.browserAction;
 const NOTIFICATIONS = chrome.notifications;
@@ -277,31 +277,31 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
     const TAB_ID = details.tabId;
     delete WERE_ADS_FOUND[TAB_ID];
 
-    if ((deserialize(localStorage.whitelist) || {})[getHost(details.url)]) {
-      localStorage.tooltip ||
-          BROWSER_ACTION.setTitle({
-            tabId: TAB_ID, title: 'Block ads on this site'
-          });
-      BROWSER_ACTION.setIcon({
-        tabId: TAB_ID,
-        path: {
-          '19': PATH + 'images/unblocked/19.png',
-          '38': PATH + 'images/unblocked/38.png'
-        }
-      });
-    } else {
-      localStorage.tooltip ||
+    if ((deserialize(localStorage.whitelist) || {})[getHost(details.url)])
+        BROWSER_ACTION.setIcon({
+          tabId: TAB_ID,
+          path: {
+            '19': PATH + 'images/unblocked/19.png',
+            '38': PATH + 'images/unblocked/38.png'
+          }
+        }, function() {
+          RUNTIME.lastError || localStorage.tooltip ||
+              BROWSER_ACTION.setTitle({
+                tabId: TAB_ID, title: 'Block ads on this site'
+              });
+        });
+    else BROWSER_ACTION.setIcon({
+      tabId: TAB_ID,
+      path: {
+        '19': PATH + 'images/blocked/19.png',
+        '38': PATH + 'images/blocked/38.png'
+      }
+    }, function() {
+      RUNTIME.lastError || localStorage.tooltip ||
           BROWSER_ACTION.setTitle({
             tabId: TAB_ID, title: 'Unblock ads on this site'
           });
-      BROWSER_ACTION.setIcon({
-        tabId: TAB_ID,
-        path: {
-          '19': PATH + 'images/blocked/19.png',
-          '38': PATH + 'images/blocked/38.png'
-        }
-      });
-    }
+    });
   }
 });
 
