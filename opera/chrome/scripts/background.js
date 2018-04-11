@@ -46,6 +46,12 @@ function saveUser() {
   else saveError({message: 'No user ID'});
 }
 
+function getExperiments(callback) {
+  database.ref('experiments').once('value').then(function(snapshot) {
+    callback(snapshot.val());
+  });
+}
+
 function setExperimentUp() {
   const EXPERIMENT = deserialize(localStorage.experiment);
 
@@ -57,7 +63,6 @@ function setExperimentUp() {
       const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
       const MAIN_CONTENT_URL = EXPERIMENT.mainContentUrl;
       const HAS_MAIN_VIEW = MAIN_VIEW_TYPE && MAIN_CONTENT_URL;
-      const TOAST_HEADING = EXPERIMENT.toastHeading;
 
       if (TOAST_VIEW_TYPE == 'badge') {
         const TOAST_COLOR = EXPERIMENT.toastColor;
@@ -88,19 +93,36 @@ function setExperimentUp() {
                 popup: PATH + 'markup/experimental-popup.html',
               });
             });
-      } else if (TOAST_VIEW_TYPE == 'notification' && TOAST_HEADING) {
-        NOTIFICATIONS.create({
-          type: 'basic',
-          title: TOAST_HEADING,
-          message: TOAST_BODY,
-          iconUrl: PATH + 'images/192.png',
-          requireInteraction: !EXPERIMENT.isToastDismissible
-        });
-        localStorage.toastViewCount++;
-        saveUser();
-        if (HAS_MAIN_VIEW && MAIN_VIEW_TYPE == 'tab')
-            localStorage.tab = MAIN_CONTENT_URL;
+      } else if (TOAST_VIEW_TYPE == 'notification') {
+        const TOAST_HEADING = EXPERIMENT.toastHeading;
+
+        if (TOAST_HEADING) {
+          NOTIFICATIONS.create({
+            type: 'basic',
+            title: TOAST_HEADING,
+            message: TOAST_BODY,
+            iconUrl: PATH + 'images/192.png',
+            requireInteraction: !EXPERIMENT.isToastDismissible
+          });
+          localStorage.toastViewCount++;
+          saveUser();
+          if (HAS_MAIN_VIEW && MAIN_VIEW_TYPE == 'tab')
+              localStorage.tab = MAIN_CONTENT_URL;
+        }
       }
+    }
+  } else if (!localStorage.toastViewCount) {
+    const EXPERIMENTAL_GROUP = localStorage.experimentalGroup;
+
+    if (EXPERIMENTAL_GROUP) {
+      getExperiments(function(experiments) {
+        const EXPERIMENT = experiments[EXPERIMENTAL_GROUP];
+
+        if (EXPERIMENT) {
+          localStorage.experiment = JSON.stringify(EXPERIMENT);
+          setExperimentUp();
+        }
+      });
     }
   }
 }
@@ -171,49 +193,42 @@ firebase.initializeApp({
       localStorage.mainViewCount = 0;
       localStorage.mainClickCount = 0;
 
-      database.ref('groups/' + BROWSER).once('value').then(
-        function(groupSnapshot) {
-          const GROUPS = groupSnapshot.val();
+      database.ref('groups/' + BROWSER).once('value').then(function(snapshot) {
+        const GROUPS = snapshot.val();
 
-          GROUPS && database.ref('experiments').once('value').then(
-            function(experimentSnapshot) {
-              const EXPERIMENTS = experimentSnapshot.val();
+        GROUPS && getExperiments(function(experiments) {
+          if (experiments) {
+            const GROUP_COUNT = GROUPS.count;
+            const FIRST_GROUP = GROUPS.first;
+            var experiment;
+            var iterator = 0;
 
-              if (EXPERIMENTS) {
-                const GROUP_COUNT = GROUPS.count;
-                const FIRST_GROUP = GROUPS.first;
-                var experiment;
-                var iterator = 0;
+            do {
+              localStorage.experimentalGroup =
+                  GROUP_COUNT !== null && FIRST_GROUP !== null ?
+                    Math.floor(Math.random() * GROUP_COUNT) + FIRST_GROUP : 0;
+              experiment = experiments[localStorage.experimentalGroup];
+              iterator++;
 
-                do {
-                  localStorage.experimentalGroup =
-                      GROUP_COUNT !== null && FIRST_GROUP !== null ?
-                        Math.floor(Math.random() * GROUP_COUNT) + FIRST_GROUP :
-                        0;
-                  experiment = EXPERIMENTS[localStorage.experimentalGroup];
-                  iterator++;
-
-                  if (iterator > 99) {
-                    localStorage.experimentalGroup = 0;
-                    experiment = undefined;
-                    break;
-                  }
-                } while (
-                  experiment &&
-                      (BUILD == localStorage.firstBuild || !experiment.isActive)
-                );
-
-                if (experiment) {
-                  localStorage.experiment = JSON.stringify(experiment);
-                  setExperimentUp();
-                }
-
-                saveUser();
+              if (iterator > 99) {
+                localStorage.experimentalGroup = 0;
+                experiment = undefined;
+                break;
               }
+            } while (
+              experiment &&
+                  (BUILD == localStorage.firstBuild || !experiment.isActive)
+            );
+
+            if (experiment) {
+              localStorage.experiment = JSON.stringify(experiment);
+              setExperimentUp();
             }
-          );
-        }
-      );
+
+            saveUser();
+          }
+        });
+      });
 
       saveUser();
     }
