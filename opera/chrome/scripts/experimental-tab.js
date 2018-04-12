@@ -23,17 +23,6 @@ function tearExperimentDown() {
   if (
     TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBodyText
   ) {
-    const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
-
-    if (
-      MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'popup' && EXPERIMENT.mainHeadline &&
-          EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel &&
-              EXPERIMENT.grantButtonLabel && EXPERIMENT.mainFootnote
-    ) {
-      BROWSER_ACTION.setPopup({popup: localStorage.popup});
-      delete localStorage.popup;
-    }
-
     BROWSER_ACTION.setBadgeText({text: ''});
 
     if (EXPERIMENT.toastTooltip) {
@@ -56,8 +45,8 @@ const EXPERIMENT = deserialize(localStorage.experiment);
 
 if (EXPERIMENT) {
   onReady(function() {
-    localStorage.toastClickCount++;
-    EXTENSION.sendRequest({shouldSaveUser: true});
+    document.getElementsByTagName('title')[0].textContent =
+        EXPERIMENT.mainTitle;
     document.getElementsByTagName('h1')[0].textContent =
         EXPERIMENT.mainHeadline;
     document.getElementsByTagName('h2')[0].textContent =

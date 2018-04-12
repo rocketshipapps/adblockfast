@@ -25,10 +25,16 @@
 }
 
 body {
-  margin: 60px;
+  margin: 50px auto 80px;
   width: 640px;
   font: 16px 'Open Sans', sans-serif;
   color: #2c2c2c
+}
+
+img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto
 }
 
 h1, h3, button { font-family: HudsonNY, sans-serif }
@@ -51,6 +57,8 @@ p {
   margin-top: 30px;
   line-height: 1.5
 }
+
+button, a { outline: none }
 
 button {
   margin: 30px 20px;

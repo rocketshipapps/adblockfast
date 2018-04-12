@@ -17,10 +17,6 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function deserialize(object) {
-  return typeof object == 'string' ? JSON.parse(object) : object;
-}
-
 function spawn(tab) { TABS.create({url: tab}); }
 
 function saveError(error) {
@@ -35,12 +31,13 @@ function saveUser() {
     uids: uids,
     platform: BROWSER,
     build: BUILD,
-    firstBuild: localStorage.firstBuild,
-    experimentalGroup: localStorage.experimentalGroup,
-    toastViewCount: localStorage.toastViewCount,
-    toastClickCount: localStorage.toastClickCount,
-    mainViewCount: localStorage.mainViewCount,
-    mainClickCount: localStorage.mainClickCount,
+    firstBuild: deserialize(localStorage.firstBuild),
+    experimentalGroup: deserialize(localStorage.experimentalGroup),
+    toastViewCount: deserialize(localStorage.toastViewCount),
+    toastClickCount: deserialize(localStorage.toastClickCount),
+    mainViewCount: deserialize(localStorage.mainViewCount),
+    wasDenyButtonPressed: deserialize(localStorage.wasDenyButtonPressed),
+    wasGrantButtonPressed: deserialize(localStorage.wasGrantButtonPressed),
     timestamp: timestamp
   });
   else saveError({message: 'No user ID'});
@@ -57,12 +54,10 @@ function setExperimentUp() {
 
   if (EXPERIMENT) {
     const TOAST_VIEW_TYPE = EXPERIMENT.toastViewType;
-    const TOAST_BODY = EXPERIMENT.toastBody;
+    const TOAST_BODY_TEXT = EXPERIMENT.toastBodyText;
 
-    if (TOAST_VIEW_TYPE && TOAST_BODY) {
+    if (TOAST_VIEW_TYPE && TOAST_BODY_TEXT) {
       const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
-      const MAIN_CONTENT_URL = EXPERIMENT.mainContentUrl;
-      const HAS_MAIN_VIEW = MAIN_VIEW_TYPE && MAIN_CONTENT_URL;
 
       if (TOAST_VIEW_TYPE == 'badge') {
         const TOAST_COLOR = EXPERIMENT.toastColor;
@@ -81,37 +76,37 @@ function setExperimentUp() {
               BROWSER_ACTION.setTitle({title: TOAST_TOOLTIP + ''});
             });
 
-        BROWSER_ACTION.setBadgeText({text: TOAST_BODY + ''});
+        BROWSER_ACTION.setBadgeText({text: TOAST_BODY_TEXT + ''});
         localStorage.toastViewCount++;
         saveUser();
 
-        HAS_MAIN_VIEW && MAIN_VIEW_TYPE == 'popup' &&
-            BROWSER_ACTION.getPopup({}, function(popup) {
-              localStorage.popup = popup;
-              localStorage.experimentalPopup = MAIN_CONTENT_URL;
-              BROWSER_ACTION.setPopup({
-                popup: PATH + 'markup/experimental-popup.html',
-              });
-            });
+        MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'popup' && EXPERIMENT.mainHeadline
+            && EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel &&
+                EXPERIMENT.grantButtonLabel && EXPERIMENT.mainFootnote &&
+                    BROWSER_ACTION.getPopup({}, function(popup) {
+                      localStorage.popup = popup;
+                      BROWSER_ACTION.setPopup({
+                        popup: PATH + 'markup/experimental-popup.html'
+                      });
+                    });
       } else if (TOAST_VIEW_TYPE == 'notification') {
-        const TOAST_HEADING = EXPERIMENT.toastHeading;
+        const TOAST_HEADLINE = EXPERIMENT.toastHeadline;
+        const TOAST_ICON_URL = EXPERIMENT.toastIconUrl;
 
-        if (TOAST_HEADING) {
+        if (TOAST_HEADLINE && TOAST_ICON_URL) {
           NOTIFICATIONS.create({
             type: 'basic',
-            title: TOAST_HEADING,
-            message: TOAST_BODY,
-            iconUrl: PATH + 'images/192.png',
+            title: TOAST_HEADLINE,
+            message: TOAST_BODY_TEXT,
+            iconUrl: TOAST_ICON_URL,
             requireInteraction: !EXPERIMENT.isToastDismissible
           });
           localStorage.toastViewCount++;
           saveUser();
-          if (HAS_MAIN_VIEW && MAIN_VIEW_TYPE == 'tab')
-              localStorage.tab = MAIN_CONTENT_URL;
         }
       }
     }
-  } else if (!localStorage.toastViewCount) {
+  } else if (!deserialize(localStorage.toastViewCount)) {
     const EXPERIMENTAL_GROUP = localStorage.experimentalGroup;
 
     if (EXPERIMENTAL_GROUP) {
@@ -147,7 +142,6 @@ const BUILD = 5;
 const PREVIOUS_BUILD = localStorage.build;
 const RUNTIME = chrome.runtime;
 const TABS = chrome.tabs;
-const BROWSER_ACTION = chrome.browserAction;
 const NOTIFICATIONS = chrome.notifications;
 const HOSTS = {};
 const WERE_ADS_FOUND = {};
@@ -191,7 +185,8 @@ firebase.initializeApp({
       localStorage.toastViewCount = 0;
       localStorage.toastClickCount = 0;
       localStorage.mainViewCount = 0;
-      localStorage.mainClickCount = 0;
+      localStorage.wasDenyButtonPressed = false;
+      localStorage.wasGrantButtonPressed = false;
 
       database.ref('groups/' + BROWSER).once('value').then(function(snapshot) {
         const GROUPS = snapshot.val();
@@ -231,7 +226,7 @@ firebase.initializeApp({
       });
 
       saveUser();
-    }
+    } else setExperimentUp();
   }
 });
 
@@ -239,9 +234,11 @@ authentication = firebase.auth();
 user = authentication.currentUser;
 database = firebase.database();
 timestamp = firebase.database.ServerValue.TIMESTAMP;
-if (user) uid = user.uid;
-else authentication.signInAnonymously().catch(saveError);
-setExperimentUp();
+
+if (user) {
+  uid = user.uid;
+  setExperimentUp();
+} else authentication.signInAnonymously().catch(saveError);
 
 TABS.query({}, function(tabs) {
   const TAB_COUNT = tabs.length;
@@ -328,32 +325,37 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
   }
 });
 
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-  const TAB = sender.tab;
+EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
+  if (request.shouldSaveUser) saveUser();
+  else {
+    const TAB = sender.tab;
 
-  if (TAB) {
-    const PARENT_HOST = getHost(TAB.url);
-    const IS_WHITELISTED =
-        (deserialize(localStorage.whitelist) || {})[PARENT_HOST];
+    if (TAB) {
+      const PARENT_HOST = getHost(TAB.url);
+      const IS_WHITELISTED =
+          (deserialize(localStorage.whitelist) || {})[PARENT_HOST];
 
-    if (request.shouldInitialize)
-        sendResponse({parentHost: PARENT_HOST, isWhitelisted: IS_WHITELISTED});
-    else {
-      request.wereAdsFound &&
-          BROWSER_ACTION.setIcon({
-            tabId: TAB.id,
-            path: {
-              '19':
-                  PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
-                      'blocked-ads/19.png',
-              '38':
-                  PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
-                      'blocked-ads/38.png'
-            }
+      if (request.shouldInitialize)
+          sendResponse({
+            parentHost: PARENT_HOST, isWhitelisted: IS_WHITELISTED
           });
-      sendResponse({});
-    }
-  } else sendResponse({});
+      else {
+        request.wereAdsFound &&
+            BROWSER_ACTION.setIcon({
+              tabId: TAB.id,
+              path: {
+                '19':
+                    PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
+                        'blocked-ads/19.png',
+                '38':
+                    PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
+                        'blocked-ads/38.png'
+              }
+            });
+        sendResponse({});
+      }
+    } else sendResponse({});
+  }
 });
 
 BROWSER_ACTION.onClicked.addListener(function(tab) {
@@ -362,32 +364,15 @@ BROWSER_ACTION.onClicked.addListener(function(tab) {
   if (EXPERIMENT) {
     const TOAST_VIEW_TYPE = EXPERIMENT.toastViewType;
 
-    if (TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBody) {
+    if (
+      TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBodyText
+    ) {
       const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
-      const MAIN_CONTENT_URL = EXPERIMENT.mainContentUrl;
-
-      if (MAIN_VIEW_TYPE && MAIN_CONTENT_URL)
-          if (MAIN_VIEW_TYPE == 'popup') {
-            BROWSER_ACTION.setPopup({popup: localStorage.popup});
-            delete localStorage.popup;
-            delete localStorage.experimentalPopup;
-          } else if (MAIN_VIEW_TYPE == 'tab') spawn(MAIN_CONTENT_URL);
-
-      delete localStorage.experiment;
-      BROWSER_ACTION.setBadgeText({text: ''});
-
-      if (EXPERIMENT.toastTooltip) {
-        BROWSER_ACTION.setTitle({title: localStorage.tooltip});
-        delete localStorage.tooltip;
-      }
-
-      if (EXPERIMENT.toastColor) {
-        BROWSER_ACTION.setBadgeBackgroundColor({
-          color: deserialize(localStorage.badgeColor)
-        });
-        delete localStorage.badgeColor;
-      }
-
+      MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'tab' && EXPERIMENT.mainTitle &&
+          EXPERIMENT.mainHeadline && EXPERIMENT.mainBodyText &&
+              EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel &&
+                  EXPERIMENT.mainFootnote &&
+                      spawn(PATH + 'markup/experimental-tab.html');
       localStorage.toastClickCount++;
       saveUser();
     } else whitelist(tab);
@@ -395,14 +380,8 @@ BROWSER_ACTION.onClicked.addListener(function(tab) {
 });
 
 NOTIFICATIONS.onClicked.addListener(function(id) {
-  const TAB = localStorage.tab;
-
-  if (TAB) {
-    spawn(TAB);
-    delete localStorage.tab;
-    delete localStorage.experiment;
-    NOTIFICATIONS.clear(id);
-    localStorage.toastClickCount++;
-    saveUser();
-  }
+  spawn(PATH + 'markup/experimental-tab.html');
+  NOTIFICATIONS.clear(id);
+  localStorage.toastClickCount++;
+  saveUser();
 });

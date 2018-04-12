@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2017 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2018 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -17,9 +17,20 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
+function deserialize(object) {
+  return typeof object == 'string' ? JSON.parse(object) : object;
+}
+
+function onReady(callback) {
+  if (document.readyState == 'complete') callback();
+  else addEventListener('load', callback);
+}
+
 function getHost(url) {
   ANCHOR.href = url;
   return ANCHOR.host;
 }
 
+const EXTENSION = chrome.extension;
+const BROWSER_ACTION = chrome.browserAction;
 const ANCHOR = document.createElement('a');

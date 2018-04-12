@@ -46,7 +46,7 @@
   "background": {
     "scripts": [
       "scripts/vendor/firebase.js",
-      "scripts/host.js",
+      "scripts/library.js",
       "scripts/blocking.js",
       "scripts/background.js"
     ]
@@ -55,8 +55,7 @@
     "matches": ["http://*/*", "https://*/*"],
     "css": ["stylesheets/content.css"],
     "js": [
-      "scripts/ready.js",
-      "scripts/host.js",
+      "scripts/library.js",
       "scripts/blocking.js",
       "scripts/hiding.js",
       "scripts/content.js"

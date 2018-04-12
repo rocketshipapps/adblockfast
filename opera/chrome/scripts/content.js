@@ -23,8 +23,6 @@ function populate(style, selector) {
   else setTimeout(function() { populate(style, selector); }, 0);
 }
 
-const EXTENSION = chrome.extension;
-
 EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
   const PARENT_HOST = response.parentHost;
   const IS_WHITELISTED = response.isWhitelisted;
