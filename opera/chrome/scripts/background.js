@@ -238,7 +238,7 @@ timestamp = firebase.database.ServerValue.TIMESTAMP;
 if (user) {
   uid = user.uid;
   setExperimentUp();
-} else authentication.signInAnonymously().catch(saveError);
+} else authentication.signInAnonymously()['catch'](saveError);
 
 TABS.query({}, function(tabs) {
   const TAB_COUNT = tabs.length;
