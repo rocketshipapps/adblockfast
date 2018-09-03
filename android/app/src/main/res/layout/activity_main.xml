@@ -39,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/status"
+            android:textColor="@android:color/black"
             android:layout_marginEnd="3dp"
             android:textStyle="bold"
             fontPath="fonts/AvenirNext-Medium.otf" />
@@ -47,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/blocked_message"
+            android:textColor="@android:color/black"
             fontPath="fonts/AvenirNextLTPro-Light.otf"/>
     </LinearLayout>
 
@@ -55,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/blocked_hint"
+        android:textColor="@android:color/black"
         android:layout_below="@id/btn_adblock"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
