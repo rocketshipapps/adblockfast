@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: HudsonNY;
-  src: url(../fonts/2F0E63_0_0.woff2) format(woff2)
+  src: url(../fonts/2F0E63_0_0.woff2) format('woff2')
 }
 
 body {
