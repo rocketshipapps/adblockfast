@@ -220,8 +220,8 @@ to get started.
 6. Find your working directory.
 7. Select `android`.
 8. Go to **Run** > **Run 'app'**.
-9. To test after you make a change, go to **Run** > **Stop 'app'** then **Run**
-   > **Run 'app'**.
+9. To test after you make a change, go to **Run** > **Stop 'app'** then
+   **Run** > **Run 'app'**.
 10. Push your changes.
 11. Send us pull requests<em>!</em>
 
