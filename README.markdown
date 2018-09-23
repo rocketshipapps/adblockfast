@@ -1,19 +1,19 @@
 # ![Adblock Fast](assets/promo/adblockfast.png)
 
-*A new, faster ad blocker for iOS, Android, Chrome, and Opera.*
+*A new, faster ad blocker for Android, iOS, Opera, and Chrome.*
 
 Try Adblock Fast:
 
-* [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802) (iOS 9 and up on
-  64-bit devices, iPhone 5s and up and iPad mini 2 and up)
 * [Android](https://play.google.com/store/apps/details?id=com.rocketshipapps.adblockfast)
   (Android 5.0 and up with Samsung Internet 4.0 and up)
-* [Chrome](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
+* [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802) (iOS 9 and up on
+  64-bit devices, iPhone 5s and up and iPad mini 2 and up)
 * [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
+* [Chrome](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated
 with little-used filtering rules and features that sap their speed and hog your
-computer or device’s disk space, CPU cycles, and memory. Adblock Fast runs a
+computer or device’s disk space, CPU cycles, and memory. Adblock Fast executes a
 mere 7 optimized filtering rules to accelerate pages 8x more but consume 6x less
 system resources than other ad blockers do.
 
@@ -22,13 +22,13 @@ numbers.
 
 ![Benchmarks](assets/promo/benchmarks-optimized.png)
 
-### 1. Adblock Fast runs 7,000x fewer filtering rules per page.[<sup>1</sup>](#benchmark-notes)
+### 1. Adblock Fast executes 7,000x fewer filtering rules per page.[<sup>1</sup>](#benchmark-notes)
 
 * AdBlock: 49,002 rules
 * Adblock Plus: 49,002 rules
 * **Adblock Fast: 7 rules**
 
-I.e., the app is more efficient.
+I.e., the app runs faster.
 
 ### 2. Adblock Fast consumes 7x less kilobytes of disk.[<sup>2</sup>](#benchmark-notes)
 
@@ -53,7 +53,7 @@ I.e., pages load faster.
 * Adblock Plus: 20.3%
 * **Adblock Fast: 6.6%**
 
-I.e., other apps run faster.
+I.e., your computer or device runs faster.
 
 ### 5. Adblock Fast consumes 3x less megabytes of memory.[<sup>5</sup>](#benchmark-notes)
 
@@ -61,37 +61,38 @@ I.e., other apps run faster.
 * Adblock Plus: 158.0 MB
 * **Adblock Fast: 58.5 MB**
 
-I.e., other apps run faster still.
+I.e., your computer or device runs faster still.
 
 #### Benchmark notes
 
 1. Rule counts were retrieved from
-   [EasyList](https://easylist.github.io/) and
+   [EasyList](https://easylist.to/) and
    [Adblock Fast’s ruleset](opera/chrome/scripts/blocking.js) on September 1st,
    2015.
 2. Filesizes were retrieved from each browser extension’s listing in the
-   [Chrome Web Store](https://chrome.google.com/webstore) on September 1st,
-   2015.
+   [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) on
+   September 1st, 2015.
 3. Load times were measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
-   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News)
-   over three trials, (4) recording the elapsed time shown by the
-   [Developer Tools](https://developer.chrome.com/devtools) when the `load`
-   event fired, and (5) calculating the mean time for each extension.
+   [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
+   over 3 trials, (4) recording the elapsed time reported by the
+   [browser’s developer tools](https://developers.google.com/web/tools/chrome-devtools/)
+   when the `load` event fired, and (5) calculating the mean time for each
+   extension.
 4. CPU use was measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
-   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News)
-   over three trials, (4) recording the peak **CPU** percentage shown by the
-   [Task Manager](https://developer.chrome.com/devtools/docs/javascript-memory-profiling),
+   [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
+   over 3 trials, (4) recording the peak **CPU** percentage reported by the
+   [browser’s task manager](https://developers.google.com/web/tools/chrome-devtools/memory-problems/),
    and (5) calculating the mean percentage for each extension.
 5. Memory use was measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
-   [Alexa’s top 10 news websites](http://www.alexa.com/topsites/category/Top/News)
-   over three trials, (4) recording the peak **Memory** size shown by the
-   [Task Manager](https://developer.chrome.com/devtools/docs/javascript-memory-profiling),
+   [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
+   over 3 trials, (4) recording the peak **Memory** size reported by the
+   [browser’s task manager](https://developers.google.com/web/tools/chrome-devtools/memory-problems/),
    and (5) calculating the mean size for each extension.
 
 See the
@@ -102,14 +103,27 @@ See the
 Adblock Fast is so fast that even reading the manual takes no time flat. Here’s
 everything you need to know.
 
+### In Android
+
+Adblock Fast blocks ads in the Samsung Internet browser 4.0 and up (not in other
+apps). To enable Adblock Fast to block in Samsung Internet:
+
+1. press the Home button on your Android device,
+2. tap the **Internet** app,
+3. tap **⋮** (the toolbar button) > **Extensions** > **Content blockers**, then
+4. toggle the **Adblock Fast** switch on.
+
+To unblock ads, navigate to the **Adblock Fast** app.
+
 ### In iOS
 
-Adblock Fast blocks ads in Safari not in other apps. To allow Adblock Fast to
-block in Safari:
+Adblock Fast blocks ads in the Safari browser (not in other apps). To enable
+Adblock Fast to block in Safari:
 
 1. press the Home button on your iPhone or iPad,
 2. tap the **Settings** app,
-3. tap **Safari** > (under <small>GENERAL</small>) **Content Blockers**, then
+3. tap **Safari** > (under **<sub><sup>GENERAL</sup></sub>**) **Content
+   Blockers**, then
 4. toggle the **Adblock Fast** switch on.
 
 To unblock ads, navigate to the **Adblock Fast** app.
@@ -118,7 +132,7 @@ To see the effect of Adblock Fast on a particular page, you may have to clear
 Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
 Data**) before reloading the page.
 
-### In Chrome or Opera
+### In Opera or Chrome
 
 Adblock Fast installs a button in your browser’s toolbar. The button indicates
 the status of the site and page you’re on:
@@ -135,37 +149,40 @@ on the site, but ads were found on the page.
 ![Unblocked](opera/chrome/images/unblocked.png) Ads aren’t being blocked on the
 site and no ads were found on the page.
 
-If Adblock Fast is interfering with the behavior of the page (or if you’re a
-masochist), you can click the button to unblock ads. Your setting will be
-remembered whenever you go back to the site.
+If Adblock Fast is interfering with the behavior of the page, you can click the
+button to unblock ads. Your preference will be remembered whenever you go back
+to the site.
 
-## Questions (possibly to be asked frequently)
+If you have any questions or comments, you can follow and message
+[us on Facebook](https://www.facebook.com/adblockfast) or
+[on Twitter](https://twitter.com/adblockfast) or can send us mail at
+<help@adblockfast.com>.
+
+## Frequently asked questions
 
 ### Who created Adblock Fast<em>?</em>
 
 Adblock Fast was created and is maintained by
-[Rocketship](https://rocketshipapps.com/), an award-winning app studio based in
-Palo Alto and San Francisco. Our mission is to design and develop the finest
-mobile and web experiences, of our own and for clients.
+[Rocketship](https://rocketshipapps.com/), an award-winning app studio whose
+mission is to design and develop the finest mobile and web experiences in the
+universe.
 
 ### What is Adblock Fast<em>?</em>
 
-Adblock Fast is a new, faster ad blocker for desktop browsers and mobile
-devices.
+Adblock Fast is a new, faster ad blocker for mobile devices and desktop
+browsers.
 
 ### Where is Adblock Fast’s filtering ruleset from<em>?</em>
 
 Adblock Fast’s ruleset is derived from
-[EasyList](https://easylist.github.io/) and that of
+[EasyList](https://easylist.to/) and that of
 [Bluhell Firewall](https://addons.mozilla.org/en-US/firefox/addon/bluhell-firewall/).
-We’re also testing an alternative ruleset that we expect to improve ad blocking
-yet another order of magnitude.
 
 ### When will Adblock Fast be available on [insert platform here]<em>?</em>
 
-Adblock Fast is available for the Chrome and Opera desktop browsers, for iOS 9
-and up (on 64-bit devices, iPhone 5s and up and iPad mini 2 and up), and for
-Android 5.0 and up (with Samsung Internet 4.0 and up). Follow
+Adblock Fast is available for Android 5.0 and up with Samsung Internet 4.0 and
+up, for iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and
+up), and for the Opera and Chrome desktop browsers. Follow
 [us on Facebook](https://www.facebook.com/adblockfast) or
 [on Twitter](https://twitter.com/adblockfast) for news about additional platform
 availability.
@@ -174,25 +191,41 @@ availability.
 
 Like all (functional) ad blockers, Adblock Fast prompts you for the permissions
 required to block ad requests by intercepting your HTTP traffic and to hide ad
-resources by injecting CSS into the webpages you go to.
+resources by injecting CSS into the pages you go to.
 
 ### How does Adblock Fast make money<em>?</em>
 
-Adblock Fast doesn’t, nor do we intend for Adblock Fast to ever, make any money.
 We operate an ([aforementioned](#who-created-adblock-fast)) app studio that’s
-bootstrapped and quite profitable. Yesterday, you probably didn’t know we
-existed. Today, you do and, someday, perhaps you’ll be creating the next killer
-app and will consider hiring us. (Hmm, maybe doing good work and shipping good
-products ought to replace advertising<em>!</em>) Unlike
-[other ad blockers](https://news.ycombinator.com/item?id=5995140), we don’t have
-to sell out to support our project.
+bootstrapped and profitable. Yesterday, you probably didn’t know we existed.
+Today, you do and, someday, perhaps you’ll be creating the next killer app and
+will consider hiring us. (Hmm, maybe doing good work ought to replace
+advertising<em>!</em>)
 
-## Contributing (and so can you<em>!</em>)
+## Contributing
 
 Adblock Fast is open for pull-request business<em>!</em> Follow the steps below
 to get started.
 
-### In iOS
+### For Android
+
+1. Fork this repository.
+2. Switch to your working directory of choice.
+3. Clone the repo locally:
+
+        git clone https://github.com/rocketshipapps/adblockfast.git
+
+4. Open or switch to Android Studio.
+5. Press the **Open an existing Android Studio project** button or go to
+   **File** > **Open…** .
+6. Find your working directory.
+7. Select `android`.
+8. Go to **Run** > **Run 'app'**.
+9. To test after you make a change, go to **Run** > **Stop 'app'** then **Run**
+   > **Run 'app'**.
+10. Push your changes.
+11. Send us pull requests<em>!</em>
+
+### For iOS
 
 1. Fork this repository.
 2. Switch to your working directory of choice.
@@ -210,26 +243,7 @@ to get started.
 10. Push your changes.
 11. Send us pull requests<em>!</em>
 
-### In Chrome
-
-1. Fork this repository.
-2. Switch to your working directory of choice.
-3. Clone the repo locally:
-
-        git clone https://github.com/rocketshipapps/adblockfast.git
-
-4. Open or switch to Chrome.
-5. Go to **Window** > **Extensions**.
-6. Check the **Developer mode** box then press the **Load unpacked extension…**
-   button.
-7. Find your working directory.
-8. Under `opera`, select `chrome`.
-9. To test after you make a change, under the extension listing, press the
-   **Reload** link.
-10. Push your changes.
-11. Send us pull requests<em>!</em>
-
-### In Opera
+### For Opera
 
 1. Fork this repository.
 2. Switch to your working directory of choice.
@@ -245,6 +259,25 @@ to get started.
 8. Select `opera`.
 9. To test after you make a change, under the extension listing, press the
    **Reload** button.
+10. Push your changes.
+11. Send us pull requests<em>!</em>
+
+### For Chrome
+
+1. Fork this repository.
+2. Switch to your working directory of choice.
+3. Clone the repo locally:
+
+        git clone https://github.com/rocketshipapps/adblockfast.git
+
+4. Open or switch to Chrome.
+5. Go to **Window** > **Extensions**.
+6. Check the **Developer mode** box then press the **Load unpacked extension…**
+   button.
+7. Find your working directory.
+8. Under `opera`, select `chrome`.
+9. To test after you make a change, under the extension listing, press the
+   **Reload** link.
 10. Push your changes.
 11. Send us pull requests<em>!</em>
 
