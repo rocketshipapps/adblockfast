@@ -1,6 +1,6 @@
 # ![Adblock Fast](assets/promo/adblockfast.png)
 
-*A new, faster ad blocker for Android, iOS, Opera, and Chrome.*
+*A new, faster ad blocker for Android, iOS, Opera, and Chrome*
 
 Try Adblock Fast:
 
@@ -113,7 +113,7 @@ apps). To enable Adblock Fast to block in Samsung Internet:
 3. tap **⋮** (the toolbar button) > **Extensions** > **Content blockers**, then
 4. toggle the **Adblock Fast** switch on.
 
-To unblock ads, navigate to the **Adblock Fast** app.
+To unblock ads, open or switch to the **Adblock Fast** app.
 
 ### In iOS
 
@@ -126,7 +126,7 @@ Adblock Fast to block in Safari:
    Blockers**, then
 4. toggle the **Adblock Fast** switch on.
 
-To unblock ads, navigate to the **Adblock Fast** app.
+To unblock ads, open or switch to the **Adblock Fast** app.
 
 To see the effect of Adblock Fast on a particular page, you may have to clear
 Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
@@ -150,8 +150,8 @@ on the site, but ads were found on the page.
 site and no ads were found on the page.
 
 If Adblock Fast is interfering with the behavior of the page, you can click the
-button to unblock ads. Your preference will be remembered whenever you go back
-to the site.
+button to unblock ads. Your choice will be remembered whenever you go back to
+the site.
 
 If you have any questions or comments, you can follow and message
 [us on Facebook](https://www.facebook.com/adblockfast) or
@@ -203,83 +203,80 @@ advertising<em>!</em>)
 
 ## Contributing
 
-Adblock Fast is open for pull-request business<em>!</em> Follow the steps below
-to get started.
+Adblock Fast is open for pull-request business. Follow the steps below to get
+started.
 
 ### For Android
 
 1. Fork this repository.
 2. Switch to your working directory of choice.
-3. Clone the repo locally:
+3. Clone the repo:
 
         git clone https://github.com/rocketshipapps/adblockfast.git
 
-4. Open or switch to Android Studio.
-5. Press the **Open an existing Android Studio project** button or go to
+4. Open or switch to the Android Studio IDE.
+5. Select the **Open an existing Android Studio project** item or go to
    **File** > **Open…** .
-6. Find your working directory.
-7. Select `android`.
-8. Go to **Run** > **Run 'app'**.
-9. To test after you make a change, go to **Run** > **Stop 'app'** then
+6. Under your working directory, select the `android` directory.
+7. Go to **Run** > **Run 'app'**.
+8. To test after you make a change, go to **Run** > **Stop 'app'** then
    **Run** > **Run 'app'**.
-10. Push your changes.
-11. Send us pull requests<em>!</em>
+9. Push your changes.
+10. Send us pull requests<em>!</em>
 
 ### For iOS
 
 1. Fork this repository.
 2. Switch to your working directory of choice.
-3. Clone the repo locally:
+3. Clone the repo:
 
         git clone https://github.com/rocketshipapps/adblockfast.git
 
-4. Open or switch to Xcode.
+4. Open or switch to the Xcode IDE.
 5. Go to **File** > **Open…** .
-6. Find your working directory.
-7. Select `ios`.
-8. Go to **Product** > **Run**.
-9. To test after you make a change, go to **Product** > **Stop** then
+6. Under your working directory, select the `ios` directory.
+7. Go to **Product** > **Run**.
+8. To test after you make a change, go to **Product** > **Stop** then
    **Product** > **Run**.
-10. Push your changes.
-11. Send us pull requests<em>!</em>
+9. Push your changes.
+10. Send us pull requests<em>!</em>
 
 ### For Opera
 
 1. Fork this repository.
 2. Switch to your working directory of choice.
-3. Clone the repo locally:
+3. Clone the repo:
 
         git clone https://github.com/rocketshipapps/adblockfast.git
 
-4. Open or switch to Opera.
+4. Open or switch to the Opera browser.
 5. Go to **View** > **Show Extensions**.
 6. Press the **Developer Mode** button then the **Load Unpacked Extension…**
    button.
-7. Find your working directory.
-8. Select `opera`.
-9. To test after you make a change, under the extension listing, press the
+7. Under your working directory, select the `opera` directory.
+8. To test after you make a change, under the extension listing, press the
    **Reload** button.
-10. Push your changes.
-11. Send us pull requests<em>!</em>
+9. Push your changes.
+10. Send us pull requests<em>!</em>
 
 ### For Chrome
 
 1. Fork this repository.
 2. Switch to your working directory of choice.
-3. Clone the repo locally:
+3. Clone the repo:
 
         git clone https://github.com/rocketshipapps/adblockfast.git
 
-4. Open or switch to Chrome.
+4. Open or switch to the Chrome browser.
 5. Go to **Window** > **Extensions**.
-6. Check the **Developer mode** box then press the **Load unpacked extension…**
+6. Toggle the **Developer mode** switch on then press the **Load unpacked**
    button.
-7. Find your working directory.
-8. Under `opera`, select `chrome`.
-9. To test after you make a change, under the extension listing, press the
-   **Reload** link.
-10. Push your changes.
-11. Send us pull requests<em>!</em>
+7. Under your working directory and the `opera` directory, select the `chrome`
+   directory.
+8. To test after you make a change, under the extension listing, press the
+   reload button.
+9. Push your changes.
+10. Send us pull requests<em>!</em>
 
 ## License
 
