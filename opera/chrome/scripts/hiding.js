@@ -315,7 +315,7 @@ const SELECTORS = {
   'news.mail.ru':
       '.ban',
   'auto.mail.ru':
-      '.ban',
+      '.ban, [data-16806="1"], .rb_10227, .rb_6015, .rb-criteo-wrapper',
   'afisha.mail.ru':
       '.ban',
   'lady.mail.ru':
@@ -327,7 +327,7 @@ const SELECTORS = {
   'imgur.com':
       '.advertisement',
   'www.sohu.com':
-      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
+      'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W, .godR, .god-main, .god-sub, .god-cut',
   'mil.sohu.com':
       'sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'news.sohu.com':
@@ -335,7 +335,7 @@ const SELECTORS = {
   'www.xvideos.com':
       '#video-ad, #ad-bottom, .ad',
   'www.imdb.com':
-      '.cornerstone_slot, .dfp_slot',
+      '.cornerstone_slot, .dfp_slot, .after_ad, [name="slot_right-7"] + .aux-content-widget-2',
   'stackoverflow.com':
       '.adzerk-vote',
   'www.phonearena.com':
@@ -438,6 +438,8 @@ const SELECTORS = {
       '.aspace, .newrightbar_div_10, #gpt-ad-leaderboard, .side-ad, .collection-adspot, .explore-ad',
   'allrecipes.com':
       '#ads-right, .rrAdPad, .bottom-ad2, .advertise_txt, .ad-text, .topads-spacer',
+  'www.allrecipes.com':
+      '.reserve-ad-space, .review-ad-space, .ad-recipe-page-footer-container',
   'www.marketwatch.com':
       '#BrokerButtons, #story-premiumbanner, #supposedlytemporaryad, #tradingcenter, [width="120"][bgcolor="#d7d7d6"], .advertisement, .ad-extra-text, #ad-display-ad-placeholder, .ad',
   'www.google.co.in':
@@ -507,7 +509,7 @@ const SELECTORS = {
   'yandex.ru':
       '.serp-adv__block, .serp-block-o7',
   'www.sina.com.cn':
-      '.sinaads-couplet-side, .sinaad-toolkit-box, .top-ads-fwrap, .palm01-ad, .mod-08, .ad-banner, .sinaads, .tit01, .mod03',
+      '.sinaads-couplet-side, .sinaad-toolkit-box, .top-ads-fwrap, .palm01-ad, .mod-08, .ad-banner, .sinaads, .tit01, .mod03, .top-ads, .mod-01 + .blank-cont, .part-l, .sinaAD_slide01_w, .part-n-l',
   'news.sina.com.cn':
       '.pip00adNone, .adNone, .sinaad-toolkit-box, .sinaads, [class^=ad_], .tb0827, div[name^=_AdSame], [class^=Ad_]',
   'www.baidu.com':
