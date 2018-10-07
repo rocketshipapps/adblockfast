@@ -415,7 +415,7 @@ const SELECTORS = {
   'www.weather.com':
         '#pageSpon2, #paid_search, #partner_offers, #twc-partner-spot, .divBottomNotice, .divCenterNotice, .trc_recs_column + .right-column, .taboola_module',
   'www.bloomberg.com':
-        '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .advertisement, .sponsored-ad, .ad-v2, .index-page__top-ad',
+        '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .advertisement, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
   'www.washingtonpost.com':
         '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads',
   'www.google.com.mx':
