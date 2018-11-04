@@ -7,52 +7,53 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:background="@drawable/background_overlay"
-        android:padding="@dimen/activity_horizontal_margin"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:padding="@dimen/activity_horizontal_margin">
 
         <TextView
             android:id="@+id/summary"
+            fontPath="fonts/AvenirNext-Medium.otf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:text="@null"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
-            fontPath="fonts/AvenirNext-Medium.otf" />
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/details"
+            fontPath="fonts/AvenirNextLTPro-Light.otf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:text="@null"
             android:textColor="@android:color/white"
-            android:textColorLink="#de0421"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            android:textColorLink="#de0421" />
 
         <TextView
             android:id="@+id/contact"
+            fontPath="fonts/AvenirNextLTPro-Light.otf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:text="@null"
             android:textColor="@android:color/white"
-            android:textColorLink="#de0421"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            android:textColorLink="#de0421" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/btn_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:background="@drawable/background_button"
                 android:text="@string/dismiss"
-                android:layout_centerInParent="true"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
