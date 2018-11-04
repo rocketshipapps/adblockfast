@@ -64,17 +64,17 @@ public class MainActivity extends AppCompatActivity {
         packageName = getApplicationContext().getPackageName();
         version = BuildConfig.VERSION_NAME;
 
-        btnAdblock = (ImageButton) findViewById(R.id.btn_adblock);
-        txtStatus = (TextView) findViewById(R.id.txt_status);
-        txtTap = (TextView) findViewById(R.id.txt_tap);
+        btnAdblock = findViewById(R.id.btn_adblock);
+        txtStatus = findViewById(R.id.txt_status);
+        txtTap = findViewById(R.id.txt_tap);
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
-            enableAnimtaion();
+            enableAnimation();
         } else if (Rule.active(this)) {
-            enableAnimtaion();
+            enableAnimation();
         } else {
-            disableAnimtaion();
+            disableAnimation();
         }
 
         AdblockfastApplication application = (AdblockfastApplication) getApplication();
@@ -138,10 +138,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (Rule.active(this)) {
             Rule.disable(this);
-            disableAnimtaion();
+            disableAnimation();
         } else {
             Rule.enable(this);
-            enableAnimtaion();
+            enableAnimation();
         }
 
         Intent intent = new Intent();
@@ -156,9 +156,9 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.alert_dialog_about);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        ((TextView)dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
+        ((TextView) dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
 
-        TextView copyright = (TextView) dialog.findViewById(R.id.copyright);
+        TextView copyright = dialog.findViewById(R.id.copyright);
         copyright.setText(Html.fromHtml(getString(R.string.copyright)));
         copyright.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -167,12 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) dialog.findViewById(R.id.txt_version)).setText(version);
 
-        dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialog.findViewById(R.id.btn_ok).setOnClickListener(v1 -> dialog.dismiss());
     }
 
     public void onHelpPressed(View v) {
@@ -190,149 +185,135 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
-        TextView summary = (TextView) dialog.findViewById(R.id.summary);
-        TextView details = (TextView) dialog.findViewById(R.id.details);
+        TextView summary = dialog.findViewById(R.id.summary);
+        TextView details = dialog.findViewById(R.id.details);
 
         if (hasBlockingBrowser) {
             summary.setText(R.string.settings_summary);
             details.setText(Html.fromHtml(getString(R.string.settings_details)));
-            details.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(samsungBrowserIntent);
-                }
-            });
+            details.setOnClickListener(v -> startActivity(samsungBrowserIntent));
         } else {
             summary.setText(R.string.install_summary);
             details.setText(Html.fromHtml(getString(R.string.install_details)));
         }
         details.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView contact = (TextView) dialog.findViewById(R.id.contact);
+        TextView contact = dialog.findViewById(R.id.contact);
         contact.setText(Html.fromHtml(getString(R.string.contact)));
         contact.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (cancelable) {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
+            dialog.findViewById(R.id.btn_ok).setOnClickListener(v -> dialog.dismiss());
         } else {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
+            dialog.findViewById(R.id.btn_ok).setOnClickListener(v -> onBackPressed());
         }
     }
     //endregion
 
     //region Block Animation
 
-    void disableAnimtaion() {
+    void disableAnimation() {
         animator(new int[]{
-            R.drawable.blocked_0,
-            R.drawable.blocked_1,
-            R.drawable.blocked_2,
-            R.drawable.blocked_3,
-            R.drawable.blocked_4,
-            R.drawable.blocked_5,
-            R.drawable.blocked_6,
-            R.drawable.blocked_7,
-            R.drawable.blocked_8,
-            R.drawable.blocked_9,
-            R.drawable.blocked_10,
-            R.drawable.blocked_11,
-            R.drawable.blocked_12,
-            R.drawable.blocked_13,
-            R.drawable.blocked_14,
-            R.drawable.blocked_15,
-            R.drawable.unblocked_0,
-            R.drawable.unblocked_1,
-            R.drawable.unblocked_2,
-            R.drawable.unblocked_3,
-            R.drawable.unblocked_4,
-            R.drawable.unblocked_5,
-            R.drawable.unblocked_6,
-            R.drawable.unblocked_7,
-            R.drawable.unblocked_8,
-            R.drawable.unblocked_9,
-            R.drawable.unblocked_10,
-            R.drawable.unblocked_11,
-            R.drawable.unblocked_12,
-            R.drawable.unblocked_13,
-            R.drawable.unblocked_14,
-            R.drawable.unblocked_15,
-            R.drawable.blocked_0,
-            R.drawable.blocked_1,
-            R.drawable.blocked_2,
-            R.drawable.blocked_3,
-            R.drawable.blocked_4,
-            R.drawable.blocked_5,
-            R.drawable.blocked_6,
-            R.drawable.blocked_7,
-            R.drawable.blocked_8,
-            R.drawable.blocked_9,
-            R.drawable.blocked_10,
-            R.drawable.blocked_11,
-            R.drawable.blocked_12,
-            R.drawable.blocked_13,
-            R.drawable.blocked_14,
-            R.drawable.blocked_15
+                R.drawable.blocked_0,
+                R.drawable.blocked_1,
+                R.drawable.blocked_2,
+                R.drawable.blocked_3,
+                R.drawable.blocked_4,
+                R.drawable.blocked_5,
+                R.drawable.blocked_6,
+                R.drawable.blocked_7,
+                R.drawable.blocked_8,
+                R.drawable.blocked_9,
+                R.drawable.blocked_10,
+                R.drawable.blocked_11,
+                R.drawable.blocked_12,
+                R.drawable.blocked_13,
+                R.drawable.blocked_14,
+                R.drawable.blocked_15,
+                R.drawable.unblocked_0,
+                R.drawable.unblocked_1,
+                R.drawable.unblocked_2,
+                R.drawable.unblocked_3,
+                R.drawable.unblocked_4,
+                R.drawable.unblocked_5,
+                R.drawable.unblocked_6,
+                R.drawable.unblocked_7,
+                R.drawable.unblocked_8,
+                R.drawable.unblocked_9,
+                R.drawable.unblocked_10,
+                R.drawable.unblocked_11,
+                R.drawable.unblocked_12,
+                R.drawable.unblocked_13,
+                R.drawable.unblocked_14,
+                R.drawable.unblocked_15,
+                R.drawable.blocked_0,
+                R.drawable.blocked_1,
+                R.drawable.blocked_2,
+                R.drawable.blocked_3,
+                R.drawable.blocked_4,
+                R.drawable.blocked_5,
+                R.drawable.blocked_6,
+                R.drawable.blocked_7,
+                R.drawable.blocked_8,
+                R.drawable.blocked_9,
+                R.drawable.blocked_10,
+                R.drawable.blocked_11,
+                R.drawable.blocked_12,
+                R.drawable.blocked_13,
+                R.drawable.blocked_14,
+                R.drawable.blocked_15
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void enableAnimtaion() {
+    void enableAnimation() {
         animator(new int[]{
-            R.drawable.unblocked_0,
-            R.drawable.unblocked_1,
-            R.drawable.unblocked_2,
-            R.drawable.unblocked_3,
-            R.drawable.unblocked_4,
-            R.drawable.unblocked_5,
-            R.drawable.unblocked_6,
-            R.drawable.unblocked_7,
-            R.drawable.unblocked_8,
-            R.drawable.unblocked_9,
-            R.drawable.unblocked_10,
-            R.drawable.unblocked_11,
-            R.drawable.unblocked_12,
-            R.drawable.unblocked_13,
-            R.drawable.unblocked_14,
-            R.drawable.unblocked_15,
-            R.drawable.blocked_0,
-            R.drawable.blocked_1,
-            R.drawable.blocked_2,
-            R.drawable.blocked_3,
-            R.drawable.blocked_4,
-            R.drawable.blocked_5,
-            R.drawable.blocked_6,
-            R.drawable.blocked_7,
-            R.drawable.blocked_8,
-            R.drawable.blocked_9,
-            R.drawable.blocked_10,
-            R.drawable.blocked_11,
-            R.drawable.blocked_12,
-            R.drawable.blocked_13,
-            R.drawable.blocked_14,
-            R.drawable.blocked_15,
-            R.drawable.unblocked_0,
-            R.drawable.unblocked_1,
-            R.drawable.unblocked_2,
-            R.drawable.unblocked_3,
-            R.drawable.unblocked_4,
-            R.drawable.unblocked_5,
-            R.drawable.unblocked_6,
-            R.drawable.unblocked_7,
-            R.drawable.unblocked_8,
-            R.drawable.unblocked_9,
-            R.drawable.unblocked_10,
-            R.drawable.unblocked_11,
-            R.drawable.unblocked_12,
-            R.drawable.unblocked_13,
-            R.drawable.unblocked_14,
-            R.drawable.unblocked_15
+                R.drawable.unblocked_0,
+                R.drawable.unblocked_1,
+                R.drawable.unblocked_2,
+                R.drawable.unblocked_3,
+                R.drawable.unblocked_4,
+                R.drawable.unblocked_5,
+                R.drawable.unblocked_6,
+                R.drawable.unblocked_7,
+                R.drawable.unblocked_8,
+                R.drawable.unblocked_9,
+                R.drawable.unblocked_10,
+                R.drawable.unblocked_11,
+                R.drawable.unblocked_12,
+                R.drawable.unblocked_13,
+                R.drawable.unblocked_14,
+                R.drawable.unblocked_15,
+                R.drawable.blocked_0,
+                R.drawable.blocked_1,
+                R.drawable.blocked_2,
+                R.drawable.blocked_3,
+                R.drawable.blocked_4,
+                R.drawable.blocked_5,
+                R.drawable.blocked_6,
+                R.drawable.blocked_7,
+                R.drawable.blocked_8,
+                R.drawable.blocked_9,
+                R.drawable.blocked_10,
+                R.drawable.blocked_11,
+                R.drawable.blocked_12,
+                R.drawable.blocked_13,
+                R.drawable.blocked_14,
+                R.drawable.blocked_15,
+                R.drawable.unblocked_0,
+                R.drawable.unblocked_1,
+                R.drawable.unblocked_2,
+                R.drawable.unblocked_3,
+                R.drawable.unblocked_4,
+                R.drawable.unblocked_5,
+                R.drawable.unblocked_6,
+                R.drawable.unblocked_7,
+                R.drawable.unblocked_8,
+                R.drawable.unblocked_9,
+                R.drawable.unblocked_10,
+                R.drawable.unblocked_11,
+                R.drawable.unblocked_12,
+                R.drawable.unblocked_13,
+                R.drawable.unblocked_14,
+                R.drawable.unblocked_15
         }, R.string.blocked_message, R.string.blocked_hint);
     }
 
@@ -341,29 +322,21 @@ public class MainActivity extends AppCompatActivity {
 
         double delay = 62.5;
 
-        for (int i=0; i<res.length; ++i) {
-            if (i==0) {
+        for (int i = 0; i < res.length; ++i) {
+            if (i == 0) {
                 btnAdblock.setImageResource(res[i]);
             } else {
                 Handler handler = new Handler();
                 final int finalI = i;
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                btnAdblock.setImageResource(res[finalI]);
+                handler.postDelayed(() -> runOnUiThread(() -> {
+                    btnAdblock.setImageResource(res[finalI]);
 
-                                if (finalI == res.length-1) {
-                                    animating = false;
-                                    txtStatus.setText(resTxtStatus);
-                                    txtTap.setText(resTxtTap);
-                                }
-                            }
-                        });
+                    if (finalI == res.length - 1) {
+                        animating = false;
+                        txtStatus.setText(resTxtStatus);
+                        txtTap.setText(resTxtTap);
                     }
-                }, Math.round(delay * i));
+                }), Math.round(delay * i));
             }
         }
     }

@@ -45,7 +45,8 @@ public class RegistrationIntentService extends IntentService {
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
 
             sendRegistrationTokenToServer(token);
-        } catch (IOException ignore) {}
+        } catch (IOException ignore) {
+        }
     }
 
     private void sendRegistrationTokenToServer(String token) {
@@ -55,9 +56,10 @@ public class RegistrationIntentService extends IntentService {
         if (list.size() > 0) hasBlockingBrowser = true;
 
         if (sharedPreferences.getString("RELEASE", "").equals(Build.VERSION.RELEASE) &&
-                sharedPreferences.getBoolean("hasBlockingBrowser", false) == hasBlockingBrowser) return;
+                sharedPreferences.getBoolean("hasBlockingBrowser", false) == hasBlockingBrowser)
+            return;
 
-        List<Pair<String,String>> params = new ArrayList<>();
+        List<Pair<String, String>> params = new ArrayList<>();
         params.add(new Pair<>("token", token));
         params.add(new Pair<>("os_name", "Android"));
         params.add(new Pair<>("os_version", Build.VERSION.RELEASE));
@@ -68,26 +70,28 @@ public class RegistrationIntentService extends IntentService {
         Pair<String, String> header = new Pair<>("x-application-secret", BuildConfig.APP_SECRET);
 
         Fuel.post(BuildConfig.HOST + "/install", params)
-            .header(header)
-            .responseString(new Handler<String>() {
-                @Override
-                public void success(@NonNull Request request, @NonNull Response response, String s) {
-                    Log.d(TAG, "reponseMessage: " + response.getHttpResponseMessage());
-                    Log.d(TAG, "reponseUrl: " + response.getUrl());
-                    Log.d(TAG, "response: " + s);
+                .header(header)
+                .responseString(new Handler<String>() {
+                    @Override
+                    public void success(@NonNull Request request, @NonNull Response response, String s) {
+                        Log.d(TAG, "responseMessage: " + response.getHttpResponseMessage());
+                        Log.d(TAG, "responseUrl: " + response.getUrl());
+                        Log.d(TAG, "response: " + s);
 
-                    sharedPreferences.edit()
-                        .putString("RELEASE", Build.VERSION.RELEASE)
-                        .putBoolean("hasBlockingBrowser", hasBlockingBrowser)
-                        .apply();
-                }
+                        sharedPreferences.edit()
+                                .putString("RELEASE", Build.VERSION.RELEASE)
+                                .putBoolean("hasBlockingBrowser", hasBlockingBrowser)
+                                .apply();
+                    }
 
-                @Override
-                public void failure(@NonNull Request request, @NonNull Response response, @NonNull FuelError fuelError) {
-                    Log.d(TAG, "fuelError: " + fuelError.getMessage());
-                    Log.d(TAG, "reponseMessage: " + response.getHttpResponseMessage());
-                    Log.d(TAG, "reponseUrl: " + response.getUrl());
-                }
-            });
+                    @Override
+                    public void failure(@NonNull Request request,
+                                        @NonNull Response response,
+                                        @NonNull FuelError fuelError) {
+                        Log.d(TAG, "fuelError: " + fuelError.getMessage());
+                        Log.d(TAG, "responseMessage: " + response.getHttpResponseMessage());
+                        Log.d(TAG, "responseUrl: " + response.getUrl());
+                    }
+                });
     }
 }

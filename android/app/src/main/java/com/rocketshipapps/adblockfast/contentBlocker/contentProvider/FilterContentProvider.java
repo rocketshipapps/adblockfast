@@ -11,8 +11,7 @@ import android.support.annotation.Nullable;
 
 import com.rocketshipapps.adblockfast.utils.Rule;
 
-import java.io.FileNotFoundException;
-
+import java.io.IOException;
 
 public class FilterContentProvider extends ContentProvider {
 
@@ -57,13 +56,23 @@ public class FilterContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        return ParcelFileDescriptor.open(Rule.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
+    public ParcelFileDescriptor openFile(Uri uri, String mode) {
+        try {
+            return ParcelFileDescriptor.open(Rule.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Nullable
     @Override
-    public ParcelFileDescriptor openFile(Uri uri, String mode, CancellationSignal signal) throws FileNotFoundException {
-        return ParcelFileDescriptor.open(Rule.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
+    public ParcelFileDescriptor openFile(Uri uri, String mode, CancellationSignal signal) {
+        try {
+            return ParcelFileDescriptor.open(Rule.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

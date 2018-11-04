@@ -12,7 +12,8 @@ import com.rocketshipapps.adblockfast.R;
 
 public class HelpOverlay extends DialogFragment {
 
-    public HelpOverlay() {}
+    public HelpOverlay() {
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -24,7 +25,6 @@ public class HelpOverlay extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.alert_dialog_help, container);
-        return view;
+        return inflater.inflate(R.layout.alert_dialog_help, container);
     }
 }
