@@ -23,9 +23,17 @@ java -jar htmlcompressor-1.5.3.jar --remove-intertag-spaces \
                                    --remove-quotes \
                                    -o adblockfast/chrome/markup/ \
                                    adblockfast/chrome/markup/
-java -jar yuicompressor-2.4.8.jar -o '.js$:.js' adblockfast/chrome/scripts/*.js
-java -jar yuicompressor-2.4.8.jar -o '.css$:.css' \
+java -jar yuicompressor-2.4.8.jar -o ".css$:.css" \
                                   adblockfast/chrome/stylesheets/*.css
-cd adblockfast
-zip -r ../adblockfast chrome -x \*.DS_Store
+java -jar yuicompressor-2.4.8.jar -o ".js$:.js" adblockfast/chrome/scripts/*.js
+cd adblockfast/chrome/premium
+emcc -O3 \
+     -s WASM=1 \
+     -s SIDE_MODULE=1 \
+     -s EXPORTED_FUNCTIONS="[\"_rule\", \"_rule_length\"]" \
+     -o youtube.wasm \
+     youtube.c
+rm -f youtube.c
+cd ../..
+zip -r ../adblockfast chrome -x *.DS_Store
 rm -f chrome/manifest.json

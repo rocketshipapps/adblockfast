@@ -125,6 +125,37 @@ function setExperimentUp() {
   }
 }
 
+function block(tabId, parentHost, type) {
+  var blockingResponse = {cancel: false};
+
+  if ((deserialize(localStorage.whitelist) || {})[parentHost])
+      BROWSER_ACTION.setIcon({
+        tabId: tabId,
+        path: {
+          '19': PATH + 'images/unblocked-ads/19.png',
+          '38': PATH + 'images/unblocked-ads/38.png'
+        }
+      });
+  else {
+    BROWSER_ACTION.setIcon({
+      tabId: tabId,
+      path: {
+        '19': PATH + 'images/blocked-ads/19.png',
+        '38': PATH + 'images/blocked-ads/38.png'
+      }
+    });
+    blockingResponse = {
+      redirectUrl:
+          type == 'image' ?
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=='
+                : 'about:blank'
+    };
+  }
+
+  WERE_ADS_FOUND[tabId] = true;
+  return blockingResponse;
+}
+
 function whitelist(tab) {
   const WHITELIST = deserialize(localStorage.whitelist) || {};
   const HOST = getHost(tab.url);
@@ -141,7 +172,7 @@ function whitelist(tab) {
   }
 }
 
-const BUILD = 6;
+const BUILD = 7;
 const PREVIOUS_BUILD = localStorage.build;
 const RUNTIME = chrome.runtime;
 const TABS = chrome.tabs;
@@ -152,6 +183,7 @@ const IS_IN_OPERA = navigator.userAgent.indexOf('OPR') + 1;
 const BROWSER = IS_IN_OPERA ? 'opera' : 'chrome';
 const PATH = IS_IN_OPERA ? 'chrome/' : '';
 const IS_UPDATING_TO_CURRENT = !PREVIOUS_BUILD || PREVIOUS_BUILD < BUILD;
+var youtubeRule = '';
 var authentication;
 var database;
 var user;
@@ -252,45 +284,60 @@ TABS.query({}, function(tabs) {
   }
 });
 
+(async () => {
+  const MEMORY = new WebAssembly.Memory({initial: 256, maximum: 256});
+  const ARRAY_BUFFER = MEMORY.buffer;
+  const YOUTUBE =
+      await WebAssembly.instantiate(
+        await (
+          await fetch(RUNTIME.getURL('premium/youtube.wasm'))
+        ).arrayBuffer(),
+        {
+          env: {
+            memory: MEMORY,
+            memoryBase: 0,
+            STACKTOP: 0,
+            STACK_MAX: ARRAY_BUFFER.byteLength,
+            abort: () => { throw new Error('Stack overflow'); },
+            table:
+                new WebAssembly.Table({
+                  element: 'anyfunc', initial: 256, maximum: 256
+                }),
+            tableBase: 0
+          }
+        }
+      );
+  const EXPORTS = YOUTUBE.instance.exports;
+  const YOUTUBE_RULE_INDEX = EXPORTS._rule();
+  const YOUTUBE_RULE_UPPER_BOUND = YOUTUBE_RULE_INDEX + EXPORTS._rule_length();
+  const BUFFER = new Uint8Array(ARRAY_BUFFER);
+  for (let i = YOUTUBE_RULE_INDEX; i < YOUTUBE_RULE_UPPER_BOUND; i++)
+      youtubeRule += String.fromCharCode(BUFFER[i]);
+})();
+
 chrome.webRequest.onBeforeRequest.addListener(function(details) {
   const TAB_ID = details.tabId;
   const TYPE = details.type;
   const IS_PARENT = TYPE == 'main_frame';
-  const CHILD_HOST = getHost(details.url);
+  const URL = details.url;
+  const CHILD_HOST = getHost(URL);
   if (IS_PARENT) HOSTS[TAB_ID] = CHILD_HOST;
   const PARENT_HOST = HOSTS[TAB_ID];
   var blockingResponse = {cancel: false};
 
-  if (TAB_ID + 1 && !IS_PARENT && PARENT_HOST && CHILD_HOST != PARENT_HOST)
-      for (var i = DOMAINS_LENGTH - 1; i + 1; i--)
-          if (DOMAINS[i].test(CHILD_HOST)) {
-            if ((deserialize(localStorage.whitelist) || {})[PARENT_HOST])
-                BROWSER_ACTION.setIcon({
-                  tabId: TAB_ID,
-                  path: {
-                    '19': PATH + 'images/unblocked-ads/19.png',
-                    '38': PATH + 'images/unblocked-ads/38.png'
-                  }
-                });
-            else {
-              blockingResponse = {
-                redirectUrl:
-                    TYPE == 'image' ?
-                      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=='
-                          : 'about:blank'
-              };
-              BROWSER_ACTION.setIcon({
-                tabId: TAB_ID,
-                path: {
-                  '19': PATH + 'images/blocked-ads/19.png',
-                  '38': PATH + 'images/blocked-ads/38.png'
-                }
-              });
+  if (TAB_ID + 1 && !IS_PARENT && PARENT_HOST) {
+    if (CHILD_HOST != PARENT_HOST)
+        for (var i = DOMAINS_LENGTH - 1; i + 1; i--)
+            if (DOMAINS[i].test(CHILD_HOST)) {
+              blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
+              break;
             }
 
-            WERE_ADS_FOUND[TAB_ID] = true;
-            break;
-          }
+    if (
+      deserialize(localStorage.wasGrantButtonPressed) &&
+          PARENT_HOST == 'www.youtube.com' && new RegExp(youtubeRule).test(URL)
+    ) blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
+  }
 
   return blockingResponse;
 }, {urls: ['http://*/*', 'https://*/*']}, ['blocking']);
