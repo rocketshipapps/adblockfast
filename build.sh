@@ -16,6 +16,12 @@
 # Authors (one per line):
 #
 #   Brian Kennish <brian@rocketshipapps.com>
+emcc -O3 \
+     -s WASM=1 \
+     -s SIDE_MODULE=1 \
+     -s EXPORTED_FUNCTIONS="[\"_rule\", \"_rule_length\"]" \
+     -o opera/chrome/premium/youtube.wasm \
+     opera/chrome/premium/youtube.c
 cd builds
 rm -fR adblockfast
 cp -R ../opera adblockfast
@@ -26,14 +32,7 @@ java -jar htmlcompressor-1.5.3.jar --remove-intertag-spaces \
 java -jar yuicompressor-2.4.8.jar -o ".css$:.css" \
                                   adblockfast/chrome/stylesheets/*.css
 java -jar yuicompressor-2.4.8.jar -o ".js$:.js" adblockfast/chrome/scripts/*.js
-cd adblockfast/chrome/premium
-emcc -O3 \
-     -s WASM=1 \
-     -s SIDE_MODULE=1 \
-     -s EXPORTED_FUNCTIONS="[\"_rule\", \"_rule_length\"]" \
-     -o youtube.wasm \
-     youtube.c
-rm -f youtube.c
-cd ../..
+cd adblockfast
+rm -f chrome/premium/youtube.c
 zip -r ../adblockfast chrome -x *.DS_Store
 rm -f chrome/manifest.json
