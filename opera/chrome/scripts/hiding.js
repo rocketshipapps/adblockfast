@@ -395,7 +395,7 @@ const SELECTORS = {
   'www.babycenter.com':
       '#fromOurSponsorsHome, .mediumRectangleAdContainer, .leaderFooterAdContainer, .skyscraperAdContainer, .leaderAdContainer',
   'www.cnbc.com':
-      '#ms_aur, #vidRightRailWrapper, div[style="width:960;height:90;margin:0 0 5px 0;"]',
+      '#ms_aur, #vidRightRailWrapper, div[style="width:960;height:90;margin:0 0 5px 0;"], #social-tools-panel',
   'www.tomshardware.com':
         '#pgad_Top, .basicCentral-elm.partner, .shopping, .sideOffers, .zonepub',
   'www.coupons.com':
