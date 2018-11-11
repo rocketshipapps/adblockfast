@@ -251,8 +251,7 @@ started.
 
 4. Open or switch to the Opera browser.
 5. Go to **View** > **Show Extensions**.
-6. Press the **Developer Mode** button then the **Load Unpacked Extension…**
-   button.
+6. Press the **Developer Mode** then **Load Unpacked Extension…** buttons.
 7. Under your working directory, select the `opera` directory.
 8. To test after you make a change, under the extension listing, press the
    **Reload** button.
@@ -271,7 +270,7 @@ started.
 5. Go to **Window** > **Extensions**.
 6. Toggle the **Developer mode** switch on then press the **Load unpacked**
    button.
-7. Under your working directory and the `opera` directory, select the `chrome`
+7. Under your working and the `opera` directories, select the `chrome`
    directory.
 8. To test after you make a change, under the extension listing, press the
    reload button.
