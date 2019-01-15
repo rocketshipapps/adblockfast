@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2015–2018 Rocketship <http://rocketshipapps.com/>
+# Copyright 2015–2019 Rocketship <https://rocketshipapps.com/>
 #
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -23,7 +23,7 @@ emcc -O3 \
      -o opera/chrome/premium/youtube.wasm \
      opera/chrome/premium/youtube.c
 cd builds
-rm -fR adblockfast
+rm -Rf adblockfast
 cp -R ../opera adblockfast
 java -jar htmlcompressor-1.5.3.jar --remove-intertag-spaces \
                                    --remove-quotes \
