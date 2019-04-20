@@ -1,4 +1,6 @@
-# ![Adblock Fast](assets/promo/adblockfast.png)
+# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet.svg)](https://twitter.com/intent/tweet?text=Get%20a%20new,%20faster%20ad%20blocker%20for%20Android,%20iOS,%20Opera,%20or%20Chrome:&url=https://adblockfast.com/&via=adblockfast)
+
+[![Website](https://img.shields.io/uptimerobot/ratio/m782428162-02bf166026a72243440ef044.svg)](https://adblockfast.com/) [![iOS](https://img.shields.io/itunes/v/1032930802.svg)](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) [![Chrome](https://img.shields.io/chrome-web-store/v/nneejgmhfoecfeoffakdnolopppbbkfi.svg)](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 
 *A new, faster ad blocker for Android, iOS, Opera, and Chrome*
 
