@@ -308,6 +308,7 @@ const SELECTORS = {
   'mashable.com':
       '.ad, .header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
   // Et al.
+  'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'mail.ru':
       '.w-banner, .text-banner',
   'sport.mail.ru':
