@@ -342,7 +342,7 @@ const SELECTORS = {
   'www.phonearena.com':
       'ins, #top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]',
   'www.nytimes.com':
-      '.ad, .text-ad, .g-ad',
+      '.ad, .text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa',
   'www.amazon.de':
       '.displayAd, #ADPlaceholder, div[data-campaign], .bannerImage',
   'diply.com':
