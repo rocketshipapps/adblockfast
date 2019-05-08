@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rocketshipapps.adblockfast">
+    package="com.rocketshipapps.adblockfast"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="com.samsung.android.sbrowser.permission.CONTENTBLOCKER" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +12,7 @@
     <permission android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE" />
 
-    <application
+    <application tools:replace="android:label"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/name"

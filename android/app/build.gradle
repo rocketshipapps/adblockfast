@@ -38,7 +38,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:25.3.1'
     implementation 'com.dtx12:actions:0.1.4'
@@ -46,4 +46,5 @@ dependencies {
     implementation 'com.google.android.gms:play-services-analytics:10.2.4'
     implementation 'com.google.android.gms:play-services-gcm:10.2.4'
     implementation 'com.github.kittinunf.fuel:fuel-android:1.6.0'
+    implementation project(':NodleSDK-release-10')
 }

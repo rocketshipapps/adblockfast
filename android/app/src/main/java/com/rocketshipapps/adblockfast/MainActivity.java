@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -26,8 +28,10 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.rocketshipapps.adblockfast.service.RegistrationIntentService;
 import com.rocketshipapps.adblockfast.utils.Rule;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import io.nodle.nodlesdk.Nodle;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -90,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         samsungBrowserIntent = new Intent();
         samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
 
+        requestPermissions();
+        Nodle nodle = new Nodle(this, "0513436b-7876-4d8a-ad7a-74ffa793a39f");
     }
 
     @Override
@@ -369,4 +375,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //endregion
+
+    // request permission for nodle
+
+    private void requestPermissions() {
+        ArrayList<String> reqPermissionList = new ArrayList<String>() {{
+            add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+            add(android.Manifest.permission.ACCESS_FINE_LOCATION);
+            add(android.Manifest.permission.BLUETOOTH);
+            add(android.Manifest.permission.BLUETOOTH_ADMIN);
+        }};
+
+        if (reqPermissionList.size() > 0) {
+            ActivityCompat.requestPermissions(this, reqPermissionList.toArray(new String[reqPermissionList.size()]), 0);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }
