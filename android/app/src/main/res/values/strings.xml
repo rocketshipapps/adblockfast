@@ -1,11 +1,11 @@
 <resources>
     <string name="google_app_id">18676242394</string>
-    <string name="name">Adblock Fast</string>
-    <string name="status">Status: </string>
-    <string name="blocked_message">Blocking ads</string>
-    <string name="unblocked_message">Not blocking ads</string>
-    <string name="blocked_hint">Tap to unblock</string>
-    <string name="unblocked_hint">Tap to block</string>
+    <string name="name">ADBLOCK FAST</string>
+    <string name="status">STATUS: </string>
+    <string name="blocked_message">BLOCKING ADS</string>
+    <string name="unblocked_message">NOT BLOCKING ADS</string>
+    <string name="blocked_hint">TAP ICON TO UNBLOCK</string>
+    <string name="unblocked_hint">TAP ICON TO BLOCK</string>
     <string name="help">Help</string>
     <string name="about">About</string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
@@ -15,5 +15,12 @@
     <string name="contact"><![CDATA[If you have any questions or comments, follow and message <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a href="https://twitter.com/adblockfast">on Twitter</a>.]]></string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
     <string name="copyright"><![CDATA[© <a href="https://rocketshipapps.com/">Rocketship</a> · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a href="https://twitter.com/rocketship">Twitter</a>]]></string>
-    <string name="dismiss">Close</string>
+    <string name="dismiss">CLOSE</string>
+    <string name="upgrade_to">UPGRADE TO PREMIUM FOR FREE</string>
+    <string name="downgrade_to">DOWNGRADE TO REGULAR</string>
+    <string name="upgrade">UPGRADE</string>
+    <string name="back">BACK</string>
+    <string name="premium_instruction_1"><![CDATA[Access <b>PREMIUM FEATURES</b> by<br/><b>CLICKING UPGRADE</b> below.]]></string>
+    <string name="premium_instruction_2"><![CDATA[With <b>ADBLOCK FAST PREMIUM</b> you will get <font color="#475993"><b>Facebook ad blocking</b></font> as well as <font color="#f61c0d"><b>Youtube ad blocking</b></font> in exchange for a small amount of your unused computing resources. For more info, please see our <a href="https://adblockfast.com/#faq">FAQ</a>]]></string>
+    <string name="description">BLOCK ADS ON SAMSUNG INTERNET</string>
 </resources>

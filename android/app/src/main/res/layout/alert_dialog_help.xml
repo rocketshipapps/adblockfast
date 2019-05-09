@@ -8,53 +8,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_overlay"
-        android:padding="@dimen/activity_horizontal_margin"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:clipChildren="true">
 
-        <TextView
-            android:id="@+id/summary"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:text="@null"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            fontPath="fonts/AvenirNext-Medium.otf" />
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <TextView
+                android:id="@+id/summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:text="@null"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                fontPath="fonts/AvenirNext-Medium.otf" />
 
-        <TextView
-            android:id="@+id/details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:text="@null"
-            android:textColor="@android:color/white"
-            android:textColorLink="#de0421"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:text="@null"
+                android:textColor="#000"
+                android:textColorLink="#de0421"
+                fontPath="fonts/AvenirNextLTPro-Light.otf" />
 
-        <TextView
-            android:id="@+id/contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:text="@null"
-            android:textColor="@android:color/white"
-            android:textColorLink="#de0421"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:text="@null"
+                android:textColor="#000"
+                android:textColorLink="#de0421"
+                fontPath="fonts/AvenirNextLTPro-Light.otf" />
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clipChildren="true">
+
             <Button
+                fontPath="fonts/HudsonNY.otf"
                 android:id="@+id/btn_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_button"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_button"
                 android:text="@string/dismiss"
-                android:layout_centerInParent="true"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

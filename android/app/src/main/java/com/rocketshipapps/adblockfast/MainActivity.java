@@ -18,6 +18,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnAdblock;
     TextView txtStatus;
     TextView txtTap;
+    Button btnMembership;
+    TextView txtDescription;
+    TextView txtPremium;
 
     String packageName;
     String version;
@@ -52,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
     boolean hasBlockingBrowser = false;
     Intent samsungBrowserIntent;
+
+    boolean isPremium = false;
+    Nodle nodle = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         btnAdblock = (ImageButton) findViewById(R.id.btn_adblock);
         txtStatus = (TextView) findViewById(R.id.txt_status);
         txtTap = (TextView) findViewById(R.id.txt_tap);
+        btnMembership = (Button) findViewById(R.id.btn_membership);
+        txtDescription = (TextView) findViewById(R.id.txt_description);
+        txtPremium = (TextView) findViewById(R.id.txt_premium);
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
@@ -94,8 +104,10 @@ public class MainActivity extends AppCompatActivity {
         samsungBrowserIntent = new Intent();
         samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
 
-        requestPermissions();
-        Nodle nodle = new Nodle(this, "0513436b-7876-4d8a-ad7a-74ffa793a39f");
+        isPremium = preferences.getBoolean("is_premium", false);
+
+        updateHeaderText();
+        updateMembershipButtonText();
     }
 
     @Override
@@ -183,6 +195,35 @@ public class MainActivity extends AppCompatActivity {
 
     public void onHelpPressed(View v) {
         showHelpDialog(true);
+    }
+
+    public void onMembershipPressed(View v) {
+        if (!isPremium) {
+            Intent intent = new Intent(this, PremiumUpgradeActivity.class);
+            startActivityForResult(intent, 0);
+        } else {
+            isPremium = false;
+            nodle = null;
+
+            preferences.edit().putBoolean("is_premium", isPremium).apply();
+            updateHeaderText();
+            updateMembershipButtonText();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 0 && resultCode == 1) {
+            requestPermissions();
+            nodle = new Nodle(this, "0513436b-7876-4d8a-ad7a-74ffa793a39f");
+
+            isPremium = true;
+            preferences.edit().putBoolean("is_premium", isPremium).apply();
+            updateHeaderText();
+            updateMembershipButtonText();
+        }
     }
 
     //endregion
@@ -394,5 +435,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    //
+    private void updateMembershipButtonText() {
+        if (isPremium) {
+            btnMembership.setText(R.string.downgrade_to);
+        } else {
+            btnMembership.setText(R.string.upgrade_to);
+        }
+    }
+
+    private void updateHeaderText() {
+        if (isPremium) {
+            txtPremium.setVisibility(View.VISIBLE);
+            txtDescription.setVisibility(View.INVISIBLE);
+        } else {
+            txtPremium.setVisibility(View.INVISIBLE);
+            txtDescription.setVisibility(View.VISIBLE);
+        }
     }
 }

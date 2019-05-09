@@ -10,6 +10,11 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="Button" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="BounceAnim">
         <item name="android:windowEnterAnimation">@anim/bounce_in</item>
         <item name="android:windowExitAnimation">@anim/bounce_out</item>

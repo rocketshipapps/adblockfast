@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rocketshipapps.adblockfast"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.rocketshipapps.adblockfast">
 
     <uses-permission android:name="com.samsung.android.sbrowser.permission.CONTENTBLOCKER" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,16 +9,26 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
-    <permission android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <!--Permissions for nodle-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <permission
+        android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE" />
 
-    <application tools:replace="android:label"
+    <application
+        android:name=".AdblockfastApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".AdblockfastApplication">
+        tools:replace="android:label">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,10 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <provider
-            android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:name=".contentBlocker.contentProvider.FilterContentProvider"
+            android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:exported="true" />
 
         <meta-data
@@ -39,19 +49,26 @@
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.example.gcm" />
             </intent-filter>
         </receiver>
         <receiver android:name=".service.UpdateReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />
-                <data android:scheme="package" android:path="com.sec.android.app.sbrowser" />
+
+                <data
+                    android:path="com.rocketshipapps.adblockfast"
+                    android:scheme="package" />
+                <data
+                    android:path="com.sec.android.app.sbrowser"
+                    android:scheme="package" />
             </intent-filter>
         </receiver>
+
         <service
             android:name=".service.NotificationService"
             android:exported="false">
@@ -67,6 +84,8 @@
             </intent-filter>
         </service>
         <service android:name=".service.RegistrationIntentService" />
+
+        <activity android:name=".PremiumUpgradeActivity" />
     </application>
 
 </manifest>
