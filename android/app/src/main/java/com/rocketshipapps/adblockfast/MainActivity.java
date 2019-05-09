@@ -384,6 +384,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animator(final int[] res, final int resTxtStatus, final int resTxtTap) {
+        txtStatus.setText(resTxtStatus);
+        txtTap.setText(resTxtTap);
+
         animating = true;
 
         double delay = 62.5;
@@ -404,8 +407,6 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (finalI == res.length-1) {
                                     animating = false;
-                                    txtStatus.setText(resTxtStatus);
-                                    txtTap.setText(resTxtTap);
                                 }
                             }
                         });
