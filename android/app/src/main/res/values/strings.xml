@@ -21,6 +21,6 @@
     <string name="upgrade">UPGRADE</string>
     <string name="back">BACK</string>
     <string name="premium_instruction_1"><![CDATA[Access <b>PREMIUM FEATURES</b> by<br/><b>CLICKING UPGRADE</b> below.]]></string>
-    <string name="premium_instruction_2"><![CDATA[With <b>ADBLOCK FAST PREMIUM</b> you will get <font color="#475993"><b>Facebook ad blocking</b></font> as well as <font color="#f61c0d"><b>Youtube ad blocking</b></font> in exchange for a small amount of your unused computing resources. For more info, please see our <a href="https://adblockfast.com/#faq">FAQ</a>]]></string>
+    <string name="premium_instruction_2"><![CDATA[With <b>ADBLOCK FAST PREMIUM</b> you will get <font color="#475993"><b>Facebook ad blocking</b></font> as well as <font color="#f61c0d"><b>Youtube ad blocking</b></font> in exchange for a small amount of your unused smartphone resources. For more info, please see our <a href="https://adblockfast.com/#faq">FAQ</a>]]></string>
     <string name="description">BLOCK ADS ON SAMSUNG INTERNET</string>
 </resources>
