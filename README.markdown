@@ -1,8 +1,8 @@
-# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet.svg)](https://twitter.com/intent/tweet?text=Get%20a%20new,%20faster%20ad%20blocker%20for%20Android,%20iOS,%20Opera,%20or%20Chrome:&url=https://adblockfast.com/&via=adblockfast)
+# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet.svg)](https://twitter.com/intent/tweet?text=Get%20a%20new,%20faster%20ad%20blocker%20for%20Android,%20iOS,%20Chrome,%20or%20Opera:&url=https://adblockfast.com/&via=adblockfast)
 
 [![Website](https://img.shields.io/uptimerobot/ratio/m782428162-02bf166026a72243440ef044.svg)](https://adblockfast.com/) [![iOS](https://img.shields.io/itunes/v/1032930802.svg)](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) [![Chrome](https://img.shields.io/chrome-web-store/v/nneejgmhfoecfeoffakdnolopppbbkfi.svg)](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 
-*A new, faster ad blocker for Android, iOS, Opera, and Chrome*
+*A new, faster ad blocker for Android, iOS, Chrome, and Opera*
 
 Try Adblock Fast:
 
@@ -10,8 +10,8 @@ Try Adblock Fast:
   (Android 5.0 and up with Samsung Internet 4.0 and up)
 * [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) (iOS
   9 and up on 64-bit devices, iPhone 5s and up and iPad mini 2 and up)
-* [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
 * [Chrome](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
+* [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated
 with little-used filtering rules and features that sap their speed and hog your
@@ -40,7 +40,7 @@ I.e., the app runs faster.
 
 I.e., the app installs faster.
 
-### 3. Adblock Fast accelerates page loading by 8x more seconds.[<sup>3</sup>](#benchmark-notes)
+### 3. Adblock Fast accelerates page loading by 8x as many seconds.[<sup>3</sup>](#benchmark-notes)
 
 * No ad blocker: 3.17s (control)
 * AdBlock: 2.84s (0.33s faster)
@@ -78,7 +78,7 @@ I.e., your computer or device runs faster still.
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
    [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
-   over 3 trials, (4) recording the elapsed time shown by the
+   3 times, (4) recording the elapsed time shown by the
    [browser’s developer tools](https://developers.google.com/web/tools/chrome-devtools/)
    when the `load` event fired, and (5) calculating the mean time for each
    extension.
@@ -86,14 +86,14 @@ I.e., your computer or device runs faster still.
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
    [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
-   over 3 trials, (4) recording the peak **CPU** percentage shown by the
+   3 times, (4) recording the peak **CPU** percentage shown by the
    [browser’s task manager](https://developers.google.com/web/tools/chrome-devtools/memory-problems/),
    and (5) calculating the mean percentage for each extension.
 5. Memory use was measured in the Chrome browser on September 1st, 2015 by (1)
    enabling each extension, (2) clearing the browser’s cache before each trial,
    (3) loading the homepage of each of
    [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
-   over 3 trials, (4) recording the peak **Memory** size shown by the
+   3 times, (4) recording the peak **Memory** size shown by the
    [browser’s task manager](https://developers.google.com/web/tools/chrome-devtools/memory-problems/),
    and (5) calculating the mean size for each extension.
 
@@ -134,7 +134,7 @@ To see the effect of Adblock Fast on a particular page, you may have to clear
 Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
 Data**) before reloading the page.
 
-### In Opera or Chrome
+### In Chrome or Opera
 
 Adblock Fast installs a button in your browser’s toolbar. The button indicates
 the status of the site and page you’re on:
@@ -184,7 +184,7 @@ Adblock Fast’s ruleset is derived from
 
 Adblock Fast is available for Android 5.0 and up with Samsung Internet 4.0 and
 up, for iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and
-up), and for the Opera and Chrome desktop browsers. Follow
+up), and for the Chrome and Opera desktop browsers. Follow
 [us on Facebook](https://www.facebook.com/adblockfast) or
 [on Twitter](https://twitter.com/adblockfast) for news about additional platform
 availability.
@@ -243,23 +243,6 @@ started.
 9. Push your changes.
 10. Send us pull requests<em>!</em>
 
-### For Opera
-
-1. Fork this repository.
-2. Navigate to your working directory of choice.
-3. Clone the repo:
-
-        git clone https://github.com/rocketshipapps/adblockfast.git
-
-4. Go to the Opera browser.
-5. Go to **View** > **Show Extensions**.
-6. Press the **Developer Mode** then **Load Unpacked Extension…** buttons.
-7. Under your working directory, select the `opera` directory.
-8. To test after you make a change, under the extension listing, press the
-   **Reload** button.
-9. Push your changes.
-10. Send us pull requests<em>!</em>
-
 ### For Chrome
 
 1. Fork this repository.
@@ -276,6 +259,23 @@ started.
    directory.
 8. To test after you make a change, under the extension listing, press the
    reload button.
+9. Push your changes.
+10. Send us pull requests<em>!</em>
+
+### For Opera
+
+1. Fork this repository.
+2. Navigate to your working directory of choice.
+3. Clone the repo:
+
+        git clone https://github.com/rocketshipapps/adblockfast.git
+
+4. Go to the Opera browser.
+5. Go to **View** > **Show Extensions**.
+6. Press the **Developer Mode** then **Load Unpacked Extension…** buttons.
+7. Under your working directory, select the `opera` directory.
+8. To test after you make a change, under the extension listing, press the
+   **Reload** button.
 9. Push your changes.
 10. Send us pull requests<em>!</em>
 
