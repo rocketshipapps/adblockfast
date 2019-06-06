@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2018 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2019 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -11,7 +11,7 @@
   FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License along with
-  this program. If not, see <http://www.gnu.org/licenses/>.
+  this program. If not, see https://www.gnu.org/licenses/.
 
   Authors (one per line):
 
@@ -327,7 +327,7 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
 
   if (TAB_ID + 1 && !IS_PARENT && PARENT_HOST) {
     if (CHILD_HOST != PARENT_HOST)
-        for (var i = DOMAINS_LENGTH - 1; i + 1; i--)
+        for (var i = DOMAIN_COUNT - 1; i + 1; i--)
             if (DOMAINS[i].test(CHILD_HOST)) {
               blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
               break;
