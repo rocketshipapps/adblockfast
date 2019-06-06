@@ -1859,10 +1859,13 @@ wasabisyrup.com##.top-group
 wasabisyrup.com##.article-gallery > .article-gallery-group > .content-group
 redtube.com###content_container > div[class]:not(.show_page_modals):not([id]):not([style])
 youtube.com##ytm-promoted-video-renderer
+iphone.facebook.com,m.facebook.com,touch.facebook.com###m_newsfeed_stream article[data-ft*='"ei\":']
 m.voyeurhit.com##.container > .section--normal[style*="margin-top: -15px"]
 avcanada.ca##.postbody > div[id^="post_content"] > .content ~ center
 xbabe.com###fltd
 vikiporn.com##.under_player_adv
+iphone.facebook.com,x.facebook.com,mobile.facebook.com##article[data-store*="is_sponsored.1"]
+x.facebook.com,mobile.facebook.com##.storyStream > .fullwidth.carded
 m.allboxing.ru##.arcticmodal-container
 m.delmagyar.hu##.closable-ad
 m.delmagyar.hu###block___frappe_mobil
@@ -2485,6 +2488,7 @@ pornhd.com##ul.thumbs.inside-row > li:not([data-thumbindexes])
 ||xxhrd.com/ns.php?p=
 ||ymcdn.ymtrack6.co/ads_file/
 ||ymcdn.ymtrack6.co/offer_single_files/
+||youtube.com/_get_ads?
 gismeteo.by,gismeteo.ru##.media_height_m
 gismeteo.by##.media_height_l
 gismeteo.ru,gismeteo.kz,gismeteo.md,gismeteo.lt,gismeteo.lv,gismeteo.pl###media-m_top
@@ -2512,6 +2516,44 @@ m.news.yandex.by,m.news.yandex.com,m.news.yandex.fr,m.news.yandex.kz,m.news.yand
 !
 ! -----------------------Whitelists to fix broken sites------------------------!
 !
+@@||m.beautypageants.in^$elemhide
+@@||js.kanald.com.tr/assets/dist/js/custom/ads.js
+@@||pagead2.googlesyndication.com/pagead/show_ads.js$domain=thebrickfan.com
+@@||m.postimees.ee/static/libraries/fuckadblock.js
+@@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=mobile.donanimhaber.com
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=dthforum.com
+@@/popunder*.js$domain=kissanime.ru
+@@/adlabs.js$domain=kissanime.ru
+@@||smedia2.intoday.in/aajtak_pwapp$script
+||m.eisamay.com/detector.cms
+||samayam.com/detector.cms
+@@||m.beautypageants.in^$generichide
+@@||static.expressbpd.com/rsjs/ads.js
+@@||ads.dainikbhaskar.com/AdTech/ads/ads.js
+@@||javadecompilers.com^$generichide
+delfi.ee#@#.adbanner
+food.ndtv.com,m.ndtv.com#@#.ad300
+@@||m.timesofindia.com/ad-*.cms
+@@||m.timesofindia.com/*ads*.cms
+@@||b.scorecardresearch.com/beacon.js$domain=m.timesofindia.com
+@@||google-analytics.com/analytics.js$domain=m.timesofindia.com
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=m.timesofindia.com
+@@||m.timesofindia.com/ads_js.cms
+@@||static.chartbeat.com/js/chartbeat.js$domain=m.timesofindia.com
+@@||static.clmbtech.com^$domain=timesofindia.com,script
+@@||tags.crwdcntrl.net/*.js?ns=^$domain=m.timesofindia.com
+@@||tags.crwdcntrl.net/c/*/cc.js?ns=$domain=m.timesofindia.com
+@@||mobi.oui9.com/advertisement.js
+pcmag.com##body > div[style^="position:fixed;top:47%;width:100%;height:auto;z-index:9999;"]
+moroccoworldnews.com#@#.header-ad
+moroccoworldnews.com#@#.custom-ad
+gizchina.com#@#.header-ad
+gizmobolt.com#@#.custom-ad
+gizmobolt.com#@#.header-ad
+blogdoiphone.com#@#.header-ad
+blogdoiphone.com#@#.custom-ad
+westseattleblog.com#@#.custom-ad
+westseattleblog.com#@#.header-ad
 @@||xda-cdn.com
 @@||tf-robots.nl^$elemhide
 m.veporns.com#@#.advertisment
