@@ -19,8 +19,8 @@
 ! This file uses portions of EasyList <https://easylist.to/>, which is
 ! subject to the same terms, and of AdGuard’s filters
 ! <https://kb.adguard.com/en/general/adguard-ad-filters>, which are subject to
-! the, one-way compatible, terms of the Creative Commons Attribution-ShareAlike
-! 3.0 Unported License. To view a copy of the CC BY-SA 3.0 license, visit
+! the compatible terms of the Creative Commons Attribution-ShareAlike 3.0
+! Unported License. To view a copy of the CC BY-SA 3.0 license, visit
 ! https://creativecommons.org/licenses/by-sa/3.0/.
 !
 ! Authors (one per line):
@@ -2485,6 +2485,7 @@ pornhd.com##ul.thumbs.inside-row > li:not([data-thumbindexes])
 ||xxhrd.com/ns.php?p=
 ||ymcdn.ymtrack6.co/ads_file/
 ||ymcdn.ymtrack6.co/offer_single_files/
+||youtube.com/_get_ads?
 gismeteo.by,gismeteo.ru##.media_height_m
 gismeteo.by##.media_height_l
 gismeteo.ru,gismeteo.kz,gismeteo.md,gismeteo.lt,gismeteo.lv,gismeteo.pl###media-m_top

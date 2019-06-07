@@ -19,8 +19,8 @@
 ! This file uses portions of EasyList <https://easylist.to/>, which is
 ! subject to the same terms, and of AdGuard’s filters
 ! <https://kb.adguard.com/en/general/adguard-ad-filters>, which are subject to
-! the, one-way compatible, terms of the Creative Commons Attribution-ShareAlike
-! 3.0 Unported License. To view a copy of the CC BY-SA 3.0 license, visit
+! the compatible terms of the Creative Commons Attribution-ShareAlike 3.0
+! Unported License. To view a copy of the CC BY-SA 3.0 license, visit
 ! https://creativecommons.org/licenses/by-sa/3.0/.
 !
 ! Authors (one per line):
@@ -1104,6 +1104,7 @@
 ||dfs.digitalaccess.ru/mp4-hi/*digitalaccess.ru/contents/*.mp4$domain=ivi.ru
 @@||sp.ad.adlantis.jp/sp/load_app_ads?
 ||gameloft.com/*/index.ppp?ad=
+/get_midroll_info|get_video_info|get_video_metadata/$domain=m.youtube.com
 ||mangaapi.manhuaren.com/*/public/getRecommendedGame^
 !
 ! -----------------Third-party tracking domains-----------------!
