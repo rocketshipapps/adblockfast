@@ -128,16 +128,18 @@ function setExperimentUp() {
 function block(tabId, parentHost, type) {
   var blockingResponse = {cancel: false};
 
-  if ((deserialize(localStorage.whitelist) || {})[parentHost])
-      BROWSER_ACTION.setIcon({
-        tabId: tabId,
-        path: {
-          '19': PATH + 'images/unblocked-ads/19.png',
-          '38': PATH + 'images/unblocked-ads/38.png'
-        }
-      });
-  else {
-    BROWSER_ACTION.setIcon({
+  if ((deserialize(localStorage.whitelist) || {})[parentHost]) {
+    if (RUNTIME.lastError) console.log();
+    else BROWSER_ACTION.setIcon({
+      tabId: tabId,
+      path: {
+        '19': PATH + 'images/unblocked-ads/19.png',
+        '38': PATH + 'images/unblocked-ads/38.png'
+      }
+    });
+  } else {
+    if (RUNTIME.lastError) console.log();
+    else BROWSER_ACTION.setIcon({
       tabId: tabId,
       path: {
         '19': PATH + 'images/blocked-ads/19.png',
@@ -355,7 +357,8 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
             '38': PATH + 'images/unblocked/38.png'
           }
         }, function() {
-          RUNTIME.lastError || localStorage.tooltip ||
+          if (RUNTIME.lastError) console.log();
+          else localStorage.tooltip ||
               BROWSER_ACTION.setTitle({
                 tabId: TAB_ID, title: 'Block ads on this site'
               });
@@ -367,7 +370,8 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
         '38': PATH + 'images/blocked/38.png'
       }
     }, function() {
-      RUNTIME.lastError || localStorage.tooltip ||
+      if (RUNTIME.lastError) console.log();
+      else localStorage.tooltip ||
           BROWSER_ACTION.setTitle({
             tabId: TAB_ID, title: 'Unblock ads on this site'
           });
@@ -390,7 +394,8 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
             parentHost: PARENT_HOST, isWhitelisted: IS_WHITELISTED
           });
       else {
-        request.wereAdsFound &&
+        if (RUNTIME.lastError) console.log();
+        else request.wereAdsFound &&
             BROWSER_ACTION.setIcon({
               tabId: TAB.id,
               path: {
