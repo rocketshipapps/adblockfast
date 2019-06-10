@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2018 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2019 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -11,7 +11,7 @@
   FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License along with
-  this program. If not, see <http://www.gnu.org/licenses/>.
+  this program. If not, see https://www.gnu.org/licenses/.
 
   Authors (one per line):
 
@@ -51,7 +51,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
         var iframe = IFRAMES[i];
         var childHost = getHost(iframe.src);
         if (childHost != PARENT_HOST)
-            for (var j = DOMAINS_LENGTH - 1; j + 1; j--)
+            for (var j = DOMAIN_COUNT - 1; j + 1; j--)
                 if (DOMAINS[j].test(childHost)) {
                   if (!IS_WHITELISTED) {
                     var className = iframe.className;
@@ -71,7 +71,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
         var image = IMAGES[i];
         var childHost = getHost(image.src);
         if (childHost != PARENT_HOST)
-            for (var j = DOMAINS_LENGTH - 1; j + 1; j--)
+            for (var j = DOMAIN_COUNT - 1; j + 1; j--)
                 if (DOMAINS[j].test(childHost)) {
                   if (!IS_WHITELISTED) {
                     var className = image.className;
