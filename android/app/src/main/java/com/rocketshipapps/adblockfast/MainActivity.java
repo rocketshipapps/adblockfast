@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         samsungBrowserIntent = new Intent();
         samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
 
-        isPremium = preferences.getBoolean("is_premium", false);
+        isPremium = Rule.premium(this);
 
         updateHeaderText();
         updateMembershipButtonText();
@@ -162,10 +162,7 @@ public class MainActivity extends AppCompatActivity {
             enableAnimtaion();
         }
 
-        Intent intent = new Intent();
-        intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
-        intent.setData(Uri.parse("package:" + packageName));
-        sendBroadcast(intent);
+        notifyContentUpdate();
     }
 
     public void onAboutPressed(View v) {
@@ -205,9 +202,10 @@ public class MainActivity extends AppCompatActivity {
             isPremium = false;
             nodle = null;
 
-            preferences.edit().putBoolean("is_premium", isPremium).apply();
+            Rule.disablePremium(this);
             updateHeaderText();
             updateMembershipButtonText();
+            notifyContentUpdate();
         }
     }
 
@@ -220,9 +218,10 @@ public class MainActivity extends AppCompatActivity {
             nodle = new Nodle(this, "0513436b-7876-4d8a-ad7a-74ffa793a39f");
 
             isPremium = true;
-            preferences.edit().putBoolean("is_premium", isPremium).apply();
+            Rule.enablePremium(this);
             updateHeaderText();
             updateMembershipButtonText();
+            notifyContentUpdate();
         }
     }
 
@@ -455,5 +454,12 @@ public class MainActivity extends AppCompatActivity {
             txtPremium.setVisibility(View.INVISIBLE);
             txtDescription.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void notifyContentUpdate() {
+        Intent intent = new Intent();
+        intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
+        intent.setData(Uri.parse("package:" + packageName));
+        sendBroadcast(intent);
     }
 }

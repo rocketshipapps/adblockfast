@@ -11,18 +11,31 @@ import java.io.InputStream;
 
 public class Rule {
     public static String TAG = "rule_status";
+    public static String PREMIUM = "is_premium";
     public static String PREFERENCE = "adblockfast";
     private static final String OUTPUT = "rules.txt";
 
     public static File get(Context context) {
         boolean active = context.getSharedPreferences(PREFERENCE, 0).getBoolean(TAG, true);
 
+
         InputStream in = null;
         FileOutputStream out = null;
         File file = null;
 
         try {
-            int res = (active) ? R.raw.blocked: R.raw.unblocked;
+            int res = 0;
+
+            if (active) {
+                if (premium(context)) {
+                    res = R.raw.advanced;
+                } else {
+                    res = R.raw.blocked;
+                }
+            } else {
+                res = R.raw.unblocked;
+            }
+
             file = new File(context.getFilesDir(), OUTPUT);
 
             // Remove any old file lying around
@@ -66,5 +79,17 @@ public class Rule {
 
     public static void enable(Context context) {
         context.getSharedPreferences(PREFERENCE, 0).edit().putBoolean(TAG, true).apply();
+    }
+
+    public static boolean premium(Context context) {
+        return context.getSharedPreferences(PREFERENCE, 0).getBoolean(PREMIUM, false);
+    }
+
+    public static void enablePremium(Context context) {
+        context.getSharedPreferences(PREFERENCE, 0).edit().putBoolean(PREMIUM, true).apply();
+    }
+
+    public static void disablePremium(Context context) {
+        context.getSharedPreferences(PREFERENCE, 0).edit().putBoolean(PREMIUM, false).apply();
     }
 }
