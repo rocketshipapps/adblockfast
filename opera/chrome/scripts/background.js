@@ -128,24 +128,27 @@ function setExperimentUp() {
 function block(tabId, parentHost, type) {
   var blockingResponse = {cancel: false};
 
-  if ((deserialize(localStorage.whitelist) || {})[parentHost]) {
-    if (RUNTIME.lastError) console.log();
-    else BROWSER_ACTION.setIcon({
-      tabId: tabId,
-      path: {
-        '19': PATH + 'images/unblocked-ads/19.png',
-        '38': PATH + 'images/unblocked-ads/38.png'
-      }
+  if ((deserialize(localStorage.whitelist) || {})[parentHost])
+      TABS.get(tabId, () => {
+        RUNTIME.lastError || BROWSER_ACTION.setIcon({
+          tabId: tabId,
+          path: {
+            '19': PATH + 'images/unblocked-ads/19.png',
+            '38': PATH + 'images/unblocked-ads/38.png'
+          }
+        });
+      });
+  else {
+    TABS.get(tabId, () => {
+      RUNTIME.lastError || BROWSER_ACTION.setIcon({
+        tabId: tabId,
+        path: {
+          '19': PATH + 'images/blocked-ads/19.png',
+          '38': PATH + 'images/blocked-ads/38.png'
+        }
+      });
     });
-  } else {
-    if (RUNTIME.lastError) console.log();
-    else BROWSER_ACTION.setIcon({
-      tabId: tabId,
-      path: {
-        '19': PATH + 'images/blocked-ads/19.png',
-        '38': PATH + 'images/blocked-ads/38.png'
-      }
-    });
+
     blockingResponse = {
       redirectUrl:
           type == 'image' ?
@@ -349,32 +352,34 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
     const TAB_ID = details.tabId;
     delete WERE_ADS_FOUND[TAB_ID];
 
-    if ((deserialize(localStorage.whitelist) || {})[getHost(details.url)])
-        BROWSER_ACTION.setIcon({
+    TABS.get(TAB_ID, () => {
+      if (!RUNTIME.lastError) {
+        if ((deserialize(localStorage.whitelist) || {})[getHost(details.url)])
+            BROWSER_ACTION.setIcon({
+              tabId: TAB_ID,
+              path: {
+                '19': PATH + 'images/unblocked/19.png',
+                '38': PATH + 'images/unblocked/38.png'
+              }
+            }, () => {
+              localStorage.tooltip ||
+                  BROWSER_ACTION.setTitle({
+                    tabId: TAB_ID, title: 'Block ads on this site'
+                  });
+            });
+        else BROWSER_ACTION.setIcon({
           tabId: TAB_ID,
           path: {
-            '19': PATH + 'images/unblocked/19.png',
-            '38': PATH + 'images/unblocked/38.png'
+            '19': PATH + 'images/blocked/19.png',
+            '38': PATH + 'images/blocked/38.png'
           }
-        }, function() {
-          if (RUNTIME.lastError) console.log();
-          else localStorage.tooltip ||
+        }, () => {
+          localStorage.tooltip ||
               BROWSER_ACTION.setTitle({
-                tabId: TAB_ID, title: 'Block ads on this site'
+                tabId: TAB_ID, title: 'Unblock ads on this site'
               });
         });
-    else BROWSER_ACTION.setIcon({
-      tabId: TAB_ID,
-      path: {
-        '19': PATH + 'images/blocked/19.png',
-        '38': PATH + 'images/blocked/38.png'
       }
-    }, function() {
-      if (RUNTIME.lastError) console.log();
-      else localStorage.tooltip ||
-          BROWSER_ACTION.setTitle({
-            tabId: TAB_ID, title: 'Unblock ads on this site'
-          });
     });
   }
 });
@@ -394,19 +399,23 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
             parentHost: PARENT_HOST, isWhitelisted: IS_WHITELISTED
           });
       else {
-        if (RUNTIME.lastError) console.log();
-        else request.wereAdsFound &&
-            BROWSER_ACTION.setIcon({
-              tabId: TAB.id,
-              path: {
-                '19':
-                    PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
-                        'blocked-ads/19.png',
-                '38':
-                    PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
-                        'blocked-ads/38.png'
-              }
-            });
+        const TAB_ID = TAB.id;
+
+        TABS.get(TAB_ID, () => {
+          RUNTIME.lastError ||
+              request.wereAdsFound && BROWSER_ACTION.setIcon({
+                tabId: TAB_ID,
+                path: {
+                  '19':
+                      PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
+                          'blocked-ads/19.png',
+                  '38':
+                      PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') +
+                          'blocked-ads/38.png'
+                }
+              });
+        });
+
         sendResponse({});
       }
     } else sendResponse({});
