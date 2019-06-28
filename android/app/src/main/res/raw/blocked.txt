@@ -3079,7 +3079,6 @@ m.youtube.com##.watch-extra-info-right
 m.youtube.com##a[href^="http://www.youtube.com/cthru?"]
 m.youtube.com##a[href^="https://www.youtube.com/cthru?"]
 m.youtube.com##.ad-div div
-m.youtube.com###watch-channel-brand-div
 m.youtube.com###masthead-ad
 m.youtube.com##.ytd-player-legacy-desktop-watch-ads-renderer
 m.youtube.com##ytd-compact-promoted-video-renderer
@@ -3255,7 +3254,6 @@ www.wow.com##.ADS
 www.wow.com###topleader-wrap
 www.wow.com##.SLL
 www.wow.com##.medrect
-www.wow.com##.ADS
 www.vice.com##.native-block
 www.vice.com##.banner
 www.sbnation.com##.harmony-sponsorship
@@ -4133,7 +4131,6 @@ www.pornhub.com###views_left
 www.pornhub.com##.ad
 www.pornhub.com##.adContainer
 www.pornhub.com##.gay-ad-container
-www.pornhub.com##.home-ad-container
 www.pornhub.com##.join
 www.pornhub.com##.join_link
 www.pornhub.com##.top_hd_banner
@@ -4156,7 +4153,6 @@ de.pornhub.com###views_left
 de.pornhub.com##.ad
 de.pornhub.com##.adContainer
 de.pornhub.com##.gay-ad-container
-de.pornhub.com##.home-ad-container
 de.pornhub.com##.join
 de.pornhub.com##.join_link
 de.pornhub.com##.top_hd_banner
@@ -4179,7 +4175,6 @@ fr.pornhub.com###views_left
 fr.pornhub.com##.ad
 fr.pornhub.com##.adContainer
 fr.pornhub.com##.gay-ad-container
-fr.pornhub.com##.home-ad-container
 fr.pornhub.com##.join
 fr.pornhub.com##.join_link
 fr.pornhub.com##.top_hd_banner
@@ -4202,7 +4197,6 @@ it.pornhub.com###views_left
 it.pornhub.com##.ad
 it.pornhub.com##.adContainer
 it.pornhub.com##.gay-ad-container
-it.pornhub.com##.home-ad-container
 it.pornhub.com##.join
 it.pornhub.com##.join_link
 it.pornhub.com##.top_hd_banner
@@ -4225,7 +4219,6 @@ pt.pornhub.com###views_left
 pt.pornhub.com##.ad
 pt.pornhub.com##.adContainer
 pt.pornhub.com##.gay-ad-container
-pt.pornhub.com##.home-ad-container
 pt.pornhub.com##.join
 pt.pornhub.com##.join_link
 pt.pornhub.com##.top_hd_banner
@@ -4248,7 +4241,6 @@ pl.pornhub.com###views_left
 pl.pornhub.com##.ad
 pl.pornhub.com##.adContainer
 pl.pornhub.com##.gay-ad-container
-pl.pornhub.com##.home-ad-container
 pl.pornhub.com##.join
 pl.pornhub.com##.join_link
 pl.pornhub.com##.top_hd_banner
@@ -4271,7 +4263,6 @@ rt.pornhub.com###views_left
 rt.pornhub.com##.ad
 rt.pornhub.com##.adContainer
 rt.pornhub.com##.gay-ad-container
-rt.pornhub.com##.home-ad-container
 rt.pornhub.com##.join
 rt.pornhub.com##.join_link
 rt.pornhub.com##.top_hd_banner
@@ -4294,7 +4285,6 @@ jp.pornhub.com###views_left
 jp.pornhub.com##.ad
 jp.pornhub.com##.adContainer
 jp.pornhub.com##.gay-ad-container
-jp.pornhub.com##.home-ad-container
 jp.pornhub.com##.join
 jp.pornhub.com##.join_link
 jp.pornhub.com##.top_hd_banner
@@ -4317,7 +4307,6 @@ es.pornhub.com###views_left
 es.pornhub.com##.ad
 es.pornhub.com##.adContainer
 es.pornhub.com##.gay-ad-container
-es.pornhub.com##.home-ad-container
 es.pornhub.com##.join
 es.pornhub.com##.join_link
 es.pornhub.com##.top_hd_banner
@@ -4381,7 +4370,6 @@ kat.cr##.partner2Button
 kat.cr##.partner3Button
 kat.cr##.promoPartner
 kat.cr##.torrentEasyButton
-kat.cr##.advertising
 edition.cnn.com##.vidSponsor
 edition.cnn.com##div[style="min-height:270px; max-height:625px;height: 270px!important;"]
 edition.cnn.com##div[style="width: 300px; height: 250px;"]
@@ -4417,7 +4405,6 @@ www.foxnews.com###footer-top-wrapper
 www.foxnews.com###frame2-300x100
 www.foxnews.com###leader-wrapper
 www.foxnews.com###outbrain_widget_1
-www.foxnews.com##.advert
 www.foxnews.com##.block-fox_yume
 www.foxnews.com##.ad-content-item
 www.amazon.in##div[style="width:300px;height:280px;"]
@@ -4432,7 +4419,6 @@ www.amazon.in###ad
 www.amazon.in###nav-swmslot
 www.amazon.in###raw-search-desktop-advertising-tower-1
 www.amazon.in##.pa-sp-container
-m.timesofindia.com##.ad1
 m.timesofindia.com##.adsdivlyr
 m.timesofindia.com##.top_ad
 m.timesofindia.com###adbreak-adspdbl
@@ -4601,9 +4587,6 @@ culture.gmw.cn##[class^=contentadBox]
 health.gmw.cn##[class^=bannerArea]
 health.gmw.cn##[class^=ad]
 health.gmw.cn##[class^=contentadBox]
-sports.gmw.cn##[class^=bannerArea]
-sports.gmw.cn##[class^=ad]
-sports.gmw.cn##[class^=contentadBox]
 tech.gmw.cn##[class^=bannerArea]
 tech.gmw.cn##[class^=ad]
 tech.gmw.cn##[class^=contentadBox]

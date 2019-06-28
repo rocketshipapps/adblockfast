@@ -218,7 +218,7 @@ const SELECTORS = {
       '#mclip, .ads, .hotel-partner-item-sponsored, .hotel-price, #mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], #taw, #bottomads',
   'www.google.com.au': '#mclip_control, ._Ak, #taw, #bottomads',
   'www.youtube.com':
-      'a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"], .jkb, #feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .ad-container, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #watch-channel-brand-div, #masthead-ad, .ytd-player-legacy-desktop-watch-ads-renderer, ytd-compact-promoted-video-renderer, paper-dialog',
+      'a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"], .jkb, #feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .ad-container, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #masthead-ad, .ytd-player-legacy-desktop-watch-ads-renderer, ytd-compact-promoted-video-renderer, paper-dialog',
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
   // Reddit
@@ -245,7 +245,7 @@ const SELECTORS = {
   'www.luxist.com': '#topleader-wrap, .medrect, .ADS',
   'www.mapquest.com': '.mq-leadin, .display-ad, .search-ad',
   'www.wow.com':
-      '.side-ad, .googleAFCAds, .ADS, #topleader-wrap, .SLL, .medrect, .ADS',
+      '.side-ad, .googleAFCAds, .ADS, #topleader-wrap, .SLL, .medrect',
   // Vice
   'www.vice.com': '.native-block, .banner',
   // Vox
@@ -471,23 +471,23 @@ const SELECTORS = {
   'www.baidu.com':
       '#ec_im_container',
   'www.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'de.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'fr.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'it.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'pt.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'pl.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'rt.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'jp.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'es.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .home-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'www.naver.com':
       '.img_style, #ad_top, #ad_branding_hide, #ad_branding, #ad_timesquare, .ad_area2',
   'xhamster.com':
@@ -511,7 +511,7 @@ const SELECTORS = {
   'pl.xhamster.com':
       '.sponsorBottom, .vAds, #adBottom, .adVideo',
   'kat.cr':
-      '#bt_bf, #partner1_button, #promoLeechmonster, #sp2, .advertising, .directDownloadButton, .partner2Button, .partner3Button, .promoPartner, .torrentEasyButton, .advertising',
+      '#bt_bf, #partner1_button, #promoLeechmonster, #sp2, .advertising, .directDownloadButton, .partner2Button, .partner3Button, .promoPartner, .torrentEasyButton',
   'edition.cnn.com':
       '.vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
   'soso.com':
@@ -523,7 +523,7 @@ const SELECTORS = {
   'www.theguardian.com':
       '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
   'www.foxnews.com':
-      '.ad-unit, .advert, .ad-container, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .advert, .block-fox_yume, .ad-content-item',
+      '.ad-unit, .advert, .ad-container, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
   'www.amazon.in':
       'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #DAadrp, #ad, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container',
   'timesofindia.indiatimes.com':
@@ -601,8 +601,6 @@ const SELECTORS = {
   'culture.gmw.cn':
       '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
   'health.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'sports.gmw.cn':
       '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
   'tech.gmw.cn':
       '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
