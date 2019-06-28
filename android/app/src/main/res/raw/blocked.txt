@@ -2510,6 +2510,2117 @@ yandex.by,yandex.com,yandex.com.tr,yandex.fr,yandex.kz,yandex.ru,yandex.ua,~afis
 m.news.yandex.by,m.news.yandex.com,m.news.yandex.fr,m.news.yandex.kz,m.news.yandex.ru,m.news.yandex.ua,yandex.by,yandex.com,yandex.com.tr,yandex.fr,yandex.kz,yandex.ru,yandex.ua,~afisha.yandex.by,~afisha.yandex.kz,~afisha.yandex.ru,~afisha.yandex.ua,~avia.yandex.by,~avia.yandex.kz,~avia.yandex.ru,~avia.yandex.ua,~bilet.yandex.com.tr,~flights.yandex.com,~disk.yandex.by,~disk.yandex.com,~disk.yandex.com.tr,~disk.yandex.fr,~disk.yandex.kz,~disk.yandex.ru,~disk.yandex.ua,~mail.yandex.by,~mail.yandex.kz,~mail.yandex.ru,~mail.yandex.ua,~mail.yandex.com,~mail.yandex.com.tr,~money.yandex.ru,~music.yandex.ru,~music.yandex.ua,~music.yandex.by,~music.yandex.kz,~news.yandex.by,~news.yandex.com,~news.yandex.fr,~news.yandex.kz,~news.yandex.ru,~news.yandex.ua,~rabota.yandex.by,~rabota.yandex.kz,~rabota.yandex.ru,~rabota.yandex.ua,~radio.yandex.by,~radio.yandex.kz,~radio.yandex.ru,~radio.yandex.ua,~realty.yandex.by,~realty.yandex.kz,~realty.yandex.ru,~realty.yandex.ua,~tv.yandex.by,~tv.yandex.kz,~tv.yandex.ru,~tv.yandex.ua,~yadi.sk,~zen.yandex.by,~zen.yandex.com,~zen.yandex.kz,~zen.yandex.ru,~zen.yandex.ua,~docviewer.yandex.by,~docviewer.yandex.com,~docviewer.yandex.com.tr,~docviewer.yandex.fr,~docviewer.yandex.kz,~docviewer.yandex.ru,~docviewer.yandex.ua,~rasp.yandex.by,~rasp.yandex.kz,~rasp.yandex.ru,~rasp.yandex.ua##.page__advert
 m.news.yandex.by,m.news.yandex.com,m.news.yandex.fr,m.news.yandex.kz,m.news.yandex.ru,m.news.yandex.ua,yandex.by,yandex.com,yandex.com.tr,yandex.fr,yandex.kz,yandex.ru,yandex.ua,~afisha.yandex.by,~afisha.yandex.kz,~afisha.yandex.ru,~afisha.yandex.ua,~avia.yandex.by,~avia.yandex.kz,~avia.yandex.ru,~avia.yandex.ua,~bilet.yandex.com.tr,~flights.yandex.com,~disk.yandex.by,~disk.yandex.com,~disk.yandex.com.tr,~disk.yandex.fr,~disk.yandex.kz,~disk.yandex.ru,~disk.yandex.ua,~mail.yandex.by,~mail.yandex.kz,~mail.yandex.ru,~mail.yandex.ua,~mail.yandex.com,~mail.yandex.com.tr,~money.yandex.ru,~music.yandex.ru,~music.yandex.ua,~music.yandex.by,~music.yandex.kz,~news.yandex.by,~news.yandex.com,~news.yandex.fr,~news.yandex.kz,~news.yandex.ru,~news.yandex.ua,~rabota.yandex.by,~rabota.yandex.kz,~rabota.yandex.ru,~rabota.yandex.ua,~radio.yandex.by,~radio.yandex.kz,~radio.yandex.ru,~radio.yandex.ua,~realty.yandex.by,~realty.yandex.kz,~realty.yandex.ru,~realty.yandex.ua,~tv.yandex.by,~tv.yandex.kz,~tv.yandex.ru,~tv.yandex.ua,~yadi.sk,~zen.yandex.by,~zen.yandex.com,~zen.yandex.kz,~zen.yandex.ru,~zen.yandex.ua,~docviewer.yandex.by,~docviewer.yandex.com,~docviewer.yandex.com.tr,~docviewer.yandex.fr,~docviewer.yandex.kz,~docviewer.yandex.ru,~docviewer.yandex.ua,~rasp.yandex.by,~rasp.yandex.kz,~rasp.yandex.ru,~rasp.yandex.ua##.page-content > div.story+div[id]:not(.story)
 m.news.yandex.by,m.news.yandex.com,m.news.yandex.fr,m.news.yandex.kz,m.news.yandex.ru,m.news.yandex.ua##.proffit-wrapper
+www.businessinsider.com.au###partner-offers
+www.businessinsider.com.au###follow_wrap
+www.businessinsider.com.au###ad-main-top
+www.businessinsider.com.au##.adspot-300x250-pos1-container
+www.businessinsider.com.au##.adspot-3x1-pos1-container
+www.businessinsider.com.au##.adspot-6x2-pos1-container
+www.businessinsider.com.au##.adspot-6x2-pos1-container + hr
+www.businessinsider.com.au##.adspot-6x2-pos2-container
+www.businessinsider.com.au##.adspot-6x2-pos2-container + hr
+www.businessinsider.com.au###river hr:last-of-type
+www.byrdie.com##.top-slot-container
+www.gizmodo.com.au###product-finder
+www.gizmodo.com.au##.btyb_cat
+www.gizmodo.com.au##.ad
+www.kotaku.com.au##.ad
+www.lifehacker.com.au##.ad
+www.shopstyle.com.au##.promo-wrapper
+www.whowhatwear.com.au##.top-slot-container
+www.amazon.ca##div[style="width:300px;height:280px;"]
+www.amazon.ca##.displayAd
+www.amazon.ca##.zg_displayAd
+www.amazon.ca###amsDetailRight
+www.amazon.ca###ADPlaceholder
+www.amazon.ca###sponsored-products-dp_feature_div
+www.amazon.ca###AUI_A9AdsMiddleBoxTop
+www.amazon.ca###heroQuickPromo_feature_div
+www.amazon.ca###dp-ads-center-promo_feature_div
+www.amazon.ca###ape_Detail_ad-endcap-1_Glance_placement
+www.amazon.co.uk##div[style="width:300px;height:280px;"]
+www.amazon.co.uk##.displayAd
+www.amazon.co.uk##.zg_displayAd
+www.amazon.co.uk###amsDetailRight
+www.amazon.co.uk###ADPlaceholder
+www.amazon.co.uk###sponsored-products-dp_feature_div
+www.amazon.co.uk###AUI_A9AdsMiddleBoxTop
+www.amazon.co.uk###heroQuickPromo_feature_div
+www.amazon.co.uk###dp-ads-center-promo_feature_div
+www.amazon.co.uk###ape_Detail_ad-endcap-1_Glance_placement
+www.amazon.com###DAadrp
+www.amazon.com###ad
+www.amazon.com###nav-swmslot
+www.amazon.com###raw-search-desktop-advertising-tower-1
+www.amazon.com##.pa-sp-container
+www.amazon.com##div[style="width:300px;height:280px;"]
+www.amazon.com##.displayAd
+www.amazon.com##.zg_displayAd
+www.amazon.com###amsDetailRight
+www.amazon.com###ADPlaceholder
+www.amazon.com###sponsored-products-dp_feature_div
+www.amazon.com###AUI_A9AdsMiddleBoxTop
+www.amazon.com###heroQuickPromo_feature_div
+www.amazon.com###dp-ads-center-promo_feature_div
+www.amazon.com###ape_Detail_ad-endcap-1_Glance_placement
+www.businessinsider.com##.ad
+www.businessinsider.com##.chartbeat
+www.businessinsider.com##.continue-link
+www.businessinsider.com##.ks-recommended
+www.businessinsider.com##.sponsor
+www.businessinsider.com##.subnav-container
+www.businessinsider.com##.ad-subnav-container
+www.businessinsider.com##.river-textonly
+www.businessinsider.com##.rail-recommended
+www.businessinsider.com##.right-ad
+www.businessinsider.com##.ks-rr-taboola-video
+www.businessinsider.com##.ks-rr-taboola-from-the-web
+www.businessinsider.com##.jobs
+www.businessinsider.com###taboola-right-rail-thumbnails
+www.businessinsider.com##.targeted-recommended
+www.businessinsider.com##.dianomi-ad
+www.buzzfeed.com###BF_WIDGET_10
+www.buzzfeed.com##.post2[style="background-color: #FDF6E5;"]
+www.buzzfeed.com##.item--ad
+www.buzzfeed.com##.bf-widget
+www.buzzfeed.com##.bf-ads-video
+www.buzzfeed.com##.js-ad
+www.buzzfeed.com##.ad-ex
+www.buzzfeed.com##.js-thumb-ad
+arstechnica.com##.instream-wrap
+arstechnica.com##.side-ad
+arstechnica.com###article-footer
+arstechnica.com##.ad
+arstechnica.com##.ad_native
+arstechnica.com###daehtsam-da
+arstechnica.com###masthead + #pushdown-wrap
+arstechnica.com###msuk-wrapper
+arstechnica.com###outbrain-recs-wrap
+arstechnica.com##.sponsored-rec
+abc.go.com##.footerRow
+abc.go.com##.adBlockSpot
+abcnews.go.com##.index-quigo
+abcnews.go.com##.story-embed-left.box
+abcnews.go.com##.ad_728
+abcnews.go.com##.ad_300
+abcnews.go.com###bannerad
+abcnews.go.com###homead
+abcnews.go.com##.leaderboard-ad
+abcnews.go.com##.ad-slot
+abcnews.go.com##.akamai-ad-mode
+family.disney.com##.ad
+family.disney.com##.tm-ad
+go.com##.ad
+liveshows.disney.com##.pushdown
+liveshows.disney.com##.ad-container
+lol.disney.com##.pushdown
+lol.disney.com##.rich_image
+lol.disney.com##.mint_container
+movies.disney.com##.pushdown
+movies.disney.com##.ad-container
+music.disney.com##.pushdown
+music.disney.com##.ad-container
+ohmy.disney.com##.tm-ad
+shows.disney.com##.pushdown
+shows.disney.com##.ad-container
+style.disney.com##.tm-ad
+video.disney.com##.ad-container
+video.disney.com##.pushdown
+www.babble.com##.bb-ad
+www.babble.com##.tm-ad
+www.disney.com##.gpt
+www.disney.com##.ad-container
+www.disney.com##.pushdown
+www.espn.com###sponsored-by
+www.espn.com##div[style="height: 325px;"]
+www.espn.com##.ad-slot
+www.espn.com##.ad-300
+www.espn.com###sponsored
+www.ebay.co.uk###rtm_html_194
+www.ebay.co.uk###rtm_html_274
+www.ebay.co.uk###rtm_html_275
+www.ebay.co.uk###rtm_html_391
+www.ebay.co.uk###rtm_html_566
+www.ebay.co.uk###rtm_html_567
+www.ebay.co.uk###rtm_html_569
+www.ebay.co.uk###skyscrape
+www.ebay.co.uk##.RtmStyle
+www.ebay.co.uk##.sdcBox
+www.ebay.co.uk##.topBnrSc
+www.ebay.co.uk##div[style="margin-top: 15px; width: 160px; height: 615px; overflow: hidden; display: block;"]
+www.ebay.co.uk##div[style="width: 300px; height: 265px; overflow: hidden; display: block;"]
+www.ebay.co.uk##.beta-placement
+www.ebay.co.uk###rtm_html_393
+www.ebay.co.uk###rtm_html_987
+www.ebay.co.uk###rtm_html_11575
+www.ebay.co.uk###gf-mrecs-ads
+www.ebay.co.uk##.ft-btyle
+www.ebay.com###rtm_div_193
+www.ebay.com###rtm_html_194
+www.ebay.com###rtm_html_391
+www.ebay.com###rtm_html_441
+www.ebay.com###rtm_html_569
+www.ebay.com###skyscrape
+www.ebay.com##.RtmStyle
+www.ebay.com##.al32
+www.ebay.com##.fdad1
+www.ebay.com##.ggtm
+www.ebay.com##.mrec
+www.ebay.com##.topBnrSc
+www.ebay.com##div[style="margin-top: 15px; width: 160px; height: 600px; overflow: hidden; display: block;"]
+www.ebay.com##div[style="margin-top: 15px; width: 160px; height: 615px; overflow: hidden; display: block;"]
+www.ebay.com##.beta-placement
+www.ebay.com###rtm_html_393
+www.ebay.com###rtm_html_567
+www.ebay.com###rtm_html_987
+www.ebay.com###rtm_html_11575
+www.ebay.com###gf-mrecs-ads
+www.ebay.com##.ft-btyle
+www.ebay.com##.hl-ad-row__mrec
+www.ebay.com.au###skyscrape
+www.ebay.com.au##.RtmStyle
+www.ebay.com.au##.beta-placement
+www.ebay.com.au###rtm_html_567
+www.ebay.com.au###rtm_html_393
+www.ebay.com.au###rtm_html_987
+www.ebay.com.au###rtm_html_11575
+www.ebay.com.au###gf-mrecs-ads
+www.ebay.com.au##.ft-btyle
+www.ebay.ie###rtm_NB
+www.ebay.ie###rtm_html_225
+www.ebay.ie##.beta-placement
+www.ebay.ie###rtm_html_567
+www.ebay.ie###rtm_html_393
+www.ebay.ie###rtm_html_987
+www.ebay.ie###rtm_html_11575
+www.ebay.ie###gf-mrecs-ads
+www.ebay.ie##.ft-btyle
+m.facebook.com##div[style="margin: 0px; width: 760px; height: 90px; text-align: center; vertical-align: middle;"]
+m.facebook.com###m_newsfeed_stream article[data-ft*="\\"ei\\":\\""]
+m.facebook.com##.aymlCoverFlow
+m.facebook.com##.aymlNewCoverFlow[data-ft*="\\"is_sponsored\\":\\"1\\""]
+m.facebook.com##.pyml
+m.facebook.com##.storyStream > ._6t2[data-sigil="marea"]
+m.facebook.com##.storyStream > .fullwidth._539p
+m.facebook.com##.storyStream > article[id^="u_"]._676
+m.facebook.com##.storyStream > article[id^="u_"].storyAggregation
+m.facebook.com##[data-xt]
+m.facebook.com###MessagingNetegoWrapper
+m.facebook.com###home_sponsor_nile
+m.facebook.com###home_stream > .uiUnifiedStory[data-ft*="\\"ei\\":\\""]
+m.facebook.com###pagelet_ads_when_no_friend_list_suggestion
+m.facebook.com##.-cx-PRIVATE-fbAdUnit__root
+m.facebook.com##.-cx-PRIVATE-fbEmu__root
+m.facebook.com##.-cx-PRIVATE-fbFacebarTypeaheadToken__sponsored
+m.facebook.com##.-cx-PRIVATE-snowliftAds__root
+m.facebook.com##.-cx-PRIVATE-spyml__story
+m.facebook.com##.-cx-PUBLIC-fbAdUnit__root
+m.facebook.com##._24n
+m.facebook.com##._24o
+m.facebook.com##._3qj-
+m.facebook.com##._4u8
+m.facebook.com##.adv
+m.facebook.com##.ego_spo
+m.facebook.com##.fbAdUnit
+m.facebook.com##.fbEmu
+m.facebook.com##.fbEmuBlock
+m.facebook.com##.fbEmuComboList
+m.facebook.com##.fbEmuEgo
+m.facebook.com##.fbEmuEgoUnit
+m.facebook.com##.fbEmuLink
+m.facebook.com##.fbPhotoAdsCol
+m.facebook.com##.fbTimelineSideAds
+m.facebook.com##.fixedAux .pbm
+m.facebook.com##.muffin.group
+m.facebook.com##.ownsection[role="option"]
+m.facebook.com##[data-referrer="pagelet_side_ads"]
+m.facebook.com##[href^="/ads/adboard/"]
+m.facebook.com##a[ajaxify^="/ajax/emu/end.php?"]
+m.facebook.com##a[href^="/ajax/emu/end.php?"]
+m.facebook.com##div[class="ego_column _5qrt"]
+m.facebook.com##div[class="ego_column _8_9"]
+m.facebook.com##div[class="ego_column pagelet _5qrt _1snm"]
+m.facebook.com##div[class="ego_column pagelet _5qrt _y92 _1snm"]
+m.facebook.com##div[class="ego_column pagelet _5qrt _y92"]
+m.facebook.com##div[class="ego_column pagelet _5qrt"]
+m.facebook.com##div[class="ego_column pagelet _y92 _5qrt _1snm"]
+m.facebook.com##div[class="ego_column pagelet _y92 _5qrt"]
+m.facebook.com##div[class="ego_column pagelet _y92"]
+m.facebook.com##div[class="ego_column pagelet"]
+m.facebook.com##div[class="ego_column"]
+m.facebook.com##div[id^="sponsoredTickerStory_"]
+m.facebook.com##div[id^="substream_"] .userContentWrapper > ._1ifo
+m.facebook.com##div[id^="substream_"] div[data-ft*="\\"ei\\":\\""]
+m.facebook.com##div[id^="topnews_main_stream_"] div[id^="u_"][data-ft*="\\"ei\\":\\""]
+m.facebook.com##ul[id^="typeahead_list_"] > ._20e._6_k._55y_
+m.facebook.com###pagelet_ego_pane
+touch.facebook.com##.aymlCoverFlow
+touch.facebook.com##.aymlNewCoverFlow[data-ft*="\\"is_sponsored\\":\\"1\\""]
+touch.facebook.com##.pyml
+touch.facebook.com##.storyStream > ._6t2[data-sigil="marea"]
+touch.facebook.com##.storyStream > .fullwidth._539p
+touch.facebook.com##.storyStream > article[id^="u_"]._676
+touch.facebook.com##.storyStream > article[id^="u_"].storyAggregation
+touch.facebook.com##[data-xt]
+www.forbes.com###ads
+www.forbes.com##.leaderboard
+www.forbes.com##.ad_block
+www.forbes.com##.advoice
+www.forbes.com###stackForbesAdvoice
+www.forbes.com##.ad-rail
+www.forbes.com##.article-mobile-ad
+www.forbes.com##.article-native-ad
+www.forbes.com##.top-ad-sticky
+www.forbes.com##.sticky-ad-container
+www.forbes.com##.ad-row
+www.forbes.com##.top-ad-container
+www.forbes.com##.ntv-rail-ad
+antiviral.gawker.com##.js_promoted
+antiviral.gawker.com##.ad-top
+antiviral.gawker.com##.contained-ad-container
+antiviral.gawker.com##.ad-bottom
+blackbag.gawker.com##.js_promoted
+blackbag.gawker.com##.ad-top
+blackbag.gawker.com##.contained-ad-container
+blackbag.gawker.com##.ad-bottom
+defamer.gawker.com##.js_promoted
+defamer.gawker.com##.ad-top
+defamer.gawker.com##.contained-ad-container
+defamer.gawker.com##.ad-bottom
+dog.gawker.com##.js_promoted
+dog.gawker.com##.ad-top
+dog.gawker.com##.contained-ad-container
+dog.gawker.com##.ad-bottom
+domesticity.gawker.com##.js_promoted
+domesticity.gawker.com##.ad-top
+domesticity.gawker.com##.contained-ad-container
+domesticity.gawker.com##.ad-bottom
+fortressamerica.gawker.com##.js_promoted
+fortressamerica.gawker.com##.ad-top
+fortressamerica.gawker.com##.contained-ad-container
+fortressamerica.gawker.com##.ad-bottom
+gawker.com##.js_promoted
+gawker.com##.ad-top
+gawker.com##.contained-ad-container
+gawker.com##.ad-bottom
+internet.gawker.com##.js_promoted
+internet.gawker.com##.ad-top
+internet.gawker.com##.contained-ad-container
+internet.gawker.com##.ad-bottom
+justice.gawker.com##.js_promoted
+justice.gawker.com##.ad-top
+justice.gawker.com##.contained-ad-container
+justice.gawker.com##.ad-bottom
+morningafter.gawker.com##.js_promoted
+morningafter.gawker.com##.ad-top
+morningafter.gawker.com##.contained-ad-container
+morningafter.gawker.com##.ad-bottom
+review.gawker.com##.js_promoted
+review.gawker.com##.ad-top
+review.gawker.com##.contained-ad-container
+review.gawker.com##.ad-bottom
+sausage.gawker.com##.js_promoted
+sausage.gawker.com##.ad-top
+sausage.gawker.com##.contained-ad-container
+sausage.gawker.com##.ad-bottom
+thevane.gawker.com##.js_promoted
+thevane.gawker.com##.ad-top
+thevane.gawker.com##.contained-ad-container
+thevane.gawker.com##.ad-bottom
+tktk.gawker.com##.js_promoted
+tktk.gawker.com##.ad-top
+tktk.gawker.com##.contained-ad-container
+tktk.gawker.com##.ad-bottom
+truestories.gawker.com##.js_promoted
+truestories.gawker.com##.ad-top
+truestories.gawker.com##.contained-ad-container
+truestories.gawker.com##.ad-bottom
+valleywag.gawker.com##.js_promoted
+valleywag.gawker.com##.ad-top
+valleywag.gawker.com##.contained-ad-container
+valleywag.gawker.com##.ad-bottom
+adequateman.deadspin.com##.ad-top.ad-wide
+adequateman.deadspin.com##.ad-non-sticky
+adequateman.deadspin.com##.ad-promotions-container
+adequateman.deadspin.com##.contained-ad-container
+aux.avclub.com##.ad-top.ad-wide
+aux.avclub.com##.ad-non-sticky
+aux.avclub.com##.ad-promotions-container
+aux.avclub.com##.contained-ad-container
+compete.kotaku.com##.ad-top.ad-wide
+compete.kotaku.com##.ad-non-sticky
+compete.kotaku.com##.ad-promotions-container
+compete.kotaku.com##.contained-ad-container
+cosplay.kotaku.com##.ad-top.ad-wide
+cosplay.kotaku.com##.ad-non-sticky
+cosplay.kotaku.com##.ad-promotions-container
+cosplay.kotaku.com##.contained-ad-container
+deadspin.com##.js_promoted
+deadspin.com##.ad-top
+deadspin.com##.contained-ad-container
+deadspin.com##.ad-bottom
+deadspin.com##.ad-top.ad-wide
+deadspin.com##.ad-non-sticky
+deadspin.com##.ad-promotions-container
+earther.gizmodo.com##.ad-top.ad-wide
+earther.gizmodo.com##.ad-non-sticky
+earther.gizmodo.com##.ad-promotions-container
+earther.gizmodo.com##.contained-ad-container
+entertainment.theonion.com##.ad-top.ad-wide
+entertainment.theonion.com##.ad-non-sticky
+entertainment.theonion.com##.contained-ad-container
+fieldguide.gizmodo.com##.ad-top.ad-wide
+fieldguide.gizmodo.com##.ad-non-sticky
+fieldguide.gizmodo.com##.ad-promotions-container
+fieldguide.gizmodo.com##.contained-ad-container
+film.avclub.com##.ad-top.ad-wide
+film.avclub.com##.ad-non-sticky
+film.avclub.com##.ad-promotions-container
+film.avclub.com##.contained-ad-container
+games.avclub.com##.ad-top.ad-wide
+games.avclub.com##.ad-non-sticky
+games.avclub.com##.ad-promotions-container
+games.avclub.com##.contained-ad-container
+gizmodo.com##.btyb_cat
+gizmodo.com##.js_promoted
+gizmodo.com##.ad-top
+gizmodo.com##.contained-ad-container
+gizmodo.com##.ad-bottom
+gizmodo.com##.ad-top.ad-wide
+gizmodo.com##.ad-non-sticky
+gizmodo.com##.ad-promotions-container
+io9.gizmodo.com###postTransitionOverlay
+io9.gizmodo.com##.js_promoted
+io9.gizmodo.com###skyscraper
+io9.gizmodo.com##.ad-top
+io9.gizmodo.com##.contained-ad-container
+io9.gizmodo.com##.ad-bottom
+io9.gizmodo.com##.ad-top.ad-wide
+io9.gizmodo.com##.ad-non-sticky
+io9.gizmodo.com##.ad-promotions-container
+jalopnik.com###postTransitionOverlay
+jalopnik.com##.js_promoted
+jalopnik.com###skyscraper
+jalopnik.com##.ad-top
+jalopnik.com##.contained-ad-container
+jalopnik.com##.ad-bottom
+jalopnik.com##.ad-top.ad-wide
+jalopnik.com##.ad-non-sticky
+jalopnik.com##.ad-promotions-container
+jezebel.com###postTransitionOverlay
+jezebel.com##.js_promoted
+jezebel.com###skyscraper
+jezebel.com##.ad-top
+jezebel.com##.contained-ad-container
+jezebel.com##.ad-bottom
+jezebel.com##.ad-top.ad-wide
+jezebel.com##.ad-non-sticky
+jezebel.com##.ad-promotions-container
+journalisms.theroot.com##.ad-top.ad-wide
+journalisms.theroot.com##.ad-non-sticky
+journalisms.theroot.com##.ad-promotions-container
+journalisms.theroot.com##.contained-ad-container
+kinjadeals.theinventory.com##.ad-top.ad-wide
+kinjadeals.theinventory.com##.ad-non-sticky
+kinjadeals.theinventory.com##.ad-promotions-container
+kinjadeals.theinventory.com##.contained-ad-container
+kotaku.com###postTransitionOverlay
+kotaku.com##.ad
+kotaku.com##.js_promoted
+kotaku.com##.ad-top
+kotaku.com##.contained-ad-container
+kotaku.com##.ad-bottom
+kotaku.com##.ad-top.ad-wide
+kotaku.com##.ad-non-sticky
+kotaku.com##.ad-promotions-container
+lifehacker.com###postTransitionOverlay
+lifehacker.com##.js_promoted
+lifehacker.com##.ad-top
+lifehacker.com##.contained-ad-container
+lifehacker.com##.ad-bottom
+lifehacker.com##.ad-top.ad-wide
+lifehacker.com##.ad-non-sticky
+lifehacker.com##.ad-promotions-container
+local.theonion.com##.ad-top.ad-wide
+local.theonion.com##.ad-non-sticky
+local.theonion.com##.contained-ad-container
+music.avclub.com##.ad-top.ad-wide
+music.avclub.com##.ad-non-sticky
+music.avclub.com##.ad-promotions-container
+music.avclub.com##.contained-ad-container
+news.avclub.com##.ad-top.ad-wide
+news.avclub.com##.ad-non-sticky
+news.avclub.com##.ad-promotions-container
+news.avclub.com##.contained-ad-container
+offspring.lifehacker.com##.ad-top.ad-wide
+offspring.lifehacker.com##.ad-non-sticky
+offspring.lifehacker.com##.ad-promotions-container
+offspring.lifehacker.com##.contained-ad-container
+paleofuture.gizmodo.com##.ad-top.ad-wide
+paleofuture.gizmodo.com##.ad-non-sticky
+paleofuture.gizmodo.com##.ad-promotions-container
+paleofuture.gizmodo.com##.contained-ad-container
+pictorial.jezebel.com##.ad-top.ad-wide
+pictorial.jezebel.com##.ad-non-sticky
+pictorial.jezebel.com##.ad-promotions-container
+pictorial.jezebel.com##.contained-ad-container
+politics.theonion.com##.ad-top.ad-wide
+politics.theonion.com##.ad-non-sticky
+politics.theonion.com##.contained-ad-container
+screengrabber.deadspin.com##.ad-top.ad-wide
+screengrabber.deadspin.com##.ad-non-sticky
+screengrabber.deadspin.com##.ad-promotions-container
+screengrabber.deadspin.com##.contained-ad-container
+skillet.lifehacker.com##.ad-top.ad-wide
+skillet.lifehacker.com##.ad-non-sticky
+skillet.lifehacker.com##.ad-promotions-container
+skillet.lifehacker.com##.contained-ad-container
+splinternews.com##.ad-top.ad-wide
+splinternews.com##.ad-non-sticky
+splinternews.com##.ad-promotions-container
+splinternews.com##.contained-ad-container
+sploid.gizmodo.com##.ad-top.ad-wide
+sploid.gizmodo.com##.ad-non-sticky
+sploid.gizmodo.com##.ad-promotions-container
+sploid.gizmodo.com##.contained-ad-container
+sports.theonion.com##.ad-top.ad-wide
+sports.theonion.com##.ad-non-sticky
+sports.theonion.com##.contained-ad-container
+studioatgizmodo.kinja.com##.ad-top.ad-wide
+studioatgizmodo.kinja.com##.ad-non-sticky
+studioatgizmodo.kinja.com##.ad-promotions-container
+studioatgizmodo.kinja.com##.contained-ad-container
+thatswhatshesaid.jezebel.com##.ad-top.ad-wide
+thatswhatshesaid.jezebel.com##.ad-non-sticky
+thatswhatshesaid.jezebel.com##.ad-promotions-container
+thatswhatshesaid.jezebel.com##.contained-ad-container
+thebests.kotaku.com##.ad-top.ad-wide
+thebests.kotaku.com##.ad-non-sticky
+thebests.kotaku.com##.ad-promotions-container
+thebests.kotaku.com##.contained-ad-container
+theconcourse.deadspin.com##.ad-top.ad-wide
+theconcourse.deadspin.com##.ad-non-sticky
+theconcourse.deadspin.com##.ad-promotions-container
+theconcourse.deadspin.com##.contained-ad-container
+theglowup.theroot.com##.ad-top.ad-wide
+theglowup.theroot.com##.ad-non-sticky
+theglowup.theroot.com##.ad-promotions-container
+theglowup.theroot.com##.contained-ad-container
+thegrapevine.theroot.com##.ad-top.ad-wide
+thegrapevine.theroot.com##.ad-non-sticky
+thegrapevine.theroot.com##.ad-promotions-container
+thegrapevine.theroot.com##.contained-ad-container
+themuse.jezebel.com##.ad-top.ad-wide
+themuse.jezebel.com##.ad-non-sticky
+themuse.jezebel.com##.ad-promotions-container
+themuse.jezebel.com##.contained-ad-container
+theslot.jezebel.com##.ad-top.ad-wide
+theslot.jezebel.com##.ad-non-sticky
+theslot.jezebel.com##.ad-promotions-container
+theslot.jezebel.com##.contained-ad-container
+thestacks.deadspin.com##.ad-top.ad-wide
+thestacks.deadspin.com##.ad-non-sticky
+thestacks.deadspin.com##.ad-promotions-container
+thestacks.deadspin.com##.contained-ad-container
+thetakeout.com##.ad-top.ad-wide
+thetakeout.com##.ad-non-sticky
+thetakeout.com##.ad-promotions-container
+thetakeout.com##.contained-ad-container
+tv.avclub.com##.ad-top.ad-wide
+tv.avclub.com##.ad-non-sticky
+tv.avclub.com##.ad-promotions-container
+tv.avclub.com##.contained-ad-container
+twocents.lifehacker.com##.ad-top.ad-wide
+twocents.lifehacker.com##.ad-non-sticky
+twocents.lifehacker.com##.ad-promotions-container
+twocents.lifehacker.com##.contained-ad-container
+verysmartbrothas.theroot.com##.ad-top.ad-wide
+verysmartbrothas.theroot.com##.ad-non-sticky
+verysmartbrothas.theroot.com##.ad-promotions-container
+verysmartbrothas.theroot.com##.contained-ad-container
+vitals.lifehacker.com##.ad-top.ad-wide
+vitals.lifehacker.com##.ad-non-sticky
+vitals.lifehacker.com##.ad-promotions-container
+vitals.lifehacker.com##.contained-ad-container
+www.avclub.com##.ad-top.ad-wide
+www.avclub.com##.ad-non-sticky
+www.avclub.com##.ad-promotions-container
+www.avclub.com##.contained-ad-container
+www.gizmodo.co.uk###interruptor
+www.gizmodo.co.uk##.interruptor
+www.gizmodo.co.uk##.commercial
+www.gizmodo.co.uk###deal-item
+www.theonion.com##.ad-top.ad-wide
+www.theonion.com##.ad-non-sticky
+www.theonion.com##.contained-ad-container
+www.theroot.com##.ad-top.ad-wide
+www.theroot.com##.ad-non-sticky
+www.theroot.com##.ad-promotions-container
+www.theroot.com##.contained-ad-container
+m.youtube.com##a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"]
+m.youtube.com##.jkb
+m.youtube.com###feed-pyv-container
+m.youtube.com###feedmodule-PRO
+m.youtube.com###homepage-chrome-side-promo
+m.youtube.com###premium-yva
+m.youtube.com###search-pva
+m.youtube.com###shelf-pyv-container
+m.youtube.com###video-masthead
+m.youtube.com###watch-branded-actions
+m.youtube.com###watch-buy-urls
+m.youtube.com###watch-channel-brand-div
+m.youtube.com##.ad-container
+m.youtube.com##.carousel-offer-url-container
+m.youtube.com##.list-view[style="margin: 7px 0pt;"]
+m.youtube.com##.promoted-videos
+m.youtube.com##.searchView.list-view
+m.youtube.com##.watch-extra-info-column
+m.youtube.com##.watch-extra-info-right
+m.youtube.com##a[href^="http://www.youtube.com/cthru?"]
+m.youtube.com##a[href^="https://www.youtube.com/cthru?"]
+m.youtube.com##.ad-div div
+m.youtube.com###watch-channel-brand-div
+m.youtube.com###masthead-ad
+m.youtube.com##.ytd-player-legacy-desktop-watch-ads-renderer
+m.youtube.com##ytd-compact-promoted-video-renderer
+m.youtube.com##paper-dialog
+mail.google.com###\\:rr .nH[role="main"] .mq:first-child
+mail.google.com###\\:rr > .nH > .nH[role="main"] > .aKB
+mail.google.com###\\:rr > .nH > .nH[role="main"] > .nH > .nH > .AT[style]
+mail.google.com###\\:rr > .nH > div[role="main"] > .mq:last-child
+mail.google.com##.aeF .nH[role="main"] > .mq:last-child
+mail.google.com##.aeF > .nH > .nH[role="main"] > .aKB
+mail.google.com##.aeF > .nH > .nH[role="main"] > .afn:first-child + .mq
+mail.google.com##.aeF > .nH > .nH[role="main"] > .mq:first-child
+mail.google.com##.aeF > .nH > .nH[role="main"] > .nH > .nH > .AT[style]
+mail.google.com##.aeF > .nH > .nH[role="main"] > .nH > .nH > .nH > .mq:last-child
+mail.google.com##.aeF > .nH > .nH[role="main"] > div + .mq
+mail.google.com##.c[style="margin: 0pt;"]
+mail.google.com##.nH.PS
+mail.google.com##.nH.adC > .nH > .nH > .u5 > .azN
+mail.google.com##.oM
+mail.google.com##.rh > #ra
+mail.google.com##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+mail.google.com##.u4
+mail.google.com##.u9
+mail.google.com##.xz
+mail.google.com##.z0DeRc
+mail.google.com##[style="border: 1px solid rgb(0, 90, 136);"]
+mail.google.com##[style="border: 1px solid rgb(145, 117, 77);"]
+mail.google.com##[style="border: 1px solid rgb(241, 250, 248);"]
+mail.google.com##[style="border: 1px solid rgb(51, 102, 153);"]
+mail.google.com##[style="border: 1px solid rgb(51, 102, 204);"]
+mail.google.com##a[href^="http://pagead2.googlesyndication.com/"]
+www.google.co.uk##.GBTLFYRDM0
+www.google.co.uk##._Ak
+www.google.co.uk###taw
+www.google.co.uk###bottomads
+www.google.com###mclip
+www.google.com##.ads
+www.google.com##.hotel-partner-item-sponsored
+www.google.com##.hotel-price
+www.google.com##mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.com###rhs_block > #mbEnd
+www.google.com###tads + div + .c
+www.google.com###tads.c
+www.google.com###topstuff > #tads
+www.google.com###ad
+www.google.com###tadsc
+www.google.com##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.com##.GGQPGYLCD5
+www.google.com##.GGQPGYLCMCB
+www.google.com##.GISRH3UDHB
+www.google.com##.ad-active
+www.google.com##.c[style="margin: 0pt;"]
+www.google.com##.nH.MC
+www.google.com##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.com##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.com##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.com##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.com##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.com##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.com##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.com###taw
+www.google.com###bottomads
+www.google.com.au###mclip_control
+www.google.com.au##._Ak
+www.google.com.au###taw
+www.google.com.au###bottomads
+www.bing.com###zune_upsell
+www.bing.com##.partnerLinks
+www.bing.com##.b_ad
+www.bing.com##.b_ad ul
+www.reddit.com###siteTable_organic
+www.reddit.com##.promotedlink
+www.reddit.com##.dfp-ad-container
+mobile.twitter.com##.promoted-account
+mobile.twitter.com##.promoted-trend
+mobile.twitter.com##.promoted-tweet
+mobile.twitter.com##.promotion
+mobile.twitter.com##.stream-item[data-item-type="tweet"][data-item-id*=":"]
+mobile.twitter.com##.stream-tweet[impression_id][label="promoted"]
+m.huffingtonpost.co.uk###modulous_right_rail_edit_promo
+m.huffingtonpost.co.uk###modulous_sponsorship_2
+m.huffingtonpost.co.uk##.ad_wrapper
+m.huffingtonpost.co.uk##.ad_wrapper_
+m.huffingtonpost.co.uk##.ad_wrapper_top
+m.huffingtonpost.co.uk###all_sponsored_posts_page_1_wrapper
+m.huffingtonpost.co.uk###ad_deal_lower_left_wrapper
+m.huffingtonpost.co.uk###ad_lower_right_commercials_wrapper
+m.huffingtonpost.co.uk##.ad_store
+m.huffingtonpost.co.uk###ad_most_pop_234x60_req_wrapper
+m.huffpost.com###page-header
+m.huffpost.com###partner_box
+m.huffpost.com##.RHRSLL
+m.huffpost.com##.contin_below
+m.huffpost.com##.hp-ss-leaderboard
+m.huffpost.com##.linked_sponsored_entry
+m.huffpost.com##.presented-by
+m.huffpost.com##.right_rail_edit_promo
+m.huffpost.com##a[href*=".atwola.com/"]
+m.huffpost.com##.ad_wrapper
+m.huffpost.com##.ad_wrapper_
+m.huffpost.com##.ad_wrapper_top
+m.huffpost.com###all_sponsored_posts_page_1_wrapper
+m.huffpost.com###ad_deal_lower_left_wrapper
+m.huffpost.com###ad_lower_right_commercials_wrapper
+m.huffpost.com##.ad_store
+m.huffpost.com###ad_most_pop_234x60_req_wrapper
+m.huffpost.com##.advertisement
+search.aol.ca##.SLL
+search.aol.ca##.WOL
+search.aol.ca##.searchCenterTopAds
+search.aol.ca##.searchCenterBottomAds
+search.aol.co.uk##.PMB
+search.aol.co.uk##.SLL
+search.aol.co.uk##.WOL
+search.aol.co.uk##.searchCenterTopAds
+search.aol.co.uk##.searchCenterBottomAds
+search.aol.com###maincontent + script + div[class] > style + script + h3[class]
+search.aol.com###r
+search.aol.com##.MSL + script + script + div[class] > style + script + h3[class]
+search.aol.com##.PMB
+search.aol.com##.RHRSLL
+search.aol.com##.RHRSLLwseboF
+search.aol.com##.SLL
+search.aol.com##.SLLwseboF
+search.aol.com##.WOL
+search.aol.com##.WOL2
+search.aol.com##ul[content="SLMP"]
+search.aol.com##ul[content="SLMS"]
+search.aol.com##.searchCenterTopAds
+search.aol.com##.searchCenterBottomAds
+techcrunch.com###post_unit_medrec
+techcrunch.com##.ad-top-mobile
+techcrunch.com##.header-ad
+techcrunch.com##.river-block-native-ad
+techcrunch.com##.native-ad-mobile
+techcrunch.com##.ad-unit
+techcrunch.com##.ad-cluster-container
+techcrunch.com##.ad-300x250
+techcrunch.com##.l-sidebar li:last-child
+techcrunch.com##.ad-sponsored-aside
+techcrunch.com##.fmvps-player-ad-ribbon
+techcrunch.com##.ad-unit__ad
+techcrunch.com##.gallery-slide--ad
+www.aolsearch.com##.SLL
+www.aolsearch.com##.ADS
+www.crunchbase.com##.display-ad
+www.engadget.com###outerslice
+www.engadget.com##.ad
+www.engadget.com##.skyscraper
+www.engadget.com##.sponsoredcontent
+www.engadget.com##.sponsor-logo-post
+www.engadget.com##.rail-ad > div:first-child > div:first-child
+www.engadget.com##.rail-ad aside:nth-of-type(2)
+www.engadget.com##.rail-asl-line
+www.engadget.com###adSkyScraper
+www.engadget.com##.pb-25
+www.engadget.com##.mb-40
+www.engadget.com##.mb-15
+www.engadget.com##.inlineLb
+www.engadget.com##.mb-20
+www.engadget.com##.medrec
+www.engadget.com##.medrect
+www.luxist.com###topleader-wrap
+www.luxist.com##.medrect
+www.luxist.com##.ADS
+www.mapquest.com##.mq-leadin
+www.mapquest.com##.display-ad
+www.mapquest.com##.search-ad
+www.wow.com##.side-ad
+www.wow.com##.googleAFCAds
+www.wow.com##.ADS
+www.wow.com###topleader-wrap
+www.wow.com##.SLL
+www.wow.com##.medrect
+www.wow.com##.ADS
+www.vice.com##.native-block
+www.vice.com##.banner
+www.sbnation.com##.harmony-sponsorship
+www.sbnation.com##.m-ad
+www.theringer.com##.m-ad
+www.theverge.com###fishtank
+www.theverge.com##.-ad
+www.theverge.com##.harmony-sponsorship
+www.theverge.com##.m-feature__intro > aside
+www.theverge.com##.vert300
+www.theverge.com##.m-ad
+www.theverge.com##.m-review__intro > aside
+answers.yahoo.com##.searchCenterTopAds
+answers.yahoo.com##.searchCenterBottomAds
+answers.yahoo.com##.searchRightBottomAds
+answers.yahoo.com###ya-darla-LREC
+answers.yahoo.com###ya-qpage-textads
+answers.yahoo.com###ya-darla-MAST
+au.news.yahoo.com##.acc-moneyhound
+au.news.yahoo.com##.collection-sponsored
+au.news.yahoo.com##.moneyhound
+au.news.yahoo.com##.northAd
+au.news.yahoo.com##.y7-advertisement
+au.sports.yahoo.com##.darla-wrapper
+au.sports.yahoo.com##.gemini-native-injected
+au.sports.yahoo.com###y7-everest-applet-plista-40-tertiary-10
+au.yahoo.com###y708-windowshade
+au.yahoo.com###my-adsMAST
+au.yahoo.com###my-adsLREC
+au.yahoo.com###my-adsTL1
+au.yahoo.com###my-adsLREC2
+au.yahoo.com##.js-stream-featured-ad
+au.yahoo.com##.y7sponsoredlist
+cricket.yahoo.net###video-branding
+cricket.yahoo.net##.yom-ad
+cricket.yahoo.net##.waf-ad
+cricket.yahoo.net##.darla
+finance.yahoo.com##.searchCenterBottomAds
+finance.yahoo.com##.searchRightBottomAds
+finance.yahoo.com###MediaFeaturedListEditorial
+finance.yahoo.com###mediabankrate_container
+finance.yahoo.com###yfi_ad_FB2
+finance.yahoo.com###yfi_ad_cl
+finance.yahoo.com##.yfi_ad_s
+finance.yahoo.com##.yom-ysmcm
+finance.yahoo.com##div[style="height:265px; width:300px;margin:0pt auto;"]
+finance.yahoo.com##div[style="min-height:265px; _height:265px; width:300px;margin:0pt auto;"]
+finance.yahoo.com##.yom-ad
+finance.yahoo.com##.rmx-ad
+finance.yahoo.com###td-applet-ads_container
+finance.yahoo.com##.darla-container
+finance.yahoo.com###tgt1-LeadAd-0-ComboAd-Proxy
+groups.yahoo.com##.yg-mbad-row
+groups.yahoo.com##.yg-mb
+images.search.yahoo.com###right > div > .searchRightMiddle + div[id]:last-child
+images.search.yahoo.com###right > div > .searchRightTop + [id]:last-child
+images.search.yahoo.com###right > div:first-child:last-child > [id]:first-child:last-child
+images.search.yahoo.com##div[id^="wp_bannerize-"]
+images.search.yahoo.com##div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class]
+images.search.yahoo.com##div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"]
+images.search.yahoo.com##.ads
+mail.yahoo.com###MIP4
+mail.yahoo.com###MNW
+mail.yahoo.com###SKY
+mail.yahoo.com###modal-upsell
+mail.yahoo.com###northbanner
+mail.yahoo.com###nwPane
+mail.yahoo.com###slot_LREC
+mail.yahoo.com###slot_MB
+mail.yahoo.com###slot_REC
+mail.yahoo.com###swPane
+mail.yahoo.com###tgtMNW
+mail.yahoo.com##.avLogo
+mail.yahoo.com##.left_mb
+mail.yahoo.com##.mb > .tbl
+mail.yahoo.com##div#msg-list .list-view .ml-bg:not(.list-view-item-container)
+mail.yahoo.com###slot_TL1
+mail.yahoo.com##.mb-list-ad
+mail.yahoo.com##[data-test-id="infinite-scroll-AD"]
+mail.yahoo.com##[data-test-id="right-rail-ad"]
+search.yahoo.com##.searchCenterTopAds
+search.yahoo.com##.searchCenterBottomAds
+search.yahoo.com##.searchRightBottomAds
+search.yahoo.com###bpla
+search.yahoo.com###cols > #right > ol[class] > .first > .dd[style="padding: 10px !important;border: 1px solid #ededed;"]
+search.yahoo.com###cols > #right ol[class] > .first > .dd[style="background-color:#FFF;border: 1px solid #e2e2e6; margin-top:0;"]
+search.yahoo.com###doc #cols #right #east
+search.yahoo.com###east
+search.yahoo.com###left > #main > div[id^="yui_"]
+search.yahoo.com###left > #main > div[id^="yui_"][class] > ul[class] > li[class]
+search.yahoo.com###left > #main > div[id^="yui_"][class]:first-child > div[class]:last-child
+search.yahoo.com###left > #main > ol[class] > li[id] > .dd > .layoutMiddle
+search.yahoo.com###main .dd .layoutCenter .compDlink
+search.yahoo.com###main .dd .layoutCenter > .compDlink
+search.yahoo.com###main .dd[style="cursor: pointer;"] > .layoutMiddle
+search.yahoo.com###main > .reg > li[id^="yui_"][data-bid] > [data-bid]
+search.yahoo.com###main > div + div > style + * li > .dd > div[class]
+search.yahoo.com###main > div ol[class] > :first-child:last-child > li > .dd > :first-child:last-child > div[class]
+search.yahoo.com###main > div ol[class] li[id] > .dd > div + * > div
+search.yahoo.com###main > div[id^="yui_"] > ul > .res
+search.yahoo.com###main > div[id^="yui_"].rVfes:first-child
+search.yahoo.com###main > div[id^="yui_"].rVfes:first-child + #web + div[id^="yui_"].rVfes
+search.yahoo.com###main > div[id^="yui_"][class][data-bk][data-bns]:first-child
+search.yahoo.com###main > div[style="background-color: rgb(250, 250, 255);"]
+search.yahoo.com###main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"]
+search.yahoo.com###main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"] + #web + div[id^="yui_"][class][data-bk][data-bns="Yahoo"]
+search.yahoo.com###main > style:first-child + * + #web + style + * > ol[class]:first-child:last-child
+search.yahoo.com###main > style:first-child + * > ol[class]:first-child:last-child
+search.yahoo.com###r-e
+search.yahoo.com###r-n
+search.yahoo.com###r-s
+search.yahoo.com###right .dd .mb-11 + .compList
+search.yahoo.com###right .dd > .layoutMiddle
+search.yahoo.com###right .dd[style="cursor: pointer;"] > .layoutMiddle
+search.yahoo.com###right .dd[style^="background-color:#FFF;border-color:#FFF;padding:"] .compList
+search.yahoo.com###right .first > div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"]
+search.yahoo.com###right .reg > li[id^="yui_"][data-bid] > [data-bid]
+search.yahoo.com###right .res
+search.yahoo.com###right > .searchRightMiddle + div[id]:last-child
+search.yahoo.com###right > .searchRightTop + div[id]:last-child
+search.yahoo.com###right > div > .searchRightMiddle + div[id]:last-child
+search.yahoo.com###right > div > .searchRightTop + [id]:last-child
+search.yahoo.com###right > div > style + * li .dd > div[class]
+search.yahoo.com###right > div ol[class] li > :first-child:last-child > .dd > :first-child:last-child > div[class]:first-child:last-child
+search.yahoo.com###right > div:first-child:last-child > [id]:first-child:last-child
+search.yahoo.com###right > div[class] > ol[class] .dd div[class] > ul > li[class^="mt-"]
+search.yahoo.com###right > div[class] ol[class] li[id] .dd > div + * > div[class]
+search.yahoo.com###right > div[id] > div[class] > div[class] > h2[class]:first-child + ul[class]:last-child > li[class]
+search.yahoo.com###right > span > div[id] > div[class] div[class] > span > ul[class]:last-child > li[class]
+search.yahoo.com###right [class][data-bk][data-bns]
+search.yahoo.com###right div.dd[style^="background-color:#FFF"] div > ul > li[class^="mt-"]
+search.yahoo.com###right div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"]
+search.yahoo.com###right li[id^="yui_"] .dd > .layoutMiddle
+search.yahoo.com###right ol li[id^="yui_"] > .dd > .layoutMiddle
+search.yahoo.com###sec-col
+search.yahoo.com###ysch #doc #bd #results #cols #left #main .ads
+search.yahoo.com###ysch #doc #bd #results #cols #left #main .ads .more-sponsors
+search.yahoo.com###ysch #doc #bd #results #cols #left #main .ads .spns
+search.yahoo.com###ysch #doc #bd #results #cols #right #east .ads
+search.yahoo.com##.ads
+search.yahoo.com##.bgclickable
+search.yahoo.com##.eadlast
+search.yahoo.com##.has-sma-box
+search.yahoo.com##.horiz
+search.yahoo.com##.last > div[class][data-bid] > div[class] > ul[class] > li > span > a
+search.yahoo.com##.promo-res
+search.yahoo.com##.sponsor-dd
+search.yahoo.com##.title > a[style="color:#efc439 !important; font-size:13px;font-weight: normal;"]
+search.yahoo.com##.vert-ad-ttl + * > .eca[target="_blank"][href^="http://r.search.yahoo.com/_ylt="]
+search.yahoo.com##a[href="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"]
+search.yahoo.com##a[href^="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"]
+search.yahoo.com##a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*=".r.msn.com"]
+search.yahoo.com##a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*="beap.gemini.yahoo.com"]
+search.yahoo.com##a[href^="https://search.yahoo.com/search/ads;"]
+search.yahoo.com##div[id^="wp_bannerize-"]
+search.yahoo.com##div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class]
+search.yahoo.com##div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"]
+search.yahoo.com##li[id^="yui_"] > div[data-bns][data-bk][style="cursor: pointer;"] > div[class]
+search.yahoo.com##ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="]
+search.yahoo.com##.eza9f
+shopping.yahoo.com##.searchCenterTopAds
+shopping.yahoo.com##.searchCenterBottomAds
+shopping.yahoo.com##.shmod-ysm
+sports.yahoo.com##.searchCenterTopAds
+sports.yahoo.com##.searchCenterBottomAds
+sports.yahoo.com##.searchRightBottomAds
+uk.news.yahoo.com##.yom-ad
+uk.news.yahoo.com##.rmx-ad
+uk.news.yahoo.com##.media-native-ad
+uk.news.yahoo.com##.darla-container
+uk.news.yahoo.com##[data-beacon]
+uk.news.yahoo.com##.ads_wrapper
+uk.sports.yahoo.com##.yom-ad
+uk.sports.yahoo.com##.rmx-ad
+uk.sports.yahoo.com##.media-native-ad
+uk.sports.yahoo.com##.classickick
+uk.sports.yahoo.com##.darla-container
+uk.sports.yahoo.com##[data-beacon]
+uk.sports.yahoo.com##.ads_wrapper
+uk.yahoo.com###my-adsMAST
+uk.yahoo.com###my-adsLREC
+uk.yahoo.com###my-adsTL1
+uk.yahoo.com###my-adsLREC2
+uk.yahoo.com##.js-stream-featured-ad
+uk.yahoo.com##.y7sponsoredlist
+uk.yahoo.com##.darla
+uk.yahoo.com##[data-beacon]
+video.search.yahoo.com##.adwrapper
+www.autoblog.com###yatadfin
+www.autoblog.com###yatadfinbd
+www.autoblog.com###yatadlrec
+www.autoblog.com###yatadoem
+www.autoblog.com###yatadoembd
+www.autoblog.com##.yatAdInsuranceFooter
+www.autoblog.com##.yatysm-y
+www.autoblog.com##.ad-banner-wrapper
+www.autoblog.com##.ad-module
+www.autoblog.com##.flex-banner
+www.autoblog.com##.btf-wrapper
+www.autoblog.com###right_rail-zergnet
+www.yahoo.com###LREC
+www.yahoo.com###MREC
+www.yahoo.com###YSLUG
+www.yahoo.com###ad
+www.yahoo.com###banner
+www.yahoo.com###boxLREC
+www.yahoo.com###darla-ad__LREC
+www.yahoo.com###darla-ad__LREC2
+www.yahoo.com###default-p_24457750
+www.yahoo.com###eyebrow > #ypromo
+www.yahoo.com###genie-widgetgroup
+www.yahoo.com###leftGutter
+www.yahoo.com###lrec2
+www.yahoo.com###lrec_mod
+www.yahoo.com###marketplace
+www.yahoo.com###mbAds
+www.yahoo.com###mw-ysm-cm
+www.yahoo.com###my-promo-hover
+www.yahoo.com###paas-lrec
+www.yahoo.com###paas-mrec
+www.yahoo.com###promo_links_list
+www.yahoo.com###rec
+www.yahoo.com###reg-promos
+www.yahoo.com###rightGutter
+www.yahoo.com###sponsor
+www.yahoo.com###sponsored
+www.yahoo.com###theMNWAd
+www.yahoo.com###tiles-container > #row-2[style="height: 389.613px; padding-bottom: 10px;"]
+www.yahoo.com###u_2588582-p
+www.yahoo.com###y708-ad-lrec1
+www.yahoo.com###y708-sponmid
+www.yahoo.com###y_provider_promo
+www.yahoo.com###ya-center-rail > [id^="ya-q-"][id$="-textads"]
+www.yahoo.com###yahooPN_CM
+www.yahoo.com###yahoovideo_ysmlinks
+www.yahoo.com###yfi_pf_ysm
+www.yahoo.com###yfi_ysm
+www.yahoo.com###ygmapromo
+www.yahoo.com###yh-ysm
+www.yahoo.com###yl_pf_ysm
+www.yahoo.com###ylf-ysm
+www.yahoo.com###ymh-invitational-recs
+www.yahoo.com###yn-darla2
+www.yahoo.com###yn-gmy-promo-answers
+www.yahoo.com###yn-gmy-promo-groups
+www.yahoo.com###yschsec
+www.yahoo.com##.ad
+www.yahoo.com##.ad-active
+www.yahoo.com##.ads
+www.yahoo.com##.astro-promo
+www.yahoo.com##.fpad
+www.yahoo.com##.lrec
+www.yahoo.com##.marketplace
+www.yahoo.com##.mballads
+www.yahoo.com##.more-sponsors
+www.yahoo.com##.sharing-toolbar
+www.yahoo.com##.spns
+www.yahoo.com##.spon.clearfix
+www.yahoo.com##.spons
+www.yahoo.com##.wdpa1
+www.yahoo.com##.y7-breakout-bracket
+www.yahoo.com##.y708-ad-eyebrow
+www.yahoo.com##.y708-commpartners
+www.yahoo.com##.y708-promo-middle
+www.yahoo.com##.y7moneyhound
+www.yahoo.com##.y7partners
+www.yahoo.com##.ya-LDRB
+www.yahoo.com##.ya-darla-LREC
+www.yahoo.com##.yad
+www.yahoo.com##.yad-cpa
+www.yahoo.com##.yschspns
+www.yahoo.com##.ysm-cont
+www.yahoo.com##.ysptblbdr3
+www.yahoo.com##[data-ad-enhanced="card"]
+www.yahoo.com##[data-ad-enhanced="pencil"]
+www.yahoo.com##[data-ad-enhanced="text"]
+www.yahoo.com##a[href^="https://beap.adss.yahoo.com/"]
+www.yahoo.com##div[data-type="ADS"]
+www.yahoo.com##div[id^="tile-A"][data-beacon-url^="https://beap.gemini.yahoo.com/mbcsc?"]
+www.yahoo.com##div[id^="tile-mb-"]
+www.yahoo.com##li[data-beacon^="https://beap.adss.yahoo.com/"]
+www.yahoo.com##li[data-beacon^="https://beap.gemini.yahoo.com/"]
+www.yahoo.com##li[id^="ad-"]
+www.yahoo.com##.ad-tl1
+www.yahoo.com##.ad-wrap
+www.yahoo.com##.yom-ad
+www.yahoo.com##.rmx-ad
+www.yahoo.com##.darla-container
+www.yahoo.com##.moneyball-ad
+www.yahoo.com##.js-stream-ad
+www.yahoo.com##.Stage
+www.yahoo.com##.darla
+www.yahoo.com##[data-beacon]
+www.yahoo.com##.related-gemini-ad
+mashable.com##.ad
+mashable.com##.header-banner
+mashable.com##.pga
+mashable.com##.box970
+mashable.com##.ad_container
+mashable.com###sticky-spacer
+mashable.com###stories-ad
+mashable.com##.zergnet-container
+www.cp24.com##.boxAd
+www.cp24.com##.cp24FlyersWidgetSidebar
+www.cp24.com##.sponsoredButtons
+mail.ru##.w-banner
+mail.ru##.text-banner
+m.sportmail.ru##.ban
+news.mail.ru##.ban
+auto.mail.ru##.ban
+auto.mail.ru##[data-16806="1"]
+auto.mail.ru##.rb_10227
+auto.mail.ru##.rb_6015
+auto.mail.ru##.rb-criteo-wrapper
+kino.mail.ru##.ban
+lady.mail.ru##.ban
+m.games.mail.ru##.ban
+hi-tech.mail.ru##.ban
+m.imgur.com##.advertisement
+m.sohu.com##.sohuadcode
+m.sohu.com###ad_TOP
+m.sohu.com###ad_B
+m.sohu.com###ad_C
+m.sohu.com###ad_D
+m.sohu.com##.fanfujubao
+m.sohu.com##.fanfujubao1
+m.sohu.com##.fanfujubao2
+m.sohu.com##.fanfujubao3
+m.sohu.com###ad_E_A
+m.sohu.com###ad_E
+m.sohu.com###ad_G
+m.sohu.com###ad_H
+m.sohu.com###ad_M
+m.sohu.com###ad_O
+m.sohu.com###ad_T
+m.sohu.com###ad_N
+m.sohu.com###ad_W
+m.sohu.com##.godR
+m.sohu.com##.god-main
+m.sohu.com##.god-sub
+m.sohu.com##.god-cut
+www.xvideos.com###video-ad
+www.xvideos.com###ad-bottom
+www.xvideos.com##.ad
+m.imdb.com##.cornerstone_slot
+m.imdb.com##.dfp_slot
+m.imdb.com##.after_ad
+m.imdb.com##[name="slot_right-7"] + .aux-content-widget-2
+stackoverflow.com##.adzerk-vote
+www.phonearena.com##ins
+www.phonearena.com###top_banner
+www.phonearena.com##.adswidget
+www.phonearena.com##.s_ad_300x250
+www.phonearena.com##.s_ad_160x600
+www.phonearena.com###bottom_banner
+www.phonearena.com##.s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"]
+www.phonearena.com##.bannerplace728
+www.phonearena.com##div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"]
+www.phonearena.com##.s_mb_15[style="min-height: 250px"]
+www.phonearena.com##.s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]
+www.nytimes.com##.ad
+www.nytimes.com##.text-ad
+www.nytimes.com##.g-ad
+www.nytimes.com##.e12j3pa50
+www.nytimes.com##.css-1jrr5my
+www.nytimes.com##.eaca97t0
+www.nytimes.com##.css-1sy8kpn
+www.nytimes.com##.css-1r07izm
+www.nytimes.com##.css-1ede5it
+www.nytimes.com##.Ad-ad--25EEa
+www.nytimes.com###SponLink
+www.amazon.de##.displayAd
+www.amazon.de###ADPlaceholder
+www.amazon.de##div[data-campaign]
+www.amazon.de##.bannerImage
+diply.com##.center-da
+diply.com##.mega-da-full
+diply.com##.da-disclaimer
+diply.com##.btfrectangle
+m.dpreview.com##.widget iframe
+m.dpreview.com##.ad
+www.cafemom.com##.bottom-ad
+www.cafemom.com##ins
+thestir.cafemom.com##.bottom-ad
+thestir.cafemom.com##ins
+www.tmz.com##.masthead-ad
+www.tmz.com##.inline-promo
+www.tmz.com##.ad-container
+www.tmz.com##.trc-content-sponsored
+www.tmz.com##.adbadge
+www.tmz.com##.disqus_thread iframe
+www.tmz.com##.iab-ad__wrapper
+www.tmz.com##.quigo-permalink
+bleacherreport.com##.br-ad-wrapper
+www.mediaite.com##div[data-adid]
+www.theblaze.com##iframe[name="adblade_ad_iframe"]
+www.theblaze.com##.ad
+www.google.es###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.es###rhs_block > #mbEnd
+www.google.es###tads + div + .c
+www.google.es###tads.c
+www.google.es###topstuff > #tads
+www.google.es###ad
+www.google.es###tadsc
+www.google.es##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.es##.GGQPGYLCD5
+www.google.es##.GGQPGYLCMCB
+www.google.es##.GISRH3UDHB
+www.google.es##.ad-active
+www.google.es##.ads
+www.google.es##.c[style="margin: 0pt;"]
+www.google.es##.nH.MC
+www.google.es##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.es##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.es##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.es##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.es##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.es##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.es##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.es##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.ru###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.ru###rhs_block > #mbEnd
+www.google.ru###tads + div + .c
+www.google.ru###tads.c
+www.google.ru###topstuff > #tads
+www.google.ru###ad
+www.google.ru###tadsc
+www.google.ru##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.ru##.GGQPGYLCD5
+www.google.ru##.GGQPGYLCMCB
+www.google.ru##.GISRH3UDHB
+www.google.ru##.ad-active
+www.google.ru##.ads
+www.google.ru##.c[style="margin: 0pt;"]
+www.google.ru##.nH.MC
+www.google.ru##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.ru##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.ru##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.ru##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.ru##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.ru##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.ru##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.ru##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.ca###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.ca###rhs_block > #mbEnd
+www.google.ca###tads + div + .c
+www.google.ca###tads.c
+www.google.ca###topstuff > #tads
+www.google.ca###ad
+www.google.ca###tadsc
+www.google.ca##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.ca##.GGQPGYLCD5
+www.google.ca##.GGQPGYLCMCB
+www.google.ca##.GISRH3UDHB
+www.google.ca##.ad-active
+www.google.ca##.ads
+www.google.ca##.c[style="margin: 0pt;"]
+www.google.ca##.nH.MC
+www.google.ca##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.ca##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.ca##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.ca##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.ca##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.ca##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.ca##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.ca##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.it###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.it###rhs_block > #mbEnd
+www.google.it###tads + div + .c
+www.google.it###tads.c
+www.google.it###topstuff > #tads
+www.google.it###ad
+www.google.it###tadsc
+www.google.it##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.it##.GGQPGYLCD5
+www.google.it##.GGQPGYLCMCB
+www.google.it##.GISRH3UDHB
+www.google.it##.ad-active
+www.google.it##.ads
+www.google.it##.c[style="margin: 0pt;"]
+www.google.it##.nH.MC
+www.google.it##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.it##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.it##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.it##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.it##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.it##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.it##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.it##div[style^="height: 16px; font: bold 12px/16px"]
+m.hao123.com##.hao123-banner
+www.msn.com##.providerupsell
+www.msn.com##.todayshowcasead
+www.microsoft.com##.hp-large-carousel
+www.amazon.co.jp###DAadrp
+www.amazon.co.jp###ad
+www.amazon.co.jp###nav-swmslot
+www.amazon.co.jp###raw-search-desktop-advertising-tower-1
+www.amazon.co.jp##.pa-sp-container
+www.amazon.co.jp##div[style="width:300px;height:280px;"]
+www.amazon.co.jp##.displayAd
+www.amazon.co.jp##.zg_displayAd
+www.amazon.co.jp###amsDetailRight
+www.amazon.co.jp###ADPlaceholder
+www.amazon.co.jp###sponsored-products-dp_feature_div
+www.amazon.co.jp###AUI_A9AdsMiddleBoxTop
+www.amazon.co.jp##.billboard
+www.amazon.co.jp###desktop-ad-atf
+www.amazon.co.jp###desktop-ad-atf-hr
+www.amazon.co.jp###DAae1
+www.google.co.uk###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.co.uk###rhs_block > #mbEnd
+www.google.co.uk###tads + div + .c
+www.google.co.uk###tads.c
+www.google.co.uk###topstuff > #tads
+www.google.co.uk###ad
+www.google.co.uk###tadsc
+www.google.co.uk##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.co.uk##.GGQPGYLCD5
+www.google.co.uk##.GGQPGYLCMCB
+www.google.co.uk##.GISRH3UDHB
+www.google.co.uk##.ad-active
+www.google.co.uk##.ads
+www.google.co.uk##.c[style="margin: 0pt;"]
+www.google.co.uk##.nH.MC
+www.google.co.uk##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.co.uk##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.co.uk##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.co.uk##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.co.uk##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.co.uk##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.co.uk##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.co.uk##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.co.uk##.ads-ad
+www.google.fr###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.fr###rhs_block > #mbEnd
+www.google.fr###tads + div + .c
+www.google.fr###tads.c
+www.google.fr###topstuff > #tads
+www.google.fr###ad
+www.google.fr###tadsc
+www.google.fr##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.fr##.GGQPGYLCD5
+www.google.fr##.GGQPGYLCMCB
+www.google.fr##.GISRH3UDHB
+www.google.fr##.ad-active
+www.google.fr##.ads
+www.google.fr##.c[style="margin: 0pt;"]
+www.google.fr##.nH.MC
+www.google.fr##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.fr##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.fr##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.fr##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.fr##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.fr##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.fr##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.fr##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.fr##.ads-ad
+www.google.de###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.de###rhs_block > #mbEnd
+www.google.de###tads + div + .c
+www.google.de###tads.c
+www.google.de###topstuff > #tads
+www.google.de###ad
+www.google.de###tadsc
+www.google.de##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.de##.GGQPGYLCD5
+www.google.de##.GGQPGYLCMCB
+www.google.de##.GISRH3UDHB
+www.google.de##.ad-active
+www.google.de##.ads
+www.google.de##.c[style="margin: 0pt;"]
+www.google.de##.nH.MC
+www.google.de##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.de##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.de##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.de##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.de##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.de##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.de##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.de##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.de##.ads-ad
+www.google.com.br###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.com.br###rhs_block > #mbEnd
+www.google.com.br###tads + div + .c
+www.google.com.br###tads.c
+www.google.com.br###topstuff > #tads
+www.google.com.br###ad
+www.google.com.br###tadsc
+www.google.com.br##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.com.br##.GGQPGYLCD5
+www.google.com.br##.GGQPGYLCMCB
+www.google.com.br##.GISRH3UDHB
+www.google.com.br##.ad-active
+www.google.com.br##.ads
+www.google.com.br##.c[style="margin: 0pt;"]
+www.google.com.br##.nH.MC
+www.google.com.br##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.com.br##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.com.br##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.com.br##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.com.br##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.com.br##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com.br##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.com.br##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.com.br##.ads-ad
+www.geniuskitchen.com##.dfp
+www.geniuskitchen.com##.fd-tile-ad
+www.geniuskitchen.com##.ad
+www.ehow.com##.RadLinks
+www.ehow.com##center[id^="DartAd_"]
+www.ehow.com##div[data-module="radlinks"]
+www.ehow.com###ebooks_container
+www.babycenter.com###fromOurSponsorsHome
+www.babycenter.com##.mediumRectangleAdContainer
+www.babycenter.com##.leaderFooterAdContainer
+www.babycenter.com##.skyscraperAdContainer
+www.babycenter.com##.leaderAdContainer
+www.cnbc.com###ms_aur
+www.cnbc.com###vidRightRailWrapper
+www.cnbc.com##div[style="width:960;height:90;margin:0 0 5px 0;"]
+www.cnbc.com###social-tools-panel
+www.tomshardware.com###pgad_Top
+www.tomshardware.com##.basicCentral-elm.partner
+www.tomshardware.com##.shopping
+www.tomshardware.com##.sideOffers
+www.tomshardware.com##.zonepub
+www.coupons.com##.mod-ads
+www.coupons.com###widesky-banner
+www.coupons.com##.myc_google
+www.digitaltrends.com##.m-leaderboard
+www.digitaltrends.com##.m-mem--ad
+www.digitaltrends.com##.pricegrabber
+www.digitaltrends.com##.dtads-slot
+www.digitaltrends.com##.m-intermission
+www.digitaltrends.com##.m-review-affiliate-pint
+www.digitaltrends.com##.dtads-alt
+www.digitaltrends.com##.dtads-alt-mpu
+www.kbb.com###kbbAdsMedRec
+www.kbb.com###kbbAdsMedRec2
+www.kbb.com###Aside
+www.kbb.com###Mrec-container
+www.kbb.com###New-spotlights
+www.kbb.com###kbbAdsCustomCompare
+www.kbb.com###kbbAdsHpPushdown
+www.kbb.com##.showroom-ad
+www.kbb.com###kbbAdsLeaderboard
+www.kbb.com###kbbAdsCategoryCarouselMedRec1
+www.kbb.com###kbbAdsSlpLeaderboard
+m.vk.com###banner1
+m.vk.com###banner2
+m.vk.com###left_ads
+www.tmall.com##.floor-ad-banner
+deadline.com##.widget_pmc_marketplace_ads
+deadline.com##.footer-ad-mobile
+deadline.com##.ad
+gigaom.com###ad-leaderboard-container
+gigaom.com###ad-billboard-container
+gigaom.com##.widget-go-ads
+weather.com###pageSpon2
+weather.com###paid_search
+weather.com###partner_offers
+weather.com###twc-partner-spot
+weather.com##.divBottomNotice
+weather.com##.divCenterNotice
+weather.com##.trc_recs_column + .right-column
+weather.com##.taboola_module
+www.bloomberg.com##.bannerbox
+www.bloomberg.com##.dvz-widget-sponsor
+www.bloomberg.com##.right-rail-bkg
+www.bloomberg.com##.widget_bb_doubleclick_widget
+www.bloomberg.com##.advertisement
+www.bloomberg.com##.sponsored-ad
+www.bloomberg.com##.ad-v2
+www.bloomberg.com##.index-page__top-ad
+www.bloomberg.com##.leaderboard-ad-dummy
+www.washingtonpost.com###banner_wrapper_bottom
+www.washingtonpost.com###slug_88x31
+www.washingtonpost.com###slug_featured_links
+www.washingtonpost.com###slug_flex_ss_bb_hp
+www.washingtonpost.com###slug_inline_bb
+www.washingtonpost.com###slug_sponsor_links_rr
+www.washingtonpost.com###textlinkWrapper
+www.washingtonpost.com###wpni_adi_leaderboard
+www.washingtonpost.com##.brand-connect-module
+www.washingtonpost.com##.pb-ad-container
+www.washingtonpost.com##.ads
+www.washingtonpost.com##.ad-hideable
+www.google.com.mx###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.com.mx###rhs_block > #mbEnd
+www.google.com.mx###tads + div + .c
+www.google.com.mx###tads.c
+www.google.com.mx###topstuff > #tads
+www.google.com.mx###ad
+www.google.com.mx###tadsc
+www.google.com.mx##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.com.mx##.GGQPGYLCD5
+www.google.com.mx##.GGQPGYLCMCB
+www.google.com.mx##.GISRH3UDHB
+www.google.com.mx##.ad-active
+www.google.com.mx##.ads
+www.google.com.mx##.c[style="margin: 0pt;"]
+www.google.com.mx##.nH.MC
+www.google.com.mx##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.com.mx##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.com.mx##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.com.mx##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.com.mx##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.com.mx##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com.mx##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.com.mx##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.com.mx##.ads-ad
+www.google.com.hk###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.com.hk###rhs_block > #mbEnd
+www.google.com.hk###tads + div + .c
+www.google.com.hk###tads.c
+www.google.com.hk###topstuff > #tads
+www.google.com.hk###ad
+www.google.com.hk###tadsc
+www.google.com.hk##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.com.hk##.GGQPGYLCD5
+www.google.com.hk##.GGQPGYLCMCB
+www.google.com.hk##.GISRH3UDHB
+www.google.com.hk##.ad-active
+www.google.com.hk##.ads
+www.google.com.hk##.c[style="margin: 0pt;"]
+www.google.com.hk##.nH.MC
+www.google.com.hk##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.com.hk##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.com.hk##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.com.hk##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.com.hk##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.com.hk##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com.hk##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.com.hk##div[style^="height: 16px; font: bold 12px/16px"]
+www.google.com.hk##.ads-ad
+outlook.live.com###RadAd_Skyscraper
+www.linkedin.com###ad-container
+www.linkedin.com##.ad
+www.linkedin.com###bottom-ads-container > .attribution
+www.linkedin.com##.ad-hrc
+m.yelp.com##.googlead-sponsor-wrapper
+m.yelp.com##.googlead-bigbox-wrapper
+m.yelp.com##.yloca-search-result
+www.groupon.com##.ad-container
+www.groupon.com##.ad
+www.groupon.com##.da-gallery-160-600
+m.gsmarena.com##a[href^="http://www.cellpex.com/affiliates/"]
+m.gsmarena.com##.adsbygoogle
+m.gsmarena.com##.adv
+m.gsmarena.com##.topAdv
+www.cnn.com###adsquare
+www.cnn.com###ad_ns_btf_03
+www.cnn.com###quigo628
+www.cnn.com##.cnnoutbrain
+www.cnn.com###quigo336
+www.cnn.com##.vidSponsor
+www.cnn.com##div[style="min-height:270px; max-height:625px;height: 270px!important;"]
+www.cnn.com##div[style="width: 300px; height: 250px;"]
+www.cnn.com##div[style="width:300px; height:250px;overflow:hidden;"]
+www.cnn.com###cnnLawyersCom
+www.cnn.com###footerleft
+www.cnn.com###footerright
+www.cnn.com###front-page-mpu
+www.cnn.com###ie_column
+www.cnn.com###leaderboard
+www.cnn.com###lr_comp_default_300x250
+www.cnn.com###google_image_div
+www.instructables.com##.aspace
+www.instructables.com##.newrightbar_div_10
+www.instructables.com###gpt-ad-leaderboard
+www.instructables.com##.side-ad
+www.instructables.com##.collection-adspot
+www.instructables.com##.explore-ad
+www.allrecipes.com###ads-right
+www.allrecipes.com##.rrAdPad
+www.allrecipes.com##.bottom-ad2
+www.allrecipes.com##.advertise_txt
+www.allrecipes.com##.ad-text
+www.allrecipes.com##.topads-spacer
+www.allrecipes.com##.reserve-ad-space
+www.allrecipes.com##.review-ad-space
+www.allrecipes.com##.ad-recipe-page-footer-container
+www.marketwatch.com###BrokerButtons
+www.marketwatch.com###story-premiumbanner
+www.marketwatch.com###supposedlytemporaryad
+www.marketwatch.com###tradingcenter
+www.marketwatch.com##[width="120"][bgcolor="#d7d7d6"]
+www.marketwatch.com##.advertisement
+www.marketwatch.com##.ad-extra-text
+www.marketwatch.com###ad-display-ad-placeholder
+www.marketwatch.com##.ad
+www.google.co.in##.ads-ad
+www.google.co.in##.ads-bbl-container
+www.google.co.in##.ads-bbl-triangle
+news.yahoo.co.jp##[name^=yads]
+news.yahoo.co.jp##.ss
+m.yahoo.co.jp##[name^=yads]
+m.yahoo.co.jp###brandpanel
+m.yahoo.co.jp###ad-lrec
+weather.yahoo.co.jp##[name^=yads]
+weather.yahoo.co.jp###ad-lrec
+loco.yahoo.co.jp##[name^=yads]
+loco.yahoo.co.jp###ad-lrec
+fortune.yahoo.co.jp##[name^=yads]
+fortune.yahoo.co.jp###ad-lrec
+movies.yahoo.co.jp##[name^=yads]
+movies.yahoo.co.jp###ad-lrec
+special-bookstore.yahoo.co.jp##[name^=yads]
+special-bookstore.yahoo.co.jp###ad-lrec
+partner.yahoo.co.jp##[name^=yads]
+partner.yahoo.co.jp###ad-lrec
+blogs.yahoo.co.jp##[name^=yads]
+blogs.yahoo.co.jp###ad-lrec
+finance.yahoo.co.jp##[name^=yads]
+finance.yahoo.co.jp###ad-lrec
+finance.yahoo.co.jp###pos-lrec
+carview.yahoo.co.jp##[name^=yads]
+carview.yahoo.co.jp###ad-lrec
+ucar.carview.yahoo.co.jp##[name^=yads]
+ucar.carview.yahoo.co.jp###ad-lrec
+job.yahoo.co.jp##[name^=yads]
+job.yahoo.co.jp###ad-lrec
+transit.yahoo.co.jp##[name^=yads]
+transit.yahoo.co.jp###ad-lrec
+map.yahoo.co.jp##[name^=yads]
+map.yahoo.co.jp###ad-lrec
+tv.yahoo.co.jp##[name^=yads]
+tv.yahoo.co.jp###ad-lrec
+news.finance.yahoo.co.jp##[name^=yads]
+news.finance.yahoo.co.jp###ad-lrec
+news.finance.yahoo.co.jp###pos-lrec
+sports.yahoo.co.jp##[name^=yads]
+sports.yahoo.co.jp###ad-lrec
+auctions.yahoo.co.jp##[name^=yads]
+auctions.yahoo.co.jp###ad-lrec
+www.google.co.jp###rhs_block
+www.google.co.jp##.ads-ad
+yandex.ru##.serp-adv__block
+yandex.ru##.serp-block-o7
+sina.cn##.sinaads-couplet-side
+sina.cn##.sinaad-toolkit-box
+sina.cn##.top-ads-fwrap
+sina.cn##.palm01-ad
+sina.cn##.mod-08
+sina.cn##.ad-banner
+sina.cn##.sinaads
+sina.cn##.tit01
+sina.cn##.mod03
+sina.cn##.top-ads
+sina.cn##.mod-01 + .blank-cont
+sina.cn##.part-l
+sina.cn##.sinaAD_slide01_w
+sina.cn##.part-n-l
+news.sina.cn##.pip00adNone
+news.sina.cn##.adNone
+news.sina.cn##.sinaad-toolkit-box
+news.sina.cn##.sinaads
+news.sina.cn##[class^=ad_]
+news.sina.cn##.tb0827
+news.sina.cn##div[name^=_AdSame]
+news.sina.cn##[class^=Ad_]
+www.baidu.com###ec_im_container
+www.pornhub.com###bodytag
+www.pornhub.com##.adblockfast-collapsed
+www.pornhub.com##.home-ad-container
+www.pornhub.com##.ad_box
+www.pornhub.com##.pre-footer
+www.pornhub.com##.section-hqrelateds
+www.pornhub.com###welcome
+www.pornhub.com###access_container
+www.pornhub.com###adA
+www.pornhub.com###adB
+www.pornhub.com###pb_template
+www.pornhub.com###views_left
+www.pornhub.com##.ad
+www.pornhub.com##.adContainer
+www.pornhub.com##.gay-ad-container
+www.pornhub.com##.home-ad-container
+www.pornhub.com##.join
+www.pornhub.com##.join_link
+www.pornhub.com##.top_hd_banner
+www.pornhub.com##a[href^="http://ads.genericlink.com/"]
+www.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+www.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+www.pornhub.com##a[href^="http://as.sexad.net/"]
+de.pornhub.com###bodytag
+de.pornhub.com##.adblockfast-collapsed
+de.pornhub.com##.home-ad-container
+de.pornhub.com##.ad_box
+de.pornhub.com##.pre-footer
+de.pornhub.com##.section-hqrelateds
+de.pornhub.com###welcome
+de.pornhub.com###access_container
+de.pornhub.com###adA
+de.pornhub.com###adB
+de.pornhub.com###pb_template
+de.pornhub.com###views_left
+de.pornhub.com##.ad
+de.pornhub.com##.adContainer
+de.pornhub.com##.gay-ad-container
+de.pornhub.com##.home-ad-container
+de.pornhub.com##.join
+de.pornhub.com##.join_link
+de.pornhub.com##.top_hd_banner
+de.pornhub.com##a[href^="http://ads.genericlink.com/"]
+de.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+de.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+de.pornhub.com##a[href^="http://as.sexad.net/"]
+fr.pornhub.com###bodytag
+fr.pornhub.com##.adblockfast-collapsed
+fr.pornhub.com##.home-ad-container
+fr.pornhub.com##.ad_box
+fr.pornhub.com##.pre-footer
+fr.pornhub.com##.section-hqrelateds
+fr.pornhub.com###welcome
+fr.pornhub.com###access_container
+fr.pornhub.com###adA
+fr.pornhub.com###adB
+fr.pornhub.com###pb_template
+fr.pornhub.com###views_left
+fr.pornhub.com##.ad
+fr.pornhub.com##.adContainer
+fr.pornhub.com##.gay-ad-container
+fr.pornhub.com##.home-ad-container
+fr.pornhub.com##.join
+fr.pornhub.com##.join_link
+fr.pornhub.com##.top_hd_banner
+fr.pornhub.com##a[href^="http://ads.genericlink.com/"]
+fr.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+fr.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+fr.pornhub.com##a[href^="http://as.sexad.net/"]
+it.pornhub.com###bodytag
+it.pornhub.com##.adblockfast-collapsed
+it.pornhub.com##.home-ad-container
+it.pornhub.com##.ad_box
+it.pornhub.com##.pre-footer
+it.pornhub.com##.section-hqrelateds
+it.pornhub.com###welcome
+it.pornhub.com###access_container
+it.pornhub.com###adA
+it.pornhub.com###adB
+it.pornhub.com###pb_template
+it.pornhub.com###views_left
+it.pornhub.com##.ad
+it.pornhub.com##.adContainer
+it.pornhub.com##.gay-ad-container
+it.pornhub.com##.home-ad-container
+it.pornhub.com##.join
+it.pornhub.com##.join_link
+it.pornhub.com##.top_hd_banner
+it.pornhub.com##a[href^="http://ads.genericlink.com/"]
+it.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+it.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+it.pornhub.com##a[href^="http://as.sexad.net/"]
+pt.pornhub.com###bodytag
+pt.pornhub.com##.adblockfast-collapsed
+pt.pornhub.com##.home-ad-container
+pt.pornhub.com##.ad_box
+pt.pornhub.com##.pre-footer
+pt.pornhub.com##.section-hqrelateds
+pt.pornhub.com###welcome
+pt.pornhub.com###access_container
+pt.pornhub.com###adA
+pt.pornhub.com###adB
+pt.pornhub.com###pb_template
+pt.pornhub.com###views_left
+pt.pornhub.com##.ad
+pt.pornhub.com##.adContainer
+pt.pornhub.com##.gay-ad-container
+pt.pornhub.com##.home-ad-container
+pt.pornhub.com##.join
+pt.pornhub.com##.join_link
+pt.pornhub.com##.top_hd_banner
+pt.pornhub.com##a[href^="http://ads.genericlink.com/"]
+pt.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+pt.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+pt.pornhub.com##a[href^="http://as.sexad.net/"]
+pl.pornhub.com###bodytag
+pl.pornhub.com##.adblockfast-collapsed
+pl.pornhub.com##.home-ad-container
+pl.pornhub.com##.ad_box
+pl.pornhub.com##.pre-footer
+pl.pornhub.com##.section-hqrelateds
+pl.pornhub.com###welcome
+pl.pornhub.com###access_container
+pl.pornhub.com###adA
+pl.pornhub.com###adB
+pl.pornhub.com###pb_template
+pl.pornhub.com###views_left
+pl.pornhub.com##.ad
+pl.pornhub.com##.adContainer
+pl.pornhub.com##.gay-ad-container
+pl.pornhub.com##.home-ad-container
+pl.pornhub.com##.join
+pl.pornhub.com##.join_link
+pl.pornhub.com##.top_hd_banner
+pl.pornhub.com##a[href^="http://ads.genericlink.com/"]
+pl.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+pl.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+pl.pornhub.com##a[href^="http://as.sexad.net/"]
+rt.pornhub.com###bodytag
+rt.pornhub.com##.adblockfast-collapsed
+rt.pornhub.com##.home-ad-container
+rt.pornhub.com##.ad_box
+rt.pornhub.com##.pre-footer
+rt.pornhub.com##.section-hqrelateds
+rt.pornhub.com###welcome
+rt.pornhub.com###access_container
+rt.pornhub.com###adA
+rt.pornhub.com###adB
+rt.pornhub.com###pb_template
+rt.pornhub.com###views_left
+rt.pornhub.com##.ad
+rt.pornhub.com##.adContainer
+rt.pornhub.com##.gay-ad-container
+rt.pornhub.com##.home-ad-container
+rt.pornhub.com##.join
+rt.pornhub.com##.join_link
+rt.pornhub.com##.top_hd_banner
+rt.pornhub.com##a[href^="http://ads.genericlink.com/"]
+rt.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+rt.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+rt.pornhub.com##a[href^="http://as.sexad.net/"]
+jp.pornhub.com###bodytag
+jp.pornhub.com##.adblockfast-collapsed
+jp.pornhub.com##.home-ad-container
+jp.pornhub.com##.ad_box
+jp.pornhub.com##.pre-footer
+jp.pornhub.com##.section-hqrelateds
+jp.pornhub.com###welcome
+jp.pornhub.com###access_container
+jp.pornhub.com###adA
+jp.pornhub.com###adB
+jp.pornhub.com###pb_template
+jp.pornhub.com###views_left
+jp.pornhub.com##.ad
+jp.pornhub.com##.adContainer
+jp.pornhub.com##.gay-ad-container
+jp.pornhub.com##.home-ad-container
+jp.pornhub.com##.join
+jp.pornhub.com##.join_link
+jp.pornhub.com##.top_hd_banner
+jp.pornhub.com##a[href^="http://ads.genericlink.com/"]
+jp.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+jp.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+jp.pornhub.com##a[href^="http://as.sexad.net/"]
+es.pornhub.com###bodytag
+es.pornhub.com##.adblockfast-collapsed
+es.pornhub.com##.home-ad-container
+es.pornhub.com##.ad_box
+es.pornhub.com##.pre-footer
+es.pornhub.com##.section-hqrelateds
+es.pornhub.com###welcome
+es.pornhub.com###access_container
+es.pornhub.com###adA
+es.pornhub.com###adB
+es.pornhub.com###pb_template
+es.pornhub.com###views_left
+es.pornhub.com##.ad
+es.pornhub.com##.adContainer
+es.pornhub.com##.gay-ad-container
+es.pornhub.com##.home-ad-container
+es.pornhub.com##.join
+es.pornhub.com##.join_link
+es.pornhub.com##.top_hd_banner
+es.pornhub.com##a[href^="http://ads.genericlink.com/"]
+es.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
+es.pornhub.com##a[href^="http://ads2.contentabc.com/"]
+es.pornhub.com##a[href^="http://as.sexad.net/"]
+m.naver.com##.img_style
+m.naver.com###ad_top
+m.naver.com###ad_branding_hide
+m.naver.com###ad_branding
+m.naver.com###ad_timesquare
+m.naver.com##.ad_area2
+m.xhamster.com##.sponsorBottom
+m.xhamster.com##.vAds
+m.xhamster.com###adBottom
+m.xhamster.com##.adVideo
+es.m.xhamster.com##.sponsorBottom
+es.m.xhamster.com##.vAds
+es.m.xhamster.com###adBottom
+es.m.xhamster.com##.adVideo
+de.m.xhamster.com##.sponsorBottom
+de.m.xhamster.com##.vAds
+de.m.xhamster.com###adBottom
+de.m.xhamster.com##.adVideo
+fr.m.xhamster.com##.sponsorBottom
+fr.m.xhamster.com##.vAds
+fr.m.xhamster.com###adBottom
+fr.m.xhamster.com##.adVideo
+it.m.xhamster.com##.sponsorBottom
+it.m.xhamster.com##.vAds
+it.m.xhamster.com###adBottom
+it.m.xhamster.com##.adVideo
+ru.m.xhamster.com##.sponsorBottom
+ru.m.xhamster.com##.vAds
+ru.m.xhamster.com###adBottom
+ru.m.xhamster.com##.adVideo
+pt.m.xhamster.com##.sponsorBottom
+pt.m.xhamster.com##.vAds
+pt.m.xhamster.com###adBottom
+pt.m.xhamster.com##.adVideo
+jp.m.xhamster.com##.sponsorBottom
+jp.m.xhamster.com##.vAds
+jp.m.xhamster.com###adBottom
+jp.m.xhamster.com##.adVideo
+nl.m.xhamster.com##.sponsorBottom
+nl.m.xhamster.com##.vAds
+nl.m.xhamster.com###adBottom
+nl.m.xhamster.com##.adVideo
+pl.m.xhamster.com##.sponsorBottom
+pl.m.xhamster.com##.vAds
+pl.m.xhamster.com###adBottom
+pl.m.xhamster.com##.adVideo
+kat.cr###bt_bf
+kat.cr###partner1_button
+kat.cr###promoLeechmonster
+kat.cr###sp2
+kat.cr##.advertising
+kat.cr##.directDownloadButton
+kat.cr##.partner2Button
+kat.cr##.partner3Button
+kat.cr##.promoPartner
+kat.cr##.torrentEasyButton
+kat.cr##.advertising
+edition.cnn.com##.vidSponsor
+edition.cnn.com##div[style="min-height:270px; max-height:625px;height: 270px!important;"]
+edition.cnn.com##div[style="width: 300px; height: 250px;"]
+edition.cnn.com##div[style="width:300px; height:250px;overflow:hidden;"]
+edition.cnn.com###cnnLawyersCom
+edition.cnn.com###footerleft
+edition.cnn.com###footerright
+edition.cnn.com###front-page-mpu
+edition.cnn.com###ie_column
+edition.cnn.com###leaderboard
+edition.cnn.com###lr_comp_default_300x250
+edition.cnn.com###google_image_div
+wap.sogou.com##.ad-box
+wap.sogou.com##.ad_top_banner
+sp.nicovideo.jp##.googleAds
+www.theguardian.com##.top-banner-ad-container
+www.theguardian.com##.js-fc-slice-mpu-candidate
+www.theguardian.com##.ad-slot-container .js-ad-slot-container
+www.theguardian.com##.ad-slot
+www.theguardian.com###tvgAdvert
+www.theguardian.com##.hide-on-popup
+www.theguardian.com##.m-money-deals
+www.theguardian.com##.money-supermarket
+www.theguardian.com##.print-sponsorship
+www.theguardian.com##.slot__container
+www.theguardian.com###global-jobs
+www.foxnews.com##.ad-unit
+www.foxnews.com##.advert
+www.foxnews.com##.ad-container
+www.foxnews.com###google_ads_frame1
+www.foxnews.com##.ad-enabled
+www.foxnews.com###footer-top-wrapper
+www.foxnews.com###frame2-300x100
+www.foxnews.com###leader-wrapper
+www.foxnews.com###outbrain_widget_1
+www.foxnews.com##.advert
+www.foxnews.com##.block-fox_yume
+www.foxnews.com##.ad-content-item
+www.amazon.in##div[style="width:300px;height:280px;"]
+www.amazon.in##.displayAd
+www.amazon.in##.zg_displayAd
+www.amazon.in###amsDetailRight
+www.amazon.in###ADPlaceholder
+www.amazon.in###sponsored-products-dp_feature_div
+www.amazon.in###AUI_A9AdsMiddleBoxTop
+www.amazon.in###DAadrp
+www.amazon.in###ad
+www.amazon.in###nav-swmslot
+www.amazon.in###raw-search-desktop-advertising-tower-1
+www.amazon.in##.pa-sp-container
+m.timesofindia.com##.ad1
+m.timesofindia.com##.adsdivlyr
+m.timesofindia.com##.top_ad
+m.timesofindia.com###adbreak-adspdbl
+m.timesofindia.com##.adlst
+m.timesofindia.com##iframe[title="Advertisement"]
+m.timesofindia.com##div[style="width:300px; height:250px;"]
+www.ask.com##.ad-top
+www.ask.com###csaBottom
+www.google.co.id###mbEnd[cellspacing="0"][cellpadding="0"]
+www.google.co.id###rhs_block > #mbEnd
+www.google.co.id###tads + div + .c
+www.google.co.id###tads.c
+www.google.co.id###topstuff > #tads
+www.google.co.id###ad
+www.google.co.id###tadsc
+www.google.co.id##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
+www.google.co.id##.GGQPGYLCD5
+www.google.co.id##.GGQPGYLCMCB
+www.google.co.id##.GISRH3UDHB
+www.google.co.id##.ad-active
+www.google.co.id##.ads
+www.google.co.id##.c[style="margin: 0pt;"]
+www.google.co.id##.nH.MC
+www.google.co.id##.ts[style="margin:0 0 12px;height:92px;width:100%"]
+www.google.co.id##[style="border: 1px solid rgb(0, 90, 136);"]
+www.google.co.id##[style="border: 1px solid rgb(145, 117, 77);"]
+www.google.co.id##[style="border: 1px solid rgb(241, 250, 248);"]
+www.google.co.id##[style="border: 1px solid rgb(51, 102, 153);"]
+www.google.co.id##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.co.id##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
+www.google.co.id##div[style^="height: 16px; font: bold 12px/16px"]
+m.xinhuanet.com##.adv
+m.xinhuanet.com##[style="z-index:5;"]
+m.xinhuanet.com###topAdv
+m.xinhuanet.com##[id^=adBody]
+m.xinhuanet.com###promotionItem
+m.xinhuanet.com##[id^=Full]
+m.xinhuanet.com##.scrollAd
+m.xinhuanet.com##[class^=ad]
+www.bbc.co.uk###bbccom_leaderboard_container
+www.bbc.co.uk###bbccom_mpu
+www.bbc.co.uk##.bbccom_advert
+www.bbc.co.uk###bbccom_sponsor_section
+www.bbc.co.uk###bbccom_storyprintsponsorship
+www.bbc.com###bbccom_leaderboard_container
+www.bbc.com###bbccom_mpu
+www.bbc.com##.bbccom_advert
+www.bbc.com###bbccom_sponsor_section
+www.bbc.com###bbccom_storyprintsponsorship
+people.com.cn##.top_ad
+people.com.cn##.mt15
+people.com.cn##.ad_banner
+people.com.cn##.city dl
+www.people.com.cn##.top_ad
+www.people.com.cn##.mt15
+www.people.com.cn##.ad_banner
+www.people.com.cn##.city dl
+spanish.peopledaily.com.cn##.ad01
+spanish.peopledaily.com.cn##.ad02
+www.cctv.com##.adv
+www.cctv.com##[id^=div-gpt-ad-]
+www.pixnet.net##.ad
+www.dailymotion.com##.affiliation_cont
+www.dailymotion.com##.dmpi_masscast
+www.dailymotion.com##.masscast_box
+www.dailymotion.com##.masscast_middle_box
+www.dailymotion.com###mc_Middle
+www.dailymotion.com###top_banner
+www.google.pl###tads
+www.google.pl##.ads-ad
+www.google.pl##._Ak
+www.google.pl##.cards-categorical-list-ad
+www.ebay.de##.ft-btyle
+www.ebay.de##[id^=rtm_html_]
+www.ebay.de###gf-mrecs-ads
+www.google.co.kr###tads
+www.google.co.kr##.ads-ad
+www.google.co.kr##._Ak
+www.google.co.kr##.cards-categorical-list-ad
+www.dailymail.co.uk##.editors-choice.ccox.link-ccox.linkro-darkred
+www.dailymail.co.uk##.googleAds
+www.dailymail.co.uk###wideCommentAdvert
+www.dailymail.co.uk##.adHolder
+www.dailymail.co.uk##[id^=taboola-stream-thumbnails-]
+www.usatoday.com##.partner
+www.usatoday.com###usat_PosterBlog
+www.usatoday.com###divMarketplace
+www.usatoday.com###footerSponsorOne
+www.usatoday.com###footerSponsorTwo
+www.usatoday.com###header-leaderboard
+www.usatoday.com###marketplace2
+www.usatoday.com###prerollOverlayPlayer
+www.usatoday.com###side-banner1
+www.usatoday.com###side-banner2
+www.usatoday.com##.bottom-google-links
+www.usatoday.com##[id^=taboola-]
+www.usatoday.com##.taboola-related-module
+m.accuweather.com##[id^=aad]
+time.com##.sep
+time.com##[id^=ad-unit-]
+time.com##[class$=-ad]
+time.com##.left-rail-ad__wrapper
+time.com##.right-rail__container--ad
+mobile.reuters.com###bannerStrip
+mobile.reuters.com###marchex
+mobile.reuters.com##.slide-ad
+www.nbcnews.com###Sidebar2-sponsored
+www.nbcnews.com##.deals
+www.nbcnews.com##.eshopStory
+www.nbcnews.com##.textSmallGrey
+www.nbcnews.com##.ad-container
+www.nbcsports.com###top_90h
+www.nbcsports.com##[id^=block-dart-dart-tag-dart-tag]
+m.economictimes.com##.colombiaAd
+m.economictimes.com##.flt #sideBar.adsbg300:first-of-type
+m.economictimes.com###sideBar.flt .adsbg300:nth-child(4)
+m.economictimes.com##.adContainer
+m.economictimes.com##.flr .adsbg300
+m.economictimes.com##[title=Advertisement]
+www.wunderground.com##.spotBox
+www.wunderground.com##.header-ad-wrap
+www.wunderground.com###top-ad-wrapper
+www.wunderground.com##.ad-box
+www.wunderground.com##.report-ad
+thinkprogress.org##[id^=ad_zone]
+thinkprogress.org##.yad-sponsored
+thinkprogress.org##.sidebar-ad
+laughingsquid.com##.sharethrough-placement
+laughingsquid.com##.adsbygoogle
+laughingsquid.com##[id^=div-gpt-ad]
+laughingsquid.com##[id^=taboola]
+venturebeat.com##.widget_vb_dfp_ad
+venturebeat.com##.vb-ad-leaderboard
+venturebeat.com##.advertorial
+www.chinadaily.com.cn##.w980.pt10
+www.chinadaily.com.cn##[class^=ad]
+www.chinadaily.com.cn##iframe[name^=ad]
+www.chinadaily.com.cn##img[src*=adpic]
+news.livedoor.com##iframe[src*=unthem]
+news.livedoor.com##.ads-block-link
+news.livedoor.com##.rakutenAff
+news.livedoor.com##aside.subSec:first-of-type
+www.livedoor.com##iframe[src*=unthem]
+www.livedoor.com##.ads-block-link
+www.gmw.cn##[class^=bannerArea]
+www.gmw.cn##[class^=ad]
+www.gmw.cn##[class^=contentadBox]
+gmw.cn##[class^=bannerArea]
+gmw.cn##[class^=ad]
+gmw.cn##[class^=contentadBox]
+guancha.gmw.cn##[class^=bannerArea]
+guancha.gmw.cn##[class^=ad]
+guancha.gmw.cn##[class^=contentadBox]
+politics.gmw.cn##[class^=bannerArea]
+politics.gmw.cn##[class^=ad]
+politics.gmw.cn##[class^=contentadBox]
+news.gmw.cn##[class^=bannerArea]
+news.gmw.cn##[class^=ad]
+news.gmw.cn##[class^=contentadBox]
+sports.gmw.cn##[class^=bannerArea]
+sports.gmw.cn##[class^=ad]
+sports.gmw.cn##[class^=contentadBox]
+culture.gmw.cn##[class^=bannerArea]
+culture.gmw.cn##[class^=ad]
+culture.gmw.cn##[class^=contentadBox]
+health.gmw.cn##[class^=bannerArea]
+health.gmw.cn##[class^=ad]
+health.gmw.cn##[class^=contentadBox]
+sports.gmw.cn##[class^=bannerArea]
+sports.gmw.cn##[class^=ad]
+sports.gmw.cn##[class^=contentadBox]
+tech.gmw.cn##[class^=bannerArea]
+tech.gmw.cn##[class^=ad]
+tech.gmw.cn##[class^=contentadBox]
+edu.gmw.cn##[class^=bannerArea]
+edu.gmw.cn##[class^=ad]
+edu.gmw.cn##[class^=contentadBox]
+legal.gmw.cn##[class^=bannerArea]
+legal.gmw.cn##[class^=ad]
+legal.gmw.cn##[class^=contentadBox]
+theory.gmw.cn##[class^=bannerArea]
+theory.gmw.cn##[class^=ad]
+theory.gmw.cn##[class^=contentadBox]
+travel.gmw.cn##[class^=bannerArea]
+travel.gmw.cn##[class^=ad]
+travel.gmw.cn##[class^=contentadBox]
+m.9gag.com##.block-ad
+m.9gag.com##.badge-gag-ads-container
 !
 ! -----------------------Whitelists to fix broken sites------------------------!
 !
