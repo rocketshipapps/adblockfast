@@ -225,7 +225,7 @@ const SELECTORS = {
   'www.reddit.com': '#siteTable_organic, .promotedlink, .dfp-ad-container',
   // Twitter
   'twitter.com':
-      '.promoted-account, .promoted-trend, .promoted-tweet, .promotion, .stream-item[data-item-type="tweet"][data-item-id*=":"], .stream-tweet[impression_id][label="promoted"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > div',
+      '.promoted-account, .promoted-trend, .promoted-tweet, .promotion, .stream-item[data-item-type="tweet"][data-item-id*=":"], .stream-tweet[impression_id][label="promoted"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"]',
   // Verizon
   'search.aol.ca': '.SLL, .WOL, .searchCenterTopAds, .searchCenterBottomAds',
   'search.aol.co.uk':
