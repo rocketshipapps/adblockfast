@@ -3160,6 +3160,7 @@ mobile.twitter.com##.promotion
 mobile.twitter.com##.stream-item[data-item-type="tweet"][data-item-id*=":"]
 mobile.twitter.com##.stream-tweet[impression_id][label="promoted"]
 mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"]
+mobile.twitter.com##[aria-label="Who to follow"] [data-testid="UserCell"]:first-child
 m.huffingtonpost.co.uk###modulous_right_rail_edit_promo
 m.huffingtonpost.co.uk###modulous_sponsorship_2
 m.huffingtonpost.co.uk##.ad_wrapper
