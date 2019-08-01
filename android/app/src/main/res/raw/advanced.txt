@@ -3164,10 +3164,14 @@ mobile.twitter.com##.promotion
 mobile.twitter.com##.stream-item[data-item-type="tweet"][data-item-id*=":"]
 mobile.twitter.com##.stream-tweet[impression_id][label="promoted"]
 mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"]
+mobile.twitter.com##[class="css-1dbjc4n r-e84r5y r-1or9b2r"]
+mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"]
 mobile.twitter.com##.css-901oao.r-hkyrab.r-1qd0xha.r-a023e6.r-vw2c0b.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:first-child
 mobile.twitter.com##.css-901oao.r-1re7ezh.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:nth-child(2)
 mobile.twitter.com##.css-901oao.r-1re7ezh.r-1qd0xha.r-n6v787.r-16dba41.r-1sf4r6n.r-1g94qm0.r-bcqeeo.r-qvutc0
 mobile.twitter.com##[aria-label="Who to follow"] [data-testid="UserCell"]:first-child
+mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo
+mobile.twitter.com##[class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]
 m.huffingtonpost.co.uk###modulous_right_rail_edit_promo
 m.huffingtonpost.co.uk###modulous_sponsorship_2
 m.huffingtonpost.co.uk##.ad_wrapper
