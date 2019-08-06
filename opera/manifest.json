@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Adblock Fast",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description":
       "The world’s fastest ad blocker! Same ad blocking, 8x accelerated page loading.",
   "icons": {
@@ -42,7 +42,7 @@
   "background": {
     "scripts": [
       "chrome/scripts/vendor/firebase.js",
-      "chrome/scripts/library.js",
+      "chrome/scripts/utilities.js",
       "chrome/scripts/blocking.js",
       "chrome/scripts/background.js"
     ]
@@ -51,7 +51,7 @@
     "matches": ["http://*/*", "https://*/*"],
     "css": ["chrome/stylesheets/content.css"],
     "js": [
-      "chrome/scripts/library.js",
+      "chrome/scripts/utilities.js",
       "chrome/scripts/blocking.js",
       "chrome/scripts/hiding.js",
       "chrome/scripts/content.js"

@@ -188,7 +188,6 @@ const IS_IN_OPERA = navigator.userAgent.indexOf('OPR') + 1;
 const BROWSER = IS_IN_OPERA ? 'opera' : 'chrome';
 const PATH = IS_IN_OPERA ? 'chrome/' : '';
 const IS_UPDATING_TO_CURRENT = !PREVIOUS_BUILD || PREVIOUS_BUILD < BUILD;
-var youtubeRule = '';
 var authentication;
 var database;
 var user;
@@ -289,37 +288,6 @@ TABS.query({}, function(tabs) {
   }
 });
 
-(async () => {
-  const MEMORY = new WebAssembly.Memory({initial: 256, maximum: 256});
-  const ARRAY_BUFFER = MEMORY.buffer;
-  const YOUTUBE =
-      await WebAssembly.instantiate(
-        await (
-          await fetch(RUNTIME.getURL('premium/youtube.wasm'))
-        ).arrayBuffer(),
-        {
-          env: {
-            memory: MEMORY,
-            memoryBase: 0,
-            STACKTOP: 0,
-            STACK_MAX: ARRAY_BUFFER.byteLength,
-            abort: () => { throw new Error('Stack overflow'); },
-            table:
-                new WebAssembly.Table({
-                  element: 'anyfunc', initial: 256, maximum: 256
-                }),
-            tableBase: 0
-          }
-        }
-      );
-  const EXPORTS = YOUTUBE.instance.exports;
-  const YOUTUBE_RULE_INDEX = EXPORTS._rule();
-  const YOUTUBE_RULE_UPPER_BOUND = YOUTUBE_RULE_INDEX + EXPORTS._rule_length();
-  const BUFFER = new Uint8Array(ARRAY_BUFFER);
-  for (let i = YOUTUBE_RULE_INDEX; i < YOUTUBE_RULE_UPPER_BOUND; i++)
-      youtubeRule += String.fromCharCode(BUFFER[i]);
-})();
-
 chrome.webRequest.onBeforeRequest.addListener(function(details) {
   const TAB_ID = details.tabId;
   const TYPE = details.type;
@@ -339,8 +307,13 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
             }
 
     if (
-      deserialize(localStorage.wasGrantButtonPressed) &&
-          PARENT_HOST == 'www.youtube.com' && new RegExp(youtubeRule).test(URL)
+      deserialize(localStorage.wasGrantButtonPressed) && (
+        PARENT_HOST == 'www.youtube.com' &&
+            /get_(?:video_(?:metadata|info)|midroll_info)/.test(URL) ||
+                PARENT_HOST == 'www.facebook.com' &&
+                    /facebook\.com\/audiencenetwork\/|facebook\.com(?::.*)?\/.*\/instream\/vast\.xml\?|bing\.com\/fblogout\?|facebook\.com\/video\/instream_video\/|fbcdn\.net\/safe_image\.php\?d=.*&url=http%3A%2F%2Fwww\.facebook\.com%2Fads%2Fimage%2F%3F|fbcdn\.net(?::.*)?\/.*\/flyers\//.test(URL)
+                        && !/www\.facebook\.com\/ajax\/ads\//.test(URL)
+      )
     ) blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
   }
 
@@ -396,7 +369,10 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
 
       if (request.shouldInitialize)
           sendResponse({
-            parentHost: PARENT_HOST, isWhitelisted: IS_WHITELISTED
+            wasGrantButtonPressed:
+                deserialize(localStorage.wasGrantButtonPressed),
+            parentHost: PARENT_HOST,
+            isWhitelisted: IS_WHITELISTED
           });
       else {
         const TAB_ID = TAB.id;

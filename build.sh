@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # Copyright 2015–2019 Rocketship <https://rocketshipapps.com/>
 #
 # This program is free software: you can redistribute it and/or modify it under
@@ -11,17 +12,12 @@
 # FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along with
-# this program. If not, see <http://www.gnu.org/licenses/>.
+# this program. If not, see https://www.gnu.org/licenses/.
 #
 # Authors (one per line):
 #
 #   Brian Kennish <brian@rocketshipapps.com>
-emcc -O3 \
-     -s WASM=1 \
-     -s SIDE_MODULE=1 \
-     -s EXPORTED_FUNCTIONS="[\"_rule\", \"_rule_length\"]" \
-     -o opera/chrome/premium/youtube.wasm \
-     opera/chrome/premium/youtube.c
+#
 cd builds
 rm -Rf adblockfast
 cp -R ../opera adblockfast
@@ -33,6 +29,5 @@ java -jar yuicompressor-2.4.8.jar -o ".css$:.css" \
                                   adblockfast/chrome/stylesheets/*.css
 java -jar yuicompressor-2.4.8.jar -o ".js$:.js" adblockfast/chrome/scripts/*.js
 cd adblockfast
-rm -f chrome/premium/youtube.c
 zip -r ../adblockfast chrome -x *.DS_Store
 rm -f chrome/manifest.json
