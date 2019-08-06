@@ -42,7 +42,7 @@
   "background": {
     "scripts": [
       "chrome/scripts/vendor/firebase.js",
-      "chrome/scripts/utilities.js",
+      "chrome/scripts/utils.js",
       "chrome/scripts/blocking.js",
       "chrome/scripts/background.js"
     ]
@@ -51,7 +51,7 @@
     "matches": ["http://*/*", "https://*/*"],
     "css": ["chrome/stylesheets/content.css"],
     "js": [
-      "chrome/scripts/utilities.js",
+      "chrome/scripts/utils.js",
       "chrome/scripts/blocking.js",
       "chrome/scripts/hiding.js",
       "chrome/scripts/content.js"
