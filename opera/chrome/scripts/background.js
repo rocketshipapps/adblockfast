@@ -311,7 +311,7 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
         PARENT_HOST == 'www.youtube.com' &&
             /get_(?:video_(?:metadata|info)|midroll_info)/.test(URL) ||
                 PARENT_HOST == 'www.facebook.com' &&
-                    /facebook\.com\/audiencenetwork\/|facebook\.com(?::.*)?\/.*\/instream\/vast\.xml\?|bing\.com\/fblogout\?|facebook\.com\/video\/instream_video\/|fbcdn\.net\/safe_image\.php\?d=.*&url=http%3A%2F%2Fwww\.facebook\.com%2Fads%2Fimage%2F%3F|fbcdn\.net(?::.*)?\/.*\/flyers\//.test(URL)
+                    /bing\.com\/fblogout\?|facebook\.com\/video\/instream_video\/|fbcdn\.net\/safe_image\.php\?d=.*&url=http%3A%2F%2Fwww\.facebook\.com%2Fads%2Fimage%2F%3F|fbcdn\.net(?::.*)?\/.*\/flyers\//.test(URL)
                         && !/www\.facebook\.com\/ajax\/ads\//.test(URL)
       )
     ) blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
