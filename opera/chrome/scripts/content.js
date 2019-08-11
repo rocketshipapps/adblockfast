@@ -23,22 +23,40 @@ function populate(style, selector) {
   else setTimeout(function() { populate(style, selector); }, 0);
 }
 
+function hideSponsoredPosts(newsFeed, isWhitelisted) {
+  var wereSponsoredPostsFound;
+
+  if (newsFeed.nodeType == 1)
+      for (const POST of newsFeed.querySelectorAll('[role="article"]')) {
+        var subheading = '';
+        const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[0];
+        if (SUBHEADING_CONTAINER) subheading = CONTAINER.textContent;
+        else for (
+          const CHARACTER of
+              POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i')
+        ) if (getComputedStyle(CHARACTER).display != 'none')
+            subheading += CHARACTER.getAttribute('data-content');
+
+        if (subheading == 'Sponsored') {
+          if (!isWhitelisted) POST.style.display = 'none';
+          wereSponsoredPostsFound = true;
+        }
+      }
+
+  return wereSponsoredPostsFound;
+}
+
 EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
   const PARENT_HOST = response.parentHost;
+  const WAS_GRANT_BUTTON_PRESSED = response.wasGrantButtonPressed;
   const IS_WHITELISTED = response.isWhitelisted;
   var wereAdsFound;
 
   if (PARENT_HOST) {
     var selector = SELECTORS[PARENT_HOST];
-
-    if (response.wasGrantButtonPressed) {
-      if (PARENT_HOST == 'www.facebook.com')
-          selector +=
-              ', #pagelet_ads_when_no_friend_list_suggestion, #pagelet_ego_pane a[ajaxify*="&eid="], #pagelet_ego_pane a[ajaxify*="&eid="] + div, .ego_section a[href^="http://l.facebook.com/l.php?u="][href*="%26adgroup_id%"], .ego_section a[href^="http://l.facebook.com/l.php?u="][href*="utm_medium"], .ego_section a[href^="http://l.facebook.com/l.php?u="][href*="utm_source"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="%26ad_id%"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="%26ad_id%"] + div, .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="%26adgroup_id%"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="%3Fcampaign%3D"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*=".intelliad.de"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="adfarm.mediaplex.com"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="fb_source%3Dad%26tag%3D"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="fb_source%3Dad%26tag%3D"] + div, .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="https%3A%2F%2Fgoo.gl%2F"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="utm_medium"], .ego_section a[href^="https://l.facebook.com/l.php?u="][href*="utm_source"], a[ajaxify*="&eid="] + a[href^="https://l.facebook.com/l.php?u="], a[href^="/ajax/emu/end.php?"], a[href^="https://l.facebook.com/"][href*="%2526ad_id%"]';
-      else if (PARENT_HOST == 'twitter.com')
-          selector +=
-              ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], .css-901oao.r-hkyrab.r-1qd0xha.r-a023e6.r-vw2c0b.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:first-child, .css-901oao.r-1re7ezh.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:nth-child(2), .css-901oao.r-1re7ezh.r-1qd0xha.r-n6v787.r-16dba41.r-1sf4r6n.r-1g94qm0.r-bcqeeo.r-qvutc0, [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
-    }
+    if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com')
+        selector +=
+            ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], .css-901oao.r-hkyrab.r-1qd0xha.r-a023e6.r-vw2c0b.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:first-child, .css-901oao.r-1re7ezh.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:nth-child(2), .css-901oao.r-1re7ezh.r-1qd0xha.r-n6v787.r-16dba41.r-1sf4r6n.r-1g94qm0.r-bcqeeo.r-qvutc0, [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
 
     if (selector) {
       if (!IS_WHITELISTED) {
@@ -48,6 +66,22 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       }
 
       onReady(function() {
+        if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'www.facebook.com') {
+          const NEWS_FEED = document.querySelector('[role="feed"]');
+
+          if (NEWS_FEED) {
+            (new MutationObserver((mutations) => {
+              for (const MUTATION of mutations)
+                  for (const NODE of MUTATION.addedNodes)
+                      if (hideSponsoredPosts(NODE, IS_WHITELISTED))
+                          wereAdsFound = true;
+            })).observe(NEWS_FEED, {childList: true, subtree: true});
+
+            if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED))
+                wereAdsFound = true;
+          }
+        }
+
         if (document.querySelectorAll(selector).length) wereAdsFound = true;
       });
     }
@@ -59,6 +93,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       for (var i = 0; i < IFRAME_COUNT; i++) {
         var iframe = IFRAMES[i];
         var childHost = getHost(iframe.src);
+
         if (childHost != PARENT_HOST)
             for (var j = DOMAIN_COUNT - 1; j + 1; j--)
                 if (DOMAINS[j].test(childHost)) {
@@ -79,6 +114,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       for (i = 0; i < IMAGE_COUNT; i++) {
         var image = IMAGES[i];
         var childHost = getHost(image.src);
+
         if (childHost != PARENT_HOST)
             for (var j = DOMAIN_COUNT - 1; j + 1; j--)
                 if (DOMAINS[j].test(childHost)) {
