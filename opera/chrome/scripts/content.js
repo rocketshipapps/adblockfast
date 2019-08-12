@@ -67,14 +67,13 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
 
       onReady(function() {
         if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'www.facebook.com') {
-          const NEWS_FEED = document.querySelector('[role="feed"]');
+          const NEWS_FEED = document.getElementById('content');
 
           if (NEWS_FEED) {
             (new MutationObserver((mutations) => {
               for (const MUTATION of mutations)
-                  for (const NODE of MUTATION.addedNodes)
-                      if (hideSponsoredPosts(NODE, IS_WHITELISTED))
-                          wereAdsFound = true;
+                  if (hideSponsoredPosts(MUTATION.target, IS_WHITELISTED))
+                      wereAdsFound = true;
             })).observe(NEWS_FEED, {childList: true, subtree: true});
 
             if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED))
