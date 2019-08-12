@@ -30,7 +30,7 @@ function hideSponsoredPosts(newsFeed, isWhitelisted) {
       for (const POST of newsFeed.querySelectorAll('[role="article"]')) {
         var subheading = '';
         const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[0];
-        if (SUBHEADING_CONTAINER) subheading = CONTAINER.textContent;
+        if (SUBHEADING_CONTAINER) subheading = SUBHEADING_CONTAINER.textContent;
         else for (
           const CHARACTER of
               POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i')
