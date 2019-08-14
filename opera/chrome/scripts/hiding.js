@@ -406,7 +406,7 @@ const SELECTORS = {
   'outlook.live.com':
       '#RadAd_Skyscraper',
   'www.linkedin.com':
-      '#ad-container, .ad, #bottom-ads-container > .attribution, .ad-hrc',
+      '#ad-container, .ad, #bottom-ads-container > .attribution, .ad-hrc, .ad-banner-container, .occludable-update .feed-shared-update-v2--e2e',
   'www.yelp.com':
       '.googlead-sponsor-wrapper, .googlead-bigbox-wrapper, .yloca-search-result',
   'www.groupon.com':
