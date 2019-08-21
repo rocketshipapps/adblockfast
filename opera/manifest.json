@@ -3,7 +3,7 @@
   "name": "Adblock Fast",
   "version": "1.4.0",
   "description":
-      "The world’s fastest ad blocker! Same ad blocking, 8x accelerated page loading.",
+      "The world’s fastest ad blocker! Same ad blocking, 8x faster page loading.",
   "icons": {
     "16": "chrome/images/16.png",
     "48": "chrome/images/48.png",
@@ -14,7 +14,6 @@
     "activeTab",
     "alarms",
     "browsingData",
-    "clipboardWrite",
     "contextMenus",
     "cookies",
     "declarativeContent",
@@ -28,7 +27,6 @@
     "system.cpu",
     "system.display",
     "system.memory",
-    "system.storage",
     "tabs",
     "unlimitedStorage",
     "webNavigation",
