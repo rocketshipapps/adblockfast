@@ -3,7 +3,7 @@
   "name": "Adblock Fast",
   "version": "1.6.0",
   "description":
-      "The world’s fastest ad blocker! Same ad blocking, 8x accelerated webpage loading.",
+      "The world’s fastest ad blocker! Same blocking, 8x more accelerated webpages.",
   "icons": {
     "16": "images/16.png", "48": "images/48.png", "128": "images/128.png"
   },
