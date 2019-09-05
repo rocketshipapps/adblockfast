@@ -46,6 +46,23 @@ function hideSponsoredPosts(newsFeed, isWhitelisted) {
   return wereSponsoredPostsFound;
 }
 
+function hidePromotedTweets(timeline, isWhitelisted) {
+  var werePromotedTweetsFound;
+
+  if (timeline.nodeType == 1)
+      for (const TWEET of timeline.querySelectorAll('[data-testid="trend"]')) {
+        const METADATA =
+            TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
+
+        if (METADATA && METADATA.textContent.slice(0, 8) == 'Promoted') {
+          if (!isWhitelisted) TWEET.parentElement.style.display = 'none';
+          werePromotedTweetsFound = true;
+        }
+      }
+
+  return werePromotedTweetsFound;
+}
+
 EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
   const PARENT_HOST = response.parentHost;
   const WAS_GRANT_BUTTON_PRESSED = response.wasGrantButtonPressed;
@@ -56,7 +73,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
     var selector = SELECTORS[PARENT_HOST];
     if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com')
         selector +=
-            ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], .css-901oao.r-1re7ezh.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:nth-child(2), .css-901oao.r-1re7ezh.r-1qd0xha.r-n6v787.r-16dba41.r-1sf4r6n.r-1g94qm0.r-bcqeeo.r-qvutc0, [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
+            ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
 
     if (selector) {
       if (!IS_WHITELISTED) {
@@ -66,20 +83,34 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       }
 
       onReady(function() {
-        if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'www.facebook.com') {
-          const NEWS_FEED = document.getElementById('content');
+        if (WAS_GRANT_BUTTON_PRESSED)
+            if (PARENT_HOST == 'www.facebook.com') {
+              const NEWS_FEED = document.getElementById('content');
 
-          if (NEWS_FEED) {
-            (new MutationObserver((mutations) => {
-              for (const MUTATION of mutations)
-                  if (hideSponsoredPosts(MUTATION.target, IS_WHITELISTED))
-                      wereAdsFound = true;
-            })).observe(NEWS_FEED, {childList: true, subtree: true});
+              if (NEWS_FEED) {
+                (new MutationObserver((mutations) => {
+                  for (const MUTATION of mutations)
+                      if (hideSponsoredPosts(MUTATION.target, IS_WHITELISTED))
+                          wereAdsFound = true;
+                })).observe(NEWS_FEED, {childList: true, subtree: true});
 
-            if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED))
-                wereAdsFound = true;
-          }
-        }
+                if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED))
+                    wereAdsFound = true;
+              }
+            } else if (PARENT_HOST == 'twitter.com') {
+              const TIMELINE = document.body;
+
+              if (TIMELINE) {
+                (new MutationObserver((mutations) => {
+                  for (const MUTATION of mutations)
+                      if (hidePromotedTweets(MUTATION.target, IS_WHITELISTED))
+                          wereAdsFound = true;
+                })).observe(TIMELINE, {childList: true, subtree: true});
+
+                if (hidePromotedTweets(TIMELINE, IS_WHITELISTED))
+                    wereAdsFound = true;
+              }
+            }
 
         if (document.querySelectorAll(selector).length) wereAdsFound = true;
       });
