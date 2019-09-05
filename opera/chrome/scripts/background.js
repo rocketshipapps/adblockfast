@@ -203,7 +203,14 @@ if (!PREVIOUS_BUILD) {
 
 if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 5)
     localStorage.uids = JSON.stringify([]);
-if (IS_UPDATING_TO_CURRENT) localStorage.build = BUILD;
+
+if (IS_UPDATING_TO_CURRENT) {
+  const WHITELIST = deserialize(localStorage.whitelist) || {};
+  WHITELIST['buy.buysellads.com'] = true;
+  WHITELIST['gs.statcounter.com'] = true;
+  localStorage.whitelist = JSON.stringify(WHITELIST);
+  localStorage.build = BUILD;
+}
 
 firebase.initializeApp({
   apiKey: 'AIzaSyCBqw-meqiUNJ78g9acszr23TevYZ8MmVY',

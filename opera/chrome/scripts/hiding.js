@@ -43,6 +43,7 @@ const SELECTORS = {
   // Condé Nast
   'arstechnica.com':
       '.instream-wrap, .side-ad, #article-footer, .ad, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
+  'www.vanityfair.com': '.ad',
   // Disney
   'abc.go.com': '.footerRow, .adBlockSpot',
   'abcnews.go.com':
@@ -291,6 +292,8 @@ const SELECTORS = {
   'mashable.com':
       '.ad, .header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
   // Et al.
+  'coinmarketcap.com':
+      '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'www.dailymotion.com': '.dmp_VideoView-ad-slot',
   'mail.ru':
