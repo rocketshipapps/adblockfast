@@ -18,13 +18,13 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.rocketshipapps.adblockfast.service.RegistrationIntentService;
 import com.rocketshipapps.adblockfast.utils.Rule;
 
 import java.util.List;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     String packageName;
     String version;
 
+    @Nullable
     Tracker tracker;
 
     SharedPreferences preferences;
@@ -81,11 +82,6 @@ public class MainActivity extends AppCompatActivity {
         AdblockfastApplication application = (AdblockfastApplication) getApplication();
         tracker = application.getDefaultTracker();
 
-        if (checkPlayServices()) {
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
-
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         samsungBrowserIntent = new Intent();
@@ -102,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        tracker.setScreenName("/");
-        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        if (tracker != null) {
+            tracker.setScreenName("/");
+            tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
 
         List<ResolveInfo> list = getPackageManager().queryIntentActivities(samsungBrowserIntent, 0);
         if (list.size() > 0) hasBlockingBrowser = true;

@@ -9,9 +9,6 @@ public class UpdateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent deviceIntent = new Intent(context, RegistrationIntentService.class);
-        context.startService(deviceIntent);
-
         Intent updateIntent = new Intent();
         updateIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
         updateIntent.setData(Uri.parse("package:" + context.getApplicationContext().getPackageName()));
