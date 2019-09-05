@@ -6,10 +6,12 @@ repositories {
 }
 
 //Add these lines
-def GA_TRACKING_ID = '"' + GATrackingId+ '"' ?: '"Define Google Analytics tracking ID into grandle.properties"';
+def GA_TRACKING_ID = '"' + GATrackingId+ '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'
+def SUBSCRIBE_URL = '"' + FirebaseSubscribeFunctionURL + '"' ?: '"Define Firebase cloud function URL"'
 
 android.buildTypes.each { type ->
     type.buildConfigField 'String', 'GA_TRACKING_ID', GA_TRACKING_ID
+    type.buildConfigField 'String', 'SUBSCRIBE_URL', SUBSCRIBE_URL
 }
 
 android {

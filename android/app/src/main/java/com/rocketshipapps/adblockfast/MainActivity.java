@@ -1,32 +1,49 @@
 package com.rocketshipapps.adblockfast;
 
+import android.Manifest;
+import android.accounts.AccountManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.rocketshipapps.adblockfast.utils.Rule;
 
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -50,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
     boolean hasBlockingBrowser = false;
     Intent samsungBrowserIntent;
+
+    private final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
+    private final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
+    private final int REQUEST_CODE_ACCOUNT_INTENT = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         samsungBrowserIntent = new Intent();
         samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
 
+        checkAccountPermission();
     }
 
     @Override
@@ -98,11 +120,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        checkPlayServices();
+
         if (tracker != null) {
             tracker.setScreenName("/");
             tracker.send(new HitBuilders.ScreenViewBuilder().build());
         }
 
+        if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) {
+            checkIfHasBlockingBrowser();
+        }
+
+    }
+
+    private void checkIfHasBlockingBrowser() {
         List<ResolveInfo> list = getPackageManager().queryIntentActivities(samsungBrowserIntent, 0);
         if (list.size() > 0) hasBlockingBrowser = true;
 
@@ -112,22 +143,64 @@ public class MainActivity extends AppCompatActivity {
             showHelpDialog(true);
             preferences.edit().putBoolean("first_run", false).apply();
         }
-
     }
 
-    private boolean checkPlayServices() {
+    private void checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, 9000)
-                        .show();
-            } else {
-                finish();
-            }
-            return false;
+            apiAvailability.makeGooglePlayServicesAvailable(this);
         }
-        return true;
+    }
+
+    private void getAccounts() {
+        Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
+        startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
+            if (data != null) {
+                final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+
+                if (email != null) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                URL url = new URL(BuildConfig.SUBSCRIBE_URL);
+                                HttpURLConnection req = (HttpURLConnection) url.openConnection();
+                                req.setRequestMethod("POST");
+                                req.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                                req.setRequestProperty("Accept", "application/json");
+                                req.setDoOutput(true);
+                                req.setDoInput(true);
+
+                                JSONObject params = new JSONObject();
+                                params.put("email", email);
+
+                                DataOutputStream os = new DataOutputStream(req.getOutputStream());
+                                os.writeBytes(params.toString());
+
+                                os.flush();
+                                os.close();
+
+                                Log.i("STATUS", String.valueOf(req.getResponseCode()));
+
+                                req.disconnect();
+
+                                preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
+                }
+            }
+
+            checkIfHasBlockingBrowser();
+        }
     }
 
     //region OnClick
@@ -179,6 +252,55 @@ public class MainActivity extends AppCompatActivity {
 
     public void onHelpPressed(View v) {
         showHelpDialog(true);
+    }
+
+    //endregion
+
+    //region Permissions
+
+    private void checkAccountPermission() {
+        if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_DENIED) {
+            getAccounts();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
+                showAccountPermissionAlert(
+                );
+            } else {
+                requestPermissions(new String[]{Manifest.permission.GET_ACCOUNTS}, REQUEST_PERMISSION_GET_ACCOUNTS);
+            }
+        }
+    }
+
+    private void showAccountPermissionAlert() {
+        new AlertDialog
+            .Builder(this)
+            .setTitle("Permission needed")
+            .setMessage("Get email address")
+            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(new String[]{Manifest.permission.GET_ACCOUNTS}, REQUEST_PERMISSION_GET_ACCOUNTS);
+                    }
+                }
+            })
+            .create()
+            .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
+                getAccounts();
+            } else {
+                Toast.makeText(MainActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+            }
+            getAccounts();
+        }
     }
 
     //endregion
