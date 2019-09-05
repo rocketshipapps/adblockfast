@@ -5,15 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.util.Log;
+import android.util.Pair;
 
-import com.github.kittinunf.fuel.Fuel;
-import com.github.kittinunf.fuel.core.FuelError;
-import com.github.kittinunf.fuel.core.Handler;
-import com.github.kittinunf.fuel.core.Request;
-import com.github.kittinunf.fuel.core.Response;
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 import com.rocketshipapps.adblockfast.BuildConfig;
@@ -21,8 +19,6 @@ import com.rocketshipapps.adblockfast.BuildConfig;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import kotlin.Pair;
 
 public class RegistrationIntentService extends IntentService {
 
@@ -71,7 +67,7 @@ public class RegistrationIntentService extends IntentService {
             .header(header)
             .responseString(new Handler<String>() {
                 @Override
-                public void success(@NonNull Request request, @NonNull Response response, String s) {
+                public void success(@NonNull ull Request request, @NonNull Response response, String s) {
                     Log.d(TAG, "reponseMessage: " + response.getHttpResponseMessage());
                     Log.d(TAG, "reponseUrl: " + response.getUrl());
                     Log.d(TAG, "response: " + s);

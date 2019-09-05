@@ -11,13 +11,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -64,17 +65,17 @@ public class MainActivity extends AppCompatActivity {
         packageName = getApplicationContext().getPackageName();
         version = BuildConfig.VERSION_NAME;
 
-        btnAdblock = (ImageButton) findViewById(R.id.btn_adblock);
-        txtStatus = (TextView) findViewById(R.id.txt_status);
-        txtTap = (TextView) findViewById(R.id.txt_tap);
+        btnAdblock = findViewById(R.id.btn_adblock);
+        txtStatus = findViewById(R.id.txt_status);
+        txtTap = findViewById(R.id.txt_tap);
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
-            enableAnimtaion();
+            enableAnimation();
         } else if (Rule.active(this)) {
-            enableAnimtaion();
+            enableAnimation();
         } else {
-            disableAnimtaion();
+            disableAnimation();
         }
 
         AdblockfastApplication application = (AdblockfastApplication) getApplication();
@@ -138,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (Rule.active(this)) {
             Rule.disable(this);
-            disableAnimtaion();
+            disableAnimation();
         } else {
             Rule.enable(this);
-            enableAnimtaion();
+            enableAnimation();
         }
 
         Intent intent = new Intent();
@@ -154,11 +155,14 @@ public class MainActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.alert_dialog_about);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
 
         ((TextView)dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
 
-        TextView copyright = (TextView) dialog.findViewById(R.id.copyright);
+        TextView copyright = dialog.findViewById(R.id.copyright);
         copyright.setText(Html.fromHtml(getString(R.string.copyright)));
         copyright.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -186,12 +190,16 @@ public class MainActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.alert_dialog_help);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        if(dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
         dialog.setCancelable(false);
         dialog.show();
 
-        TextView summary = (TextView) dialog.findViewById(R.id.summary);
-        TextView details = (TextView) dialog.findViewById(R.id.details);
+        TextView summary = dialog.findViewById(R.id.summary);
+        TextView details = dialog.findViewById(R.id.details);
 
         if (hasBlockingBrowser) {
             summary.setText(R.string.settings_summary);
@@ -206,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             details.setText(Html.fromHtml(getString(R.string.install_details)));
         }
         details.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView contact = (TextView) dialog.findViewById(R.id.contact);
+        TextView contact = dialog.findViewById(R.id.contact);
         contact.setText(Html.fromHtml(getString(R.string.contact)));
         contact.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -230,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
     //region Block Animation
 
-    void disableAnimtaion() {
+    void disableAnimation() {
         animator(new int[]{
             R.drawable.blocked_0,
             R.drawable.blocked_1,
@@ -283,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void enableAnimtaion() {
+    void enableAnimation() {
         animator(new int[]{
             R.drawable.unblocked_0,
             R.drawable.unblocked_1,

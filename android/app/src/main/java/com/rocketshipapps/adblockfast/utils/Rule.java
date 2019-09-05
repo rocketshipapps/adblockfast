@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Rule {
-    public static String TAG = "rule_status";
-    public static String PREFERENCE = "adblockfast";
+    private static String TAG = "rule_status";
+    private static String PREFERENCE = "adblockfast";
     private static final String OUTPUT = "rules.txt";
 
     public static File get(Context context) {
