@@ -44,6 +44,7 @@ const SELECTORS = {
   'arstechnica.com':
       '.instream-wrap, .side-ad, #article-footer, .ad, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
   'www.vanityfair.com': '.ad',
+  'www.wired.com': '.ad',
   // Disney
   'abc.go.com': '.footerRow, .adBlockSpot',
   'abcnews.go.com':
