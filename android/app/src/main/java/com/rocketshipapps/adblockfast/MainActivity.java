@@ -19,7 +19,6 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -185,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
 
                                 os.flush();
                                 os.close();
-
-                                Log.i("STATUS", String.valueOf(req.getResponseCode()));
 
                                 req.disconnect();
 

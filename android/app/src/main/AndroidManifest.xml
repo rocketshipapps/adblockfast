@@ -6,10 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
-    <permission android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-    <uses-permission android:name="com.rocketshipapps.adblockfast.permission.C2D_MESSAGE" />
+    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
 
     <application
         android:allowBackup="true"
