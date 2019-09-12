@@ -1446,6 +1446,15 @@
 ||analy.qq.com^
 ||appsupport.qq.com/cgi-bin/appstage/mstats_batch_report
 ||monitor.uu.qq.com/analytics/
+||wgo.mmstat.com^$third-party
+||log.mmstat.com^$third-party
+||hm.baidu.com^$third-party
+||btrace.qq.com^$third-party
+||trace.qq.com^$third-party
+||pingfore.qq.com^$third-party
+||pingjs.qq.com^$third-party
+||pv.sohu.com^$third-party
+||track.sohu.com^$third-party
 !
 ! ------------------------General element hiding rules-------------------------!
 !
@@ -4604,6 +4613,8 @@ travel.gmw.cn##[class^=ad]
 travel.gmw.cn##[class^=contentadBox]
 m.9gag.com##.block-ad
 m.9gag.com##.badge-gag-ads-container
+m.sohu.com##.cbd-plate-bill
+m.sohu.com##.banner-wrapper
 !
 ! -----------------------Whitelists to fix broken sites------------------------!
 !
