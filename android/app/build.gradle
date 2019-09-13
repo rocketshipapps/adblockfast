@@ -1,3 +1,4 @@
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
 
 repositories {
@@ -5,27 +6,27 @@ repositories {
 }
 
 //Add these lines
-def APP_SECRET = '"' + AppSecret + '"' ?: '"Define application secret into grandle.properties"';
-def HOST = '"' + Host + '"' ?: '"Define your host into grandle.properties"';
-def GA_TRAKING_ID = '"' + GATrackingId+ '"' ?: '"Define Google Analytics tracking ID into grandle.properties"';
-def GCM_DEFAULT_SENDER_ID = '"' + GCMDefaultSenderId + '"' ?: '"Define Google Cloud Message sender ID into grandle.properties"';
+def GA_TRACKING_ID = '"' + GATrackingId+ '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'
+def SUBSCRIBE_URL = '"' + FirebaseSubscribeFunctionURL + '"' ?: '"Define Firebase cloud function URL"'
 
 android.buildTypes.each { type ->
-    type.buildConfigField 'String', 'APP_SECRET', APP_SECRET
-    type.buildConfigField 'String', 'HOST', HOST
-    type.buildConfigField 'String', 'GA_TRAKING_ID', GA_TRAKING_ID
-    type.buildConfigField 'String', 'GCM_DEFAULT_SENDER_ID', GCM_DEFAULT_SENDER_ID
+    type.buildConfigField 'String', 'GA_TRACKING_ID', GA_TRACKING_ID
+    type.buildConfigField 'String', 'SUBSCRIBE_URL', SUBSCRIBE_URL
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 8
         versionName "2.1.0"
+        manifestPlaceholders = [
+            onesignal_app_id: OneSignalAppId,
+            onesignal_google_project_number: 'REMOTE'
+        ]
     }
     buildTypes {
         release {
@@ -40,10 +41,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'com.dtx12:actions:0.1.4'
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
     implementation 'com.google.android.gms:play-services-analytics:10.2.4'
-    implementation 'com.google.android.gms:play-services-gcm:10.2.4'
     implementation 'com.github.kittinunf.fuel:fuel-android:1.6.0'
+    implementation 'com.onesignal:OneSignal:3.11.3'
 }
