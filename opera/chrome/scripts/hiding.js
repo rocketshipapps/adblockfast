@@ -225,6 +225,8 @@ const SELECTORS = {
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
   // Reddit
   'www.reddit.com': '#siteTable_organic, .promotedlink, .dfp-ad-container',
+  // Tribune
+  'www.nydailynews.com': '.pb-f-ads-dfp, .pb-f-ads-taboola-recommendations',
   // Twitter
   'twitter.com':
       '.promoted-account, .promoted-trend, .promoted-tweet, .promotion, .stream-item[data-item-type="tweet"][data-item-id*=":"], .stream-tweet[impression_id][label="promoted"]',
