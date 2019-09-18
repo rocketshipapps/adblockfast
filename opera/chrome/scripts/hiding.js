@@ -299,6 +299,7 @@ const SELECTORS = {
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'www.dailymotion.com': '.dmp_VideoView-ad-slot',
+  'www.dazeddigital.com': '.advert-container, .advert',
   'mail.ru':
       '.w-banner, .text-banner',
   'sportmail.ru':
