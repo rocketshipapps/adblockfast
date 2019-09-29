@@ -39,7 +39,7 @@ const SELECTORS = {
       '.ad, .chartbeat, .continue-link, .ks-recommended, .sponsor, .subnav-container, .ad-subnav-container, .river-textonly, .rail-recommended, .right-ad, .ks-rr-taboola-video, .ks-rr-taboola-from-the-web, .jobs, #taboola-right-rail-thumbnails, .targeted-recommended, .dianomi-ad',
   // BuzzFeed
   'www.buzzfeed.com':
-      '#BF_WIDGET_10, .post2[style="background-color: #FDF6E5;"], .item--ad, .bf-widget, .bf-ads-video, .js-ad, .ad-ex, .js-thumb-ad',
+      '#BF_WIDGET_10, .post2[style="background-color: #FDF6E5;"], .item--ad, .bf-widget, .bf-ads-video, .js-ad, .ad-ex, .js-thumb-ad, .ad-inline',
   // Condé Nast
   'arstechnica.com':
       '.instream-wrap, .side-ad, #article-footer, .ad, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
