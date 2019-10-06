@@ -227,7 +227,8 @@ const SELECTORS = {
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
   // Reddit
-  'www.reddit.com': '#siteTable_organic, .promotedlink, .dfp-ad-container',
+  'www.reddit.com':
+      '#siteTable_organic, .promotedlink, .dfp-ad-container, [data-before-content="advertisement"]',
   // Tribune
   'www.nydailynews.com': '.pb-f-ads-dfp, .pb-f-ads-taboola-recommendations',
   // Twitter
