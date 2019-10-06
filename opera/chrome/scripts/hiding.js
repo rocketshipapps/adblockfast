@@ -304,6 +304,8 @@ const SELECTORS = {
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'www.dailymotion.com': '.dmp_VideoView-ad-slot',
   'www.dazeddigital.com': '.advert-container, .advert',
+  'www.publishersweekly.com':
+      '.leaderboard, .quicklinks-ad, #div-gpt-ad-enlarged, #div-gpt-ad-enlarged-inline, .bottom-ad, .bbstar-popin',
   'mail.ru':
       '.w-banner, .text-banner',
   'sportmail.ru':
