@@ -2600,6 +2600,7 @@ www.buzzfeed.com##.bf-ads-video
 www.buzzfeed.com##.js-ad
 www.buzzfeed.com##.ad-ex
 www.buzzfeed.com##.js-thumb-ad
+www.buzzfeed.com##.ad-inline
 arstechnica.com##.instream-wrap
 arstechnica.com##.side-ad
 arstechnica.com###article-footer
@@ -2610,6 +2611,8 @@ arstechnica.com###masthead + #pushdown-wrap
 arstechnica.com###msuk-wrapper
 arstechnica.com###outbrain-recs-wrap
 arstechnica.com##.sponsored-rec
+www.vanityfair.com##.ad
+www.wired.com##.ad
 abc.go.com##.footerRow
 abc.go.com##.adBlockSpot
 abcnews.go.com##.index-quigo
@@ -3095,7 +3098,6 @@ m.youtube.com##.ad-div div
 m.youtube.com###masthead-ad
 m.youtube.com##.ytd-player-legacy-desktop-watch-ads-renderer
 m.youtube.com##ytd-compact-promoted-video-renderer
-m.youtube.com##paper-dialog
 mail.google.com###\\:rr .nH[role="main"] .mq:first-child
 mail.google.com###\\:rr > .nH > .nH[role="main"] > .aKB
 mail.google.com###\\:rr > .nH > .nH[role="main"] > .nH > .nH > .AT[style]
@@ -3159,6 +3161,13 @@ www.google.com.au###mclip_control
 www.google.com.au##._Ak
 www.google.com.au###taw
 www.google.com.au###bottomads
+www.ask.com##.ad-top
+www.ask.com###csaBottom
+www.ask.com###adBlock
+www.thedailybeast.com##.SimpleAd
+www.thedailybeast.com##.PageTopAd
+www.thedailybeast.com##.ConnatixAd
+www.thedailybeast.com##.FooterAd
 www.bing.com###zune_upsell
 www.bing.com##.partnerLinks
 www.bing.com##.b_ad
@@ -3166,6 +3175,9 @@ www.bing.com##.b_ad ul
 www.reddit.com###siteTable_organic
 www.reddit.com##.promotedlink
 www.reddit.com##.dfp-ad-container
+www.reddit.com##[data-before-content="advertisement"]
+www.nydailynews.com##.pb-f-ads-dfp
+www.nydailynews.com##.pb-f-ads-taboola-recommendations
 mobile.twitter.com##.promoted-account
 mobile.twitter.com##.promoted-trend
 mobile.twitter.com##.promoted-tweet
@@ -3175,9 +3187,6 @@ mobile.twitter.com##.stream-tweet[impression_id][label="promoted"]
 mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"]
 mobile.twitter.com##[class="css-1dbjc4n r-e84r5y r-1or9b2r"]
 mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"]
-mobile.twitter.com##.css-901oao.r-hkyrab.r-1qd0xha.r-a023e6.r-vw2c0b.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:first-child
-mobile.twitter.com##.css-901oao.r-1re7ezh.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-vmopo1.r-qvutc0:nth-child(2)
-mobile.twitter.com##.css-901oao.r-1re7ezh.r-1qd0xha.r-n6v787.r-16dba41.r-1sf4r6n.r-1g94qm0.r-bcqeeo.r-qvutc0
 mobile.twitter.com##[aria-label="Who to follow"] [data-testid="UserCell"]:first-child
 mobile.twitter.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo
 mobile.twitter.com##[class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]
@@ -3578,9 +3587,21 @@ mashable.com##.ad_container
 mashable.com###sticky-spacer
 mashable.com###stories-ad
 mashable.com##.zergnet-container
+coinmarketcap.com###header-banner-wrapper
+coinmarketcap.com##.responsive-leaderboard
+coinmarketcap.com##.skyscraper
 www.cp24.com##.boxAd
 www.cp24.com##.cp24FlyersWidgetSidebar
 www.cp24.com##.sponsoredButtons
+www.dailymotion.com##.dmp_VideoView-ad-slot
+www.dazeddigital.com##.advert-container
+www.dazeddigital.com##.advert
+www.publishersweekly.com##.leaderboard
+www.publishersweekly.com##.quicklinks-ad
+www.publishersweekly.com###div-gpt-ad-enlarged
+www.publishersweekly.com###div-gpt-ad-enlarged-inline
+www.publishersweekly.com##.bottom-ad
+www.publishersweekly.com##.bbstar-popin
 mail.ru##.w-banner
 mail.ru##.text-banner
 m.sportmail.ru##.ban
@@ -3963,6 +3984,7 @@ www.washingtonpost.com##.brand-connect-module
 www.washingtonpost.com##.pb-ad-container
 www.washingtonpost.com##.ads
 www.washingtonpost.com##.ad-hideable
+www.washingtonpost.com##.grey-bg
 www.google.com.mx###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.com.mx###rhs_block > #mbEnd
 www.google.com.mx###tads + div + .c
@@ -4016,6 +4038,8 @@ www.linkedin.com###ad-container
 www.linkedin.com##.ad
 www.linkedin.com###bottom-ads-container > .attribution
 www.linkedin.com##.ad-hrc
+www.linkedin.com##.ad-banner-container
+www.linkedin.com##.occludable-update .feed-shared-update-v2--e2e
 m.yelp.com##.googlead-sponsor-wrapper
 m.yelp.com##.googlead-bigbox-wrapper
 m.yelp.com##.yloca-search-result
@@ -4447,8 +4471,6 @@ m.timesofindia.com###adbreak-adspdbl
 m.timesofindia.com##.adlst
 m.timesofindia.com##iframe[title="Advertisement"]
 m.timesofindia.com##div[style="width:300px; height:250px;"]
-www.ask.com##.ad-top
-www.ask.com###csaBottom
 www.google.co.id###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.co.id###rhs_block > #mbEnd
 www.google.co.id###tads + div + .c
@@ -4815,3 +4837,5 @@ deviantart.com#@#.mobile-ad
 @@||mms.vtext.com^$document
 @@||convertpad.com/ad/
 @@||android.clients.google.com/market/GetBinary/$document
+@@||buy.buysellads.com^$document
+@@||gs.statcounter.com^$document
