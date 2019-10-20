@@ -3975,6 +3975,9 @@ www.washingtonpost.com##.pb-ad-container
 www.washingtonpost.com##.ads
 www.washingtonpost.com##.ad-hideable
 www.washingtonpost.com##.grey-bg
+www.washingtonpost.com##.bg-offwhite
+www.washingtonpost.com##.outbrain-wrapper
+www.washingtonpost.com##[class="dn db-ns"]
 www.google.com.mx###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.com.mx###rhs_block > #mbEnd
 www.google.com.mx###tads + div + .c
