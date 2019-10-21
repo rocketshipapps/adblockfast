@@ -3580,6 +3580,9 @@ mashable.com##.zergnet-container
 coinmarketcap.com###header-banner-wrapper
 coinmarketcap.com##.responsive-leaderboard
 coinmarketcap.com##.skyscraper
+slate.com##.top-ad
+slate.com##.ad
+slate.com##.bottom-ad
 www.cp24.com##.boxAd
 www.cp24.com##.cp24FlyersWidgetSidebar
 www.cp24.com##.sponsoredButtons
