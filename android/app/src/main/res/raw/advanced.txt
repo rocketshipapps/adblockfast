@@ -2611,6 +2611,7 @@ arstechnica.com###masthead + #pushdown-wrap
 arstechnica.com###msuk-wrapper
 arstechnica.com###outbrain-recs-wrap
 arstechnica.com##.sponsored-rec
+www.gq.com##.ad
 www.vanityfair.com##.ad
 www.wired.com##.ad
 abc.go.com##.footerRow
