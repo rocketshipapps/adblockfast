@@ -22,9 +22,7 @@ const SELECTORS = {
   'www.businessinsider.com.au':
       '#partner-offers, #follow_wrap, #ad-main-top, .adspot-300x250-pos1-container, .adspot-3x1-pos1-container, .adspot-6x2-pos1-container, .adspot-6x2-pos1-container + hr, .adspot-6x2-pos2-container, .adspot-6x2-pos2-container + hr, #river hr:last-of-type',
   'www.byrdie.com': '.top-slot-container',
-  'www.gizmodo.com.au': '#product-finder, .btyb_cat, .ad',
-  'www.kotaku.com.au': '.ad',
-  'www.lifehacker.com.au': '.ad',
+  'www.gizmodo.com.au': '#product-finder, .btyb_cat',
   'www.shopstyle.com.au': '.promo-wrapper',
   'www.whowhatwear.com.au': '.top-slot-container',
   // Amazon.com
@@ -33,35 +31,31 @@ const SELECTORS = {
   'www.amazon.co.uk':
       'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement',
   'www.amazon.com':
-      '#DAadrp, #ad, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement',
+      '#DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement',
   // Business Insider
   'www.businessinsider.com':
-      '.ad, .chartbeat, .continue-link, .ks-recommended, .sponsor, .subnav-container, .ad-subnav-container, .river-textonly, .rail-recommended, .right-ad, .ks-rr-taboola-video, .ks-rr-taboola-from-the-web, .jobs, #taboola-right-rail-thumbnails, .targeted-recommended, .dianomi-ad',
+      '.chartbeat, .continue-link, .ks-recommended, .sponsor, .subnav-container, .ad-subnav-container, .river-textonly, .rail-recommended, .right-ad, .ks-rr-taboola-video, .ks-rr-taboola-from-the-web, .jobs, #taboola-right-rail-thumbnails, .targeted-recommended, .dianomi-ad',
   // BuzzFeed
   'www.buzzfeed.com':
       '#BF_WIDGET_10, .post2[style="background-color: #FDF6E5;"], .item--ad, .bf-widget, .bf-ads-video, .js-ad, .ad-ex, .js-thumb-ad, .ad-inline',
   // Condé Nast
   'arstechnica.com':
-      '.instream-wrap, .side-ad, #article-footer, .ad, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
-  'www.gq.com': '.ad',
-  'www.vanityfair.com': '.ad',
-  'www.wired.com': '.ad',
+      '.instream-wrap, #article-footer, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
   // Disney
   'abc.go.com': '.footerRow, .adBlockSpot',
   'abcnews.go.com':
       '.index-quigo, .story-embed-left.box, .ad_728, .ad_300, #bannerad, #homead, .leaderboard-ad, .ad-slot, .akamai-ad-mode',
-  'family.disney.com': '.ad, .tm-ad',
-  'go.com': '.ad',
-  'liveshows.disney.com': '.pushdown, .ad-container',
+  'family.disney.com': '.tm-ad',
+  'liveshows.disney.com': '.pushdown',
   'lol.disney.com': '.pushdown, .rich_image, .mint_container',
-  'movies.disney.com': '.pushdown, .ad-container',
-  'music.disney.com': '.pushdown, .ad-container',
+  'movies.disney.com': '.pushdown',
+  'music.disney.com': '.pushdown',
   'ohmy.disney.com': '.tm-ad',
-  'shows.disney.com': '.pushdown, .ad-container',
+  'shows.disney.com': '.pushdown',
   'style.disney.com': '.tm-ad',
-  'video.disney.com': '.ad-container, .pushdown',
+  'video.disney.com': '.pushdown',
   'www.babble.com': '.bb-ad, .tm-ad',
-  'www.disney.com': '.gpt, .ad-container, .pushdown',
+  'www.disney.com': '.gpt, .pushdown',
   'www.espn.com':
       '#sponsored-by, div[style="height: 325px;"], .ad-slot, .ad-300, #sponsored',
   // eBay
@@ -81,42 +75,29 @@ const SELECTORS = {
   'touch.facebook.com':
       '.aymlCoverFlow, .aymlNewCoverFlow[data-ft*="\\"is_sponsored\\":\\"1\\""], .pyml, .storyStream > ._6t2[data-sigil="marea"], .storyStream > .fullwidth._539p, .storyStream > article[id^="u_"]._676, .storyStream > article[id^="u_"].storyAggregation, [data-xt]',
   'www.facebook.com':
-      '#MessagingNetegoWrapper, #home_sponsor_nile, #home_stream > .uiUnifiedStory[data-ft*="\\"ei\\":\\""], #pagelet_ads_when_no_friend_list_suggestion, .-cx-PRIVATE-fbAdUnit__root, .-cx-PRIVATE-fbEmu__root, .-cx-PRIVATE-fbFacebarTypeaheadToken__sponsored, .-cx-PRIVATE-snowliftAds__root, .-cx-PRIVATE-spyml__story, .-cx-PUBLIC-fbAdUnit__root, ._24n, ._24o, ._3qj-, ._4u8, .adv, .ego_spo, .fbAdUnit, .fbEmu, .fbEmuBlock, .fbEmuComboList, .fbEmuEgo, .fbEmuEgoUnit, .fbEmuLink, .fbPhotoAdsCol, .fbTimelineSideAds, .fixedAux .pbm, .muffin.group, .ownsection[role="option"], [data-referrer="pagelet_side_ads"], [href^="/ads/adboard/"], a[ajaxify^="/ajax/emu/end.php?"], a[href^="/ajax/emu/end.php?"], div[class="ego_column _5qrt"], div[class="ego_column _8_9"], div[class="ego_column pagelet _5qrt _1snm"], div[class="ego_column pagelet _5qrt _y92 _1snm"], div[class="ego_column pagelet _5qrt _y92"], div[class="ego_column pagelet _5qrt"], div[class="ego_column pagelet _y92 _5qrt _1snm"], div[class="ego_column pagelet _y92 _5qrt"], div[class="ego_column pagelet _y92"], div[class="ego_column pagelet"], div[class="ego_column"], div[id^="sponsoredTickerStory_"], div[id^="substream_"] .userContentWrapper > ._1ifo, div[id^="substream_"] div[data-ft*="\\"ei\\":\\""], div[id^="topnews_main_stream_"] div[id^="u_"][data-ft*="\\"ei\\":\\""], ul[id^="typeahead_list_"] > ._20e._6_k._55y_, #pagelet_ego_pane',
+      '#MessagingNetegoWrapper, #home_sponsor_nile, #home_stream > .uiUnifiedStory[data-ft*="\\"ei\\":\\""], #pagelet_ads_when_no_friend_list_suggestion, .-cx-PRIVATE-fbAdUnit__root, .-cx-PRIVATE-fbEmu__root, .-cx-PRIVATE-fbFacebarTypeaheadToken__sponsored, .-cx-PRIVATE-snowliftAds__root, .-cx-PRIVATE-spyml__story, .-cx-PUBLIC-fbAdUnit__root, ._24n, ._24o, ._3qj-, ._4u8, .ego_spo, .fbAdUnit, .fbEmu, .fbEmuBlock, .fbEmuComboList, .fbEmuEgo, .fbEmuEgoUnit, .fbEmuLink, .fbPhotoAdsCol, .fbTimelineSideAds, .fixedAux .pbm, .muffin.group, .ownsection[role="option"], [data-referrer="pagelet_side_ads"], [href^="/ads/adboard/"], a[ajaxify^="/ajax/emu/end.php?"], a[href^="/ajax/emu/end.php?"], div[class="ego_column _5qrt"], div[class="ego_column _8_9"], div[class="ego_column pagelet _5qrt _1snm"], div[class="ego_column pagelet _5qrt _y92 _1snm"], div[class="ego_column pagelet _5qrt _y92"], div[class="ego_column pagelet _5qrt"], div[class="ego_column pagelet _y92 _5qrt _1snm"], div[class="ego_column pagelet _y92 _5qrt"], div[class="ego_column pagelet _y92"], div[class="ego_column pagelet"], div[class="ego_column"], div[id^="sponsoredTickerStory_"], div[id^="substream_"] .userContentWrapper > ._1ifo, div[id^="substream_"] div[data-ft*="\\"ei\\":\\""], div[id^="topnews_main_stream_"] div[id^="u_"][data-ft*="\\"ei\\":\\""], ul[id^="typeahead_list_"] > ._20e._6_k._55y_, #pagelet_ego_pane',
   // Forbes
   'www.forbes.com':
       '#ads, .leaderboard, .ad_block, .advoice, #stackForbesAdvoice, .ad-rail, .article-mobile-ad, .article-native-ad, .top-ad-sticky, .sticky-ad-container, .ad-row, .top-ad-container, .ntv-rail-ad',
   // Gawker
-  'antiviral.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'blackbag.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'defamer.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'dog.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'domesticity.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
+  'antiviral.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'blackbag.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'defamer.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'dog.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'domesticity.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'fortressamerica.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'gawker.com': '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'internet.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'justice.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
+      '.js_promoted, .contained-ad-container, .ad-bottom',
+  'gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'internet.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'justice.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'morningafter.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'review.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'sausage.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'thevane.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'tktk.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'truestories.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
-  'valleywag.gawker.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom',
+      '.js_promoted, .contained-ad-container, .ad-bottom',
+  'review.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'sausage.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'thevane.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'tktk.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'truestories.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
+  'valleywag.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   // Gizmodo
   'adequateman.deadspin.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
@@ -127,7 +108,7 @@ const SELECTORS = {
   'cosplay.kotaku.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'deadspin.com':
-      '.js_promoted, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '.js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'earther.gizmodo.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'entertainment.theonion.com':
@@ -139,21 +120,21 @@ const SELECTORS = {
   'games.avclub.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'gizmodo.com':
-      '.btyb_cat, .js_promoted, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '.btyb_cat, .js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'io9.gizmodo.com':
-      '#postTransitionOverlay, .js_promoted, #skyscraper, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '#postTransitionOverlay, .js_promoted, #skyscraper, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'jalopnik.com':
-      '#postTransitionOverlay, .js_promoted, #skyscraper, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '#postTransitionOverlay, .js_promoted, #skyscraper, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'jezebel.com':
-      '#postTransitionOverlay, .js_promoted, #skyscraper, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '#postTransitionOverlay, .js_promoted, #skyscraper, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'journalisms.theroot.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'kinjadeals.theinventory.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'kotaku.com':
-      '#postTransitionOverlay, .ad, .js_promoted, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '#postTransitionOverlay, .js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'lifehacker.com':
-      '#postTransitionOverlay, .js_promoted, .ad-top, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
+      '#postTransitionOverlay, .js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'local.theonion.com':
       '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'music.avclub.com':
@@ -218,12 +199,12 @@ const SELECTORS = {
       '#\\:rr .nH[role="main"] .mq:first-child, #\\:rr > .nH > .nH[role="main"] > .aKB, #\\:rr > .nH > .nH[role="main"] > .nH > .nH > .AT[style], #\\:rr > .nH > div[role="main"] > .mq:last-child, .aeF .nH[role="main"] > .mq:last-child, .aeF > .nH > .nH[role="main"] > .aKB, .aeF > .nH > .nH[role="main"] > .afn:first-child + .mq, .aeF > .nH > .nH[role="main"] > .mq:first-child, .aeF > .nH > .nH[role="main"] > .nH > .nH > .AT[style], .aeF > .nH > .nH[role="main"] > .nH > .nH > .nH > .mq:last-child, .aeF > .nH > .nH[role="main"] > div + .mq, .c[style="margin: 0pt;"], .nH.PS, .nH.adC > .nH > .nH > .u5 > .azN, .oM, .rh > #ra, .ts[style="margin:0 0 12px;height:92px;width:100%"], .u4, .u9, .xz, .z0DeRc, [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], a[href^="http://pagead2.googlesyndication.com/"]',
   'www.google.co.uk': '.GBTLFYRDM0, ._Ak, #taw, #bottomads',
   'www.google.com':
-      '#mclip, .ads, .hotel-partner-item-sponsored, .hotel-price, #mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], #taw, #bottomads',
+      '#mclip, .hotel-partner-item-sponsored, .hotel-price, #mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], #taw, #bottomads',
   'www.google.com.au': '#mclip_control, ._Ak, #taw, #bottomads',
   'www.youtube.com':
-      'a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"], .jkb, #feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .ad-container, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #masthead-ad, .ytd-player-legacy-desktop-watch-ads-renderer, ytd-compact-promoted-video-renderer',
+      'a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"], .jkb, #feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #masthead-ad, .ytd-player-legacy-desktop-watch-ads-renderer, ytd-compact-promoted-video-renderer',
   // IAC
-  'www.ask.com': '.ad-top, #csaBottom, #adBlock',
+  'www.ask.com': '#csaBottom, #adBlock',
   'www.thedailybeast.com': '.SimpleAd, .PageTopAd, .ConnatixAd, .FooterAd',
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
@@ -236,25 +217,23 @@ const SELECTORS = {
   'twitter.com':
       '.promoted-account, .promoted-trend, .promoted-tweet, .promotion, .stream-item[data-item-type="tweet"][data-item-id*=":"], .stream-tweet[impression_id][label="promoted"]',
   // Verizon
-  'search.aol.ca': '.SLL, .WOL, .searchCenterTopAds, .searchCenterBottomAds',
-  'search.aol.co.uk':
-      '.PMB, .SLL, .WOL, .searchCenterTopAds, .searchCenterBottomAds',
+  'search.aol.ca': '.SLL, .WOL',
+  'search.aol.co.uk': '.PMB, .SLL, .WOL',
   'search.aol.com':
-      '#maincontent + script + div[class] > style + script + h3[class], #r, .MSL + script + script + div[class] > style + script + h3[class], .PMB, .RHRSLL, .RHRSLLwseboF, .SLL, .SLLwseboF, .WOL, .WOL2, ul[content="SLMP"], ul[content="SLMS"], .searchCenterTopAds, .searchCenterBottomAds',
+      '#maincontent + script + div[class] > style + script + h3[class], #r, .MSL + script + script + div[class] > style + script + h3[class], .PMB, .RHRSLL, .RHRSLLwseboF, .SLL, .SLLwseboF, .WOL, .WOL2, ul[content="SLMP"], ul[content="SLMS"]',
   'techcrunch.com':
       '#post_unit_medrec, .ad-top-mobile, .header-ad, .river-block-native-ad, .native-ad-mobile, .ad-unit, .ad-cluster-container, .ad-300x250, .l-sidebar li:last-child, .ad-sponsored-aside, .fmvps-player-ad-ribbon, .ad-unit__ad, .gallery-slide--ad',
   'www.aolsearch.com': '.SLL, .ADS',
   'www.crunchbase.com': '.display-ad',
   'www.engadget.com':
-      '#outerslice, .ad, .skyscraper, .sponsoredcontent, .sponsor-logo-post, .rail-ad > div:first-child > div:first-child, .rail-ad aside:nth-of-type(2), .rail-asl-line, #adSkyScraper, .pb-25, .mb-40, .mb-15, .inlineLb, .mb-20, .medrec, .medrect',
+      '#outerslice, .skyscraper, .sponsoredcontent, .sponsor-logo-post, .rail-ad > div:first-child > div:first-child, .rail-ad aside:nth-of-type(2), .rail-asl-line, #adSkyScraper, .pb-25, .mb-40, .mb-15, .inlineLb, .mb-20, .medrec, .medrect',
   'www.huffingtonpost.co.uk':
       '#modulous_right_rail_edit_promo, #modulous_sponsorship_2, .ad_wrapper, .ad_wrapper_, .ad_wrapper_top, #all_sponsored_posts_page_1_wrapper, #ad_deal_lower_left_wrapper, #ad_lower_right_commercials_wrapper, .ad_store, #ad_most_pop_234x60_req_wrapper',
   'www.huffpost.com':
-      '#page-header, #partner_box, .RHRSLL, .contin_below, .hp-ss-leaderboard, .linked_sponsored_entry, .presented-by, .right_rail_edit_promo, a[href*=".atwola.com/"], .ad_wrapper, .ad_wrapper_, .ad_wrapper_top, #all_sponsored_posts_page_1_wrapper, #ad_deal_lower_left_wrapper, #ad_lower_right_commercials_wrapper, .ad_store, #ad_most_pop_234x60_req_wrapper, .advertisement',
+      '#page-header, #partner_box, .RHRSLL, .contin_below, .hp-ss-leaderboard, .linked_sponsored_entry, .presented-by, .right_rail_edit_promo, a[href*=".atwola.com/"], .ad_wrapper, .ad_wrapper_, .ad_wrapper_top, #all_sponsored_posts_page_1_wrapper, #ad_deal_lower_left_wrapper, #ad_lower_right_commercials_wrapper, .ad_store, #ad_most_pop_234x60_req_wrapper',
   'www.luxist.com': '#topleader-wrap, .medrect, .ADS',
   'www.mapquest.com': '.mq-leadin, .display-ad, .search-ad',
-  'www.wow.com':
-      '.side-ad, .googleAFCAds, .ADS, #topleader-wrap, .SLL, .medrect',
+  'www.wow.com': '.googleAFCAds, .ADS, #topleader-wrap, .SLL, .medrect',
   // Vice
   'www.vice.com': '.native-block, .banner',
   // Vox
@@ -264,7 +243,7 @@ const SELECTORS = {
       '#fishtank, .-ad, .harmony-sponsorship, .m-feature__intro > aside, .vert300, .m-ad, .m-review__intro > aside',
   // Yahoo
   'answers.yahoo.com':
-      '.searchCenterTopAds, .searchCenterBottomAds, .searchRightBottomAds, #ya-darla-LREC, #ya-qpage-textads, #ya-darla-MAST',
+      '.searchRightBottomAds, #ya-darla-LREC, #ya-qpage-textads, #ya-darla-MAST',
   'au.news.yahoo.com':
       '.acc-moneyhound, .collection-sponsored, .moneyhound, .northAd, .y7-advertisement',
   'au.sports.yahoo.com':
@@ -273,18 +252,16 @@ const SELECTORS = {
       '#y708-windowshade, #my-adsMAST, #my-adsLREC, #my-adsTL1, #my-adsLREC2, .js-stream-featured-ad, .y7sponsoredlist',
   'cricket.yahoo.net': '#video-branding, .yom-ad, .waf-ad, .darla',
   'finance.yahoo.com':
-      '.searchCenterBottomAds, .searchRightBottomAds, #MediaFeaturedListEditorial, #mediabankrate_container, #yfi_ad_FB2, #yfi_ad_cl, .yfi_ad_s, .yom-ysmcm, div[style="height:265px; width:300px;margin:0pt auto;"], div[style="min-height:265px; _height:265px; width:300px;margin:0pt auto;"], .yom-ad, .rmx-ad, #td-applet-ads_container, .darla-container, #tgt1-LeadAd-0-ComboAd-Proxy',
+      '.searchRightBottomAds, #MediaFeaturedListEditorial, #mediabankrate_container, #yfi_ad_FB2, #yfi_ad_cl, .yfi_ad_s, .yom-ysmcm, div[style="height:265px; width:300px;margin:0pt auto;"], div[style="min-height:265px; _height:265px; width:300px;margin:0pt auto;"], .yom-ad, .rmx-ad, #td-applet-ads_container, .darla-container, #tgt1-LeadAd-0-ComboAd-Proxy',
   'groups.yahoo.com': '.yg-mbad-row, .yg-mb',
   'images.search.yahoo.com':
-      '#right > div > .searchRightMiddle + div[id]:last-child, #right > div > .searchRightTop + [id]:last-child, #right > div:first-child:last-child > [id]:first-child:last-child, div[id^="wp_bannerize-"], div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class], div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"], .ads',
+      '#right > div > .searchRightMiddle + div[id]:last-child, #right > div > .searchRightTop + [id]:last-child, #right > div:first-child:last-child > [id]:first-child:last-child, div[id^="wp_bannerize-"], div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class], div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"]',
   'mail.yahoo.com':
       '#MIP4, #MNW, #SKY, #modal-upsell, #northbanner, #nwPane, #slot_LREC, #slot_MB, #slot_REC, #swPane, #tgtMNW, .avLogo, .left_mb, .mb > .tbl, div#msg-list .list-view .ml-bg:not(.list-view-item-container), #slot_TL1, .mb-list-ad, [data-test-id="infinite-scroll-AD"], [data-test-id="right-rail-ad"]',
   'search.yahoo.com':
-      '.searchCenterTopAds, .searchCenterBottomAds, .searchRightBottomAds, #bpla, #cols > #right > ol[class] > .first > .dd[style="padding: 10px !important;border: 1px solid #ededed;"], #cols > #right ol[class] > .first > .dd[style="background-color:#FFF;border: 1px solid #e2e2e6; margin-top:0;"], #doc #cols #right #east, #east, #left > #main > div[id^="yui_"], #left > #main > div[id^="yui_"][class] > ul[class] > li[class], #left > #main > div[id^="yui_"][class]:first-child > div[class]:last-child, #left > #main > ol[class] > li[id] > .dd > .layoutMiddle, #main .dd .layoutCenter .compDlink, #main .dd .layoutCenter > .compDlink, #main .dd[style="cursor: pointer;"] > .layoutMiddle, #main > .reg > li[id^="yui_"][data-bid] > [data-bid], #main > div + div > style + * li > .dd > div[class], #main > div ol[class] > :first-child:last-child > li > .dd > :first-child:last-child > div[class], #main > div ol[class] li[id] > .dd > div + * > div, #main > div[id^="yui_"] > ul > .res, #main > div[id^="yui_"].rVfes:first-child, #main > div[id^="yui_"].rVfes:first-child + #web + div[id^="yui_"].rVfes, #main > div[id^="yui_"][class][data-bk][data-bns]:first-child, #main > div[style="background-color: rgb(250, 250, 255);"], #main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"], #main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"] + #web + div[id^="yui_"][class][data-bk][data-bns="Yahoo"], #main > style:first-child + * + #web + style + * > ol[class]:first-child:last-child, #main > style:first-child + * > ol[class]:first-child:last-child, #r-e, #r-n, #r-s, #right .dd .mb-11 + .compList, #right .dd > .layoutMiddle, #right .dd[style="cursor: pointer;"] > .layoutMiddle, #right .dd[style^="background-color:#FFF;border-color:#FFF;padding:"] .compList, #right .first > div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"], #right .reg > li[id^="yui_"][data-bid] > [data-bid], #right .res, #right > .searchRightMiddle + div[id]:last-child, #right > .searchRightTop + div[id]:last-child, #right > div > .searchRightMiddle + div[id]:last-child, #right > div > .searchRightTop + [id]:last-child, #right > div > style + * li .dd > div[class], #right > div ol[class] li > :first-child:last-child > .dd > :first-child:last-child > div[class]:first-child:last-child, #right > div:first-child:last-child > [id]:first-child:last-child, #right > div[class] > ol[class] .dd div[class] > ul > li[class^="mt-"], #right > div[class] ol[class] li[id] .dd > div + * > div[class], #right > div[id] > div[class] > div[class] > h2[class]:first-child + ul[class]:last-child > li[class], #right > span > div[id] > div[class] div[class] > span > ul[class]:last-child > li[class], #right [class][data-bk][data-bns], #right div.dd[style^="background-color:#FFF"] div > ul > li[class^="mt-"], #right div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"], #right li[id^="yui_"] .dd > .layoutMiddle, #right ol li[id^="yui_"] > .dd > .layoutMiddle, #sec-col, #ysch #doc #bd #results #cols #left #main .ads, #ysch #doc #bd #results #cols #left #main .ads .more-sponsors, #ysch #doc #bd #results #cols #left #main .ads .spns, #ysch #doc #bd #results #cols #right #east .ads, .ads, .bgclickable, .eadlast, .has-sma-box, .horiz, .last > div[class][data-bid] > div[class] > ul[class] > li > span > a, .promo-res, .sponsor-dd, .title > a[style="color:#efc439 !important; font-size:13px;font-weight: normal;"], .vert-ad-ttl + * > .eca[target="_blank"][href^="http://r.search.yahoo.com/_ylt="], a[href="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"], a[href^="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"], a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*=".r.msn.com"], a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*="beap.gemini.yahoo.com"], a[href^="https://search.yahoo.com/search/ads;"], div[id^="wp_bannerize-"], div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class], div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"], li[id^="yui_"] > div[data-bns][data-bk][style="cursor: pointer;"] > div[class], ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="], .eza9f',
-  'shopping.yahoo.com':
-      '.searchCenterTopAds, .searchCenterBottomAds, .shmod-ysm',
-  'sports.yahoo.com':
-      '.searchCenterTopAds, .searchCenterBottomAds, .searchRightBottomAds',
+      '.searchRightBottomAds, #bpla, #cols > #right > ol[class] > .first > .dd[style="padding: 10px !important;border: 1px solid #ededed;"], #cols > #right ol[class] > .first > .dd[style="background-color:#FFF;border: 1px solid #e2e2e6; margin-top:0;"], #doc #cols #right #east, #east, #left > #main > div[id^="yui_"], #left > #main > div[id^="yui_"][class] > ul[class] > li[class], #left > #main > div[id^="yui_"][class]:first-child > div[class]:last-child, #left > #main > ol[class] > li[id] > .dd > .layoutMiddle, #main .dd .layoutCenter .compDlink, #main .dd .layoutCenter > .compDlink, #main .dd[style="cursor: pointer;"] > .layoutMiddle, #main > .reg > li[id^="yui_"][data-bid] > [data-bid], #main > div + div > style + * li > .dd > div[class], #main > div ol[class] > :first-child:last-child > li > .dd > :first-child:last-child > div[class], #main > div ol[class] li[id] > .dd > div + * > div, #main > div[id^="yui_"] > ul > .res, #main > div[id^="yui_"].rVfes:first-child, #main > div[id^="yui_"].rVfes:first-child + #web + div[id^="yui_"].rVfes, #main > div[id^="yui_"][class][data-bk][data-bns]:first-child, #main > div[style="background-color: rgb(250, 250, 255);"], #main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"], #main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"] + #web + div[id^="yui_"][class][data-bk][data-bns="Yahoo"], #main > style:first-child + * + #web + style + * > ol[class]:first-child:last-child, #main > style:first-child + * > ol[class]:first-child:last-child, #r-e, #r-n, #r-s, #right .dd .mb-11 + .compList, #right .dd > .layoutMiddle, #right .dd[style="cursor: pointer;"] > .layoutMiddle, #right .dd[style^="background-color:#FFF;border-color:#FFF;padding:"] .compList, #right .first > div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"], #right .reg > li[id^="yui_"][data-bid] > [data-bid], #right .res, #right > .searchRightMiddle + div[id]:last-child, #right > .searchRightTop + div[id]:last-child, #right > div > .searchRightMiddle + div[id]:last-child, #right > div > .searchRightTop + [id]:last-child, #right > div > style + * li .dd > div[class], #right > div ol[class] li > :first-child:last-child > .dd > :first-child:last-child > div[class]:first-child:last-child, #right > div:first-child:last-child > [id]:first-child:last-child, #right > div[class] > ol[class] .dd div[class] > ul > li[class^="mt-"], #right > div[class] ol[class] li[id] .dd > div + * > div[class], #right > div[id] > div[class] > div[class] > h2[class]:first-child + ul[class]:last-child > li[class], #right > span > div[id] > div[class] div[class] > span > ul[class]:last-child > li[class], #right [class][data-bk][data-bns], #right div.dd[style^="background-color:#FFF"] div > ul > li[class^="mt-"], #right div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"], #right li[id^="yui_"] .dd > .layoutMiddle, #right ol li[id^="yui_"] > .dd > .layoutMiddle, #sec-col, #ysch #doc #bd #results #cols #left #main .ads .more-sponsors, #ysch #doc #bd #results #cols #left #main .ads .spns, .bgclickable, .eadlast, .has-sma-box, .horiz, .last > div[class][data-bid] > div[class] > ul[class] > li > span > a, .promo-res, .sponsor-dd, .title > a[style="color:#efc439 !important; font-size:13px;font-weight: normal;"], .vert-ad-ttl + * > .eca[target="_blank"][href^="http://r.search.yahoo.com/_ylt="], a[href="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"], a[href^="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"], a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*=".r.msn.com"], a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*="beap.gemini.yahoo.com"], a[href^="https://search.yahoo.com/search/ads;"], div[id^="wp_bannerize-"], div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class], div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"], li[id^="yui_"] > div[data-bns][data-bk][style="cursor: pointer;"] > div[class], ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="], .eza9f',
+  'shopping.yahoo.com': '.shmod-ysm',
+  'sports.yahoo.com': '.searchRightBottomAds',
   'uk.news.yahoo.com':
       '.yom-ad, .rmx-ad, .media-native-ad, .darla-container, [data-beacon], .ads_wrapper',
   'uk.sports.yahoo.com':
@@ -295,19 +272,19 @@ const SELECTORS = {
   'www.autoblog.com':
       '#yatadfin, #yatadfinbd, #yatadlrec, #yatadoem, #yatadoembd, .yatAdInsuranceFooter, .yatysm-y, .ad-banner-wrapper, .ad-module, .flex-banner, .btf-wrapper, #right_rail-zergnet',
   'www.yahoo.com':
-      '#LREC, #MREC, #YSLUG, #ad, #banner, #boxLREC, #darla-ad__LREC, #darla-ad__LREC2, #default-p_24457750, #eyebrow > #ypromo, #genie-widgetgroup, #leftGutter, #lrec2, #lrec_mod, #marketplace, #mbAds, #mw-ysm-cm, #my-promo-hover, #paas-lrec, #paas-mrec, #promo_links_list, #rec, #reg-promos, #rightGutter, #sponsor, #sponsored, #theMNWAd, #tiles-container > #row-2[style="height: 389.613px; padding-bottom: 10px;"], #u_2588582-p, #y708-ad-lrec1, #y708-sponmid, #y_provider_promo, #ya-center-rail > [id^="ya-q-"][id$="-textads"], #yahooPN_CM, #yahoovideo_ysmlinks, #yfi_pf_ysm, #yfi_ysm, #ygmapromo, #yh-ysm, #yl_pf_ysm, #ylf-ysm, #ymh-invitational-recs, #yn-darla2, #yn-gmy-promo-answers, #yn-gmy-promo-groups, #yschsec, .ad, .ad-active, .ads, .astro-promo, .fpad, .lrec, .marketplace, .mballads, .more-sponsors, .sharing-toolbar, .spns, .spon.clearfix, .spons, .wdpa1, .y7-breakout-bracket, .y708-ad-eyebrow, .y708-commpartners, .y708-promo-middle, .y7moneyhound, .y7partners, .ya-LDRB, .ya-darla-LREC, .yad, .yad-cpa, .yschspns, .ysm-cont, .ysptblbdr3, [data-ad-enhanced="card"], [data-ad-enhanced="pencil"], [data-ad-enhanced="text"], a[href^="https://beap.adss.yahoo.com/"], div[data-type="ADS"], div[id^="tile-A"][data-beacon-url^="https://beap.gemini.yahoo.com/mbcsc?"], div[id^="tile-mb-"], li[data-beacon^="https://beap.adss.yahoo.com/"], li[data-beacon^="https://beap.gemini.yahoo.com/"], li[id^="ad-"], .ad-tl1, .ad-wrap, .yom-ad, .rmx-ad, .darla-container, .moneyball-ad, .js-stream-ad, .Stage, .darla, [data-beacon], .related-gemini-ad',
+      '#LREC, #MREC, #YSLUG, #banner, #boxLREC, #darla-ad__LREC, #darla-ad__LREC2, #default-p_24457750, #eyebrow > #ypromo, #genie-widgetgroup, #leftGutter, #lrec2, #lrec_mod, #marketplace, #mbAds, #mw-ysm-cm, #my-promo-hover, #paas-lrec, #paas-mrec, #promo_links_list, #rec, #reg-promos, #rightGutter, #sponsor, #sponsored, #theMNWAd, #tiles-container > #row-2[style="height: 389.613px; padding-bottom: 10px;"], #u_2588582-p, #y708-ad-lrec1, #y708-sponmid, #y_provider_promo, #ya-center-rail > [id^="ya-q-"][id$="-textads"], #yahooPN_CM, #yahoovideo_ysmlinks, #yfi_pf_ysm, #yfi_ysm, #ygmapromo, #yh-ysm, #yl_pf_ysm, #ylf-ysm, #ymh-invitational-recs, #yn-darla2, #yn-gmy-promo-answers, #yn-gmy-promo-groups, #yschsec, .ad-active, .astro-promo, .fpad, .lrec, .marketplace, .mballads, .more-sponsors, .sharing-toolbar, .spns, .spon.clearfix, .spons, .wdpa1, .y7-breakout-bracket, .y708-ad-eyebrow, .y708-commpartners, .y708-promo-middle, .y7moneyhound, .y7partners, .ya-LDRB, .ya-darla-LREC, .yad, .yad-cpa, .yschspns, .ysm-cont, .ysptblbdr3, [data-ad-enhanced="card"], [data-ad-enhanced="pencil"], [data-ad-enhanced="text"], a[href^="https://beap.adss.yahoo.com/"], div[data-type="ADS"], div[id^="tile-A"][data-beacon-url^="https://beap.gemini.yahoo.com/mbcsc?"], div[id^="tile-mb-"], li[data-beacon^="https://beap.adss.yahoo.com/"], li[data-beacon^="https://beap.gemini.yahoo.com/"], li[id^="ad-"], .ad-tl1, .ad-wrap, .yom-ad, .rmx-ad, .darla-container, .moneyball-ad, .js-stream-ad, .Stage, .darla, [data-beacon], .related-gemini-ad',
   // Ziff Davis
   'mashable.com':
-      '.ad, .header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
+      '.header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
   // Et al.
   'coinmarketcap.com':
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
-  'slate.com': '.top-ad, .ad, .bottom-ad',
+  'slate.com': '.top-ad',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'www.dailymotion.com': '.dmp_VideoView-ad-slot',
   'www.dazeddigital.com': '.advert-container, .advert',
   'www.publishersweekly.com':
-      '.leaderboard, .quicklinks-ad, #div-gpt-ad-enlarged, #div-gpt-ad-enlarged-inline, .bottom-ad, .bbstar-popin',
+      '.leaderboard, .quicklinks-ad, #div-gpt-ad-enlarged, #div-gpt-ad-enlarged-inline, .bbstar-popin',
   'mail.ru':
       '.w-banner, .text-banner',
   'sportmail.ru':
@@ -324,8 +301,6 @@ const SELECTORS = {
       '.ban',
   'hi-tech.mail.ru':
       '.ban',
-  'imgur.com':
-      '.advertisement',
   'www.sohu.com':
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W, .godR, .god-main, .god-sub, .god-cut',
   'mil.sohu.com':
@@ -333,41 +308,37 @@ const SELECTORS = {
   'news.sohu.com':
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'www.xvideos.com':
-      '#video-ad, #ad-bottom, .ad',
+      '#video-ad, #ad-bottom',
   'www.imdb.com':
       '.cornerstone_slot, .dfp_slot, .after_ad, [name="slot_right-7"] + .aux-content-widget-2',
   'stackoverflow.com':
       '.adzerk-vote',
   'www.phonearena.com':
-      'ins, #top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]',
+      '#top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]',
   'www.nytimes.com':
-      '.ad, .text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
+      '.text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
   'www.amazon.de':
       '.displayAd, #ADPlaceholder, div[data-campaign], .bannerImage',
   'diply.com':
       '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
   'www.dpreview.com':
-      '.widget iframe, .ad',
-  'www.cafemom.com':
-      '.bottom-ad, ins',
-  'thestir.cafemom.com':
-      '.bottom-ad, ins',
+      '.widget iframe',
   'www.tmz.com':
-      '.masthead-ad, .inline-promo, .ad-container, .trc-content-sponsored, .adbadge, .disqus_thread iframe, .iab-ad__wrapper, .quigo-permalink',
+      '.masthead-ad, .inline-promo, .trc-content-sponsored, .adbadge, .disqus_thread iframe, .iab-ad__wrapper, .quigo-permalink',
   'bleacherreport.com':
       '.br-ad-wrapper',
   'www.mediaite.com':
       'div[data-adid]',
   'www.theblaze.com':
-      'iframe[name="adblade_ad_iframe"], .ad',
+      'iframe[name="adblade_ad_iframe"]',
   'www.google.es':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.ru':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.ca':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.it':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'cn.hao123.com':
       '.hao123-banner',
   'www.msn.com':
@@ -375,17 +346,17 @@ const SELECTORS = {
   'www.microsoft.com':
       '.hp-large-carousel',
   'www.amazon.co.jp':
-      '#DAadrp, #ad, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, .billboard, #desktop-ad-atf, #desktop-ad-atf-hr, #DAae1',
+      '#DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, .billboard, #desktop-ad-atf, #desktop-ad-atf-hr, #DAae1',
   'www.google.co.uk':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.fr':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.de':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.br':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.geniuskitchen.com':
-      '.dfp, .fd-tile-ad, .ad',
+      '.dfp, .fd-tile-ad',
   'www.ehow.com':
       '.RadLinks, center[id^="DartAd_"], div[data-module="radlinks"], #ebooks_container',
   'www.babycenter.com':
@@ -405,37 +376,37 @@ const SELECTORS = {
   'www.tmall.com':
         '.floor-ad-banner',
   'deadline.com':
-        '.widget_pmc_marketplace_ads, .footer-ad-mobile, .ad',
+        '.widget_pmc_marketplace_ads, .footer-ad-mobile',
   'gigaom.com':
         '#ad-leaderboard-container, #ad-billboard-container, .widget-go-ads',
   'weather.com':
         '#pageSpon2, #paid_search, #partner_offers, #twc-partner-spot, .divBottomNotice, .divCenterNotice, .trc_recs_column + .right-column, .taboola_module',
   'www.bloomberg.com':
-        '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .advertisement, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
+        '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
   'www.washingtonpost.com':
-        '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"]',
+        '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"]',
   'www.google.com.mx':
-        '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+        '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.hk':
-        '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+        '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'outlook.live.com':
       '#RadAd_Skyscraper',
   'www.linkedin.com':
-      '#ad-container, .ad, #bottom-ads-container > .attribution, .ad-hrc, .ad-banner-container, .occludable-update .feed-shared-update-v2--e2e',
+      '#ad-container, #bottom-ads-container > .attribution, .ad-hrc, .ad-banner-container, .occludable-update .feed-shared-update-v2--e2e',
   'www.yelp.com':
       '.googlead-sponsor-wrapper, .googlead-bigbox-wrapper, .yloca-search-result',
   'www.groupon.com':
-      '.ad-container, .ad, .da-gallery-160-600',
+      '.da-gallery-160-600',
   'www.gsmarena.com':
-      'a[href^="http://www.cellpex.com/affiliates/"], .adsbygoogle, .adv, .topAdv',
+      'a[href^="http://www.cellpex.com/affiliates/"], .adsbygoogle, .topAdv',
   'www.cnn.com':
       '#adsquare, #ad_ns_btf_03, #quigo628, .cnnoutbrain, #quigo336, .vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
   'www.instructables.com':
-      '.aspace, .newrightbar_div_10, #gpt-ad-leaderboard, .side-ad, .collection-adspot, .explore-ad',
+      '.aspace, .newrightbar_div_10, #gpt-ad-leaderboard, .collection-adspot, .explore-ad',
   'www.allrecipes.com':
       '#ads-right, .rrAdPad, .bottom-ad2, .advertise_txt, .ad-text, .topads-spacer, .reserve-ad-space, .review-ad-space, .ad-recipe-page-footer-container',
   'www.marketwatch.com':
-      '#BrokerButtons, #story-premiumbanner, #supposedlytemporaryad, #tradingcenter, [width="120"][bgcolor="#d7d7d6"], .advertisement, .ad-extra-text, #ad-display-ad-placeholder, .ad',
+      '#BrokerButtons, #story-premiumbanner, #supposedlytemporaryad, #tradingcenter, [width="120"][bgcolor="#d7d7d6"], .ad-extra-text, #ad-display-ad-placeholder',
   'www.google.co.in':
       '.ads-ad, .ads-bbl-container, .ads-bbl-triangle',
   'news.yahoo.co.jp':
@@ -487,23 +458,23 @@ const SELECTORS = {
   'www.baidu.com':
       '#ec_im_container',
   'www.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'de.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'fr.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'it.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'pt.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'pl.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'rt.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'jp.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'es.pornhub.com':
-      '#bodytag, .adblockfast-collapsed, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .ad, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
+      '#bodytag, .home-ad-container, .ad_box, .pre-footer, .section-hqrelateds, #welcome, #access_container, #adA, #adB, #pb_template, #views_left, .adContainer, .gay-ad-container, .join, .join_link, .top_hd_banner, a[href^="http://ads.genericlink.com/"], a[href^="http://ads.trafficjunky.net/"], a[href^="http://ads2.contentabc.com/"], a[href^="http://as.sexad.net/"]',
   'www.naver.com':
       '.img_style, #ad_top, #ad_branding_hide, #ad_branding, #ad_timesquare, .ad_area2',
   'xhamster.com':
@@ -539,15 +510,15 @@ const SELECTORS = {
   'www.theguardian.com':
       '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
   'www.foxnews.com':
-      '.ad-unit, .advert, .ad-container, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
+      '.ad-unit, .advert, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
   'www.amazon.in':
-      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #DAadrp, #ad, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container',
+      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container',
   'timesofindia.indiatimes.com':
       '.ad1, .adsdivlyr, .top_ad, #adbreak-adspdbl, .adlst, iframe[title="Advertisement"], div[style="width:300px; height:250px;"]',
   'www.google.co.id':
-      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'xinhuanet.com':
-      '.adv, [style="z-index:5;"], #topAdv, [id^=adBody], #promotionItem, [id^=Full], .scrollAd, [class^=ad]',
+      '[style="z-index:5;"], #topAdv, [id^=adBody], #promotionItem, [id^=Full], .scrollAd, [class^=ad]',
   'www.bbc.co.uk':
       '#bbccom_leaderboard_container, #bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
   'www.bbc.com':
@@ -559,9 +530,7 @@ const SELECTORS = {
   'spanish.peopledaily.com.cn':
       '.ad01, .ad02',
   'www.cctv.com':
-      '.adv, [id^=div-gpt-ad-]',
-  'www.pixnet.net':
-      '.ad',
+      '[id^=div-gpt-ad-]',
   'www.dailymotion.com':
       '.affiliation_cont, .dmpi_masscast, .masscast_box, .masscast_middle_box, #mc_Middle, #top_banner',
   'www.google.pl':
@@ -581,7 +550,7 @@ const SELECTORS = {
   'www.reuters.com':
       '#bannerStrip, #marchex, .slide-ad',
   'www.nbcnews.com':
-      '#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey, .ad-container',
+      '#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey',
   'www.nbcsports.com':
       '#top_90h, [id^=block-dart-dart-tag-dart-tag]',
   'economictimes.indiatimes.com':

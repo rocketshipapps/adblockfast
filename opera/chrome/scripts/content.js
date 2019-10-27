@@ -71,6 +71,9 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
 
   if (PARENT_HOST) {
     var selector = SELECTORS[PARENT_HOST];
+    selector =
+        '#ad, .ad, .ad-container, .ad-top, .ads, .adv, .advertisement, .bottom-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
+            + (selector ? ', ' + selector : '');
     if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com')
         selector +=
             ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
