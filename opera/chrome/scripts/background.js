@@ -213,7 +213,8 @@ if (IS_UPDATING_TO_CURRENT) {
 }
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyCBqw-meqiUNJ78g9acszr23TevYZ8MmVY',
+  apiKey: 'AIzaSyAEyH0_n6vGCimJnyGjuGXXsfYwhAqzm8Q',
+  appId: '1:109831748909:web:ce760a23eb8a204d7de7a4',
   authDomain: 'adblock-fast.firebaseapp.com',
   databaseURL: 'https://adblock-fast.firebaseio.com',
   messagingSenderId: '109831748909',
