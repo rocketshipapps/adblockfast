@@ -279,6 +279,7 @@ const SELECTORS = {
   // Et al.
   'coinmarketcap.com':
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
+  'pando.com': '.advert-slot',
   'slate.com': '.top-ad',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'www.dailymotion.com': '.dmp_VideoView-ad-slot',
