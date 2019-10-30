@@ -208,6 +208,11 @@ const SELECTORS = {
   'www.thedailybeast.com': '.SimpleAd, .PageTopAd, .ConnatixAd, .FooterAd',
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
+  // Penske Media
+  'deadline.com':
+      '.widget_pmc_marketplace_ads, .footer-ad-mobile, #ad-interruptus-header, .admz, .jpx-pd-wrapper',
+  'www.rollingstone.com':
+      '.c-ad, .admz, .resize-manager__adOuterContainer___T_gCf',
   // Reddit
   'www.reddit.com':
       '#siteTable_organic, .promotedlink, .dfp-ad-container, [data-before-content="advertisement"]',
@@ -376,8 +381,6 @@ const SELECTORS = {
         '#banner1, #banner2, #left_ads',
   'www.tmall.com':
         '.floor-ad-banner',
-  'deadline.com':
-        '.widget_pmc_marketplace_ads, .footer-ad-mobile',
   'gigaom.com':
         '#ad-leaderboard-container, #ad-billboard-container, .widget-go-ads',
   'weather.com':
