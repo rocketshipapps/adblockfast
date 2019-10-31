@@ -206,6 +206,8 @@ const SELECTORS = {
   // IAC
   'www.ask.com': '#csaBottom, #adBlock',
   'www.thedailybeast.com': '.SimpleAd, .PageTopAd, .ConnatixAd, .FooterAd',
+  // LA Times
+  'www.latimes.com': '.GoogleDfpAd-wrapper, .Page-below',
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
   // Penske Media
