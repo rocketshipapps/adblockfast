@@ -244,10 +244,9 @@ const SELECTORS = {
   // Vice
   'www.vice.com': '.native-block, .banner',
   // Vox
-  'www.sbnation.com': '.harmony-sponsorship, .m-ad',
-  'www.theringer.com': '.m-ad',
+  'www.sbnation.com': '.harmony-sponsorship',
   'www.theverge.com':
-      '#fishtank, .-ad, .harmony-sponsorship, .m-feature__intro > aside, .vert300, .m-ad, .m-review__intro > aside',
+      '#fishtank, .-ad, .harmony-sponsorship, .m-feature__intro > aside, .vert300, .m-review__intro > aside',
   // Yahoo
   'answers.yahoo.com':
       '.searchRightBottomAds, #ya-darla-LREC, #ya-qpage-textads, #ya-darla-MAST',

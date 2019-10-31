@@ -72,7 +72,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
   if (PARENT_HOST) {
     var selector = SELECTORS[PARENT_HOST];
     selector =
-        '#ad, .ad, .ad-container, .ad-top, .adv, .advertisement, .bottom-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
+        '#ad, .ad, .ad-container, .ad-top, .adv, .advertisement, .bottom-ad, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
             + (selector ? ', ' + selector : '');
     if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com')
         selector +=
