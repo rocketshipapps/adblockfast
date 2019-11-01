@@ -1509,6 +1509,17 @@ _adblock_killer.
 ##.amp-ad-container
 ##.amp-ad container
 ##amp-ad
+###ad
+##.ad
+##.ad-container
+##.ad-top
+##.adv
+##.advertisement
+##.bottom-ad
+##.m-ad
+##.searchCenterBottomAds
+##.searchCenterTopAds
+##.side-ad
 ###adblock_screen
 ###adblock_message
 ##.adblockInfo
@@ -1684,7 +1695,6 @@ m.news.de##.unisterAdsStart
 ||mobile.donanimhaber.com/ads^
 mobil.stern.de##.flying-carpet-element__ad-label + amp-fx-flying-carpet
 mobil.stern.de##.flying-carpet-element__ad-label
-mobil.stern.de##.ad-container
 jianshu.com##.dt-open-bg[data-scene="leftBtn"]
 jianshu.com##.note-comment-above-ad-wrap
 theinventory.com,thetakeout.com,theonion.com,splinternews.com,clickhole.com,avclub.com,deadspin.com,gizmodo.com,jalopnik.com,jezebel.com,kotaku.com,lifehacker.com,theroot.com##.inline-ad-container
@@ -1930,7 +1940,6 @@ vuviphim.com###mobileCatfish
 pcgamesn.com##.ad-mobile
 egehaber.com##div[class*="block-"] a[target="_blank"] > img
 yahoo.co.jp###ad-sult
-daily.co.jp##.adv
 rockpapershotgun.com##.mobile-mpu
 irk.ru##.b-banner-float
 m.gameapps.hk##.ad-full-screen
@@ -1971,7 +1980,6 @@ dict.hinkhoj.com##.navbar > div[style="margin:0px"]
 m.yahoo.co.jp##.PremiumFirst
 m.ruliweb.com##.fixed_ad_wrapper
 m.ruliweb.com##.ad_header_wrapper
-m.winporn.com##.ad
 m.bravotube.net##.banner-bottom
 m.bravotube.net##.goldttl
 m.bravotube.net##.wrapper > .good
@@ -2025,14 +2033,12 @@ m.delmagyar.hu##.closable-ad
 m.delmagyar.hu###block___frappe_mobil
 ||m.alphaporno.com/adman_ai/
 m.alphaporno.com###suggested
-m.pornerbros.com##.adv
 mobile.donanimhaber.com###comment-container > #news-container[style*="width:"][style*="position"][style*="height:"]
 mobile.donanimhaber.com##.yazilim-sponsor
 www-inside--handy-de.cdn.ampproject.org###i-amphtml-wrapper div.content_ins
 wsj.com##div[class^="WSJTheme__adWrapper_"][style="min-width: 300px; min-height: 250px;"]
 gametech.ru##.mobile-pic
 m.yourlust.com##.divExoCustomLayer
-slate.com##.ad
 mobilescout.com##.banner_news_top_box
 mobilescout.com##.banner_list_container
 heise.de##a-paternoster
@@ -2080,10 +2086,8 @@ japantoday.com##div[data-href^="https://go.injapan.com/zP2Vrj"]
 m.blogtruyen.com##.container > .qc-inner
 m.blogtruyen.com##center > a[href][target="_blank"] > img
 yemek-com.cdn.ampproject.org##.recipeContent > .printHidden
-amp.indiatimes.com##.ad-container
 m.auto.ru##.commercial-listing > div.commercial-listing-item-wrapper > div[id]:not([class*="Listing"]):not([class*="item"])
 m.auto.ru##div[data-bem*="\"ad\":true"]
-m.mynet.com##.adv
 yahoo.com##.stream-items > li.stream-item[data-wf-image-beacons]
 readlightnovel.org##.desc > .col-lg-12 > center > small
 sozcu.com.tr###sz_manset_advertise
@@ -2163,7 +2167,6 @@ m.fanfox.net##.adv-here
 m.xcum.com,m.fanfox.net##.top-banner
 m.fanfox.net##.top-banner > .flexslider
 merlininkazani.com##div[class^="adver-mobile-"]
-mediafire.com##.m-ad
 comnews.ru###mv-bottom-banner
 comnews.ru###mv-fullscreen
 topwar.ru##.banner_yandex
@@ -2187,7 +2190,6 @@ mp4mania.mobi##a[href^="http://abc.gogooffer.online"]
 goodtoknow.co.uk##.adContainerTop
 uproxx.com##[class^="uproxx_iframe_"][class*="ads_wrapper"]
 healthline.com###site-header ~aside[class^="css-"] > div[class^="css-"]
-dronedj.com##.ad-container
 m.dizilab6.com###textvideo
 m.mylust.com###wrapper div[class^="topb-"]
 m.muensterschezeitung.de##.wn_spo_banner
@@ -2225,9 +2227,7 @@ wz.de##.adLine_separator
 shiftdelete.net##iframe[src*="/getAd?"]
 m.befuck.com##a[href^="http://nats.beataporn.com"]
 m.turizmajansi.com###ContentPlaceHolder1_uc_banner_main_top_AdRotator_a1
-gotporn.com##.advertisement
 porn.com##.m-zone
-m.porntube.com##.adv
 pornhd.com##.leaderboard-container
 ||teknoseyir.com/wp-content/themes/ts/sponsor-mobile.php
 t-online.de##div[itemprop="articleBody"] > #ma_ar
@@ -2266,7 +2266,6 @@ m.rund-ums-baby.de##[class="ta"][style="margin:0 0 5% 0;"]
 m.rund-ums-baby.de##[class="ta"][style="margin:0 0 10% 0;"]
 m.rund-ums-baby.de##p[style="font-size:10px; color:#8d8d8d; margin-bottom:10px; padding:0px 15px 0px 0px"]
 lifehack.org##[id^="lifehack_m_"][id*="TF"]
-m.haberturk.com##.advertisement
 m.haberturk.com##a[data-newscategory="Advertorial"]
 wccftech-com.cdn.ampproject.org##.amp-ad
 mobile.donanimhaber.com##div[style$="width:320px; height:100px;"]
@@ -2351,7 +2350,6 @@ kachelmannwetter.com###mobilebb-main
 stereogum.com##.ad-holder
 3g.163.com##.content-list > section.m_papa,papa-item
 fuw.ch###js-icon-list
-bodybuilding.com##.ad-container
 timesofindia.indiatimes.com###s_rhs
 independent.co.uk##.taboola
 skymetweather.com###outbrainmobile
@@ -2477,7 +2475,6 @@ theatlantic.com##.ad-loaded
 theatlantic.com##.native-promo-slider
 ulm-news.de###SWU-schwabenstrom
 www.yahoo.com###act-ad-parallax
-wap.lexun.com###ad
 kisscartoon.me###adsFloat1
 m.sondakika.com###adsgoogle
 lenfilm.tv###adv_kod_frame
@@ -2680,9 +2677,6 @@ www.businessinsider.com.au###river hr:last-of-type
 www.byrdie.com##.top-slot-container
 www.gizmodo.com.au###product-finder
 www.gizmodo.com.au##.btyb_cat
-www.gizmodo.com.au##.ad
-www.kotaku.com.au##.ad
-www.lifehacker.com.au##.ad
 www.shopstyle.com.au##.promo-wrapper
 www.whowhatwear.com.au##.top-slot-container
 www.amazon.ca##div[style="width:300px;height:280px;"]
@@ -2706,7 +2700,6 @@ www.amazon.co.uk###heroQuickPromo_feature_div
 www.amazon.co.uk###dp-ads-center-promo_feature_div
 www.amazon.co.uk###ape_Detail_ad-endcap-1_Glance_placement
 www.amazon.com###DAadrp
-www.amazon.com###ad
 www.amazon.com###nav-swmslot
 www.amazon.com###raw-search-desktop-advertising-tower-1
 www.amazon.com##.pa-sp-container
@@ -2720,7 +2713,6 @@ www.amazon.com###AUI_A9AdsMiddleBoxTop
 www.amazon.com###heroQuickPromo_feature_div
 www.amazon.com###dp-ads-center-promo_feature_div
 www.amazon.com###ape_Detail_ad-endcap-1_Glance_placement
-www.businessinsider.com##.ad
 www.businessinsider.com##.chartbeat
 www.businessinsider.com##.continue-link
 www.businessinsider.com##.ks-recommended
@@ -2746,18 +2738,13 @@ www.buzzfeed.com##.ad-ex
 www.buzzfeed.com##.js-thumb-ad
 www.buzzfeed.com##.ad-inline
 arstechnica.com##.instream-wrap
-arstechnica.com##.side-ad
 arstechnica.com###article-footer
-arstechnica.com##.ad
 arstechnica.com##.ad_native
 arstechnica.com###daehtsam-da
 arstechnica.com###masthead + #pushdown-wrap
 arstechnica.com###msuk-wrapper
 arstechnica.com###outbrain-recs-wrap
 arstechnica.com##.sponsored-rec
-www.gq.com##.ad
-www.vanityfair.com##.ad
-www.wired.com##.ad
 abc.go.com##.footerRow
 abc.go.com##.adBlockSpot
 abcnews.go.com##.index-quigo
@@ -2769,28 +2756,20 @@ abcnews.go.com###homead
 abcnews.go.com##.leaderboard-ad
 abcnews.go.com##.ad-slot
 abcnews.go.com##.akamai-ad-mode
-family.disney.com##.ad
 family.disney.com##.tm-ad
-go.com##.ad
 liveshows.disney.com##.pushdown
-liveshows.disney.com##.ad-container
 lol.disney.com##.pushdown
 lol.disney.com##.rich_image
 lol.disney.com##.mint_container
 movies.disney.com##.pushdown
-movies.disney.com##.ad-container
 music.disney.com##.pushdown
-music.disney.com##.ad-container
 ohmy.disney.com##.tm-ad
 shows.disney.com##.pushdown
-shows.disney.com##.ad-container
 style.disney.com##.tm-ad
-video.disney.com##.ad-container
 video.disney.com##.pushdown
 www.babble.com##.bb-ad
 www.babble.com##.tm-ad
 www.disney.com##.gpt
-www.disney.com##.ad-container
 www.disney.com##.pushdown
 www.espn.com###sponsored-by
 www.espn.com##div[style="height: 325px;"]
@@ -2880,7 +2859,6 @@ m.facebook.com##._24n
 m.facebook.com##._24o
 m.facebook.com##._3qj-
 m.facebook.com##._4u8
-m.facebook.com##.adv
 m.facebook.com##.ego_spo
 m.facebook.com##.fbAdUnit
 m.facebook.com##.fbEmu
@@ -2936,68 +2914,56 @@ www.forbes.com##.sticky-ad-container
 www.forbes.com##.ad-row
 www.forbes.com##.top-ad-container
 www.forbes.com##.ntv-rail-ad
+www.forbes.com##.fbs-ad--top-wrapper
+www.forbes.com##.channel--ad
+www.forbes.com##.vestpocket
+www.forbes.com##medianet
 antiviral.gawker.com##.js_promoted
-antiviral.gawker.com##.ad-top
 antiviral.gawker.com##.contained-ad-container
 antiviral.gawker.com##.ad-bottom
 blackbag.gawker.com##.js_promoted
-blackbag.gawker.com##.ad-top
 blackbag.gawker.com##.contained-ad-container
 blackbag.gawker.com##.ad-bottom
 defamer.gawker.com##.js_promoted
-defamer.gawker.com##.ad-top
 defamer.gawker.com##.contained-ad-container
 defamer.gawker.com##.ad-bottom
 dog.gawker.com##.js_promoted
-dog.gawker.com##.ad-top
 dog.gawker.com##.contained-ad-container
 dog.gawker.com##.ad-bottom
 domesticity.gawker.com##.js_promoted
-domesticity.gawker.com##.ad-top
 domesticity.gawker.com##.contained-ad-container
 domesticity.gawker.com##.ad-bottom
 fortressamerica.gawker.com##.js_promoted
-fortressamerica.gawker.com##.ad-top
 fortressamerica.gawker.com##.contained-ad-container
 fortressamerica.gawker.com##.ad-bottom
 gawker.com##.js_promoted
-gawker.com##.ad-top
 gawker.com##.contained-ad-container
 gawker.com##.ad-bottom
 internet.gawker.com##.js_promoted
-internet.gawker.com##.ad-top
 internet.gawker.com##.contained-ad-container
 internet.gawker.com##.ad-bottom
 justice.gawker.com##.js_promoted
-justice.gawker.com##.ad-top
 justice.gawker.com##.contained-ad-container
 justice.gawker.com##.ad-bottom
 morningafter.gawker.com##.js_promoted
-morningafter.gawker.com##.ad-top
 morningafter.gawker.com##.contained-ad-container
 morningafter.gawker.com##.ad-bottom
 review.gawker.com##.js_promoted
-review.gawker.com##.ad-top
 review.gawker.com##.contained-ad-container
 review.gawker.com##.ad-bottom
 sausage.gawker.com##.js_promoted
-sausage.gawker.com##.ad-top
 sausage.gawker.com##.contained-ad-container
 sausage.gawker.com##.ad-bottom
 thevane.gawker.com##.js_promoted
-thevane.gawker.com##.ad-top
 thevane.gawker.com##.contained-ad-container
 thevane.gawker.com##.ad-bottom
 tktk.gawker.com##.js_promoted
-tktk.gawker.com##.ad-top
 tktk.gawker.com##.contained-ad-container
 tktk.gawker.com##.ad-bottom
 truestories.gawker.com##.js_promoted
-truestories.gawker.com##.ad-top
 truestories.gawker.com##.contained-ad-container
 truestories.gawker.com##.ad-bottom
 valleywag.gawker.com##.js_promoted
-valleywag.gawker.com##.ad-top
 valleywag.gawker.com##.contained-ad-container
 valleywag.gawker.com##.ad-bottom
 adequateman.deadspin.com##.ad-top.ad-wide
@@ -3017,7 +2983,6 @@ cosplay.kotaku.com##.ad-non-sticky
 cosplay.kotaku.com##.ad-promotions-container
 cosplay.kotaku.com##.contained-ad-container
 deadspin.com##.js_promoted
-deadspin.com##.ad-top
 deadspin.com##.contained-ad-container
 deadspin.com##.ad-bottom
 deadspin.com##.ad-top.ad-wide
@@ -3044,7 +3009,6 @@ games.avclub.com##.ad-promotions-container
 games.avclub.com##.contained-ad-container
 gizmodo.com##.btyb_cat
 gizmodo.com##.js_promoted
-gizmodo.com##.ad-top
 gizmodo.com##.contained-ad-container
 gizmodo.com##.ad-bottom
 gizmodo.com##.ad-top.ad-wide
@@ -3053,7 +3017,6 @@ gizmodo.com##.ad-promotions-container
 io9.gizmodo.com###postTransitionOverlay
 io9.gizmodo.com##.js_promoted
 io9.gizmodo.com###skyscraper
-io9.gizmodo.com##.ad-top
 io9.gizmodo.com##.contained-ad-container
 io9.gizmodo.com##.ad-bottom
 io9.gizmodo.com##.ad-top.ad-wide
@@ -3062,7 +3025,6 @@ io9.gizmodo.com##.ad-promotions-container
 jalopnik.com###postTransitionOverlay
 jalopnik.com##.js_promoted
 jalopnik.com###skyscraper
-jalopnik.com##.ad-top
 jalopnik.com##.contained-ad-container
 jalopnik.com##.ad-bottom
 jalopnik.com##.ad-top.ad-wide
@@ -3071,7 +3033,6 @@ jalopnik.com##.ad-promotions-container
 jezebel.com###postTransitionOverlay
 jezebel.com##.js_promoted
 jezebel.com###skyscraper
-jezebel.com##.ad-top
 jezebel.com##.contained-ad-container
 jezebel.com##.ad-bottom
 jezebel.com##.ad-top.ad-wide
@@ -3086,9 +3047,7 @@ kinjadeals.theinventory.com##.ad-non-sticky
 kinjadeals.theinventory.com##.ad-promotions-container
 kinjadeals.theinventory.com##.contained-ad-container
 kotaku.com###postTransitionOverlay
-kotaku.com##.ad
 kotaku.com##.js_promoted
-kotaku.com##.ad-top
 kotaku.com##.contained-ad-container
 kotaku.com##.ad-bottom
 kotaku.com##.ad-top.ad-wide
@@ -3096,7 +3055,6 @@ kotaku.com##.ad-non-sticky
 kotaku.com##.ad-promotions-container
 lifehacker.com###postTransitionOverlay
 lifehacker.com##.js_promoted
-lifehacker.com##.ad-top
 lifehacker.com##.contained-ad-container
 lifehacker.com##.ad-bottom
 lifehacker.com##.ad-top.ad-wide
@@ -3230,7 +3188,6 @@ m.youtube.com###video-masthead
 m.youtube.com###watch-branded-actions
 m.youtube.com###watch-buy-urls
 m.youtube.com###watch-channel-brand-div
-m.youtube.com##.ad-container
 m.youtube.com##.carousel-offer-url-container
 m.youtube.com##.list-view[style="margin: 7px 0pt;"]
 m.youtube.com##.promoted-videos
@@ -3283,7 +3240,6 @@ www.google.com###rhs_block > #mbEnd
 www.google.com###tads + div + .c
 www.google.com###tads.c
 www.google.com###topstuff > #tads
-www.google.com###ad
 www.google.com###tadsc
 www.google.com##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.com##.GGQPGYLCD5
@@ -3306,17 +3262,25 @@ www.google.com.au###mclip_control
 www.google.com.au##._Ak
 www.google.com.au###taw
 www.google.com.au###bottomads
-www.ask.com##.ad-top
 www.ask.com###csaBottom
 www.ask.com###adBlock
 www.thedailybeast.com##.SimpleAd
 www.thedailybeast.com##.PageTopAd
 www.thedailybeast.com##.ConnatixAd
 www.thedailybeast.com##.FooterAd
+www.latimes.com##.GoogleDfpAd-wrapper
+www.latimes.com##.Page-below
 www.bing.com###zune_upsell
 www.bing.com##.partnerLinks
 www.bing.com##.b_ad
 www.bing.com##.b_ad ul
+deadline.com##.widget_pmc_marketplace_ads
+deadline.com##.footer-ad-mobile
+deadline.com###ad-interruptus-header
+deadline.com##.admz
+www.rollingstone.com##.c-ad
+www.rollingstone.com##.admz
+www.rollingstone.com##.resize-manager__adOuterContainer___T_gCf
 www.reddit.com###siteTable_organic
 www.reddit.com##.promotedlink
 www.reddit.com##.dfp-ad-container
@@ -3362,16 +3326,11 @@ m.huffpost.com###ad_deal_lower_left_wrapper
 m.huffpost.com###ad_lower_right_commercials_wrapper
 m.huffpost.com##.ad_store
 m.huffpost.com###ad_most_pop_234x60_req_wrapper
-m.huffpost.com##.advertisement
 search.aol.ca##.SLL
 search.aol.ca##.WOL
-search.aol.ca##.searchCenterTopAds
-search.aol.ca##.searchCenterBottomAds
 search.aol.co.uk##.PMB
 search.aol.co.uk##.SLL
 search.aol.co.uk##.WOL
-search.aol.co.uk##.searchCenterTopAds
-search.aol.co.uk##.searchCenterBottomAds
 search.aol.com###maincontent + script + div[class] > style + script + h3[class]
 search.aol.com###r
 search.aol.com##.MSL + script + script + div[class] > style + script + h3[class]
@@ -3384,8 +3343,6 @@ search.aol.com##.WOL
 search.aol.com##.WOL2
 search.aol.com##ul[content="SLMP"]
 search.aol.com##ul[content="SLMS"]
-search.aol.com##.searchCenterTopAds
-search.aol.com##.searchCenterBottomAds
 techcrunch.com###post_unit_medrec
 techcrunch.com##.ad-top-mobile
 techcrunch.com##.header-ad
@@ -3403,7 +3360,6 @@ www.aolsearch.com##.SLL
 www.aolsearch.com##.ADS
 www.crunchbase.com##.display-ad
 www.engadget.com###outerslice
-www.engadget.com##.ad
 www.engadget.com##.skyscraper
 www.engadget.com##.sponsoredcontent
 www.engadget.com##.sponsor-logo-post
@@ -3424,7 +3380,6 @@ www.luxist.com##.ADS
 www.mapquest.com##.mq-leadin
 www.mapquest.com##.display-ad
 www.mapquest.com##.search-ad
-www.wow.com##.side-ad
 www.wow.com##.googleAFCAds
 www.wow.com##.ADS
 www.wow.com###topleader-wrap
@@ -3433,17 +3388,12 @@ www.wow.com##.medrect
 www.vice.com##.native-block
 www.vice.com##.banner
 www.sbnation.com##.harmony-sponsorship
-www.sbnation.com##.m-ad
-www.theringer.com##.m-ad
 www.theverge.com###fishtank
 www.theverge.com##.-ad
 www.theverge.com##.harmony-sponsorship
 www.theverge.com##.m-feature__intro > aside
 www.theverge.com##.vert300
-www.theverge.com##.m-ad
 www.theverge.com##.m-review__intro > aside
-answers.yahoo.com##.searchCenterTopAds
-answers.yahoo.com##.searchCenterBottomAds
 answers.yahoo.com##.searchRightBottomAds
 answers.yahoo.com###ya-darla-LREC
 answers.yahoo.com###ya-qpage-textads
@@ -3467,7 +3417,6 @@ cricket.yahoo.net###video-branding
 cricket.yahoo.net##.yom-ad
 cricket.yahoo.net##.waf-ad
 cricket.yahoo.net##.darla
-finance.yahoo.com##.searchCenterBottomAds
 finance.yahoo.com##.searchRightBottomAds
 finance.yahoo.com###MediaFeaturedListEditorial
 finance.yahoo.com###mediabankrate_container
@@ -3490,7 +3439,6 @@ images.search.yahoo.com###right > div:first-child:last-child > [id]:first-child:
 images.search.yahoo.com##div[id^="wp_bannerize-"]
 images.search.yahoo.com##div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class]
 images.search.yahoo.com##div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"]
-images.search.yahoo.com##.ads
 mail.yahoo.com###MIP4
 mail.yahoo.com###MNW
 mail.yahoo.com###SKY
@@ -3510,8 +3458,6 @@ mail.yahoo.com###slot_TL1
 mail.yahoo.com##.mb-list-ad
 mail.yahoo.com##[data-test-id="infinite-scroll-AD"]
 mail.yahoo.com##[data-test-id="right-rail-ad"]
-search.yahoo.com##.searchCenterTopAds
-search.yahoo.com##.searchCenterBottomAds
 search.yahoo.com##.searchRightBottomAds
 search.yahoo.com###bpla
 search.yahoo.com###cols > #right > ol[class] > .first > .dd[style="padding: 10px !important;border: 1px solid #ededed;"]
@@ -3590,11 +3536,7 @@ search.yahoo.com##div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yah
 search.yahoo.com##li[id^="yui_"] > div[data-bns][data-bk][style="cursor: pointer;"] > div[class]
 search.yahoo.com##ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="]
 search.yahoo.com##.eza9f
-shopping.yahoo.com##.searchCenterTopAds
-shopping.yahoo.com##.searchCenterBottomAds
 shopping.yahoo.com##.shmod-ysm
-sports.yahoo.com##.searchCenterTopAds
-sports.yahoo.com##.searchCenterBottomAds
 sports.yahoo.com##.searchRightBottomAds
 uk.news.yahoo.com##.yom-ad
 uk.news.yahoo.com##.rmx-ad
@@ -3633,7 +3575,6 @@ www.autoblog.com###right_rail-zergnet
 www.yahoo.com###LREC
 www.yahoo.com###MREC
 www.yahoo.com###YSLUG
-www.yahoo.com###ad
 www.yahoo.com###banner
 www.yahoo.com###boxLREC
 www.yahoo.com###darla-ad__LREC
@@ -3676,7 +3617,6 @@ www.yahoo.com###yn-darla2
 www.yahoo.com###yn-gmy-promo-answers
 www.yahoo.com###yn-gmy-promo-groups
 www.yahoo.com###yschsec
-www.yahoo.com##.ad
 www.yahoo.com##.ad-active
 www.yahoo.com##.ads
 www.yahoo.com##.astro-promo
@@ -3724,7 +3664,6 @@ www.yahoo.com##.Stage
 www.yahoo.com##.darla
 www.yahoo.com##[data-beacon]
 www.yahoo.com##.related-gemini-ad
-mashable.com##.ad
 mashable.com##.header-banner
 mashable.com##.pga
 mashable.com##.box970
@@ -3735,9 +3674,8 @@ mashable.com##.zergnet-container
 coinmarketcap.com###header-banner-wrapper
 coinmarketcap.com##.responsive-leaderboard
 coinmarketcap.com##.skyscraper
+pando.com##.advert-slot
 slate.com##.top-ad
-slate.com##.ad
-slate.com##.bottom-ad
 www.cp24.com##.boxAd
 www.cp24.com##.cp24FlyersWidgetSidebar
 www.cp24.com##.sponsoredButtons
@@ -3748,7 +3686,6 @@ www.publishersweekly.com##.leaderboard
 www.publishersweekly.com##.quicklinks-ad
 www.publishersweekly.com###div-gpt-ad-enlarged
 www.publishersweekly.com###div-gpt-ad-enlarged-inline
-www.publishersweekly.com##.bottom-ad
 www.publishersweekly.com##.bbstar-popin
 mail.ru##.w-banner
 mail.ru##.text-banner
@@ -3763,7 +3700,6 @@ kino.mail.ru##.ban
 lady.mail.ru##.ban
 m.games.mail.ru##.ban
 hi-tech.mail.ru##.ban
-m.imgur.com##.advertisement
 m.sohu.com##.sohuadcode
 m.sohu.com###ad_TOP
 m.sohu.com###ad_B
@@ -3788,13 +3724,11 @@ m.sohu.com##.god-sub
 m.sohu.com##.god-cut
 www.xvideos.com###video-ad
 www.xvideos.com###ad-bottom
-www.xvideos.com##.ad
 m.imdb.com##.cornerstone_slot
 m.imdb.com##.dfp_slot
 m.imdb.com##.after_ad
 m.imdb.com##[name="slot_right-7"] + .aux-content-widget-2
 stackoverflow.com##.adzerk-vote
-www.phonearena.com##ins
 www.phonearena.com###top_banner
 www.phonearena.com##.adswidget
 www.phonearena.com##.s_ad_300x250
@@ -3805,7 +3739,6 @@ www.phonearena.com##.bannerplace728
 www.phonearena.com##div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"]
 www.phonearena.com##.s_mb_15[style="min-height: 250px"]
 www.phonearena.com##.s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]
-www.nytimes.com##.ad
 www.nytimes.com##.text-ad
 www.nytimes.com##.g-ad
 www.nytimes.com##.e12j3pa50
@@ -3825,14 +3758,8 @@ diply.com##.mega-da-full
 diply.com##.da-disclaimer
 diply.com##.btfrectangle
 m.dpreview.com##.widget iframe
-m.dpreview.com##.ad
-www.cafemom.com##.bottom-ad
-www.cafemom.com##ins
-thestir.cafemom.com##.bottom-ad
-thestir.cafemom.com##ins
 www.tmz.com##.masthead-ad
 www.tmz.com##.inline-promo
-www.tmz.com##.ad-container
 www.tmz.com##.trc-content-sponsored
 www.tmz.com##.adbadge
 www.tmz.com##.disqus_thread iframe
@@ -3841,13 +3768,11 @@ www.tmz.com##.quigo-permalink
 bleacherreport.com##.br-ad-wrapper
 www.mediaite.com##div[data-adid]
 www.theblaze.com##iframe[name="adblade_ad_iframe"]
-www.theblaze.com##.ad
 www.google.es###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.es###rhs_block > #mbEnd
 www.google.es###tads + div + .c
 www.google.es###tads.c
 www.google.es###topstuff > #tads
-www.google.es###ad
 www.google.es###tadsc
 www.google.es##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.es##.GGQPGYLCD5
@@ -3870,7 +3795,6 @@ www.google.ru###rhs_block > #mbEnd
 www.google.ru###tads + div + .c
 www.google.ru###tads.c
 www.google.ru###topstuff > #tads
-www.google.ru###ad
 www.google.ru###tadsc
 www.google.ru##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.ru##.GGQPGYLCD5
@@ -3893,7 +3817,6 @@ www.google.ca###rhs_block > #mbEnd
 www.google.ca###tads + div + .c
 www.google.ca###tads.c
 www.google.ca###topstuff > #tads
-www.google.ca###ad
 www.google.ca###tadsc
 www.google.ca##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.ca##.GGQPGYLCD5
@@ -3916,7 +3839,6 @@ www.google.it###rhs_block > #mbEnd
 www.google.it###tads + div + .c
 www.google.it###tads.c
 www.google.it###topstuff > #tads
-www.google.it###ad
 www.google.it###tadsc
 www.google.it##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.it##.GGQPGYLCD5
@@ -3939,7 +3861,6 @@ www.msn.com##.providerupsell
 www.msn.com##.todayshowcasead
 www.microsoft.com##.hp-large-carousel
 www.amazon.co.jp###DAadrp
-www.amazon.co.jp###ad
 www.amazon.co.jp###nav-swmslot
 www.amazon.co.jp###raw-search-desktop-advertising-tower-1
 www.amazon.co.jp##.pa-sp-container
@@ -3959,7 +3880,6 @@ www.google.co.uk###rhs_block > #mbEnd
 www.google.co.uk###tads + div + .c
 www.google.co.uk###tads.c
 www.google.co.uk###topstuff > #tads
-www.google.co.uk###ad
 www.google.co.uk###tadsc
 www.google.co.uk##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.co.uk##.GGQPGYLCD5
@@ -3983,7 +3903,6 @@ www.google.fr###rhs_block > #mbEnd
 www.google.fr###tads + div + .c
 www.google.fr###tads.c
 www.google.fr###topstuff > #tads
-www.google.fr###ad
 www.google.fr###tadsc
 www.google.fr##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.fr##.GGQPGYLCD5
@@ -4007,7 +3926,6 @@ www.google.de###rhs_block > #mbEnd
 www.google.de###tads + div + .c
 www.google.de###tads.c
 www.google.de###topstuff > #tads
-www.google.de###ad
 www.google.de###tadsc
 www.google.de##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.de##.GGQPGYLCD5
@@ -4031,7 +3949,6 @@ www.google.com.br###rhs_block > #mbEnd
 www.google.com.br###tads + div + .c
 www.google.com.br###tads.c
 www.google.com.br###topstuff > #tads
-www.google.com.br###ad
 www.google.com.br###tadsc
 www.google.com.br##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.com.br##.GGQPGYLCD5
@@ -4052,7 +3969,6 @@ www.google.com.br##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.com.br##.ads-ad
 www.geniuskitchen.com##.dfp
 www.geniuskitchen.com##.fd-tile-ad
-www.geniuskitchen.com##.ad
 www.ehow.com##.RadLinks
 www.ehow.com##center[id^="DartAd_"]
 www.ehow.com##div[data-module="radlinks"]
@@ -4097,9 +4013,6 @@ m.vk.com###banner1
 m.vk.com###banner2
 m.vk.com###left_ads
 www.tmall.com##.floor-ad-banner
-deadline.com##.widget_pmc_marketplace_ads
-deadline.com##.footer-ad-mobile
-deadline.com##.ad
 gigaom.com###ad-leaderboard-container
 gigaom.com###ad-billboard-container
 gigaom.com##.widget-go-ads
@@ -4115,7 +4028,6 @@ www.bloomberg.com##.bannerbox
 www.bloomberg.com##.dvz-widget-sponsor
 www.bloomberg.com##.right-rail-bkg
 www.bloomberg.com##.widget_bb_doubleclick_widget
-www.bloomberg.com##.advertisement
 www.bloomberg.com##.sponsored-ad
 www.bloomberg.com##.ad-v2
 www.bloomberg.com##.index-page__top-ad
@@ -4141,7 +4053,6 @@ www.google.com.mx###rhs_block > #mbEnd
 www.google.com.mx###tads + div + .c
 www.google.com.mx###tads.c
 www.google.com.mx###topstuff > #tads
-www.google.com.mx###ad
 www.google.com.mx###tadsc
 www.google.com.mx##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.com.mx##.GGQPGYLCD5
@@ -4165,7 +4076,6 @@ www.google.com.hk###rhs_block > #mbEnd
 www.google.com.hk###tads + div + .c
 www.google.com.hk###tads.c
 www.google.com.hk###topstuff > #tads
-www.google.com.hk###ad
 www.google.com.hk###tadsc
 www.google.com.hk##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.com.hk##.GGQPGYLCD5
@@ -4186,7 +4096,6 @@ www.google.com.hk##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.com.hk##.ads-ad
 outlook.live.com###RadAd_Skyscraper
 www.linkedin.com###ad-container
-www.linkedin.com##.ad
 www.linkedin.com###bottom-ads-container > .attribution
 www.linkedin.com##.ad-hrc
 www.linkedin.com##.ad-banner-container
@@ -4194,12 +4103,9 @@ www.linkedin.com##.occludable-update .feed-shared-update-v2--e2e
 m.yelp.com##.googlead-sponsor-wrapper
 m.yelp.com##.googlead-bigbox-wrapper
 m.yelp.com##.yloca-search-result
-www.groupon.com##.ad-container
-www.groupon.com##.ad
 www.groupon.com##.da-gallery-160-600
 m.gsmarena.com##a[href^="http://www.cellpex.com/affiliates/"]
 m.gsmarena.com##.adsbygoogle
-m.gsmarena.com##.adv
 m.gsmarena.com##.topAdv
 www.cnn.com###adsquare
 www.cnn.com###ad_ns_btf_03
@@ -4221,7 +4127,6 @@ www.cnn.com###google_image_div
 www.instructables.com##.aspace
 www.instructables.com##.newrightbar_div_10
 www.instructables.com###gpt-ad-leaderboard
-www.instructables.com##.side-ad
 www.instructables.com##.collection-adspot
 www.instructables.com##.explore-ad
 www.allrecipes.com###ads-right
@@ -4238,10 +4143,8 @@ www.marketwatch.com###story-premiumbanner
 www.marketwatch.com###supposedlytemporaryad
 www.marketwatch.com###tradingcenter
 www.marketwatch.com##[width="120"][bgcolor="#d7d7d6"]
-www.marketwatch.com##.advertisement
 www.marketwatch.com##.ad-extra-text
 www.marketwatch.com###ad-display-ad-placeholder
-www.marketwatch.com##.ad
 www.google.co.in##.ads-ad
 www.google.co.in##.ads-bbl-container
 www.google.co.in##.ads-bbl-triangle
@@ -4314,7 +4217,6 @@ news.sina.cn##div[name^=_AdSame]
 news.sina.cn##[class^=Ad_]
 www.baidu.com###ec_im_container
 www.pornhub.com###bodytag
-www.pornhub.com##.adblockfast-collapsed
 www.pornhub.com##.home-ad-container
 www.pornhub.com##.ad_box
 www.pornhub.com##.pre-footer
@@ -4325,7 +4227,6 @@ www.pornhub.com###adA
 www.pornhub.com###adB
 www.pornhub.com###pb_template
 www.pornhub.com###views_left
-www.pornhub.com##.ad
 www.pornhub.com##.adContainer
 www.pornhub.com##.gay-ad-container
 www.pornhub.com##.join
@@ -4336,7 +4237,6 @@ www.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 www.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 www.pornhub.com##a[href^="http://as.sexad.net/"]
 de.pornhub.com###bodytag
-de.pornhub.com##.adblockfast-collapsed
 de.pornhub.com##.home-ad-container
 de.pornhub.com##.ad_box
 de.pornhub.com##.pre-footer
@@ -4347,7 +4247,6 @@ de.pornhub.com###adA
 de.pornhub.com###adB
 de.pornhub.com###pb_template
 de.pornhub.com###views_left
-de.pornhub.com##.ad
 de.pornhub.com##.adContainer
 de.pornhub.com##.gay-ad-container
 de.pornhub.com##.join
@@ -4358,7 +4257,6 @@ de.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 de.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 de.pornhub.com##a[href^="http://as.sexad.net/"]
 fr.pornhub.com###bodytag
-fr.pornhub.com##.adblockfast-collapsed
 fr.pornhub.com##.home-ad-container
 fr.pornhub.com##.ad_box
 fr.pornhub.com##.pre-footer
@@ -4369,7 +4267,6 @@ fr.pornhub.com###adA
 fr.pornhub.com###adB
 fr.pornhub.com###pb_template
 fr.pornhub.com###views_left
-fr.pornhub.com##.ad
 fr.pornhub.com##.adContainer
 fr.pornhub.com##.gay-ad-container
 fr.pornhub.com##.join
@@ -4380,7 +4277,6 @@ fr.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 fr.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 fr.pornhub.com##a[href^="http://as.sexad.net/"]
 it.pornhub.com###bodytag
-it.pornhub.com##.adblockfast-collapsed
 it.pornhub.com##.home-ad-container
 it.pornhub.com##.ad_box
 it.pornhub.com##.pre-footer
@@ -4391,7 +4287,6 @@ it.pornhub.com###adA
 it.pornhub.com###adB
 it.pornhub.com###pb_template
 it.pornhub.com###views_left
-it.pornhub.com##.ad
 it.pornhub.com##.adContainer
 it.pornhub.com##.gay-ad-container
 it.pornhub.com##.join
@@ -4402,7 +4297,6 @@ it.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 it.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 it.pornhub.com##a[href^="http://as.sexad.net/"]
 pt.pornhub.com###bodytag
-pt.pornhub.com##.adblockfast-collapsed
 pt.pornhub.com##.home-ad-container
 pt.pornhub.com##.ad_box
 pt.pornhub.com##.pre-footer
@@ -4413,7 +4307,6 @@ pt.pornhub.com###adA
 pt.pornhub.com###adB
 pt.pornhub.com###pb_template
 pt.pornhub.com###views_left
-pt.pornhub.com##.ad
 pt.pornhub.com##.adContainer
 pt.pornhub.com##.gay-ad-container
 pt.pornhub.com##.join
@@ -4424,7 +4317,6 @@ pt.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 pt.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 pt.pornhub.com##a[href^="http://as.sexad.net/"]
 pl.pornhub.com###bodytag
-pl.pornhub.com##.adblockfast-collapsed
 pl.pornhub.com##.home-ad-container
 pl.pornhub.com##.ad_box
 pl.pornhub.com##.pre-footer
@@ -4435,7 +4327,6 @@ pl.pornhub.com###adA
 pl.pornhub.com###adB
 pl.pornhub.com###pb_template
 pl.pornhub.com###views_left
-pl.pornhub.com##.ad
 pl.pornhub.com##.adContainer
 pl.pornhub.com##.gay-ad-container
 pl.pornhub.com##.join
@@ -4446,7 +4337,6 @@ pl.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 pl.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 pl.pornhub.com##a[href^="http://as.sexad.net/"]
 rt.pornhub.com###bodytag
-rt.pornhub.com##.adblockfast-collapsed
 rt.pornhub.com##.home-ad-container
 rt.pornhub.com##.ad_box
 rt.pornhub.com##.pre-footer
@@ -4457,7 +4347,6 @@ rt.pornhub.com###adA
 rt.pornhub.com###adB
 rt.pornhub.com###pb_template
 rt.pornhub.com###views_left
-rt.pornhub.com##.ad
 rt.pornhub.com##.adContainer
 rt.pornhub.com##.gay-ad-container
 rt.pornhub.com##.join
@@ -4468,7 +4357,6 @@ rt.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 rt.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 rt.pornhub.com##a[href^="http://as.sexad.net/"]
 jp.pornhub.com###bodytag
-jp.pornhub.com##.adblockfast-collapsed
 jp.pornhub.com##.home-ad-container
 jp.pornhub.com##.ad_box
 jp.pornhub.com##.pre-footer
@@ -4479,7 +4367,6 @@ jp.pornhub.com###adA
 jp.pornhub.com###adB
 jp.pornhub.com###pb_template
 jp.pornhub.com###views_left
-jp.pornhub.com##.ad
 jp.pornhub.com##.adContainer
 jp.pornhub.com##.gay-ad-container
 jp.pornhub.com##.join
@@ -4490,7 +4377,6 @@ jp.pornhub.com##a[href^="http://ads.trafficjunky.net/"]
 jp.pornhub.com##a[href^="http://ads2.contentabc.com/"]
 jp.pornhub.com##a[href^="http://as.sexad.net/"]
 es.pornhub.com###bodytag
-es.pornhub.com##.adblockfast-collapsed
 es.pornhub.com##.home-ad-container
 es.pornhub.com##.ad_box
 es.pornhub.com##.pre-footer
@@ -4501,7 +4387,6 @@ es.pornhub.com###adA
 es.pornhub.com###adB
 es.pornhub.com###pb_template
 es.pornhub.com###views_left
-es.pornhub.com##.ad
 es.pornhub.com##.adContainer
 es.pornhub.com##.gay-ad-container
 es.pornhub.com##.join
@@ -4595,7 +4480,6 @@ www.theguardian.com##.slot__container
 www.theguardian.com###global-jobs
 www.foxnews.com##.ad-unit
 www.foxnews.com##.advert
-www.foxnews.com##.ad-container
 www.foxnews.com###google_ads_frame1
 www.foxnews.com##.ad-enabled
 www.foxnews.com###footer-top-wrapper
@@ -4612,7 +4496,6 @@ www.amazon.in###ADPlaceholder
 www.amazon.in###sponsored-products-dp_feature_div
 www.amazon.in###AUI_A9AdsMiddleBoxTop
 www.amazon.in###DAadrp
-www.amazon.in###ad
 www.amazon.in###nav-swmslot
 www.amazon.in###raw-search-desktop-advertising-tower-1
 www.amazon.in##.pa-sp-container
@@ -4627,7 +4510,6 @@ www.google.co.id###rhs_block > #mbEnd
 www.google.co.id###tads + div + .c
 www.google.co.id###tads.c
 www.google.co.id###topstuff > #tads
-www.google.co.id###ad
 www.google.co.id###tadsc
 www.google.co.id##.GC3LC41DERB + div[style="position: relative; height: 170px;"]
 www.google.co.id##.GGQPGYLCD5
@@ -4645,7 +4527,6 @@ www.google.co.id##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.co.id##[style="border: 1px solid rgb(51, 102, 204);"]
 www.google.co.id##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.co.id##div[style^="height: 16px; font: bold 12px/16px"]
-m.xinhuanet.com##.adv
 m.xinhuanet.com##[style="z-index:5;"]
 m.xinhuanet.com###topAdv
 m.xinhuanet.com##[id^=adBody]
@@ -4673,9 +4554,7 @@ www.people.com.cn##.ad_banner
 www.people.com.cn##.city dl
 spanish.peopledaily.com.cn##.ad01
 spanish.peopledaily.com.cn##.ad02
-www.cctv.com##.adv
 www.cctv.com##[id^=div-gpt-ad-]
-www.pixnet.net##.ad
 www.dailymotion.com##.affiliation_cont
 www.dailymotion.com##.dmpi_masscast
 www.dailymotion.com##.masscast_box
@@ -4724,7 +4603,6 @@ www.nbcnews.com###Sidebar2-sponsored
 www.nbcnews.com##.deals
 www.nbcnews.com##.eshopStory
 www.nbcnews.com##.textSmallGrey
-www.nbcnews.com##.ad-container
 www.nbcsports.com###top_90h
 www.nbcsports.com##[id^=block-dart-dart-tag-dart-tag]
 m.economictimes.com##.colombiaAd
@@ -4927,7 +4805,6 @@ chipinfo.pro###warning
 vsaduidoma.com##.ABD_display_wrapper
 sport-express.ru##.a-notice
 eurabota.com##.abtop
-sprashivalka.com##.ad
 topcraft.ru##.ad-info
 besplatka.ua##.adBl
 bycard.by,goodfon.ru,satsis.info,swordmaster.org##.adb
