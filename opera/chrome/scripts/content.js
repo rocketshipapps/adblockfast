@@ -26,22 +26,34 @@ function populate(style, selector) {
 function hideSponsoredPosts(newsFeed, isWhitelisted) {
   var wereSponsoredPostsFound;
 
-  if (newsFeed.nodeType == 1)
-      for (const POST of newsFeed.querySelectorAll('[role="article"]')) {
-        var subheading = '';
-        const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[0];
-        if (SUBHEADING_CONTAINER) subheading = SUBHEADING_CONTAINER.textContent;
-        else for (
-          const CHARACTER of
-              POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i')
-        ) if (getComputedStyle(CHARACTER).display != 'none')
-            subheading += CHARACTER.getAttribute('data-content');
+  if (newsFeed.nodeType == 1) {
+    const POSTS = newsFeed.querySelectorAll('[role="article"]');
+    const POST_COUNT = POSTS.length;
 
-        if (subheading == 'Sponsored') {
-          if (!isWhitelisted) POST.style.display = 'none';
-          wereSponsoredPostsFound = true;
+    for (var i = 0; i < POST_COUNT; i++) {
+      const POST = POSTS[i];
+      const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[0];
+      var subheading = '';
+
+      if (SUBHEADING_CONTAINER) subheading = SUBHEADING_CONTAINER.textContent;
+      else {
+        const CHARACTERS =
+            POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i');
+        const CHARACTER_COUNT = CHARACTERS.length;
+
+        for (var j = 0; j < CHARACTER_COUNT; j++) {
+          const CHARACTER = CHARACTERS[j];
+          if (getComputedStyle(CHARACTER).display != 'none')
+              subheading += CHARACTER.getAttribute('data-content');
         }
       }
+
+      if (subheading == 'Sponsored') {
+        if (!isWhitelisted) POST.style.display = 'none';
+        wereSponsoredPostsFound = true;
+      }
+    }
+  }
 
   return wereSponsoredPostsFound;
 }
@@ -49,16 +61,21 @@ function hideSponsoredPosts(newsFeed, isWhitelisted) {
 function hidePromotedTweets(timeline, isWhitelisted) {
   var werePromotedTweetsFound;
 
-  if (timeline.nodeType == 1)
-      for (const TWEET of timeline.querySelectorAll('[data-testid="trend"]')) {
-        const METADATA =
-            TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
+  if (timeline.nodeType == 1) {
+    const TWEETS = timeline.querySelectorAll('[data-testid="trend"]');
+    const TWEET_COUNT = TWEETS.length;
 
-        if (METADATA && METADATA.textContent.slice(0, 8) == 'Promoted') {
-          if (!isWhitelisted) TWEET.parentElement.style.display = 'none';
-          werePromotedTweetsFound = true;
-        }
+    for (var i = 0; i < TWEET_COUNT; i++) {
+      const TWEET = TWEETS[i];
+      const METADATA =
+          TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
+
+      if (METADATA && METADATA.textContent.slice(0, 8) == 'Promoted') {
+        if (!isWhitelisted) TWEET.parentElement.style.display = 'none';
+        werePromotedTweetsFound = true;
       }
+    }
+  }
 
   return werePromotedTweetsFound;
 }
@@ -91,10 +108,12 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
               const NEWS_FEED = document.getElementById('content');
 
               if (NEWS_FEED) {
-                (new MutationObserver((mutations) => {
-                  for (const MUTATION of mutations)
-                      if (hideSponsoredPosts(MUTATION.target, IS_WHITELISTED))
-                          wereAdsFound = true;
+                (new MutationObserver(function(mutations) {
+                  const MUTATION_COUNT = mutations.length;
+                  for (var i = 0; i < MUTATION_COUNT; i++)
+                      if (
+                        hideSponsoredPosts(mutations[i].target, IS_WHITELISTED)
+                      ) wereAdsFound = true;
                 })).observe(NEWS_FEED, {childList: true, subtree: true});
 
                 if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED))
@@ -104,10 +123,12 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
               const TIMELINE = document.body;
 
               if (TIMELINE) {
-                (new MutationObserver((mutations) => {
-                  for (const MUTATION of mutations)
-                      if (hidePromotedTweets(MUTATION.target, IS_WHITELISTED))
-                          wereAdsFound = true;
+                (new MutationObserver(function(mutations) {
+                  const MUTATION_COUNT = mutations.length;
+                  for (var i = 0; i < MUTATION_COUNT; i++)
+                      if (
+                        hidePromotedTweets(mutations[i].target, IS_WHITELISTED)
+                      ) wereAdsFound = true;
                 })).observe(TIMELINE, {childList: true, subtree: true});
 
                 if (hidePromotedTweets(TIMELINE, IS_WHITELISTED))

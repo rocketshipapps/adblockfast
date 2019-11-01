@@ -129,7 +129,7 @@ function block(tabId, parentHost, type) {
   var blockingResponse = {cancel: false};
 
   if ((deserialize(localStorage.whitelist) || {})[parentHost])
-      TABS.get(tabId, () => {
+      TABS.get(tabId, function() {
         RUNTIME.lastError || BROWSER_ACTION.setIcon({
           tabId: tabId,
           path: {
@@ -139,7 +139,7 @@ function block(tabId, parentHost, type) {
         });
       });
   else {
-    TABS.get(tabId, () => {
+    TABS.get(tabId, function() {
       RUNTIME.lastError || BROWSER_ACTION.setIcon({
         tabId: tabId,
         path: {
@@ -329,7 +329,7 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
     const TAB_ID = details.tabId;
     delete WERE_ADS_FOUND[TAB_ID];
 
-    TABS.get(TAB_ID, () => {
+    TABS.get(TAB_ID, function() {
       if (!RUNTIME.lastError) {
         if ((deserialize(localStorage.whitelist) || {})[getHost(details.url)])
             BROWSER_ACTION.setIcon({
@@ -338,7 +338,7 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
                 '19': PATH + 'images/unblocked/19.png',
                 '38': PATH + 'images/unblocked/38.png'
               }
-            }, () => {
+            }, function() {
               localStorage.tooltip ||
                   BROWSER_ACTION.setTitle({
                     tabId: TAB_ID, title: 'Block ads on this site'
@@ -350,7 +350,7 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
             '19': PATH + 'images/blocked/19.png',
             '38': PATH + 'images/blocked/38.png'
           }
-        }, () => {
+        }, function() {
           localStorage.tooltip ||
               BROWSER_ACTION.setTitle({
                 tabId: TAB_ID, title: 'Unblock ads on this site'
@@ -381,7 +381,7 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
       else {
         const TAB_ID = TAB.id;
 
-        TABS.get(TAB_ID, () => {
+        TABS.get(TAB_ID, function() {
           RUNTIME.lastError ||
               request.wereAdsFound && BROWSER_ACTION.setIcon({
                 tabId: TAB_ID,
