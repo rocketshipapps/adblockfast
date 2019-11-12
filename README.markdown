@@ -214,7 +214,7 @@ started.
 2. Navigate to your working directory of choice.
 3. Clone the repo:
 
-        git clone https://github.com/rocketshipapps/adblockfast.git
+        git clone https://github.com/[insert username here]/adblockfast.git
 
 4. Go to the Android Studio IDE.
 5. Select the **Open an existing Android Studio project** item or go to
@@ -232,7 +232,7 @@ started.
 2. Navigate to your working directory of choice.
 3. Clone the repo:
 
-        git clone https://github.com/rocketshipapps/adblockfast.git
+        git clone https://github.com/[insert username here]/adblockfast.git
 
 4. Go to the Xcode IDE.
 5. Go to **File** > **Open…** .
@@ -249,7 +249,7 @@ started.
 2. Navigate to your working directory of choice.
 3. Clone the repo:
 
-        git clone https://github.com/rocketshipapps/adblockfast.git
+        git clone https://github.com/[insert username here]/adblockfast.git
 
 4. Go to the Chrome browser.
 5. Go to **Window** > **Extensions**.
@@ -268,7 +268,7 @@ started.
 2. Navigate to your working directory of choice.
 3. Clone the repo:
 
-        git clone https://github.com/rocketshipapps/adblockfast.git
+        git clone https://github.com/[insert username here]/adblockfast.git
 
 4. Go to the Opera browser.
 5. Go to **View** > **Show Extensions**.
