@@ -177,11 +177,12 @@ function whitelist(tab) {
   }
 }
 
-const BUILD = 7;
+const BUILD = 8;
 const PREVIOUS_BUILD = localStorage.build;
 const RUNTIME = chrome.runtime;
 const TABS = chrome.tabs;
 const NOTIFICATIONS = chrome.notifications;
+const WHITELIST = deserialize(localStorage.whitelist) || {};
 const HOSTS = {};
 const WERE_ADS_FOUND = {};
 const IS_IN_OPERA = navigator.userAgent.indexOf('OPR') + 1;
@@ -204,10 +205,14 @@ if (!PREVIOUS_BUILD) {
 if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 5)
     localStorage.uids = JSON.stringify([]);
 
-if (IS_UPDATING_TO_CURRENT) {
-  const WHITELIST = deserialize(localStorage.whitelist) || {};
+if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 7) {
   WHITELIST['buy.buysellads.com'] = true;
   WHITELIST['gs.statcounter.com'] = true;
+  localStorage.whitelist = JSON.stringify(WHITELIST);
+}
+
+if (IS_UPDATING_TO_CURRENT) {
+  WHITELIST['www.stitcher.com'] = true;
   localStorage.whitelist = JSON.stringify(WHITELIST);
   localStorage.build = BUILD;
 }
