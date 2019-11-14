@@ -25,13 +25,21 @@ const SELECTORS = {
   'www.gizmodo.com.au': '#product-finder, .btyb_cat',
   'www.shopstyle.com.au': '.promo-wrapper',
   'www.whowhatwear.com.au': '.top-slot-container',
-  // Amazon.com
+  // Amazon
   'www.amazon.ca':
-      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement',
+      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement, [id^=ape_Gateway_], #desktop-ad-center-1',
+  'www.amazon.co.jp':
+      '#DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, .billboard, #desktop-ad-atf, #desktop-ad-atf-hr, #DAae1, [id^=ape_Gateway_], #desktop-ad-center-1',
   'www.amazon.co.uk':
-      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement',
+      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement, [id^=ape_Gateway_], #desktop-ad-center-1',
   'www.amazon.com':
-      '#DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement',
+      '#DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #heroQuickPromo_feature_div, #dp-ads-center-promo_feature_div, #ape_Detail_ad-endcap-1_Glance_placement, [id^=ape_Gateway_], #desktop-ad-center-1',
+  'www.amazon.de':
+      '.displayAd, #ADPlaceholder, div[data-campaign], .bannerImage, #desktop-ad-center-1',
+  'www.amazon.in':
+      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, [id^=ape_Gateway_], #desktop-ad-center-1',
+  'www.imdb.com':
+      '.cornerstone_slot, .dfp_slot, .after_ad, [name="slot_right-7"] + .aux-content-widget-2, .ab_zergnet',
   // Business Insider
   'www.businessinsider.com':
       '.chartbeat, .continue-link, .ks-recommended, .sponsor, .subnav-container, .ad-subnav-container, .river-textonly, .rail-recommended, .right-ad, .ks-rr-taboola-video, .ks-rr-taboola-from-the-web, .jobs, #taboola-right-rail-thumbnails, .targeted-recommended, .dianomi-ad',
@@ -314,16 +322,12 @@ const SELECTORS = {
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'news.sohu.com':
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
-  'www.imdb.com':
-      '.cornerstone_slot, .dfp_slot, .after_ad, [name="slot_right-7"] + .aux-content-widget-2',
   'stackoverflow.com':
       '.adzerk-vote',
   'www.phonearena.com':
       '#top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]',
   'www.nytimes.com':
       '.text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
-  'www.amazon.de':
-      '.displayAd, #ADPlaceholder, div[data-campaign], .bannerImage',
   'diply.com':
       '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
   'www.dpreview.com':
@@ -350,8 +354,6 @@ const SELECTORS = {
       '.providerupsell, .todayshowcasead',
   'www.microsoft.com':
       '.hp-large-carousel',
-  'www.amazon.co.jp':
-      '#DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, .billboard, #desktop-ad-atf, #desktop-ad-atf-hr, #DAae1',
   'www.google.co.uk':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.fr':
@@ -474,8 +476,6 @@ const SELECTORS = {
       '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
   'www.foxnews.com':
       '.ad-unit, .advert, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
-  'www.amazon.in':
-      'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container',
   'timesofindia.indiatimes.com':
       '.ad1, .adsdivlyr, .top_ad, #adbreak-adspdbl, .adlst, iframe[title="Advertisement"], div[style="width:300px; height:250px;"]',
   'www.google.co.id':
