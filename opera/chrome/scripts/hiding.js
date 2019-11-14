@@ -502,8 +502,6 @@ const SELECTORS = {
       '.sponsorBottom, .vAds, #adBottom, .adVideo',
   'pl.xhamster.com':
       '.sponsorBottom, .vAds, #adBottom, .adVideo',
-  'kat.cr':
-      '#bt_bf, #partner1_button, #promoLeechmonster, #sp2, .advertising, .directDownloadButton, .partner2Button, .partner3Button, .promoPartner, .torrentEasyButton',
   'edition.cnn.com':
       '.vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
   'soso.com':
