@@ -334,6 +334,7 @@ const SELECTORS = {
   'mashable.com':
       '.header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
   // Et al.
+  'asia.nikkei.com': '.advertorial',
   'coinmarketcap.com':
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
   'diply.com': '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
