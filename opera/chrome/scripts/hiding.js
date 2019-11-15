@@ -38,14 +38,33 @@ const SELECTORS = {
       '.displayAd, #ADPlaceholder, div[data-campaign], .bannerImage, #desktop-ad-center-1',
   'www.amazon.in':
       'div[style="width:300px;height:280px;"], .displayAd, .zg_displayAd, #amsDetailRight, #ADPlaceholder, #sponsored-products-dp_feature_div, #AUI_A9AdsMiddleBoxTop, #DAadrp, #nav-swmslot, #raw-search-desktop-advertising-tower-1, .pa-sp-container, [id^=ape_Gateway_], #desktop-ad-center-1',
+  'www.dpreview.com': '.widget iframe',
   'www.imdb.com':
       '.cornerstone_slot, .dfp_slot, .after_ad, [name="slot_right-7"] + .aux-content-widget-2, .ab_zergnet',
+  // AT&T
+  'bleacherreport.com': '.br-ad-wrapper',
+  'edition.cnn.com':
+      '.vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
+  'www.cnn.com':
+      '#adsquare, #ad_ns_btf_03, #quigo628, .cnnoutbrain, #quigo336, .vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div, .cn-coverageContainer_7DCDFE55-B833-9E14-A9C7-066A2EAB9CCE, .cn-coverageContainer_6CE44821-A427-1A1C-57A8-EE10F2E9E229, [data-zone-label="Paid Partner Content"], [data-zone-label="Shopping Content by CNN Underscored"]',
+  // BBC
+  'www.bbc.co.uk':
+      '#bbccom_leaderboard_container, #bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
+  'www.bbc.com':
+      '#bbccom_leaderboard_container, #bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
   // Business Insider
   'www.businessinsider.com':
       '.chartbeat, .continue-link, .ks-recommended, .sponsor, .subnav-container, .ad-subnav-container, .river-textonly, .rail-recommended, .right-ad, .ks-rr-taboola-video, .ks-rr-taboola-from-the-web, .jobs, #taboola-right-rail-thumbnails, .targeted-recommended, .dianomi-ad',
   // BuzzFeed
   'www.buzzfeed.com':
-      '#BF_WIDGET_10, .post2[style="background-color: #FDF6E5;"], .item--ad, .bf-widget, .bf-ads-video, .js-ad, .ad-ex, .js-thumb-ad, .ad-inline',
+      '#BF_WIDGET_10, .post2[style="background-color: #FDF6E5;"], .item--ad, .bf-widget, .bf-ads-video, .js-ad, .ad-ex, .js-thumb-ad, .ad-inline, .ad-wireframe-wrapper',
+  // Comcast
+  'www.cnbc.com':
+      '#ms_aur, #vidRightRailWrapper, div[style="width:960;height:90;margin:0 0 5px 0;"], #social-tools-panel',
+  'www.nbcnews.com':
+      '#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey, .stackCommerceList',
+  'www.nbcsports.com':
+      '#top_90h, [id^=block-dart-dart-tag-dart-tag], #nbcsports-leaderboard, .block-mps, .taboola-thumbnails-container',
   // Condé Nast
   'arstechnica.com':
       '.instream-wrap, #article-footer, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
@@ -87,6 +106,13 @@ const SELECTORS = {
   // Forbes
   'www.forbes.com':
       '#ads, .leaderboard, .ad_block, .advoice, #stackForbesAdvoice, .ad-rail, .article-mobile-ad, .article-native-ad, .top-ad-sticky, .sticky-ad-container, .ad-row, .top-ad-container, .ntv-rail-ad, .fbs-ad--top-wrapper, .channel--ad, .vestpocket, medianet',
+  // Future
+  'www.gizmodo.co.uk': '#interruptor, .interruptor, .commercial, #deal-item',
+  'www.tomshardware.com':
+      '#pgad_Top, .basicCentral-elm.partner, .shopping, .sideOffers, .zonepub, .sponsored-post',
+  // Gannett
+  'www.usatoday.com':
+      '.partner, #usat_PosterBlog, #divMarketplace, #footerSponsorOne, #footerSponsorTwo, #header-leaderboard, #marketplace2, #prerollOverlayPlayer, #side-banner1, #side-banner2, .bottom-google-links, [id^=taboola-], .taboola-related-module, [aria-label="advertisement"], [data-gl-method="initTaboola"]',
   // Gawker
   'antiviral.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'blackbag.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
@@ -197,7 +223,6 @@ const SELECTORS = {
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'www.avclub.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
-  'www.gizmodo.co.uk': '#interruptor, .interruptor, .commercial, #deal-item',
   'www.theonion.com':
       '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'www.theroot.com':
@@ -211,6 +236,8 @@ const SELECTORS = {
   'www.google.com.au': '#mclip_control, ._Ak, #taw, #bottomads',
   'www.youtube.com':
       'a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"], .jkb, #feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #masthead-ad, .ytd-player-legacy-desktop-watch-ads-renderer, ytd-compact-promoted-video-renderer',
+  // Hearst
+  'www.cosmopolitan.com': '.leaderboard-ad, .breaker-ad',
   // IAC
   'www.ask.com': '#csaBottom, #adBlock',
   'www.thedailybeast.com': '.SimpleAd, .PageTopAd, .ConnatixAd, .FooterAd',
@@ -218,6 +245,11 @@ const SELECTORS = {
   'www.latimes.com': '.GoogleDfpAd-wrapper, .Page-below',
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
+  // News Corp
+  'www.foxnews.com':
+      '.ad-unit, .advert, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
+  'www.marketwatch.com':
+      '#BrokerButtons, #story-premiumbanner, #supposedlytemporaryad, #tradingcenter, [width="120"][bgcolor="#d7d7d6"], .ad-extra-text, #ad-display-ad-placeholder, .partner-center, .container--sponsored, .container--advertisement, #brass-rail, .sa-captivate-box, #trading-center, #sponsored-links, .nativeAd',
   // Penske Media
   'deadline.com':
       '.widget_pmc_marketplace_ads, .footer-ad-mobile, #ad-interruptus-header, .admz, .jpx-pd-wrapper',
@@ -226,6 +258,11 @@ const SELECTORS = {
   // Reddit
   'www.reddit.com':
       '#siteTable_organic, .promotedlink, .dfp-ad-container, [data-before-content="advertisement"]',
+  // Times Group
+  'economictimes.indiatimes.com':
+      '.colombiaAd, .flt #sideBar.adsbg300:first-of-type, #sideBar.flt .adsbg300:nth-child(4), .adContainer, .flr .adsbg300, [title=Advertisement], .iSWidgetCont, .adsbg300, .internalAd, .ntbcarousel, .topArtAd',
+  'timesofindia.indiatimes.com':
+      '.ad1, .adsdivlyr, .top_ad, #adbreak-adspdbl, .adlst, iframe[title="Advertisement"], div[style="width:300px; height:250px;"], .gn-affiliate-box, .rgt_ad',
   // Tribune
   'www.nydailynews.com': '.pb-f-ads-dfp, .pb-f-ads-taboola-recommendations',
   // Twitter
@@ -237,7 +274,7 @@ const SELECTORS = {
   'search.aol.com':
       '#maincontent + script + div[class] > style + script + h3[class], #r, .MSL + script + script + div[class] > style + script + h3[class], .PMB, .RHRSLL, .RHRSLLwseboF, .SLL, .SLLwseboF, .WOL, .WOL2, ul[content="SLMP"], ul[content="SLMS"]',
   'techcrunch.com':
-      '#post_unit_medrec, .ad-top-mobile, .header-ad, .river-block-native-ad, .native-ad-mobile, .ad-unit, .ad-cluster-container, .ad-300x250, .l-sidebar li:last-child, .ad-sponsored-aside, .fmvps-player-ad-ribbon, .ad-unit__ad, .gallery-slide--ad',
+      '#post_unit_medrec, .ad-top-mobile, .header-ad, .river-block-native-ad, .native-ad-mobile, .ad-unit, .ad-cluster-container, .ad-300x250, .l-sidebar li:last-child, .ad-sponsored-aside, .fmvps-player-ad-ribbon, .ad-unit__ad, .gallery-slide--ad, .surveymonkey-popup',
   'www.aolsearch.com': '.SLL, .ADS',
   'www.crunchbase.com': '.display-ad',
   'www.engadget.com':
@@ -248,6 +285,8 @@ const SELECTORS = {
       '#page-header, #partner_box, .RHRSLL, .contin_below, .hp-ss-leaderboard, .linked_sponsored_entry, .presented-by, .right_rail_edit_promo, a[href*=".atwola.com/"], .ad_wrapper, .ad_wrapper_, .ad_wrapper_top, #all_sponsored_posts_page_1_wrapper, #ad_deal_lower_left_wrapper, #ad_lower_right_commercials_wrapper, .ad_store, #ad_most_pop_234x60_req_wrapper',
   'www.luxist.com': '#topleader-wrap, .medrect, .ADS',
   'www.mapquest.com': '.mq-leadin, .display-ad, .search-ad',
+  'www.tmz.com':
+      '.masthead-ad, .inline-promo, .trc-content-sponsored, .adbadge, .disqus_thread iframe, .iab-ad__wrapper, .quigo-permalink',
   'www.wow.com': '.googleAFCAds, .ADS, #topleader-wrap, .SLL, .medrect',
   // Vice
   'www.vice.com': '.native-block, .banner',
@@ -293,13 +332,43 @@ const SELECTORS = {
   // Et al.
   'coinmarketcap.com':
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
+  'diply.com': '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
+  'gigaom.com':
+      '#ad-leaderboard-container, #ad-billboard-container, .widget-go-ads',
+  'laughingsquid.com':
+      '.sharethrough-placement, [id^=div-gpt-ad], [id^=taboola]',
   'pando.com': '.advert-slot',
   'slate.com': '.top-ad',
+  'thinkprogress.org':
+      '[id^=ad_zone], .yad-sponsored, .sidebar-ad, .ad-wrapper',
+  'time.com':
+      '.sep, [id^=ad-unit-], [class$=-ad], .left-rail-ad__wrapper, .right-rail__container--ad, .outbrain, .lead-gen',
+  'venturebeat.com': '.widget_vb_dfp_ad, .vb-ad-leaderboard, .advertorial',
+  'www.bloomberg.com':
+      '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
+  'www.dailymail.co.uk':
+      '.editors-choice.ccox.link-ccox.linkro-darkred, .googleAds, #wideCommentAdvert, .adHolder, [id^=taboola-stream-thumbnails-], .billboard_wrapper',
   'www.dailymotion.com': '.dmp_VideoView-ad-slot',
   'www.dazeddigital.com': '.advert-container, .advert',
+  'www.digitaltrends.com':
+      '.m-leaderboard, .m-mem--ad, .pricegrabber, .dtads-slot, .m-intermission, .m-review-affiliate-pint, .dtads-alt, .dtads-alt-mpu',
+  'www.gsmarena.com':
+      'a[href^="http://www.cellpex.com/affiliates/"], #topAdv, #div-gpt-ad-1536149699860-0',
+  'www.mediaite.com': 'div[data-adid], .o-zergnet',
+  'www.nytimes.com':
+      '.text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
+  'www.phonearena.com':
+      '#top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"], .spot_disclaimer',
   'www.publishersweekly.com':
       '.leaderboard, .quicklinks-ad, #div-gpt-ad-enlarged, #div-gpt-ad-enlarged-inline, .bbstar-popin',
+  'www.reuters.com': '#bannerStrip, #marchex, .slide-ad',
+  'www.theblaze.com':
+      'iframe[name="adblade_ad_iframe"], .ad-tag, .sidebar_sticky_container',
+  'www.theguardian.com':
+      '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
+  'www.washingtonpost.com':
+      '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"]',
   'mail.ru':
       '.w-banner, .text-banner',
   'sportmail.ru':
@@ -324,22 +393,6 @@ const SELECTORS = {
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'stackoverflow.com':
       '.adzerk-vote',
-  'www.phonearena.com':
-      '#top_banner, .adswidget, .s_ad_300x250, .s_ad_160x600, #bottom_banner, .s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"], .bannerplace728, div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"], .s_mb_15[style="min-height: 250px"], .s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]',
-  'www.nytimes.com':
-      '.text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
-  'diply.com':
-      '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
-  'www.dpreview.com':
-      '.widget iframe',
-  'www.tmz.com':
-      '.masthead-ad, .inline-promo, .trc-content-sponsored, .adbadge, .disqus_thread iframe, .iab-ad__wrapper, .quigo-permalink',
-  'bleacherreport.com':
-      '.br-ad-wrapper',
-  'www.mediaite.com':
-      'div[data-adid]',
-  'www.theblaze.com':
-      'iframe[name="adblade_ad_iframe"]',
   'www.google.es':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.ru':
@@ -368,28 +421,16 @@ const SELECTORS = {
       '.RadLinks, center[id^="DartAd_"], div[data-module="radlinks"], #ebooks_container',
   'www.babycenter.com':
       '#fromOurSponsorsHome, .mediumRectangleAdContainer, .leaderFooterAdContainer, .skyscraperAdContainer, .leaderAdContainer',
-  'www.cnbc.com':
-      '#ms_aur, #vidRightRailWrapper, div[style="width:960;height:90;margin:0 0 5px 0;"], #social-tools-panel',
-  'www.tomshardware.com':
-        '#pgad_Top, .basicCentral-elm.partner, .shopping, .sideOffers, .zonepub',
   'www.coupons.com':
         '.mod-ads, #widesky-banner, .myc_google',
-  'www.digitaltrends.com':
-        '.m-leaderboard, .m-mem--ad, .pricegrabber, .dtads-slot, .m-intermission, .m-review-affiliate-pint, .dtads-alt, .dtads-alt-mpu',
   'www.kbb.com':
         '#kbbAdsMedRec, #kbbAdsMedRec2, #Aside, #Mrec-container, #New-spotlights, #kbbAdsCustomCompare, #kbbAdsHpPushdown, .showroom-ad, #kbbAdsLeaderboard, #kbbAdsCategoryCarouselMedRec1, #kbbAdsSlpLeaderboard',
   'vk.com':
         '#banner1, #banner2, #left_ads',
   'www.tmall.com':
         '.floor-ad-banner',
-  'gigaom.com':
-        '#ad-leaderboard-container, #ad-billboard-container, .widget-go-ads',
   'weather.com':
         '#pageSpon2, #paid_search, #partner_offers, #twc-partner-spot, .divBottomNotice, .divCenterNotice, .trc_recs_column + .right-column, .taboola_module',
-  'www.bloomberg.com':
-        '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
-  'www.washingtonpost.com':
-        '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"]',
   'www.google.com.mx':
         '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.hk':
@@ -402,16 +443,10 @@ const SELECTORS = {
       '.googlead-sponsor-wrapper, .googlead-bigbox-wrapper, .yloca-search-result',
   'www.groupon.com':
       '.da-gallery-160-600',
-  'www.gsmarena.com':
-      'a[href^="http://www.cellpex.com/affiliates/"], .adsbygoogle, .topAdv',
-  'www.cnn.com':
-      '#adsquare, #ad_ns_btf_03, #quigo628, .cnnoutbrain, #quigo336, .vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
   'www.instructables.com':
       '.aspace, .newrightbar_div_10, #gpt-ad-leaderboard, .collection-adspot, .explore-ad',
   'www.allrecipes.com':
       '#ads-right, .rrAdPad, .bottom-ad2, .advertise_txt, .ad-text, .topads-spacer, .reserve-ad-space, .review-ad-space, .ad-recipe-page-footer-container',
-  'www.marketwatch.com':
-      '#BrokerButtons, #story-premiumbanner, #supposedlytemporaryad, #tradingcenter, [width="120"][bgcolor="#d7d7d6"], .ad-extra-text, #ad-display-ad-placeholder',
   'www.google.co.in':
       '.ads-ad, .ads-bbl-container, .ads-bbl-triangle',
   'news.yahoo.co.jp':
@@ -464,28 +499,16 @@ const SELECTORS = {
       '#ec_im_container',
   'www.naver.com':
       '.img_style, #ad_top, #ad_branding_hide, #ad_branding, #ad_timesquare, .ad_area2',
-  'edition.cnn.com':
-      '.vidSponsor, div[style="min-height:270px; max-height:625px;height: 270px!important;"], div[style="width: 300px; height: 250px;"], div[style="width:300px; height:250px;overflow:hidden;"], #cnnLawyersCom, #footerleft, #footerright, #front-page-mpu, #ie_column, #leaderboard, #lr_comp_default_300x250, #google_image_div',
   'soso.com':
       '.ad-box, .ad_top_banner',
   'www.sogou.com':
       '.ad-box, .ad_top_banner',
   'www.nicovideo.jp':
       '.googleAds',
-  'www.theguardian.com':
-      '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
-  'www.foxnews.com':
-      '.ad-unit, .advert, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
-  'timesofindia.indiatimes.com':
-      '.ad1, .adsdivlyr, .top_ad, #adbreak-adspdbl, .adlst, iframe[title="Advertisement"], div[style="width:300px; height:250px;"]',
   'www.google.co.id':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'xinhuanet.com':
       '[style="z-index:5;"], #topAdv, [id^=adBody], #promotionItem, [id^=Full], .scrollAd, [class^=ad]',
-  'www.bbc.co.uk':
-      '#bbccom_leaderboard_container, #bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
-  'www.bbc.com':
-      '#bbccom_leaderboard_container, #bbccom_mpu, .bbccom_advert, #bbccom_sponsor_section, #bbccom_storyprintsponsorship',
   'people.com.cn':
       '.top_ad, .mt15, .ad_banner, .city dl',
   'www.people.com.cn':
@@ -502,30 +525,10 @@ const SELECTORS = {
       '.ft-btyle, [id^=rtm_html_], #gf-mrecs-ads',
   'www.google.co.kr':
       '#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
-  'www.dailymail.co.uk':
-      '.editors-choice.ccox.link-ccox.linkro-darkred, .googleAds, #wideCommentAdvert, .adHolder, [id^=taboola-stream-thumbnails-]',
-  'www.usatoday.com':
-      '.partner, #usat_PosterBlog, #divMarketplace, #footerSponsorOne, #footerSponsorTwo, #header-leaderboard, #marketplace2, #prerollOverlayPlayer, #side-banner1, #side-banner2, .bottom-google-links, [id^=taboola-], .taboola-related-module',
   'www.accuweather.com':
       '[id^=aad]',
-  'time.com':
-      '.sep, [id^=ad-unit-], [class$=-ad], .left-rail-ad__wrapper, .right-rail__container--ad',
-  'www.reuters.com':
-      '#bannerStrip, #marchex, .slide-ad',
-  'www.nbcnews.com':
-      '#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey',
-  'www.nbcsports.com':
-      '#top_90h, [id^=block-dart-dart-tag-dart-tag]',
-  'economictimes.indiatimes.com':
-      '.colombiaAd, .flt #sideBar.adsbg300:first-of-type, #sideBar.flt .adsbg300:nth-child(4), .adContainer, .flr .adsbg300, [title=Advertisement]',
   'www.wunderground.com':
       '.spotBox, .header-ad-wrap, #top-ad-wrapper, .ad-box, .report-ad',
-  'thinkprogress.org':
-      '[id^=ad_zone], .yad-sponsored, .sidebar-ad',
-  'laughingsquid.com':
-      '.sharethrough-placement, .adsbygoogle, [id^=div-gpt-ad], [id^=taboola]',
-  'venturebeat.com':
-      '.widget_vb_dfp_ad, .vb-ad-leaderboard, .advertorial',
   'www.chinadaily.com.cn':
       '.w980.pt10, [class^=ad], iframe[name^=ad], img[src*=adpic]',
   'news.livedoor.com':
