@@ -334,7 +334,6 @@ const SELECTORS = {
   'mashable.com':
       '.header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
   // Et al.
-  'asia.nikkei.com': '.advertorial',
   'coinmarketcap.com':
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
   'diply.com': '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
@@ -348,7 +347,7 @@ const SELECTORS = {
       '[id^=ad_zone], .yad-sponsored, .sidebar-ad, .ad-wrapper',
   'time.com':
       '.sep, [id^=ad-unit-], [class$=-ad], .left-rail-ad__wrapper, .right-rail__container--ad, .outbrain, .lead-gen',
-  'venturebeat.com': '.widget_vb_dfp_ad, .vb-ad-leaderboard, .advertorial',
+  'venturebeat.com': '.widget_vb_dfp_ad, .vb-ad-leaderboard',
   'www.bloomberg.com':
       '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
