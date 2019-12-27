@@ -350,6 +350,8 @@ const SELECTORS = {
   'venturebeat.com': '.widget_vb_dfp_ad, .vb-ad-leaderboard',
   'www.bloomberg.com':
       '.bannerbox, .dvz-widget-sponsor, .right-rail-bkg, .widget_bb_doubleclick_widget, .sponsored-ad, .ad-v2, .index-page__top-ad, .leaderboard-ad-dummy',
+  'www.bostonglobe.com': '.arc_ad, .sticky_container, #arcad_recirc',
+  'www.cnet.com': '[data-taboola-options], [data-ad-container]',
   'www.cp24.com': '.boxAd, .cp24FlyersWidgetSidebar, .sponsoredButtons',
   'www.dailymail.co.uk':
       '.editors-choice.ccox.link-ccox.linkro-darkred, .googleAds, #wideCommentAdvert, .adHolder, [id^=taboola-stream-thumbnails-], .billboard_wrapper',
@@ -360,6 +362,8 @@ const SELECTORS = {
   'www.gsmarena.com':
       'a[href^="http://www.cellpex.com/affiliates/"], #topAdv, #div-gpt-ad-1536149699860-0',
   'www.mediaite.com': 'div[data-adid], .o-zergnet',
+  'www.newsweek.com':
+      '.sponsor, .resize-manager__browserAdOuterContainer___1m3es',
   'www.nytimes.com':
       '.text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
   'www.phonearena.com':
@@ -367,12 +371,18 @@ const SELECTORS = {
   'www.publishersweekly.com':
       '.leaderboard, .quicklinks-ad, #div-gpt-ad-enlarged, #div-gpt-ad-enlarged-inline, .bbstar-popin',
   'www.reuters.com': '#bannerStrip, #marchex, .slide-ad',
+  'www.si.com':
+      '.m-header-ad, .l-grid--ad-card, .m-in-content-ad-row, .m-rev-content',
+  'www.smh.com.au':
+      '.adWrapper, div#adspot-N-6x1-pos1, div#adspot-N-6x2-pos1, div#adspot-N-6x3-pos1, [data-widget="plista_widget_underArticle_v2"]',
+  'www.spin.com':
+      '.sm-widget-ad-holder, .footer-ad-holder, #medrec_bottom_lazy_comments_wrapper',
   'www.theblaze.com':
       'iframe[name="adblade_ad_iframe"], .ad-tag, .sidebar_sticky_container',
   'www.theguardian.com':
       '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
   'www.washingtonpost.com':
-      '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"]',
+      '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"], #leaderboard-wrapper',
   'mail.ru':
       '.w-banner, .text-banner',
   'sportmail.ru':
