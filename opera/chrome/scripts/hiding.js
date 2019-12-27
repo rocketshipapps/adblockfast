@@ -68,6 +68,8 @@ const SELECTORS = {
   // Condé Nast
   'arstechnica.com':
       '.instream-wrap, #article-footer, .ad_native, #daehtsam-da, #masthead + #pushdown-wrap, #msuk-wrapper, #outbrain-recs-wrap, .sponsored-rec',
+  // Discovery
+  'www.food.com': '.dfp, .fd-tile-ad, .dfp-bigbox, .smart-rail-wrap, .dfp-ad',
   // Disney
   'abc.go.com': '.footerRow, .adBlockSpot',
   'abcnews.go.com':
@@ -333,7 +335,10 @@ const SELECTORS = {
   // Ziff Davis
   'mashable.com':
       '.header-banner, .pga, .box970, .ad_container, #sticky-spacer, #stories-ad, .zergnet-container',
+  'www.babycenter.com':
+      '#fromOurSponsorsHome, .mediumRectangleAdContainer, .leaderFooterAdContainer, .skyscraperAdContainer, .leaderAdContainer, #leaderBodyContainer, #mediumRectangleAd2Container, #mobilePos1AdContainer, #leaderAdContainer, #outstream1x1Container, #programmaticMultiAdContainer, #nativeAdContainer, #mediumRectangleAd1Container, #gptSkyscraperAdContainer, #programmaticMultiAdFooterContainer, #catfishAdContainer',
   // Et al.
+  '9gag.com': '.block-ad, .badge-gag-ads-container, .topBannerAd-container',
   'coinmarketcap.com':
       '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
   'diply.com': '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
@@ -359,6 +364,8 @@ const SELECTORS = {
   'www.dazeddigital.com': '.advert-container, .advert',
   'www.digitaltrends.com':
       '.m-leaderboard, .m-mem--ad, .pricegrabber, .dtads-slot, .m-intermission, .m-review-affiliate-pint, .dtads-alt, .dtads-alt-mpu',
+  'www.ehow.com':
+      '.RadLinks, center[id^="DartAd_"], div[data-module="radlinks"], #ebooks_container',
   'www.gsmarena.com':
       'a[href^="http://www.cellpex.com/affiliates/"], #topAdv, #div-gpt-ad-1536149699860-0',
   'www.mediaite.com': 'div[data-adid], .o-zergnet',
@@ -425,12 +432,6 @@ const SELECTORS = {
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.br':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
-  'www.geniuskitchen.com':
-      '.dfp, .fd-tile-ad',
-  'www.ehow.com':
-      '.RadLinks, center[id^="DartAd_"], div[data-module="radlinks"], #ebooks_container',
-  'www.babycenter.com':
-      '#fromOurSponsorsHome, .mediumRectangleAdContainer, .leaderFooterAdContainer, .skyscraperAdContainer, .leaderAdContainer',
   'www.coupons.com':
         '.mod-ads, #widesky-banner, .myc_google',
   'www.kbb.com':
@@ -568,7 +569,5 @@ const SELECTORS = {
   'theory.gmw.cn':
       '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
   'travel.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  '9gag.com':
-      '.block-ad, .badge-gag-ads-container'
+      '[class^=bannerArea], [class^=ad], [class^=contentadBox]'
 };
