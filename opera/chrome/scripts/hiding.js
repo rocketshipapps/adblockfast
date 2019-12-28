@@ -366,8 +366,10 @@ const SELECTORS = {
       '.m-leaderboard, .m-mem--ad, .pricegrabber, .dtads-slot, .m-intermission, .m-review-affiliate-pint, .dtads-alt, .dtads-alt-mpu',
   'www.ehow.com':
       '.RadLinks, center[id^="DartAd_"], div[data-module="radlinks"], #ebooks_container',
+  'www.getsl.ink': '.bannerAd',
   'www.gsmarena.com':
       'a[href^="http://www.cellpex.com/affiliates/"], #topAdv, #div-gpt-ad-1536149699860-0',
+  'www.inquirer.com': '.arc-ad-wrapper, .pb-f-ads-arcads',
   'www.mediaite.com': 'div[data-adid], .o-zergnet',
   'www.newsweek.com':
       '.sponsor, .resize-manager__browserAdOuterContainer___1m3es',
