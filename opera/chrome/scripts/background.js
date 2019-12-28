@@ -212,6 +212,7 @@ if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 7) {
 }
 
 if (IS_UPDATING_TO_CURRENT) {
+  WHITELIST['sumo.com'] = true;
   WHITELIST['www.cnet.com'] = true;
   WHITELIST['www.stitcher.com'] = true;
   localStorage.whitelist = JSON.stringify(WHITELIST);
