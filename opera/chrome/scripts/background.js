@@ -212,6 +212,8 @@ if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 7) {
 }
 
 if (IS_UPDATING_TO_CURRENT) {
+  WHITELIST['amplitude.com'] = true;
+  WHITELIST['analytics.amplitude.com'] = true;
   WHITELIST['sumo.com'] = true;
   WHITELIST['www.cnet.com'] = true;
   WHITELIST['www.stitcher.com'] = true;
