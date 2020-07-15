@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2019 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2020 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -250,7 +250,7 @@ const SELECTORS = {
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad, .b_ad ul',
   'www.microsoft.com': '.hp-large-carousel',
   'www.msn.com':
-      '.providerupsell, .todayshowcasead, .bannersectionad, .todayshowcasead, [aria-label="from our partners"], [aria-label="promotions"], .widead, .nativeadserversidecontentmodule',
+      '.providerupsell, .todayshowcasead, .bannersectionad, [aria-label="from our partners"], [aria-label="promotions"], .widead, .nativeadserversidecontentmodule',
   // News Corp
   'www.foxnews.com':
       '.ad-unit, .advert, #google_ads_frame1, .ad-enabled, #footer-top-wrapper, #frame2-300x100, #leader-wrapper, #outbrain_widget_1, .block-fox_yume, .ad-content-item',
