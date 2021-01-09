@@ -1,5 +1,5 @@
 /*
-  Copyright 2015, 2016 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2021 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -114,9 +114,16 @@ const SELECTORS = {
       'mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #ad, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.com.au': '#mclip_control, ._Ak',
   'www.youtube.com':
-      '#feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .ad-container, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #watch-channel-brand-div',
-  // Mashable
-  'mashable.com': '.ad, .header-banner, .pga, .box970, .ad_container',
+      'a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"], .jkb, #feed-pyv-container, #feedmodule-PRO, #homepage-chrome-side-promo, #premium-yva, #search-pva, #shelf-pyv-container, #video-masthead, #watch-branded-actions, #watch-buy-urls, #watch-channel-brand-div, .carousel-offer-url-container, .list-view[style="margin: 7px 0pt;"], .promoted-videos, .searchView.list-view, .watch-extra-info-column, .watch-extra-info-right, a[href^="http://www.youtube.com/cthru?"], a[href^="https://www.youtube.com/cthru?"], .ad-div div, #masthead-ad, .ytd-player-legacy-desktop-watch-ads-renderer, ytd-compact-promoted-video-renderer',
+  // Hearst
+  'www.cosmopolitan.com': '.leaderboard-ad, .breaker-ad',
+  // IAC
+  'www.ask.com': '#csaBottom, #adBlock',
+  'www.thedailybeast.com': '.SimpleAd, .PageTopAd, .ConnatixAd, .FooterAd',
+  // Kakao
+  'www.daum.net': '.advert_tmp',
+  // LA Times
+  'www.latimes.com': '.GoogleDfpAd-wrapper, .Page-below',
   // Microsoft
   'www.bing.com': '#zune_upsell, .partnerLinks, .b_ad',
   // reddit
