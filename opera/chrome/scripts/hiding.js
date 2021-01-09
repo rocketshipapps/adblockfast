@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2020 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2021 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -243,6 +243,8 @@ const SELECTORS = {
   // IAC
   'www.ask.com': '#csaBottom, #adBlock',
   'www.thedailybeast.com': '.SimpleAd, .PageTopAd, .ConnatixAd, .FooterAd',
+  // Kakao
+  'www.daum.net': '.advert_tmp',
   // LA Times
   'www.latimes.com': '.GoogleDfpAd-wrapper, .Page-below',
   // Microsoft
