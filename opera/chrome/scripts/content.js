@@ -1,5 +1,5 @@
 /*
-  Copyright 2015–2019 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015–2021 Rocketship <https://rocketshipapps.com/>
 
   This program is free software: you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -89,7 +89,7 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
   if (PARENT_HOST) {
     var selector = SELECTORS[PARENT_HOST];
     selector =
-        '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, .advertisement, .advertorial, .bottom-ad, .fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
+        '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, .advertisement, .advertorial, .bottom-ad, [id^=div-gpt-ad-], .fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
             + (selector ? ', ' + selector : '');
     if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com')
         selector +=

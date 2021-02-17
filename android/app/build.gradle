@@ -22,7 +22,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 8
-        versionName "2.1.0"
+        versionName "2.2.0"
         manifestPlaceholders = [
             onesignal_app_id: OneSignalAppId,
             onesignal_google_project_number: 'REMOTE'

@@ -967,6 +967,14 @@
 ||smilered.com^
 ||weboohost.com^
 ||widgets.tree.com^
+||adservice.google.com^
+||pagead2.googlesyndication.com^
+||doubleclick.net^
+||openx.net^
+||mxptint.net^
+||mathtag.com^
+||justpremium.com^$third-party
+||purplepatch.online^$third-party
 !
 ! -----------------------------Third-party adverts-----------------------------!
 !
@@ -1525,6 +1533,7 @@ _adblock_killer.
 ##.searchCenterTopAds
 ##.side-ad
 ###ad-overlay
+###div-gpt-ad-
 ###adblock_screen
 ###adblock_message
 ##.adblockInfo
