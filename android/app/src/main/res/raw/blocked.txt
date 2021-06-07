@@ -17,7 +17,7 @@
 ! this program. If not, see https://www.gnu.org/licenses/.
 !
 ! This file uses portions of EasyList <https://easylist.to/>, which is
-! subject to the same terms, and of AdGuard’s filters
+! subject to the same terms, and portions of AdGuard’s filters
 ! <https://kb.adguard.com/en/general/adguard-ad-filters>, which are subject to
 ! the compatible terms of the Creative Commons Attribution-ShareAlike 3.0
 ! Unported License. To view a copy of the CC BY-SA 3.0 license, visit
