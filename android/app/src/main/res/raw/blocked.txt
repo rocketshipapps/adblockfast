@@ -4541,7 +4541,7 @@ deviantart.com#@#.mobile-ad
 @@||cnn.com^*/ad_policy.xml$object-subrequest,domain=cnn.com
 ||turner.com/xslo/cvp/ads/$domain=cnn.com
 @@||cnet2.cbsistatic.com/fly/*/bundles/cnetmpxpdk/
-@@||imasdk.googleapis.com^$domain=cnet.com
+@@||imasdk.googleapis.com^$domain=cnet.com|daum.net
 @@||livefyre.com/wjs/v1.0/javascripts/CommentCount.js$domain=mlb.com
 @@||t-mobile.com/mms/$document
 @@||bos.ads.nexage.com/adServe?
