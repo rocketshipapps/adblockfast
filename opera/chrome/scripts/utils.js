@@ -27,10 +27,9 @@ function onReady(callback) {
 }
 
 function getHost(url) {
-  ANCHOR.href = url;
-  return ANCHOR.host;
+  // https://issues.adblockplus.org/ticket/7296/
+  return /^(?:[^:]+:)(?:\/\/(?:[^/]*@)?([^/]+))?/.exec(url)[1] || '';
 }
 
 const EXTENSION = chrome.extension;
 const BROWSER_ACTION = chrome.browserAction;
-const ANCHOR = document.createElement('a');
