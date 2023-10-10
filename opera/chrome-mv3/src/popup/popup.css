@@ -1,0 +1,179 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+}
+
+html {
+  min-width: 320px;
+  min-height: 272px;
+}
+
+body {
+  --text-light: #242526;
+  --text-dark: #18191a;
+
+  --bg-mid: #3a3b3c;
+  --bg-dark: #b0b3b8;
+  --bg-light: #e4e6eb;
+
+  background-color: #e4e6eb;
+  color: #242526;
+
+  --header-height: 48px;
+  --footer-height: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  font-size: 1rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  position: absolute;
+  left: 0.5rem;
+  width: 11rem;
+  user-select: none;
+}
+
+.switch {
+  position: absolute;
+  display: inline-block;
+  right: 0.5rem;
+  width: 48px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #86d993;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #86d993;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 28px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch .tooltiptext {
+  position: absolute;
+  top: var(--header-height);
+  right: 0.25rem;
+  width: 125px;
+  border-radius: 5px;
+  background-color: #ccc;
+  padding: 5px 5px;
+  visibility: hidden;
+  text-align: center;
+  font-size: 12px;
+  z-index: 100;
+}
+
+.switch .tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: -35%;
+  left: 90%;
+}
+
+.switch:hover .tooltiptext {
+  visibility: visible;
+}
+
+.body {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  height: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body #blockedInfo {
+  position: absolute;
+  top: 35%;
+  font-size: 2rem;
+}
+
+.body #blockedDetails {
+  position: absolute;
+  top: 55%;
+  font-size: 1rem;
+}
+
+.banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner #desktopInstall {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 1rem;
+}

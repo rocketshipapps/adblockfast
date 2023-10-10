@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+
+  "name": "Adblock Fast",
+  "version": "2.1.0",
+  "description": "The world’s fastest ad blocker! Same blocking, 8x more accelerated webpages.",
+  "homepage_url": "https://adblockfast.com/",
+
+  "icons": {
+    "16": "img/16.png",
+    "48": "img/48.png",
+    "128": "img/128.png"
+  },
+
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "declarativeNetRequestWithHostAccess"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "default",
+        "enabled": true,
+        "path": "filter/default.json"
+      }
+    ]
+  },
+
+  "action": {
+    "default_title": "Adblock Fast v2",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "19": "img/blocked-ads/19.png",
+      "38": "img/blocked-ads/38.png"
+    }
+  }
+}
