@@ -1,7 +1,6 @@
 * {
   padding: 0;
   margin: 0;
-  font-weight: 300;
 }
 
 html {
@@ -10,24 +9,17 @@ html {
 }
 
 body {
-  --text-light: #242526;
-  --text-dark: #18191a;
+  background-color: #fff;
+  color: #000;
 
-  --bg-mid: #3a3b3c;
-  --bg-dark: #b0b3b8;
-  --bg-light: #e4e6eb;
-
-  background-color: #e4e6eb;
-  color: #242526;
-
-  --header-height: 48px;
-  --footer-height: 20px;
+  --header-height: 42px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 
+  font-weight: 400;
   font-size: 1rem;
 }
 
@@ -41,13 +33,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
   position: absolute;
   left: 0.5rem;
-  width: 11rem;
+  width: 9rem;
   user-select: none;
 }
 
@@ -55,7 +46,7 @@ body {
   position: absolute;
   display: inline-block;
   right: 0.5rem;
-  width: 48px;
+  width: 50px;
   height: 28px;
 }
 
@@ -74,25 +65,26 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #f5f6f8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: '';
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #bababa;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
   background-color: #86d993;
+  border: 1px solid #86d993;
 }
 
 input:focus + .slider {
@@ -100,14 +92,16 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(20px);
-  -ms-transform: translateX(20px);
-  transform: translateX(20px);
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+  background-color: white;
 }
 
 /* Rounded sliders */
 .slider.round {
   border-radius: 28px;
+  border: 1px solid #e2e3e5;
 }
 
 .slider.round:before {
@@ -118,21 +112,18 @@ input:checked + .slider:before {
   position: absolute;
   top: var(--header-height);
   right: 0.25rem;
-  width: 125px;
-  border-radius: 5px;
-  background-color: #ccc;
-  padding: 5px 5px;
+  width: 128px;
+  border-radius: 15px;
+  background-color: #f5f6f8;
+  padding: 5px;
   visibility: hidden;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   z-index: 100;
 }
 
 .switch .tooltiptext::after {
-  content: '';
-  position: absolute;
-  top: -35%;
-  left: 90%;
+  content: "";
 }
 
 .switch:hover .tooltiptext {
@@ -150,30 +141,26 @@ input:checked + .slider:before {
   justify-content: center;
 }
 
-.body #blockedInfo {
+.body #downloadButton {
   position: absolute;
-  top: 35%;
-  font-size: 2rem;
+  bottom: 1.75rem;
+  border: none;
+  border-radius: 16px;
+  padding: 4px 12px 4px 12px;
+  background-color: #4884ea;
+  color: #fff;
+  font-size: 1.1rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.body img {
+  margin-bottom: 2rem;
+  user-select: none;
 }
 
 .body #blockedDetails {
   position: absolute;
-  top: 55%;
-  font-size: 1rem;
-}
-
-.banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.banner #desktopInstall {
-  position: absolute;
-  bottom: 1rem;
-  font-size: 1rem;
+  bottom: 0.5rem;
+  font-size: 0.75rem;
 }

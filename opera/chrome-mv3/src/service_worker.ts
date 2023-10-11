@@ -1,15 +1,16 @@
-import { Settings } from './domain/settings';
+import { Settings } from "./domain/settings";
 
 chrome.runtime.onInstalled.addListener(async () => {
-  const enabledRulesets =
-    await chrome.declarativeNetRequest.getEnabledRulesets();
+  const enabledRulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
   console.log(`Enabled rulesets: ${enabledRulesets}`);
 
-  const staticRuleCount =
-    await chrome.declarativeNetRequest.getAvailableStaticRuleCount();
+  const staticRuleCount = await chrome.declarativeNetRequest.getAvailableStaticRuleCount();
   console.log(`Available static rule count: ${staticRuleCount}`); // TODO: 329,996 rules?
 
-  Settings.getInstance().setBlockingEnabled(true);
+  let settings: Settings = Settings.getInstance();
+  settings.setBlockingEnabled(false);
+  settings.setNativeAppAvailable(false);
+  settings.updateRulesets(false, ["default"]);
 });
 
 chrome.declarativeNetRequest.setExtensionActionOptions({
@@ -21,12 +22,12 @@ chrome.declarativeNetRequest.onRuleMatchedDebug.addListener((e) => {
 });
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.status !== 'complete') {
+  if (changeInfo.status !== "complete") {
     return;
   }
 
   const getIconPaths = (isBlockingEnabled) => {
-    const iconPath = isBlockingEnabled ? 'blocked-ads' : 'blocked';
+    const iconPath = isBlockingEnabled ? "blocked-ads" : "blocked";
 
     return {
       19: `img/${iconPath}/19.png`,

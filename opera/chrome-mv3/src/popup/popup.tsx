@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import React, { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
 
-import './popup.css';
+import "./popup.css";
 
-import Header from './header';
-import Body from './body';
-import Banner from './banner';
+import Header from "./header";
+import Body from "./body";
 
-import { APP_URL } from '../domain/constants';
-import { Settings } from '../domain/settings';
-import { BlockingInfo } from '../domain/types';
+import { APP_URL } from "../domain/constants";
+import { Settings } from "../domain/settings";
+import { BlockingInfo } from "../domain/types";
 
 const App: React.FC = () => {
   const [isBlockingEnabled, setBlockingEnabled] = useState<boolean>(true);
-  const [blockingInfo, setBlockingInfo] = useState<BlockingInfo>(
-    new BlockingInfo(),
-  );
+  const [blockingInfo, setBlockingInfo] = useState<BlockingInfo>(new BlockingInfo());
 
   const updateBlockingInfo = async () => {
     setBlockingInfo(await BlockingInfo.fetch());
@@ -42,12 +39,11 @@ const App: React.FC = () => {
         blockingInfo={blockingInfo}
         updateBlockingInfo={updateBlockingInfo}
       />
-      {isBlockingEnabled && <Banner installDesktopUrl={APP_URL} />}
     </>
   );
 };
 
-const root = document.createElement('div');
+const root = document.createElement("div");
 document.body.appendChild(root);
 
 const reactRoot = createRoot(root);

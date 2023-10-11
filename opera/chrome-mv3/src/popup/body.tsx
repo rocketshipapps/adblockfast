@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import { getCurrentStateText } from '../domain/utils';
-import { BlockingInfo } from '../domain/types';
+import { getCurrentStateText } from "../domain/utils";
+import { BlockingInfo } from "../domain/types";
 
 type BodyProps = {
   isBlockingEnabled: boolean;
@@ -9,57 +9,49 @@ type BodyProps = {
   updateBlockingInfo: () => void;
 };
 
-const Body: React.FC<BodyProps> = ({
-  isBlockingEnabled,
-  blockingInfo,
-  updateBlockingInfo,
-}) => {
+const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBlockingInfo }) => {
   useEffect(() => {
     updateBlockingInfo();
   }, [isBlockingEnabled]);
 
+  const active = true;
+
+  const buttonStyle = {
+    backgroundColor: active ? "#f5f6f8" : "#4884ea",
+    color: active ? "#000" : "#fff",
+  };
+
   return (
     <div className="body">
-      <p id="blockedInfo">
-        {getBlockedInfoText(isBlockingEnabled, blockingInfo.matchedRules)}
+      <img src={active ? "img/enabled.svg" : "img/disabled.svg"}></img>
+      <button id="downloadButton" style={buttonStyle}>
+        {active ? `Blocked: ${blockingInfo.matchedRules}` : "Download Desktop App"}
+      </button>
+      <p id="blockedDetails">
+        {active ? getHost(blockingInfo.activeTabUrl) : "to enable ad blocking"}
       </p>
-      {isBlockingEnabled && (
-        <p id="blockedDetails">{getHost(blockingInfo.activeTabUrl)}</p>
-      )}
     </div>
   );
 };
 
 export default Body;
 
-const getBlockedInfoText = (
-  isBlockingEnabled: boolean,
-  matchedRules: number,
-) => {
-  if (!isBlockingEnabled) {
-    return getCurrentStateText(false);
-  }
-
-  return matchedRules > 0 ? `Blocked: ${matchedRules}` : 'No matched rules';
-};
-
 const getHost = (url: string) => {
-  let host: string = '';
+  let host: string = "";
 
   try {
     const parsedUrl = new URL(url);
     host = parsedUrl.hostname;
 
     // Check if the host starts with "www." and remove it if present
-    if (host.startsWith('www.')) {
+    if (host.startsWith("www.")) {
       host = host.substring(4);
     }
   } catch (error) {
     // If an error occurs during URL parsing, host remains undefined
   } finally {
-    // Set host to 'this tab' if it's empty
-    host = host || 'this tab';
+    host = host || "for this tab";
   }
 
-  return 'for ' + host;
+  return host;
 };

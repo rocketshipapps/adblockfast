@@ -1,10 +1,7 @@
-import { getActiveTab } from '../domain/utils';
+import { getActiveTab } from "../domain/utils";
 
 class BlockingInfo {
-  constructor(
-    private _matchedRules: number = 0,
-    private _activeTabUrl: string = '',
-  ) {}
+  constructor(private _matchedRules: number = 0, private _activeTabUrl: string = "") {}
 
   get matchedRules(): number {
     return this._matchedRules;
@@ -23,13 +20,17 @@ class BlockingInfo {
   }
 
   static async fetch(): Promise<BlockingInfo> {
-    const activeTab: chrome.tabs.Tab | null = await getActiveTab();
-    if (activeTab) {
-      const result = await chrome.declarativeNetRequest.getMatchedRules({
-        tabId: activeTab.id,
-      });
+    try {
+      const activeTab: chrome.tabs.Tab | null = await getActiveTab();
+      if (activeTab) {
+        const result = await chrome.declarativeNetRequest.getMatchedRules({
+          tabId: activeTab.id,
+        });
 
-      return new BlockingInfo(result.rulesMatchedInfo.length, activeTab.url);
+        return new BlockingInfo(result.rulesMatchedInfo.length, activeTab.url);
+      }
+    } catch (e) {
+      return new BlockingInfo();
     }
   }
 }
