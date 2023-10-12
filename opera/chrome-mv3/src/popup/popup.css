@@ -141,17 +141,25 @@ input:checked + .slider:before {
   justify-content: center;
 }
 
-.body #downloadButton {
+.body button {
   position: absolute;
   bottom: 1.75rem;
   border: none;
   border-radius: 16px;
   padding: 4px 12px 4px 12px;
-  background-color: #4884ea;
-  color: #fff;
   font-size: 1.1rem;
   user-select: none;
+}
+
+.body button#downloadButton {
+  background-color: #4884ea;
+  color: #fff;
   cursor: pointer;
+}
+
+.body button#infoLabel {
+  background-color: #f5f6f8;
+  color: #000;
 }
 
 .body img {
@@ -159,7 +167,7 @@ input:checked + .slider:before {
   user-select: none;
 }
 
-.body #blockedDetails {
+.body #detailsLabel {
   position: absolute;
   bottom: 0.5rem;
   font-size: 0.75rem;

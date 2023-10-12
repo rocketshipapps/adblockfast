@@ -28,7 +28,7 @@ export class Settings {
   pause(): void {
     this.setBlockingEnabled(false);
     this.setNativeAppStatus(NativeAppStatus.Paused);
-    this.updateRulesets(true, ["default"]);
+    this.updateRulesets(false, ["default"]);
   }
 
   disable(): void {

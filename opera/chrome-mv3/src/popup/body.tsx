@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+import { APP_URL } from "../domain/constants";
 import { BlockingInfo } from "../domain/types";
 import { Settings } from "../domain/settings";
 import { NativeAppStatus } from "../domain/native";
@@ -25,31 +26,37 @@ const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBloc
     updateBlockingInfo();
   }, [isBlockingEnabled]);
 
-  const buttonStyle = {
-    backgroundColor: nativeAppStatus === NativeAppStatus.NoApp ? "#4884ea" : "#f5f6f8",
-    color: nativeAppStatus === NativeAppStatus.NoApp ? "#fff" : "#000",
+  const handleDownloadClick = () => {
+    chrome.tabs.create({ url: APP_URL });
   };
 
   return (
     <div className="body">
-      <img
-        src={nativeAppStatus === NativeAppStatus.Active ? "img/enabled.svg" : "img/disabled.svg"}
-      ></img>
-      <button id="downloadButton" style={buttonStyle}>
-        {nativeAppStatus === NativeAppStatus.NoApp
-          ? "Download Desktop App"
-          : `Blocked: ${blockingInfo.matchedRules}`}
-      </button>
-      <p id="blockedDetails">
+      <img src={getImage(nativeAppStatus)}></img>
+
+      {nativeAppStatus === NativeAppStatus.NoApp ? (
+        <button id="downloadButton" onClick={handleDownloadClick}>
+          Download Desktop App
+        </button>
+      ) : (
+        <button id="infoLabel">Blocked: {blockingInfo.matchedRules}</button>
+      )}
+
+      <div id="detailsLabel">
         {nativeAppStatus === NativeAppStatus.NoApp
           ? "to enable ad blocking"
           : getHost(blockingInfo.activeTabUrl)}
-      </p>
+      </div>
     </div>
   );
 };
 
 export default Body;
+
+const getImage = (nativeAppStatus: NativeAppStatus): string => {
+  const filename = nativeAppStatus === NativeAppStatus.Active ? "enabled" : "disabled";
+  return `img/${filename}.svg`;
+};
 
 const getHost = (url: string) => {
   let host: string = "";
