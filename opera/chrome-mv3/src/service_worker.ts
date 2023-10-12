@@ -1,4 +1,5 @@
 import { Settings } from "./domain/settings";
+import { pingNativeApp } from "./domain/native";
 
 chrome.runtime.onInstalled.addListener(async () => {
   const enabledRulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
@@ -7,10 +8,7 @@ chrome.runtime.onInstalled.addListener(async () => {
   const staticRuleCount = await chrome.declarativeNetRequest.getAvailableStaticRuleCount();
   console.log(`Available static rule count: ${staticRuleCount}`); // TODO: 329,996 rules?
 
-  let settings: Settings = Settings.getInstance();
-  settings.setBlockingEnabled(false);
-  settings.setNativeAppAvailable(false);
-  settings.updateRulesets(false, ["default"]);
+  Settings.getInstance().disable();
 });
 
 chrome.declarativeNetRequest.setExtensionActionOptions({
@@ -42,3 +40,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     tabId: tabId,
   });
 });
+
+const PING_INTERVAL = 5000;
+setInterval(pingNativeApp, PING_INTERVAL);

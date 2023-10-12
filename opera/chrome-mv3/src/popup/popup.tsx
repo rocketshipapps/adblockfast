@@ -6,7 +6,6 @@ import "./popup.css";
 import Header from "./header";
 import Body from "./body";
 
-import { APP_URL } from "../domain/constants";
 import { Settings } from "../domain/settings";
 import { BlockingInfo } from "../domain/types";
 

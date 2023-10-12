@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 
-import { getCurrentStateText } from "../domain/utils";
 import { BlockingInfo } from "../domain/types";
+import { Settings } from "../domain/settings";
+import { NativeAppStatus } from "../domain/native";
 
 type BodyProps = {
   isBlockingEnabled: boolean;
@@ -10,25 +11,39 @@ type BodyProps = {
 };
 
 const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBlockingInfo }) => {
+  const [nativeAppStatus, setNativeAppStatus] = React.useState<NativeAppStatus>(
+    NativeAppStatus.NoApp
+  );
+
   useEffect(() => {
+    const getNativeAppStatus = async () => {
+      let settings = Settings.getInstance();
+      setNativeAppStatus(await settings.getNativeAppStatus());
+    };
+
+    getNativeAppStatus();
     updateBlockingInfo();
   }, [isBlockingEnabled]);
 
-  const active = true;
-
   const buttonStyle = {
-    backgroundColor: active ? "#f5f6f8" : "#4884ea",
-    color: active ? "#000" : "#fff",
+    backgroundColor: nativeAppStatus === NativeAppStatus.NoApp ? "#4884ea" : "#f5f6f8",
+    color: nativeAppStatus === NativeAppStatus.NoApp ? "#fff" : "#000",
   };
 
   return (
     <div className="body">
-      <img src={active ? "img/enabled.svg" : "img/disabled.svg"}></img>
+      <img
+        src={nativeAppStatus === NativeAppStatus.Active ? "img/enabled.svg" : "img/disabled.svg"}
+      ></img>
       <button id="downloadButton" style={buttonStyle}>
-        {active ? `Blocked: ${blockingInfo.matchedRules}` : "Download Desktop App"}
+        {nativeAppStatus === NativeAppStatus.NoApp
+          ? "Download Desktop App"
+          : `Blocked: ${blockingInfo.matchedRules}`}
       </button>
       <p id="blockedDetails">
-        {active ? getHost(blockingInfo.activeTabUrl) : "to enable ad blocking"}
+        {nativeAppStatus === NativeAppStatus.NoApp
+          ? "to enable ad blocking"
+          : getHost(blockingInfo.activeTabUrl)}
       </p>
     </div>
   );

@@ -1,6 +1,8 @@
+import { NativeAppStatus } from "./native";
+
 export interface StorageData {
   isBlockingEnabled: boolean;
-  isNativeAppAvailable: boolean;
+  nativeAppStatus: NativeAppStatus;
 }
 
 export type StorageKeys = keyof StorageData;
@@ -15,6 +17,24 @@ export class Settings {
       Settings.instance = new Settings();
     }
     return Settings.instance;
+  }
+
+  activate(): void {
+    this.setBlockingEnabled(true);
+    this.setNativeAppStatus(NativeAppStatus.Active);
+    this.updateRulesets(true, ["default"]);
+  }
+
+  pause(): void {
+    this.setBlockingEnabled(false);
+    this.setNativeAppStatus(NativeAppStatus.Paused);
+    this.updateRulesets(true, ["default"]);
+  }
+
+  disable(): void {
+    this.setBlockingEnabled(false);
+    this.setNativeAppStatus(NativeAppStatus.NoApp);
+    this.updateRulesets(false, ["default"]);
   }
 
   setBlockingEnabled(isEnabled: boolean): Promise<void> {
@@ -50,9 +70,9 @@ export class Settings {
     chrome.declarativeNetRequest.updateEnabledRulesets(rulesetOptions);
   }
 
-  setNativeAppAvailable(isAvailable: boolean): Promise<void> {
+  setNativeAppStatus(status: NativeAppStatus): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      chrome.storage.sync.set({ isNativeAppAvailable: isAvailable }, () => {
+      chrome.storage.sync.set({ nativeAppStatus: status }, () => {
         if (chrome.runtime.lastError) {
           reject(chrome.runtime.lastError);
         } else {
@@ -62,15 +82,15 @@ export class Settings {
     });
   }
 
-  isNativeAppAvailable(): Promise<boolean> {
-    const keys: StorageKeys[] = ["isNativeAppAvailable"];
+  getNativeAppStatus(): Promise<NativeAppStatus> {
+    const keys: StorageKeys[] = ["nativeAppStatus"];
 
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<NativeAppStatus>((resolve, reject) => {
       chrome.storage.sync.get(keys, (result: StorageData) => {
         if (chrome.runtime.lastError) {
           reject(chrome.runtime.lastError);
         } else {
-          resolve(result.isNativeAppAvailable);
+          resolve(result.nativeAppStatus);
         }
       });
     });
