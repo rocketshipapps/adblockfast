@@ -32,7 +32,7 @@ const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBloc
 
   return (
     <div className="body">
-      <img src={getImage(nativeAppStatus)}></img>
+      <img src={getImage(nativeAppStatus, isBlockingEnabled)}></img>
 
       {nativeAppStatus === NativeAppStatus.NoApp ? (
         <button id="downloadButton" onClick={handleDownloadClick}>
@@ -53,8 +53,9 @@ const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBloc
 
 export default Body;
 
-const getImage = (nativeAppStatus: NativeAppStatus): string => {
-  const filename = nativeAppStatus === NativeAppStatus.Active ? "enabled" : "disabled";
+const getImage = (nativeAppStatus: NativeAppStatus, isBlockingEnabled: boolean): string => {
+  const filename =
+    nativeAppStatus === NativeAppStatus.Active && isBlockingEnabled ? "enabled" : "disabled";
   return `img/${filename}.svg`;
 };
 

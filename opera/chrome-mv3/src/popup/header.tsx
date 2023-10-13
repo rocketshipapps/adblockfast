@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { getCurrentStateText } from '../domain/utils';
-import { Settings } from '../domain/settings';
-import { getActiveTabId } from '../domain/utils';
+import { getCurrentStateText } from "../domain/utils";
+import { Settings } from "../domain/settings";
+import { getActiveTabId } from "../domain/utils";
+import { NativeAppStatus } from "../domain/native";
 
 type HeaderProps = {
   isBlockingEnabled: boolean;
@@ -16,17 +17,21 @@ const Header: React.FC<HeaderProps> = ({
   updateBlockingInfo,
 }) => {
   const handleSwitchChange = async () => {
+    const settings = Settings.getInstance();
+    if ((await settings.getNativeAppStatus()) === NativeAppStatus.NoApp) {
+      return;
+    }
+
     const isEnabled: boolean = !isBlockingEnabled;
 
     setBlockingEnabled(isEnabled);
 
-    const settings = Settings.getInstance();
     settings.setBlockingEnabled(isEnabled);
-    settings.updateRulesets(isEnabled, ['default']);
+    settings.updateRulesets(isEnabled, ["default"]);
 
     const currentTabId = await getActiveTabId();
     chrome.tabs.onUpdated.addListener((updatedTabId, changeInfo) => {
-      if (updatedTabId === currentTabId && changeInfo.status === 'complete') {
+      if (updatedTabId === currentTabId && changeInfo.status === "complete") {
         updateBlockingInfo();
       }
     });
