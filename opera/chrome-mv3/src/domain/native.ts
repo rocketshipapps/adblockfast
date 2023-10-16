@@ -8,10 +8,15 @@ export enum NativeAppStatus {
   NoApp = "none",
 }
 
-export function pingNativeApp() {
+const makeUrl = async (settings: Settings) => {
+  const value = (await settings.isBlockingEnabled()) ? "true" : "false";
+  return `${NATIVE_APP_ADDRESS}?is_blocking=${value}`;
+};
+
+export async function pingNativeApp() {
   let settings = Settings.getInstance();
 
-  fetch(NATIVE_APP_ADDRESS)
+  fetch(await makeUrl(settings))
     .then((response) => response.json())
     .then(async (data) => {
       const previousStatus: NativeAppStatus = await settings.getNativeAppStatus();
