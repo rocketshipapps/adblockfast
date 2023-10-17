@@ -18,7 +18,15 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const handleSwitchChange = async () => {
     const settings = Settings.getInstance();
-    if ((await settings.getNativeAppStatus()) === NativeAppStatus.NoApp) {
+    const nativeAppStatus = await settings.getNativeAppStatus();
+
+    if (nativeAppStatus === NativeAppStatus.NoApp) {
+      // TODO: Show toast "Download, install, and launch desktop app to enable blocking"
+      return;
+    }
+
+    if (nativeAppStatus === NativeAppStatus.Paused) {
+      // TODO: Show toast "Activate desktop app to enable blocking"
       return;
     }
 
