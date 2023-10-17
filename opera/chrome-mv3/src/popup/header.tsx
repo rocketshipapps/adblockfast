@@ -9,24 +9,26 @@ type HeaderProps = {
   isBlockingEnabled: boolean;
   setBlockingEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   updateBlockingInfo: () => void;
+  showToastMessage: (msg: string) => void;
 };
 
 const Header: React.FC<HeaderProps> = ({
   isBlockingEnabled,
   setBlockingEnabled,
   updateBlockingInfo,
+  showToastMessage,
 }) => {
   const handleSwitchChange = async () => {
     const settings = Settings.getInstance();
     const nativeAppStatus = await settings.getNativeAppStatus();
 
     if (nativeAppStatus === NativeAppStatus.NoApp) {
-      // TODO: Show toast "Download, install, and launch desktop app to enable blocking"
+      showToastMessage("Please install and launch the desktop app to block ads");
       return;
     }
 
     if (nativeAppStatus === NativeAppStatus.Paused) {
-      // TODO: Show toast "Activate desktop app to enable blocking"
+      showToastMessage("Please activate Massive service via desktop app to block ads");
       return;
     }
 
