@@ -1,8 +1,7 @@
 import React from "react";
 
-import { getCurrentStateText } from "../domain/utils";
+import { getCurrentStateText, getActiveTabId } from "../domain/utils";
 import { Settings } from "../domain/settings";
-import { getActiveTabId } from "../domain/utils";
 import { NativeAppStatus } from "../domain/native";
 
 type HeaderProps = {

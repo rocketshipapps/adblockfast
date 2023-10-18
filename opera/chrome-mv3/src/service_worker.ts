@@ -15,10 +15,6 @@ chrome.declarativeNetRequest.setExtensionActionOptions({
   displayActionCountAsBadgeText: true,
 });
 
-chrome.declarativeNetRequest.onRuleMatchedDebug.addListener((e) => {
-  //(e.request.url); // TODO: Only for debugging
-});
-
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (changeInfo.status !== "complete") {
     return;

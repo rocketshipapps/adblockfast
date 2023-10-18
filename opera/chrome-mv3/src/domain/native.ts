@@ -22,7 +22,6 @@ export async function pingNativeApp() {
       const previousStatus: NativeAppStatus = await settings.getNativeAppStatus();
       const currentStatus: NativeAppStatus = data.status.toLowerCase();
       if (previousStatus !== currentStatus) {
-        console.log(`Status changed to ${currentStatus}`);
         if (currentStatus === NativeAppStatus.Active) {
           settings.activate();
         } else {
@@ -30,10 +29,9 @@ export async function pingNativeApp() {
         }
       }
     })
-    .catch(async (error) => {
+    .catch(async (_) => {
       const previousStatus: NativeAppStatus = await settings.getNativeAppStatus();
       if (previousStatus !== NativeAppStatus.NoApp) {
-        console.error(`Ping to ${NATIVE_APP_ADDRESS} - Error: ${error.message}`);
         settings.disable();
       }
     });
