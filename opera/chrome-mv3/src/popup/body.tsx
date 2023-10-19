@@ -4,6 +4,7 @@ import { APP_URL } from "../domain/constants";
 import { BlockingInfo } from "../domain/types";
 import { Settings } from "../domain/settings";
 import { NativeAppStatus } from "../domain/native";
+import { Whitelist } from "../domain/whitelist";
 
 type BodyProps = {
   isBlockingEnabled: boolean;
@@ -11,9 +12,18 @@ type BodyProps = {
   updateBlockingInfo: () => void;
 };
 
-const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBlockingInfo }) => {
+const Body: React.FC<BodyProps> = ({
+  isBlockingEnabled,
+  blockingInfo,
+  updateBlockingInfo,
+}) => {
+  let whitelist: Whitelist = new Whitelist();
+
   const [nativeAppStatus, setNativeAppStatus] = React.useState<NativeAppStatus>(
     NativeAppStatus.NoApp
+  );
+  const [whitelistButtonText, setWhitelistButtonText] = React.useState<string>(
+    getWhitelistButtonText(false)
   );
 
   useEffect(() => {
@@ -24,10 +34,19 @@ const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBloc
 
     getNativeAppStatus();
     updateBlockingInfo();
+
+    whitelist.isWhitelisted(blockingInfo.host).then((result) => {
+      setWhitelistButtonText(getWhitelistButtonText(result));
+    });
   }, [isBlockingEnabled]);
 
   const handleDownloadClick = () => {
     chrome.tabs.create({ url: APP_URL });
+  };
+
+  const handleWhitelistClick = async () => {
+    const isWhitelisted = await whitelist.update(blockingInfo.host);
+    setWhitelistButtonText(getWhitelistButtonText(isWhitelisted));
   };
 
   return (
@@ -42,10 +61,17 @@ const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBloc
         <button id="infoLabel">Blocked: {blockingInfo.matchedRules}</button>
       )}
 
-      <div id="detailsLabel">
-        {nativeAppStatus === NativeAppStatus.NoApp
-          ? "to enable ad blocking"
-          : getHost(blockingInfo.activeTabUrl)}
+      <div className="row">
+        <div id="detailsLabel">
+          {nativeAppStatus === NativeAppStatus.NoApp
+            ? "to enable ad blocking"
+            : blockingInfo.host}
+        </div>
+        {nativeAppStatus !== NativeAppStatus.NoApp && (
+          <div id="whitelistButton" onClick={handleWhitelistClick}>
+            {whitelistButtonText}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -53,28 +79,17 @@ const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBloc
 
 export default Body;
 
-const getImage = (nativeAppStatus: NativeAppStatus, isBlockingEnabled: boolean): string => {
-  const filename =
-    nativeAppStatus === NativeAppStatus.Active && isBlockingEnabled ? "enabled" : "disabled";
-  return `img/${filename}.svg`;
+const getWhitelistButtonText = (isWhitelisted: boolean): string => {
+  return isWhitelisted ? "Disable ads on this site" : "Enable ads on this site";
 };
 
-const getHost = (url: string) => {
-  let host: string = "";
-
-  try {
-    const parsedUrl = new URL(url);
-    host = parsedUrl.hostname;
-
-    // Check if the host starts with "www." and remove it if present
-    if (host.startsWith("www.")) {
-      host = host.substring(4);
-    }
-  } catch (error) {
-    // If an error occurs during URL parsing, host remains undefined
-  } finally {
-    host = host || "for this tab";
-  }
-
-  return host;
+const getImage = (
+  nativeAppStatus: NativeAppStatus,
+  isBlockingEnabled: boolean
+): string => {
+  const filename =
+    nativeAppStatus === NativeAppStatus.Active && isBlockingEnabled
+      ? "enabled"
+      : "disabled";
+  return `img/${filename}.svg`;
 };

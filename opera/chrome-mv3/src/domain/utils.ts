@@ -1,7 +1,27 @@
-import { APP_NAME } from './constants';
+import { APP_NAME } from "./constants";
 
 const getCurrentStateText = (isEnabled) => {
-  return `${APP_NAME} is ${isEnabled ? 'ON' : 'OFF'}`;
+  return `${APP_NAME} is ${isEnabled ? "ON" : "OFF"}`;
+};
+
+const getHost = (url: string) => {
+  let host: string = "";
+
+  try {
+    const parsedUrl = new URL(url);
+    host = parsedUrl.hostname;
+
+    // Check if the host starts with "www." and remove it if present
+    if (host.startsWith("www.")) {
+      host = host.substring(4);
+    }
+  } catch (error) {
+    // If an error occurs during URL parsing, host remains undefined
+  } finally {
+    host = host || "for this tab";
+  }
+
+  return host;
 };
 
 async function getActiveTab(): Promise<chrome.tabs.Tab | null> {
@@ -23,4 +43,4 @@ async function getActiveTabId(): Promise<number | null> {
   return activeTab ? activeTab.id : null;
 }
 
-export { getCurrentStateText, getActiveTab, getActiveTabId };
+export { getCurrentStateText, getHost, getActiveTab, getActiveTabId };

@@ -2,13 +2,15 @@ import { Settings } from "./domain/settings";
 import { pingNativeApp } from "./domain/native";
 
 chrome.runtime.onInstalled.addListener(async () => {
-  const enabledRulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
+  const enabledRulesets =
+    await chrome.declarativeNetRequest.getEnabledRulesets();
   console.log(`Enabled rulesets: ${enabledRulesets}`);
 
-  const staticRuleCount = await chrome.declarativeNetRequest.getAvailableStaticRuleCount();
+  const staticRuleCount =
+    await chrome.declarativeNetRequest.getAvailableStaticRuleCount();
   console.log(`Available static rule count: ${staticRuleCount}`); // TODO: 329,996 rules?
 
-  Settings.getInstance().disable();
+  Settings.getInstance().init();
 });
 
 chrome.declarativeNetRequest.setExtensionActionOptions({
