@@ -1,5 +1,7 @@
 import { Settings } from "./domain/settings";
 import { pingNativeApp } from "./domain/native";
+import { Whitelist } from "./domain/whitelist";
+import { getHost } from "./domain/utils";
 
 chrome.runtime.onInstalled.addListener(async () => {
   const enabledRulesets =
@@ -18,25 +20,30 @@ chrome.declarativeNetRequest.setExtensionActionOptions({
 });
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.status !== "complete") {
-    return;
-  }
+  if (changeInfo.status === "loading") {
+    const whitelist: Whitelist = new Whitelist();
+    const isWhitelisted = await whitelist.isWhitelisted(getHost(tab.url));
 
-  const getIconPaths = (isBlockingEnabled) => {
-    const iconPath = isBlockingEnabled ? "blocked-ads" : "blocked";
+    const settings: Settings = Settings.getInstance();
+    settings.updateRulesets(!isWhitelisted, ["default"]);
+    // TODO: test this?
+  } else if (changeInfo.status === "complete") {
+    const getIconPaths = (isBlockingEnabled) => {
+      const iconPath = isBlockingEnabled ? "blocked-ads" : "blocked";
 
-    return {
-      19: `img/${iconPath}/19.png`,
-      38: `img/${iconPath}/38.png`,
+      return {
+        19: `img/${iconPath}/19.png`,
+        38: `img/${iconPath}/38.png`,
+      };
     };
-  };
 
-  const isBlockingEnabled = await Settings.getInstance().isBlockingEnabled();
+    const isBlockingEnabled = await Settings.getInstance().isBlockingEnabled();
 
-  chrome.action.setIcon({
-    path: getIconPaths(isBlockingEnabled),
-    tabId: tabId,
-  });
+    chrome.action.setIcon({
+      path: getIconPaths(isBlockingEnabled),
+      tabId: tabId,
+    });
+  }
 });
 
 const PING_INTERVAL = 5000;
