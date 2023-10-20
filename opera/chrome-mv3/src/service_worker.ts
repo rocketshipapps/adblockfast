@@ -1,7 +1,5 @@
 import { Settings } from "./domain/settings";
 import { pingNativeApp } from "./domain/native";
-import { Whitelist } from "./domain/whitelist";
-import { getHost } from "./domain/utils";
 
 chrome.runtime.onInstalled.addListener(async () => {
   const enabledRulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
