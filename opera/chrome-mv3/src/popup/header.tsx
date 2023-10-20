@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({
     setBlockingEnabled(isEnabled);
 
     settings.setBlockingEnabled(isEnabled);
-    settings.updateRulesets(isEnabled, ["default"]);
+    settings.updateRulesets(isEnabled);
 
     const currentTabId = await getActiveTabId();
     chrome.tabs.onUpdated.addListener((updatedTabId, changeInfo) => {

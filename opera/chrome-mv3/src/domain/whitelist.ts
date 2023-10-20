@@ -8,6 +8,10 @@ class Whitelist {
   }
 
   async isWhitelisted(host: string): Promise<boolean> {
+    if (!host) {
+      return false;
+    }
+
     const whitelist = await this.getList();
     return whitelist.includes(host);
   }

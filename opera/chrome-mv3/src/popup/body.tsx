@@ -13,11 +13,7 @@ type BodyProps = {
   updateBlockingInfo: () => void;
 };
 
-const Body: React.FC<BodyProps> = ({
-  isBlockingEnabled,
-  blockingInfo,
-  updateBlockingInfo,
-}) => {
+const Body: React.FC<BodyProps> = ({ isBlockingEnabled, blockingInfo, updateBlockingInfo }) => {
   let whitelist: Whitelist = new Whitelist();
 
   const [nativeAppStatus, setNativeAppStatus] = React.useState<NativeAppStatus>(
@@ -65,11 +61,9 @@ const Body: React.FC<BodyProps> = ({
 
       <div className="row">
         <div id="detailsLabel">
-          {nativeAppStatus === NativeAppStatus.NoApp
-            ? "to enable ad blocking"
-            : blockingInfo.host}
+          {nativeAppStatus === NativeAppStatus.NoApp ? "to enable ad blocking" : blockingInfo.host}
         </div>
-        {nativeAppStatus !== NativeAppStatus.NoApp && (
+        {nativeAppStatus === NativeAppStatus.Active && (
           <div id="whitelistButton" onClick={handleWhitelistClick}>
             {whitelistButtonText}
           </div>
@@ -85,13 +79,8 @@ const getWhitelistButtonText = (isWhitelisted: boolean): string => {
   return isWhitelisted ? "Disable ads on this site" : "Enable ads on this site";
 };
 
-const getImage = (
-  nativeAppStatus: NativeAppStatus,
-  isBlockingEnabled: boolean
-): string => {
+const getImage = (nativeAppStatus: NativeAppStatus, isBlockingEnabled: boolean): string => {
   const filename =
-    nativeAppStatus === NativeAppStatus.Active && isBlockingEnabled
-      ? "enabled"
-      : "disabled";
+    nativeAppStatus === NativeAppStatus.Active && isBlockingEnabled ? "enabled" : "disabled";
   return `img/${filename}.svg`;
 };

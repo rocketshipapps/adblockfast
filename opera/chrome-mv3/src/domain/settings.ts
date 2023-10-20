@@ -23,19 +23,19 @@ export class Settings {
   activate(): void {
     this.setBlockingEnabled(true);
     this.setNativeAppStatus(NativeAppStatus.Active);
-    this.updateRulesets(true, ["default"]);
+    this.updateRulesets(true);
   }
 
   pause(): void {
     this.setBlockingEnabled(false);
     this.setNativeAppStatus(NativeAppStatus.Paused);
-    this.updateRulesets(false, ["default"]);
+    this.updateRulesets(false);
   }
 
   disable(): void {
     this.setBlockingEnabled(false);
     this.setNativeAppStatus(NativeAppStatus.NoApp);
-    this.updateRulesets(false, ["default"]);
+    this.updateRulesets(false);
   }
 
   init(): void {
@@ -69,7 +69,7 @@ export class Settings {
     });
   }
 
-  updateRulesets(shouldEnable: boolean, ruleset: string[]): void {
+  updateRulesets(shouldEnable: boolean, ruleset: string[] = ["default"]): void {
     const rulesetOptions = {
       [shouldEnable ? "enableRulesetIds" : "disableRulesetIds"]: ruleset,
     };
