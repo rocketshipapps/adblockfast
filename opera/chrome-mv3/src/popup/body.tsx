@@ -5,6 +5,7 @@ import { BlockingInfo } from "../domain/types";
 import { Settings } from "../domain/settings";
 import { NativeAppStatus } from "../domain/native";
 import { Whitelist } from "../domain/whitelist";
+import { getActiveTabId } from "../domain/utils";
 
 type BodyProps = {
   isBlockingEnabled: boolean;
@@ -47,6 +48,7 @@ const Body: React.FC<BodyProps> = ({
   const handleWhitelistClick = async () => {
     const isWhitelisted = await whitelist.update(blockingInfo.host);
     setWhitelistButtonText(getWhitelistButtonText(isWhitelisted));
+    chrome.tabs.reload(await getActiveTabId());
   };
 
   return (
