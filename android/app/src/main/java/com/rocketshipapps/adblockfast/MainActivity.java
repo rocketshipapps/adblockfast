@@ -28,8 +28,10 @@ import com.rocketshipapps.adblockfast.utils.Rule;
 
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.viewpump.ViewPump;
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,11 +56,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CalligraphyConfig.initDefault(
-                new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
+        ViewPump.init(
+            ViewPump.builder().addInterceptor(
+                new CalligraphyInterceptor(
+                    new CalligraphyConfig
+                            .Builder()
+                            .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
+                            .setFontAttrId(R.attr.fontPath)
+                            .build()
+                )
+            ).build()
         );
 
         packageName = getApplicationContext().getPackageName();
@@ -94,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 
     @Override
