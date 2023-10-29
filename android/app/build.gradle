@@ -45,5 +45,5 @@ dependencies {
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
     implementation 'com.google.android.gms:play-services-analytics:10.2.4'
     implementation 'com.google.android.gms:play-services-gcm:10.2.4'
-    implementation 'com.github.kittinunf.fuel:fuel-android:1.6.0'
+    implementation 'com.github.kittinunf.fuel:fuel:2.3.1'
 }

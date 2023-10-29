@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".AdblockfastApplication">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +42,7 @@
                 <category android:name="com.example.gcm" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".service.UpdateReceiver">
+        <receiver android:name=".service.UpdateReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />
