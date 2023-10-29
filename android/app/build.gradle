@@ -19,13 +19,13 @@ android.buildTypes.each { type ->
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
         versionName "2.4.0"
         versionCode 11
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
     }
     buildTypes {
         release {
@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.dtx12:actions:0.1.4'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
-    implementation 'com.google.android.gms:play-services-analytics:10.2.4'
-    implementation 'com.google.android.gms:play-services-gcm:10.2.4'
+    implementation 'com.google.android.gms:play-services-analytics:18.0.4'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
     implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
 }
