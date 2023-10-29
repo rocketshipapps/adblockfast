@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.github.kittinunf.fuel.Fuel;
