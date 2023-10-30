@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
             ViewPump.builder().addInterceptor(
                 new CalligraphyInterceptor(
                     new CalligraphyConfig.Builder()
-                            .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
-                            .setFontAttrId(R.attr.fontPath)
-                            .build()
+                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
                 )
             ).build()
         );
