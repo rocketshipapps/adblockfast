@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rocketshipapps.adblockfast">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="com.samsung.android.sbrowser.permission.CONTENTBLOCKER" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,14 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".AdblockfastApplication">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <provider
             android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:name=".contentBlocker.contentProvider.FilterContentProvider"
@@ -43,7 +42,7 @@
                 <category android:name="com.example.gcm" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".service.UpdateReceiver">
+        <receiver android:name=".service.UpdateReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />

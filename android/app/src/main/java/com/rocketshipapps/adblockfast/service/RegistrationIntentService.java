@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.github.kittinunf.fuel.Fuel;
@@ -41,8 +41,12 @@ public class RegistrationIntentService extends IntentService {
 
         try {
             InstanceID instanceID = InstanceID.getInstance(this);
-            String token = instanceID.getToken(BuildConfig.GCM_DEFAULT_SENDER_ID,
-                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+            String token =
+                instanceID.getToken(
+                    BuildConfig.GCM_DEFAULT_SENDER_ID,
+                    GoogleCloudMessaging.INSTANCE_ID_SCOPE,
+                    null
+                );
 
             sendRegistrationTokenToServer(token);
         } catch (IOException ignore) {}
@@ -55,7 +59,7 @@ public class RegistrationIntentService extends IntentService {
         if (list.size() > 0) hasBlockingBrowser = true;
 
         if (sharedPreferences.getString("RELEASE", "").equals(Build.VERSION.RELEASE) &&
-                sharedPreferences.getBoolean("hasBlockingBrowser", false) == hasBlockingBrowser) return;
+            sharedPreferences.getBoolean("hasBlockingBrowser", false) == hasBlockingBrowser) return;
 
         List<Pair<String,String>> params = new ArrayList<>();
         params.add(new Pair<>("token", token));
