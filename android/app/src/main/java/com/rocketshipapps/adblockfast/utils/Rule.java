@@ -22,7 +22,7 @@ public class Rule {
         File file = null;
 
         try {
-            int res = (active) ? R.raw.blocked: R.raw.unblocked;
+            int res = (active) ? R.raw.blocked : R.raw.unblocked;
             file = new File(context.getFilesDir(), OUTPUT);
 
             // Remove any old file lying around
