@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <provider
             android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:name=".contentBlocker.contentProvider.FilterContentProvider"

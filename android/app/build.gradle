@@ -5,7 +5,6 @@ repositories {
     jcenter()
 }
 
-//Add these lines
 def APP_SECRET = '"' + AppSecret + '"' ?: '"Define application secret into grandle.properties"'
 def HOST = '"' + Host + '"' ?: '"Define your host into grandle.properties"'
 def GA_TRACKING_ID = '"' + GATrackingId + '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'

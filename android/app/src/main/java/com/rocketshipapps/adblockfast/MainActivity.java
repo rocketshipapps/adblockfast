@@ -59,11 +59,10 @@ public class MainActivity extends AppCompatActivity {
         ViewPump.init(
             ViewPump.builder().addInterceptor(
                 new CalligraphyInterceptor(
-                    new CalligraphyConfig
-                            .Builder()
-                            .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
-                            .setFontAttrId(R.attr.fontPath)
-                            .build()
+                    new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
                 )
             ).build()
         );
@@ -77,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
-            enableAnimtaion();
+            enableAnimation();
         } else if (Rule.active(this)) {
-            enableAnimtaion();
+            enableAnimation();
         } else {
-            disableAnimtaion();
+            disableAnimation();
         }
 
         AdblockfastApplication application = (AdblockfastApplication) getApplication();
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode != ConnectionResult.SUCCESS) {
             if (apiAvailability.isUserResolvableError(resultCode)) {
                 apiAvailability.getErrorDialog(this, resultCode, 9000)
-                        .show();
+                    .show();
             } else {
                 finish();
             }
@@ -145,10 +144,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (Rule.active(this)) {
             Rule.disable(this);
-            disableAnimtaion();
+            disableAnimation();
         } else {
             Rule.enable(this);
-            enableAnimtaion();
+            enableAnimation();
         }
 
         Intent intent = new Intent();
@@ -237,8 +236,8 @@ public class MainActivity extends AppCompatActivity {
 
     //region Block Animation
 
-    void disableAnimtaion() {
-        animator(new int[]{
+    void disableAnimation() {
+        animator(new int[] {
             R.drawable.blocked_0,
             R.drawable.blocked_1,
             R.drawable.blocked_2,
@@ -258,8 +257,8 @@ public class MainActivity extends AppCompatActivity {
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void enableAnimtaion() {
-        animator(new int[]{
+    void enableAnimation() {
+        animator(new int[] {
             R.drawable.unblocked_0,
             R.drawable.unblocked_1,
             R.drawable.unblocked_2,
@@ -284,8 +283,8 @@ public class MainActivity extends AppCompatActivity {
 
         double delay = 62.5;
 
-        for (int i=0; i<res.length; ++i) {
-            if (i==0) {
+        for (int i = 0; i < res.length; i++) {
+            if (i == 0) {
                 btnAdblock.setImageResource(res[i]);
             } else {
                 Handler handler = new Handler();
@@ -298,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                 btnAdblock.setImageResource(res[finalI]);
 
-                                if (finalI == res.length-1) {
+                                if (finalI == res.length - 1) {
                                     animating = false;
                                     txtStatus.setText(resTxtStatus);
                                     txtTap.setText(resTxtTap);

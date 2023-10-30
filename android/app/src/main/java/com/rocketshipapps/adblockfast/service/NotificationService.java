@@ -30,7 +30,8 @@ public class NotificationService extends GcmListenerService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+        NotificationCompat.Builder notificationBuilder =
+            new NotificationCompat.Builder(this)
                 .setColor(0xffde0421)
                 .setSmallIcon(R.drawable.notification)
                 .setContentTitle(title)
