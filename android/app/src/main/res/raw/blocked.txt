@@ -17,7 +17,7 @@
 ! this program. If not, see https://www.gnu.org/licenses/.
 !
 ! This file uses portions of EasyList <https://easylist.to/>, which is
-! subject to the same terms, and of AdGuard’s filters
+! subject to the same terms, and portions of AdGuard’s filters
 ! <https://kb.adguard.com/en/general/adguard-ad-filters>, which are subject to
 ! the compatible terms of the Creative Commons Attribution-ShareAlike 3.0
 ! Unported License. To view a copy of the CC BY-SA 3.0 license, visit
@@ -1304,7 +1304,6 @@
 ||alog.umengcloud.com^
 ||amp-error-reporting.appspot.com^
 ||analytics-server.gimbal.com^
-||analytics.ad.daum.net^
 ||analytics.liftoff.io^
 ||analytics.mobile.yandex.net^
 ||analytics.mopub.com^
@@ -1419,7 +1418,6 @@
 ||ssl-google-analytics.l.google.com^
 ||sstats.economist.com/b/ss/econdarwinproduction/
 ||stat.duokanbox.com^
-||statistics.videofarm.daum.net^
 ||stats.popcap.com^
 ||stats.unity3d.com^
 ||sypi.gpshopper.com^
@@ -4543,7 +4541,7 @@ deviantart.com#@#.mobile-ad
 @@||cnn.com^*/ad_policy.xml$object-subrequest,domain=cnn.com
 ||turner.com/xslo/cvp/ads/$domain=cnn.com
 @@||cnet2.cbsistatic.com/fly/*/bundles/cnetmpxpdk/
-@@||imasdk.googleapis.com^$domain=cnet.com
+@@||imasdk.googleapis.com^$domain=cnet.com|daum.net
 @@||livefyre.com/wjs/v1.0/javascripts/CommentCount.js$domain=mlb.com
 @@||t-mobile.com/mms/$document
 @@||bos.ads.nexage.com/adServe?

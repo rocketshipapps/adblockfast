@@ -21,8 +21,8 @@ android {
         applicationId "com.rocketshipapps.adblockfast"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 9
-        versionName "2.2.0"
+        versionCode 10
+        versionName "2.3.0"
     }
     buildTypes {
         release {
