@@ -1,5 +1,6 @@
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 repositories {
     jcenter()
@@ -28,12 +29,17 @@ android {
     }
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
         }
     }
     productFlavors {
     }
+    namespace 'com.rocketshipapps.adblockfast'
 }
 
 dependencies {

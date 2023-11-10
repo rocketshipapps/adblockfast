@@ -46,8 +46,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.viewpump.ViewPump;
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,11 +79,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CalligraphyConfig.initDefault(
-                new CalligraphyConfig.Builder()
+        ViewPump.init(
+            ViewPump.builder().addInterceptor(
+                new CalligraphyInterceptor(
+                    new CalligraphyConfig.Builder()
                         .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
                         .setFontAttrId(R.attr.fontPath)
                         .build()
+                )
+            ).build()
         );
 
         packageName = getApplicationContext().getPackageName();
@@ -113,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 
     @Override
@@ -361,8 +367,8 @@ public class MainActivity extends AppCompatActivity {
 
         double delay = 62.5;
 
-        for (int i=0; i<res.length; ++i) {
-            if (i==0) {
+        for (int i = 0; i < res.length; i++) {
+            if (i == 0) {
                 btnAdblock.setImageResource(res[i]);
             } else {
                 Handler handler = new Handler();
@@ -375,7 +381,7 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                 btnAdblock.setImageResource(res[finalI]);
 
-                                if (finalI == res.length-1) {
+                                if (finalI == res.length - 1) {
                                     animating = false;
                                     txtStatus.setText(resTxtStatus);
                                     txtTap.setText(resTxtTap);
