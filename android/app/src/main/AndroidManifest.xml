@@ -32,7 +32,16 @@
             android:name="com.samsung.android.sbrowser.contentBlocker.interfaceVersion"
             android:value="API_1.0" />
 
-        <receiver android:name=".service.UpdateReceiver">
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.example.gcm" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.UpdateReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />

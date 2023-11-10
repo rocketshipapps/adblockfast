@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
@@ -148,55 +149,13 @@ public class MainActivity extends AppCompatActivity {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
-            apiAvailability.makeGooglePlayServicesAvailable(this);
-        }
-    }
-
-    private void getAccounts() {
-        Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
-        startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
-            if (data != null) {
-                final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
-
-                if (email != null) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                URL url = new URL(BuildConfig.SUBSCRIBE_URL);
-                                HttpURLConnection req = (HttpURLConnection) url.openConnection();
-                                req.setRequestMethod("POST");
-                                req.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                                req.setRequestProperty("Accept", "application/json");
-                                req.setDoOutput(true);
-                                req.setDoInput(true);
-
-                                JSONObject params = new JSONObject();
-                                params.put("email", email);
-
-                                DataOutputStream os = new DataOutputStream(req.getOutputStream());
-                                os.writeBytes(params.toString());
-
-                                os.flush();
-                                os.close();
-
-                                req.disconnect();
-
-                                preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
-                }
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, 9000)
+                    .show();
+            } else {
+                finish();
             }
-
-            checkIfHasBlockingBrowser();
+            return false;
         }
     }
 
@@ -356,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
     //region Block Animation
 
     void disableAnimation() {
-        animator(new int[]{
+        animator(new int[] {
             R.drawable.blocked_0,
             R.drawable.blocked_1,
             R.drawable.blocked_2,
@@ -409,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void enableAnimation() {
-        animator(new int[]{
+        animator(new int[] {
             R.drawable.unblocked_0,
             R.drawable.unblocked_1,
             R.drawable.unblocked_2,

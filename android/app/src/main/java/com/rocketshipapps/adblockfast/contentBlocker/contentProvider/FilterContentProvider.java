@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
-
 import androidx.annotation.Nullable;
 
 import com.rocketshipapps.adblockfast.utils.Rule;

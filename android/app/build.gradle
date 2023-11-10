@@ -5,24 +5,26 @@ repositories {
     jcenter()
 }
 
-//Add these lines
-def GA_TRACKING_ID = '"' + GATrackingId+ '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'
-def SUBSCRIBE_URL = '"' + FirebaseSubscribeFunctionURL + '"' ?: '"Define Firebase cloud function URL"'
+def APP_SECRET = '"' + AppSecret + '"' ?: '"Define application secret into grandle.properties"'
+def HOST = '"' + Host + '"' ?: '"Define your host into grandle.properties"'
+def GA_TRACKING_ID = '"' + GATrackingId + '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'
+def GCM_DEFAULT_SENDER_ID = '"' + GCMDefaultSenderId + '"' ?: '"Define Google Cloud Message sender ID into grandle.properties"'
 
 android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'APP_SECRET', APP_SECRET
+    type.buildConfigField 'String', 'HOST', HOST
     type.buildConfigField 'String', 'GA_TRACKING_ID', GA_TRACKING_ID
-    type.buildConfigField 'String', 'SUBSCRIBE_URL', SUBSCRIBE_URL
+    type.buildConfigField 'String', 'GCM_DEFAULT_SENDER_ID', GCM_DEFAULT_SENDER_ID
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '28.0.3'
+    compileSdk 33
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
+        versionName "2.1.0"
+        versionCode 8
         minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 10
-        versionName "2.3.0"
+        targetSdkVersion 33
     }
     buildTypes {
         release {
@@ -37,10 +39,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:29.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'com.dtx12:actions:0.1.4'
-    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
-    implementation 'com.google.android.gms:play-services-analytics:10.2.4'
-    implementation 'com.github.kittinunf.fuel:fuel-android:1.6.0'
-    implementation 'com.onesignal:OneSignal:3.11.3'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+    implementation 'com.google.android.gms:play-services-analytics:18.0.4'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
 }
