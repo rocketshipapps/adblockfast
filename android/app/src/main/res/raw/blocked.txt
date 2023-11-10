@@ -1,6 +1,6 @@
 [Adblock Fast]
 !
-! Copyright 2016–2020 Rocketship <https://rocketshipapps.com/>
+! Copyright 2016–2021 Rocketship <https://rocketshipapps.com/>
 ! Copyright 2005–2019 The EasyList authors <https://easylist.to/>
 ! Copyright 2009–2019 AdGuard <https://adguard.com/>
 !
@@ -967,6 +967,14 @@
 ||smilered.com^
 ||weboohost.com^
 ||widgets.tree.com^
+||adservice.google.com^
+||pagead2.googlesyndication.com^
+||doubleclick.net^
+||openx.net^
+||mxptint.net^
+||mathtag.com^
+||justpremium.com^$third-party
+||purplepatch.online^$third-party
 !
 ! -----------------------------Third-party adverts-----------------------------!
 !
@@ -1479,6 +1487,8 @@
 ##.searchCenterBottomAds
 ##.searchCenterTopAds
 ##.side-ad
+###ad-overlay
+###div-gpt-ad-
 !
 ! ------------------------Specific element hiding rules------------------------!
 !
@@ -3257,6 +3267,7 @@ www.thedailybeast.com##.SimpleAd
 www.thedailybeast.com##.PageTopAd
 www.thedailybeast.com##.ConnatixAd
 www.thedailybeast.com##.FooterAd
+m.daum.net##.box_promotion
 www.latimes.com##.GoogleDfpAd-wrapper
 www.latimes.com##.Page-below
 outlook.live.com###RadAd_Skyscraper
