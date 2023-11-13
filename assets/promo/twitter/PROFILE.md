@@ -14,7 +14,7 @@
 
 The world’s fastest ad blocker! A @rocketship app. Some tweets by @oldestlivingboy (^olb).
 
-**Location:** Android, iOS, Chrome, Opera
+**Location:** Windows, Android, iOS, Chrome
 
 **Website:** https://adblockfast.com/
 
