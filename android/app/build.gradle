@@ -6,16 +6,12 @@ repositories {
     jcenter()
 }
 
-def APP_SECRET = '"' + AppSecret + '"' ?: '"Define application secret into grandle.properties"'
-def HOST = '"' + Host + '"' ?: '"Define your host into grandle.properties"'
 def GA_TRACKING_ID = '"' + GATrackingId + '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'
-def GCM_DEFAULT_SENDER_ID = '"' + GCMDefaultSenderId + '"' ?: '"Define Google Cloud Message sender ID into grandle.properties"'
+def SUBSCRIBE_URL = '"' + FirebaseSubscribeFunctionURL + '"' ?: '"Define Firebase cloud function URL"'
 
 android.buildTypes.each { type ->
-    type.buildConfigField 'String', 'APP_SECRET', APP_SECRET
-    type.buildConfigField 'String', 'HOST', HOST
     type.buildConfigField 'String', 'GA_TRACKING_ID', GA_TRACKING_ID
-    type.buildConfigField 'String', 'GCM_DEFAULT_SENDER_ID', GCM_DEFAULT_SENDER_ID
+    type.buildConfigField 'String', 'SUBSCRIBE_URL', SUBSCRIBE_URL
 }
 
 android {
@@ -26,6 +22,10 @@ android {
         versionCode 8
         minSdkVersion 21
         targetSdkVersion 33
+        manifestPlaceholders = [
+            onesignal_app_id: OneSignalAppId,
+            onesignal_google_project_number: 'REMOTE'
+        ]
     }
     buildTypes {
         release {
@@ -50,6 +50,6 @@ dependencies {
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.google.android.gms:play-services-analytics:18.0.4'
-    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
     implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
+    implementation 'com.onesignal:OneSignal:3.11.3'
 }

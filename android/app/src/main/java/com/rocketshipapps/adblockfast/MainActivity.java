@@ -156,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, 9000)
-                    .show();
+                apiAvailability.getErrorDialog(this, resultCode, 9000).show();
             } else {
                 finish();
             }
