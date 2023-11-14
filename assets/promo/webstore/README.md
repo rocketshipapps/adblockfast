@@ -9,5 +9,6 @@
 **Address:**
 
 Rocketship Apps, LLC  
-440 North Barranca Avenue #1849  
-Covina, California 91723
+440 N Barranca Ave #1849  
+Covina, CA 91723  
+US
