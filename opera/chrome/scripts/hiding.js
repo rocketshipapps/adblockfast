@@ -1,17 +1,16 @@
 /*
-  Copyright 2015–2021 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015– Rocketship <https://rocketshipapps.com/>
 
-  This program is free software: you can redistribute it and/or modify it under
-  the terms of the GNU General Public License as published by the Free Software
-  Foundation, either version 3 of the License, or (at your option) any later
-  version.
+  This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+  General Public License as published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful, but WITHOUT
-  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+  even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along with
-  this program. If not, see https://www.gnu.org/licenses/.
+  You should have received a copy of the GNU General Public License along with this program. If not,
+  see https://www.gnu.org/licenses/.
 
   Authors (one per line):
 
@@ -61,8 +60,7 @@ const SELECTORS = {
   // Comcast
   'www.cnbc.com':
       '#ms_aur, #vidRightRailWrapper, div[style="width:960;height:90;margin:0 0 5px 0;"], #social-tools-panel',
-  'www.nbcnews.com':
-      '#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey, .stackCommerceList',
+  'www.nbcnews.com': '#Sidebar2-sponsored, .deals, .eshopStory, .textSmallGrey, .stackCommerceList',
   'www.nbcsports.com':
       '#top_90h, [id^=block-dart-dart-tag-dart-tag], #nbcsports-leaderboard, .block-mps, .taboola-thumbnails-container',
   // Condé Nast
@@ -85,8 +83,7 @@ const SELECTORS = {
   'video.disney.com': '.pushdown',
   'www.babble.com': '.bb-ad, .tm-ad',
   'www.disney.com': '.gpt, .pushdown',
-  'www.espn.com':
-      '#sponsored-by, div[style="height: 325px;"], .ad-slot, .ad-300, #sponsored',
+  'www.espn.com': '#sponsored-by, div[style="height: 325px;"], .ad-slot, .ad-300, #sponsored',
   // eBay
   'www.ebay.co.uk':
       '#rtm_html_194, #rtm_html_274, #rtm_html_275, #rtm_html_391, #rtm_html_566, #rtm_html_567, #rtm_html_569, #skyscrape, .RtmStyle, .sdcBox, .topBnrSc, div[style="margin-top: 15px; width: 160px; height: 615px; overflow: hidden; display: block;"], div[style="width: 300px; height: 265px; overflow: hidden; display: block;"], .beta-placement, #rtm_html_393, #rtm_html_987, #rtm_html_11575, #gf-mrecs-ads, .ft-btyle',
@@ -121,13 +118,11 @@ const SELECTORS = {
   'defamer.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'dog.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'domesticity.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
-  'fortressamerica.gawker.com':
-      '.js_promoted, .contained-ad-container, .ad-bottom',
+  'fortressamerica.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'internet.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'justice.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
-  'morningafter.gawker.com':
-      '.js_promoted, .contained-ad-container, .ad-bottom',
+  'morningafter.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'review.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'sausage.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
   'thevane.gawker.com': '.js_promoted, .contained-ad-container, .ad-bottom',
@@ -147,8 +142,7 @@ const SELECTORS = {
       '.js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'earther.gizmodo.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
-  'entertainment.theonion.com':
-      '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
+  'entertainment.theonion.com': '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'fieldguide.gizmodo.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'film.avclub.com':
@@ -171,8 +165,7 @@ const SELECTORS = {
       '#postTransitionOverlay, .js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
   'lifehacker.com':
       '#postTransitionOverlay, .js_promoted, .contained-ad-container, .ad-bottom, .ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container',
-  'local.theonion.com':
-      '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
+  'local.theonion.com': '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'music.avclub.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'news.avclub.com':
@@ -183,8 +176,7 @@ const SELECTORS = {
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'pictorial.jezebel.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
-  'politics.theonion.com':
-      '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
+  'politics.theonion.com': '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'screengrabber.deadspin.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'skillet.lifehacker.com':
@@ -193,8 +185,7 @@ const SELECTORS = {
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'sploid.gizmodo.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
-  'sports.theonion.com':
-      '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
+  'sports.theonion.com': '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'studioatgizmodo.kinja.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'thatswhatshesaid.jezebel.com':
@@ -225,8 +216,7 @@ const SELECTORS = {
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   'www.avclub.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
-  'www.theonion.com':
-      '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
+  'www.theonion.com': '.ad-top.ad-wide, .ad-non-sticky, .contained-ad-container',
   'www.theroot.com':
       '.ad-top.ad-wide, .ad-non-sticky, .ad-promotions-container, .contained-ad-container',
   // Google
@@ -261,8 +251,7 @@ const SELECTORS = {
   // Penske Media
   'deadline.com':
       '.widget_pmc_marketplace_ads, .footer-ad-mobile, #ad-interruptus-header, .admz, .jpx-pd-wrapper',
-  'www.rollingstone.com':
-      '.c-ad, .admz, .resize-manager__adOuterContainer___T_gCf',
+  'www.rollingstone.com': '.c-ad, .admz, .resize-manager__adOuterContainer___T_gCf',
   // Reddit
   'www.reddit.com':
       '#siteTable_organic, .promotedlink, .dfp-ad-container, [data-before-content="advertisement"]',
@@ -303,8 +292,7 @@ const SELECTORS = {
   'www.theverge.com':
       '#fishtank, .-ad, .harmony-sponsorship, .m-feature__intro > aside, .vert300, .m-review__intro > aside',
   // Yahoo
-  'answers.yahoo.com':
-      '.searchRightBottomAds, #ya-darla-LREC, #ya-qpage-textads, #ya-darla-MAST',
+  'answers.yahoo.com': '.searchRightBottomAds, #ya-darla-LREC, #ya-qpage-textads, #ya-darla-MAST',
   'au.news.yahoo.com':
       '.acc-moneyhound, .collection-sponsored, .moneyhound, .northAd, .y7-advertisement',
   'au.sports.yahoo.com':
@@ -341,17 +329,13 @@ const SELECTORS = {
       '#fromOurSponsorsHome, .mediumRectangleAdContainer, .leaderFooterAdContainer, .skyscraperAdContainer, .leaderAdContainer, #leaderBodyContainer, #mediumRectangleAd2Container, #mobilePos1AdContainer, #leaderAdContainer, #outstream1x1Container, #programmaticMultiAdContainer, #nativeAdContainer, #mediumRectangleAd1Container, #gptSkyscraperAdContainer, #programmaticMultiAdFooterContainer, #catfishAdContainer',
   // Et al.
   '9gag.com': '.block-ad, .badge-gag-ads-container, .topBannerAd-container',
-  'coinmarketcap.com':
-      '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
+  'coinmarketcap.com': '#header-banner-wrapper, .responsive-leaderboard, .skyscraper',
   'diply.com': '.center-da, .mega-da-full, .da-disclaimer, .btfrectangle',
-  'gigaom.com':
-      '#ad-leaderboard-container, #ad-billboard-container, .widget-go-ads',
-  'laughingsquid.com':
-      '.sharethrough-placement, [id^=div-gpt-ad], [id^=taboola]',
+  'gigaom.com': '#ad-leaderboard-container, #ad-billboard-container, .widget-go-ads',
+  'laughingsquid.com': '.sharethrough-placement, [id^=div-gpt-ad], [id^=taboola]',
   'pando.com': '.advert-slot',
   'slate.com': '.top-ad',
-  'thinkprogress.org':
-      '[id^=ad_zone], .yad-sponsored, .sidebar-ad, .ad-wrapper',
+  'thinkprogress.org': '[id^=ad_zone], .yad-sponsored, .sidebar-ad, .ad-wrapper',
   'time.com':
       '.sep, [id^=ad-unit-], [class$=-ad], .left-rail-ad__wrapper, .right-rail__container--ad, .outbrain, .lead-gen',
   'venturebeat.com': '.widget_vb_dfp_ad, .vb-ad-leaderboard',
@@ -373,8 +357,7 @@ const SELECTORS = {
       'a[href^="http://www.cellpex.com/affiliates/"], #topAdv, #div-gpt-ad-1536149699860-0',
   'www.inquirer.com': '.arc-ad-wrapper, .pb-f-ads-arcads',
   'www.mediaite.com': 'div[data-adid], .o-zergnet',
-  'www.newsweek.com':
-      '.sponsor, .resize-manager__browserAdOuterContainer___1m3es',
+  'www.newsweek.com': '.sponsor, .resize-manager__browserAdOuterContainer___1m3es',
   'www.nytimes.com':
       '.text-ad, .g-ad, .e12j3pa50, .css-1jrr5my, .eaca97t0, .css-1sy8kpn, .css-1r07izm, .css-1ede5it, .Ad-ad--25EEa, #SponLink',
   'www.phonearena.com':
@@ -382,42 +365,30 @@ const SELECTORS = {
   'www.publishersweekly.com':
       '.leaderboard, .quicklinks-ad, #div-gpt-ad-enlarged, #div-gpt-ad-enlarged-inline, .bbstar-popin',
   'www.reuters.com': '#bannerStrip, #marchex, .slide-ad',
-  'www.si.com':
-      '.m-header-ad, .l-grid--ad-card, .m-in-content-ad-row, .m-rev-content',
+  'www.si.com': '.m-header-ad, .l-grid--ad-card, .m-in-content-ad-row, .m-rev-content',
   'www.smh.com.au':
       '.adWrapper, div#adspot-N-6x1-pos1, div#adspot-N-6x2-pos1, div#adspot-N-6x3-pos1, [data-widget="plista_widget_underArticle_v2"]',
-  'www.spin.com':
-      '.sm-widget-ad-holder, .footer-ad-holder, #medrec_bottom_lazy_comments_wrapper',
-  'www.theblaze.com':
-      'iframe[name="adblade_ad_iframe"], .ad-tag, .sidebar_sticky_container',
+  'www.spin.com': '.sm-widget-ad-holder, .footer-ad-holder, #medrec_bottom_lazy_comments_wrapper',
+  'www.theblaze.com': 'iframe[name="adblade_ad_iframe"], .ad-tag, .sidebar_sticky_container',
   'www.theguardian.com':
       '.top-banner-ad-container, .js-fc-slice-mpu-candidate, .ad-slot-container .js-ad-slot-container, .ad-slot, #tvgAdvert, .hide-on-popup, .m-money-deals, .money-supermarket, .print-sponsorship, .slot__container, #global-jobs',
   'www.washingtonpost.com':
       '#banner_wrapper_bottom, #slug_88x31, #slug_featured_links, #slug_flex_ss_bb_hp, #slug_inline_bb, #slug_sponsor_links_rr, #textlinkWrapper, #wpni_adi_leaderboard, .brand-connect-module, .pb-ad-container, .ads, .ad-hideable, .grey-bg, .bg-offwhite, .outbrain-wrapper, [class="dn db-ns"], #leaderboard-wrapper',
-  'mail.ru':
-      '.w-banner, .text-banner',
-  'sportmail.ru':
-      '.ban',
-  'news.mail.ru':
-      '.ban',
-  'auto.mail.ru':
-      '.ban, [data-16806="1"], .rb_10227, .rb_6015, .rb-criteo-wrapper',
-  'kino.mail.ru':
-      '.ban',
-  'lady.mail.ru':
-      '.ban',
-  'games.mail.ru':
-      '.ban',
-  'hi-tech.mail.ru':
-      '.ban',
+  'mail.ru': '.w-banner, .text-banner',
+  'sportmail.ru': '.ban',
+  'news.mail.ru': '.ban',
+  'auto.mail.ru': '.ban, [data-16806="1"], .rb_10227, .rb_6015, .rb-criteo-wrapper',
+  'kino.mail.ru': '.ban',
+  'lady.mail.ru': '.ban',
+  'games.mail.ru': '.ban',
+  'hi-tech.mail.ru': '.ban',
   'www.sohu.com':
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W, .godR, .god-main, .god-sub, .god-cut',
   'mil.sohu.com':
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
   'news.sohu.com':
       '.sohuadcode, #ad_TOP, #ad_B, #ad_C, #ad_D, .fanfujubao, .fanfujubao1, .fanfujubao2, .fanfujubao3, #ad_E_A, #ad_E, #ad_G, #ad_H, #ad_M, #ad_O, #ad_T, #ad_N, #ad_W',
-  'stackoverflow.com':
-      '.adzerk-vote',
+  'stackoverflow.com': '.adzerk-vote',
   'www.google.es':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.ru':
@@ -426,8 +397,7 @@ const SELECTORS = {
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'www.google.it':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
-  'cn.hao123.com':
-      '.hao123-banner',
+  'cn.hao123.com': '.hao123-banner',
   'www.google.co.uk':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.fr':
@@ -436,142 +406,87 @@ const SELECTORS = {
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.br':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
-  'www.coupons.com':
-        '.mod-ads, #widesky-banner, .myc_google',
+  'www.coupons.com': '.mod-ads, #widesky-banner, .myc_google',
   'www.kbb.com':
-        '#kbbAdsMedRec, #kbbAdsMedRec2, #Aside, #Mrec-container, #New-spotlights, #kbbAdsCustomCompare, #kbbAdsHpPushdown, .showroom-ad, #kbbAdsLeaderboard, #kbbAdsCategoryCarouselMedRec1, #kbbAdsSlpLeaderboard',
-  'vk.com':
-        '#banner1, #banner2, #left_ads',
-  'www.tmall.com':
-        '.floor-ad-banner',
+      '#kbbAdsMedRec, #kbbAdsMedRec2, #Aside, #Mrec-container, #New-spotlights, #kbbAdsCustomCompare, #kbbAdsHpPushdown, .showroom-ad, #kbbAdsLeaderboard, #kbbAdsCategoryCarouselMedRec1, #kbbAdsSlpLeaderboard',
+  'vk.com': '#banner1, #banner2, #left_ads',
+  'www.tmall.com': '.floor-ad-banner',
   'weather.com':
-        '#pageSpon2, #paid_search, #partner_offers, #twc-partner-spot, .divBottomNotice, .divCenterNotice, .trc_recs_column + .right-column, .taboola_module',
+      '#pageSpon2, #paid_search, #partner_offers, #twc-partner-spot, .divBottomNotice, .divCenterNotice, .trc_recs_column + .right-column, .taboola_module',
   'www.google.com.mx':
-        '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.google.com.hk':
-        '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
+      '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"], .ads-ad',
   'www.linkedin.com':
       '#ad-container, #bottom-ads-container > .attribution, .ad-hrc, .ad-banner-container, .occludable-update .feed-shared-update-v2--e2e',
-  'www.yelp.com':
-      '.googlead-sponsor-wrapper, .googlead-bigbox-wrapper, .yloca-search-result',
-  'www.groupon.com':
-      '.da-gallery-160-600',
+  'www.yelp.com': '.googlead-sponsor-wrapper, .googlead-bigbox-wrapper, .yloca-search-result',
+  'www.groupon.com': '.da-gallery-160-600',
   'www.instructables.com':
       '.aspace, .newrightbar_div_10, #gpt-ad-leaderboard, .collection-adspot, .explore-ad',
   'www.allrecipes.com':
       '#ads-right, .rrAdPad, .bottom-ad2, .advertise_txt, .ad-text, .topads-spacer, .reserve-ad-space, .review-ad-space, .ad-recipe-page-footer-container',
-  'www.google.co.in':
-      '.ads-ad, .ads-bbl-container, .ads-bbl-triangle',
-  'news.yahoo.co.jp':
-      '[name^=yads], .ss',
-  'www.yahoo.co.jp':
-      '[name^=yads], #brandpanel, #ad-lrec',
-  'weather.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'loco.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'fortune.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'movies.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'special-bookstore.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'partner.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'blogs.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'finance.yahoo.co.jp':
-      '[name^=yads], #ad-lrec, #pos-lrec',
-  'carview.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'ucar.carview.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'job.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'transit.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'map.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'tv.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'news.finance.yahoo.co.jp':
-      '[name^=yads], #ad-lrec, #pos-lrec',
-  'sports.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'auctions.yahoo.co.jp':
-      '[name^=yads], #ad-lrec',
-  'www.google.co.jp':
-      '#rhs_block, .ads-ad',
-  'yandex.ru':
-      '.serp-adv__block, .serp-block-o7',
+  'www.google.co.in': '.ads-ad, .ads-bbl-container, .ads-bbl-triangle',
+  'news.yahoo.co.jp': '[name^=yads], .ss',
+  'www.yahoo.co.jp': '[name^=yads], #brandpanel, #ad-lrec',
+  'weather.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'loco.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'fortune.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'movies.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'special-bookstore.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'partner.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'blogs.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'finance.yahoo.co.jp': '[name^=yads], #ad-lrec, #pos-lrec',
+  'carview.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'ucar.carview.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'job.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'transit.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'map.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'tv.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'news.finance.yahoo.co.jp': '[name^=yads], #ad-lrec, #pos-lrec',
+  'sports.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'auctions.yahoo.co.jp': '[name^=yads], #ad-lrec',
+  'www.google.co.jp': '#rhs_block, .ads-ad',
+  'yandex.ru': '.serp-adv__block, .serp-block-o7',
   'www.sina.com.cn':
       '.sinaads-couplet-side, .sinaad-toolkit-box, .top-ads-fwrap, .palm01-ad, .mod-08, .ad-banner, .sinaads, .tit01, .mod03, .top-ads, .mod-01 + .blank-cont, .part-l, .sinaAD_slide01_w, .part-n-l',
   'news.sina.com.cn':
       '.pip00adNone, .adNone, .sinaad-toolkit-box, .sinaads, [class^=ad_], .tb0827, div[name^=_AdSame], [class^=Ad_]',
-  'www.baidu.com':
-      '#ec_im_container',
+  'www.baidu.com': '#ec_im_container',
   'www.naver.com':
       '.img_style, #ad_top, #ad_branding_hide, #ad_branding, #ad_timesquare, .ad_area2',
-  'soso.com':
-      '.ad-box, .ad_top_banner',
-  'www.sogou.com':
-      '.ad-box, .ad_top_banner',
-  'www.nicovideo.jp':
-      '.googleAds',
+  'soso.com': '.ad-box, .ad_top_banner',
+  'www.sogou.com': '.ad-box, .ad_top_banner',
+  'www.nicovideo.jp': '.googleAds',
   'www.google.co.id':
       '#mbEnd[cellspacing="0"][cellpadding="0"], #rhs_block > #mbEnd, #tads + div + .c, #tads.c, #topstuff > #tads, #tadsc, .GC3LC41DERB + div[style="position: relative; height: 170px;"], .GGQPGYLCD5, .GGQPGYLCMCB, .GISRH3UDHB, .ad-active, .ads, .c[style="margin: 0pt;"], .nH.MC, .ts[style="margin:0 0 12px;height:92px;width:100%"], [style="border: 1px solid rgb(0, 90, 136);"], [style="border: 1px solid rgb(145, 117, 77);"], [style="border: 1px solid rgb(241, 250, 248);"], [style="border: 1px solid rgb(51, 102, 153);"], [style="border: 1px solid rgb(51, 102, 204);"], body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child, div[style^="height: 16px; font: bold 12px/16px"]',
   'xinhuanet.com':
       '[style="z-index:5;"], #topAdv, [id^=adBody], #promotionItem, [id^=Full], .scrollAd, [class^=ad]',
-  'people.com.cn':
-      '.top_ad, .mt15, .ad_banner, .city dl',
-  'www.people.com.cn':
-      '.top_ad, .mt15, .ad_banner, .city dl',
-  'spanish.peopledaily.com.cn':
-      '.ad01, .ad02',
-  'www.cctv.com':
-      '[id^=div-gpt-ad-]',
+  'people.com.cn': '.top_ad, .mt15, .ad_banner, .city dl',
+  'www.people.com.cn': '.top_ad, .mt15, .ad_banner, .city dl',
+  'spanish.peopledaily.com.cn': '.ad01, .ad02',
+  'www.cctv.com': '[id^=div-gpt-ad-]',
   'www.dailymotion.com':
       '.affiliation_cont, .dmpi_masscast, .masscast_box, .masscast_middle_box, #mc_Middle, #top_banner',
-  'www.google.pl':
-      '#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
-  'www.ebay.de':
-      '.ft-btyle, [id^=rtm_html_], #gf-mrecs-ads',
-  'www.google.co.kr':
-      '#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
-  'www.accuweather.com':
-      '[id^=aad]',
-  'www.wunderground.com':
-      '.spotBox, .header-ad-wrap, #top-ad-wrapper, .ad-box, .report-ad',
-  'www.chinadaily.com.cn':
-      '.w980.pt10, [class^=ad], iframe[name^=ad], img[src*=adpic]',
+  'www.google.pl': '#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
+  'www.ebay.de': '.ft-btyle, [id^=rtm_html_], #gf-mrecs-ads',
+  'www.google.co.kr': '#tads, .ads-ad, ._Ak, .cards-categorical-list-ad',
+  'www.accuweather.com': '[id^=aad]',
+  'www.wunderground.com': '.spotBox, .header-ad-wrap, #top-ad-wrapper, .ad-box, .report-ad',
+  'www.chinadaily.com.cn': '.w980.pt10, [class^=ad], iframe[name^=ad], img[src*=adpic]',
   'news.livedoor.com':
       'iframe[src*=unthem], .ads-block-link, .rakutenAff, aside.subSec:first-of-type',
-  'www.livedoor.com':
-      'iframe[src*=unthem], .ads-block-link',
-  'www.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'guancha.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'politics.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'news.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'sports.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'culture.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'health.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'tech.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'edu.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'legal.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'theory.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
-  'travel.gmw.cn':
-      '[class^=bannerArea], [class^=ad], [class^=contentadBox]'
+  'www.livedoor.com': 'iframe[src*=unthem], .ads-block-link',
+  'www.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'guancha.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'politics.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'news.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'sports.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'culture.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'health.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'tech.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'edu.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'legal.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'theory.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]',
+  'travel.gmw.cn': '[class^=bannerArea], [class^=ad], [class^=contentadBox]'
 };

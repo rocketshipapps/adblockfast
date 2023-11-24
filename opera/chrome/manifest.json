@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Adblock Fast",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description":
       "The world’s fastest ad blocker! Same blocking, 8x more accelerated webpages.",
   "icons": {
@@ -39,11 +39,8 @@
     "http://*/*",
     "https://*/*"
   ],
-  "content_security_policy":
-      "script-src 'self' https://*.firebaseio.com 'unsafe-eval'; object-src 'self'",
   "background": {
     "scripts": [
-      "scripts/vendor/firebase.js",
       "scripts/utils.js",
       "scripts/blocking.js",
       "scripts/background.js"

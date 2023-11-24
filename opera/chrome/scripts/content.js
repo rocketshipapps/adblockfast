@@ -1,17 +1,16 @@
 /*
-  Copyright 2015–2021 Rocketship <https://rocketshipapps.com/>
+  Copyright 2015– Rocketship <https://rocketshipapps.com/>
 
-  This program is free software: you can redistribute it and/or modify it under
-  the terms of the GNU General Public License as published by the Free Software
-  Foundation, either version 3 of the License, or (at your option) any later
-  version.
+  This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+  General Public License as published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful, but WITHOUT
-  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+  even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along with
-  this program. If not, see https://www.gnu.org/licenses/.
+  You should have received a copy of the GNU General Public License along with this program. If not,
+  see https://www.gnu.org/licenses/.
 
   Authors (one per line):
 
@@ -19,8 +18,12 @@
 */
 function populate(style, selector) {
   const SHEET = style.sheet;
-  if (SHEET) SHEET.insertRule(selector + ' { display: none !important }', 0);
-  else setTimeout(function() { populate(style, selector); }, 0);
+
+  if (SHEET) {
+    SHEET.insertRule(selector + ' { display: none !important }', 0);
+  } else {
+    setTimeout(function() { populate(style, selector); }, 0);
+  }
 }
 
 function hideSponsoredPosts(newsFeed, isWhitelisted) {
@@ -35,16 +38,18 @@ function hideSponsoredPosts(newsFeed, isWhitelisted) {
       const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[0];
       var subheading = '';
 
-      if (SUBHEADING_CONTAINER) subheading = SUBHEADING_CONTAINER.textContent;
-      else {
-        const CHARACTERS =
-            POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i');
+      if (SUBHEADING_CONTAINER) {
+        subheading = SUBHEADING_CONTAINER.textContent;
+      } else {
+        const CHARACTERS = POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i');
         const CHARACTER_COUNT = CHARACTERS.length;
 
         for (var j = 0; j < CHARACTER_COUNT; j++) {
           const CHARACTER = CHARACTERS[j];
-          if (getComputedStyle(CHARACTER).display != 'none')
-              subheading += CHARACTER.getAttribute('data-content');
+
+          if (getComputedStyle(CHARACTER).display != 'none') {
+            subheading += CHARACTER.getAttribute('data-content');
+          }
         }
       }
 
@@ -67,8 +72,7 @@ function hidePromotedTweets(timeline, isWhitelisted) {
 
     for (var i = 0; i < TWEET_COUNT; i++) {
       const TWEET = TWEETS[i];
-      const METADATA =
-          TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
+      const METADATA = TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
 
       if (METADATA && METADATA.textContent.slice(0, 8) == 'Promoted') {
         if (!isWhitelisted) TWEET.parentElement.style.display = 'none';
@@ -91,9 +95,11 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
     selector =
         '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, .advertisement, .advertorial, .bottom-ad, [id^=div-gpt-ad-], .fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
             + (selector ? ', ' + selector : '');
-    if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com')
-        selector +=
-            ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
+
+    if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com') {
+      selector +=
+          ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
+    }
 
     if (selector) {
       if (!IS_WHITELISTED) {
@@ -103,38 +109,37 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       }
 
       onReady(function() {
-        if (WAS_GRANT_BUTTON_PRESSED)
-            if (PARENT_HOST == 'www.facebook.com') {
-              const NEWS_FEED = document.getElementById('content');
+        if (WAS_GRANT_BUTTON_PRESSED) {
+          if (PARENT_HOST == 'www.facebook.com') {
+            const NEWS_FEED = document.getElementById('content');
 
-              if (NEWS_FEED) {
-                (new MutationObserver(function(mutations) {
-                  const MUTATION_COUNT = mutations.length;
-                  for (var i = 0; i < MUTATION_COUNT; i++)
-                      if (
-                        hideSponsoredPosts(mutations[i].target, IS_WHITELISTED)
-                      ) wereAdsFound = true;
-                })).observe(NEWS_FEED, {childList: true, subtree: true});
+            if (NEWS_FEED) {
+              (new MutationObserver(function(mutations) {
+                const MUTATION_COUNT = mutations.length;
 
-                if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED))
-                    wereAdsFound = true;
-              }
-            } else if (PARENT_HOST == 'twitter.com') {
-              const TIMELINE = document.body;
+                for (var i = 0; i < MUTATION_COUNT; i++) {
+                  if (hideSponsoredPosts(mutations[i].target, IS_WHITELISTED)) wereAdsFound = true;
+                }
+              })).observe(NEWS_FEED, {childList: true, subtree: true});
 
-              if (TIMELINE) {
-                (new MutationObserver(function(mutations) {
-                  const MUTATION_COUNT = mutations.length;
-                  for (var i = 0; i < MUTATION_COUNT; i++)
-                      if (
-                        hidePromotedTweets(mutations[i].target, IS_WHITELISTED)
-                      ) wereAdsFound = true;
-                })).observe(TIMELINE, {childList: true, subtree: true});
-
-                if (hidePromotedTweets(TIMELINE, IS_WHITELISTED))
-                    wereAdsFound = true;
-              }
+              if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED)) wereAdsFound = true;
             }
+          } else if (PARENT_HOST == 'twitter.com') {
+            const TIMELINE = document.body;
+
+            if (TIMELINE) {
+              (new MutationObserver(function(mutations) {
+                const MUTATION_COUNT = mutations.length;
+
+                for (var i = 0; i < MUTATION_COUNT; i++) {
+                  if (hidePromotedTweets(mutations[i].target, IS_WHITELISTED)) wereAdsFound = true;
+                }
+              })).observe(TIMELINE, {childList: true, subtree: true});
+
+              if (hidePromotedTweets(TIMELINE, IS_WHITELISTED)) wereAdsFound = true;
+            }
+          }
+        }
 
         if (document.querySelectorAll(selector).length) wereAdsFound = true;
       });
@@ -148,18 +153,18 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
         var iframe = IFRAMES[i];
         var childHost = getHost(iframe.src);
 
-        if (childHost != PARENT_HOST)
-            for (var j = DOMAIN_COUNT - 1; j + 1; j--)
-                if (DOMAINS[j].test(childHost)) {
-                  if (!IS_WHITELISTED) {
-                    var className = iframe.className;
-                    iframe.className =
-                        (className ? className + ' ' : '') +
-                            'adblockfast-collapsed';
-                  }
+        if (childHost != PARENT_HOST) {
+          for (var j = DOMAIN_COUNT - 1; j + 1; j--) {
+            if (DOMAINS[j].test(childHost)) {
+              if (!IS_WHITELISTED) {
+                var className = iframe.className;
+                iframe.className = (className ? className + ' ' : '') + 'adblockfast-collapsed';
+              }
 
-                  break;
-                }
+              break;
+            }
+          }
+        }
       }
 
       const IMAGES = document.getElementsByTagName('img');
@@ -169,18 +174,18 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
         var image = IMAGES[i];
         var childHost = getHost(image.src);
 
-        if (childHost != PARENT_HOST)
-            for (var j = DOMAIN_COUNT - 1; j + 1; j--)
-                if (DOMAINS[j].test(childHost)) {
-                  if (!IS_WHITELISTED) {
-                    var className = image.className;
-                    image.className =
-                        (className ? className + ' ' : '') +
-                            'adblockfast-collapsed';
-                  }
+        if (childHost != PARENT_HOST) {
+          for (var j = DOMAIN_COUNT - 1; j + 1; j--) {
+            if (DOMAINS[j].test(childHost)) {
+              if (!IS_WHITELISTED) {
+                var className = image.className;
+                image.className = (className ? className + ' ' : '') + 'adblockfast-collapsed';
+              }
 
-                  break;
-                }
+              break;
+            }
+          }
+        }
       }
     });
   }

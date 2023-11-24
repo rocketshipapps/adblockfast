@@ -1,17 +1,16 @@
 /*
-  Copyright 2018, 2019 Rocketship <https://rocketshipapps.com/>
+  Copyright 2018– Rocketship <https://rocketshipapps.com/>
 
-  This program is free software: you can redistribute it and/or modify it under
-  the terms of the GNU General Public License as published by the Free Software
-  Foundation, either version 3 of the License, or (at your option) any later
-  version.
+  This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+  General Public License as published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful, but WITHOUT
-  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+  even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along with
-  this program. If not, see https://www.gnu.org/licenses/.
+  You should have received a copy of the GNU General Public License along with this program. If not,
+  see https://www.gnu.org/licenses/.
 
   Authors (one per line):
 
@@ -20,15 +19,13 @@
 function tearExperimentDown() {
   const TOAST_VIEW_TYPE = EXPERIMENT.toastViewType;
 
-  if (
-    TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBodyText
-  ) {
+  if (TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBodyText) {
     const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
 
     if (
       MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'popup' && EXPERIMENT.mainHeadline &&
-          EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel &&
-              EXPERIMENT.grantButtonLabel && EXPERIMENT.mainFootnote
+          EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel &&
+              EXPERIMENT.mainFootnote
     ) {
       BROWSER_ACTION.setPopup({popup: localStorage.popup});
       delete localStorage.popup;
@@ -42,9 +39,7 @@ function tearExperimentDown() {
     }
 
     if (EXPERIMENT.toastColor) {
-      BROWSER_ACTION.setBadgeBackgroundColor({
-        color: deserialize(localStorage.badgeColor)
-      });
+      BROWSER_ACTION.setBadgeBackgroundColor({color: deserialize(localStorage.badgeColor)});
       delete localStorage.badgeColor;
     }
   }
@@ -58,10 +53,8 @@ if (EXPERIMENT) {
   onReady(function() {
     localStorage.toastClickCount++;
     EXTENSION.sendRequest({shouldSaveUser: true});
-    document.getElementsByTagName('h1')[0].textContent =
-        EXPERIMENT.mainHeadline;
-    document.getElementsByTagName('h2')[0].textContent =
-        EXPERIMENT.mainBodyText;
+    document.getElementsByTagName('h1')[0].textContent = EXPERIMENT.mainHeadline;
+    document.getElementsByTagName('h2')[0].textContent = EXPERIMENT.mainBodyText;
     const DENY_BUTTON = document.getElementById('deny');
 
     DENY_BUTTON.onclick = function() {
