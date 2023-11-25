@@ -3,11 +3,9 @@
   "name": "Adblock Fast",
   "version": "1.4.0",
   "description":
-      "The world’s fastest ad blocker! Same ad blocking, 8x more accelerated webpage loading.",
+      "The world’s fastest ad blocker! Same blocking, 8x more accelerated webpage loading.",
   "icons": {
-    "16": "chrome/images/16.png",
-    "48": "chrome/images/48.png",
-    "128": "chrome/images/128.png"
+    "16": "chrome/images/16.png", "48": "chrome/images/48.png", "128": "chrome/images/128.png"
   },
   "developer": {"name": "Rocketship", "url": "https://rocketshipapps.com/"},
   "permissions": [
@@ -35,14 +33,9 @@
     "http://*/*",
     "https://*/*"
   ],
-  "content_security_policy":
-      "script-src 'self' https://*.firebaseio.com 'unsafe-eval'; object-src 'self'",
   "background": {
     "scripts": [
-      "chrome/scripts/vendor/firebase.js",
-      "chrome/scripts/utils.js",
-      "chrome/scripts/blocking.js",
-      "chrome/scripts/background.js"
+      "chrome/scripts/utils.js", "chrome/scripts/blocking.js", "chrome/scripts/background.js"
     ]
   },
   "content_scripts": [{
@@ -58,9 +51,7 @@
     "all_frames": true
   }],
   "browser_action": {
-    "default_icon": {
-      "19": "chrome/images/blocked/19.png", "38": "chrome/images/blocked/38.png"
-    },
+    "default_icon": {"19": "chrome/images/blocked/19.png", "38": "chrome/images/blocked/38.png"},
     "default_title": "Unblock ads on this site"
   }
 }
