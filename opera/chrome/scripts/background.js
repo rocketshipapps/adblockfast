@@ -142,19 +142,23 @@ function block(tabId, parentHost, type) {
 
   if ((deserialize(localStorage.whitelist) || {})[parentHost]) {
     TABS.get(tabId, function() {
-      RUNTIME.lastError || BROWSER_ACTION.setIcon({
-        tabId: tabId,
-        path: {
-          '19': PATH + 'images/unblocked-ads/19.png', '38': PATH + 'images/unblocked-ads/38.png'
-        }
-      });
+      if (!RUNTIME.lastError) {
+        BROWSER_ACTION.setIcon({
+          tabId: tabId,
+          path: {
+            '19': PATH + 'images/unblocked-ads/19.png', '38': PATH + 'images/unblocked-ads/38.png'
+          }
+        });
+      }
     });
   } else {
     TABS.get(tabId, function() {
-      RUNTIME.lastError || BROWSER_ACTION.setIcon({
-        tabId: tabId,
-        path: {'19': PATH + 'images/blocked-ads/19.png', '38': PATH + 'images/blocked-ads/38.png'}
-      });
+      if (!RUNTIME.lastError) {
+        BROWSER_ACTION.setIcon({
+          tabId: tabId,
+          path: {'19': PATH + 'images/blocked-ads/19.png', '38': PATH + 'images/blocked-ads/38.png'}
+        });
+      }
     });
 
     blockingResponse = {
@@ -265,7 +269,9 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
     if (
       deserialize(localStorage.wasGrantButtonPressed) && PARENT_HOST == 'www.youtube.com' &&
           /get_(?:video_(?:metadata|info)|midroll_info)/.test(URL)
-    ) blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
+    ) {
+      blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
+    }
   }
 
   return blockingResponse;
