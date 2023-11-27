@@ -191,12 +191,12 @@ function whitelist(tab) {
     delete WHITELIST[ HOST ];
     localStorage.whitelist = JSON.stringify(WHITELIST);
     chrome.tabs.reload(ID);
-    plausible('Block', { u: BASE_URL + '?ref=' + URL });
+    plausible('Block', { u: BASE_URL + URL });
   } else {
     WHITELIST[ HOST ] = true;
     localStorage.whitelist = JSON.stringify(WHITELIST);
     chrome.tabs.reload(ID);
-    plausible('Unblock', { u: BASE_URL + '?ref=' + URL });
+    plausible('Unblock', { u: BASE_URL + URL });
   }
 }
 
