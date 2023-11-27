@@ -7,7 +7,7 @@
   "icons": {
     "16": "chrome/images/16.png", "48": "chrome/images/48.png", "128": "chrome/images/128.png"
   },
-  "developer": {"name": "Rocketship", "url": "https://rocketshipapps.com/"},
+  "developer": { "name": "Rocketship", "url": "https://rocketshipapps.com/" },
   "permissions": [
     "activeTab",
     "alarms",
@@ -39,8 +39,8 @@
     ]
   },
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "css": ["chrome/stylesheets/content.css"],
+    "matches": [ "http://*/*", "https://*/*" ],
+    "css": [ "chrome/stylesheets/content.css" ],
     "js": [
       "chrome/scripts/utils.js",
       "chrome/scripts/blocking.js",
@@ -51,7 +51,7 @@
     "all_frames": true
   }],
   "browser_action": {
-    "default_icon": {"19": "chrome/images/blocked/19.png", "38": "chrome/images/blocked/38.png"},
+    "default_icon": { "19": "chrome/images/blocked/19.png", "38": "chrome/images/blocked/38.png" },
     "default_title": "Unblock ads on this site"
   }
 }

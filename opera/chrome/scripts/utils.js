@@ -16,9 +16,7 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function deserialize(object) {
-  return typeof object == 'string' ? JSON.parse(object) : object;
-}
+function deserialize(object) { return typeof object == 'string' ? JSON.parse(object) : object; }
 
 function onReady(callback) {
   if (document.readyState == 'complete') {
@@ -34,6 +32,4 @@ function getHost(url) {
   return ANCHOR.host;
 }
 
-const EXTENSION = chrome.extension;
-const BROWSER_ACTION = chrome.browserAction;
 const ANCHOR = document.createElement('a');

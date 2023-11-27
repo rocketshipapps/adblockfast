@@ -4,7 +4,7 @@
   "version": "1.7.0",
   "description":
       "The world’s fastest ad blocker! Same blocking, 8x more accelerated webpage loading.",
-  "icons": {"16": "images/16.png", "48": "images/48.png", "128": "images/128.png"},
+  "icons": { "16": "images/16.png", "48": "images/48.png", "128": "images/128.png" },
   "permissions": [
     "activeTab",
     "alarms",
@@ -38,17 +38,17 @@
     "https://*/*"
   ],
   "background": {
-    "scripts": ["scripts/utils.js", "scripts/blocking.js", "scripts/background.js"]
+    "scripts": [ "scripts/utils.js", "scripts/blocking.js", "scripts/background.js" ]
   },
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "css": ["stylesheets/content.css"],
-    "js": ["scripts/utils.js", "scripts/blocking.js", "scripts/hiding.js", "scripts/content.js"],
+    "matches": [ "http://*/*", "https://*/*" ],
+    "css": [ "stylesheets/content.css" ],
+    "js": [ "scripts/utils.js", "scripts/blocking.js", "scripts/hiding.js", "scripts/content.js" ],
     "run_at": "document_start",
     "all_frames": true
   }],
   "browser_action": {
-    "default_icon": {"19": "images/blocked/19.png", "38": "images/blocked/38.png"},
+    "default_icon": { "19": "images/blocked/19.png", "38": "images/blocked/38.png" },
     "default_title": "Unblock ads on this site"
   }
 }

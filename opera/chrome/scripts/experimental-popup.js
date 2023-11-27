@@ -27,19 +27,19 @@ function tearExperimentDown() {
           EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel &&
               EXPERIMENT.mainFootnote
     ) {
-      BROWSER_ACTION.setPopup({popup: localStorage.popup});
+      chrome.browserAction.setPopup({ popup: localStorage.popup });
       delete localStorage.popup;
     }
 
-    BROWSER_ACTION.setBadgeText({text: ''});
+    chrome.browserAction.setBadgeText({ text: '' });
 
     if (EXPERIMENT.toastTooltip) {
-      BROWSER_ACTION.setTitle({title: localStorage.tooltip});
+      chrome.browserAction.setTitle({ title: localStorage.tooltip });
       delete localStorage.tooltip;
     }
 
     if (EXPERIMENT.toastColor) {
-      BROWSER_ACTION.setBadgeBackgroundColor({color: deserialize(localStorage.badgeColor)});
+      chrome.browserAction.setBadgeBackgroundColor({ color: deserialize(localStorage.badgeColor) });
       delete localStorage.badgeColor;
     }
   }
@@ -52,15 +52,15 @@ const EXPERIMENT = deserialize(localStorage.experiment);
 if (EXPERIMENT) {
   onReady(function() {
     localStorage.toastClickCount++;
-    EXTENSION.sendRequest({shouldSaveUser: true});
-    document.getElementsByTagName('h1')[0].textContent = EXPERIMENT.mainHeadline;
-    document.getElementsByTagName('h2')[0].textContent = EXPERIMENT.mainBodyText;
+    chrome.extension.sendRequest({ shouldSaveUser: true });
+    document.getElementsByTagName('h1')[ 0 ].textContent = EXPERIMENT.mainHeadline;
+    document.getElementsByTagName('h2')[ 0 ].textContent = EXPERIMENT.mainBodyText;
     const DENY_BUTTON = document.getElementById('deny');
 
     DENY_BUTTON.onclick = function() {
       tearExperimentDown();
       localStorage.wasDenyButtonPressed = true;
-      EXTENSION.sendRequest({shouldSaveUser: true});
+      chrome.extension.sendRequest({ shouldSaveUser: true });
       close();
     };
 
@@ -70,13 +70,13 @@ if (EXPERIMENT) {
     GRANT_BUTTON.onclick = function() {
       tearExperimentDown();
       localStorage.wasGrantButtonPressed = true;
-      EXTENSION.sendRequest({shouldSaveUser: true});
+      chrome.extension.sendRequest({ shouldSaveUser: true });
       close();
     };
 
     GRANT_BUTTON.textContent = EXPERIMENT.grantButtonLabel;
     document.getElementById('footnote').textContent = EXPERIMENT.mainFootnote;
     localStorage.mainViewCount++;
-    EXTENSION.sendRequest({shouldSaveUser: true});
+    chrome.extension.sendRequest({ shouldSaveUser: true });
   });
 }

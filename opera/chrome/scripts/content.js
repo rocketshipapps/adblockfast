@@ -34,8 +34,8 @@ function hideSponsoredPosts(newsFeed, isWhitelisted) {
     const POST_COUNT = POSTS.length;
 
     for (var i = 0; i < POST_COUNT; i++) {
-      const POST = POSTS[i];
-      const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[0];
+      const POST = POSTS[ i ];
+      const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[ 0 ];
       var subheading = '';
 
       if (SUBHEADING_CONTAINER) {
@@ -45,7 +45,7 @@ function hideSponsoredPosts(newsFeed, isWhitelisted) {
         const CHARACTER_COUNT = CHARACTERS.length;
 
         for (var j = 0; j < CHARACTER_COUNT; j++) {
-          const CHARACTER = CHARACTERS[j];
+          const CHARACTER = CHARACTERS[ j ];
 
           if (getComputedStyle(CHARACTER).display != 'none') {
             subheading += CHARACTER.getAttribute('data-content');
@@ -71,7 +71,7 @@ function hidePromotedTweets(timeline, isWhitelisted) {
     const TWEET_COUNT = TWEETS.length;
 
     for (var i = 0; i < TWEET_COUNT; i++) {
-      const TWEET = TWEETS[i];
+      const TWEET = TWEETS[ i ];
       const METADATA = TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
 
       if (METADATA && METADATA.textContent.slice(0, 8) == 'Promoted') {
@@ -84,14 +84,14 @@ function hidePromotedTweets(timeline, isWhitelisted) {
   return werePromotedTweetsFound;
 }
 
-EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
+chrome.extension.sendRequest({ shouldInitialize: true }, function(response) {
   const PARENT_HOST = response.parentHost;
   const WAS_GRANT_BUTTON_PRESSED = response.wasGrantButtonPressed;
   const IS_WHITELISTED = response.isWhitelisted;
   var wereAdsFound;
 
   if (PARENT_HOST) {
-    var selector = SELECTORS[PARENT_HOST];
+    var selector = SELECTORS[ PARENT_HOST ];
     selector =
         '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, .advertisement, .advertorial, .bottom-ad, [id^=div-gpt-ad-], .fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
             + (selector ? ', ' + selector : '');
@@ -118,9 +118,11 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
                 const MUTATION_COUNT = mutations.length;
 
                 for (var i = 0; i < MUTATION_COUNT; i++) {
-                  if (hideSponsoredPosts(mutations[i].target, IS_WHITELISTED)) wereAdsFound = true;
+                  if (hideSponsoredPosts(mutations[ i ].target, IS_WHITELISTED)) {
+                    wereAdsFound = true;
+                  }
                 }
-              })).observe(NEWS_FEED, {childList: true, subtree: true});
+              })).observe(NEWS_FEED, { childList: true, subtree: true });
 
               if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED)) wereAdsFound = true;
             }
@@ -132,9 +134,11 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
                 const MUTATION_COUNT = mutations.length;
 
                 for (var i = 0; i < MUTATION_COUNT; i++) {
-                  if (hidePromotedTweets(mutations[i].target, IS_WHITELISTED)) wereAdsFound = true;
+                  if (hidePromotedTweets(mutations[ i ].target, IS_WHITELISTED)) {
+                    wereAdsFound = true;
+                  }
                 }
-              })).observe(TIMELINE, {childList: true, subtree: true});
+              })).observe(TIMELINE, { childList: true, subtree: true });
 
               if (hidePromotedTweets(TIMELINE, IS_WHITELISTED)) wereAdsFound = true;
             }
@@ -150,12 +154,12 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       const IFRAME_COUNT = IFRAMES.length;
 
       for (var i = 0; i < IFRAME_COUNT; i++) {
-        var iframe = IFRAMES[i];
+        var iframe = IFRAMES[ i ];
         var childHost = getHost(iframe.src);
 
         if (childHost != PARENT_HOST) {
           for (var j = DOMAIN_COUNT - 1; j + 1; j--) {
-            if (DOMAINS[j].test(childHost)) {
+            if (DOMAINS[ j ].test(childHost)) {
               if (!IS_WHITELISTED) {
                 var className = iframe.className;
                 iframe.className = (className ? className + ' ' : '') + 'adblockfast-collapsed';
@@ -171,12 +175,12 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
       const IMAGE_COUNT = IMAGES.length;
 
       for (i = 0; i < IMAGE_COUNT; i++) {
-        var image = IMAGES[i];
+        var image = IMAGES[ i ];
         var childHost = getHost(image.src);
 
         if (childHost != PARENT_HOST) {
           for (var j = DOMAIN_COUNT - 1; j + 1; j--) {
-            if (DOMAINS[j].test(childHost)) {
+            if (DOMAINS[ j ].test(childHost)) {
               if (!IS_WHITELISTED) {
                 var className = image.className;
                 image.className = (className ? className + ' ' : '') + 'adblockfast-collapsed';
@@ -190,5 +194,5 @@ EXTENSION.sendRequest({shouldInitialize: true}, function(response) {
     });
   }
 
-  onReady(function() { EXTENSION.sendRequest({wereAdsFound: wereAdsFound}); });
+  onReady(function() { chrome.extension.sendRequest({ wereAdsFound: wereAdsFound }); });
 });

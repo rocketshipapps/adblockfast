@@ -16,11 +16,16 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function spawn(tab) { TABS.create({url: tab}); }
+function plausible() {
+  plausible.q = plausible.q || [];
+  plausible.q.push(arguments);
+}
+
+function spawn(tab) { chrome.tabs.create({ url: tab }); }
 
 function saveError(error) {
   if (database && timestamp) {
-    database.ref('errors').push({message: error.message, timestamp: timestamp});
+    database.ref('errors').push({ message: error.message, timestamp: timestamp });
   }
 }
 
@@ -40,7 +45,7 @@ function saveUser() {
       timestamp: timestamp
     });
   } else {
-    saveError({message: 'No user ID'});
+    saveError({ message: 'No user ID' });
   }
 }
 
@@ -70,22 +75,22 @@ function setExperimentUp() {
           const TOAST_COLOR = EXPERIMENT.toastColor;
 
           if (TOAST_COLOR) {
-            BROWSER_ACTION.getBadgeBackgroundColor({}, function(color) {
+            chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
               localStorage.badgeColor = JSON.stringify(color);
-              BROWSER_ACTION.setBadgeBackgroundColor({color: TOAST_COLOR});
+              chrome.browserAction.setBadgeBackgroundColor({ color: TOAST_COLOR });
             });
           }
 
           const TOAST_TOOLTIP = EXPERIMENT.toastTooltip;
 
           if (TOAST_TOOLTIP) {
-            BROWSER_ACTION.getTitle({}, function(tooltip) {
+            chrome.browserAction.getTitle({}, function(tooltip) {
               localStorage.tooltip = tooltip;
-              BROWSER_ACTION.setTitle({title: TOAST_TOOLTIP + ''});
+              chrome.browserAction.setTitle({ title: TOAST_TOOLTIP + '' });
             });
           }
 
-          BROWSER_ACTION.setBadgeText({text: TOAST_BODY_TEXT + ''});
+          chrome.browserAction.setBadgeText({ text: TOAST_BODY_TEXT + '' });
           localStorage.toastViewCount++;
           saveUser();
 
@@ -94,9 +99,9 @@ function setExperimentUp() {
                 EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel
                     && EXPERIMENT.mainFootnote
           ) {
-            BROWSER_ACTION.getPopup({}, function(popup) {
+            chrome.browserAction.getPopup({}, function(popup) {
               localStorage.popup = popup;
-              BROWSER_ACTION.setPopup({popup: PATH + 'markup/experimental-popup.html'});
+              chrome.browserAction.setPopup({ popup: PATH + 'markup/experimental-popup.html' });
             });
           }
         } else if (TOAST_VIEW_TYPE == 'notification') {
@@ -104,7 +109,7 @@ function setExperimentUp() {
           const TOAST_ICON_URL = EXPERIMENT.toastIconUrl;
 
           if (TOAST_HEADLINE && TOAST_ICON_URL) {
-            NOTIFICATIONS.create({
+            chrome.notifications.create({
               type: 'basic',
               title: TOAST_HEADLINE,
               message: TOAST_BODY_TEXT,
@@ -124,7 +129,7 @@ function setExperimentUp() {
 
     if (EXPERIMENTAL_GROUP) {
       getExperiments(function(experiments) {
-        const EXPERIMENT = experiments[EXPERIMENTAL_GROUP];
+        const EXPERIMENT = experiments[ EXPERIMENTAL_GROUP ];
 
         if (EXPERIMENT) {
           localStorage.experiment = JSON.stringify(EXPERIMENT);
@@ -138,12 +143,12 @@ function setExperimentUp() {
 }
 
 function block(tabId, parentHost, type) {
-  var blockingResponse = {cancel: false};
+  var blockingResponse = { cancel: false };
 
-  if ((deserialize(localStorage.whitelist) || {})[parentHost]) {
-    TABS.get(tabId, function() {
-      if (!RUNTIME.lastError) {
-        BROWSER_ACTION.setIcon({
+  if ((deserialize(localStorage.whitelist) || {})[ parentHost ]) {
+    chrome.tabs.get(tabId, function() {
+      if (!chrome.runtime.lastError) {
+        chrome.browserAction.setIcon({
           tabId: tabId,
           path: {
             '19': PATH + 'images/unblocked-ads/19.png', '38': PATH + 'images/unblocked-ads/38.png'
@@ -152,11 +157,13 @@ function block(tabId, parentHost, type) {
       }
     });
   } else {
-    TABS.get(tabId, function() {
-      if (!RUNTIME.lastError) {
-        BROWSER_ACTION.setIcon({
+    chrome.tabs.get(tabId, function() {
+      if (!chrome.runtime.lastError) {
+        chrome.browserAction.setIcon({
           tabId: tabId,
-          path: {'19': PATH + 'images/blocked-ads/19.png', '38': PATH + 'images/blocked-ads/38.png'}
+          path: {
+            '19': PATH + 'images/blocked-ads/19.png', '38': PATH + 'images/blocked-ads/38.png'
+          }
         });
       }
     });
@@ -169,67 +176,77 @@ function block(tabId, parentHost, type) {
     };
   }
 
-  WERE_ADS_FOUND[tabId] = true;
+  WERE_ADS_FOUND[ tabId ] = true;
 
   return blockingResponse;
 }
 
 function whitelist(tab) {
   const WHITELIST = deserialize(localStorage.whitelist) || {};
-  const HOST = getHost(tab.url);
+  const URL = tab.url;
+  const HOST = getHost(URL);
   const ID = tab.id;
 
-  if (WHITELIST[HOST]) {
-    delete WHITELIST[HOST];
+  if (WHITELIST[ HOST ]) {
+    delete WHITELIST[ HOST ];
     localStorage.whitelist = JSON.stringify(WHITELIST);
-    TABS.reload(ID);
+    chrome.tabs.reload(ID);
+    plausible('block', { u: BASE_URL + '?ref=' + URL });
   } else {
-    WHITELIST[HOST] = true;
+    WHITELIST[ HOST ] = true;
     localStorage.whitelist = JSON.stringify(WHITELIST);
-    TABS.reload(ID);
+    chrome.tabs.reload(ID);
+    plausible('unblock', { u: BASE_URL + '?ref=' + URL });
   }
 }
 
 const BUILD = 8;
 const PREVIOUS_BUILD = localStorage.build;
-const RUNTIME = chrome.runtime;
-const TABS = chrome.tabs;
-const NOTIFICATIONS = chrome.notifications;
-const WHITELIST = deserialize(localStorage.whitelist) || {};
-const HOSTS = {};
-const WERE_ADS_FOUND = {};
+const IS_UPDATING_TO_CURRENT = !PREVIOUS_BUILD || PREVIOUS_BUILD < BUILD;
 const IS_IN_OPERA = navigator.userAgent.indexOf('OPR') + 1;
 const BROWSER = IS_IN_OPERA ? 'opera' : 'chrome';
 const PATH = IS_IN_OPERA ? 'chrome/' : '';
-const IS_UPDATING_TO_CURRENT = !PREVIOUS_BUILD || PREVIOUS_BUILD < BUILD;
+const DOMAIN = BROWSER + '.adblockfast.com';
+const BASE_URL = 'https://' + DOMAIN + '/';
+const SCRIPT = document.createElement('script');
+const WHITELIST = deserialize(localStorage.whitelist) || {};
+const HOSTS = {};
+const WERE_ADS_FOUND = {};
 var database;
 var user;
 var uid;
 var uids;
 var timestamp;
 
+SCRIPT.src = 'scripts/vendor/plausible.js';
+SCRIPT.setAttribute('data-api', 'https://plausible.io/api/event');
+SCRIPT.setAttribute('data-domain', DOMAIN);
+document.body.prepend(SCRIPT);
+
 if (!PREVIOUS_BUILD) {
   localStorage.firstBuild = BUILD;
   localStorage.whitelist = JSON.stringify({});
   spawn(PATH + 'markup/firstrun.html');
+  plausible('install', { u: BASE_URL + 'v' + BUILD });
 }
 
 if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 5) localStorage.uids = JSON.stringify([]);
 
 if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 7) {
-  WHITELIST['buy.buysellads.com'] = true;
-  WHITELIST['gs.statcounter.com'] = true;
+  WHITELIST[ 'buy.buysellads.com' ] = true;
+  WHITELIST[ 'gs.statcounter.com' ] = true;
   localStorage.whitelist = JSON.stringify(WHITELIST);
 }
 
 if (IS_UPDATING_TO_CURRENT) {
-  WHITELIST['amplitude.com'] = true;
-  WHITELIST['analytics.amplitude.com'] = true;
-  WHITELIST['sumo.com'] = true;
-  WHITELIST['www.cnet.com'] = true;
-  WHITELIST['www.stitcher.com'] = true;
+  WHITELIST[ 'amplitude.com' ] = true;
+  WHITELIST[ 'analytics.amplitude.com' ] = true;
+  WHITELIST[ 'sumo.com' ] = true;
+  WHITELIST[ 'www.cnet.com' ] = true;
+  WHITELIST[ 'www.stitcher.com' ] = true;
   localStorage.whitelist = JSON.stringify(WHITELIST);
   localStorage.build = BUILD;
+  if (PREVIOUS_BUILD) plausible('update', { u: BASE_URL + 'v' + PREVIOUS_BUILD + '-to-v' + BUILD });
 }
 
 if (user) {
@@ -237,12 +254,12 @@ if (user) {
   setExperimentUp();
 }
 
-TABS.query({}, function(tabs) {
+chrome.tabs.query({}, function(tabs) {
   const TAB_COUNT = tabs.length;
 
   for (var i = 0; i < TAB_COUNT; i++) {
-    var tab = tabs[i];
-    HOSTS[tab.id] = getHost(tab.url);
+    var tab = tabs[ i ];
+    HOSTS[ tab.id ] = getHost(tab.url);
   }
 });
 
@@ -252,14 +269,14 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
   const IS_PARENT = TYPE == 'main_frame';
   const URL = details.url;
   const CHILD_HOST = getHost(URL);
-  if (IS_PARENT) HOSTS[TAB_ID] = CHILD_HOST;
-  const PARENT_HOST = HOSTS[TAB_ID];
-  var blockingResponse = {cancel: false};
+  if (IS_PARENT) HOSTS[ TAB_ID ] = CHILD_HOST;
+  const PARENT_HOST = HOSTS[ TAB_ID ];
+  var blockingResponse = { cancel: false };
 
   if (TAB_ID + 1 && !IS_PARENT && PARENT_HOST) {
     if (CHILD_HOST != PARENT_HOST) {
       for (var i = DOMAIN_COUNT - 1; i + 1; i--) {
-        if (DOMAINS[i].test(CHILD_HOST)) {
+        if (DOMAINS[ i ].test(CHILD_HOST)) {
           blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
           break;
         }
@@ -275,31 +292,31 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
   }
 
   return blockingResponse;
-}, {urls: ['http://*/*', 'https://*/*']}, ['blocking']);
+}, { urls: [ 'http://*/*', 'https://*/*' ]}, [ 'blocking' ]);
 
 chrome.webNavigation.onCommitted.addListener(function(details) {
   if (!details.frameId) {
     const TAB_ID = details.tabId;
-    delete WERE_ADS_FOUND[TAB_ID];
+    delete WERE_ADS_FOUND[ TAB_ID ];
 
-    TABS.get(TAB_ID, function() {
-      if (!RUNTIME.lastError) {
-        if ((deserialize(localStorage.whitelist) || {})[getHost(details.url)]) {
-          BROWSER_ACTION.setIcon({
+    chrome.tabs.get(TAB_ID, function() {
+      if (!chrome.runtime.lastError) {
+        if ((deserialize(localStorage.whitelist) || {})[ getHost(details.url) ]) {
+          chrome.browserAction.setIcon({
             tabId: TAB_ID,
-            path: {'19': PATH + 'images/unblocked/19.png', '38': PATH + 'images/unblocked/38.png'}
+            path: { '19': PATH + 'images/unblocked/19.png', '38': PATH + 'images/unblocked/38.png' }
           }, function() {
             if (!localStorage.tooltip) {
-              BROWSER_ACTION.setTitle({tabId: TAB_ID, title: 'Block ads on this site'});
+              chrome.browserAction.setTitle({ tabId: TAB_ID, title: 'Block ads on this site' });
             }
           });
         } else {
-          BROWSER_ACTION.setIcon({
+          chrome.browserAction.setIcon({
             tabId: TAB_ID,
-            path: {'19': PATH + 'images/blocked/19.png', '38': PATH + 'images/blocked/38.png'}
+            path: { '19': PATH + 'images/blocked/19.png', '38': PATH + 'images/blocked/38.png' }
           }, function() {
             if (!localStorage.tooltip) {
-              BROWSER_ACTION.setTitle({tabId: TAB_ID, title: 'Unblock ads on this site'});
+              chrome.browserAction.setTitle({ tabId: TAB_ID, title: 'Unblock ads on this site' });
             }
           });
         }
@@ -308,7 +325,7 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
   }
 });
 
-EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
   if (request.shouldSaveUser) {
     saveUser();
   } else {
@@ -316,7 +333,7 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
 
     if (TAB) {
       const PARENT_HOST = getHost(TAB.url);
-      const IS_WHITELISTED = (deserialize(localStorage.whitelist) || {})[PARENT_HOST];
+      const IS_WHITELISTED = (deserialize(localStorage.whitelist) || {})[ PARENT_HOST ];
 
       if (request.shouldInitialize) {
         sendResponse({
@@ -327,9 +344,9 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
       } else {
         const TAB_ID = TAB.id;
 
-        TABS.get(TAB_ID, function() {
-          if (!RUNTIME.lastError && request.wereAdsFound) {
-            BROWSER_ACTION.setIcon({
+        chrome.tabs.get(TAB_ID, function() {
+          if (!chrome.runtime.lastError && request.wereAdsFound) {
+            chrome.browserAction.setIcon({
               tabId: TAB_ID,
               path: {
                 '19': PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') + 'blocked-ads/19.png',
@@ -347,7 +364,7 @@ EXTENSION.onRequest.addListener(function(request, sender, sendResponse) {
   }
 });
 
-BROWSER_ACTION.onClicked.addListener(function(tab) {
+chrome.browserAction.onClicked.addListener(function(tab) {
   const EXPERIMENT = deserialize(localStorage.experiment);
 
   if (EXPERIMENT) {
@@ -374,9 +391,9 @@ BROWSER_ACTION.onClicked.addListener(function(tab) {
   }
 });
 
-NOTIFICATIONS.onClicked.addListener(function(id) {
+chrome.notifications.onClicked.addListener(function(id) {
   spawn(PATH + 'markup/experimental-tab.html');
-  NOTIFICATIONS.clear(id);
+  chrome.notifications.clear(id);
   localStorage.toastClickCount++;
   saveUser();
 });
