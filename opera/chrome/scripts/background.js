@@ -191,12 +191,12 @@ function whitelist(tab) {
     delete WHITELIST[ HOST ];
     localStorage.whitelist = JSON.stringify(WHITELIST);
     chrome.tabs.reload(ID);
-    plausible('block', { u: BASE_URL + '?ref=' + URL });
+    plausible('Block', { u: BASE_URL + '?ref=' + URL });
   } else {
     WHITELIST[ HOST ] = true;
     localStorage.whitelist = JSON.stringify(WHITELIST);
     chrome.tabs.reload(ID);
-    plausible('unblock', { u: BASE_URL + '?ref=' + URL });
+    plausible('Unblock', { u: BASE_URL + '?ref=' + URL });
   }
 }
 
@@ -227,7 +227,7 @@ if (!PREVIOUS_BUILD) {
   localStorage.firstBuild = BUILD;
   localStorage.whitelist = JSON.stringify({});
   spawn(PATH + 'markup/firstrun.html');
-  plausible('install', { u: BASE_URL + 'v' + BUILD });
+  plausible('Install', { u: BASE_URL + 'v' + BUILD });
 }
 
 if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 5) localStorage.uids = JSON.stringify([]);
@@ -246,7 +246,7 @@ if (IS_UPDATING_TO_CURRENT) {
   WHITELIST[ 'www.stitcher.com' ] = true;
   localStorage.whitelist = JSON.stringify(WHITELIST);
   localStorage.build = BUILD;
-  if (PREVIOUS_BUILD) plausible('update', { u: BASE_URL + 'v' + PREVIOUS_BUILD + '-to-v' + BUILD });
+  if (PREVIOUS_BUILD) plausible('Update', { u: BASE_URL + 'v' + PREVIOUS_BUILD + '-to-v' + BUILD });
 }
 
 if (user) {
