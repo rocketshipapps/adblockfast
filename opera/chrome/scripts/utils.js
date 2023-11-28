@@ -16,6 +16,18 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
+function injectPlausible(path) {
+  SCRIPT.src = path + 'plausible.js';
+  SCRIPT.setAttribute('data-api', 'https://plausible.io/api/event');
+  SCRIPT.setAttribute('data-domain', DOMAIN);
+  document.body.prepend(SCRIPT);
+}
+
+function plausible() {
+  plausible.q = plausible.q || [];
+  plausible.q.push(arguments);
+}
+
 function deserialize(object) { return typeof object == 'string' ? JSON.parse(object) : object; }
 
 function onReady(callback) {
@@ -32,4 +44,9 @@ function getHost(url) {
   return ANCHOR.host;
 }
 
+const IS_IN_OPERA = navigator.userAgent.indexOf('OPR') + 1;
+const BROWSER = IS_IN_OPERA ? 'opera' : 'chrome';
+const DOMAIN = BROWSER + '.adblockfast.com';
+const BASE_URL = 'https://' + DOMAIN + '/';
+const SCRIPT = document.createElement('script');
 const ANCHOR = document.createElement('a');

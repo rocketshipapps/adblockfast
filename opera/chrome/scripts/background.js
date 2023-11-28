@@ -16,11 +16,6 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function plausible() {
-  plausible.q = plausible.q || [];
-  plausible.q.push(arguments);
-}
-
 function spawn(tab) { chrome.tabs.create({ url: tab }); }
 
 function saveError(error) {
@@ -203,12 +198,7 @@ function whitelist(tab) {
 const BUILD = 8;
 const PREVIOUS_BUILD = localStorage.build;
 const IS_UPDATING_TO_CURRENT = !PREVIOUS_BUILD || PREVIOUS_BUILD < BUILD;
-const IS_IN_OPERA = navigator.userAgent.indexOf('OPR') + 1;
-const BROWSER = IS_IN_OPERA ? 'opera' : 'chrome';
 const PATH = IS_IN_OPERA ? 'chrome/' : '';
-const DOMAIN = BROWSER + '.adblockfast.com';
-const BASE_URL = 'https://' + DOMAIN + '/';
-const SCRIPT = document.createElement('script');
 const WHITELIST = deserialize(localStorage.whitelist) || {};
 const HOSTS = {};
 const WERE_ADS_FOUND = {};
@@ -218,10 +208,7 @@ var uid;
 var uids;
 var timestamp;
 
-SCRIPT.src = 'scripts/vendor/plausible.js';
-SCRIPT.setAttribute('data-api', 'https://plausible.io/api/event');
-SCRIPT.setAttribute('data-domain', DOMAIN);
-document.body.prepend(SCRIPT);
+injectPlausible('scripts/vendor/');
 
 if (!PREVIOUS_BUILD) {
   localStorage.firstBuild = BUILD;

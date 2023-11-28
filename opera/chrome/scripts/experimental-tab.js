@@ -40,6 +40,7 @@ const EXPERIMENT = deserialize(localStorage.experiment);
 
 if (EXPERIMENT) {
   onReady(function() {
+    injectPlausible('../scripts/vendor/');
     document.getElementsByTagName('title')[ 0 ].textContent = EXPERIMENT.mainTitle;
     document.getElementsByTagName('h1')[ 0 ].textContent = EXPERIMENT.mainHeadline;
     document.getElementsByTagName('h2')[ 0 ].textContent = EXPERIMENT.mainBodyText;
@@ -49,6 +50,7 @@ if (EXPERIMENT) {
       tearExperimentDown();
       localStorage.wasDenyButtonPressed = true;
       chrome.extension.sendRequest({ shouldSaveUser: true });
+      plausible('Deny', { u: BASE_URL + 'experimental-tab' });
       close();
     };
 
@@ -59,6 +61,7 @@ if (EXPERIMENT) {
       tearExperimentDown();
       localStorage.wasGrantButtonPressed = true;
       chrome.extension.sendRequest({ shouldSaveUser: true });
+      plausible('Grant', { u: BASE_URL + 'experimental-tab' });
       close();
     };
 
@@ -66,5 +69,6 @@ if (EXPERIMENT) {
     document.getElementById('footnote').textContent = EXPERIMENT.mainFootnote;
     localStorage.mainViewCount++;
     chrome.extension.sendRequest({ shouldSaveUser: true });
+    plausible('Pageview', { u: BASE_URL + 'experimental-tab' });
   });
 }
