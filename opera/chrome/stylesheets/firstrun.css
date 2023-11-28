@@ -24,7 +24,7 @@
 }
 
 body {
-  margin: 50px auto 80px;
+  margin: 10px auto;
   width: 640px;
   font: 16px 'Open Sans', sans-serif;
   color: #2c2c2c
@@ -42,16 +42,20 @@ h1, h3 {
 }
 
 h1 {
-  margin-top: 10px;
+  margin-top: 0;
   font-size: 30px;
   color: #d4d4d4
 }
 
-h2, h3 { margin-top: 40px }
+h2 {
+  margin-top: 30px;
+  font-size: 22px
+}
 
-h2 { font-size: 22px }
-
-h3 { font-size: 16px }
+h3 {
+  margin-top: 40px;
+  font-size: 16px
+}
 
 p, ul { margin-top: 30px }
 
