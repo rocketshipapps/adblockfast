@@ -18,5 +18,5 @@
 */
 onReady(function() {
   injectPlausible('../scripts/vendor/');
-  plausible('Pageview', { u: BASE_URL + 'firstrun' });
+  plausible('pageview', { u: BASE_URL + 'firstrun' });
 });

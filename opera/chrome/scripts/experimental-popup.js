@@ -81,6 +81,6 @@ if (EXPERIMENT) {
     document.getElementById('footnote').textContent = EXPERIMENT.mainFootnote;
     localStorage.mainViewCount++;
     chrome.extension.sendRequest({ shouldSaveUser: true });
-    plausible('Pageview', { u: BASE_URL + 'experimental-popup' });
+    plausible('pageview', { u: BASE_URL + 'experimental-popup' });
   });
 }
