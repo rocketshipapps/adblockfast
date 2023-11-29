@@ -1,26 +1,25 @@
-# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet.png)](https://twitter.com/intent/tweet?text=Get%20a%20new,%20faster%20ad%20blocker%20for%20Android,%20iOS,%20Chrome,%20or%20Opera:&url=https://adblockfast.com/&via=adblockfast)
+# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20Chrome,%20or%20Opera:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
 
-[![Website](https://img.shields.io/uptimerobot/ratio/m782428162-02bf166026a72243440ef044.svg)](https://adblockfast.com/) [![iOS](https://img.shields.io/itunes/v/1032930802.svg)](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) [![Chrome](https://img.shields.io/chrome-web-store/v/nneejgmhfoecfeoffakdnolopppbbkfi.svg)](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
+[![Website](https://img.shields.io/uptimerobot/ratio/m782428162-02bf166026a72243440ef044.svg)](https://adblockfast.com/?ref=GitHub) [![iOS](https://img.shields.io/itunes/v/1032930802.svg)](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) [![Chrome](https://img.shields.io/chrome-web-store/v/nneejgmhfoecfeoffakdnolopppbbkfi.svg)](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 
-*A new, faster ad blocker for Android, iOS, Chrome, and Opera*
+*A faster ad blocker for Windows, Android, iOS, Chrome, and Opera.*
 
 Try Adblock Fast:
 
-* [Android](https://play.google.com/store/apps/details?id=com.rocketshipapps.adblockfast)
-  (Android 5.0 and up with Samsung Internet 4.0 and up)
-* [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) (iOS
-  9 and up on 64-bit devices, iPhone 5s and up and iPad mini 2 and up)
+* [Windows](https://desktop.adblockfast.com/?ref=GitHub) (Windows 7 and up)
+* [Android](https://play.google.com/store/apps/details?id=com.rocketshipapps.adblockfast) (Android
+  5.0 and up with Samsung Internet 4.0 and up)
+* [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) (iOS 9 and up on 64-bit
+  devices, iPhone 5s and up and iPad mini 2 and up)
 * [Chrome](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 * [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
 
-Just as webpages grew bloated with ads, so too have ad blockers grown bloated
-with little-used filtering rules and features that sap their speed and hog your
-computer or device’s disk space, CPU cycles, and memory. Adblock Fast executes a
-mere 7 optimized filtering rules to accelerate pages 8x more but consume 6x less
-system resources than other ad blockers do.
+Just as webpages grew bloated with ads, so too have ad blockers grown bloated with little-used
+filtering rules and features that sap their speed and hog your computer or device’s CPU, memory, and
+storage. Adblock Fast executes a mere 12 optimized filtering rules to accelerate pages 8x more but
+consume 6x less computing resources than other ad blockers do.
 
-Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch some
-numbers.
+Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch some numbers.
 
 ![Benchmarks](assets/promo/benchmarks-optimized.png)
 
