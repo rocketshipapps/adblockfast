@@ -11,8 +11,8 @@ filtering rules and features that sap their speed and hog your computer’s disk
 and memory. Adblock Fast runs a mere 7 optimized filtering rules to accelerate pages 8x more but
 consume 6x less system resources than other ad blockers do.
 
-See <https://adblockfast.com/> for benchmarks, support, and frequently asked questions and see
-<https://www.iubenda.com/privacy-policy/216992> for Adblock Fast’s privacy policy.
+See &lt;https://adblockfast.com/&gt; for benchmarks, support, and frequently asked questions and see
+&lt;https://www.iubenda.com/privacy-policy/216992&gt; for Adblock Fast’s privacy policy.
 
 **Category:** Productivity
 
