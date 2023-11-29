@@ -13,7 +13,7 @@ less computing resources than other ad blockers do.
 
 See Adblock Fast’s site for source code, benchmarks, support, and frequently asked questions.
 
-**Category:** Productivity
+**Category:** Tools
 
 **Language:** English
 
