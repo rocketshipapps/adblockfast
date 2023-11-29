@@ -11,7 +11,7 @@ filtering rules and features that sap their speed and hog your computer’s CPU,
 Adblock Fast runs a mere 12 optimized filtering rules to accelerate pages 8x more but consume 6x
 less computing resources than other ad blockers do.
 
-See Adblock Fast’s site for benchmarks, support, frequently asked questions, and source code.
+See Adblock Fast’s site for source code, benchmarks, support, and frequently asked questions.
 
 **Category:** Productivity
 
