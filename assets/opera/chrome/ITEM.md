@@ -46,3 +46,5 @@ See Adblock Fast’s site for source code, benchmarks, support, and frequently a
 **Homepage URL:** https://adblockfast.com/
 
 **Support URL:** https://adblockfast.com/#help
+
+_Copyright 2015– [Rocketship](https://rocketshipapps.com/). Some rights reserved._
