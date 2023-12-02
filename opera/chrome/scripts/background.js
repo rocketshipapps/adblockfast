@@ -279,7 +279,7 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
   }
 
   return blockingResponse;
-}, { urls: [ 'http://*/*', 'https://*/*' ]}, [ 'blocking' ]);
+}, { urls: [ '<all_urls>' ]}, [ 'blocking' ]);
 
 chrome.webNavigation.onCommitted.addListener(function(details) {
   if (!details.frameId) {
