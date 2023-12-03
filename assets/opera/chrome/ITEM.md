@@ -69,15 +69,15 @@ Browser cookies can optionally be deleted.
 
 **`gcm` justification:**
 
-Notifications may infrequently be shown.
+Relevant notifications may occasionally be shown.
 
 **`notifications` justification:**
 
-Notifications may infrequently be shown.
+Relevant notifications may occasionally be shown.
 
 **`storage` justification:**
 
-Filter settings are persisted in local storage.
+Filtering settings are persisted in local storage.
 
 **`tabs` justification:**
 
@@ -85,7 +85,7 @@ Loaded tabs are iterated through to prevent same-origin requests from being filt
 
 **`unlimitedStorage` justification:**
 
-Filter settings are persisted in local storage.
+Filtering settings are persisted in local storage.
 
 **`webNavigation` justification:**
 
