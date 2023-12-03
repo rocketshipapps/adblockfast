@@ -23,15 +23,15 @@ Exactly how much faster, you ask, is Adblock Fast<em>?</em> Let’s crunch some 
 
 ![Benchmarks](assets/promo/benchmarks-optimized.png)
 
-### 1. Adblock Fast executes 7,000x fewer filtering rules per page.[<sup>1</sup>](#benchmark-notes)
+### 1. Adblock Fast executes 5,000x fewer filtering rules per page.[<sup>1</sup>](#benchmark-notes)
 
-* AdBlock: 49,002 rules
-* Adblock Plus: 49,002 rules
-* **Adblock Fast: 7 rules**
+* AdBlock: 65,316 rules
+* Adblock Plus: 65,316 rules
+* **Adblock Fast: 12 rules**
 
 I.e., the app runs faster.
 
-### 2. Adblock Fast consumes 7x fewer kilobytes of disk.[<sup>2</sup>](#benchmark-notes)
+### 2. Adblock Fast consumes 7x fewer kilobytes of storage.[<sup>2</sup>](#benchmark-notes)
 
 * AdBlock: 843 KB
 * Adblock Plus: 543 KB
@@ -66,35 +66,28 @@ I.e., your computer or device runs faster still.
 
 #### Benchmark notes
 
-1. Rule counts were retrieved from
-   [EasyList](https://easylist.to/) and
-   [Adblock Fast’s ruleset](opera/chrome/scripts/blocking.js) on September 1st,
-   2015.
-2. Filesizes were retrieved from each browser extension’s listing in the
-   [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) on
-   September 1st, 2015.
-3. Load times were measured in the Chrome browser on September 1st, 2015 by (1)
-   enabling each extension, (2) clearing the browser’s cache before each trial,
-   (3) loading the homepage of each of
-   [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
+1. Rule counts were retrieved from [EasyList](https://easylist.to/) and
+   [Adblock Fast’s ruleset](opera/chrome/scripts/blocking.js) on December 3rd, 2023.
+2. File sizes were retrieved from each browser extension’s listing in the
+   [Chrome Web Store](https://chromewebstore.google.com/) on September 1st, 2015.
+3. Load times were measured in Chrome on September 1st, 2015 by (1) enabling each extension, (2)
+   clearing the browser’s cache before each trial, (3) loading the homepage of each of
+   [Alexa’s top 10 news sites](https://web.archive.org/web/20150902062936/https://www.alexa.com/topsites/category/Top/News)
    3 times, (4) recording the elapsed time shown by the
-   [browser’s developer tools](https://developers.google.com/web/tools/chrome-devtools/)
-   when the `load` event fired, and (5) calculating the mean time for each
-   extension.
-4. CPU use was measured in the Chrome browser on September 1st, 2015 by (1)
-   enabling each extension, (2) clearing the browser’s cache before each trial,
-   (3) loading the homepage of each of
-   [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
+   [browser’s developer tools](https://developer.chrome.com/docs/devtools/) when the `load` event
+   fired, and (5) calculating the mean time for each extension.
+4. CPU use was measured in Chrome on September 1st, 2015 by (1) enabling each extension, (2)
+   clearing the browser’s cache before each trial, (3) loading the homepage of each of
+   [Alexa’s top 10 news sites](https://web.archive.org/web/20150902062936/https://www.alexa.com/topsites/category/Top/News)
    3 times, (4) recording the peak **CPU** percentage shown by the
-   [browser’s task manager](https://developers.google.com/web/tools/chrome-devtools/memory-problems/),
-   and (5) calculating the mean percentage for each extension.
-5. Memory use was measured in the Chrome browser on September 1st, 2015 by (1)
-   enabling each extension, (2) clearing the browser’s cache before each trial,
-   (3) loading the homepage of each of
-   [Alexa’s top 10 news sites](https://www.alexa.com/topsites/category/Top/News)
+   [browser’s task manager](https://developer.chrome.com/docs/devtools/memory-problems/), and (5)
+   calculating the mean percentage for each extension.
+5. Memory use was measured in Chrome on September 1st, 2015 by (1) enabling each extension, (2)
+   clearing the browser’s cache before each trial, (3) loading the homepage of each of
+   [Alexa’s top 10 news sites](https://web.archive.org/web/20150902062936/https://www.alexa.com/topsites/category/Top/News)
    3 times, (4) recording the peak **Memory** size shown by the
-   [browser’s task manager](https://developers.google.com/web/tools/chrome-devtools/memory-problems/),
-   and (5) calculating the mean size for each extension.
+   [browser’s task manager](https://developer.chrome.com/docs/devtools/memory-problems/), and (5)
+   calculating the mean size for each extension.
 
 See the
 [raw benchmark data](https://docs.google.com/spreadsheets/u/1/d/1ve_1zzTuwSRy8FMlZJZ8PHu3wZp7ApegMt6fyRLv19U/pubhtml).
