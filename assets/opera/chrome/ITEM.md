@@ -65,7 +65,7 @@ Unfiltered HTML elements can optionally be hidden.
 
 **`cookies` justification:**
 
-Browser cookies can optionally be deleted.
+Browser tracking cookies can optionally be deleted.
 
 **`gcm` justification:**
 
