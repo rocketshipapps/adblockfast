@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/uptimerobot/ratio/m782428162-02bf166026a72243440ef044.svg)](https://adblockfast.com/?ref=GitHub) [![iOS](https://img.shields.io/itunes/v/1032930802.svg)](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) [![Chrome](https://img.shields.io/chrome-web-store/v/nneejgmhfoecfeoffakdnolopppbbkfi.svg)](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 
-*A faster ad blocker for Windows, Android, iOS, Chrome, and Opera.*
+*A faster ad blocker for Windows, Android, iOS, Chrome, and Opera!*
 
 Try Adblock Fast:
 
