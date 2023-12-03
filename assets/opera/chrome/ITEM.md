@@ -53,55 +53,55 @@ See Adblock Fast’s site for source code, benchmarks, support, and frequently a
 
 **Single purpose:**
 
-Adblock Fast filters unwanted web content and tracking out.
+Adblock Fast filters unwanted web content and tracking.
 
 **`browsingData` justification:**
 
-Users may delete historical tracking data.
+Browser tracking data can optionally be deleted.
 
 **`contextMenus` justification:**
 
-Users may hide unfiltered elements.
+Unfiltered HTML elements can optionally be hidden.
 
 **`cookies` justification:**
 
-Users may clear historical cookies.
+Browser cookies can optionally be deleted.
 
 **`gcm` justification:**
 
-Relevant notifications may be shown.
+Notifications may infrequently be shown.
 
 **`notifications` justification:**
 
-Relevant notifications may be shown.
+Notifications may infrequently be shown.
 
 **`storage` justification:**
 
-Filtering options are written to local storage.
+Filter settings are persisted in local storage.
 
 **`tabs` justification:**
 
-Loaded tabs are iterated to prevent first-party requests from getting filtered.
+Loaded tabs are iterated through to prevent same-origin requests from being filtered.
 
 **`unlimitedStorage` justification:**
 
-Filtering options are written to local storage.
+Filter settings are persisted in local storage.
 
 **`webNavigation` justification:**
 
-The filtering status of each requested webpage is indicated.
+The filtering status of each requested page is indicated.
 
 **`webRequest` justification:**
 
-Content is filtered by intercepting HTTP requests.
+Content is filtered by intercepting web requests.
 
 **`webRequestBlocking` justification:**
 
-Content is filtered by intercepting HTTP requests.
+Content is filtered by intercepting web requests.
 
 **Host permission justification:**
 
-Content is filtered by intercepting all HTTP requests and by injecting CSS and JS into all webpages.
+Content is filtered by intercepting all requests and injecting CSS and JS into all pages.
 
 **Privacy policy:** https://www.iubenda.com/privacy-policy/216992
 
