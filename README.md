@@ -1,4 +1,4 @@
-# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20Chrome,%20or%20Opera:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
+# ![Adblock Fast](assets/promo/adblockfast.png) [![Tweet](assets/promo/tweet-optimized.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20Chrome,%20or%20Opera:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
 
 [![Website](https://img.shields.io/uptimerobot/ratio/m782428162-02bf166026a72243440ef044.svg)](https://adblockfast.com/?ref=GitHub) [![iOS](https://img.shields.io/itunes/v/1032930802.svg)](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) [![Chrome](https://img.shields.io/chrome-web-store/v/nneejgmhfoecfeoffakdnolopppbbkfi.svg)](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
 
