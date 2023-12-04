@@ -66,26 +66,26 @@ I.e., your computer or device runs faster still.
 
 1. Rule counts were retrieved from [EasyList](https://easylist.to/) and
    [Adblock Fast’s ruleset](opera/chrome/scripts/blocking.js) on December 3rd, 2023.
-2. File sizes were retrieved from each browser extension’s listing in the
+2. File sizes were retrieved from each app’s listing in the
    [Chrome Web Store](https://chromewebstore.google.com/) on September 1st, 2015.
-3. Load times were measured in Chrome on September 1st, 2015 by (1) enabling each extension, (2)
-   clearing the browser’s cache before each trial, (3) loading the homepage of each of
+3. Load times were measured in Chrome on September 1st, 2015 by (1) enabling each app, (2) clearing
+   the browser’s cache before each trial, (3) loading the homepage of each of
    [Alexa’s top 10 news sites](https://web.archive.org/web/20150902062936/https://www.alexa.com/topsites/category/Top/News)
    3 times, (4) recording the elapsed time shown by the
    [browser’s developer tools](https://developer.chrome.com/docs/devtools/) when the `load` event
-   fired, and (5) calculating the mean time for each extension.
-4. CPU use was measured in Chrome on September 1st, 2015 by (1) enabling each extension, (2)
-   clearing the browser’s cache before each trial, (3) loading the homepage of each of
+   fired, and (5) calculating the mean time for each app.
+4. CPU use was measured in Chrome on September 1st, 2015 by (1) enabling each app, (2) clearing the
+   browser’s cache before each trial, (3) loading the homepage of each of
    [Alexa’s top 10 news sites](https://web.archive.org/web/20150902062936/https://www.alexa.com/topsites/category/Top/News)
    3 times, (4) recording the peak **CPU** percentage shown by the
    [browser’s task manager](https://developer.chrome.com/docs/devtools/memory-problems/), and (5)
-   calculating the mean percentage for each extension.
-5. Memory use was measured in Chrome on September 1st, 2015 by (1) enabling each extension, (2)
-   clearing the browser’s cache before each trial, (3) loading the homepage of each of
+   calculating the mean percentage for each app.
+5. Memory use was measured in Chrome on September 1st, 2015 by (1) enabling each app, (2) clearing
+   the browser’s cache before each trial, (3) loading the homepage of each of
    [Alexa’s top 10 news sites](https://web.archive.org/web/20150902062936/https://www.alexa.com/topsites/category/Top/News)
    3 times, (4) recording the peak **Memory** size shown by the
    [browser’s task manager](https://developer.chrome.com/docs/devtools/memory-problems/), and (5)
-   calculating the mean size for each extension.
+   calculating the mean size for each app.
 
 See the
 [raw benchmark data](https://docs.google.com/spreadsheets/u/1/d/1ve_1zzTuwSRy8FMlZJZ8PHu3wZp7ApegMt6fyRLv19U/pubhtml).
