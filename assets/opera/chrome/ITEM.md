@@ -101,7 +101,7 @@ Content is filtered by intercepting web requests.
 
 **Host permission justification:**
 
-Content is filtered by intercepting all requests and injecting CSS and JS into all pages.
+Content is filtered by intercepting all requests and injecting CSS and JavaScript into all pages.
 
 **Privacy policy:** https://www.iubenda.com/privacy-policy/216992
 
