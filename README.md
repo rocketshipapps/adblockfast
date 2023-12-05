@@ -180,11 +180,10 @@ Like all (functional) ad blockers, Adblock Fast prompts you for the permissions 
 requests by intercepting HTTP traffic and to hide ad elements by injecting CSS and JavaScript into
 visited pages.
 
-### How does Adblock Fast make money<em>?</em>
+### How can Adblock Fast for Windows be uninstalled<em>?</em>
 
-We operate an [(aforementioned) app studio](#who-created-adblock-fast) that’s bootstrapped and
-profitable. You probably didn’t know we existed, but now you do and perhaps will consider hiring us
-when creating the next killer app. (Hmm, maybe doing good work should replace advertising<em>!</em>)
+Open the Start menu, go to **Settings** > **Apps** > **Apps & features**, choose the
+**Adblock Fast** app, then press the **Uninstall** button.
 
 ## Contributing
 
