@@ -150,48 +150,41 @@ If you have any questions or comments, you can follow and message
 [on Twitter](https://twitter.com/adblockfast) or can send us mail at
 <help@adblockfast.com>.
 
-## Frequently asked questions
+## (In)frequently asked questions
 
 ### Who created Adblock Fast<em>?</em>
 
-Adblock Fast was created and is maintained by
-[Rocketship](https://rocketshipapps.com/), an award-winning app studio whose
-mission is to design and develop the finest mobile and web experiences in the
-universe.
+Adblock Fast was created and is maintained by [Rocketship](https://rocketshipapps.com/), an
+award-winning app studio whose mission is to design and develop the finest desktop, mobile, and web
+experiences in the universe.
 
 ### What is Adblock Fast<em>?</em>
 
-Adblock Fast is a new, faster ad blocker for mobile devices and desktop
-browsers.
-
-### Where does Adblock Fast’s filtering ruleset come from<em>?</em>
-
-Adblock Fast’s ruleset is derived from
-[EasyList](https://easylist.to/) and that of
-[Bluhell Firewall](https://web.archive.org/web/20170909224431/https://addons.mozilla.org/en-US/firefox/addon/bluhell-firewall/).
+Adblock Fast is a faster ad blocker for desktop computers and mobile browsers.
 
 ### When will Adblock Fast be available on [insert platform here]<em>?</em>
 
-Adblock Fast is available for Android 5.0 and up with Samsung Internet 4.0 and
-up, for iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and
-up), and for the Chrome and Opera desktop browsers. Follow
-[us on Facebook](https://www.facebook.com/adblockfast) or
-[on Twitter](https://twitter.com/adblockfast) for news about additional platform
-availability.
+Adblock Fast is available for Windows 7 and up, Android 5.0 and up with Samsung Internet 4.0 and up,
+iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and up), and the Chrome and Opera
+desktop browsers. Follow [us on Facebook](https://www.facebook.com/adblockfast) or
+[on Twitter](https://twitter.com/adblockfast) for news about additional platform availability.
+
+### Where does Adblock Fast’s filtering ruleset come from<em>?</em>
+
+Adblock Fast’s ruleset is derived from [EasyList](https://easylist.to/) and that of
+[Bluhell Firewall](https://web.archive.org/web/20170909224431/https://addons.mozilla.org/en-US/firefox/addon/bluhell-firewall/).
 
 ### Why does Adblock Fast require [insert permission here] at install time<em>?</em>
 
-Like all (functional) ad blockers, Adblock Fast prompts you for the permissions
-required to block ad requests by intercepting your HTTP traffic and to hide ad
-resources by injecting CSS into the pages you visit.
+Like all (functional) ad blockers, Adblock Fast prompts you for the permissions required to block ad
+requests by intercepting HTTP traffic and to hide ad elements by injecting CSS and JavaScript into
+visited pages.
 
 ### How does Adblock Fast make money<em>?</em>
 
-We operate an ([aforementioned](#who-created-adblock-fast)) app studio that’s
-bootstrapped and profitable. Yesterday, you probably didn’t know we existed.
-Today, you do and, someday, perhaps you’ll be creating the next killer app and
-will consider hiring us. (Hmm, maybe doing good work ought to replace
-advertising<em>!</em>)
+We operate an [(aforementioned) app studio](#who-created-adblock-fast) that’s bootstrapped and
+profitable. You probably didn’t know we existed, but now you do and perhaps will consider hiring us
+when creating the next killer app. (Hmm, maybe doing good work should replace advertising<em>!</em>)
 
 ## Contributing
 
