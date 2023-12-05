@@ -92,8 +92,8 @@ See the
 
 ## Owner’s manual
 
-Adblock Fast is so fast that even reading the manual takes no time flat. Here’s
-everything you need to know.
+Adblock Fast is so fast that even reading the manual takes no time flat. Here’s everything you need
+to know.
 
 ### In Android
 
@@ -126,29 +126,28 @@ Data**) before reloading the page.
 
 ### In Chrome or Opera
 
-Adblock Fast installs a button in your browser’s toolbar. The button indicates
-the status of the site and page you’re on:
+Adblock Fast installs a button in your browser’s toolbar. The button indicates the status of the
+site and page you’re on:
 
-![Blocked ads](opera/chrome/images/blocked-ads.png) Ads are being blocked on the
-site and ads were found on the page.
+![Blocked ads](opera/chrome/images/blocked-ads.png) Ads are being blocked on the site and ads were
+found on the page.
 
-![Blocked](opera/chrome/images/blocked.png) Ads are being blocked on the site,
-but no ads were found on the page.
+![Blocked](opera/chrome/images/blocked.png) Ads are being blocked on the site, but no ads were found
+on the page.
 
-![Unblocked ads](opera/chrome/images/unblocked-ads.png) Ads aren’t being blocked
-on the site, but ads were found on the page.
+![Unblocked ads](opera/chrome/images/unblocked-ads.png) Ads aren’t being blocked on the site, but
+ads were found on the page.
 
-![Unblocked](opera/chrome/images/unblocked.png) Ads aren’t being blocked on the
-site and no ads were found on the page.
+![Unblocked](opera/chrome/images/unblocked.png) Ads aren’t being blocked on the site and no ads were
+found on the page.
 
-If Adblock Fast is interfering with the behavior of the page, you can click the
-button to unblock ads. Your choice will be remembered whenever you return to the
-site.
+If Adblock Fast is interfering with the behavior of the page, you can click the button to unblock
+ads. Your choice will be remembered whenever you go back to the site.
 
 If you have any questions or comments, you can follow and message
 [us on Facebook](https://www.facebook.com/adblockfast) or
 [on Twitter](https://twitter.com/adblockfast) or can send us mail at
-<help@adblockfast.com>.
+help@adblockfast.com.
 
 ## (In)frequently asked questions
 
