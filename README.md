@@ -263,39 +263,33 @@ started.
 
 ## License
 
-Copyright 2015–2019 Rocketship Apps, LLC
+Copyright 2015– Rocketship Apps, LLC.
 
-This program is free software, excluding the brand features and third-party
-portions of the program identified in the [Exceptions](#exceptions) below: you
-can redistribute it and/or modify it under the terms of the GNU General Public
-License as published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+This program is free software, excluding the brand features and third-party portions of the program
+identified in the [Exceptions](#exceptions) below: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the
-[GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html) for more
-details.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+[GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html) for more details.
 
 ## Additional permissions for App Store submission
 
-Provided that you are otherwise in compliance with version 3 or a later version
-of the GNU General Public License for each covered work that you convey
-(including, without limitation, making the Corresponding Source available in
-compliance with section 6 of the License), you are also granted the permission
-to convey, through Apple’s App Store, non-source executable versions of this
-program as incorporated into each applicable covered work as executable versions
-only under
+Provided that you are otherwise in compliance with version 3 or a later version of the GNU General
+Public License for each covered work that you convey (including, without limitation, making the
+Corresponding Source available in compliance with section 6 of the License), you are also granted
+the permission to convey, through Apple’s App Store, non-source executable versions of this program
+as incorporated into each applicable covered work as executable versions only under
 [version 2.0 of the Mozilla Public License](https://www.mozilla.org/en-US/MPL/2.0/).
 
 ## Exceptions
 
-The Adblock Fast and Rocketship logos, trademarks, domain names, and other brand
-features used in this program cannot be reused without permission and no license
-is granted thereto.
+The Adblock Fast and Rocketship logos, trademarks, domain names, and other brand features used in
+this program cannot be reused without permission and no license is granted thereto.
 
-Further, the following third-party portions of the program and any use thereof
-are subject to their own license terms:
+Further, the following third-party portions of the program and any use thereof are subject to their
+own licensing terms:
 
-* [Hudson NY](https://www.myfonts.com/fonts/virtuecreative/hudson-ny/)
+* [Hudson NY](https://www.myfonts.com/collections/hudson-ny-font-virtuecreative)
 * [Avenir Next](https://www.linotype.com/2090/avenir-next.html)
