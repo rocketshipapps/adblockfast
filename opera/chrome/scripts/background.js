@@ -16,7 +16,7 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-const build               = 8;
+const build               = 9;
 const previousBuild       = localStorage.build;
 const isUpdatingToCurrent = !previousBuild || previousBuild < build;
 const path                = isInOpera ? 'chrome/' : '';
@@ -247,14 +247,17 @@ if (!previousBuild || previousBuild < 7) {
   localStorage.allowlist            = JSON.stringify(allowlist);
 }
 
-if (isUpdatingToCurrent) {
+if (!previousBuild || previousBuild < 9) {
   allowlist[ 'amplitude.com' ]           = true;
   allowlist[ 'analytics.amplitude.com' ] = true;
   allowlist[ 'sumo.com' ]                = true;
   allowlist[ 'www.cnet.com' ]            = true;
   allowlist[ 'www.stitcher.com' ]        = true;
   localStorage.allowlist                 = JSON.stringify(allowlist);
-  localStorage.build                     = build;
+}
+
+if (isUpdatingToCurrent) {
+  localStorage.build = build;
 
   if (previousBuild) {
     delete localStorage.whitelist;
