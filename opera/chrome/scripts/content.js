@@ -17,74 +17,80 @@
     Brian Kennish <brian@rocketshipapps.com>
 */
 const populateStylesheet = (style, selector) => {
-  const sheet = style.sheet;
+                             const sheet = style.sheet;
 
-  if (sheet) {
-    sheet.insertRule(`${ selector } { display: none !important }`, 0);
-  } else {
-    setTimeout(() => { populateStylesheet(style, selector); }, 0);
-  }
-};
-
+                             if (sheet) {
+                               sheet.insertRule(`${ selector } { display: none !important }`, 0);
+                             } else {
+                               setTimeout(() => { populateStylesheet(style, selector); }, 0);
+                             }
+                           };
 const hideSponsoredPosts = (newsFeed, isAllowlisted) => {
-  let wereSponsoredPostsFound;
+                             let wereSponsoredPostsFound;
 
-  if (newsFeed.nodeType == 1) {
-    const posts     = newsFeed.querySelectorAll('[role="article"]');
-    const postCount = posts.length;
+                             if (newsFeed.nodeType == 1) {
+                               const posts     = newsFeed.querySelectorAll('[role="article"]');
+                               const postCount = posts.length;
 
-    for (var i = 0; i < postCount; i++) {
-      const post                = posts[i];
-      const subheadingContainer = post.getElementsByClassName('_3nlk')[0];
-      let   subheading          = '';
+                               for (var i = 0; i < postCount; i++) {
+                                 const post                = posts[i];
+                                 const subheadingContainer = post.getElementsByClassName(
+                                                               '_3nlk'
+                                                             )[0];
+                                 let   subheading          = '';
 
-      if (subheadingContainer) {
-        subheading = subheadingContainer.textContent;
-      } else {
-        const characters     = post.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i');
-        const characterCount = characters.length;
+                                 if (subheadingContainer) {
+                                   subheading = subheadingContainer.textContent;
+                                 } else {
+                                   const characters     = post.getElementsByClassName(
+                                                            'c_wrj_nh4q_ v_wrj_nhu6i'
+                                                          );
+                                   const characterCount = characters.length;
 
-        for (var j = 0; j < characterCount; j++) {
-          const character = characters[j];
+                                   for (var j = 0; j < characterCount; j++) {
+                                     const character = characters[j];
 
-          if (getComputedStyle(character).display != 'none') {
-            subheading += character.getAttribute('data-content');
-          }
-        }
-      }
+                                     if (getComputedStyle(character).display != 'none') {
+                                       subheading += character.getAttribute('data-content');
+                                     }
+                                   }
+                                 }
 
-      if (subheading == 'Sponsored') {
-        if (!isAllowlisted) post.style.display = 'none';
+                                 if (subheading == 'Sponsored') {
+                                   if (!isAllowlisted) post.style.display = 'none';
 
-        wereSponsoredPostsFound = true;
-      }
-    }
-  }
+                                   wereSponsoredPostsFound = true;
+                                 }
+                               }
+                             }
 
-  return wereSponsoredPostsFound;
-};
-
+                             return wereSponsoredPostsFound;
+                           };
 const hidePromotedTweets = (timeline, isAllowlisted) => {
-  let werePromotedTweetsFound;
+                             let werePromotedTweetsFound;
 
-  if (timeline.nodeType == 1) {
-    const tweets     = timeline.querySelectorAll('[data-testid="trend"]');
-    const tweetCount = tweets.length;
+                             if (timeline.nodeType == 1) {
+                               const tweets     = timeline.querySelectorAll(
+                                                    '[data-testid="trend"]'
+                                                  );
+                               const tweetCount = tweets.length;
 
-    for (var i = 0; i < tweetCount; i++) {
-      const tweet    = tweets[i];
-      const metadata = tweet.querySelector('[data-testid="metadata"] .r-1qd0xha');
+                               for (var i = 0; i < tweetCount; i++) {
+                                 const tweet    = tweets[i];
+                                 const metadata = tweet.querySelector(
+                                                    '[data-testid="metadata"] .r-1qd0xha'
+                                                  );
 
-      if (metadata && metadata.textContent.slice(0, 8) == 'Promoted') {
-        if (!isAllowlisted) tweet.parentElement.style.display = 'none';
+                                 if (metadata && metadata.textContent.slice(0, 8) == 'Promoted') {
+                                   if (!isAllowlisted) tweet.parentElement.style.display = 'none';
 
-        werePromotedTweetsFound = true;
-      }
-    }
-  }
+                                   werePromotedTweetsFound = true;
+                                 }
+                               }
+                             }
 
-  return werePromotedTweetsFound;
-};
+                             return werePromotedTweetsFound;
+                           };
 
 chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
   const parentHost            = response.parentHost;

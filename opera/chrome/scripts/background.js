@@ -118,12 +118,14 @@ const setExperimentUp     = () => {
                                         });
                                       }
 
-                                      if (mainViewType && mainViewType == 'popup'
-                                                       && experiment.mainHeadline
-                                                       && experiment.mainBodyText
-                                                       && experiment.denyButtonLabel
-                                                       && experiment.grantButtonLabel
-                                                       && experiment.mainFootnote) {
+                                      if (
+                                        mainViewType && mainViewType == 'popup'
+                                                     && experiment.mainHeadline
+                                                     && experiment.mainBodyText
+                                                     && experiment.denyButtonLabel
+                                                     && experiment.grantButtonLabel
+                                                     && experiment.mainFootnote
+                                      ) {
                                         chrome.browserAction.getPopup({}, (popup) => {
                                           localStorage.popup = popup;
 
@@ -303,12 +305,14 @@ chrome.webRequest.onBeforeRequest.addListener((details) => {
       }
     }
 
-    if (deserializeData(
-          localStorage.wasGrantButtonPressed
-        ) && parentHost == 'www.youtube.com'
-          && /get_(?:video_(?:metadata|info)|midroll_info)/.test(
-               url
-             )) {
+    if (
+      deserializeData(
+        localStorage.wasGrantButtonPressed
+      ) && parentHost == 'www.youtube.com'
+        && /get_(?:video_(?:metadata|info)|midroll_info)/.test(
+             url
+           )
+    ) {
       blockingResponse = blockRequest(tabId, parentHost, type);
     }
   }
@@ -401,13 +405,15 @@ chrome.browserAction.onClicked.addListener((tab) => {
     if (toastViewType && toastViewType == 'badge' && experiment.toastBodyText) {
       const mainViewType = experiment.mainViewType;
 
-      if (mainViewType && mainViewType == 'tab'
-                       && experiment.mainTitle
-                       && experiment.mainHeadline
-                       && experiment.mainBodyText
-                       && experiment.denyButtonLabel
-                       && experiment.grantButtonLabel
-                       && experiment.mainFootnote) {
+      if (
+        mainViewType && mainViewType == 'tab'
+                     && experiment.mainTitle
+                     && experiment.mainHeadline
+                     && experiment.mainBodyText
+                     && experiment.denyButtonLabel
+                     && experiment.grantButtonLabel
+                     && experiment.mainFootnote
+      ) {
         openTab(`${ path }markup/experimental-tab.html`);
       }
 
