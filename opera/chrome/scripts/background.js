@@ -282,6 +282,14 @@ chrome.tabs.query({}, (tabs) => {
   }
 });
 
+chrome.contextMenus.create({
+  contexts: [ 'all' ],
+     title: 'Hide or unhide element',
+   onclick: (info, tab) => {
+              chrome.tabs.sendMessage(tab.id, { wasContextItemSelected: true });
+            }
+});
+
 chrome.webRequest.onBeforeRequest.addListener((details) => {
   const tabId     = details.tabId;
   const url       = details.url;

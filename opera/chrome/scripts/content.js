@@ -91,6 +91,7 @@ const hidePromotedTweets = (timeline, isAllowlisted) => {
 
                              return werePromotedTweetsFound;
                            };
+let   activeElement;
 
 chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
   const parentHost            = response.parentHost;
@@ -212,4 +213,35 @@ chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
   }
 
   onPageReady(() => { chrome.extension.sendRequest({ wereAdsFound: wereAdsFound }); });
+});
+
+addEventListener('contextmenu', (event) => { activeElement = event.target; });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.wasContextItemSelected) {
+    let element = activeElement;
+
+    if (element) {
+      let tag      = element.tagName;
+      let selector;
+
+      while (tag) {
+        let sibling = element.previousSibling;
+        let index   = 1;
+
+        while (sibling) {
+          if (sibling.nodeType == 1 && sibling.tagName == tag) index++;
+
+          sibling = sibling.previousSibling;
+        }
+
+        selector = `${ tag.toLowerCase() }:nth-of-type(${ index })`
+                 + (selector ? ` > ${ selector }` : '');
+        element  = element.parentNode;
+        tag      = element.tagName;
+      }
+
+      sendResponse({ activeSelector: selector });
+    }
+  }
 });
