@@ -91,7 +91,7 @@ const hidePromotedTweets = (timeline, isAllowlisted) => {
 
                              return werePromotedTweetsFound;
                            };
-let   activeElement;
+let   focusedElement;
 
 chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
   const parentHost            = response.parentHost;
@@ -215,11 +215,11 @@ chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
   onPageReady(() => { chrome.extension.sendRequest({ wereAdsFound: wereAdsFound }); });
 });
 
-addEventListener('contextmenu', (event) => { activeElement = event.target; });
+addEventListener('contextmenu', (event) => { focusedElement = event.target; });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.wasContextItemSelected) {
-    let element = activeElement;
+    let element = focusedElement;
 
     if (element) {
       let tag      = element.tagName;
