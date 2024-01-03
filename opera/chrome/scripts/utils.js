@@ -35,10 +35,10 @@ const injectPlausible = (path) => {
                           script.setAttribute('data-domain', domain);
                           document.body.prepend(script);
                         };
-const plausible       = () => {
+const plausible       = (...args) => {
                           plausible.q = plausible.q || [];
 
-                          plausible.q.push(arguments);
+                          plausible.q.push(args);
                         };
 const onPageReady     = (callback) => {
                           if (document.readyState == 'complete') {
