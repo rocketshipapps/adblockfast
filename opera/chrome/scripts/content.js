@@ -95,16 +95,19 @@ let   focusedElement;
 
 chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
   const parentHost            = response.parentHost;
-  const isAllowlisted         = response.isAllowlisted;
-  const wasGrantButtonPressed = response.wasGrantButtonPressed;
   let   wereAdsFound;
 
   if (parentHost) {
-    let selector = selectors[ parentHost ];
-        selector = '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, .advertisement, '
-                 + '.advertorial, .bottom-ad, [id^=div-gpt-ad-], .fs_ads, .m-ad, '
-                 + '.searchCenterBottomAds, .searchCenterTopAds, .side-ad'
-                 + (selector ? `, ${ selector }` : '');
+    const userSelectors         = response.userSelectors;
+    const isAllowlisted         = response.isAllowlisted;
+    const wasGrantButtonPressed = response.wasGrantButtonPressed;
+    let   selector              = selectors[ parentHost ];
+          selector              = '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, '
+                                + '.advertisement, .advertorial, .bottom-ad, [id^=div-gpt-ad-], '
+                                + '.fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, '
+                                + '.side-ad'
+                                + (selector ? `, ${ selector }` : '')
+                                + (userSelectors.length ? `, ${ userSelectors.join(', ') }` : '');
 
     if (wasGrantButtonPressed && parentHost == 'twitter.com') {
       selector += ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > '
@@ -241,7 +244,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         tag      = element.tagName;
       }
 
-      sendResponse({ activeSelector: selector });
+      sendResponse({ focusedSelector: selector });
     }
   }
 });

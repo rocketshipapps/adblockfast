@@ -72,18 +72,18 @@ const allowTab            = (tab) => {
                               const allowlist = deserializeData(localStorage.allowlist) || {};
 
                               if (allowlist[ host ]) {
-                                                         delete allowlist[ host ];
-                                localStorage.allowlist = JSON.stringify(allowlist);
+                                delete allowlist[ host ];
 
-                                chrome.tabs.reload(id);
                                 plausible('Block', { u: `${ baseUrl }${ url }` });
                               } else {
-                                     allowlist[ host ] = true;
-                                localStorage.allowlist = JSON.stringify(allowlist);
+                                allowlist[ host ] = true;
 
-                                chrome.tabs.reload(id);
                                 plausible('Unblock', { u: `${ baseUrl }${ url }` });
                               }
+
+                              localStorage.allowlist = JSON.stringify(allowlist);
+
+                              chrome.tabs.reload(id);
                             };
 const getExperiments      = (callback) => {
                               if (database) {
@@ -286,7 +286,34 @@ chrome.contextMenus.create({
   contexts: [ 'all' ],
      title: 'Hide or unhide element',
    onclick: (info, tab) => {
-              chrome.tabs.sendMessage(tab.id, { wasContextItemSelected: true });
+              chrome.tabs.sendMessage(tab.id, { wasContextItemSelected: true }, (response) => {
+                const url           = tab.url;
+                const selector      = response.focusedSelector;
+                const host          = getHost(url);
+                const blocklist     = deserializeData(localStorage.blocklist) || {};
+                const hostBlocklist = blocklist[ host ];
+
+                if (hostBlocklist) {
+                  const index = hostBlocklist.indexOf(selector);
+
+                  if (index + 1) {
+                    delete hostBlocklist[ index ];
+
+                    plausible('Unhide', { u: `${ baseUrl }${ url }` });
+                  } else {
+                    hostBlocklist.push(selector);
+
+                    plausible('Hide', { u: `${ baseUrl }${ url }` });
+                  }
+                } else {
+                  blocklist[ host ] = [];
+                                      blocklist[ host ].push(selector);
+
+                  plausible('Hide', { u: `${ baseUrl }${ url }` });
+                }
+
+                localStorage.blocklist = JSON.stringify(blocklist);
+              });
             }
 });
 
@@ -378,6 +405,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.shouldInitialize) {
         sendResponse({
                      parentHost,
+                  userSelectors: (
+                                   deserializeData(localStorage.blocklist) || {}
+                                 )[ parentHost ] || [],
                   isAllowlisted,
           wasGrantButtonPressed: deserializeData(localStorage.wasGrantButtonPressed)
         });
