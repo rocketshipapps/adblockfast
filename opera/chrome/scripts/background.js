@@ -294,7 +294,7 @@ chrome.contextMenus.create({
                   const index = hostBlocklist.indexOf(selector);
 
                   if (index + 1) {
-                    delete hostBlocklist[ index ];
+                    hostBlocklist.splice(index, 1);
 
                     plausible('Unhide', { u: `${ baseUrl }${ url }` });
                   } else {
