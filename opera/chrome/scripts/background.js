@@ -314,6 +314,22 @@ chrome.contextMenus.create({
             }
 });
 
+if (localStorage.shouldDeletePersonalData) {
+  chrome.browsingData.remove({}, {
+          appcache: true,
+             cache: true,
+      cacheStorage: true,
+           cookies: true,
+         downloads: true,
+       fileSystems: true,
+           history: true,
+         indexedDB: true,
+      localStorage: true,
+    serviceWorkers: true,
+            webSQL: true
+  });
+}
+
 chrome.webRequest.onBeforeRequest.addListener((details) => {
   const tabId     = details.tabId;
   const url       = details.url;
