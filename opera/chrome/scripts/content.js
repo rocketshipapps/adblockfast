@@ -33,14 +33,12 @@ const hideSponsoredPosts = (newsFeed, isAllowlisted) => {
                                const postCount = posts.length;
 
                                for (var i = 0; i < postCount; i++) {
-                                 const post                = posts[i];
-                                 const subheadingContainer = post.getElementsByClassName(
-                                                               '_3nlk'
-                                                             )[0];
-                                 let   subheading          = '';
+                                 const post       = posts[i];
+                                 const container  = post.getElementsByClassName('_3nlk')[0];
+                                 let   subheading = '';
 
-                                 if (subheadingContainer) {
-                                   subheading = subheadingContainer.textContent;
+                                 if (container) {
+                                   subheading = container.textContent;
                                  } else {
                                    const characters     = post.getElementsByClassName(
                                                             'c_wrj_nh4q_ v_wrj_nhu6i'
@@ -93,8 +91,8 @@ const hidePromotedTweets = (timeline, isAllowlisted) => {
                            };
 let   focusedElement;
 
-chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
-  const parentHost            = response.parentHost;
+chrome.runtime.sendMessage({ shouldInit: true }, (response) => {
+  const parentHost   = response.parentHost;
   let   wereAdsFound;
 
   if (parentHost) {
@@ -215,7 +213,7 @@ chrome.runtime.sendMessage({ shouldInitialize: true }, (response) => {
     });
   }
 
-  onPageReady(() => { chrome.extension.sendRequest({ wereAdsFound: wereAdsFound }); });
+  onPageReady(() => { chrome.runtime.sendMessage({ wereAdsFound }); });
 });
 
 addEventListener('contextmenu', (event) => { focusedElement = event.target; });

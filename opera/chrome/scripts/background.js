@@ -24,11 +24,11 @@ const allowlist           = deserializeData(localStorage.allowlist || localStora
 const hosts               = {};
 const wereAdsFound        = {};
 const openTab             = (url) => { chrome.tabs.create({ url }); };
-const blockRequest        = (tabId, parentHost, type) => {
-                              let blockingResponse      = { cancel: false };
+const blockRequest        = (tabId, host, type) => {
+                              let response              = { cancel: false };
                                   wereAdsFound[ tabId ] = true;
 
-                              if ((deserializeData(localStorage.allowlist) || {})[ parentHost ]) {
+                              if ((deserializeData(localStorage.allowlist) || {})[ host ]) {
                                 chrome.tabs.get(tabId, () => {
                                   if (!chrome.runtime.lastError) {
                                     chrome.browserAction.setIcon({
@@ -53,17 +53,18 @@ const blockRequest        = (tabId, parentHost, type) => {
                                   }
                                 });
 
-                                blockingResponse = {
-                                                     redirectUrl: type == 'image'
-                                                                ? 'data:image/png;base64,'
-                                                                + 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB'
-                                                                + 'CAYAAAAfFcSJAAAACklEQVR4nGMAAQAA'
-                                                                + 'BQABDQottAAAAABJRU5ErkJggg=='
-                                                                : 'about:blank'
-                                                   };
+                                response = {
+                                             redirectUrl: type == 'image' ? 'data:image/png;base64,'
+                                                                          + 'iVBORw0KGgoAAAANSUhEUg'
+                                                                          + 'AAAAEAAAABCAYAAAAfFcSJ'
+                                                                          + 'AAAACklEQVR4nGMAAQAABQ'
+                                                                          + 'ABDQottAAAAABJRU5ErkJg'
+                                                                          + 'gg=='
+                                                                          : 'about:blank'
+                                           };
                               }
 
-                              return blockingResponse;
+                              return response;
                             };
 const allowTab            = (tab) => {
                               const id        = tab.id;
@@ -86,8 +87,8 @@ const allowTab            = (tab) => {
                               chrome.tabs.reload(id);
                             };
 const getExperiments      = (callback) => {
-                              if (database) {
-                                database.ref('experiments').once('value').then((snapshot) => {
+                              if (db) {
+                                db.ref('experiments').once('value').then((snapshot) => {
                                   callback(snapshot.val());
                                 });
                               } else {
@@ -95,36 +96,35 @@ const getExperiments      = (callback) => {
                               }
                             };
 const setExperimentUp     = () => {
-                              const experiment     = deserializeData(localStorage.experiment);
-                              const toastViewCount = localStorage.toastViewCount;
+                              const experiment = deserializeData(localStorage.experiment);
+                              const toastCount = localStorage.toastViewCount;
 
                               if (experiment) {
-                                if (toastViewCount < 3) {
-                                  const toastViewType = experiment.toastViewType;
-                                  const toastBodyText = experiment.toastBodyText;
+                                if (toastCount < 3) {
+                                  const toastType = experiment.toastViewType;
+                                  const bodyText  = experiment.toastBodyText;
 
-                                  if (toastViewType && toastBodyText) {
-                                    if (toastViewType == 'badge') {
-                                      const toastColor   = experiment.toastColor;
-                                      const toastTooltip = experiment.toastTooltip;
-                                      const mainViewType = experiment.mainViewType;
+                                  if (toastType && bodyText) {
+                                    if (toastType == 'badge') {
+                                      const color    = experiment.toastColor;
+                                      const title    = `${ experiment.toastTooltip }`;
+                                      const mainType = experiment.mainViewType;
 
-                                      if (toastTooltip) {
+                                      if (title) {
                                         chrome.browserAction.getTitle({}, (tooltip) => {
                                           localStorage.tooltip = tooltip;
 
-                                          chrome.browserAction
-                                                .setTitle({ title: `${ toastTooltip }` });
+                                          chrome.browserAction.setTitle({ title });
                                         });
                                       }
 
                                       if (
-                                        mainViewType && mainViewType == 'popup'
-                                                     && experiment.mainHeadline
-                                                     && experiment.mainBodyText
-                                                     && experiment.denyButtonLabel
-                                                     && experiment.grantButtonLabel
-                                                     && experiment.mainFootnote
+                                        mainType && mainType == 'popup'
+                                                 && experiment.mainHeadline
+                                                 && experiment.mainBodyText
+                                                 && experiment.denyButtonLabel
+                                                 && experiment.grantButtonLabel
+                                                 && experiment.mainFootnote
                                       ) {
                                         chrome.browserAction.getPopup({}, (popup) => {
                                           localStorage.popup = popup;
@@ -135,30 +135,28 @@ const setExperimentUp     = () => {
                                         });
                                       }
 
-                                      if (toastColor) {
+                                      if (color) {
                                         chrome.browserAction
                                               .getBadgeBackgroundColor({}, (color) => {
                                           localStorage.badgeColor = JSON.stringify(color);
 
-                                          chrome.browserAction
-                                                .setBadgeBackgroundColor({ color: toastColor });
+                                          chrome.browserAction.setBadgeBackgroundColor({ color });
                                         });
                                       }
 
-                                      chrome.browserAction
-                                            .setBadgeText({ text: `${ toastBodyText }` });
+                                      chrome.browserAction.setBadgeText({ text: `${ bodyText }` });
                                       localStorage.toastViewCount++;
                                       saveUser();
-                                    } else if (toastViewType == 'notification') {
-                                      const toastHeadline = experiment.toastHeadline;
-                                      const toastIconUrl  = experiment.toastIconUrl;
+                                    } else if (toastType == 'notification') {
+                                      const title   = experiment.toastHeadline;
+                                      const iconUrl = experiment.toastIconUrl;
 
-                                      if (toastHeadline && toastIconUrl) {
+                                      if (title && iconUrl) {
                                         chrome.notifications.create({
                                                         type: 'basic',
-                                                       title: toastHeadline,
-                                                     message: toastBodyText,
-                                                     iconUrl: toastIconUrl,
+                                                       title,
+                                                     message: bodyText,
+                                                     iconUrl,
                                           requireInteraction: !experiment.isToastDismissible
                                         });
                                         localStorage.toastViewCount++;
@@ -170,11 +168,11 @@ const setExperimentUp     = () => {
                                   saveUser();
                                 }
                               } else if (!deserializeData(toastViewCount)) {
-                                const experimentalGroup = localStorage.experimentalGroup;
+                                const group = localStorage.experimentalGroup;
 
-                                if (experimentalGroup) {
+                                if (group) {
                                   getExperiments((experiments) => {
-                                    const experiment = experiments[ experimentalGroup ];
+                                    const experiment = experiments[ group ];
 
                                     if (experiment) {
                                       localStorage.experiment = JSON.stringify(experiment);
@@ -188,8 +186,8 @@ const setExperimentUp     = () => {
                               }
                             };
 const saveUser            = () => {
-                              if (database && uid && uids && timestamp) {
-                                database.ref(`users/${ uid }`).set({
+                              if (db && uid && uids && timestamp) {
+                                db.ref(`users/${ uid }`).set({
                                                    uids,
                                                platform: browser,
                                                   build,
@@ -221,11 +219,11 @@ const saveUser            = () => {
                               }
                             };
 const saveError           = (error) => {
-                              if (database && timestamp) {
-                                database.ref('errors').push({ message: error.message, timestamp });
+                              if (db && timestamp) {
+                                db.ref('errors').push({ message: error.message, timestamp });
                               }
                             };
-let   database;
+let   db;
 let   user;
 let   uid;
 let   uids;
@@ -235,7 +233,6 @@ injectPlausible('scripts/vendor/');
 
 if (!previousBuild) {
   localStorage.firstBuild = build;
-  localStorage.allowlist  = JSON.stringify({});
 
   openTab(`${ path }markup/firstrun.html`);
   plausible('Install', { u: `${ baseUrl }v${ build }` });
@@ -326,14 +323,14 @@ chrome.webRequest.onBeforeRequest.addListener((details) => {
 
   if (isParent) hosts[ tabId ] = childHost;
 
-  const parentHost       = hosts[ tabId ];
-  let   blockingResponse = { cancel: false };
+  const parentHost = hosts[ tabId ];
+  let   response   = { cancel: false };
 
   if (tabId + 1 && !isParent && parentHost) {
     if (childHost != parentHost) {
       for (var i = domainCount - 1; i + 1; i--) {
         if (domains[i].test(childHost)) {
-          blockingResponse = blockRequest(tabId, parentHost, type);
+          response = blockRequest(tabId, parentHost, type);
 
           break;
         }
@@ -348,11 +345,11 @@ chrome.webRequest.onBeforeRequest.addListener((details) => {
              url
            )
     ) {
-      blockingResponse = blockRequest(tabId, parentHost, type);
+      response = blockRequest(tabId, parentHost, type);
     }
   }
 
-  return blockingResponse;
+  return response;
 }, { urls: [ '<all_urls>' ]}, [ 'blocking' ]);
 
 chrome.webNavigation.onCommitted.addListener((details) => {
@@ -402,7 +399,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const parentHost    = getHost(tab.url);
       const isAllowlisted = (deserializeData(localStorage.allowlist) || {})[ parentHost ];
 
-      if (message.shouldInitialize) {
+      if (message.shouldInit) {
         sendResponse({
                      parentHost,
                   userSelectors: (
@@ -438,19 +435,19 @@ chrome.browserAction.onClicked.addListener((tab) => {
   const experiment = deserializeData(localStorage.experiment);
 
   if (experiment) {
-    const toastViewType = experiment.toastViewType;
+    const toastType = experiment.toastViewType;
 
-    if (toastViewType && toastViewType == 'badge' && experiment.toastBodyText) {
-      const mainViewType = experiment.mainViewType;
+    if (toastType && toastType == 'badge' && experiment.toastBodyText) {
+      const mainType = experiment.mainViewType;
 
       if (
-        mainViewType && mainViewType == 'tab'
-                     && experiment.mainTitle
-                     && experiment.mainHeadline
-                     && experiment.mainBodyText
-                     && experiment.denyButtonLabel
-                     && experiment.grantButtonLabel
-                     && experiment.mainFootnote
+        mainType && mainType == 'tab'
+                 && experiment.mainTitle
+                 && experiment.mainHeadline
+                 && experiment.mainBodyText
+                 && experiment.denyButtonLabel
+                 && experiment.grantButtonLabel
+                 && experiment.mainFootnote
       ) {
         openTab(`${ path }markup/experimental-tab.html`);
       }
