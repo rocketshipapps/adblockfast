@@ -35,11 +35,6 @@ const injectPlausible = (path) => {
                           script.setAttribute('data-domain', domain);
                           document.body.prepend(script);
                         };
-const plausible       = (...args) => {
-                          plausible.q = plausible.q || [];
-
-                          plausible.q.push(args);
-                        };
 const onPageReady     = (callback) => {
                           if (document.readyState == 'complete') {
                             callback();
@@ -47,3 +42,9 @@ const onPageReady     = (callback) => {
                             addEventListener('load', callback);
                           }
                         };
+
+function plausible() {
+  plausible.q = plausible.q || [];
+
+  plausible.q.push(arguments);
+}
