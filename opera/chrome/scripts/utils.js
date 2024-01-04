@@ -42,9 +42,8 @@ const onPageReady     = (callback) => {
                             addEventListener('load', callback);
                           }
                         };
+      plausible       = (...args) => {
+                          plausible.q = plausible.q || [];
 
-function plausible() {
-  plausible.q = plausible.q || [];
-
-  plausible.q.push(arguments);
-}
+                          plausible.q.push(args);
+                        };
