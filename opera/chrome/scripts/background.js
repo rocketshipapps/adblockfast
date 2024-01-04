@@ -208,7 +208,7 @@ var uid;
 var uids;
 var timestamp;
 
-injectPlausible('scripts/vendor/');
+injectPlausible(PATH + 'scripts/vendor/');
 
 if (!PREVIOUS_BUILD) {
   localStorage.firstBuild = BUILD;
