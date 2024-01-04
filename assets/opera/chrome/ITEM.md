@@ -63,10 +63,6 @@ Browser tracking data can optionally be deleted.
 
 Unfiltered HTML elements can optionally be hidden.
 
-**`cookies` justification:**
-
-Browser tracking cookies can optionally be deleted.
-
 **`notifications` justification:**
 
 Relevant notifications may occasionally be shown.
