@@ -67,10 +67,6 @@ Unfiltered HTML elements can optionally be hidden.
 
 Browser tracking cookies can optionally be deleted.
 
-**`gcm` justification:**
-
-Relevant notifications may occasionally be shown.
-
 **`notifications` justification:**
 
 Relevant notifications may occasionally be shown.
