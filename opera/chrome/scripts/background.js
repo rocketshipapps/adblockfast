@@ -229,7 +229,7 @@ let   uid;
 let   uids;
 let   timestamp;
 
-injectPlausible(PATH + 'scripts/vendor/');
+injectPlausible(`${ path }scripts/vendor/`);
 
 if (!previousBuild) {
   localStorage.firstBuild = build;
