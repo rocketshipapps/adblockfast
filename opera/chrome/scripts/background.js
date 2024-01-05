@@ -16,294 +16,386 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function spawn(tab) { chrome.tabs.create({ url: tab }); }
+const build               = 9;
+const previousBuild       = localStorage.build;
+const isUpdatingToCurrent = !previousBuild || previousBuild < build;
+const path                = isInOpera ? 'chrome/' : '';
+const allowlist           = deserializeData(localStorage.allowlist || localStorage.whitelist) || {};
+const hosts               = {};
+const wereAdsFound        = {};
+const openTab             = (url) => { chrome.tabs.create({ url }); };
+const blockRequest        = (tabId, host, type) => {
+                              let response              = { cancel: false };
+                                  wereAdsFound[ tabId ] = true;
 
-function saveError(error) {
-  if (database && timestamp) {
-    database.ref('errors').push({ message: error.message, timestamp: timestamp });
-  }
-}
+                              if ((deserializeData(localStorage.allowlist) || {})[ host ]) {
+                                chrome.tabs.get(tabId, () => {
+                                  if (!chrome.runtime.lastError) {
+                                    chrome.browserAction.setIcon({
+                                      tabId,
+                                       path: {
+                                               '19': `${ path }images/unblocked-ads/19.png`,
+                                               '38': `${ path }images/unblocked-ads/38.png`
+                                             }
+                                    });
+                                  }
+                                });
+                              } else {
+                                chrome.tabs.get(tabId, () => {
+                                  if (!chrome.runtime.lastError) {
+                                    chrome.browserAction.setIcon({
+                                      tabId,
+                                       path: {
+                                               '19': `${ path }images/blocked-ads/19.png`,
+                                               '38': `${ path }images/blocked-ads/38.png`
+                                             }
+                                    });
+                                  }
+                                });
 
-function saveUser() {
-  if (database && uid && uids && timestamp) {
-    database.ref('users/' + uid).set({
-      uids: uids,
-      platform: BROWSER,
-      build: BUILD,
-      firstBuild: deserialize(localStorage.firstBuild),
-      experimentalGroup: deserialize(localStorage.experimentalGroup),
-      toastViewCount: deserialize(localStorage.toastViewCount),
-      toastClickCount: deserialize(localStorage.toastClickCount),
-      mainViewCount: deserialize(localStorage.mainViewCount),
-      wasDenyButtonPressed: deserialize(localStorage.wasDenyButtonPressed),
-      wasGrantButtonPressed: deserialize(localStorage.wasGrantButtonPressed),
-      timestamp: timestamp
-    });
-  } else {
-    saveError({ message: 'No user ID' });
-  }
-}
+                                response = {
+                                             redirectUrl: type == 'image' ? 'data:image/png;base64,'
+                                                                          + 'iVBORw0KGgoAAAANSUhEUg'
+                                                                          + 'AAAAEAAAABCAYAAAAfFcSJ'
+                                                                          + 'AAAACklEQVR4nGMAAQAABQ'
+                                                                          + 'ABDQottAAAAABJRU5ErkJg'
+                                                                          + 'gg=='
+                                                                          : 'about:blank'
+                                           };
+                              }
 
-function getExperiments(callback) {
-  if (database) {
-    database.ref('experiments').once('value').then(function(snapshot) {
-      callback(snapshot.val());
-    });
-  } else {
-    callback([]);
-  }
-}
+                              return response;
+                            };
+const allowTab            = (tab) => {
+                              const id        = tab.id;
+                              const url       = tab.url;
+                              const host      = getHost(url);
+                              const allowlist = deserializeData(localStorage.allowlist) || {};
 
-function setExperimentUp() {
-  const EXPERIMENT = deserialize(localStorage.experiment);
-  const TOAST_VIEW_COUNT = localStorage.toastViewCount;
+                              if (allowlist[ host ]) {
+                                delete allowlist[ host ];
 
-  if (EXPERIMENT) {
-    if (TOAST_VIEW_COUNT < 3) {
-      const TOAST_VIEW_TYPE = EXPERIMENT.toastViewType;
-      const TOAST_BODY_TEXT = EXPERIMENT.toastBodyText;
+                                plausible('Block', { u: `${ baseUrl }${ url }` });
+                              } else {
+                                allowlist[ host ] = true;
 
-      if (TOAST_VIEW_TYPE && TOAST_BODY_TEXT) {
-        const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
+                                plausible('Unblock', { u: `${ baseUrl }${ url }` });
+                              }
 
-        if (TOAST_VIEW_TYPE == 'badge') {
-          const TOAST_COLOR = EXPERIMENT.toastColor;
+                              localStorage.allowlist = JSON.stringify(allowlist);
 
-          if (TOAST_COLOR) {
-            chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
-              localStorage.badgeColor = JSON.stringify(color);
-              chrome.browserAction.setBadgeBackgroundColor({ color: TOAST_COLOR });
-            });
-          }
+                              chrome.tabs.reload(id);
+                            };
+const getExperiments      = (callback) => {
+                              if (db) {
+                                db.ref('experiments').once('value').then((snapshot) => {
+                                  callback(snapshot.val());
+                                });
+                              } else {
+                                callback([]);
+                              }
+                            };
+const setExperimentUp     = () => {
+                              const experiment = deserializeData(localStorage.experiment);
+                              const toastCount = localStorage.toastViewCount;
 
-          const TOAST_TOOLTIP = EXPERIMENT.toastTooltip;
+                              if (experiment) {
+                                if (toastCount < 3) {
+                                  const toastType = experiment.toastViewType;
+                                  const bodyText  = experiment.toastBodyText;
 
-          if (TOAST_TOOLTIP) {
-            chrome.browserAction.getTitle({}, function(tooltip) {
-              localStorage.tooltip = tooltip;
-              chrome.browserAction.setTitle({ title: TOAST_TOOLTIP + '' });
-            });
-          }
+                                  if (toastType && bodyText) {
+                                    if (toastType == 'badge') {
+                                      const color    = experiment.toastColor;
+                                      const title    = `${ experiment.toastTooltip }`;
+                                      const mainType = experiment.mainViewType;
 
-          chrome.browserAction.setBadgeText({ text: TOAST_BODY_TEXT + '' });
-          localStorage.toastViewCount++;
-          saveUser();
+                                      if (title) {
+                                        chrome.browserAction.getTitle({}, (tooltip) => {
+                                          localStorage.tooltip = tooltip;
 
-          if (
-            MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'popup' && EXPERIMENT.mainHeadline &&
-                EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel
-                    && EXPERIMENT.mainFootnote
-          ) {
-            chrome.browserAction.getPopup({}, function(popup) {
-              localStorage.popup = popup;
-              chrome.browserAction.setPopup({ popup: PATH + 'markup/experimental-popup.html' });
-            });
-          }
-        } else if (TOAST_VIEW_TYPE == 'notification') {
-          const TOAST_HEADLINE = EXPERIMENT.toastHeadline;
-          const TOAST_ICON_URL = EXPERIMENT.toastIconUrl;
+                                          chrome.browserAction.setTitle({ title });
+                                        });
+                                      }
 
-          if (TOAST_HEADLINE && TOAST_ICON_URL) {
-            chrome.notifications.create({
-              type: 'basic',
-              title: TOAST_HEADLINE,
-              message: TOAST_BODY_TEXT,
-              iconUrl: TOAST_ICON_URL,
-              requireInteraction: !EXPERIMENT.isToastDismissible
-            });
-            localStorage.toastViewCount++;
-            saveUser();
-          }
-        }
-      }
-    } else if (IS_UPDATING_TO_CURRENT) {
-      saveUser();
-    }
-  } else if (!deserialize(TOAST_VIEW_COUNT)) {
-    const EXPERIMENTAL_GROUP = localStorage.experimentalGroup;
+                                      if (
+                                        mainType && mainType == 'popup'
+                                                 && experiment.mainHeadline
+                                                 && experiment.mainBodyText
+                                                 && experiment.denyButtonLabel
+                                                 && experiment.grantButtonLabel
+                                                 && experiment.mainFootnote
+                                      ) {
+                                        chrome.browserAction.getPopup({}, (popup) => {
+                                          localStorage.popup = popup;
 
-    if (EXPERIMENTAL_GROUP) {
-      getExperiments(function(experiments) {
-        const EXPERIMENT = experiments[ EXPERIMENTAL_GROUP ];
+                                          chrome.browserAction.setPopup({
+                                            popup: `${ path }markup/experimental-popup.html`
+                                          });
+                                        });
+                                      }
 
-        if (EXPERIMENT) {
-          localStorage.experiment = JSON.stringify(EXPERIMENT);
-          setExperimentUp();
-        } else if (IS_UPDATING_TO_CURRENT) {
-          saveUser();
-        }
-      });
-    }
-  }
-}
+                                      if (color) {
+                                        chrome.browserAction
+                                              .getBadgeBackgroundColor({}, (color) => {
+                                          localStorage.badgeColor = JSON.stringify(color);
 
-function block(tabId, parentHost, type) {
-  var blockingResponse = { cancel: false };
+                                          chrome.browserAction.setBadgeBackgroundColor({ color });
+                                        });
+                                      }
 
-  if ((deserialize(localStorage.whitelist) || {})[ parentHost ]) {
-    chrome.tabs.get(tabId, function() {
-      if (!chrome.runtime.lastError) {
-        chrome.browserAction.setIcon({
-          tabId: tabId,
-          path: {
-            '19': PATH + 'images/unblocked-ads/19.png', '38': PATH + 'images/unblocked-ads/38.png'
-          }
-        });
-      }
-    });
-  } else {
-    chrome.tabs.get(tabId, function() {
-      if (!chrome.runtime.lastError) {
-        chrome.browserAction.setIcon({
-          tabId: tabId,
-          path: {
-            '19': PATH + 'images/blocked-ads/19.png', '38': PATH + 'images/blocked-ads/38.png'
-          }
-        });
-      }
-    });
+                                      chrome.browserAction.setBadgeText({ text: `${ bodyText }` });
+                                      localStorage.toastViewCount++;
+                                      saveUser();
+                                    } else if (toastType == 'notification') {
+                                      const title   = experiment.toastHeadline;
+                                      const iconUrl = experiment.toastIconUrl;
 
-    blockingResponse = {
-      redirectUrl:
-          type == 'image' ?
-              'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=='
-                  : 'about:blank'
-    };
-  }
+                                      if (title && iconUrl) {
+                                        chrome.notifications.create({
+                                                        type: 'basic',
+                                                       title,
+                                                     message: bodyText,
+                                                     iconUrl,
+                                          requireInteraction: !experiment.isToastDismissible
+                                        });
+                                        localStorage.toastViewCount++;
+                                        saveUser();
+                                      }
+                                    }
+                                  }
+                                } else if (isUpdatingToCurrent) {
+                                  saveUser();
+                                }
+                              } else if (!deserializeData(toastViewCount)) {
+                                const group = localStorage.experimentalGroup;
 
-  WERE_ADS_FOUND[ tabId ] = true;
+                                if (group) {
+                                  getExperiments((experiments) => {
+                                    const experiment = experiments[ group ];
 
-  return blockingResponse;
-}
+                                    if (experiment) {
+                                      localStorage.experiment = JSON.stringify(experiment);
 
-function whitelist(tab) {
-  const WHITELIST = deserialize(localStorage.whitelist) || {};
-  const URL = tab.url;
-  const HOST = getHost(URL);
-  const ID = tab.id;
-
-  if (WHITELIST[ HOST ]) {
-    delete WHITELIST[ HOST ];
-    localStorage.whitelist = JSON.stringify(WHITELIST);
-    chrome.tabs.reload(ID);
-    plausible('Block', { u: BASE_URL + URL });
-  } else {
-    WHITELIST[ HOST ] = true;
-    localStorage.whitelist = JSON.stringify(WHITELIST);
-    chrome.tabs.reload(ID);
-    plausible('Unblock', { u: BASE_URL + URL });
-  }
-}
-
-const BUILD = 8;
-const PREVIOUS_BUILD = localStorage.build;
-const IS_UPDATING_TO_CURRENT = !PREVIOUS_BUILD || PREVIOUS_BUILD < BUILD;
-const PATH = IS_IN_OPERA ? 'chrome/' : '';
-const WHITELIST = deserialize(localStorage.whitelist) || {};
-const HOSTS = {};
-const WERE_ADS_FOUND = {};
-var database;
-var user;
-var uid;
-var uids;
-var timestamp;
+                                      setExperimentUp();
+                                    } else if (isUpdatingToCurrent) {
+                                      saveUser();
+                                    }
+                                  });
+                                }
+                              }
+                            };
+const saveUser            = () => {
+                              if (db && uid && uids && timestamp) {
+                                db.ref(`users/${ uid }`).set({
+                                                   uids,
+                                               platform: browser,
+                                                  build,
+                                             firstBuild: deserializeData(
+                                                           localStorage.firstBuild
+                                                         ),
+                                      experimentalGroup: deserializeData(
+                                                           localStorage.experimentalGroup
+                                                         ),
+                                         toastViewCount: deserializeData(
+                                                           localStorage.toastViewCount
+                                                         ),
+                                        toastClickCount: deserializeData(
+                                                           localStorage.toastClickCount
+                                                         ),
+                                          mainViewCount: deserializeData(
+                                                           localStorage.mainViewCount
+                                                         ),
+                                   wasDenyButtonPressed: deserializeData(
+                                                           localStorage.wasDenyButtonPressed
+                                                         ),
+                                  wasGrantButtonPressed: deserializeData(
+                                                           localStorage.wasGrantButtonPressed
+                                                         ),
+                                              timestamp
+                                });
+                              } else {
+                                saveError({ message: 'No user ID' });
+                              }
+                            };
+const saveError           = (error) => {
+                              if (db && timestamp) {
+                                db.ref('errors').push({ message: error.message, timestamp });
+                              }
+                            };
+let   db;
+let   user;
+let   uid;
+let   uids;
+let   timestamp;
 
 injectPlausible(PATH + 'scripts/vendor/');
 
-if (!PREVIOUS_BUILD) {
-  localStorage.firstBuild = BUILD;
-  localStorage.whitelist = JSON.stringify({});
-  spawn(PATH + 'markup/firstrun.html');
-  plausible('Install', { u: BASE_URL + 'v' + BUILD });
+if (!previousBuild) {
+  localStorage.firstBuild = build;
+
+  openTab(`${ path }markup/firstrun.html`);
+  plausible('Install', { u: `${ baseUrl }v${ build }` });
 }
 
-if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 5) localStorage.uids = JSON.stringify([]);
+if (!previousBuild || previousBuild < 5) localStorage.uids = JSON.stringify([]);
 
-if (!PREVIOUS_BUILD || PREVIOUS_BUILD < 7) {
-  WHITELIST[ 'buy.buysellads.com' ] = true;
-  WHITELIST[ 'gs.statcounter.com' ] = true;
-  localStorage.whitelist = JSON.stringify(WHITELIST);
+if (!previousBuild || previousBuild < 7) {
+  allowlist[ 'buy.buysellads.com' ] = true;
+  allowlist[ 'gs.statcounter.com' ] = true;
+  localStorage.allowlist            = JSON.stringify(allowlist);
 }
 
-if (IS_UPDATING_TO_CURRENT) {
-  WHITELIST[ 'amplitude.com' ] = true;
-  WHITELIST[ 'analytics.amplitude.com' ] = true;
-  WHITELIST[ 'sumo.com' ] = true;
-  WHITELIST[ 'www.cnet.com' ] = true;
-  WHITELIST[ 'www.stitcher.com' ] = true;
-  localStorage.whitelist = JSON.stringify(WHITELIST);
-  localStorage.build = BUILD;
-  if (PREVIOUS_BUILD) plausible('Update', { u: BASE_URL + 'v' + PREVIOUS_BUILD + '-to-v' + BUILD });
+if (!previousBuild || previousBuild < 9) {
+  allowlist[ 'amplitude.com' ]           = true;
+  allowlist[ 'analytics.amplitude.com' ] = true;
+  allowlist[ 'sumo.com' ]                = true;
+  allowlist[ 'www.cnet.com' ]            = true;
+  allowlist[ 'www.stitcher.com' ]        = true;
+  localStorage.allowlist                 = JSON.stringify(allowlist);
+}
+
+if (isUpdatingToCurrent) {
+  localStorage.build = build;
+
+  if (previousBuild) {
+    delete localStorage.whitelist;
+    plausible('Update', { u: `${ baseUrl }v${ previousBuild }-to-v${ build }` });
+  }
 }
 
 if (user) {
   uid = user.uid;
+
   setExperimentUp();
 }
 
-chrome.tabs.query({}, function(tabs) {
-  const TAB_COUNT = tabs.length;
+chrome.tabs.query({}, (tabs) => {
+  const tabCount = tabs.length;
 
-  for (var i = 0; i < TAB_COUNT; i++) {
-    var tab = tabs[ i ];
-    HOSTS[ tab.id ] = getHost(tab.url);
+  for (var i = 0; i < tabCount; i++) {
+    const tab             = tabs[i];
+          hosts[ tab.id ] = getHost(tab.url);
   }
 });
 
-chrome.webRequest.onBeforeRequest.addListener(function(details) {
-  const TAB_ID = details.tabId;
-  const TYPE = details.type;
-  const IS_PARENT = TYPE == 'main_frame';
-  const URL = details.url;
-  const CHILD_HOST = getHost(URL);
-  if (IS_PARENT) HOSTS[ TAB_ID ] = CHILD_HOST;
-  const PARENT_HOST = HOSTS[ TAB_ID ];
-  var blockingResponse = { cancel: false };
+chrome.contextMenus.create({
+  contexts: [ 'all' ],
+     title: 'Hide or unhide element',
+   onclick: (info, tab) => {
+              chrome.tabs.sendMessage(tab.id, { wasContextItemSelected: true }, (response) => {
+                const url           = tab.url;
+                const selector      = response.focusedSelector;
+                const host          = getHost(url);
+                const blocklist     = deserializeData(localStorage.blocklist) || {};
+                const hostBlocklist = blocklist[ host ];
 
-  if (TAB_ID + 1 && !IS_PARENT && PARENT_HOST) {
-    if (CHILD_HOST != PARENT_HOST) {
-      for (var i = DOMAIN_COUNT - 1; i + 1; i--) {
-        if (DOMAINS[ i ].test(CHILD_HOST)) {
-          blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
+                if (hostBlocklist) {
+                  const index = hostBlocklist.indexOf(selector);
+
+                  if (index + 1) {
+                    hostBlocklist.splice(index, 1);
+
+                    plausible('Unhide', { u: `${ baseUrl }${ url }` });
+                  } else {
+                    hostBlocklist.push(selector);
+
+                    plausible('Hide', { u: `${ baseUrl }${ url }` });
+                  }
+                } else {
+                  blocklist[ host ] = [];
+                                      blocklist[ host ].push(selector);
+
+                  plausible('Hide', { u: `${ baseUrl }${ url }` });
+                }
+
+                localStorage.blocklist = JSON.stringify(blocklist);
+              });
+            }
+});
+
+if (localStorage.shouldDeletePersonalData) {
+  chrome.browsingData.remove({}, {
+          appcache: true,
+             cache: true,
+      cacheStorage: true,
+           cookies: true,
+         downloads: true,
+       fileSystems: true,
+           history: true,
+         indexedDB: true,
+      localStorage: true,
+    serviceWorkers: true,
+            webSQL: true
+  });
+}
+
+chrome.webRequest.onBeforeRequest.addListener((details) => {
+  const tabId     = details.tabId;
+  const url       = details.url;
+  const type      = details.type;
+  const childHost = getHost(url);
+  const isParent  = type == 'main_frame';
+
+  if (isParent) hosts[ tabId ] = childHost;
+
+  const parentHost = hosts[ tabId ];
+  let   response   = { cancel: false };
+
+  if (tabId + 1 && !isParent && parentHost) {
+    if (childHost != parentHost) {
+      for (var i = domainCount - 1; i + 1; i--) {
+        if (domains[i].test(childHost)) {
+          response = blockRequest(tabId, parentHost, type);
+
           break;
         }
       }
     }
 
     if (
-      deserialize(localStorage.wasGrantButtonPressed) && PARENT_HOST == 'www.youtube.com' &&
-          /get_(?:video_(?:metadata|info)|midroll_info)/.test(URL)
+      deserializeData(
+        localStorage.wasGrantButtonPressed
+      ) && parentHost == 'www.youtube.com'
+        && /get_(?:video_(?:metadata|info)|midroll_info)/.test(
+             url
+           )
     ) {
-      blockingResponse = block(TAB_ID, PARENT_HOST, TYPE);
+      response = blockRequest(tabId, parentHost, type);
     }
   }
 
-  return blockingResponse;
+  return response;
 }, { urls: [ '<all_urls>' ]}, [ 'blocking' ]);
 
-chrome.webNavigation.onCommitted.addListener(function(details) {
+chrome.webNavigation.onCommitted.addListener((details) => {
   if (!details.frameId) {
-    const TAB_ID = details.tabId;
-    delete WERE_ADS_FOUND[ TAB_ID ];
+    const tabId = details.tabId;
+                  delete wereAdsFound[ tabId ];
 
-    chrome.tabs.get(TAB_ID, function() {
+    chrome.tabs.get(tabId, () => {
       if (!chrome.runtime.lastError) {
-        if ((deserialize(localStorage.whitelist) || {})[ getHost(details.url) ]) {
+        if ((deserializeData(localStorage.allowlist) || {})[ getHost(details.url) ]) {
           chrome.browserAction.setIcon({
-            tabId: TAB_ID,
-            path: { '19': PATH + 'images/unblocked/19.png', '38': PATH + 'images/unblocked/38.png' }
-          }, function() {
+            tabId,
+             path: {
+                     '19': `${ path }images/unblocked/19.png`,
+                     '38': `${ path }images/unblocked/38.png`
+                   }
+          }, () => {
             if (!localStorage.tooltip) {
-              chrome.browserAction.setTitle({ tabId: TAB_ID, title: 'Block ads on this site' });
+              chrome.browserAction.setTitle({ tabId, title: 'Block ads on this site' });
             }
           });
         } else {
           chrome.browserAction.setIcon({
-            tabId: TAB_ID,
-            path: { '19': PATH + 'images/blocked/19.png', '38': PATH + 'images/blocked/38.png' }
-          }, function() {
+            tabId,
+             path: {
+                     '19': `${ path }images/blocked/19.png`, '38': `${ path }images/blocked/38.png`
+                   }
+          }, () => {
             if (!localStorage.tooltip) {
-              chrome.browserAction.setTitle({ tabId: TAB_ID, title: 'Unblock ads on this site' });
+              chrome.browserAction.setTitle({ tabId, title: 'Unblock ads on this site' });
             }
           });
         }
@@ -312,33 +404,37 @@ chrome.webNavigation.onCommitted.addListener(function(details) {
   }
 });
 
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-  if (request.shouldSaveUser) {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.shouldSaveUser) {
     saveUser();
+    sendResponse({});
   } else {
-    const TAB = sender.tab;
+    const tab = sender.tab;
 
-    if (TAB) {
-      const PARENT_HOST = getHost(TAB.url);
-      const IS_WHITELISTED = (deserialize(localStorage.whitelist) || {})[ PARENT_HOST ];
+    if (tab) {
+      const parentHost    = getHost(tab.url);
+      const isAllowlisted = (deserializeData(localStorage.allowlist) || {})[ parentHost ];
 
-      if (request.shouldInitialize) {
+      if (message.shouldInit) {
         sendResponse({
-          wasGrantButtonPressed: deserialize(localStorage.wasGrantButtonPressed),
-          parentHost: PARENT_HOST,
-          isWhitelisted: IS_WHITELISTED
+                     parentHost,
+                  userSelectors: (
+                                   deserializeData(localStorage.blocklist) || {}
+                                 )[ parentHost ] || [],
+                  isAllowlisted,
+          wasGrantButtonPressed: deserializeData(localStorage.wasGrantButtonPressed)
         });
       } else {
-        const TAB_ID = TAB.id;
+        const tabId = tab.id;
 
-        chrome.tabs.get(TAB_ID, function() {
-          if (!chrome.runtime.lastError && request.wereAdsFound) {
+        chrome.tabs.get(tabId, () => {
+          if (!chrome.runtime.lastError && message.wereAdsFound) {
             chrome.browserAction.setIcon({
-              tabId: TAB_ID,
-              path: {
-                '19': PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') + 'blocked-ads/19.png',
-                '38': PATH + 'images/' + (IS_WHITELISTED ? 'un' : '') + 'blocked-ads/38.png'
-              }
+              tabId,
+               path: {
+                       '19': `${ path }images/${ isAllowlisted ? 'un' : '' }blocked-ads/19.png`,
+                       '38': `${ path }images/${ isAllowlisted ? 'un' : '' }blocked-ads/38.png`
+                     }
             });
           }
         });
@@ -351,35 +447,39 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
   }
 });
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  const EXPERIMENT = deserialize(localStorage.experiment);
+chrome.browserAction.onClicked.addListener((tab) => {
+  const experiment = deserializeData(localStorage.experiment);
 
-  if (EXPERIMENT) {
-    const TOAST_VIEW_TYPE = EXPERIMENT.toastViewType;
+  if (experiment) {
+    const toastType = experiment.toastViewType;
 
-    if (TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBodyText) {
-      const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
+    if (toastType && toastType == 'badge' && experiment.toastBodyText) {
+      const mainType = experiment.mainViewType;
 
       if (
-        MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'tab' && EXPERIMENT.mainTitle && EXPERIMENT.mainHeadline
-            && EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel
-                  && EXPERIMENT.mainFootnote
+        mainType && mainType == 'tab'
+                 && experiment.mainTitle
+                 && experiment.mainHeadline
+                 && experiment.mainBodyText
+                 && experiment.denyButtonLabel
+                 && experiment.grantButtonLabel
+                 && experiment.mainFootnote
       ) {
-        spawn(PATH + 'markup/experimental-tab.html');
+        openTab(`${ path }markup/experimental-tab.html`);
       }
 
       localStorage.toastClickCount++;
       saveUser();
     } else {
-      whitelist(tab);
+      allowTab(tab);
     }
   } else {
-    whitelist(tab);
+    allowTab(tab);
   }
 });
 
-chrome.notifications.onClicked.addListener(function(id) {
-  spawn(PATH + 'markup/experimental-tab.html');
+chrome.notifications.onClicked.addListener((id) => {
+  openTab(`${ path }markup/experimental-tab.html`);
   chrome.notifications.clear(id);
   localStorage.toastClickCount++;
   saveUser();

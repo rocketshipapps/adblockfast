@@ -16,131 +16,149 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function populate(style, selector) {
-  const SHEET = style.sheet;
+const populateStylesheet = (style, selector) => {
+                             const sheet = style.sheet;
 
-  if (SHEET) {
-    SHEET.insertRule(selector + ' { display: none !important }', 0);
-  } else {
-    setTimeout(function() { populate(style, selector); }, 0);
-  }
-}
+                             if (sheet) {
+                               sheet.insertRule(`${ selector } { display: none !important }`, 0);
+                             } else {
+                               setTimeout(() => { populateStylesheet(style, selector); }, 0);
+                             }
+                           };
+const hideSponsoredPosts = (newsFeed, isAllowlisted) => {
+                             let wereSponsoredPostsFound;
 
-function hideSponsoredPosts(newsFeed, isWhitelisted) {
-  var wereSponsoredPostsFound;
+                             if (newsFeed.nodeType == 1) {
+                               const posts     = newsFeed.querySelectorAll('[role="article"]');
+                               const postCount = posts.length;
 
-  if (newsFeed.nodeType == 1) {
-    const POSTS = newsFeed.querySelectorAll('[role="article"]');
-    const POST_COUNT = POSTS.length;
+                               for (var i = 0; i < postCount; i++) {
+                                 const post       = posts[i];
+                                 const container  = post.getElementsByClassName('_3nlk')[0];
+                                 let   subheading = '';
 
-    for (var i = 0; i < POST_COUNT; i++) {
-      const POST = POSTS[ i ];
-      const SUBHEADING_CONTAINER = POST.getElementsByClassName('_3nlk')[ 0 ];
-      var subheading = '';
+                                 if (container) {
+                                   subheading = container.textContent;
+                                 } else {
+                                   const characters     = post.getElementsByClassName(
+                                                            'c_wrj_nh4q_ v_wrj_nhu6i'
+                                                          );
+                                   const characterCount = characters.length;
 
-      if (SUBHEADING_CONTAINER) {
-        subheading = SUBHEADING_CONTAINER.textContent;
-      } else {
-        const CHARACTERS = POST.getElementsByClassName('c_wrj_nh4q_ v_wrj_nhu6i');
-        const CHARACTER_COUNT = CHARACTERS.length;
+                                   for (var j = 0; j < characterCount; j++) {
+                                     const character = characters[j];
 
-        for (var j = 0; j < CHARACTER_COUNT; j++) {
-          const CHARACTER = CHARACTERS[ j ];
+                                     if (getComputedStyle(character).display != 'none') {
+                                       subheading += character.getAttribute('data-content');
+                                     }
+                                   }
+                                 }
 
-          if (getComputedStyle(CHARACTER).display != 'none') {
-            subheading += CHARACTER.getAttribute('data-content');
-          }
-        }
-      }
+                                 if (subheading == 'Sponsored') {
+                                   if (!isAllowlisted) post.style.display = 'none';
 
-      if (subheading == 'Sponsored') {
-        if (!isWhitelisted) POST.style.display = 'none';
-        wereSponsoredPostsFound = true;
-      }
-    }
-  }
+                                   wereSponsoredPostsFound = true;
+                                 }
+                               }
+                             }
 
-  return wereSponsoredPostsFound;
-}
+                             return wereSponsoredPostsFound;
+                           };
+const hidePromotedTweets = (timeline, isAllowlisted) => {
+                             let werePromotedTweetsFound;
 
-function hidePromotedTweets(timeline, isWhitelisted) {
-  var werePromotedTweetsFound;
+                             if (timeline.nodeType == 1) {
+                               const tweets     = timeline.querySelectorAll(
+                                                    '[data-testid="trend"]'
+                                                  );
+                               const tweetCount = tweets.length;
 
-  if (timeline.nodeType == 1) {
-    const TWEETS = timeline.querySelectorAll('[data-testid="trend"]');
-    const TWEET_COUNT = TWEETS.length;
+                               for (var i = 0; i < tweetCount; i++) {
+                                 const tweet    = tweets[i];
+                                 const metadata = tweet.querySelector(
+                                                    '[data-testid="metadata"] .r-1qd0xha'
+                                                  );
 
-    for (var i = 0; i < TWEET_COUNT; i++) {
-      const TWEET = TWEETS[ i ];
-      const METADATA = TWEET.querySelector('[data-testid="metadata"] .r-1qd0xha');
+                                 if (metadata && metadata.textContent.slice(0, 8) == 'Promoted') {
+                                   if (!isAllowlisted) tweet.parentElement.style.display = 'none';
 
-      if (METADATA && METADATA.textContent.slice(0, 8) == 'Promoted') {
-        if (!isWhitelisted) TWEET.parentElement.style.display = 'none';
-        werePromotedTweetsFound = true;
-      }
-    }
-  }
+                                   werePromotedTweetsFound = true;
+                                 }
+                               }
+                             }
 
-  return werePromotedTweetsFound;
-}
+                             return werePromotedTweetsFound;
+                           };
+let   focusedElement;
 
-chrome.extension.sendRequest({ shouldInitialize: true }, function(response) {
-  const PARENT_HOST = response.parentHost;
-  const WAS_GRANT_BUTTON_PRESSED = response.wasGrantButtonPressed;
-  const IS_WHITELISTED = response.isWhitelisted;
-  var wereAdsFound;
+chrome.runtime.sendMessage({ shouldInit: true }, (response) => {
+  const parentHost   = response.parentHost;
+  let   wereAdsFound;
 
-  if (PARENT_HOST) {
-    var selector = SELECTORS[ PARENT_HOST ];
-    selector =
-        '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, .advertisement, .advertorial, .bottom-ad, [id^=div-gpt-ad-], .fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, .side-ad'
-            + (selector ? ', ' + selector : '');
+  if (parentHost) {
+    const userSelectors         = response.userSelectors;
+    const isAllowlisted         = response.isAllowlisted;
+    const wasGrantButtonPressed = response.wasGrantButtonPressed;
+    let   selector              = selectors[ parentHost ];
+          selector              = '#ad, .ad, .ad-container, .ad-top, .adsbygoogle, .adv, '
+                                + '.advertisement, .advertorial, .bottom-ad, [id^=div-gpt-ad-], '
+                                + '.fs_ads, .m-ad, .searchCenterBottomAds, .searchCenterTopAds, '
+                                + '.side-ad'
+                                + (selector ? `, ${ selector }` : '')
+                                + (userSelectors.length ? `, ${ userSelectors.join(', ') }` : '');
 
-    if (WAS_GRANT_BUTTON_PRESSED && PARENT_HOST == 'twitter.com') {
-      selector +=
-          ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"], [class="css-1dbjc4n r-e84r5y r-1or9b2r"], .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"], [aria-label="Who to follow"] [data-testid="UserCell"]:first-child, .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo, [class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]';
+    if (wasGrantButtonPressed && parentHost == 'twitter.com') {
+      selector += ', .css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > '
+                  + '.css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > '
+                  + '[class="css-1dbjc4n"], '
+                + '[class="css-1dbjc4n r-e84r5y r-1or9b2r"], '
+                + '.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > '
+                  + '[class="css-1dbjc4n"], '
+                + '[aria-label="Who to follow"] '
+                  + '[data-testid="UserCell"]:first-child, '
+                + '.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > '
+                  + '.css-1dbjc4n.r-1wtj0ep.r-1sp51qo, '
+                + '[class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] '
+                  + '[data-testid="UserCell"]';
     }
 
     if (selector) {
-      if (!IS_WHITELISTED) {
-        const STYLE = document.createElement('style');
-        (document.head || document.documentElement).insertBefore(STYLE, null);
-        populate(STYLE, selector);
+      if (!isAllowlisted) {
+        const style = document.createElement('style');
+
+        (document.head || document.documentElement).insertBefore(style, null);
+        populateStylesheet(style, selector);
       }
 
-      onReady(function() {
-        if (WAS_GRANT_BUTTON_PRESSED) {
-          if (PARENT_HOST == 'www.facebook.com') {
-            const NEWS_FEED = document.getElementById('content');
+      onPageReady(() => {
+        if (wasGrantButtonPressed) {
+          if (parentHost == 'www.facebook.com') {
+            const newsFeed = document.getElementById('content');
 
-            if (NEWS_FEED) {
-              (new MutationObserver(function(mutations) {
-                const MUTATION_COUNT = mutations.length;
+            if (newsFeed) {
+              (new MutationObserver((mutations) => {
+                const mutationCount = mutations.length;
 
-                for (var i = 0; i < MUTATION_COUNT; i++) {
-                  if (hideSponsoredPosts(mutations[ i ].target, IS_WHITELISTED)) {
-                    wereAdsFound = true;
-                  }
+                for (var i = 0; i < mutationCount; i++) {
+                  if (hideSponsoredPosts(mutations[i].target, isAllowlisted)) wereAdsFound = true;
                 }
-              })).observe(NEWS_FEED, { childList: true, subtree: true });
+              })).observe(newsFeed, { childList: true, subtree: true });
 
-              if (hideSponsoredPosts(NEWS_FEED, IS_WHITELISTED)) wereAdsFound = true;
+              if (hideSponsoredPosts(newsFeed, isAllowlisted)) wereAdsFound = true;
             }
-          } else if (PARENT_HOST == 'twitter.com') {
-            const TIMELINE = document.body;
+          } else if (parentHost == 'twitter.com') {
+            const timeline = document.body;
 
-            if (TIMELINE) {
-              (new MutationObserver(function(mutations) {
-                const MUTATION_COUNT = mutations.length;
+            if (timeline) {
+              (new MutationObserver((mutations) => {
+                const mutationCount = mutations.length;
 
-                for (var i = 0; i < MUTATION_COUNT; i++) {
-                  if (hidePromotedTweets(mutations[ i ].target, IS_WHITELISTED)) {
-                    wereAdsFound = true;
-                  }
+                for (var i = 0; i < mutationCount; i++) {
+                  if (hidePromotedTweets(mutations[i].target, isAllowlisted)) wereAdsFound = true;
                 }
-              })).observe(TIMELINE, { childList: true, subtree: true });
+              })).observe(timeline, { childList: true, subtree: true });
 
-              if (hidePromotedTweets(TIMELINE, IS_WHITELISTED)) wereAdsFound = true;
+              if (hidePromotedTweets(timeline, isAllowlisted)) wereAdsFound = true;
             }
           }
         }
@@ -149,20 +167,23 @@ chrome.extension.sendRequest({ shouldInitialize: true }, function(response) {
       });
     }
 
-    onReady(function() {
-      const IFRAMES = document.getElementsByTagName('iframe');
-      const IFRAME_COUNT = IFRAMES.length;
+    onPageReady(() => {
+      const iframes     = document.getElementsByTagName('iframe');
+      const images      = document.getElementsByTagName('img');
+      const iframeCount = iframes.length;
+      const imageCount  = images.length;
 
-      for (var i = 0; i < IFRAME_COUNT; i++) {
-        var iframe = IFRAMES[ i ];
-        var childHost = getHost(iframe.src);
+      for (var i = 0; i < iframeCount; i++) {
+        const iframe    = iframes[i];
+        const childHost = getHost(iframe.src);
 
-        if (childHost != PARENT_HOST) {
-          for (var j = DOMAIN_COUNT - 1; j + 1; j--) {
-            if (DOMAINS[ j ].test(childHost)) {
-              if (!IS_WHITELISTED) {
-                var className = iframe.className;
-                iframe.className = (className ? className + ' ' : '') + 'adblockfast-collapsed';
+        if (childHost != parentHost) {
+          for (var j = domainCount - 1; j + 1; j--) {
+            if (domains[j].test(childHost)) {
+              if (!isAllowlisted) {
+                const className        = iframe.className;
+                      iframe.className = (className ? `${ className } ` : '')
+                                       + 'adblockfast-collapsed';
               }
 
               break;
@@ -171,19 +192,17 @@ chrome.extension.sendRequest({ shouldInitialize: true }, function(response) {
         }
       }
 
-      const IMAGES = document.getElementsByTagName('img');
-      const IMAGE_COUNT = IMAGES.length;
+      for (i = 0; i < imageCount; i++) {
+        const image     = images[i];
+        const childHost = getHost(image.src);
 
-      for (i = 0; i < IMAGE_COUNT; i++) {
-        var image = IMAGES[ i ];
-        var childHost = getHost(image.src);
-
-        if (childHost != PARENT_HOST) {
-          for (var j = DOMAIN_COUNT - 1; j + 1; j--) {
-            if (DOMAINS[ j ].test(childHost)) {
-              if (!IS_WHITELISTED) {
-                var className = image.className;
-                image.className = (className ? className + ' ' : '') + 'adblockfast-collapsed';
+        if (childHost != parentHost) {
+          for (var j = domainCount - 1; j + 1; j--) {
+            if (domains[j].test(childHost)) {
+              if (!isAllowlisted) {
+                const className       = image.className;
+                      image.className = (className ? `${ className } ` : '')
+                                      + 'adblockfast-collapsed';
               }
 
               break;
@@ -194,5 +213,36 @@ chrome.extension.sendRequest({ shouldInitialize: true }, function(response) {
     });
   }
 
-  onReady(function() { chrome.extension.sendRequest({ wereAdsFound: wereAdsFound }); });
+  onPageReady(() => { chrome.runtime.sendMessage({ wereAdsFound }); });
+});
+
+addEventListener('contextmenu', (event) => { focusedElement = event.target; });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.wasContextItemSelected) {
+    let element = focusedElement;
+
+    if (element) {
+      let tag      = element.tagName;
+      let selector;
+
+      while (tag) {
+        let sibling = element.previousSibling;
+        let index   = 1;
+
+        while (sibling) {
+          if (sibling.nodeType == 1 && sibling.tagName == tag) index++;
+
+          sibling = sibling.previousSibling;
+        }
+
+        selector = `${ tag.toLowerCase() }:nth-of-type(${ index })`
+                 + (selector ? ` > ${ selector }` : '');
+        element  = element.parentNode;
+        tag      = element.tagName;
+      }
+
+      sendResponse({ focusedSelector: selector });
+    }
+  }
 });

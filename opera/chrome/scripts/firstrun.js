@@ -16,7 +16,7 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-onReady(function() {
+onPageReady(() => {
   injectPlausible('../scripts/vendor/');
-  plausible('pageview', { u: BASE_URL + 'firstrun' });
+  plausible('pageview', { u: `${ baseUrl }firstrun` });
 });

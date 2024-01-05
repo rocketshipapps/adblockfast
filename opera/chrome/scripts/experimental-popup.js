@@ -16,71 +16,73 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-function tearExperimentDown() {
-  const TOAST_VIEW_TYPE = EXPERIMENT.toastViewType;
+const experiment         = deserializeData(localStorage.experiment);
+const tearExperimentDown = () => {
+                             const toastType = experiment.toastViewType;
 
-  if (TOAST_VIEW_TYPE && TOAST_VIEW_TYPE == 'badge' && EXPERIMENT.toastBodyText) {
-    const MAIN_VIEW_TYPE = EXPERIMENT.mainViewType;
+                             if (toastType && toastType == 'badge' && experiment.toastBodyText) {
+                               const mainType = experiment.mainViewType;
 
-    if (
-      MAIN_VIEW_TYPE && MAIN_VIEW_TYPE == 'popup' && EXPERIMENT.mainHeadline &&
-          EXPERIMENT.mainBodyText && EXPERIMENT.denyButtonLabel && EXPERIMENT.grantButtonLabel &&
-              EXPERIMENT.mainFootnote
-    ) {
-      chrome.browserAction.setPopup({ popup: localStorage.popup });
-      delete localStorage.popup;
-    }
+                               if (experiment.toastTooltip) {
+                                 chrome.browserAction.setTitle({ title: localStorage.tooltip });
+                                 delete localStorage.tooltip;
+                               }
 
-    chrome.browserAction.setBadgeText({ text: '' });
+                               if (
+                                 mainType && mainType == 'popup'
+                                          && experiment.mainHeadline
+                                          && experiment.mainBodyText
+                                          && experiment.denyButtonLabel
+                                          && experiment.grantButtonLabel
+                                          && experiment.mainFootnote
+                               ) {
+                                 chrome.browserAction.setPopup({ popup: localStorage.popup });
+                                 delete localStorage.popup;
+                               }
 
-    if (EXPERIMENT.toastTooltip) {
-      chrome.browserAction.setTitle({ title: localStorage.tooltip });
-      delete localStorage.tooltip;
-    }
+                               if (experiment.toastColor) {
+                                 chrome.browserAction.setBadgeBackgroundColor({
+                                   color: deserializeData(localStorage.badgeColor)
+                                 });
+                                 delete localStorage.badgeColor;
+                               }
 
-    if (EXPERIMENT.toastColor) {
-      chrome.browserAction.setBadgeBackgroundColor({ color: deserialize(localStorage.badgeColor) });
-      delete localStorage.badgeColor;
-    }
-  }
+                               chrome.browserAction.setBadgeText({ text: '' });
+                             }
 
-  delete localStorage.experiment;
-}
+                             delete localStorage.experiment;
+                           };
 
-const EXPERIMENT = deserialize(localStorage.experiment);
+if (experiment) {
+  onPageReady(() => {
+    const denyButton                                           = document.getElementById('deny');
+    const grantButton                                          = document.getElementById('grant');
+          denyButton.textContent                               = experiment.denyButtonLabel;
+          grantButton.textContent                              = experiment.grantButtonLabel;
+          document.getElementsByTagName('h1')[ 0 ].textContent = experiment.mainHeadline;
+          document.getElementsByTagName('h2')[ 0 ].textContent = experiment.mainBodyText;
+          document.getElementById('footnote').textContent      = experiment.mainFootnote;
 
-if (EXPERIMENT) {
-  onReady(function() {
-    injectPlausible('../scripts/vendor/');
     localStorage.toastClickCount++;
-    chrome.extension.sendRequest({ shouldSaveUser: true });
-    document.getElementsByTagName('h1')[ 0 ].textContent = EXPERIMENT.mainHeadline;
-    document.getElementsByTagName('h2')[ 0 ].textContent = EXPERIMENT.mainBodyText;
-    const DENY_BUTTON = document.getElementById('deny');
-
-    DENY_BUTTON.onclick = function() {
-      tearExperimentDown();
-      localStorage.wasDenyButtonPressed = true;
-      chrome.extension.sendRequest({ shouldSaveUser: true });
-      plausible('Deny', { u: BASE_URL + 'experimental-popup' });
-      close();
-    };
-
-    DENY_BUTTON.textContent = EXPERIMENT.denyButtonLabel;
-    const GRANT_BUTTON = document.getElementById('grant');
-
-    GRANT_BUTTON.onclick = function() {
-      tearExperimentDown();
-      localStorage.wasGrantButtonPressed = true;
-      chrome.extension.sendRequest({ shouldSaveUser: true });
-      plausible('Grant', { u: BASE_URL + 'experimental-popup' });
-      close();
-    };
-
-    GRANT_BUTTON.textContent = EXPERIMENT.grantButtonLabel;
-    document.getElementById('footnote').textContent = EXPERIMENT.mainFootnote;
     localStorage.mainViewCount++;
-    chrome.extension.sendRequest({ shouldSaveUser: true });
-    plausible('pageview', { u: BASE_URL + 'experimental-popup' });
+    chrome.runtime.sendMessage({ shouldSaveUser: true });
+    injectPlausible('../scripts/vendor/');
+    plausible('pageview', { u: `${ baseUrl }experimental-popup` });
+    denyButton.addEventListener('click', () => {
+      localStorage.wasDenyButtonPressed = true;
+
+      tearExperimentDown();
+      chrome.runtime.sendMessage({ shouldSaveUser: true });
+      plausible('Deny', { u: `${ baseUrl }experimental-popup` });
+      close();
+    });
+    grantButton.addEventListener('click', () => {
+      localStorage.wasGrantButtonPressed = true;
+
+      tearExperimentDown();
+      chrome.runtime.sendMessage({ shouldSaveUser: true });
+      plausible('Grant', { u: `${ baseUrl }experimental-popup` });
+      close();
+    });
   });
 }
