@@ -46,14 +46,14 @@ The world’s fastest ad blocker! Same blocking, 8x more accelerated page loadin
 
 **Description:**
 
-Ad Block Fast is a faster, open-source ad blocker.
+Adblock Fast is a faster, open-source ad blocker.
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated with little-used
 filtering rules and features that sap their speed and hog your computer’s CPU, memory, and storage.
-Ad Block Fast runs a mere 12 optimized filtering rules to accelerate pages 8x more but consume 6x
+Adblock Fast runs a mere 12 optimized filtering rules to accelerate pages 8x more but consume 6x
 less computing resources than other ad blockers do.
 
-See Ad Block Fast’s site for source code, benchmarks, support, and frequently asked questions.
+See Adblock Fast’s site for source code, benchmarks, support, and frequently asked questions.
 
 **Changelog:**
 
