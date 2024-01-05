@@ -25,7 +25,6 @@ java -jar htmlcompressor-1.5.3.jar --remove-intertag-spaces \
                                    -o adblockfast/chrome/markup/ \
                                    adblockfast/chrome/markup/
 java -jar yuicompressor-2.4.8.jar -o ".css$:.css" adblockfast/chrome/stylesheets/*.css
-java -jar yuicompressor-2.4.8.jar -o ".js$:.js" adblockfast/chrome/scripts/*.js
 cd adblockfast
 zip -r ../adblockfast chrome -x *.DS_Store
 rm -f chrome/manifest.json
