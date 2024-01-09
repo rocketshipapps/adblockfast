@@ -284,32 +284,35 @@ chrome.contextMenus.create({
      title: 'Hide or unhide element',
    onclick: (info, tab) => {
               chrome.tabs.sendMessage(tab.id, { wasContextItemSelected: true }, (response) => {
-                const url           = tab.url;
-                const selector      = response.focusedSelector;
-                const host          = getHost(url);
-                const blocklist     = deserializeData(localStorage.blocklist) || {};
-                const hostBlocklist = blocklist[ host ];
+                const url      = tab.url;
+                const selector = response.focusedSelector;
+                const host     = getHost(url);
 
-                if (hostBlocklist) {
-                  const index = hostBlocklist.indexOf(selector);
+                chrome.storage.sync.get('blocklist', (items) => {
+                  const blocklist     = items.blocklist || {};
+                  const hostBlocklist = blocklist[ host ];
 
-                  if (index + 1) {
-                    hostBlocklist.splice(index, 1);
+                  if (hostBlocklist) {
+                    const index = hostBlocklist.indexOf(selector);
 
-                    plausible('Unhide', { u: `${ baseUrl }${ url }` });
+                    if (index + 1) {
+                      hostBlocklist.splice(index, 1);
+
+                      plausible('Unhide', { u: `${ baseUrl }${ url }` });
+                    } else {
+                      hostBlocklist.push(selector);
+
+                      plausible('Hide', { u: `${ baseUrl }${ url }` });
+                    }
                   } else {
-                    hostBlocklist.push(selector);
+                    blocklist[ host ] = [];
+                                        blocklist[ host ].push(selector);
 
                     plausible('Hide', { u: `${ baseUrl }${ url }` });
                   }
-                } else {
-                  blocklist[ host ] = [];
-                                      blocklist[ host ].push(selector);
 
-                  plausible('Hide', { u: `${ baseUrl }${ url }` });
-                }
-
-                localStorage.blocklist = JSON.stringify(blocklist);
+                  chrome.storage.sync.set({ blocklist });
+                });
               });
             }
 });
@@ -416,13 +419,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const isAllowlisted = (deserializeData(localStorage.allowlist) || {})[ parentHost ];
 
       if (message.shouldInit) {
-        sendResponse({
-                     parentHost,
-                  userSelectors: (
-                                   deserializeData(localStorage.blocklist) || {}
-                                 )[ parentHost ] || [],
-                  isAllowlisted,
-          wasGrantButtonPressed: deserializeData(localStorage.wasGrantButtonPressed)
+        chrome.storage.sync.get('blocklist', (items) => {
+          sendResponse({
+                       parentHost,
+                    userSelectors: (items.blocklist || {})[ parentHost ] || [],
+                    isAllowlisted,
+            wasGrantButtonPressed: deserializeData(localStorage.wasGrantButtonPressed)
+          });
         });
       } else {
         const tabId = tab.id;
@@ -445,6 +448,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       sendResponse({});
     }
   }
+
+  return true;
 });
 
 chrome.browserAction.onClicked.addListener((tab) => {

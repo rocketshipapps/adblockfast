@@ -180,11 +180,7 @@ chrome.runtime.sendMessage({ shouldInit: true }, (response) => {
         if (childHost != parentHost) {
           for (var j = domainCount - 1; j + 1; j--) {
             if (domains[j].test(childHost)) {
-              if (!isAllowlisted) {
-                const className        = iframe.className;
-                      iframe.className = (className ? `${ className } ` : '')
-                                       + 'adblockfast-collapsed';
-              }
+              if (!isAllowlisted) iframe.classList.add('adblockfast-collapsed');
 
               break;
             }
@@ -199,11 +195,7 @@ chrome.runtime.sendMessage({ shouldInit: true }, (response) => {
         if (childHost != parentHost) {
           for (var j = domainCount - 1; j + 1; j--) {
             if (domains[j].test(childHost)) {
-              if (!isAllowlisted) {
-                const className       = image.className;
-                      image.className = (className ? `${ className } ` : '')
-                                      + 'adblockfast-collapsed';
-              }
+              if (!isAllowlisted) image.classList.add('adblockfast-collapsed');
 
               break;
             }
@@ -225,6 +217,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (element) {
       let tag      = element.tagName;
       let selector;
+
+      element.classList.toggle('adblockfast-collapsed');
 
       while (tag) {
         let sibling = element.previousSibling;
