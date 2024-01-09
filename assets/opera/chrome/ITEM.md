@@ -69,7 +69,7 @@ Relevant notifications may occasionally be shown.
 
 **`storage` justification:**
 
-Filtering settings are persisted in local storage.
+Filtering settings are persisted using the Storage API.
 
 **`tabs` justification:**
 
@@ -77,7 +77,7 @@ Loaded tabs are iterated through to prevent same-origin requests from being filt
 
 **`unlimitedStorage` justification:**
 
-Filtering settings are persisted in local storage.
+Filtering settings are persisted using the Storage API.
 
 **`webNavigation` justification:**
 
