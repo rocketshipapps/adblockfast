@@ -26,7 +26,7 @@ java -jar htmlcompressor-1.5.3.jar --remove-intertag-spaces \
                                    adblockfast/chrome/markup/
 java -jar yuicompressor-2.4.8.jar -o ".css$:.css" adblockfast/chrome/stylesheets/*.css
 for script in adblockfast/chrome/scripts/*.js; do
-  terser "$script" -c -m -o "$script"
+  terser -c -m -o "$script" -- "$script"
 done
 cd adblockfast
 zip -r ../adblockfast chrome -x *.DS_Store
