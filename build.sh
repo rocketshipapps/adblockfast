@@ -19,14 +19,15 @@
 #
 cd                            builds
 rm    -Rf                     adblockfast
-cp    -R                      ../opera                             adblockfast
-java  -jar                    htmlcompressor-1.5.3.jar                         \
-     --remove-intertag-spaces                                                  \
-     --remove-quotes                                                           \
-      -o                      adblockfast/chrome/markup/                       \
+cp    -R                      ../opera                             \
+                              adblockfast
+java  -jar                    htmlcompressor-1.5.3.jar             \
+     --remove-intertag-spaces                                      \
+     --remove-quotes                                               \
+      -o                      adblockfast/chrome/markup/           \
                               adblockfast/chrome/markup/
-java  -jar                    yuicompressor-2.4.8.jar                          \
-      -o                      ".css$:.css"                                     \
+java  -jar                    yuicompressor-2.4.8.jar              \
+      -o                      ".css$:.css"                         \
                               adblockfast/chrome/stylesheets/*.css
 
 for script in adblockfast/chrome/scripts/*.js; do
