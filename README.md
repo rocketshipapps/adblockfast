@@ -227,13 +227,13 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 
 1.  [Fork this repository](https://github.com/rocketshipapps/adblockfast/fork).
 2.  Go to your working directory of choice.
-3.  Clone the repo:
+3.  Clone the forked repo:
 
     ```shell
     $ git clone https://github.com/[username]/adblockfast
     ```
 
-4.  Install the minification dependency:
+4.  Install the build dependency:
 
     ```shell
     $ sudo npm i -g terser
@@ -244,7 +244,7 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
 8.  Under your working and the `opera` directories, select the `chrome` subdirectory.
 9.  To test after you make a change, under the extension listing, press **⟳** (the reload button).
-10. To create a production build, run the build script:
+10. To create a release build, run the build script:
 
     ```shell
     $ ./build.sh
@@ -257,13 +257,13 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 
 1.  [Fork this repository](https://github.com/rocketshipapps/adblockfast/fork).
 2.  Go to your working directory of choice.
-3.  Clone the repo:
+3.  Clone the forked repo:
 
     ```shell
     $ git clone https://github.com/[username]/adblockfast
     ```
 
-4.  Install the minification dependency:
+4.  Install the build dependency:
 
     ```shell
     $ sudo npm i -g terser
@@ -274,7 +274,7 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
 8.  Under your working directory, select the `opera` subdirectory.
 9.  To test after you make a change, under the extension listing, press **⟳** (the reload button).
-10. To create a production build, run the build script:
+10. To create a release build, run the build script:
 
     ```shell
     $ ./build.sh
