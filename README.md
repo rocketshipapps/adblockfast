@@ -186,8 +186,7 @@ Open the Start menu, go to **Settings** > **Apps** > **Apps & features**, choose
 
 ## Contributing
 
-Adblock Fast is open for pull-request business. Follow the steps below to get
-started.
+Adblock Fast is open for pull-request business. Follow the steps below to get started.
 
 ### For Android
 
@@ -226,39 +225,63 @@ started.
 
 ### For Chrome
 
-1. Fork this repository.
-2. Navigate to your working directory of choice.
-3. Clone the repo:
+1.  [Fork this repository](https://github.com/rocketshipapps/adblockfast/fork).
+2.  Go to your working directory of choice.
+3.  Clone the repo:
 
-        git clone https://github.com/[insert username here]/adblockfast.git
+    ```shell
+    $ git clone https://github.com/[username]/adblockfast
+    ```
 
-4. Go to the Chrome browser.
-5. Go to **Window** > **Extensions**.
-6. Toggle the **Developer mode** switch on then press the **Load unpacked**
-   button.
-7. Under your working and the `opera` directories, select the `chrome`
-   directory.
-8. To test after you make a change, under the extension listing, press the
-   reload button.
-9. Push your changes.
-10. Send us pull requests<em>!</em>
+4.  Install the minification dependency:
+
+    ```shell
+    $ sudo npm i -g terser
+    ```
+
+5.  Go to the Chrome browser.
+6.  Go to **Window** > **Extensions**.
+7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
+8.  Under your working and the `opera` directories, select the `chrome` subdirectory.
+9.  To test after you make a change, under the extension listing, press **⟳** (the reload button).
+10. To create a production build, run the build script:
+
+    ```shell
+    $ ./build.sh
+    ```
+
+11. Push your changes.
+12. Send us pull requests<em>!</em>
 
 ### For Opera
 
-1. Fork this repository.
-2. Navigate to your working directory of choice.
-3. Clone the repo:
+1.  [Fork this repository](https://github.com/rocketshipapps/adblockfast/fork).
+2.  Go to your working directory of choice.
+3.  Clone the repo:
 
-        git clone https://github.com/[insert username here]/adblockfast.git
+    ```shell
+    $ git clone https://github.com/[username]/adblockfast
+    ```
 
-4. Go to the Opera browser.
-5. Go to **View** > **Show Extensions**.
-6. Press the **Developer Mode** then **Load Unpacked Extension…** buttons.
-7. Under your working directory, select the `opera` directory.
-8. To test after you make a change, under the extension listing, press the
-   **Reload** button.
-9. Push your changes.
-10. Send us pull requests<em>!</em>
+4.  Install the minification dependency:
+
+    ```shell
+    $ sudo npm i -g terser
+    ```
+
+5.  Go to the Opera browser.
+6.  Go to **View** > **Show Extensions**.
+7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
+8.  Under your working directory, select the `opera` subdirectory.
+9.  To test after you make a change, under the extension listing, press **⟳** (the reload button).
+10. To create a production build, run the build script:
+
+    ```shell
+    $ ./build.sh
+    ```
+
+11. Push your changes.
+12. Send us pull requests<em>!</em>
 
 ## License
 
