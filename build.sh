@@ -35,5 +35,5 @@ for script in adblockfast/chrome/scripts/*.js; do
 done
 
 cd     adblockfast
-zip -r ../adblockfast       -x \*.DS_Store chrome
+zip -r ../adblockfast       chrome -x \*.DS_Store
 rm  -f chrome/manifest.json
