@@ -17,17 +17,22 @@
 #
 #   Brian Kennish <brian@rocketshipapps.com>
 #
-cd builds
-rm -Rf adblockfast
-cp -R ../opera adblockfast
-java -jar htmlcompressor-1.5.3.jar --remove-intertag-spaces \
-                                   --remove-quotes \
-                                   -o adblockfast/chrome/markup/ \
-                                   adblockfast/chrome/markup/
-java -jar yuicompressor-2.4.8.jar -o ".css$:.css" adblockfast/chrome/stylesheets/*.css
+cd                            builds
+rm    -Rf                     adblockfast
+cp    -R                      ../opera                             adblockfast
+java  -jar                    htmlcompressor-1.5.3.jar                         \
+     --remove-intertag-spaces                                                  \
+     --remove-quotes                                                           \
+      -o                      adblockfast/chrome/markup/                       \
+                              adblockfast/chrome/markup/
+java  -jar                    yuicompressor-2.4.8.jar                          \
+      -o                      ".css$:.css"                                     \
+                              adblockfast/chrome/stylesheets/*.css
+
 for script in adblockfast/chrome/scripts/*.js; do
-  terser -c -m -o "$script" -- "$script"
+  terser -cmo "$script" -- "$script"
 done
-cd adblockfast
-zip -r ../adblockfast chrome -x *.DS_Store
-rm -f chrome/manifest.json
+
+cd     adblockfast
+zip -r ../adblockfast       -x \*.DS_Store chrome
+rm  -f chrome/manifest.json
