@@ -244,9 +244,10 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
 8.  Under your working and the `opera` directories, select the `chrome` subdirectory.
 9.  To test after you make a change, under the extension listing, press **↻** (the reload button).
-10. To create a release build, run the build script:
+10. To create a release build, switch to the repo directory then run the build script:
 
     ```shell
+    $ cd         adblockfast
     $ ./build.sh
     ```
 
@@ -274,9 +275,10 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
 8.  Under your working directory, select the `opera` subdirectory.
 9.  To test after you make a change, under the extension listing, press **↻** (the reload button).
-10. To create a release build, run the build script:
+10. To create a release build, switch to the repo directory then run the build script:
 
     ```shell
+    $ cd         adblockfast
     $ ./build.sh
     ```
 
