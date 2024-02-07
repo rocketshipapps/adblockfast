@@ -14,7 +14,8 @@
 
 **Build instructions:**
 
-See https://github.com/rocketshipapps/adblockfast#for-opera.
+See https://github.com/rocketshipapps/adblockfast#for-opera; following step #3, check the latest
+Opera release out: `$ git checkout o1.4.1`.
 
 ### EULA
 
