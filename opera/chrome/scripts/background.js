@@ -213,7 +213,6 @@ injectPlausible(PATH + 'scripts/vendor/');
 if (!PREVIOUS_BUILD) {
   localStorage.firstBuild = BUILD;
   localStorage.whitelist = JSON.stringify({});
-  spawn(PATH + 'markup/firstrun.html');
   plausible('Install', { u: BASE_URL + 'v' + BUILD });
 }
 
