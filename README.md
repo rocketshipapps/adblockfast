@@ -126,8 +126,12 @@ Data**) before reloading the page.
 
 ### In Chrome or Opera
 
-Adblock Fast installs a button in your browser’s toolbar. The button indicates the status of the
-site and page you’re on:
+Adblock Fast installs a button in your browser’s toolbar. To display the button:
+
+1. click the puzzle (extensions) button in your toolbar then
+2. click the pin button beside the extension listing.
+
+The button indicates the status of the site and page you’re on:
 
 ![Blocked ads](opera/chrome/images/blocked-ads.png) Ads are being blocked on the site and ads were
 found on the page.
@@ -146,8 +150,7 @@ ads. Your choice will be remembered whenever you go back to the site.
 
 If you have any questions or comments, you can follow and message
 [us on Facebook](https://www.facebook.com/adblockfast) or
-[on Twitter](https://twitter.com/adblockfast) or can send us mail at
-help@adblockfast.com.
+[on Twitter](https://twitter.com/adblockfast) or can send us mail at help@adblockfast.com.
 
 ## (In)frequently asked questions
 
