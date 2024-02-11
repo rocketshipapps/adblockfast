@@ -126,10 +126,10 @@ Data**) before reloading the page.
 
 ### In Chrome or Opera
 
-Adblock Fast installs a button in your browser’s toolbar. To display the button:
+Adblock Fast installs a button in your browser’s toolbar. To show the button:
 
-1. click the puzzle (extensions) button in your toolbar then
-2. click the pin button beside the extension listing.
+1. click the extensions (puzzle) button in your toolbar then
+2. click the pin button next to the extension listing.
 
 The button indicates the status of the site and page you’re on:
 
@@ -246,7 +246,7 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 6.  Go to **Window** > **Extensions**.
 7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
 8.  Under your working and the `opera` directories, select the `chrome` subdirectory.
-9.  To test after you make a change, under the extension listing, press **↻** (the reload button).
+9.  To test after you make a change, press **↻** (the reload button) under the extension listing.
 10. To create a release build, switch to the repo directory then run the build script:
 
     ```shell
@@ -277,7 +277,7 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 6.  Go to **View** > **Show Extensions**.
 7.  Toggle the **Developer mode** switch on then press the **Load unpacked** button.
 8.  Under your working directory, select the `opera` subdirectory.
-9.  To test after you make a change, under the extension listing, press **↻** (the reload button).
+9.  To test after you make a change, press **↻** (the reload button) under the extension listing.
 10. To create a release build, switch to the repo directory then run the build script:
 
     ```shell
