@@ -20,70 +20,70 @@
 
 @font-face {
   font-family: HudsonNY;
-  src: url(../fonts/2F0E63_0_0.woff2) format('woff2')
+          src: url(../fonts/2F0E63_0_0.woff2) format('woff2');
 }
 
 body {
   margin: 10px auto;
-  width: 720px;
-  font: 16px 'Open Sans', sans-serif;
-  color: #2c2c2c
+   width: 720px;
+    font: 16px 'Open Sans', sans-serif;
+   color: #2c2c2c;
 }
 
 img {
-  display: block;
+       display: block;
   margin-right: auto;
-  margin-left: auto;
-  width: 160px
+   margin-left: auto;
+         width: 160px;
 }
 
 h1, h3 {
-  text-align: center;
-  font-family: HudsonNY, sans-serif
+   text-align: center;
+  font-family: HudsonNY, sans-serif;
 }
 
 h1 {
   margin-top: 0;
-  font-size: 30px;
-  color: #d4d4d4
+   font-size: 30px;
+       color: #d4d4d4;
 }
 
 h2 {
   margin-top: 30px;
-  font-size: 22px
+   font-size: 22px;
 }
 
 h3 {
   margin-top: 40px;
-  font-size: 16px
+   font-size: 16px;
 }
 
-p, ul { margin-top: 30px }
+p, ul { margin-top: 30px; }
 
-p { line-height: 1.5 }
+p { line-height: 1.5; }
 
-ul { padding-left: 15px }
+ul { padding-left: 15px; }
 
 li {
-  list-style: none;
-  margin-top: 20px;
-  height: 38px;
+   list-style: none;
+   margin-top: 20px;
+       height: 38px;
   line-height: 38px;
   text-indent: 125px;
-  font-size: 15px
+    font-size: 15px;
 }
 
-#blocked-ads { background: url(../images/blocked-ads.png) no-repeat }
+#blocked-ads { background: url(../images/blocked-ads.png) no-repeat; }
 
-#blocked { background: url(../images/blocked.png) no-repeat }
+#blocked { background: url(../images/blocked.png) no-repeat; }
 
-#unblocked-ads { background: url(../images/unblocked-ads.png) no-repeat }
+#unblocked-ads { background: url(../images/unblocked-ads.png) no-repeat; }
 
-#unblocked { background: url(../images/unblocked.png) no-repeat }
+#unblocked { background: url(../images/unblocked.png) no-repeat; }
 
 a, a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
-  color: #de0421
+            color: #de0421;
 }
 
-a:hover, a:focus, a:active { border-bottom: 2px solid #de0421 }
+a:hover, a:focus, a:active { border-bottom: 2px solid #de0421; }
