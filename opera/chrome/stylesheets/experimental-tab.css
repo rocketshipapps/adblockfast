@@ -20,69 +20,69 @@
 
 @font-face {
   font-family: HudsonNY;
-  src: url(../fonts/2F0E63_0_0.woff2) format(woff2)
+          src: url(../fonts/2F0E63_0_0.woff2) format(woff2);
 }
 
 body {
   margin: 50px auto 80px;
-  width: 640px;
-  font: 16px 'Open Sans', sans-serif;
-  color: #2c2c2c
+   width: 640px;
+    font: 16px 'Open Sans', sans-serif;
+   color: #2c2c2c;
 }
 
-img {
-  display: block;
-  margin-right: auto;
-  margin-left: auto
-}
+h1, h3, button { font-family: HudsonNY, sans-serif; }
 
-h1, h3, button { font-family: HudsonNY, sans-serif }
-
-h1, h3 { text-align: center }
+h1, h3 { text-align: center; }
 
 h1 {
   margin-top: 10px;
-  font-size: 30px;
-  color: #d4d4d4
+   font-size: 30px;
+       color: #d4d4d4;
 }
 
-h2, h3 { margin-top: 40px }
+h2, h3 { margin-top: 40px; }
 
-h2 { font-size: 22px }
+h2 { font-size: 22px; }
 
-h3 { font-size: 16px }
+h3 { font-size: 16px; }
 
 p {
-  margin-top: 30px;
-  line-height: 1.5
+   margin-top: 30px;
+  line-height: 1.5;
 }
 
-button, a { outline: none }
+img {
+       display: block;
+  margin-right: auto;
+   margin-left: auto;
+}
+
+button, a { outline: none; }
 
 button {
-  margin: 30px 20px;
-  border: 2px solid #de0421;
+         margin: 30px 20px;
+         border: 2px solid #de0421;
   border-radius: 3px;
-  background: #de0421;
-  width: 276px;
-  height: 75px;
-  font-size: 26px;
-  color: white;
-  transition: background .3s ease, color .3s ease
+     background: #de0421;
+          width: 276px;
+         height: 75px;
+      font-size: 26px;
+          color: white;
+     transition: background .3s ease, color .3s ease;
 }
 
 button:hover, button:focus {
   background: white;
-  color: #de0421;
-  cursor: pointer
+       color: #de0421;
+      cursor: pointer;
 }
 
-a, a:hover, a:focus, a:active, a:visited { text-decoration: none }
+a, a:hover, a:focus, a:active, a:visited { text-decoration: none; }
 
 a {
   border-bottom: 2px solid white;
-  color: #de0421;
-  transition: border .3s ease
+          color: #de0421;
+     transition: border .3s ease;
 }
 
-a:hover, a:focus, a:active { border-color: #de0421 }
+a:hover, a:focus, a:active { border-color: #de0421; }
