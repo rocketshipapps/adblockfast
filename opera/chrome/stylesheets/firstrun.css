@@ -30,13 +30,6 @@ body {
    color: #2c2c2c;
 }
 
-img {
-       display: block;
-  margin-right: auto;
-   margin-left: auto;
-         width: 160px;
-}
-
 h1, h3 {
    text-align: center;
   font-family: HudsonNY, sans-serif;
@@ -73,13 +66,12 @@ li {
     font-size: 15px;
 }
 
-#blocked-ads { background: url(../images/blocked-ads.png) no-repeat; }
-
-#blocked { background: url(../images/blocked.png) no-repeat; }
-
-#unblocked-ads { background: url(../images/unblocked-ads.png) no-repeat; }
-
-#unblocked { background: url(../images/unblocked.png) no-repeat; }
+img {
+       display: block;
+  margin-right: auto;
+   margin-left: auto;
+         width: 160px;
+}
 
 a, a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
@@ -87,3 +79,11 @@ a, a:hover, a:focus, a:active, a:visited {
 }
 
 a:hover, a:focus, a:active { border-bottom: 2px solid #de0421; }
+
+#blocked-ads { background: url(../images/blocked-ads.png) no-repeat; }
+
+#blocked { background: url(../images/blocked.png) no-repeat; }
+
+#unblocked-ads { background: url(../images/unblocked-ads.png) no-repeat; }
+
+#unblocked { background: url(../images/unblocked.png) no-repeat; }
