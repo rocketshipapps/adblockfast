@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Adblock Fast",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "The world’s fastest ad blocker! Same blocking, 8x more accelerated page loading.",
   "icons": {
     "16": "chrome/images/16.png", "48": "chrome/images/48.png", "128": "chrome/images/128.png"
@@ -22,7 +22,6 @@
     "power",
     "storage",
     "system.cpu",
-    "system.display",
     "system.memory",
     "tabs",
     "unlimitedStorage",
