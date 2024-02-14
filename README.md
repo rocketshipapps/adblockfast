@@ -193,21 +193,23 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 
 ### For Android
 
-1. Fork this repository.
-2. Navigate to your working directory of choice.
-3. Clone the repo:
+1.  [Fork this repository](https://github.com/rocketshipapps/adblockfast/fork).
+2.  Go to your working directory of choice.
+3.  Clone the forked repo:
 
-        git clone https://github.com/[insert username here]/adblockfast.git
+    ```shell
+    $ git clone https://github.com/[username]/adblockfast
+    ```
 
-4. Go to the Android Studio IDE.
-5. Select the **Open an existing Android Studio project** item or go to
-   **File** > **Open…** .
-6. Under your working directory, select the `android` directory.
-7. Go to **Run** > **Run 'app'**.
-8. To test after you make a change, go to **Run** > **Stop 'app'** then
-   **Run** > **Run 'app'**.
-9. Push your changes.
-10. Send us pull requests<em>!</em>
+4.  Go to the Android Studio IDE.
+5.  Go to **File** > **Open…** .
+6.  Under your working directory, select the `android` subdirectory.
+7.  Go to **Run** > **Run 'app'**.
+8.  To test after you make a change, go to **Run** > **Stop 'app'** then **Run** > **Run 'app'**.
+9.  To create a release build, go to **Build** > **Generate Signed Bundle / APK…** then follow the
+    further steps in the dialog box.
+10. Push your changes.
+11. Send us pull requests<em>!</em>
 
 ### For iOS
 
