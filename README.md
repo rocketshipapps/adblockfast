@@ -150,7 +150,7 @@ ads. Your choice will be remembered whenever you go back to the site.
 
 If you have any questions or comments, you can follow and message
 [us on Facebook](https://www.facebook.com/adblockfast) or
-[on Twitter](https://twitter.com/adblockfast) or can send us mail at help@adblockfast.com.
+[on Twitter](https://twitter.com/adblockfast).
 
 ## (In)frequently asked questions
 
