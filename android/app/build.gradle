@@ -1,4 +1,3 @@
-apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
 
@@ -6,8 +5,8 @@ repositories {
     jcenter()
 }
 
-def GA_TRACKING_ID = '"' + GATrackingId + '"' ?: '"Define Google Analytics tracking ID into grandle.properties"'
-def SUBSCRIBE_URL = '"' + FirebaseSubscribeFunctionURL + '"' ?: '"Define Firebase cloud function URL"'
+def GA_TRACKING_ID = '"' + GaTrackingId + '"' ?: '"Define Google Analytics tracking ID in gradle.properties"'
+def SUBSCRIBE_URL = '"' + FirebaseSubscribeUrl + '"' ?: '"Define Firebase Cloud Functions URL in gradle.properties"'
 
 android.buildTypes.each { type ->
     type.buildConfigField 'String', 'GA_TRACKING_ID', GA_TRACKING_ID
@@ -44,12 +43,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.dtx12:actions:0.1.4'
+    implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
+    implementation 'com.dtx12:actions:0.1.4'
     implementation 'com.google.android.gms:play-services-analytics:18.0.4'
-    implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
     implementation 'com.onesignal:OneSignal:3.11.3'
+    testImplementation 'junit:junit:4.12'
 }
