@@ -36,6 +36,9 @@ android {
             debuggable true
         }
     }
+    buildFeatures {
+        buildConfig true
+    }
     productFlavors {
     }
     namespace 'com.rocketshipapps.adblockfast'
