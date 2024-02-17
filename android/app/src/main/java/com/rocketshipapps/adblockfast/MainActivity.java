@@ -1,15 +1,24 @@
 package com.rocketshipapps.adblockfast;
 
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
+import android.Manifest;
+import android.accounts.AccountManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -19,13 +28,19 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import org.json.JSONObject;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
@@ -45,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     String packageName;
     String version;
 
-    @Nullable
     Tracker tracker;
 
     SharedPreferences preferences;
@@ -76,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
         packageName = getApplicationContext().getPackageName();
         version = BuildConfig.VERSION_NAME;
 
-        btnAdblock = findViewById(R.id.btn_adblock);
-        txtStatus = findViewById(R.id.txt_status);
-        txtTap = findViewById(R.id.txt_tap);
+        btnAdblock = (ImageButton) findViewById(R.id.btn_adblock);
+        txtStatus = (TextView) findViewById(R.id.txt_status);
+        txtTap = (TextView) findViewById(R.id.txt_tap);
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
@@ -119,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) {
             checkIfHasBlockingBrowser();
         }
-
     }
 
     private void checkIfHasBlockingBrowser() {
@@ -137,17 +150,60 @@ public class MainActivity extends AppCompatActivity {
     private void checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+
         if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, 9000).show();
-            } else {
-                finish();
-            }
-            return false;
+            apiAvailability.makeGooglePlayServicesAvailable(this);
         }
     }
 
-    //region OnClick
+    private void getAccounts() {
+        Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
+        startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
+            if (data != null) {
+                final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+
+                if (email != null) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                URL url = new URL(BuildConfig.SUBSCRIBE_URL);
+                                HttpURLConnection req = (HttpURLConnection) url.openConnection();
+
+                                req.setRequestMethod("POST");
+                                req.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                                req.setRequestProperty("Accept", "application/json");
+                                req.setDoOutput(true);
+                                req.setDoInput(true);
+
+                                JSONObject params = new JSONObject();
+                                params.put("email", email);
+
+                                DataOutputStream os = new DataOutputStream(req.getOutputStream());
+                                os.writeBytes(params.toString());
+
+                                os.flush();
+                                os.close();
+
+                                req.disconnect();
+
+                                preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
+                }
+            }
+
+            checkIfHasBlockingBrowser();
+        }
+    }
 
     public void onAdBlockPressed(View v) {
         if (animating) return;
@@ -177,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView)dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
 
-        TextView copyright = dialog.findViewById(R.id.copyright);
+        TextView copyright = (TextView) dialog.findViewById(R.id.copyright);
         copyright.setText(Html.fromHtml(getString(R.string.copyright)));
         copyright.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -198,10 +254,6 @@ public class MainActivity extends AppCompatActivity {
         showHelpDialog(true);
     }
 
-    //endregion
-
-    //region Permissions
-
     private void checkAccountPermission() {
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
 
@@ -209,10 +261,9 @@ public class MainActivity extends AppCompatActivity {
             getAccounts();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
-                showAccountPermissionAlert(
-                );
+                showAccountPermissionAlert();
             } else {
-                requestPermissions(new String[]{Manifest.permission.GET_ACCOUNTS}, REQUEST_PERMISSION_GET_ACCOUNTS);
+                requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
             }
         }
     }
@@ -235,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
@@ -247,23 +298,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //endregion
-
-    //region Dialog
     void showHelpDialog(boolean cancelable) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.alert_dialog_help);
 
-        if(dialog.getWindow() != null) {
+        if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
         dialog.setCancelable(false);
         dialog.show();
 
-        TextView summary = dialog.findViewById(R.id.summary);
-        TextView details = dialog.findViewById(R.id.details);
+        TextView summary = (TextView) dialog.findViewById(R.id.summary);
+        TextView details = (TextView) dialog.findViewById(R.id.details);
 
         if (hasBlockingBrowser) {
             summary.setText(R.string.settings_summary);
@@ -278,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
             details.setText(Html.fromHtml(getString(R.string.install_details)));
         }
         details.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView contact = dialog.findViewById(R.id.contact);
+        TextView contact = (TextView) dialog.findViewById(R.id.contact);
         contact.setText(Html.fromHtml(getString(R.string.contact)));
         contact.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -298,9 +346,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-    //endregion
-
-    //region Block Animation
 
     void disableAnimation() {
         animator(new int[] {
@@ -375,6 +420,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    //endregion
 }
