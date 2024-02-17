@@ -36,6 +36,8 @@ import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     String packageName;
     String version;
 
-    Tracker tracker;
+    @Nullable Tracker tracker;
 
     SharedPreferences preferences;
 
@@ -162,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
             if (data != null) {
                 final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
@@ -286,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
