@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.google.gms.google-services'
 
 repositories {
     jcenter()
@@ -52,6 +53,7 @@ dependencies {
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.dtx12:actions:0.1.4'
     implementation 'com.google.android.gms:play-services-analytics:18.0.4'
+    implementation 'com.google.firebase:firebase-functions:20.4.0'
     implementation 'com.onesignal:OneSignal:3.11.3'
     testImplementation 'junit:junit:4.12'
 }
