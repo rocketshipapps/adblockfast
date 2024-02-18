@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
     String packageName;
     String version;
 
-    @Nullable Tracker tracker;
+    @Nullable
+    Tracker tracker;
 
     SharedPreferences preferences;
 
@@ -112,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
         samsungBrowserIntent = new Intent();
         samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
-
-        checkAccountPermission();
     }
 
     @Override
