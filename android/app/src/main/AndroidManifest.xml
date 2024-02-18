@@ -31,8 +31,5 @@
                 <data android:scheme="package" android:path="com.sec.android.app.sbrowser" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.onesignal.GcmBroadcastReceiver" android:exported="false" />
-        <receiver android:name="com.onesignal.BootUpReceiver" android:exported="false" />
-        <receiver android:name="com.onesignal.UpgradeReceiver" android:exported="false" />
     </application>
 </manifest>
