@@ -4,6 +4,9 @@ apply plugin: 'com.google.gms.google-services'
 
 repositories {
     jcenter()
+    maven {
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+    }
 }
 
 def GA_TRACKING_ID = '"' + GaTrackingId + '"' ?: '"Define Google Analytics tracking ID in gradle.properties"'
@@ -55,7 +58,8 @@ dependencies {
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.dtx12:actions:0.1.4'
     implementation 'com.google.android.gms:play-services-analytics:18.0.4'
+    implementation 'com.wbrawner.plausible:plausible-android:0.1.0-SNAPSHOT'
     implementation 'com.google.firebase:firebase-functions:20.4.0'
-    implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
+    implementation 'com.onesignal:OneSignal:5.1.4'
     testImplementation 'junit:junit:4.12'
 }

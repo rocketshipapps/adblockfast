@@ -49,6 +49,8 @@ import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
+import com.wbrawner.plausible.android.Plausible;
+
 import com.rocketshipapps.adblockfast.utils.Rule;
 
 public class MainActivity extends AppCompatActivity {
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         if (tracker != null) {
             tracker.setScreenName("/");
             tracker.send(new HitBuilders.ScreenViewBuilder().build());
+            Plausible.INSTANCE.pageView("/", "", null);
         }
 
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) {
