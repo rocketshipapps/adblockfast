@@ -30,8 +30,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -63,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
     String packageName;
     String version;
-
-    @Nullable
-    Tracker tracker;
 
     SharedPreferences preferences;
 
@@ -108,9 +103,6 @@ public class MainActivity extends AppCompatActivity {
             disableAnimation();
         }
 
-        AdblockfastApplication application = (AdblockfastApplication) getApplication();
-        tracker = application.getDefaultTracker();
-
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         samsungBrowserIntent = new Intent();
@@ -128,15 +120,11 @@ public class MainActivity extends AppCompatActivity {
 
         checkPlayServices();
 
-        if (tracker != null) {
-            tracker.setScreenName("/");
-            tracker.send(new HitBuilders.ScreenViewBuilder().build());
-            Plausible.INSTANCE.pageView("/", "", null);
-        }
-
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) {
             checkIfHasBlockingBrowser();
         }
+
+        Plausible.INSTANCE.pageView("/", "", null);
     }
 
     private void checkIfHasBlockingBrowser() {
