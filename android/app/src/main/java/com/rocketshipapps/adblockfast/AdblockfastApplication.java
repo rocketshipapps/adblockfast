@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+
+import com.onesignal.Continue;
 import com.onesignal.OneSignal;
 
 public class AdblockfastApplication extends Application {
@@ -13,10 +15,21 @@ public class AdblockfastApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        OneSignal.startInit(this)
-            .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-            .unsubscribeWhenNotificationsAreDisabled(true)
-            .init();
+        OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
+
+        OneSignal.getNotifications().requestPermission(true, Continue.with(r -> {
+            if (r.isSuccess()) {
+                if (r.getData()) {
+                    // `requestPermission` completed successfully and user has accepted permission
+                }
+                else {
+                    // `requestPermission` completed successfully, but user has rejected permission
+                }
+            }
+            else {
+                // `requestPermission` completed unsuccessfully; check `r.getThrowable()` for more info on failure reason
+            }
+        }));
     }
 
     synchronized public Tracker getDefaultTracker() {
