@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         ViewPump.init(
             ViewPump.builder().addInterceptor(
@@ -86,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 )
             ).build()
         );
+        setContentView(R.layout.activity_main);
 
         packageName = getApplicationContext().getPackageName();
         version = BuildConfig.VERSION_NAME;
