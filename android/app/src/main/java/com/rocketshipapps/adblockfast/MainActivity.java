@@ -26,6 +26,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
     boolean animating = false;
 
-    ImageButton btnAdblock;
-    TextView txtStatus;
-    TextView txtTap;
+    ImageButton mainButton;
+    TextView statusText;
+    TextView hintText;
 
     String packageName;
     String version;
@@ -90,9 +91,16 @@ public class MainActivity extends AppCompatActivity {
         packageName = getApplicationContext().getPackageName();
         version = BuildConfig.VERSION_NAME;
 
-        btnAdblock = (ImageButton) findViewById(R.id.btn_adblock);
-        txtStatus = (TextView) findViewById(R.id.txt_status);
-        txtTap = (TextView) findViewById(R.id.txt_tap);
+        mainButton = (ImageButton) findViewById(R.id.main_button);
+        mainButton.setOnClickListener(this::onAdBlockPressed);
+
+        statusText = (TextView) findViewById(R.id.status_text);
+        hintText = (TextView) findViewById(R.id.hint_text);
+
+        final Button helpButton = findViewById(R.id.help_button);
+        final Button aboutButton = findViewById(R.id.about_button);
+        helpButton.setOnClickListener(this::onHelpPressed);
+        aboutButton.setOnClickListener(this::onAboutPressed);
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
@@ -388,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < res.length; i++) {
             if (i == 0) {
-                btnAdblock.setImageResource(res[i]);
+                mainButton.setImageResource(res[i]);
             } else {
                 Handler handler = new Handler();
                 final int finalI = i;
@@ -398,12 +406,12 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                btnAdblock.setImageResource(res[finalI]);
+                                mainButton.setImageResource(res[finalI]);
 
                                 if (finalI == res.length - 1) {
                                     animating = false;
-                                    txtStatus.setText(resTxtStatus);
-                                    txtTap.setText(resTxtTap);
+                                    statusText.setText(resTxtStatus);
+                                    hintText.setText(resTxtTap);
                                 }
                             }
                         });
