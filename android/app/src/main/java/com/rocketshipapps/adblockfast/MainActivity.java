@@ -1,10 +1,5 @@
 package com.rocketshipapps.adblockfast;
 
-import java.io.DataOutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
-
 import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
@@ -21,7 +16,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
@@ -39,6 +33,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
+
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 
 import org.json.JSONObject;
 
@@ -52,28 +52,28 @@ import com.wbrawner.plausible.android.Plausible;
 import com.rocketshipapps.adblockfast.utils.Rule;
 
 public class MainActivity extends AppCompatActivity {
+    static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
+    static final Intent SAMSUNG_BROWSER_INTENT = new Intent()
+        .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+    static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
+    static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
+    static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
 
-    boolean animating = false;
+    boolean isUiAnimating = false;
+    boolean hasSamsungBrowser = false;
 
+    String packageName;
+    SharedPreferences preferences;
     ImageButton mainButton;
     TextView statusText;
     TextView hintText;
 
-    String packageName;
-    String version;
-
-    SharedPreferences preferences;
-
-    boolean hasBlockingBrowser = false;
-    Intent samsungBrowserIntent;
-
-    private final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
-    private final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
-    private final int REQUEST_CODE_ACCOUNT_INTENT = 2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        packageName = getApplicationContext().getPackageName();
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         ViewPump.init(
             ViewPump.builder().addInterceptor(
@@ -86,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
             ).build()
         );
         setContentView(R.layout.activity_main);
-
-        packageName = getApplicationContext().getPackageName();
-        version = BuildConfig.VERSION_NAME;
 
         mainButton = findViewById(R.id.main_button);
         mainButton.setOnClickListener(this::onAdBlockPressed);
@@ -107,11 +104,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             disableAnimation();
         }
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        samsungBrowserIntent = new Intent();
-        samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
     }
 
     @Override
@@ -133,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkIfHasBlockingBrowser() {
-        List<ResolveInfo> list = getPackageManager().queryIntentActivities(samsungBrowserIntent, 0);
-        if (list.size() > 0) hasBlockingBrowser = true;
+        List<ResolveInfo> list = getPackageManager().queryIntentActivities(SAMSUNG_BROWSER_INTENT, 0);
+        if (list.size() > 0) hasSamsungBrowser = true;
 
-        if (!hasBlockingBrowser) {
+        if (!hasSamsungBrowser) {
             showHelpDialog(false);
         } else if (preferences.getBoolean("first_run", true)) {
             showHelpDialog(true);
@@ -160,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
             if (data != null) {
                 final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
@@ -203,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAdBlockPressed(View v) {
-        if (animating) return;
+        if (isUiAnimating) return;
 
         if (Rule.active(this)) {
             Rule.disable(this);
@@ -237,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
-        ((TextView) dialog.findViewById(R.id.txt_version)).setText(version);
+        ((TextView) dialog.findViewById(R.id.txt_version)).setText(VERSION_NUMBER);
 
         dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -284,6 +278,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
@@ -310,12 +306,12 @@ public class MainActivity extends AppCompatActivity {
         TextView summary = dialog.findViewById(R.id.summary);
         TextView details = dialog.findViewById(R.id.details);
 
-        if (hasBlockingBrowser) {
+        if (hasSamsungBrowser) {
             summary.setText(R.string.settings_summary);
             details.setText(Html.fromHtml(getString(R.string.settings_details)));
             details.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    startActivity(samsungBrowserIntent);
+                    startActivity(SAMSUNG_BROWSER_INTENT);
                 }
             });
         } else {
@@ -387,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animator(final int[] res, final int resTxtStatus, final int resTxtTap) {
-        animating = true;
+        isUiAnimating = true;
 
         double delay = 62.5;
 
@@ -406,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                                 mainButton.setImageResource(res[finalI]);
 
                                 if (finalI == res.length - 1) {
-                                    animating = false;
+                                    isUiAnimating = false;
                                     statusText.setText(resTxtStatus);
                                     hintText.setText(resTxtTap);
                                 }
