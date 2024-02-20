@@ -228,9 +228,9 @@ public class MainActivity extends AppCompatActivity {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
-        ((TextView)dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
+        ((TextView) dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
 
-        TextView copyright = (TextView) dialog.findViewById(R.id.copyright);
+        TextView copyright = dialog.findViewById(R.id.copyright);
         copyright.setText(Html.fromHtml(getString(R.string.copyright)));
         copyright.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -307,8 +307,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
-        TextView summary = (TextView) dialog.findViewById(R.id.summary);
-        TextView details = (TextView) dialog.findViewById(R.id.details);
+        TextView summary = dialog.findViewById(R.id.summary);
+        TextView details = dialog.findViewById(R.id.details);
 
         if (hasBlockingBrowser) {
             summary.setText(R.string.settings_summary);
@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
             details.setText(Html.fromHtml(getString(R.string.install_details)));
         }
         details.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView contact = (TextView) dialog.findViewById(R.id.contact);
+        TextView contact = dialog.findViewById(R.id.contact);
         contact.setText(Html.fromHtml(getString(R.string.contact)));
         contact.setMovementMethod(LinkMovementMethod.getInstance());
 
