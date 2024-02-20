@@ -26,7 +26,6 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,16 +90,14 @@ public class MainActivity extends AppCompatActivity {
         packageName = getApplicationContext().getPackageName();
         version = BuildConfig.VERSION_NAME;
 
-        mainButton = (ImageButton) findViewById(R.id.main_button);
+        mainButton = findViewById(R.id.main_button);
         mainButton.setOnClickListener(this::onAdBlockPressed);
 
-        statusText = (TextView) findViewById(R.id.status_text);
-        hintText = (TextView) findViewById(R.id.hint_text);
+        statusText = findViewById(R.id.status_text);
+        hintText = findViewById(R.id.hint_text);
 
-        final Button helpButton = findViewById(R.id.help_button);
-        final Button aboutButton = findViewById(R.id.about_button);
-        helpButton.setOnClickListener(this::onHelpPressed);
-        aboutButton.setOnClickListener(this::onAboutPressed);
+        findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
+        findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
 
         if (!Rule.exists(this)) {
             Rule.enable(this);
