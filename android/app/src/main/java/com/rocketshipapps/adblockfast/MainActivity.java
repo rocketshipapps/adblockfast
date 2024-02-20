@@ -159,34 +159,31 @@ public class MainActivity extends AppCompatActivity {
                 final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
 
                 if (email != null) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                URL url = new URL(BuildConfig.SUBSCRIBE_URL);
-                                HttpURLConnection req = (HttpURLConnection) url.openConnection();
+                    new Thread(() -> {
+                        try {
+                            URL url = new URL(BuildConfig.SUBSCRIBE_URL);
+                            HttpURLConnection req = (HttpURLConnection) url.openConnection();
 
-                                req.setRequestMethod("POST");
-                                req.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                                req.setRequestProperty("Accept", "application/json");
-                                req.setDoOutput(true);
-                                req.setDoInput(true);
+                            req.setRequestMethod("POST");
+                            req.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                            req.setRequestProperty("Accept", "application/json");
+                            req.setDoOutput(true);
+                            req.setDoInput(true);
 
-                                JSONObject params = new JSONObject();
-                                params.put("email", email);
+                            JSONObject params = new JSONObject();
+                            params.put("email", email);
 
-                                DataOutputStream os = new DataOutputStream(req.getOutputStream());
-                                os.writeBytes(params.toString());
+                            DataOutputStream os = new DataOutputStream(req.getOutputStream());
+                            os.writeBytes(params.toString());
 
-                                os.flush();
-                                os.close();
+                            os.flush();
+                            os.close();
 
-                                req.disconnect();
+                            req.disconnect();
 
-                                preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }).start();
                 }
@@ -233,12 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) dialog.findViewById(R.id.txt_version)).setText(VERSION_NUMBER);
 
-        dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialog.findViewById(R.id.btn_ok).setOnClickListener((w) -> dialog.dismiss());
     }
 
     public void onHelpPressed(View v) {
@@ -264,12 +256,9 @@ public class MainActivity extends AppCompatActivity {
             .Builder(this)
             .setTitle("Permission needed")
             .setMessage("Get email address")
-            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestPermissions(new String[]{Manifest.permission.GET_ACCOUNTS}, REQUEST_PERMISSION_GET_ACCOUNTS);
-                    }
+            .setPositiveButton(android.R.string.ok, (d, w) -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
                 }
             })
             .create()
@@ -309,11 +298,7 @@ public class MainActivity extends AppCompatActivity {
         if (hasSamsungBrowser) {
             summary.setText(R.string.settings_summary);
             details.setText(Html.fromHtml(getString(R.string.settings_details)));
-            details.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(SAMSUNG_BROWSER_INTENT);
-                }
-            });
+            details.setOnClickListener((v) -> startActivity(SAMSUNG_BROWSER_INTENT));
         } else {
             summary.setText(R.string.install_summary);
             details.setText(Html.fromHtml(getString(R.string.install_details)));
@@ -324,19 +309,9 @@ public class MainActivity extends AppCompatActivity {
         contact.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (cancelable) {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
+            dialog.findViewById(R.id.btn_ok).setOnClickListener((v) -> dialog.dismiss());
         } else {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
+            dialog.findViewById(R.id.btn_ok).setOnClickListener((v) -> onBackPressed());
         }
     }
 
@@ -393,23 +368,15 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Handler handler = new Handler();
                 final int finalI = i;
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mainButton.setImageResource(res[finalI]);
+                handler.postDelayed(() -> runOnUiThread(() -> {
+                    mainButton.setImageResource(res[finalI]);
 
-                                if (finalI == res.length - 1) {
-                                    isUiAnimating = false;
-                                    statusText.setText(resTxtStatus);
-                                    hintText.setText(resTxtTap);
-                                }
-                            }
-                        });
+                    if (finalI == res.length - 1) {
+                        isUiAnimating = false;
+                        statusText.setText(resTxtStatus);
+                        hintText.setText(resTxtTap);
                     }
-                }, Math.round(delay * i));
+                }), Math.round(delay * i));
             }
         }
     }
