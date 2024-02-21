@@ -13,8 +13,8 @@
         Adblock Fast also offers advanced blocking in exchange for a little unused bandwidth
     </string>
     <string name="offer_details">
-        <![CDATA[You can downgrade anytime by pressing the <b>About</b> button or can read the <a
-        href="https://adblockfast.com/license">complete terms</a> first.]]>
+        <![CDATA[You can downgrade anytime by going to <b>About</b> or can read <a
+        href="https://adblockfast.com/license">our complete terms</a> first.]]>
     </string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
     <string name="settings_details">
@@ -39,7 +39,7 @@
         <![CDATA[© Rocketship · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a
         href="https://twitter.com/rocketship">Twitter</a>]]>
     </string>
-    <string name="accept_label">Upgrade</string>
+    <string name="accept_label">Upgrade free</string>
     <string name="decline_label">Not now</string>
     <string name="dismiss_label">Close</string>
 </resources>
