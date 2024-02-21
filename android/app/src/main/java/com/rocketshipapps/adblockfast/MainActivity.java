@@ -216,12 +216,8 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) dialog.findViewById(R.id.version_text))
                 .setText(String.format(" %s", VERSION_NUMBER));
-        ((TextView) dialog.findViewById(R.id.tagline))
-            .setText(Html.fromHtml(getString(R.string.tagline)));
-
-        TextView copyrightText = dialog.findViewById(R.id.copyright_text);
-        copyrightText.setText(Html.fromHtml(getString(R.string.copyright_notice)));
-        copyrightText.setMovementMethod(LinkMovementMethod.getInstance());
+        setHtml(dialog.findViewById(R.id.tagline), R.string.tagline, false);
+        setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
     }
@@ -275,14 +271,8 @@ public class MainActivity extends AppCompatActivity {
         final Dialog dialog = presentDialog(R.layout.offer_dialog);
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
-
-        TextView detailsText = dialog.findViewById(R.id.details_text);
-        detailsText.setText(Html.fromHtml(getString(R.string.offer_details)));
-        detailsText.setMovementMethod(LinkMovementMethod.getInstance());
-
-        TextView contactText = dialog.findViewById(R.id.contact_text);
-        contactText.setText(Html.fromHtml(getString(R.string.contact_info)));
-        contactText.setMovementMethod(LinkMovementMethod.getInstance());
+        setHtml(dialog.findViewById(R.id.details_text), R.string.offer_details, true);
+        setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         dialog.findViewById(R.id.accept_button).setOnClickListener((v) -> dialog.dismiss());
         dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> dialog.dismiss());
@@ -290,26 +280,20 @@ public class MainActivity extends AppCompatActivity {
 
     void presentHelp(boolean isDismissible) {
         final Dialog dialog = presentDialog(R.layout.help_dialog);
-
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
+        Button dismissButton = dialog.findViewById(R.id.dismiss_button);
 
         if (hasSamsungBrowser) {
             summaryText.setText(R.string.settings_summary);
-            detailsText.setText(Html.fromHtml(getString(R.string.settings_details)));
+            setHtml(detailsText, R.string.settings_details, false);
             detailsText.setOnClickListener((v) -> startActivity(SAMSUNG_BROWSER_INTENT));
         } else {
             summaryText.setText(R.string.install_summary);
-            detailsText.setText(Html.fromHtml(getString(R.string.install_details)));
+            setHtml(detailsText, R.string.install_details, true);
         }
 
-        detailsText.setMovementMethod(LinkMovementMethod.getInstance());
-
-        TextView contactText = dialog.findViewById(R.id.contact_text);
-        contactText.setText(Html.fromHtml(getString(R.string.contact_info)));
-        contactText.setMovementMethod(LinkMovementMethod.getInstance());
-
-        Button dismissButton = dialog.findViewById(R.id.dismiss_button);
+        setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         if (isDismissible) {
             dismissButton.setOnClickListener((v) -> dialog.dismiss());
@@ -332,6 +316,12 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
 
         return dialog;
+    }
+
+    void setHtml(TextView view, int id, boolean shouldLink) {
+        view.setText(Html.fromHtml(getString(id)));
+
+        if (shouldLink) view.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     void animateBlocking() {
