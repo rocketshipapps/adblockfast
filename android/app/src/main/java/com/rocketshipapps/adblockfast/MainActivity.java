@@ -19,6 +19,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -102,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             animateUnblocking();
         }
+
+        presentOffer();
     }
 
     @Override
@@ -127,9 +130,9 @@ public class MainActivity extends AppCompatActivity {
         if (list.size() > 0) hasSamsungBrowser = true;
 
         if (!hasSamsungBrowser) {
-            showHelpDialog(false);
+            presentHelp(false);
         } else if (preferences.getBoolean("first_run", true)) {
-            showHelpDialog(true);
+            presentHelp(true);
             preferences.edit().putBoolean("first_run", false).apply();
         }
     }
@@ -208,33 +211,22 @@ public class MainActivity extends AppCompatActivity {
         sendBroadcast(intent);
     }
 
-    public void onAboutPressed(View v) {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.about_dialog);
+    void onAboutPressed(View v) {
+        final Dialog dialog = presentDialog(R.layout.about_dialog);
 
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-
-        ((TextView) dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
+        ((TextView) dialog.findViewById(R.id.version_text))
+                .setText(String.format(" %s", VERSION_NUMBER));
+        ((TextView) dialog.findViewById(R.id.tagline))
+            .setText(Html.fromHtml(getString(R.string.tagline)));
 
         TextView copyrightText = dialog.findViewById(R.id.copyright_text);
         copyrightText.setText(Html.fromHtml(getString(R.string.copyright_notice)));
         copyrightText.setMovementMethod(LinkMovementMethod.getInstance());
 
-        dialog.setCancelable(false);
-        dialog.show();
-
-        ((TextView) dialog.findViewById(R.id.version_text))
-            .setText(String.format(" %s", VERSION_NUMBER));
-
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
     }
 
-    public void onHelpPressed(View v) {
-        showHelpDialog(true);
-    }
+    void onHelpPressed(View v) { presentHelp(true); }
 
     private void checkAccountPermission() {
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
@@ -279,17 +271,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void showHelpDialog(boolean cancelable) {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.help_dialog);
+    void presentOffer() {
+        final Dialog dialog = presentDialog(R.layout.offer_dialog);
 
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
+        ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
 
-        dialog.setCancelable(false);
-        dialog.show();
+        TextView detailsText = dialog.findViewById(R.id.details_text);
+        detailsText.setText(Html.fromHtml(getString(R.string.offer_details)));
+        detailsText.setMovementMethod(LinkMovementMethod.getInstance());
+
+        TextView contactText = dialog.findViewById(R.id.contact_text);
+        contactText.setText(Html.fromHtml(getString(R.string.contact_info)));
+        contactText.setMovementMethod(LinkMovementMethod.getInstance());
+
+        dialog.findViewById(R.id.accept_button).setOnClickListener((v) -> dialog.dismiss());
+        dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> dialog.dismiss());
+    }
+
+    void presentHelp(boolean isCancelable) {
+        final Dialog dialog = presentDialog(R.layout.help_dialog);
 
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
@@ -304,15 +304,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         detailsText.setMovementMethod(LinkMovementMethod.getInstance());
+
         TextView contactText = dialog.findViewById(R.id.contact_text);
         contactText.setText(Html.fromHtml(getString(R.string.contact_info)));
         contactText.setMovementMethod(LinkMovementMethod.getInstance());
 
-        if (cancelable) {
-            dialog.findViewById(R.id.dismiss_button).setOnClickListener((v) -> dialog.dismiss());
+        Button dismissButton = dialog.findViewById(R.id.dismiss_button);
+
+        if (isCancelable) {
+            dismissButton.setOnClickListener((v) -> dialog.dismiss());
         } else {
-            dialog.findViewById(R.id.dismiss_button).setOnClickListener((v) -> onBackPressed());
+            dismissButton.setOnClickListener((v) -> onBackPressed());
         }
+    }
+
+    Dialog presentDialog(int id) {
+        final Dialog dialog = new Dialog(this);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        dialog.setCancelable(false);
+        dialog.setContentView(id);
+        dialog.show();
+
+        return dialog;
     }
 
     void animateBlocking() {

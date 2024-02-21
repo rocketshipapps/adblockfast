@@ -43,14 +43,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_spacing">
             <Button
-                android:id="@+id/dismiss_button"
+                android:id="@+id/decline_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_alignParentStart="true"
                 android:background="@drawable/button"
-                android:text="@string/dismiss_label"
+                android:text="@string/decline_label"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/accept_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/button"
+                android:text="@string/accept_label"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                tools:ignore="RelativeOverlap" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

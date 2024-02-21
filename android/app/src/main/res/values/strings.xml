@@ -9,12 +9,37 @@
     <string name="unblocked_hint">Tap to block</string>
     <string name="help_label">Help</string>
     <string name="about_label">About</string>
+    <string name="offer_summary">
+        Adblock Fast also offers advanced blocking in exchange for a little unused bandwidth
+    </string>
+    <string name="offer_details">
+        <![CDATA[You can downgrade anytime by pressing the <b>About</b> button or can read the <a
+        href="https://adblockfast.com/license">complete terms</a> first.]]>
+    </string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
-    <string name="settings_details"><![CDATA[Go to <font color="#de0421"><u>your home screen > Internet > ⋮ (the browser menu) > Ad blockers</u></font> then toggle <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to this app then tap the Adblock Fast button.]]></string>
+    <string name="settings_details">
+        <![CDATA[Go to <font color="#de0421"><u>your home screen > Internet > ⋮ (the browser menu) >
+        Ad blockers</u></font> then toggle <b>Adblock Fast</b> on.<br><br>To unblock ads, come back
+        to this app then tap the Adblock Fast button.]]>
+    </string>
     <string name="install_summary">Adblock Fast requires Samsung Internet 4.0+.</string>
-    <string name="install_details"><![CDATA[Install or update to the latest version of the <a href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung Internet browser from Google Play</a> then come back to this app for instructions on how to block ads.]]></string>
-    <string name="contact_info"><![CDATA[If you have any questions or comments, follow and message <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a href="https://twitter.com/adblockfast">on Twitter</a>.]]></string>
+    <string name="install_details">
+        <![CDATA[Install or update to the latest version of the <a
+        href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
+        Internet browser from Google Play</a> then come back to this app for instructions on how to
+        block ads.]]>
+    </string>
+    <string name="contact_info">
+        <![CDATA[If you have any questions or comments, follow and message
+        <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a
+        href="https://twitter.com/adblockfast">on Twitter</a>.]]>
+    </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
-    <string name="copyright_notice"><![CDATA[© Rocketship · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a href="https://twitter.com/rocketship">Twitter</a>]]></string>
+    <string name="copyright_notice">
+        <![CDATA[© Rocketship · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a
+        href="https://twitter.com/rocketship">Twitter</a>]]>
+    </string>
+    <string name="accept_label">Upgrade</string>
+    <string name="decline_label">Not now</string>
     <string name="dismiss_label">Close</string>
 </resources>
