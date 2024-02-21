@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/background_overlay"
+        android:background="@drawable/overlay"
         android:padding="@dimen/horizontal_spacing"
         android:orientation="vertical"
         tools:ignore="MissingPrefix">
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/background_button"
+                android:background="@drawable/button"
                 android:text="@string/dismiss_label"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
