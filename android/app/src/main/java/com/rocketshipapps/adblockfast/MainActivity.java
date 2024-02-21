@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.blocked_frame_13,
             R.drawable.blocked_frame_14,
             R.drawable.blocked_frame_15
-        }, R.string.unblocked_message, R.string.unblocked_hint);
+        }, R.string.blocked_message, R.string.blocked_hint);
     }
 
     void animateUnblocking() {
@@ -373,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.unblocked_frame_13,
             R.drawable.unblocked_frame_14,
             R.drawable.unblocked_frame_15
-        }, R.string.blocked_message, R.string.blocked_hint);
+        }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
     void animator(final int[] res, final int resTxtStatus, final int resTxtTap) {
