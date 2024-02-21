@@ -24,7 +24,7 @@ public class HelpOverlay extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.alert_dialog_help, container);
+        View view = inflater.inflate(R.layout.help_dialog, container);
         return view;
     }
 }

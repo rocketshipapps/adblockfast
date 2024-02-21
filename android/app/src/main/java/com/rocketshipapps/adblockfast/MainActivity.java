@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     public void onAboutPressed(View v) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.alert_dialog_about);
+        dialog.setContentView(R.layout.about_dialog);
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
     void showHelpDialog(boolean cancelable) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.alert_dialog_help);
+        dialog.setContentView(R.layout.help_dialog);
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
