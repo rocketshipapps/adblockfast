@@ -219,14 +219,15 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
 
-        TextView copyright = dialog.findViewById(R.id.copyright);
-        copyright.setText(Html.fromHtml(getString(R.string.copyright)));
-        copyright.setMovementMethod(LinkMovementMethod.getInstance());
+        TextView copyrightText = dialog.findViewById(R.id.copyright_text);
+        copyrightText.setText(Html.fromHtml(getString(R.string.copyright_notice)));
+        copyrightText.setMovementMethod(LinkMovementMethod.getInstance());
 
         dialog.setCancelable(false);
         dialog.show();
 
-        ((TextView) dialog.findViewById(R.id.version_number)).setText(VERSION_NUMBER);
+        ((TextView) dialog.findViewById(R.id.version_text))
+            .setText(String.format(" %s", VERSION_NUMBER));
 
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
     }
@@ -290,21 +291,22 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
-        TextView summary = dialog.findViewById(R.id.summary);
-        TextView details = dialog.findViewById(R.id.details);
+        TextView summaryText = dialog.findViewById(R.id.summary_text);
+        TextView detailsText = dialog.findViewById(R.id.details_text);
 
         if (hasSamsungBrowser) {
-            summary.setText(R.string.settings_summary);
-            details.setText(Html.fromHtml(getString(R.string.settings_details)));
-            details.setOnClickListener((v) -> startActivity(SAMSUNG_BROWSER_INTENT));
+            summaryText.setText(R.string.settings_summary);
+            detailsText.setText(Html.fromHtml(getString(R.string.settings_details)));
+            detailsText.setOnClickListener((v) -> startActivity(SAMSUNG_BROWSER_INTENT));
         } else {
-            summary.setText(R.string.install_summary);
-            details.setText(Html.fromHtml(getString(R.string.install_details)));
+            summaryText.setText(R.string.install_summary);
+            detailsText.setText(Html.fromHtml(getString(R.string.install_details)));
         }
-        details.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView contact = dialog.findViewById(R.id.contact);
-        contact.setText(Html.fromHtml(getString(R.string.contact)));
-        contact.setMovementMethod(LinkMovementMethod.getInstance());
+
+        detailsText.setMovementMethod(LinkMovementMethod.getInstance());
+        TextView contactText = dialog.findViewById(R.id.contact_text);
+        contactText.setText(Html.fromHtml(getString(R.string.contact_info)));
+        contactText.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (cancelable) {
             dialog.findViewById(R.id.dismiss_button).setOnClickListener((v) -> dialog.dismiss());

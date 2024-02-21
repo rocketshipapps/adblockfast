@@ -3,21 +3,19 @@ package com.rocketshipapps.adblockfast.ui;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import com.rocketshipapps.adblockfast.R;
 
 public class HelpOverlay extends DialogFragment {
-
-    public HelpOverlay() {}
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.Bounce;
+        dialog.getWindow().getAttributes().windowAnimations = R.style.Animation;
         return dialog;
     }
 

@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--suppress AndroidUnknownAttribute -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:background="@drawable/background_overlay"
-        android:padding="@dimen/activity_horizontal_margin"
+        android:padding="@dimen/horizontal_spacing"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
-
+        tools:ignore="MissingPrefix">
         <TextView
-            android:id="@+id/summary"
+            android:id="@+id/summary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:text="@null"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
             fontPath="fonts/AvenirNext-Medium.otf" />
-
         <TextView
-            android:id="@+id/details"
+            android:id="@+id/details_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
             android:textColor="@android:color/white"
-            android:textColorLink="#de0421"
+            android:textColorLink="@color/link"
             fontPath="fonts/AvenirNextLTPro-Light.otf" />
-
         <TextView
-            android:id="@+id/contact"
+            android:id="@+id/contact_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
             android:textColor="@android:color/white"
-            android:textColorLink="#de0421"
+            android:textColorLink="@color/link"
             fontPath="fonts/AvenirNextLTPro-Light.otf" />
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_spacing">
             <Button
-                android:id="@+id/btn_ok"
+                android:id="@+id/dismiss_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_button"
-                android:text="@string/dismiss"
                 android:layout_centerInParent="true"
+                android:background="@drawable/background_button"
+                android:text="@string/dismiss_label"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
