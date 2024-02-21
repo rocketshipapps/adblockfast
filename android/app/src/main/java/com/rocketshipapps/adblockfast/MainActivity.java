@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (!Ruleset.exists(this)) {
             Ruleset.enable(this);
-            enableAnimation();
+            animateBlocking();
         } else if (Ruleset.active(this)) {
-            enableAnimation();
+            animateBlocking();
         } else {
-            disableAnimation();
+            animateUnblocking();
         }
     }
 
@@ -196,10 +196,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (Ruleset.active(this)) {
             Ruleset.disable(this);
-            disableAnimation();
+            animateUnblocking();
         } else {
             Ruleset.enable(this);
-            enableAnimation();
+            animateBlocking();
         }
 
         Intent intent = new Intent();
@@ -315,45 +315,45 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void disableAnimation() {
+    void animateUnblocking() {
         animator(new int[] {
-            R.drawable.blocked_0,
-            R.drawable.blocked_1,
-            R.drawable.blocked_2,
-            R.drawable.blocked_3,
-            R.drawable.blocked_4,
-            R.drawable.blocked_5,
-            R.drawable.blocked_6,
-            R.drawable.blocked_7,
-            R.drawable.blocked_8,
-            R.drawable.blocked_9,
-            R.drawable.blocked_10,
-            R.drawable.blocked_11,
-            R.drawable.blocked_12,
-            R.drawable.blocked_13,
-            R.drawable.blocked_14,
-            R.drawable.blocked_15
+            R.drawable.blocked_frame_0,
+            R.drawable.blocked_frame_1,
+            R.drawable.blocked_frame_2,
+            R.drawable.blocked_frame_3,
+            R.drawable.blocked_frame_4,
+            R.drawable.blocked_frame_5,
+            R.drawable.blocked_frame_6,
+            R.drawable.blocked_frame_7,
+            R.drawable.blocked_frame_8,
+            R.drawable.blocked_frame_9,
+            R.drawable.blocked_frame_10,
+            R.drawable.blocked_frame_11,
+            R.drawable.blocked_frame_12,
+            R.drawable.blocked_frame_13,
+            R.drawable.blocked_frame_14,
+            R.drawable.blocked_frame_15
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void enableAnimation() {
+    void animateBlocking() {
         animator(new int[] {
-            R.drawable.unblocked_0,
-            R.drawable.unblocked_1,
-            R.drawable.unblocked_2,
-            R.drawable.unblocked_3,
-            R.drawable.unblocked_4,
-            R.drawable.unblocked_5,
-            R.drawable.unblocked_6,
-            R.drawable.unblocked_7,
-            R.drawable.unblocked_8,
-            R.drawable.unblocked_9,
-            R.drawable.unblocked_10,
-            R.drawable.unblocked_11,
-            R.drawable.unblocked_12,
-            R.drawable.unblocked_13,
-            R.drawable.unblocked_14,
-            R.drawable.unblocked_15
+            R.drawable.unblocked_frame_0,
+            R.drawable.unblocked_frame_1,
+            R.drawable.unblocked_frame_2,
+            R.drawable.unblocked_frame_3,
+            R.drawable.unblocked_frame_4,
+            R.drawable.unblocked_frame_5,
+            R.drawable.unblocked_frame_6,
+            R.drawable.unblocked_frame_7,
+            R.drawable.unblocked_frame_8,
+            R.drawable.unblocked_frame_9,
+            R.drawable.unblocked_frame_10,
+            R.drawable.unblocked_frame_11,
+            R.drawable.unblocked_frame_12,
+            R.drawable.unblocked_frame_13,
+            R.drawable.unblocked_frame_14,
+            R.drawable.unblocked_frame_15
         }, R.string.blocked_message, R.string.blocked_hint);
     }
 
