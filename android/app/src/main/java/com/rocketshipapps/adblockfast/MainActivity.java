@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
             if (data != null) {
-                final String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+                String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
 
                 if (email != null) {
                     new Thread(() -> {
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onAboutPressed(View v) {
-        final Dialog dialog = presentDialog(R.layout.about_dialog);
+        Dialog dialog = presentDialog(R.layout.about_dialog);
 
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
     void onHelpPressed(View v) { presentHelp(true); }
 
     void presentOffer() {
-        final Dialog dialog = presentDialog(R.layout.offer_dialog);
+        Dialog dialog = presentDialog(R.layout.offer_dialog);
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.offer_details, true);
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(boolean isDismissible) {
-        final Dialog dialog = presentDialog(R.layout.help_dialog);
+        Dialog dialog = presentDialog(R.layout.help_dialog);
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
         Button dismissButton = dialog.findViewById(R.id.dismiss_button);
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
-        final Dialog dialog = new Dialog(this);
+        Dialog dialog = new Dialog(this);
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateBlocking() {
-        animator(new int[] {
+        animateUi(new int[] {
             R.drawable.blocked_frame_0,
             R.drawable.blocked_frame_1,
             R.drawable.blocked_frame_2,
@@ -331,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateUnblocking() {
-        animator(new int[] {
+        animateUi(new int[] {
             R.drawable.unblocked_frame_0,
             R.drawable.unblocked_frame_1,
             R.drawable.unblocked_frame_2,
@@ -383,26 +383,26 @@ public class MainActivity extends AppCompatActivity {
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void animator(final int[] res, final int resTxtStatus, final int resTxtTap) {
+    void animateUi(int[] resources, int status, int hint) {
+        double delay = 62.5;
         isUiAnimating = true;
 
-        double delay = 62.5;
-
-        for (int i = 0; i < res.length; i++) {
+        for (int i = 0; i < resources.length; i++) {
             if (i == 0) {
-                mainButton.setImageResource(res[i]);
+                mainButton.setImageResource(resources[i]);
             } else {
-                Handler handler = new Handler();
-                final int finalI = i;
-                handler.postDelayed(() -> runOnUiThread(() -> {
-                    mainButton.setImageResource(res[finalI]);
+                final int I = i;
 
-                    if (finalI == res.length - 1) {
+                new Handler().postDelayed(() -> runOnUiThread(() -> {
+                    mainButton.setImageResource(resources[I]);
+
+                    if (I == resources.length - 1) {
                         isUiAnimating = false;
-                        statusText.setText(resTxtStatus);
-                        hintText.setText(resTxtTap);
+
+                        statusText.setText(status);
+                        hintText.setText(hint);
                     }
-                }), Math.round(delay * i));
+                }), Math.round(i * delay));
             }
         }
     }
