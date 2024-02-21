@@ -2,17 +2,17 @@ package com.rocketshipapps.adblockfast.utils;
 
 import android.content.Context;
 
-import com.rocketshipapps.adblockfast.R;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Rule {
-    private static String TAG = "rule_status";
-    private static String PREFERENCE = "adblockfast";
-    private static final String OUTPUT = "rules.txt";
+import com.rocketshipapps.adblockfast.R;
+
+public class Ruleset {
+    static final String TAG = "rule_status";
+    static final String PREFERENCE = "adblockfast";
+    static final String OUTPUT = "rules.txt";
 
     public static File get(Context context) {
         boolean active = context.getSharedPreferences(PREFERENCE, 0).getBoolean(TAG, true);

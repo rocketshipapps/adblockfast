@@ -5,7 +5,6 @@ import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -49,7 +48,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 import com.wbrawner.plausible.android.Plausible;
 
-import com.rocketshipapps.adblockfast.utils.Rule;
+import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
     static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
     boolean isUiAnimating = false;
     boolean hasSamsungBrowser = false;
-
     String packageName;
     SharedPreferences preferences;
     ImageButton mainButton;
@@ -96,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
 
-        if (!Rule.exists(this)) {
-            Rule.enable(this);
+        if (!Ruleset.exists(this)) {
+            Ruleset.enable(this);
             enableAnimation();
-        } else if (Rule.active(this)) {
+        } else if (Ruleset.active(this)) {
             enableAnimation();
         } else {
             disableAnimation();
@@ -196,11 +194,11 @@ public class MainActivity extends AppCompatActivity {
     public void onAdBlockPressed(View v) {
         if (isUiAnimating) return;
 
-        if (Rule.active(this)) {
-            Rule.disable(this);
+        if (Ruleset.active(this)) {
+            Ruleset.disable(this);
             disableAnimation();
         } else {
-            Rule.enable(this);
+            Ruleset.enable(this);
             enableAnimation();
         }
 
