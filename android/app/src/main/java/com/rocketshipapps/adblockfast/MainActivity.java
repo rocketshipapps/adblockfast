@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void animateUnblocking() {
+    void animateBlocking() {
         animator(new int[] {
             R.drawable.blocked_frame_0,
             R.drawable.blocked_frame_1,
@@ -336,7 +336,7 @@ public class MainActivity extends AppCompatActivity {
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void animateBlocking() {
+    void animateUnblocking() {
         animator(new int[] {
             R.drawable.unblocked_frame_0,
             R.drawable.unblocked_frame_1,
