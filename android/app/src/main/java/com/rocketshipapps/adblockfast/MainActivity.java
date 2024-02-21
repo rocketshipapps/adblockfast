@@ -38,6 +38,7 @@ import androidx.preference.PreferenceManager;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -53,8 +54,8 @@ import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
     static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
-    static final Intent SAMSUNG_BROWSER_INTENT = new Intent()
-        .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+    static final Intent SAMSUNG_BROWSER_INTENT =
+        new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
     static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         final Dialog dialog = presentDialog(R.layout.about_dialog);
 
         ((TextView) dialog.findViewById(R.id.version_text))
-                .setText(String.format(" %s", VERSION_NUMBER));
+            .setText(String.format(" %s", VERSION_NUMBER));
         setHtml(dialog.findViewById(R.id.tagline), R.string.tagline, false);
         setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
@@ -355,6 +356,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(MainActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
             }
+
             getAccounts();
         }
     }
@@ -362,7 +364,11 @@ public class MainActivity extends AppCompatActivity {
     void checkAccountPermission() {
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_DENIED) {
+        if (
+            ContextCompat.checkSelfPermission(
+                this, Manifest.permission.GET_ACCOUNTS
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
             getAccounts();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
@@ -374,21 +380,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void getAccounts() {
-        Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
+        Intent intent =
+            AccountPicker.newChooseAccountIntent(
+                new AccountPicker.AccountChooserOptions.Builder()
+                    .setAllowableAccountsTypes(Collections.singletonList("com.google"))
+                    .build()
+            );
         startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
     }
 
     void showAccountPermissionAlert() {
         new AlertDialog
-                .Builder(this)
-                .setTitle("Permission needed")
-                .setMessage("Get email address")
-                .setPositiveButton(android.R.string.ok, (d, w) -> {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
-                    }
-                })
-                .create()
-                .show();
+            .Builder(this)
+            .setTitle("Permission needed")
+            .setMessage("Get email address")
+            .setPositiveButton(android.R.string.ok, (d, w) -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(
+                        new String[] { Manifest.permission.GET_ACCOUNTS },
+                        REQUEST_PERMISSION_GET_ACCOUNTS
+                    );
+                }
+            })
+            .create()
+            .show();
     }
 }
