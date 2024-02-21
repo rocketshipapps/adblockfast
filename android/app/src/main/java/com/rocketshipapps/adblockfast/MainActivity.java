@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> dialog.dismiss());
     }
 
-    void presentHelp(boolean isCancelable) {
+    void presentHelp(boolean isDismissible) {
         final Dialog dialog = presentDialog(R.layout.help_dialog);
 
         TextView summaryText = dialog.findViewById(R.id.summary_text);
@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button dismissButton = dialog.findViewById(R.id.dismiss_button);
 
-        if (isCancelable) {
+        if (isDismissible) {
             dismissButton.setOnClickListener((v) -> dialog.dismiss());
         } else {
             dismissButton.setOnClickListener((v) -> onBackPressed());
