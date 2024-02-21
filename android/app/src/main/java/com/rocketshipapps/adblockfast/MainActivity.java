@@ -146,11 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getAccounts() {
-        Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
-        startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -223,49 +218,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onHelpPressed(View v) { presentHelp(true); }
-
-    private void checkAccountPermission() {
-        if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_DENIED) {
-            getAccounts();
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
-                showAccountPermissionAlert();
-            } else {
-                requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
-            }
-        }
-    }
-
-    private void showAccountPermissionAlert() {
-        new AlertDialog
-            .Builder(this)
-            .setTitle("Permission needed")
-            .setMessage("Get email address")
-            .setPositiveButton(android.R.string.ok, (d, w) -> {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
-                }
-            })
-            .create()
-            .show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
-                getAccounts();
-            } else {
-                Toast.makeText(MainActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
-            }
-            getAccounts();
-        }
-    }
 
     void presentOffer() {
         final Dialog dialog = presentDialog(R.layout.offer_dialog);
@@ -388,5 +340,53 @@ public class MainActivity extends AppCompatActivity {
                 }), Math.round(delay * i));
             }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
+                getAccounts();
+            } else {
+                Toast.makeText(MainActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+            }
+            getAccounts();
+        }
+    }
+
+    private void checkAccountPermission() {
+        if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_DENIED) {
+            getAccounts();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
+                showAccountPermissionAlert();
+            } else {
+                requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
+            }
+        }
+    }
+
+    private void getAccounts() {
+        Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
+        startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
+    }
+
+    private void showAccountPermissionAlert() {
+        new AlertDialog
+                .Builder(this)
+                .setTitle("Permission needed")
+                .setMessage("Get email address")
+                .setPositiveButton(android.R.string.ok, (d, w) -> {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
+                    }
+                })
+                .create()
+                .show();
     }
 }
