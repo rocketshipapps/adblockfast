@@ -226,9 +226,9 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
-        ((TextView) dialog.findViewById(R.id.txt_version)).setText(VERSION_NUMBER);
+        ((TextView) dialog.findViewById(R.id.version_number)).setText(VERSION_NUMBER);
 
-        dialog.findViewById(R.id.btn_ok).setOnClickListener((w) -> dialog.dismiss());
+        dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
     }
 
     public void onHelpPressed(View v) {
@@ -307,9 +307,9 @@ public class MainActivity extends AppCompatActivity {
         contact.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (cancelable) {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener((v) -> dialog.dismiss());
+            dialog.findViewById(R.id.dismiss_button).setOnClickListener((v) -> dialog.dismiss());
         } else {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener((v) -> onBackPressed());
+            dialog.findViewById(R.id.dismiss_button).setOnClickListener((v) -> onBackPressed());
         }
     }
 
