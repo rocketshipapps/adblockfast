@@ -46,7 +46,7 @@
             android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
             android:textColor="@android:color/white"
-            android:textColorLink="@color/link"
+            android:textColorLink="@color/highlight"
             fontPath="fonts/AvenirNextLTPro-Light.otf" />
         <RelativeLayout
             android:layout_width="match_parent"
