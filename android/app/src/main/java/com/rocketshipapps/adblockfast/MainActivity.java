@@ -343,7 +343,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(
+        int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
@@ -357,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkAccountPermission() {
+    void checkAccountPermission() {
         if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_DENIED) {
@@ -371,12 +373,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getAccounts() {
+    void getAccounts() {
         Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[] {"com.google", "com.google.android.legacyimap"}, false, null, null, null, null);
         startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
     }
 
-    private void showAccountPermissionAlert() {
+    void showAccountPermissionAlert() {
         new AlertDialog
                 .Builder(this)
                 .setTitle("Permission needed")
