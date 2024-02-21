@@ -7,15 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.Nullable;
 
-import com.rocketshipapps.adblockfast.utils.Rule;
+import androidx.annotation.Nullable;
 
 import java.io.FileNotFoundException;
 
+import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class FilterContentProvider extends ContentProvider {
-
     @Override
     public boolean onCreate() {
         return false;
@@ -58,12 +57,12 @@ public class FilterContentProvider extends ContentProvider {
     @Nullable
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        return ParcelFileDescriptor.open(Rule.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
+        return ParcelFileDescriptor.open(Ruleset.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
     }
 
     @Nullable
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode, CancellationSignal signal) throws FileNotFoundException {
-        return ParcelFileDescriptor.open(Rule.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
+        return ParcelFileDescriptor.open(Ruleset.get(getContext()), ParcelFileDescriptor.MODE_READ_ONLY);
     }
 }

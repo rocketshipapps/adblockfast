@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 )
             ).build()
         );
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_view);
 
         mainButton = findViewById(R.id.main_button);
         mainButton.setOnClickListener(this::onAdBlockPressed);
