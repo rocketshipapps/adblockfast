@@ -29,7 +29,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -112,11 +111,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
 
@@ -129,7 +123,12 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/", "", null);
     }
 
-    private void checkIfHasBlockingBrowser() {
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(base));
+    }
+
+    void checkIfHasBlockingBrowser() {
         List<ResolveInfo> list = getPackageManager().queryIntentActivities(SAMSUNG_BROWSER_INTENT, 0);
         if (list.size() > 0) hasSamsungBrowser = true;
 
@@ -141,55 +140,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkPlayServices() {
+    void checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
 
         if (resultCode != ConnectionResult.SUCCESS) {
             apiAvailability.makeGooglePlayServicesAvailable(this);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
-            if (data != null) {
-                String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
-
-                if (email != null) {
-                    new Thread(() -> {
-                        try {
-                            URL url = new URL(BuildConfig.SUBSCRIBE_URL);
-                            HttpURLConnection req = (HttpURLConnection) url.openConnection();
-
-                            req.setRequestMethod("POST");
-                            req.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                            req.setRequestProperty("Accept", "application/json");
-                            req.setDoOutput(true);
-                            req.setDoInput(true);
-
-                            JSONObject params = new JSONObject();
-                            params.put("email", email);
-
-                            DataOutputStream os = new DataOutputStream(req.getOutputStream());
-                            os.writeBytes(params.toString());
-
-                            os.flush();
-                            os.close();
-
-                            req.disconnect();
-
-                            preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }).start();
-                }
-            }
-
-            checkIfHasBlockingBrowser();
         }
     }
 
@@ -207,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
         sendBroadcast(blockingUpdateIntent);
     }
 
+    void onHelpPressed(View v) { presentHelp(true); }
+
     void onAboutPressed(View v) {
         Dialog dialog = presentDialog(R.layout.about_dialog);
 
@@ -217,8 +175,6 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
     }
-
-    void onHelpPressed(View v) { presentHelp(true); }
 
     void presentOffer() {
         Dialog dialog = presentDialog(R.layout.offer_dialog);
@@ -404,6 +360,51 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }), Math.round(i * delay));
             }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
+            if (data != null) {
+                String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+
+                if (email != null) {
+                    new Thread(() -> {
+                        try {
+                            URL url = new URL(BuildConfig.SUBSCRIBE_URL);
+                            HttpURLConnection req = (HttpURLConnection) url.openConnection();
+
+                            req.setRequestMethod("POST");
+                            req.setRequestProperty(
+                                "Content-Type", "application/json;charset=UTF-8"
+                            );
+                            req.setRequestProperty("Accept", "application/json");
+                            req.setDoOutput(true);
+                            req.setDoInput(true);
+
+                            JSONObject params = new JSONObject();
+                            params.put("email", email);
+
+                            DataOutputStream os = new DataOutputStream(req.getOutputStream());
+                            os.writeBytes(params.toString());
+
+                            os.flush();
+                            os.close();
+
+                            req.disconnect();
+
+                            preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
+                }
+            }
+
+            checkIfHasBlockingBrowser();
         }
     }
 
