@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
     static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+    // TODO: Refactor subscription constants
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
     static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
@@ -363,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // TODO: Refactor subscription methods
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -436,10 +438,17 @@ public class MainActivity extends AppCompatActivity {
         ) {
             getAccounts();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
+            if (
+                ActivityCompat.shouldShowRequestPermissionRationale(
+                    this, Manifest.permission.GET_ACCOUNTS
+                )
+            ) {
                 showAccountPermissionAlert();
             } else {
-                requestPermissions(new String[] { Manifest.permission.GET_ACCOUNTS }, REQUEST_PERMISSION_GET_ACCOUNTS);
+                requestPermissions(
+                    new String[] { Manifest.permission.GET_ACCOUNTS },
+                    REQUEST_PERMISSION_GET_ACCOUNTS
+                );
             }
         }
     }
