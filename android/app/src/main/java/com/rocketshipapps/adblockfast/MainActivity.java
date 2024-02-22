@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     boolean hasSamsungBrowser = false;
     String packageName;
     SharedPreferences preferences;
+    Intent blockingUpdateIntent;
     ImageButton mainButton;
     TextView statusText;
     TextView hintText;
@@ -71,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        packageName = getApplicationContext().getPackageName();
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         ViewPump.init(
             ViewPump.builder().addInterceptor(
@@ -87,12 +85,17 @@ public class MainActivity extends AppCompatActivity {
         );
         setContentView(R.layout.main_view);
 
+        packageName = getApplicationContext().getPackageName();
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        blockingUpdateIntent =
+            new Intent()
+                .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE")
+                .setData(Uri.parse("package:" + packageName));
         mainButton = findViewById(R.id.main_button);
-        mainButton.setOnClickListener(this::onAdBlockPressed);
-
         statusText = findViewById(R.id.status_text);
         hintText = findViewById(R.id.hint_text);
 
+        mainButton.setOnClickListener(this::onAdBlockPressed);
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
 
@@ -201,10 +204,7 @@ public class MainActivity extends AppCompatActivity {
             animateBlocking();
         }
 
-        Intent intent = new Intent();
-        intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
-        intent.setData(Uri.parse("package:" + packageName));
-        sendBroadcast(intent);
+        sendBroadcast(blockingUpdateIntent);
     }
 
     void onAboutPressed(View v) {
