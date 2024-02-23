@@ -38,7 +38,7 @@
         <![CDATA[© Rocketship · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a
         href="https://twitter.com/rocketship">Twitter</a>]]>
     </string>
-    <string name="proceed_label">Next</string>
+    <string name="continue_label">Next</string>
     <string name="dismiss_label">Close</string>
     <string name="accept_label">Upgrade free</string>
     <string name="decline_label">Not now</string>

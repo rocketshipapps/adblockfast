@@ -109,7 +109,9 @@ public class MainActivity extends AppCompatActivity {
         statusText = findViewById(R.id.status_text);
         hintText = findViewById(R.id.hint_text);
 
+        dumpPrefs();
         updateLegacyPrefs();
+        dumpPrefs();
         initPrefs();
         dumpPrefs();
         logoButton.setOnClickListener(this::onLogoPressed);
@@ -123,18 +125,9 @@ public class MainActivity extends AppCompatActivity {
         detectSamsungBrowser();
 
         if (Ruleset.isEnabled()) {
-            animateBlocking();
+            animateBlocking(this::onboardUser);
         } else {
-            animateUnblocking();
-        }
-
-        if (!hasSamsungBrowser) {
-            presentHelp(false);
-        } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
-            presentHelp(true);
-            prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-        } else {
-            presentOffer();
+            animateUnblocking(this::onboardUser);
         }
 
         Plausible.INSTANCE.pageView("/", "", null);
@@ -216,17 +209,17 @@ public class MainActivity extends AppCompatActivity {
         if (!isLogoAnimating) {
             if (Ruleset.isEnabled()) {
                 Ruleset.disable();
-                animateUnblocking();
+                animateUnblocking(null);
             } else {
                 Ruleset.enable();
-                animateBlocking();
+                animateBlocking(null);
             }
 
             sendBroadcast(blockingUpdateIntent);
         }
     }
 
-    void onHelpPressed(View v) { presentHelp(true); }
+    void onHelpPressed(View v) { presentHelp(null); }
 
     void onAboutPressed(View v) {
         dialog = presentDialog(R.layout.about_dialog);
@@ -239,18 +232,31 @@ public class MainActivity extends AppCompatActivity {
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
     }
 
-    void presentOffer() {
+    void presentOffer(Runnable continuationHandler) {
         dialog = presentDialog(R.layout.offer_dialog);
+        Button acceptButton = dialog.findViewById(R.id.accept_button);
+        Button declineButton = dialog.findViewById(R.id.decline_button);
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.offer_details, true);
         setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
-        dialog.findViewById(R.id.accept_button).setOnClickListener((v) -> dialog.dismiss());
-        dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> dialog.dismiss());
+        if (continuationHandler != null) {
+            acceptButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                continuationHandler.run();
+            });
+            declineButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                continuationHandler.run();
+            });
+        } else {
+            acceptButton.setOnClickListener((v) -> dialog.dismiss());
+            declineButton.setOnClickListener((v) -> dialog.dismiss());
+        }
     }
 
-    void presentHelp(boolean isDismissible) {
+    void presentHelp(Runnable continuationHandler) {
         dialog = presentDialog(R.layout.help_dialog);
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
@@ -267,10 +273,15 @@ public class MainActivity extends AppCompatActivity {
 
         setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
-        if (isDismissible) {
-            dismissButton.setOnClickListener((v) -> dialog.dismiss());
+        if (continuationHandler != null) {
+            if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
+
+            dismissButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                continuationHandler.run();
+            });
         } else {
-            dismissButton.setOnClickListener((v) -> onBackPressed());
+            dismissButton.setOnClickListener((v) -> dialog.dismiss());
         }
     }
 
@@ -298,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
         if (shouldLink) view.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    void animateBlocking() {
+    void animateBlocking(Runnable callback) {
         animateLogo(new int[] {
             R.drawable.blocked_frame_0,
             R.drawable.blocked_frame_1,
@@ -348,10 +359,10 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.blocked_frame_13,
             R.drawable.blocked_frame_14,
             R.drawable.blocked_frame_15
-        }, R.string.blocked_message, R.string.blocked_hint);
+        }, R.string.blocked_message, R.string.blocked_hint, callback);
     }
 
-    void animateUnblocking() {
+    void animateUnblocking(Runnable callback) {
         animateLogo(new int[] {
             R.drawable.unblocked_frame_0,
             R.drawable.unblocked_frame_1,
@@ -401,10 +412,10 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.unblocked_frame_13,
             R.drawable.unblocked_frame_14,
             R.drawable.unblocked_frame_15
-        }, R.string.unblocked_message, R.string.unblocked_hint);
+        }, R.string.unblocked_message, R.string.unblocked_hint, callback);
     }
 
-    void animateLogo(int[] resources, int status, int hint) {
+    void animateLogo(int[] resources, int status, int hint, Runnable callback) {
         isLogoAnimating = true;
         double delay = 62.5;
 
@@ -422,9 +433,23 @@ public class MainActivity extends AppCompatActivity {
 
                         statusText.setText(status);
                         hintText.setText(hint);
+
+                        if (callback != null) callback.run();
                     }
                 }), Math.round(i * delay));
             }
+        }
+    }
+
+    void onboardUser() {
+        if (!hasSamsungBrowser) {
+            presentHelp(this::onBackPressed);
+        } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
+            presentHelp(() ->
+                presentOffer(() ->
+                    prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
+                )
+            );
         }
     }
 
