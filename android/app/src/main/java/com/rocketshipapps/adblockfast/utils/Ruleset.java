@@ -57,10 +57,6 @@ public class Ruleset {
         MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, false).apply();
     }
 
-    public static boolean isInitialized() {
-        return MainActivity.prefs.contains(MainActivity.IS_BLOCKING_KEY);
-    }
-
     public static boolean isEnabled() {
         return MainActivity.prefs.getBoolean(MainActivity.IS_BLOCKING_KEY, true);
     }

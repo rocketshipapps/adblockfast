@@ -60,12 +60,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
+    static final Intent SAMSUNG_BROWSER_INTENT =
+        new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+
     static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
-    static final Intent SAMSUNG_BROWSER_INTENT =
-        new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
     // TODO: Refactor subscription constants
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
@@ -115,13 +116,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        initPlayServices();
         detectSamsungBrowser();
 
-        if (!Ruleset.isInitialized()) {
-            Ruleset.enable();
-            animateBlocking();
-        } else if (Ruleset.isEnabled()) {
+        if (Ruleset.isEnabled()) {
             animateBlocking();
         } else {
             animateUnblocking();
@@ -150,6 +147,10 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences legacyPrefs = this.getSharedPreferences(LEGACY_PREFS_NAME, 0);
 
             editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
+            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
+            editor
+                .putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true))
+                .apply();
             editor
                 .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true))
                 .apply();
@@ -166,29 +167,22 @@ public class MainActivity extends AppCompatActivity {
                 .compareTo(new ComparableVersion(VERSION_NUMBER)) < 0
         ) {
             SharedPreferences.Editor editor = prefs.edit();
-            boolean hasVersionNumber = prefs.contains(VERSION_NUMBER_KEY);
 
-            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
-
-            if (hasVersionNumber) {
+            if (prefs.contains(VERSION_NUMBER_KEY)) {
                 editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber).apply();
             }
 
             if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
-                editor.putString(
-                    INITIAL_VERSION_NUMBER_KEY, hasVersionNumber ? versionNumber : VERSION_NUMBER
-                ).apply();
+                editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
+            }
+
+            if (!prefs.contains(IS_FIRST_RUN_KEY)) {
+                editor.putBoolean(IS_FIRST_RUN_KEY, true).apply();
             }
 
             if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
-        }
-    }
 
-    void initPlayServices() {
-        GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
-
-        if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
-            availability.makeGooglePlayServicesAvailable(this);
+            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
         }
     }
 
@@ -413,7 +407,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // TODO: Refactor subscription methods
+    void initPlayServices() {
+        GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
+
+        if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
+            availability.makeGooglePlayServicesAvailable(this);
+        }
+    }
+
+    // TODO: Refactor rest of subscription methods
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
