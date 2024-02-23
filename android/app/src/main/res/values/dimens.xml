@@ -2,6 +2,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="horizontal_spacing">16dp</dimen>
     <dimen name="vertical_spacing">16dp</dimen>
-    <dimen name="button_width">300dp</dimen>
-    <dimen name="button_height">300dp</dimen>
+    <dimen name="logo_width">300dp</dimen>
+    <dimen name="logo_height">300dp</dimen>
 </resources>

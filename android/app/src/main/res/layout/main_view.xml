@@ -16,8 +16,8 @@
         style="@style/Heading" />
     <ImageButton
         android:id="@+id/logo_button"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
         android:layout_centerInParent="true"
         android:scaleType="centerInside"
         android:background="@null"
