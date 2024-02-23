@@ -15,7 +15,7 @@ public class HelpOverlay extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.Animation;
+        dialog.getWindow().getAttributes().windowAnimations = R.style.Bounce;
         return dialog;
     }
 

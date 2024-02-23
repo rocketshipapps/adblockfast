@@ -8,8 +8,8 @@
         <item name="android:textColor">@android:color/black</item>
         <item name="fontPath">fonts/HudsonNY.otf</item>
     </style>
-    <style name="Animation">
-        <item name="android:windowEnterAnimation">@anim/bounce_in</item>
-        <item name="android:windowExitAnimation">@anim/bounce_out</item>
+    <style name="Bounce">
+        <item name="android:windowEnterAnimation">@drawable/bounce_in</item>
+        <item name="android:windowExitAnimation">@drawable/bounce_out</item>
     </style>
 </resources>
