@@ -5,10 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/horizontal_spacing"
-    android:paddingEnd="@dimen/horizontal_spacing"
-    android:paddingTop="@dimen/vertical_spacing"
-    android:paddingBottom="@dimen/vertical_spacing"
+    android:padding="@dimen/horizontal_spacing"
     tools:context="com.rocketshipapps.adblockfast.MainActivity"
     tools:ignore="MissingPrefix">
     <TextView
