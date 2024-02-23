@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     ImageButton logoButton;
     TextView statusText;
     TextView hintText;
-    Dialog dialog;
     boolean isLogoAnimating = false;
     boolean hasSamsungBrowser = false;
 
@@ -131,13 +130,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Plausible.INSTANCE.pageView("/", "", null);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (dialog != null && dialog.isShowing()) dialog.dismiss();
     }
 
     @Override
@@ -222,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
     void onHelpPressed(View v) { presentHelp(null); }
 
     void onAboutPressed(View v) {
-        dialog = presentDialog(R.layout.about_dialog);
+        Dialog dialog = presentDialog(R.layout.about_dialog);
 
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
@@ -233,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentOffer(Runnable continuationHandler) {
-        dialog = presentDialog(R.layout.offer_dialog);
+        Dialog dialog = presentDialog(R.layout.offer_dialog);
         Button acceptButton = dialog.findViewById(R.id.accept_button);
         Button declineButton = dialog.findViewById(R.id.decline_button);
 
@@ -257,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
-        dialog = presentDialog(R.layout.help_dialog);
+        Dialog dialog = presentDialog(R.layout.help_dialog);
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
         Button dismissButton = dialog.findViewById(R.id.dismiss_button);
@@ -286,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
-        dialog = new Dialog(this);
+        Dialog dialog = new Dialog(this);
         Window window = dialog.getWindow();
 
         if (window != null) {
