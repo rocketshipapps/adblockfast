@@ -276,13 +276,15 @@ public class MainActivity extends AppCompatActivity {
 
     Dialog presentDialog(int id) {
         dialog = new Dialog(this);
+        Window window = dialog.getWindow();
 
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (window != null) {
+            window.getAttributes().windowAnimations = R.style.Bounce;
 
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(id);
         dialog.show();
@@ -403,8 +405,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateLogo(int[] resources, int status, int hint) {
-        double delay = 62.5;
         isLogoAnimating = true;
+        double delay = 62.5;
 
         for (int i = 0; i < resources.length; i++) {
             if (i == 0) {
