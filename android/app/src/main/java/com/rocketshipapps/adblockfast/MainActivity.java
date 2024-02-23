@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
         Window window = dialog.getWindow();
 
         if (window != null) {
-            window.getAttributes().windowAnimations = R.style.Bounce;
+            window.getAttributes().windowAnimations = R.style.Animation;
 
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
