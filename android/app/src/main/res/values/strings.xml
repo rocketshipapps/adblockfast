@@ -26,8 +26,7 @@
     <string name="install_details">
         <![CDATA[Install or update to the latest version of the <a
         href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
-        Internet browser from Google Play</a> then come back to this app for instructions on how to
-        block ads.]]>
+        Internet browser</a> then come back to this app for instructions on how to block ads.]]>
     </string>
     <string name="contact_info">
         <![CDATA[If you have any questions or comments, follow and message
@@ -39,7 +38,8 @@
         <![CDATA[© Rocketship · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a
         href="https://twitter.com/rocketship">Twitter</a>]]>
     </string>
+    <string name="proceed_label">Next</string>
+    <string name="dismiss_label">Close</string>
     <string name="accept_label">Upgrade free</string>
     <string name="decline_label">Not now</string>
-    <string name="dismiss_label">Close</string>
 </resources>
