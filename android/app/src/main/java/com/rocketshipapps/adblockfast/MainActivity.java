@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton logoButton;
     TextView statusText;
     TextView hintText;
+    Dialog dialog;
     boolean isLogoAnimating = false;
     boolean hasSamsungBrowser = false;
 
@@ -134,6 +135,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Plausible.INSTANCE.pageView("/", "", null);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
     }
 
     @Override
@@ -210,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
     void onHelpPressed(View v) { presentHelp(true); }
 
     void onAboutPressed(View v) {
-        Dialog dialog = presentDialog(R.layout.about_dialog);
+        dialog = presentDialog(R.layout.about_dialog);
 
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
@@ -221,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentOffer() {
-        Dialog dialog = presentDialog(R.layout.offer_dialog);
+        dialog = presentDialog(R.layout.offer_dialog);
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.offer_details, true);
@@ -232,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(boolean isDismissible) {
-        Dialog dialog = presentDialog(R.layout.help_dialog);
+        dialog = presentDialog(R.layout.help_dialog);
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
         Button dismissButton = dialog.findViewById(R.id.dismiss_button);
@@ -256,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
-        Dialog dialog = new Dialog(this);
+        dialog = new Dialog(this);
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
