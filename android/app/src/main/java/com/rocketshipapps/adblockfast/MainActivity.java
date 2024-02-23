@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -39,6 +40,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         updateLegacyPrefs();
         initPrefs();
+        dumpPrefs();
         logoButton.setOnClickListener(this::onLogoPressed);
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
@@ -191,6 +194,14 @@ public class MainActivity extends AppCompatActivity {
             if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
 
             editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
+        }
+    }
+
+    void dumpPrefs() {
+        Map<String, ?> entries = prefs.getAll();
+
+        for (Map.Entry<String, ?> entry : entries.entrySet()) {
+            Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
         }
     }
 
