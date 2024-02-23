@@ -42,6 +42,8 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import org.apache.maven.artifact.versioning.ComparableVersion;
+
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
@@ -52,7 +54,16 @@ import com.wbrawner.plausible.android.Plausible;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
-    static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
+    public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
+    public static final String VERSION_NUMBER_KEY = "version_number";
+    public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
+    public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
+    public static final String IS_FIRST_RUN_KEY = "is_first_run";
+    public static final String IS_BLOCKING_KEY = "is_blocking";
+    static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
+    static final String LEGACY_PREFS_NAME = "adblockfast";
+    static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
+    static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
     static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
     // TODO: Refactor subscription constants
@@ -60,19 +71,18 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
     static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
 
-    boolean isUiAnimating = false;
-    boolean hasSamsungBrowser = false;
+    public static SharedPreferences prefs;
     String packageName;
-    SharedPreferences preferences;
     Intent blockingUpdateIntent;
-    ImageButton mainButton;
+    ImageButton logoButton;
     TextView statusText;
     TextView hintText;
+    boolean isLogoAnimating = false;
+    boolean hasSamsungBrowser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ViewPump.init(
             ViewPump.builder().addInterceptor(
                 new CalligraphyInterceptor(
@@ -85,40 +95,45 @@ public class MainActivity extends AppCompatActivity {
         );
         setContentView(R.layout.main_view);
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         packageName = getApplicationContext().getPackageName();
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         blockingUpdateIntent =
             new Intent()
                 .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE")
                 .setData(Uri.parse("package:" + packageName));
-        mainButton = findViewById(R.id.main_button);
+        logoButton = findViewById(R.id.logo_button);
         statusText = findViewById(R.id.status_text);
         hintText = findViewById(R.id.hint_text);
 
-        mainButton.setOnClickListener(this::onAdBlockPressed);
+        updateLegacyPrefs();
+        initPrefs();
+        logoButton.setOnClickListener(this::onLogoPressed);
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
-
-        if (!Ruleset.exists(this)) {
-            Ruleset.enable(this);
-            animateBlocking();
-        } else if (Ruleset.active(this)) {
-            animateBlocking();
-        } else {
-            animateUnblocking();
-        }
-
-        presentOffer();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        initPlayServices();
+        detectSamsungBrowser();
 
-        checkPlayServices();
+        if (!Ruleset.isInitialized()) {
+            Ruleset.enable();
+            animateBlocking();
+        } else if (Ruleset.isEnabled()) {
+            animateBlocking();
+        } else {
+            animateUnblocking();
+        }
 
-        if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) {
-            checkIfHasBlockingBrowser();
+        if (!hasSamsungBrowser) {
+            presentHelp(false);
+        } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
+            presentHelp(true);
+            prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+        } else {
+            presentOffer();
         }
 
         Plausible.INSTANCE.pageView("/", "", null);
@@ -129,39 +144,73 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(base));
     }
 
-    void checkIfHasBlockingBrowser() {
-        List<ResolveInfo> list = getPackageManager().queryIntentActivities(SAMSUNG_BROWSER_INTENT, 0);
+    void updateLegacyPrefs() {
+        if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
+            SharedPreferences.Editor editor = prefs.edit();
+            SharedPreferences legacyPrefs = this.getSharedPreferences(LEGACY_PREFS_NAME, 0);
+
+            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
+            editor
+                .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true))
+                .apply();
+            editor.remove(LEGACY_IS_FIRST_RUN_KEY).apply();
+            legacyPrefs.edit().clear().apply();
+        }
+    }
+
+    void initPrefs() {
+        String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
+
+        if (
+            new ComparableVersion(versionNumber)
+                .compareTo(new ComparableVersion(VERSION_NUMBER)) < 0
+        ) {
+            SharedPreferences.Editor editor = prefs.edit();
+            boolean hasVersionNumber = prefs.contains(VERSION_NUMBER_KEY);
+
+            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
+
+            if (hasVersionNumber) {
+                editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber).apply();
+            }
+
+            if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
+                editor.putString(
+                    INITIAL_VERSION_NUMBER_KEY, hasVersionNumber ? versionNumber : VERSION_NUMBER
+                ).apply();
+            }
+
+            if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
+        }
+    }
+
+    void initPlayServices() {
+        GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
+
+        if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
+            availability.makeGooglePlayServicesAvailable(this);
+        }
+    }
+
+    void detectSamsungBrowser() {
+        List<ResolveInfo> list =
+            getPackageManager().queryIntentActivities(SAMSUNG_BROWSER_INTENT, 0);
+
         if (list.size() > 0) hasSamsungBrowser = true;
-
-        if (!hasSamsungBrowser) {
-            presentHelp(false);
-        } else if (preferences.getBoolean("first_run", true)) {
-            presentHelp(true);
-            preferences.edit().putBoolean("first_run", false).apply();
-        }
     }
 
-    void checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+    public void onLogoPressed(View v) {
+        if (!isLogoAnimating) {
+            if (Ruleset.isEnabled()) {
+                Ruleset.disable();
+                animateUnblocking();
+            } else {
+                Ruleset.enable();
+                animateBlocking();
+            }
 
-        if (resultCode != ConnectionResult.SUCCESS) {
-            apiAvailability.makeGooglePlayServicesAvailable(this);
+            sendBroadcast(blockingUpdateIntent);
         }
-    }
-
-    public void onAdBlockPressed(View v) {
-        if (isUiAnimating) return;
-
-        if (Ruleset.active(this)) {
-            Ruleset.disable(this);
-            animateUnblocking();
-        } else {
-            Ruleset.enable(this);
-            animateBlocking();
-        }
-
-        sendBroadcast(blockingUpdateIntent);
     }
 
     void onHelpPressed(View v) { presentHelp(true); }
@@ -235,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateBlocking() {
-        animateUi(new int[] {
+        animateLogo(new int[] {
             R.drawable.blocked_frame_0,
             R.drawable.blocked_frame_1,
             R.drawable.blocked_frame_2,
@@ -288,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateUnblocking() {
-        animateUi(new int[] {
+        animateLogo(new int[] {
             R.drawable.unblocked_frame_0,
             R.drawable.unblocked_frame_1,
             R.drawable.unblocked_frame_2,
@@ -340,21 +389,21 @@ public class MainActivity extends AppCompatActivity {
         }, R.string.unblocked_message, R.string.unblocked_hint);
     }
 
-    void animateUi(int[] resources, int status, int hint) {
+    void animateLogo(int[] resources, int status, int hint) {
         double delay = 62.5;
-        isUiAnimating = true;
+        isLogoAnimating = true;
 
         for (int i = 0; i < resources.length; i++) {
             if (i == 0) {
-                mainButton.setImageResource(resources[i]);
+                logoButton.setImageResource(resources[i]);
             } else {
                 final int I = i;
 
                 new Handler().postDelayed(() -> runOnUiThread(() -> {
-                    mainButton.setImageResource(resources[I]);
+                    logoButton.setImageResource(resources[I]);
 
                     if (I == resources.length - 1) {
-                        isUiAnimating = false;
+                        isLogoAnimating = false;
 
                         statusText.setText(status);
                         hintText.setText(hint);
@@ -398,7 +447,7 @@ public class MainActivity extends AppCompatActivity {
 
                             req.disconnect();
 
-                            preferences.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
+                            prefs.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -406,14 +455,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            checkIfHasBlockingBrowser();
+            detectSamsungBrowser();
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(
-        int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults
-    ) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
@@ -429,7 +478,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void checkAccountPermission() {
-        if (preferences.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
+        if (prefs.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
 
         if (
             ContextCompat.checkSelfPermission(
@@ -456,7 +505,9 @@ public class MainActivity extends AppCompatActivity {
     void getAccounts() {
         Intent intent =
             AccountPicker.newChooseAccountIntent(
-                new AccountPicker.AccountChooserOptions.Builder()
+                new AccountPicker
+                    .AccountChooserOptions
+                    .Builder()
                     .setAllowableAccountsTypes(Collections.singletonList("com.google"))
                     .build()
             );

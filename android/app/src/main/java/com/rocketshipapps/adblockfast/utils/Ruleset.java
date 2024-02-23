@@ -7,22 +7,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.rocketshipapps.adblockfast.MainActivity;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
-    static final String TAG = "rule_status";
-    static final String PREFERENCE = "adblockfast";
     static final String OUTPUT = "rules.txt";
 
     public static File get(Context context) {
-        boolean active = context.getSharedPreferences(PREFERENCE, 0).getBoolean(TAG, true);
-
         InputStream in = null;
         FileOutputStream out = null;
         File file = null;
 
         try {
-            int res = (active) ? R.raw.blocked : R.raw.unblocked;
+            int res = isEnabled() ? R.raw.blocked : R.raw.unblocked;
             file = new File(context.getFilesDir(), OUTPUT);
 
             // Remove any old file lying around
@@ -52,19 +49,19 @@ public class Ruleset {
         return file;
     }
 
-    public static boolean active(Context context) {
-        return context.getSharedPreferences(PREFERENCE, 0).getBoolean(TAG, false);
+    public static void enable() {
+        MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, true).apply();
     }
 
-    public static boolean exists(Context context) {
-        return context.getSharedPreferences(PREFERENCE, 0).contains(TAG);
+    public static void disable() {
+        MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, false).apply();
     }
 
-    public static void disable(Context context) {
-        context.getSharedPreferences(PREFERENCE, 0).edit().putBoolean(TAG, false).apply();
+    public static boolean isInitialized() {
+        return MainActivity.prefs.contains(MainActivity.IS_BLOCKING_KEY);
     }
 
-    public static void enable(Context context) {
-        context.getSharedPreferences(PREFERENCE, 0).edit().putBoolean(TAG, true).apply();
+    public static boolean isEnabled() {
+        return MainActivity.prefs.getBoolean(MainActivity.IS_BLOCKING_KEY, true);
     }
 }

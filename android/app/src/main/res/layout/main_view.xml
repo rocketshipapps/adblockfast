@@ -18,7 +18,7 @@
         android:text="@string/name"
         style="@style/Heading" />
     <ImageButton
-        android:id="@+id/main_button"
+        android:id="@+id/logo_button"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_centerInParent="true"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/main_button"
+        android:layout_above="@+id/logo_button"
         android:layout_marginBottom="@dimen/vertical_spacing">
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/main_button"
+        android:layout_below="@id/logo_button"
         android:layout_marginTop="@dimen/vertical_spacing"
         android:text="@string/blocked_hint"
         android:textColor="@android:color/black"
