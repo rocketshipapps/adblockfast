@@ -177,8 +177,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
-
             editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
+
+            if (!prefs.contains(PREVIOUS_VERSION_NUMBER_KEY)) {
+                Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
+            } else {
+                Plausible.INSTANCE.event(
+                    "Update",
+                    "/v"
+                        + prefs.getString(PREVIOUS_VERSION_NUMBER_KEY, "0.0.0")
+                        + "-to-v"
+                        + VERSION_NUMBER,
+                    "",
+                    null
+                );
+            }
         }
     }
 
@@ -194,7 +207,13 @@ public class MainActivity extends AppCompatActivity {
         List<ResolveInfo> list =
             getPackageManager().queryIntentActivities(SAMSUNG_BROWSER_INTENT, 0);
 
-        if (list.size() > 0) hasSamsungBrowser = true;
+        if (list.size() > 0) {
+            hasSamsungBrowser = true;
+
+            Plausible.INSTANCE.event("Hit", "/samsung-browser", "", null);
+        } else {
+            Plausible.INSTANCE.event("Miss", "/samsung-browser", "", null);
+        }
     }
 
     public void onLogoPressed(View v) {
@@ -202,9 +221,11 @@ public class MainActivity extends AppCompatActivity {
             if (Ruleset.isEnabled()) {
                 Ruleset.disable();
                 animateUnblocking(null);
+                Plausible.INSTANCE.event("Unblock", "/", "", null);
             } else {
                 Ruleset.enable();
                 animateBlocking(null);
+                Plausible.INSTANCE.event("Block", "/", "", null);
             }
 
             sendBroadcast(blockingUpdateIntent);
@@ -221,7 +242,12 @@ public class MainActivity extends AppCompatActivity {
         setHtml(dialog.findViewById(R.id.tagline), R.string.tagline, false);
         setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
-        dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> dialog.dismiss());
+        dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
+            dialog.dismiss();
+            Plausible.INSTANCE.event("Dismiss", "/about", "", null);
+        });
+
+        Plausible.INSTANCE.pageView("/about", "", null);
     }
 
     void presentOffer(Runnable continuationHandler) {
@@ -237,15 +263,27 @@ public class MainActivity extends AppCompatActivity {
             acceptButton.setOnClickListener((v) -> {
                 dialog.dismiss();
                 continuationHandler.run();
+                Plausible.INSTANCE.event("Accept", "/offer", "", null);
             });
+
             declineButton.setOnClickListener((v) -> {
                 dialog.dismiss();
                 continuationHandler.run();
+                Plausible.INSTANCE.event("Decline", "/offer", "", null);
             });
         } else {
-            acceptButton.setOnClickListener((v) -> dialog.dismiss());
-            declineButton.setOnClickListener((v) -> dialog.dismiss());
+            acceptButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                Plausible.INSTANCE.event("Accept", "/offer", "", null);
+            });
+
+            declineButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                Plausible.INSTANCE.event("Decline", "/offer", "", null);
+            });
         }
+
+        Plausible.INSTANCE.pageView("/offer", "", null);
     }
 
     void presentHelp(Runnable continuationHandler) {
@@ -257,7 +295,11 @@ public class MainActivity extends AppCompatActivity {
         if (hasSamsungBrowser) {
             summaryText.setText(R.string.settings_summary);
             setHtml(detailsText, R.string.settings_details, false);
-            detailsText.setOnClickListener((v) -> startActivity(SAMSUNG_BROWSER_INTENT));
+
+            detailsText.setOnClickListener((v) -> {
+                startActivity(SAMSUNG_BROWSER_INTENT);
+                Plausible.INSTANCE.event("Install", "/help", "", null);
+            });
         } else {
             summaryText.setText(R.string.install_summary);
             setHtml(detailsText, R.string.install_details, true);
@@ -271,10 +313,16 @@ public class MainActivity extends AppCompatActivity {
             dismissButton.setOnClickListener((v) -> {
                 dialog.dismiss();
                 continuationHandler.run();
+                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
             });
         } else {
-            dismissButton.setOnClickListener((v) -> dialog.dismiss());
+            dismissButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+            });
         }
+
+        Plausible.INSTANCE.pageView("/help", "", null);
     }
 
     Dialog presentDialog(int id) {
@@ -297,7 +345,6 @@ public class MainActivity extends AppCompatActivity {
 
     void setHtml(TextView view, int id, boolean shouldLink) {
         view.setText(Html.fromHtml(getString(id)));
-
         if (shouldLink) view.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -425,7 +472,6 @@ public class MainActivity extends AppCompatActivity {
 
                         statusText.setText(status);
                         hintText.setText(hint);
-
                         if (callback != null) callback.run();
                     }
                 }), Math.round(i * delay));
@@ -442,6 +488,7 @@ public class MainActivity extends AppCompatActivity {
                     prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
                 )
             );
+            Plausible.INSTANCE.event("Onboard", "/", "", null);
         }
     }
 
@@ -450,6 +497,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
             availability.makeGooglePlayServicesAvailable(this);
+            Plausible.INSTANCE.event("Miss", "/play-services", "", null);
+        } else {
+            Plausible.INSTANCE.event("Hit", "/play-services", "", null);
         }
     }
 
