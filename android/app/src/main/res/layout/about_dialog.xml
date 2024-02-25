@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress AndroidUnknownAttribute -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -11,8 +9,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/overlay"
         android:padding="@dimen/horizontal_spacing"
-        android:orientation="vertical"
-        tools:ignore="MissingPrefix">
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -20,15 +17,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name"
-                android:textColor="@android:color/white"
-                fontPath="fonts/AvenirNext-Medium.otf" />
+                style="@style/Emphasis" />
             <TextView
                 android:id="@+id/version_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@null"
-                android:textColor="@android:color/white"
-                fontPath="fonts/AvenirNext-Medium.otf" />
+                style="@style/Emphasis" />
         </LinearLayout>
         <TextView
             android:id="@+id/tagline"
@@ -36,17 +31,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
-            android:textColor="@android:color/white"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            style="@style/Body" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_spacing">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_label"
+                style="@style/Body" />
+            <TextView
+                android:id="@+id/standard_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@null"
+                style="@style/Emphasis" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_separator"
+                style="@style/Body" />
+            <TextView
+                android:id="@+id/upgrade_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@null"
+                style="@style/Body" />
+        </LinearLayout>
         <TextView
             android:id="@+id/copyright_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
-            android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            style="@style/Body" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

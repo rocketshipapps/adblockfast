@@ -8,6 +8,14 @@
         <item name="android:textColor">@android:color/black</item>
         <item name="fontPath">fonts/HudsonNY.otf</item>
     </style>
+    <style name="Body">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontPath">fonts/AvenirNextLTPro-Light.otf</item>
+    </style>
+    <style name="Emphasis">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontPath">fonts/AvenirNext-Medium.otf</item>
+    </style>
     <style name="Animation">
         <item name="android:windowEnterAnimation">@anim/presentation</item>
         <item name="android:windowExitAnimation">@anim/dismissal</item>

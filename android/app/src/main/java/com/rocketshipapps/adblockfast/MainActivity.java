@@ -57,9 +57,12 @@ import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
+    public static final String STANDARD_MODE = "standard";
+    public static final String LUDICROUS_MODE = "ludicrous";
     public static final String VERSION_NUMBER_KEY = "version_number";
     public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
     public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
+    public static final String BLOCKING_MODE_KEY = "blocking_mode";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
     static final Intent SAMSUNG_BROWSER_INTENT =
@@ -172,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
             }
 
+            if (!prefs.contains(BLOCKING_MODE_KEY)) {
+                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE).apply();
+            }
+
             if (!prefs.contains(IS_FIRST_RUN_KEY)) {
                 editor.putBoolean(IS_FIRST_RUN_KEY, true).apply();
             }
@@ -234,6 +241,8 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
         setHtml(dialog.findViewById(R.id.tagline), R.string.tagline, false);
+        setHtml(dialog.findViewById(R.id.standard_link), R.string.standard_link, false);
+        setHtml(dialog.findViewById(R.id.upgrade_link), R.string.upgrade_link, false);
         setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
@@ -248,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = presentDialog(R.layout.offer_dialog);
         Button acceptButton = dialog.findViewById(R.id.accept_button);
         Button declineButton = dialog.findViewById(R.id.decline_button);
+        SharedPreferences.Editor editor = prefs.edit();
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.offer_details, true);
@@ -255,12 +265,16 @@ public class MainActivity extends AppCompatActivity {
 
         if (continuationHandler != null) {
             acceptButton.setOnClickListener((v) -> {
+                editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE).apply();
+                sendBroadcast(blockingUpdateIntent);
                 dialog.dismiss();
                 continuationHandler.run();
                 Plausible.INSTANCE.event("Accept", "/offer", "", null);
             });
 
             declineButton.setOnClickListener((v) -> {
+                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE).apply();
+                sendBroadcast(blockingUpdateIntent);
                 dialog.dismiss();
                 continuationHandler.run();
                 Plausible.INSTANCE.event("Decline", "/offer", "", null);
