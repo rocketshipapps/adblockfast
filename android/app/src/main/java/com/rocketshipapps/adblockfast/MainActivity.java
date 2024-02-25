@@ -183,13 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
             } else {
                 Plausible.INSTANCE.event(
-                    "Update",
-                    "/v"
-                        + prefs.getString(PREVIOUS_VERSION_NUMBER_KEY, "0.0.0")
-                        + "-to-v"
-                        + VERSION_NUMBER,
-                    "",
-                    null
+                    "Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null
                 );
             }
         }
@@ -298,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
 
             detailsText.setOnClickListener((v) -> {
                 startActivity(SAMSUNG_BROWSER_INTENT);
-                Plausible.INSTANCE.event("Install", "/help", "", null);
+                Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
             });
         } else {
             summaryText.setText(R.string.install_summary);
