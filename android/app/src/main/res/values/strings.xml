@@ -9,10 +9,10 @@
     <string name="unblocked_hint">Tap to block</string>
     <string name="help_label">Help</string>
     <string name="about_label">About</string>
-    <string name="offer_summary">
+    <string name="mode_summary">
         Adblock Fast also offers advanced blocking in exchange for a little unused bandwidth
     </string>
-    <string name="offer_details">
+    <string name="mode_details">
         <![CDATA[You can downgrade anytime by going to <b>About</b> or can read <a
         href="https://adblockfast.com/license">our complete terms</a> first.]]>
     </string>
@@ -30,8 +30,8 @@
     </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
     <string name="mode_label">Blocking mode:\u0020</string>
-    <string name="standard_link"><![CDATA[<font color="#de0421"><u>Standard</u></font>]]></string>
-    <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>Ludicrous</u></font>]]></string>
+    <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>
+    <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>Faster</u></font>]]></string>
     <string name="mode_separator">\u0020·\u0020</string>
     <string name="contact_info">
         <![CDATA[If you have any questions or comments, follow and message
@@ -44,6 +44,6 @@
     </string>
     <string name="continue_label">Next</string>
     <string name="dismiss_label">Close</string>
-    <string name="accept_label">Faster</string>
-    <string name="decline_label">Fast</string>
+    <string name="default_label">Faster</string>
+    <string name="upgrade_label">Fast</string>
 </resources>

@@ -57,14 +57,14 @@ import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
-    public static final String STANDARD_MODE = "standard";
-    public static final String LUDICROUS_MODE = "ludicrous";
     public static final String VERSION_NUMBER_KEY = "version_number";
     public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
     public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
     public static final String BLOCKING_MODE_KEY = "blocking_mode";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
+    public static final String STANDARD_MODE_VALUE = "standard";
+    public static final String LUDICROUS_MODE_VALUE = "ludicrous";
     static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
 
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (!prefs.contains(BLOCKING_MODE_KEY)) {
-                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE).apply();
+                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
             }
 
             if (!prefs.contains(IS_FIRST_RUN_KEY)) {
@@ -237,13 +237,28 @@ public class MainActivity extends AppCompatActivity {
 
     void onAboutPressed(View v) {
         Dialog dialog = presentDialog(R.layout.about_dialog);
+        TextView defaultText = dialog.findViewById(R.id.default_text);
+        TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
+        SharedPreferences.Editor editor = prefs.edit();
 
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
-        setHtml(dialog.findViewById(R.id.tagline), R.string.tagline, false);
-        setHtml(dialog.findViewById(R.id.standard_link), R.string.standard_link, false);
-        setHtml(dialog.findViewById(R.id.upgrade_link), R.string.upgrade_link, false);
+        setHtml(dialog.findViewById(R.id.tag_text), R.string.tagline, false);
+        setHtml(defaultText, R.string.default_link, false);
+        setHtml(upgradeText, R.string.upgrade_link, false);
         setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
+
+        defaultText.setOnClickListener((w) -> {
+            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
+            sendBroadcast(blockingUpdateIntent);
+            Plausible.INSTANCE.event("Default", "/about", "", null);
+        });
+
+        upgradeText.setOnClickListener((w) -> {
+            editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
+            sendBroadcast(blockingUpdateIntent);
+            Plausible.INSTANCE.event("Upgrade", "/about", "", null);
+        });
 
         dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
             dialog.dismiss();
@@ -253,45 +268,33 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/about", "", null);
     }
 
-    void presentOffer(Runnable continuationHandler) {
-        Dialog dialog = presentDialog(R.layout.offer_dialog);
-        Button acceptButton = dialog.findViewById(R.id.accept_button);
-        Button declineButton = dialog.findViewById(R.id.decline_button);
+    void presentMode(Runnable continuationHandler) {
+        Dialog dialog = presentDialog(R.layout.mode_dialog);
+        Button defaultButton = dialog.findViewById(R.id.default_button);
+        Button upgradeButton = dialog.findViewById(R.id.upgrade_button);
         SharedPreferences.Editor editor = prefs.edit();
 
-        ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.offer_summary);
-        setHtml(dialog.findViewById(R.id.details_text), R.string.offer_details, true);
+        ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.mode_summary);
+        setHtml(dialog.findViewById(R.id.details_text), R.string.mode_details, true);
         setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
-        if (continuationHandler != null) {
-            acceptButton.setOnClickListener((v) -> {
-                editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE).apply();
-                sendBroadcast(blockingUpdateIntent);
-                dialog.dismiss();
-                continuationHandler.run();
-                Plausible.INSTANCE.event("Accept", "/offer", "", null);
-            });
+        defaultButton.setOnClickListener((v) -> {
+            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
+            sendBroadcast(blockingUpdateIntent);
+            dialog.dismiss();
+            if (continuationHandler != null) continuationHandler.run();
+            Plausible.INSTANCE.event("Default", "/mode", "", null);
+        });
 
-            declineButton.setOnClickListener((v) -> {
-                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE).apply();
-                sendBroadcast(blockingUpdateIntent);
-                dialog.dismiss();
-                continuationHandler.run();
-                Plausible.INSTANCE.event("Decline", "/offer", "", null);
-            });
-        } else {
-            acceptButton.setOnClickListener((v) -> {
-                dialog.dismiss();
-                Plausible.INSTANCE.event("Accept", "/offer", "", null);
-            });
+        upgradeButton.setOnClickListener((v) -> {
+            editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
+            sendBroadcast(blockingUpdateIntent);
+            dialog.dismiss();
+            if (continuationHandler != null) continuationHandler.run();
+            Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
+        });
 
-            declineButton.setOnClickListener((v) -> {
-                dialog.dismiss();
-                Plausible.INSTANCE.event("Decline", "/offer", "", null);
-            });
-        }
-
-        Plausible.INSTANCE.pageView("/offer", "", null);
+        Plausible.INSTANCE.pageView("/mode", "", null);
     }
 
     void presentHelp(Runnable continuationHandler) {
@@ -492,7 +495,7 @@ public class MainActivity extends AppCompatActivity {
             presentHelp(this::onBackPressed);
         } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
             presentHelp(() ->
-                presentOffer(() ->
+                presentMode(() ->
                     prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
                 )
             );
