@@ -501,8 +501,8 @@ public class MainActivity extends AppCompatActivity {
         if (!hasSamsungBrowser) {
             presentHelp(this::onBackPressed);
         } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
-            presentHelp(() ->
-                presentMode(() ->
+            presentMode(() ->
+                presentHelp(() ->
                     prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
                 )
             );
