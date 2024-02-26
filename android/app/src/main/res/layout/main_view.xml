@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress AndroidUnknownAttribute -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/horizontal_spacing"
-    tools:context="com.rocketshipapps.adblockfast.MainActivity"
-    tools:ignore="MissingPrefix">
+    tools:context="com.rocketshipapps.adblockfast.MainActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +20,7 @@
         android:scaleType="centerInside"
         android:background="@null"
         android:src="@null"
-        android:contentDescription="@null" />
+        android:contentDescription="@string/logo_description" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,14 +32,14 @@
             android:layout_height="wrap_content"
             android:text="@string/status_label"
             android:textColor="@android:color/black"
-            fontPath="fonts/AvenirNext-Medium.otf" />
+            style="@style/Emphasis" />
         <TextView
             android:id="@+id/status_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/blocked_message"
             android:textColor="@android:color/black"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            style="@style/Body" />
     </LinearLayout>
     <TextView
         android:id="@+id/hint_text"
@@ -52,7 +50,7 @@
         android:layout_marginTop="@dimen/vertical_spacing"
         android:text="@string/blocked_hint"
         android:textColor="@android:color/black"
-        fontPath="fonts/AvenirNextLTPro-Light.otf" />
+        style="@style/Body" />
     <Button
         android:id="@+id/help_button"
         android:layout_width="wrap_content"

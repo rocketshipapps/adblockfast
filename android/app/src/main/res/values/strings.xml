@@ -2,6 +2,7 @@
     <string name="google_app_id">18676242394</string>
     <string name="plausible_domain">android.adblockfast.com</string>
     <string name="name">Adblock Fast</string>
+    <string name="logo_description">Block or unblock ads</string>
     <string name="status_label">Status:\u0020</string>
     <string name="blocked_message">Blocking ads</string>
     <string name="unblocked_message">Not blocking ads</string>
