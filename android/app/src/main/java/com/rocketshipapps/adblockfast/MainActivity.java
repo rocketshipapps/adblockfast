@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
 
     public static SharedPreferences prefs;
+    public static Intent blockingUpdateIntent;
     String packageName;
-    Intent blockingUpdateIntent;
     ImageButton logoButton;
     TextView statusText;
     TextView hintText;
@@ -222,16 +222,14 @@ public class MainActivity extends AppCompatActivity {
     public void onLogoPressed(View v) {
         if (!isLogoAnimating) {
             if (Ruleset.isEnabled()) {
-                Ruleset.disable();
+                Ruleset.disable(this);
                 animateUnblocking(null);
                 Plausible.INSTANCE.event("Unblock", "/", "", null);
             } else {
-                Ruleset.enable();
+                Ruleset.enable(this);
                 animateBlocking(null);
                 Plausible.INSTANCE.event("Block", "/", "", null);
             }
-
-            sendBroadcast(blockingUpdateIntent);
         }
     }
 
@@ -245,7 +243,6 @@ public class MainActivity extends AppCompatActivity {
         TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
         Typeface bodyFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNextLTPro-Light.otf");
         Typeface emphasisFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNext-Medium.otf");
-        SharedPreferences.Editor editor = prefs.edit();
 
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
@@ -254,22 +251,20 @@ public class MainActivity extends AppCompatActivity {
         setHtml(upgradeText, R.string.upgrade_link, false);
         setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
-        if (prefs.getString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).equals(LUDICROUS_MODE_VALUE)) {
+        if (Ruleset.isUpgraded()) {
             upgradeText.setTypeface(emphasisFont);
             defaultText.setTypeface(bodyFont);
         }
 
         defaultText.setOnClickListener((w) -> {
-            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
-            sendBroadcast(blockingUpdateIntent);
+            Ruleset.downgrade(this);
             defaultText.setTypeface(emphasisFont);
             upgradeText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Default", "/about", "", null);
         });
 
         upgradeText.setOnClickListener((w) -> {
-            editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
-            sendBroadcast(blockingUpdateIntent);
+            Ruleset.upgrade(this);
             upgradeText.setTypeface(emphasisFont);
             defaultText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
@@ -287,23 +282,20 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = presentDialog(R.layout.mode_dialog);
         Button defaultButton = dialog.findViewById(R.id.default_button);
         Button upgradeButton = dialog.findViewById(R.id.upgrade_button);
-        SharedPreferences.Editor editor = prefs.edit();
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.mode_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.mode_details, true);
         setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         defaultButton.setOnClickListener((v) -> {
-            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
-            sendBroadcast(blockingUpdateIntent);
+            Ruleset.downgrade(this);
             dialog.dismiss();
             if (continuationHandler != null) continuationHandler.run();
             Plausible.INSTANCE.event("Default", "/mode", "", null);
         });
 
         upgradeButton.setOnClickListener((v) -> {
-            editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
-            sendBroadcast(blockingUpdateIntent);
+            Ruleset.upgrade(this);
             dialog.dismiss();
             if (continuationHandler != null) continuationHandler.run();
             Plausible.INSTANCE.event("Upgrade", "/mode", "", null);

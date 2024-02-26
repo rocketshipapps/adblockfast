@@ -11,53 +11,85 @@ import com.rocketshipapps.adblockfast.MainActivity;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
-    static final String OUTPUT = "rules.txt";
+    static final String PATHNAME = "rules.txt";
 
     public static File get(Context context) {
-        InputStream in = null;
-        FileOutputStream out = null;
+        InputStream input = null;
+        FileOutputStream output = null;
         File file = null;
 
         try {
-            int res = isEnabled() ? R.raw.blocked : R.raw.unblocked;
-            file = new File(context.getFilesDir(), OUTPUT);
+            file = new File(context.getFilesDir(), PATHNAME);
 
-            // Remove any old file lying around
-            if (file.exists()) file.delete();
-
-            file.createNewFile();
-
-
-            in = context.getResources().openRawResource(res);
-            out = new FileOutputStream(file);
-
-            byte[] buffer = new byte[1024];
-            int read;
-            while ((read = in.read(buffer)) != -1) {
-                out.write(buffer, 0, read);
+            if (file.exists()) {
+                boolean ignored = file.delete();
             }
-        } catch (IOException ignore) {} finally {
+
+            if (file.createNewFile()) {
+                input =
+                    context.getResources().openRawResource(
+                        isEnabled()
+                            ? isUpgraded()
+                                ? R.raw.enhanced
+                                : R.raw.blocked
+                            : R.raw.unblocked
+                    );
+                output = new FileOutputStream(file);
+                byte[] buffer = new byte[1024];
+                int byteCount;
+
+                while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
+            }
+        } catch (IOException ignored) {} finally {
             try {
-                if (in != null) in.close();
-            } catch (Exception ignore) {}
+                if (input != null) input.close();
+            } catch (Exception ignored) {}
 
             try {
-                if (out != null) out.close();
-            } catch (Exception ignore) {}
+                if (output != null) output.close();
+            } catch (Exception ignored) {}
         }
 
         return file;
     }
 
-    public static void enable() {
+    public static void enable(Context context) {
         MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, true).apply();
+        context.sendBroadcast(MainActivity.blockingUpdateIntent);
     }
 
-    public static void disable() {
+    public static void disable(Context context) {
         MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, false).apply();
+        context.sendBroadcast(MainActivity.blockingUpdateIntent);
+    }
+
+    public static void upgrade(Context context) {
+        MainActivity
+            .prefs
+            .edit()
+            .putString(MainActivity.BLOCKING_MODE_KEY, MainActivity.LUDICROUS_MODE_VALUE)
+            .apply();
+        context.sendBroadcast(MainActivity.blockingUpdateIntent);
+    }
+
+    public static void downgrade(Context context) {
+        MainActivity
+            .prefs
+            .edit()
+            .putString(MainActivity.BLOCKING_MODE_KEY, MainActivity.STANDARD_MODE_VALUE)
+            .apply();
+        context.sendBroadcast(MainActivity.blockingUpdateIntent);
     }
 
     public static boolean isEnabled() {
         return MainActivity.prefs.getBoolean(MainActivity.IS_BLOCKING_KEY, true);
+    }
+
+    public static boolean isUpgraded() {
+        return
+            MainActivity
+                .prefs
+                .getString(MainActivity.BLOCKING_MODE_KEY, MainActivity.STANDARD_MODE_VALUE)
+                .equals(MainActivity.LUDICROUS_MODE_VALUE);
     }
 }
