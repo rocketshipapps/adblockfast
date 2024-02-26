@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -240,8 +241,8 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = presentDialog(R.layout.about_dialog);
         TextView defaultText = dialog.findViewById(R.id.default_text);
         TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
-        String bodyFontPath = "fonts/AvenirNextLTPro-Light.otf";
-        String emphasisFontPath = "fonts/AvenirNext-Medium.otf";
+        Typeface bodyFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNextLTPro-Light.otf");
+        Typeface emphasisFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNext-Medium.otf");
         SharedPreferences.Editor editor = prefs.edit();
 
         ((TextView) dialog.findViewById(R.id.version_text))
@@ -251,19 +252,24 @@ public class MainActivity extends AppCompatActivity {
         setHtml(upgradeText, R.string.upgrade_link, false);
         setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
+        if (prefs.getString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).equals(LUDICROUS_MODE_VALUE)) {
+            upgradeText.setTypeface(emphasisFont);
+            defaultText.setTypeface(bodyFont);
+        }
+
         defaultText.setOnClickListener((w) -> {
             editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
             sendBroadcast(blockingUpdateIntent);
-            defaultText.setTypeface(TypefaceUtils.load(getAssets(), emphasisFontPath));
-            upgradeText.setTypeface(TypefaceUtils.load(getAssets(), bodyFontPath));
+            defaultText.setTypeface(emphasisFont);
+            upgradeText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Default", "/about", "", null);
         });
 
         upgradeText.setOnClickListener((w) -> {
             editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
             sendBroadcast(blockingUpdateIntent);
-            upgradeText.setTypeface(TypefaceUtils.load(getAssets(), emphasisFontPath));
-            defaultText.setTypeface(TypefaceUtils.load(getAssets(), bodyFontPath));
+            upgradeText.setTypeface(emphasisFont);
+            defaultText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
         });
 
