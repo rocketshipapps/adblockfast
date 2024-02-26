@@ -44,6 +44,6 @@
     </string>
     <string name="continue_label">Next</string>
     <string name="dismiss_label">Close</string>
-    <string name="default_label">Faster</string>
-    <string name="upgrade_label">Fast</string>
+    <string name="default_label">Fast</string>
+    <string name="upgrade_label">Faster</string>
 </resources>
