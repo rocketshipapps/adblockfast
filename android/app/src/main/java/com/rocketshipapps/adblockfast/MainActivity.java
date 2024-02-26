@@ -235,7 +235,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void onHelpPressed(View v) { presentHelp(null); }
+    void onHelpPressed(View v) {
+        presentHelp(null);
+    }
 
     void onAboutPressed(View v) {
         Dialog dialog = presentDialog(R.layout.about_dialog);
