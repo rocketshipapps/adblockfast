@@ -252,7 +252,7 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 10. To create a release build, switch to the repo directory then run the build script:
 
     ```shell
-    $ cd         adblockfast
+    $ cd adblockfast
     $ ./build.sh
     ```
 
@@ -283,7 +283,7 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 10. To create a release build, switch to the repo directory then run the build script:
 
     ```shell
-    $ cd         adblockfast
+    $ cd adblockfast
     $ ./build.sh
     ```
 
