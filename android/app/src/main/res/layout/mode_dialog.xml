@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress AndroidUnknownAttribute -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,15 +10,14 @@
         android:layout_centerInParent="true"
         android:background="@drawable/overlay"
         android:padding="@dimen/horizontal_spacing"
-        android:orientation="vertical"
-        tools:ignore="MissingPrefix">
+        android:orientation="vertical">
         <TextView
             android:id="@+id/summary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@null"
             android:textColor="@android:color/white"
-            fontPath="fonts/AvenirNext-Medium.otf" />
+            style="@style/Emphasis" />
         <TextView
             android:id="@+id/details_text"
             android:layout_width="wrap_content"
@@ -28,7 +26,7 @@
             android:text="@null"
             android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            style="@style/Body" />
         <TextView
             android:id="@+id/contact_text"
             android:layout_width="wrap_content"
@@ -37,30 +35,32 @@
             android:text="@null"
             android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
-            fontPath="fonts/AvenirNextLTPro-Light.otf" />
+            style="@style/Body" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_spacing">
             <Button
-                android:id="@+id/decline_button"
+                android:id="@+id/default_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:background="@drawable/button"
-                android:text="@string/decline_label"
+                android:text="@string/default_label"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                style="@style/Body" />
             <Button
-                android:id="@+id/accept_button"
+                android:id="@+id/upgrade_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/button"
-                android:text="@string/accept_label"
+                android:text="@string/upgrade_label"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                tools:ignore="RelativeOverlap" />
+                tools:ignore="RelativeOverlap"
+                style="@style/Body" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

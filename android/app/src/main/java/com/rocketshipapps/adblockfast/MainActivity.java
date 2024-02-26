@@ -48,6 +48,7 @@ import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.calligraphy3.TypefaceUtils;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
@@ -239,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = presentDialog(R.layout.about_dialog);
         TextView defaultText = dialog.findViewById(R.id.default_text);
         TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
+        String bodyFontPath = "fonts/AvenirNextLTPro-Light.otf";
+        String emphasisFontPath = "fonts/AvenirNext-Medium.otf";
         SharedPreferences.Editor editor = prefs.edit();
 
         ((TextView) dialog.findViewById(R.id.version_text))
@@ -251,12 +254,16 @@ public class MainActivity extends AppCompatActivity {
         defaultText.setOnClickListener((w) -> {
             editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
             sendBroadcast(blockingUpdateIntent);
+            defaultText.setTypeface(TypefaceUtils.load(getAssets(), emphasisFontPath));
+            upgradeText.setTypeface(TypefaceUtils.load(getAssets(), bodyFontPath));
             Plausible.INSTANCE.event("Default", "/about", "", null);
         });
 
         upgradeText.setOnClickListener((w) -> {
             editor.putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
             sendBroadcast(blockingUpdateIntent);
+            upgradeText.setTypeface(TypefaceUtils.load(getAssets(), emphasisFontPath));
+            defaultText.setTypeface(TypefaceUtils.load(getAssets(), bodyFontPath));
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
         });
 

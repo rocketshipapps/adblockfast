@@ -17,12 +17,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name"
+                android:textColor="@android:color/white"
                 style="@style/Emphasis" />
             <TextView
                 android:id="@+id/version_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@null"
+                android:textColor="@android:color/white"
                 style="@style/Emphasis" />
         </LinearLayout>
         <TextView
@@ -31,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
+            android:textColor="@android:color/white"
             style="@style/Body" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -40,23 +43,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mode_label"
+                android:textColor="@android:color/white"
                 style="@style/Body" />
             <TextView
                 android:id="@+id/default_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@null"
+                android:textColor="@android:color/white"
                 style="@style/Emphasis" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mode_separator"
+                android:textColor="@android:color/white"
                 style="@style/Body" />
             <TextView
                 android:id="@+id/upgrade_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@null"
+                android:textColor="@android:color/white"
                 style="@style/Body" />
         </LinearLayout>
         <TextView
@@ -65,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_spacing"
             android:text="@null"
+            android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
             style="@style/Body" />
         <RelativeLayout
@@ -79,7 +87,8 @@
                 android:background="@drawable/button"
                 android:text="@string/dismiss_label"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                style="@style/Body" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
