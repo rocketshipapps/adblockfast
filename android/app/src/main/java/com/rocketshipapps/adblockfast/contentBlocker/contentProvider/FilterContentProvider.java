@@ -33,19 +33,8 @@ public class FilterContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public String getType(@NonNull Uri uri) {
-        return null;
-    }
-
-    @Nullable
-    @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
         return null;
-    }
-
-    @Override
-    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
-        return 0;
     }
 
     @Override
@@ -54,6 +43,17 @@ public class FilterContentProvider extends ContentProvider {
                       String selection,
                       String[] selectionArgs) {
         return 0;
+    }
+
+    @Override
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
+        return 0;
+    }
+
+    @Nullable
+    @Override
+    public String getType(@NonNull Uri uri) {
+        return null;
     }
 
     @Nullable
