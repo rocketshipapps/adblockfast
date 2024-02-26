@@ -4,7 +4,6 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
 
@@ -55,12 +54,6 @@ public class FilterContentProvider extends ContentProvider {
                       String selection,
                       String[] selectionArgs) {
         return 0;
-    }
-
-    @Nullable
-    @Override
-    public Bundle call(@NonNull String method, String arg, Bundle extras) {
-        return null;
     }
 
     @Nullable
