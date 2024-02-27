@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        initPlayServices();
         detectSamsungBrowser();
 
         if (Ruleset.isEnabled()) {
@@ -206,6 +207,17 @@ public class MainActivity extends AppCompatActivity {
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {
             Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
+        }
+    }
+
+    void initPlayServices() {
+        GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
+
+        if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
+            availability.makeGooglePlayServicesAvailable(this);
+            Plausible.INSTANCE.event("Miss", "/play-services", "", null);
+        } else {
+            Plausible.INSTANCE.event("Hit", "/play-services", "", null);
         }
     }
 
@@ -548,18 +560,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void initPlayServices() {
-        GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
-
-        if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
-            availability.makeGooglePlayServicesAvailable(this);
-            Plausible.INSTANCE.event("Miss", "/play-services", "", null);
-        } else {
-            Plausible.INSTANCE.event("Hit", "/play-services", "", null);
-        }
-    }
-
-    // TODO: Refactor rest of subscription methods
+    // TODO: Refactor subscription methods
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
