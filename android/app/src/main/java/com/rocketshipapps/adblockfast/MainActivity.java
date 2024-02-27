@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/about", "", null);
     }
 
-    void presentModeSelection(Runnable continuationHandler) {
+    void presentModeChoices(Runnable continuationHandler) {
         Dialog dialog = presentDialog(R.layout.mode_dialog);
         Button defaultButton = dialog.findViewById(R.id.default_button);
         Button upgradeButton = dialog.findViewById(R.id.upgrade_button);
@@ -346,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/help", "", null);
     }
 
-    void presentNotificationsSelection(Runnable continuationHandler) {
+    void presentNotificationsChoices(Runnable continuationHandler) {
         Dialog dialog = presentDialog(R.layout.notifications_dialog);
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.notifications_summary);
@@ -537,9 +537,9 @@ public class MainActivity extends AppCompatActivity {
         if (!hasSamsungBrowser) {
             presentHelp(this::onBackPressed);
         } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
-            presentModeSelection(() ->
+            presentModeChoices(() ->
                 presentHelp(() ->
-                    presentNotificationsSelection(() ->
+                    presentNotificationsChoices(() ->
                         prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
                     )
                 )

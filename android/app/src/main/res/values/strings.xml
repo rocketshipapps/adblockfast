@@ -11,7 +11,7 @@
     <string name="help_label">Help</string>
     <string name="about_label">About</string>
     <string name="mode_summary">
-        Adblock Fast also offers advanced blocking in exchange for a little unused bandwidth
+        Adblock Fast offers advanced blocking in exchange for a little unused bandwidth
     </string>
     <string name="mode_details">
         <![CDATA[You can downgrade anytime by going to <b>About</b> or can read <a
@@ -30,10 +30,10 @@
         Internet browser</a> then come back to this app for instructions on how to block ads.]]>
     </string>
     <string name="notifications_summary">
-        Adblock Fast should be kept up to date to block new types of ads
+        Adblock Fast should also be kept up to date to block new types of ads
     </string>
     <string name="notifications_details">
-        <![CDATA[Do you want to be notified (infrequently) when important updates are
+        <![CDATA[Would you like to be notified (infrequently) when important updates are
         available<i>?</i>]]>
     </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
@@ -54,6 +54,6 @@
     <string name="dismiss_label">Close</string>
     <string name="default_label">Fast</string>
     <string name="upgrade_label">Faster</string>
-    <string name="accept_label">Okay</string>
+    <string name="accept_label">Yes</string>
     <string name="decline_label">Not now</string>
 </resources>
