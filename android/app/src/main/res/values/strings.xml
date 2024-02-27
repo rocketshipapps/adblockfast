@@ -29,6 +29,13 @@
         href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
         Internet browser</a> then come back to this app for instructions on how to block ads.]]>
     </string>
+    <string name="notifications_summary">
+        Adblock Fast should be kept up to date to block new types of ads
+    </string>
+    <string name="notifications_details">
+        <![CDATA[Do you want to be notified (infrequently) when important updates are
+        available<i>?</i>]]>
+    </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
     <string name="mode_label">Blocking mode:\u0020</string>
     <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>

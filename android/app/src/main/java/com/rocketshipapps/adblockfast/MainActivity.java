@@ -55,6 +55,9 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 import com.wbrawner.plausible.android.Plausible;
 
+import com.onesignal.Continue;
+import com.onesignal.OneSignal;
+
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
@@ -278,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/about", "", null);
     }
 
-    void presentMode(Runnable continuationHandler) {
+    void presentModeSelection(Runnable continuationHandler) {
         Dialog dialog = presentDialog(R.layout.mode_dialog);
         Button defaultButton = dialog.findViewById(R.id.default_button);
         Button upgradeButton = dialog.findViewById(R.id.upgrade_button);
@@ -341,6 +344,39 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Plausible.INSTANCE.pageView("/help", "", null);
+    }
+
+    void presentNotificationsSelection(Runnable continuationHandler) {
+        Dialog dialog = presentDialog(R.layout.notifications_dialog);
+
+        ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.notifications_summary);
+        setHtml(dialog.findViewById(R.id.details_text), R.string.notifications_details, false);
+
+        dialog.findViewById(R.id.accept_button).setOnClickListener((v) -> {
+            dialog.dismiss();
+            Plausible.INSTANCE.event("Pre-accept", "/notifications", "", null);
+
+            OneSignal.getNotifications().requestPermission(true, Continue.with((r) -> {
+                if (r.isSuccess()) {
+                    if (Boolean.TRUE.equals(r.getData())) {
+                        Plausible.INSTANCE.event("Accept", "/notifications", "", null);
+                    }
+                    else {
+                        Plausible.INSTANCE.event("Decline", "/notifications", "", null);
+                    }
+                }
+
+                if (continuationHandler != null) continuationHandler.run();
+            }));
+        });
+
+        dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> {
+            dialog.dismiss();
+            if (continuationHandler != null) continuationHandler.run();
+            Plausible.INSTANCE.event("Pre-decline", "/notifications", "", null);
+        });
+
+        Plausible.INSTANCE.pageView("/notifications", "", null);
     }
 
     Dialog presentDialog(int id) {
@@ -501,9 +537,11 @@ public class MainActivity extends AppCompatActivity {
         if (!hasSamsungBrowser) {
             presentHelp(this::onBackPressed);
         } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
-            presentMode(() ->
+            presentModeSelection(() ->
                 presentHelp(() ->
-                    prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
+                    presentNotificationsSelection(() ->
+                        prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
+                    )
                 )
             );
             Plausible.INSTANCE.event("Onboard", "/", "", null);
