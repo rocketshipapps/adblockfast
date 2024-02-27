@@ -17,7 +17,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -49,6 +52,7 @@ import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.calligraphy3.CalligraphyTypefaceSpan;
 import io.github.inflationx.calligraphy3.TypefaceUtils;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
@@ -85,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
     String packageName;
+    Typeface bodyFont;
+    Typeface emphasisFont;
     ImageButton logoButton;
     TextView statusText;
     TextView hintText;
@@ -112,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
             new Intent()
                 .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE")
                 .setData(Uri.parse("package:" + packageName));
+        bodyFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNextLTPro-Light.otf");
+        emphasisFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNext-Medium.otf");
         logoButton = findViewById(R.id.logo_button);
         statusText = findViewById(R.id.status_text);
         hintText = findViewById(R.id.hint_text);
@@ -256,8 +264,6 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = presentDialog(R.layout.about_dialog);
         TextView defaultText = dialog.findViewById(R.id.default_text);
         TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
-        Typeface bodyFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNextLTPro-Light.otf");
-        Typeface emphasisFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNext-Medium.otf");
 
         ((TextView) dialog.findViewById(R.id.version_text))
             .setText(String.format(" %s", VERSION_NUMBER));
@@ -410,7 +416,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setHtml(TextView view, int id, boolean shouldLink) {
-        view.setText(Html.fromHtml(getString(id)));
+        SpannableStringBuilder html = new SpannableStringBuilder(Html.fromHtml(getString(id)));
+        StyleSpan[] spans = html.getSpans(0, html.length(), StyleSpan.class);
+        CalligraphyTypefaceSpan typefaceSpan = new CalligraphyTypefaceSpan(emphasisFont);
+
+        for (StyleSpan span : spans) {
+            if (span.getStyle() == Typeface.BOLD) {
+                int start = html.getSpanStart(span);
+                int end = html.getSpanEnd(span);
+
+                html.removeSpan(span);
+                html.setSpan(typefaceSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+
+        view.setText(html, TextView.BufferType.SPANNABLE);
         if (shouldLink) view.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
