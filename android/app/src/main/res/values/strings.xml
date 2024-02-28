@@ -10,18 +10,19 @@
     <string name="unblocked_hint">Tap to block</string>
     <string name="help_label">Help</string>
     <string name="about_label">About</string>
-    <string name="mode_summary">
-        Adblock Fast offers advanced blocking in exchange for a little unused bandwidth
-    </string>
+    <string name="mode_summary">Start blocking ads in three fast steps:</string>
     <string name="mode_details">
-        <![CDATA[You can downgrade anytime by going to <b>About</b> or can read <a
-        href="https://adblockfast.com/license">our complete terms</a> first.]]>
+        <![CDATA[<b>Fast</b> mode uses our default filtering rules; <b>Faster</b> mode (beta) uses a
+        little of your idle bandwidth to crawl the web and detect new ads to block.<br><br>Upgrade
+        or downgrade anytime by going to <b>About</b> or read <a
+        href="https://adblockfast.com/license">our complete terms</a> and <a
+        href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a> first.]]>
     </string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
     <string name="settings_details">
         <![CDATA[Go to <font color="#de0421"><u>your home screen > Internet > ⋮ > Ad
         blockers</u></font> then toggle <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to
-        this app then tap the Adblock Fast button.]]>
+        this app then tap the Adblock Fast logo.]]>
     </string>
     <string name="install_summary">Adblock Fast requires Samsung Internet 4.0+.</string>
     <string name="install_details">

@@ -28,15 +28,6 @@
             android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
             style="@style/Body" />
-        <TextView
-            android:id="@+id/contact_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/vertical_spacing"
-            android:text="@null"
-            android:textColor="@android:color/white"
-            android:textColorLink="@color/highlight"
-            style="@style/Body" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

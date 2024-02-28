@@ -210,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.mode_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.mode_details, true);
-        setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         defaultButton.setOnClickListener((v) -> {
             Ruleset.downgrade(this);
