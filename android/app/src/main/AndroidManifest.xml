@@ -10,7 +10,7 @@
         </intent>
     </queries>
     <application
-        android:name=".AdblockfastApplication"
+        android:name=".AdblockFastApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/name"
         android:theme="@style/AppTheme"

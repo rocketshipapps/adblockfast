@@ -7,38 +7,51 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.rocketshipapps.adblockfast.MainActivity;
+import com.rocketshipapps.adblockfast.AdblockFastApplication;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
     static final String PATHNAME = "rules.txt";
 
     public static void enable(Context context) {
-        MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, true).apply();
-        context.sendBroadcast(MainActivity.blockingUpdateIntent);
+        AdblockFastApplication
+            .prefs
+            .edit()
+            .putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true)
+            .apply();
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static void disable(Context context) {
-        MainActivity.prefs.edit().putBoolean(MainActivity.IS_BLOCKING_KEY, false).apply();
-        context.sendBroadcast(MainActivity.blockingUpdateIntent);
+        AdblockFastApplication
+            .prefs
+            .edit()
+            .putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, false)
+            .apply();
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static void upgrade(Context context) {
-        MainActivity
-                .prefs
-                .edit()
-                .putString(MainActivity.BLOCKING_MODE_KEY, MainActivity.LUDICROUS_MODE_VALUE)
-                .apply();
-        context.sendBroadcast(MainActivity.blockingUpdateIntent);
+        AdblockFastApplication
+            .prefs
+            .edit()
+            .putString(
+                AdblockFastApplication.BLOCKING_MODE_KEY,
+                AdblockFastApplication.LUDICROUS_MODE_VALUE
+            )
+            .apply();
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static void downgrade(Context context) {
-        MainActivity
-                .prefs
-                .edit()
-                .putString(MainActivity.BLOCKING_MODE_KEY, MainActivity.STANDARD_MODE_VALUE)
-                .apply();
-        context.sendBroadcast(MainActivity.blockingUpdateIntent);
+        AdblockFastApplication
+            .prefs
+            .edit()
+            .putString(
+                AdblockFastApplication.BLOCKING_MODE_KEY, AdblockFastApplication.STANDARD_MODE_VALUE
+            )
+            .apply();
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static File get(Context context) {
@@ -82,14 +95,18 @@ public class Ruleset {
     }
 
     public static boolean isEnabled() {
-        return MainActivity.prefs.getBoolean(MainActivity.IS_BLOCKING_KEY, true);
+        return
+            AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true);
     }
 
     public static boolean isUpgraded() {
         return
-            MainActivity
+            AdblockFastApplication
                 .prefs
-                .getString(MainActivity.BLOCKING_MODE_KEY, MainActivity.STANDARD_MODE_VALUE)
-                .equals(MainActivity.LUDICROUS_MODE_VALUE);
+                .getString(
+                    AdblockFastApplication.BLOCKING_MODE_KEY,
+                    AdblockFastApplication.STANDARD_MODE_VALUE
+                )
+                .equals(AdblockFastApplication.LUDICROUS_MODE_VALUE);
     }
 }

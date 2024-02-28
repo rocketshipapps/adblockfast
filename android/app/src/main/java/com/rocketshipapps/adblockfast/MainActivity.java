@@ -12,7 +12,6 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +20,6 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -29,26 +27,22 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.AccountPicker;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceManager;
+
+import com.google.android.gms.common.AccountPicker;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.json.JSONObject;
-
-import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
@@ -65,32 +59,10 @@ import com.onesignal.OneSignal;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
-    public static final String VERSION_NUMBER_KEY = "version_number";
-    public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
-    public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
-    public static final String BLOCKING_MODE_KEY = "blocking_mode";
-    public static final String NOTIFICATIONS_REQUEST_COUNT_KEY = "notifications_request_count";
-    public static final String IS_FIRST_RUN_KEY = "is_first_run";
-    public static final String IS_BLOCKING_KEY = "is_blocking";
-    public static final String ARE_NOTIFICATIONS_ALLOWED_KEY = "are_notifications_allowed";
-    public static final String STANDARD_MODE_VALUE = "standard";
-    public static final String LUDICROUS_MODE_VALUE = "ludicrous";
-    static final Intent SAMSUNG_BROWSER_INTENT =
-        new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
-
-    static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
-    static final String LEGACY_PREFS_NAME = "adblockfast";
-    static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
-    static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
     // TODO: Refactor subscription constants
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
     static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
-
-    public static SharedPreferences prefs;
-    public static Intent blockingUpdateIntent;
-    String packageName;
     Typeface bodyFont;
     Typeface emphasisFont;
     ImageButton logoButton;
@@ -103,34 +75,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ViewPump.init(
-            ViewPump.builder().addInterceptor(
-                new CalligraphyInterceptor(
-                    new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
+            ViewPump
+                .builder()
+                .addInterceptor(
+                    new CalligraphyInterceptor(
+                        new CalligraphyConfig
+                            .Builder()
+                            .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
+                            .setFontAttrId(R.attr.fontPath)
+                            .build()
+                    )
                 )
-            ).build()
+                .build()
         );
         setContentView(R.layout.main_view);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        packageName = getApplicationContext().getPackageName();
-        blockingUpdateIntent =
-            new Intent()
-                .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE")
-                .setData(Uri.parse("package:" + packageName));
         bodyFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNextLTPro-Light.otf");
         emphasisFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNext-Medium.otf");
         logoButton = findViewById(R.id.logo_button);
         statusText = findViewById(R.id.status_text);
         hintText = findViewById(R.id.hint_text);
 
-        dumpPrefs();
-        updateLegacyPrefs();
-        dumpPrefs();
-        initPrefs();
-        dumpPrefs();
         logoButton.setOnClickListener(this::onLogoPressed);
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
@@ -156,72 +121,6 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(base));
     }
 
-    void updateLegacyPrefs() {
-        if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
-            SharedPreferences.Editor editor = prefs.edit();
-            SharedPreferences legacyPrefs = this.getSharedPreferences(LEGACY_PREFS_NAME, 0);
-
-            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
-            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
-            editor
-                .putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true))
-                .apply();
-            editor
-                .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true))
-                .apply();
-            editor.remove(LEGACY_IS_FIRST_RUN_KEY).apply();
-            legacyPrefs.edit().clear().apply();
-        }
-    }
-
-    void initPrefs() {
-        String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
-
-        if (
-            new ComparableVersion(versionNumber)
-                .compareTo(new ComparableVersion(VERSION_NUMBER)) < 0
-        ) {
-            SharedPreferences.Editor editor = prefs.edit();
-
-            if (prefs.contains(VERSION_NUMBER_KEY)) {
-                editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber).apply();
-                Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
-            } else {
-                Plausible.INSTANCE.event(
-                    "Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null
-                );
-            }
-
-            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
-
-            if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
-                editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
-            }
-
-            if (!prefs.contains(BLOCKING_MODE_KEY)) {
-                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
-            }
-
-            if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
-                editor.putInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0).apply();
-            }
-
-            if (!prefs.contains(IS_FIRST_RUN_KEY)) {
-                editor.putBoolean(IS_FIRST_RUN_KEY, true).apply();
-            }
-
-            if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
-        }
-    }
-
-    void dumpPrefs() {
-        Map<String, ?> entries = prefs.getAll();
-
-        for (Map.Entry<String, ?> entry : entries.entrySet()) {
-            Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
-        }
-    }
-
     void initPlayServices() {
         GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
 
@@ -235,7 +134,8 @@ public class MainActivity extends AppCompatActivity {
 
     void detectSamsungBrowser() {
         List<ResolveInfo> list =
-            getPackageManager().queryIntentActivities(SAMSUNG_BROWSER_INTENT, 0);
+            getPackageManager()
+                .queryIntentActivities(AdblockFastApplication.SAMSUNG_BROWSER_INTENT, 0);
 
         if (list.size() > 0) {
             hasSamsungBrowser = true;
@@ -270,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
 
         ((TextView) dialog.findViewById(R.id.version_text))
-            .setText(String.format(" %s", VERSION_NUMBER));
+            .setText(String.format(" %s", AdblockFastApplication.VERSION_NUMBER));
         setHtml(dialog.findViewById(R.id.tag_text), R.string.tagline, false);
         setHtml(defaultText, R.string.default_link, false);
         setHtml(upgradeText, R.string.upgrade_link, false);
@@ -315,15 +215,15 @@ public class MainActivity extends AppCompatActivity {
         defaultButton.setOnClickListener((v) -> {
             Ruleset.downgrade(this);
             dialog.dismiss();
-            if (continuationHandler != null) continuationHandler.run();
             Plausible.INSTANCE.event("Default", "/mode", "", null);
+            if (continuationHandler != null) continuationHandler.run();
         });
 
         upgradeButton.setOnClickListener((v) -> {
             Ruleset.upgrade(this);
             dialog.dismiss();
-            if (continuationHandler != null) continuationHandler.run();
             Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
+            if (continuationHandler != null) continuationHandler.run();
         });
 
         Plausible.INSTANCE.pageView("/mode", "", null);
@@ -340,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
             setHtml(detailsText, R.string.settings_details, false);
 
             detailsText.setOnClickListener((v) -> {
-                startActivity(SAMSUNG_BROWSER_INTENT);
+                startActivity(AdblockFastApplication.SAMSUNG_BROWSER_INTENT);
                 Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
             });
         } else {
@@ -355,8 +255,8 @@ public class MainActivity extends AppCompatActivity {
 
             dismissButton.setOnClickListener((v) -> {
                 dialog.dismiss();
-                continuationHandler.run();
                 Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+                continuationHandler.run();
             });
         } else {
             dismissButton.setOnClickListener((v) -> {
@@ -369,13 +269,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentNotificationsChoices(Runnable continuationHandler) {
-        SharedPreferences.Editor editor = prefs.edit();
+        SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
         Dialog dialog = presentDialog(R.layout.notifications_dialog);
 
         editor
             .putInt(
-                NOTIFICATIONS_REQUEST_COUNT_KEY,
-                prefs.getInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
+                AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY,
+                AdblockFastApplication
+                    .prefs
+                    .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
             )
             .apply();
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.notifications_summary);
@@ -388,11 +290,14 @@ public class MainActivity extends AppCompatActivity {
             OneSignal.getNotifications().requestPermission(true, Continue.with((r) -> {
                 if (r.isSuccess()) {
                     if (Boolean.TRUE.equals(r.getData())) {
-                        editor.putBoolean(ARE_NOTIFICATIONS_ALLOWED_KEY, true).apply();
+                        editor
+                            .putBoolean(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY, true)
+                            .apply();
                         Plausible.INSTANCE.event("Accept", "/notifications", "", null);
-                    }
-                    else {
-                        editor.putBoolean(ARE_NOTIFICATIONS_ALLOWED_KEY, false).apply();
+                    } else {
+                        editor
+                            .putBoolean(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY, false)
+                            .apply();
                         Plausible.INSTANCE.event("Decline", "/notifications", "", null);
                     }
                 }
@@ -403,8 +308,8 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> {
             dialog.dismiss();
-            if (continuationHandler != null) continuationHandler.run();
             Plausible.INSTANCE.event("Pre-decline", "/notifications", "", null);
+            if (continuationHandler != null) continuationHandler.run();
         });
 
         Plausible.INSTANCE.pageView("/notifications", "", null);
@@ -421,8 +326,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
         dialog.setContentView(id);
+        dialog.setCancelable(false);
         dialog.show();
 
         return dialog;
@@ -563,17 +468,19 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 final int I = i;
 
-                new Handler().postDelayed(() -> runOnUiThread(() -> {
-                    logoButton.setImageResource(resources[I]);
+                new Handler().postDelayed(() ->
+                    runOnUiThread(() -> {
+                        logoButton.setImageResource(resources[I]);
 
-                    if (I == resources.length - 1) {
-                        isLogoAnimating = false;
+                        if (I == resources.length - 1) {
+                            isLogoAnimating = false;
 
-                        statusText.setText(status);
-                        hintText.setText(hint);
-                        if (callback != null) callback.run();
+                            statusText.setText(status);
+                            hintText.setText(hint);
+                            if (callback != null) callback.run();
+                        }
                     }
-                }), Math.round(i * delay));
+                ), Math.round(i * delay));
             }
         }
     }
@@ -581,15 +488,21 @@ public class MainActivity extends AppCompatActivity {
     void onboardUser() {
         if (!hasSamsungBrowser) {
             presentHelp(this::onBackPressed);
-        } else if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
+        } else if (
+            AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, true)
+        ) {
+            Plausible.INSTANCE.event("Onboard", "/", "", null);
             presentModeChoices(() ->
                 presentHelp(() ->
                     presentNotificationsChoices(() ->
-                        prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply()
+                        AdblockFastApplication
+                            .prefs
+                            .edit()
+                            .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                            .apply()
                     )
                 )
             );
-            Plausible.INSTANCE.event("Onboard", "/", "", null);
         }
     }
 
@@ -627,7 +540,11 @@ public class MainActivity extends AppCompatActivity {
 
                             req.disconnect();
 
-                            prefs.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
+                            AdblockFastApplication
+                                .prefs
+                                .edit()
+                                .putBoolean(RETRIEVED_ACCOUNT_PREF, true)
+                                .apply();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -658,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void checkAccountPermission() {
-        if (prefs.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
+        if (AdblockFastApplication.prefs.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
 
         if (
             ContextCompat.checkSelfPermission(
@@ -668,9 +585,8 @@ public class MainActivity extends AppCompatActivity {
             getAccounts();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (
-                ActivityCompat.shouldShowRequestPermissionRationale(
-                    this, Manifest.permission.GET_ACCOUNTS
-                )
+                ActivityCompat
+                    .shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)
             ) {
                 showAccountPermissionAlert();
             } else {
