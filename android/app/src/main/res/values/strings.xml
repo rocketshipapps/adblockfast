@@ -10,13 +10,15 @@
     <string name="unblocked_hint">Tap to block</string>
     <string name="help_label">Help</string>
     <string name="about_label">About</string>
-    <string name="mode_summary">Start blocking ads in three fast steps:</string>
+    <string name="mode_summary">
+        Start blocking ads in 3 quick steps; first, choose your blocking mode:
+    </string>
     <string name="mode_details">
-        <![CDATA[<b>Fast</b> mode uses our default filtering rules; <b>Faster</b> mode (beta) uses a
-        little of your idle bandwidth to crawl the web and detect new ads to block.<br><br>Upgrade
-        or downgrade anytime by going to <b>About</b> or read <a
+        <![CDATA[<b>Fast</b> uses our default filtering rules.<br><br><b>Faster</b> (beta) uses a
+        little of your idle bandwidth to crawl the web and find more ads to filter.<br><br>You can
+        switch anytime by going to <b>About</b> or can see <a
         href="https://adblockfast.com/license">our complete terms</a> and <a
-        href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a> first.]]>
+        href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a>.]]>
     </string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
     <string name="settings_details">
