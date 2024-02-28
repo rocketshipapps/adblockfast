@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton logoButton;
     TextView statusText;
     TextView hintText;
+    Dialog dialog;
     boolean isLogoAnimating = false;
     boolean hasSamsungBrowser = false;
 
@@ -99,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
         logoButton.setOnClickListener(this::onLogoPressed);
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
     }
 
     @Override
@@ -165,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onAboutPressed(View v) {
-        Dialog dialog = presentDialog(R.layout.about_dialog);
+        dialog = presentDialog(R.layout.about_dialog);
         TextView defaultText = dialog.findViewById(R.id.default_text);
         TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
 
@@ -204,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentModeChoices(Runnable continuationHandler) {
-        Dialog dialog = presentDialog(R.layout.mode_dialog);
+        dialog = presentDialog(R.layout.mode_dialog);
         Button defaultButton = dialog.findViewById(R.id.default_button);
         Button upgradeButton = dialog.findViewById(R.id.upgrade_button);
 
@@ -229,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
-        Dialog dialog = presentDialog(R.layout.help_dialog);
+        dialog = presentDialog(R.layout.help_dialog);
         TextView summaryText = dialog.findViewById(R.id.summary_text);
         TextView detailsText = dialog.findViewById(R.id.details_text);
         Button dismissButton = dialog.findViewById(R.id.dismiss_button);
@@ -268,8 +275,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentNotificationsChoices(Runnable continuationHandler) {
+        dialog = presentDialog(R.layout.notifications_dialog);
         SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
-        Dialog dialog = presentDialog(R.layout.notifications_dialog);
 
         editor
             .putInt(
@@ -314,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
-        Dialog dialog = new Dialog(this);
+        dialog = new Dialog(this);
         Window window = dialog.getWindow();
 
         if (window != null) {
