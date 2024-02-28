@@ -70,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
     public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
     public static final String BLOCKING_MODE_KEY = "blocking_mode";
+    public static final String NOTIFICATIONS_REQUEST_COUNT_KEY = "notifications_request_count";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
+    public static final String ARE_NOTIFICATIONS_ALLOWED_KEY = "are_notifications_allowed";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
     static final Intent SAMSUNG_BROWSER_INTENT =
@@ -183,7 +185,14 @@ public class MainActivity extends AppCompatActivity {
 
             if (prefs.contains(VERSION_NUMBER_KEY)) {
                 editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber).apply();
+                Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
+            } else {
+                Plausible.INSTANCE.event(
+                    "Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null
+                );
             }
+
+            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
 
             if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
                 editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
@@ -193,20 +202,15 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
             }
 
+            if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
+                editor.putInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0).apply();
+            }
+
             if (!prefs.contains(IS_FIRST_RUN_KEY)) {
                 editor.putBoolean(IS_FIRST_RUN_KEY, true).apply();
             }
 
             if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
-            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
-
-            if (!prefs.contains(PREVIOUS_VERSION_NUMBER_KEY)) {
-                Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
-            } else {
-                Plausible.INSTANCE.event(
-                    "Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null
-                );
-            }
         }
     }
 
@@ -365,8 +369,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentNotificationsChoices(Runnable continuationHandler) {
+        SharedPreferences.Editor editor = prefs.edit();
         Dialog dialog = presentDialog(R.layout.notifications_dialog);
 
+        editor
+            .putInt(
+                NOTIFICATIONS_REQUEST_COUNT_KEY,
+                prefs.getInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
+            )
+            .apply();
         ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.notifications_summary);
         setHtml(dialog.findViewById(R.id.details_text), R.string.notifications_details, false);
 
@@ -377,9 +388,11 @@ public class MainActivity extends AppCompatActivity {
             OneSignal.getNotifications().requestPermission(true, Continue.with((r) -> {
                 if (r.isSuccess()) {
                     if (Boolean.TRUE.equals(r.getData())) {
+                        editor.putBoolean(ARE_NOTIFICATIONS_ALLOWED_KEY, true).apply();
                         Plausible.INSTANCE.event("Accept", "/notifications", "", null);
                     }
                     else {
+                        editor.putBoolean(ARE_NOTIFICATIONS_ALLOWED_KEY, false).apply();
                         Plausible.INSTANCE.event("Decline", "/notifications", "", null);
                     }
                 }
