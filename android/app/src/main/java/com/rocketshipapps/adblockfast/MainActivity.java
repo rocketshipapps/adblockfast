@@ -335,10 +335,10 @@ public class MainActivity extends AppCompatActivity {
     void setHtml(TextView view, int id, boolean shouldLink) {
         SpannableStringBuilder html = new SpannableStringBuilder(Html.fromHtml(getString(id)));
         StyleSpan[] spans = html.getSpans(0, html.length(), StyleSpan.class);
-        CalligraphyTypefaceSpan typefaceSpan = new CalligraphyTypefaceSpan(emphasisFont);
 
         for (StyleSpan span : spans) {
             if (span.getStyle() == Typeface.BOLD) {
+                CalligraphyTypefaceSpan typefaceSpan = new CalligraphyTypefaceSpan(emphasisFont);
                 int start = html.getSpanStart(span);
                 int end = html.getSpanEnd(span);
 
