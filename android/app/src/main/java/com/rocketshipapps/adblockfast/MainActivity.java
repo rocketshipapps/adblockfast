@@ -279,8 +279,7 @@ public class MainActivity extends AppCompatActivity {
                     .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
             )
             .apply();
-        ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.notifications_summary);
-        setHtml(dialog.findViewById(R.id.details_text), R.string.notifications_details, false);
+        setHtml(dialog.findViewById(R.id.request_text), R.string.notifications_request, false);
 
         dialog.findViewById(R.id.accept_button).setOnClickListener((v) -> {
             dialog.dismiss();
