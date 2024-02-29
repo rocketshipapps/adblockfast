@@ -235,45 +235,6 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/mode", "", null);
     }
 
-    void presentHelp(Runnable continuationHandler) {
-        dialog = presentDialog(R.layout.help_dialog);
-        TextView summaryText = dialog.findViewById(R.id.summary_text);
-        TextView detailsText = dialog.findViewById(R.id.details_text);
-        Button dismissButton = dialog.findViewById(R.id.dismiss_button);
-
-        if (hasSamsungBrowser) {
-            summaryText.setText(R.string.settings_summary);
-            setHtml(detailsText, R.string.settings_details, false);
-
-            detailsText.setOnClickListener((v) -> {
-                startActivity(AdblockFastApplication.SAMSUNG_BROWSER_INTENT);
-                Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
-            });
-        } else {
-            summaryText.setText(R.string.install_summary);
-            setHtml(detailsText, R.string.install_details, true);
-        }
-
-        setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
-
-        if (continuationHandler != null) {
-            if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
-
-            dismissButton.setOnClickListener((v) -> {
-                dialog.dismiss();
-                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
-                continuationHandler.run();
-            });
-        } else {
-            dismissButton.setOnClickListener((v) -> {
-                dialog.dismiss();
-                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
-            });
-        }
-
-        Plausible.INSTANCE.pageView("/help", "", null);
-    }
-
     void presentNotificationsChoices(Runnable continuationHandler) {
         dialog = presentDialog(R.layout.notifications_dialog);
         SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
@@ -318,6 +279,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Plausible.INSTANCE.pageView("/notifications", "", null);
+    }
+
+    void presentHelp(Runnable continuationHandler) {
+        dialog = presentDialog(R.layout.help_dialog);
+        TextView summaryText = dialog.findViewById(R.id.summary_text);
+        TextView detailsText = dialog.findViewById(R.id.details_text);
+        Button dismissButton = dialog.findViewById(R.id.dismiss_button);
+
+        if (hasSamsungBrowser) {
+            summaryText.setText(R.string.settings_summary);
+            setHtml(detailsText, R.string.settings_details, false);
+
+            detailsText.setOnClickListener((v) -> {
+                startActivity(AdblockFastApplication.SAMSUNG_BROWSER_INTENT);
+                Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
+            });
+        } else {
+            summaryText.setText(R.string.install_summary);
+            setHtml(detailsText, R.string.install_details, true);
+        }
+
+        setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
+
+        dismissButton.setOnClickListener((v) -> {
+            dialog.dismiss();
+            Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+            if (continuationHandler != null) continuationHandler.run();
+        });
+
+        Plausible.INSTANCE.pageView("/help", "", null);
     }
 
     Dialog presentDialog(int id) {
@@ -491,23 +482,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onboardUser() {
-        if (!hasSamsungBrowser) {
-            presentHelp(this::onBackPressed);
-        } else if (
+        if (
             AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, true)
         ) {
             Plausible.INSTANCE.event("Onboard", "/", "", null);
-            presentModeChoices(() ->
-                presentHelp(() ->
-                    presentNotificationsChoices(() ->
+
+            if (!AdblockFastApplication.prefs.contains(AdblockFastApplication.BLOCKING_MODE_KEY)) {
+                presentModeChoices(() ->
+                    presentNotificationsChoices(() -> {
+                        if (hasSamsungBrowser) {
+                            presentHelp(() ->
+                                AdblockFastApplication
+                                    .prefs
+                                    .edit()
+                                    .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                                    .apply()
+                            );
+                        } else {
+                            presentHelp(this::onBackPressed);
+                        }
+                    })
+                );
+            } else if (
+                !AdblockFastApplication
+                    .prefs
+                    .contains(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY)
+            ) {
+                presentNotificationsChoices(() -> {
+                    if (hasSamsungBrowser) {
+                        presentHelp(() ->
+                            AdblockFastApplication
+                                .prefs
+                                .edit()
+                                .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                                .apply()
+                        );
+                    } else {
+                        presentHelp(this::onBackPressed);
+                    }
+                });
+            } else {
+                if (hasSamsungBrowser) {
+                    presentHelp(() ->
                         AdblockFastApplication
                             .prefs
                             .edit()
                             .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
                             .apply()
-                    )
-                )
-            );
+                    );
+                } else {
+                    presentHelp(this::onBackPressed);
+                }
+            }
+        } else if (!hasSamsungBrowser) {
+            presentHelp(this::onBackPressed);
         }
     }
 

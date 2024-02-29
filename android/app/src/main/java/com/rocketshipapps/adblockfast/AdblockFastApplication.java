@@ -65,6 +65,7 @@ public class AdblockFastApplication extends Application {
 
             editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
             editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
+            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
             editor
                 .putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true))
                 .apply();
@@ -98,10 +99,6 @@ public class AdblockFastApplication extends Application {
 
             if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
                 editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
-            }
-
-            if (!prefs.contains(BLOCKING_MODE_KEY)) {
-                editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
             }
 
             if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
