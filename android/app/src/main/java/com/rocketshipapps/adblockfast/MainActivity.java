@@ -520,9 +520,9 @@ public class MainActivity extends AppCompatActivity {
                     })
                 );
             } else if (
-                !AdblockFastApplication
+                AdblockFastApplication
                     .prefs
-                    .contains(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY)
+                    .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
             ) {
                 presentNotificationsOptIn(() -> {
                     if (hasSamsungBrowser) {
