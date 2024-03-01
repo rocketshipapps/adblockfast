@@ -50,6 +50,7 @@
         <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
         href="https://twitter.com/rocketship">Twitter</a>&gt;]]>
     </string>
+    <string name="continue_label">Done</string>
     <string name="dismiss_label">Close</string>
     <string name="default_label">Fast</string>
     <string name="upgrade_label">Faster</string>

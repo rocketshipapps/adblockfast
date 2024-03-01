@@ -302,11 +302,20 @@ public class MainActivity extends AppCompatActivity {
 
         setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
 
-        dismissButton.setOnClickListener((v) -> {
-            dialog.dismiss();
-            Plausible.INSTANCE.event("Dismiss", "/help", "", null);
-            if (continuationHandler != null) continuationHandler.run();
-        });
+        if (continuationHandler != null) {
+            if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
+
+            dismissButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+                continuationHandler.run();
+            });
+        } else {
+            dismissButton.setOnClickListener((v) -> {
+                dialog.dismiss();
+                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+            });
+        }
 
         Plausible.INSTANCE.pageView("/help", "", null);
     }
