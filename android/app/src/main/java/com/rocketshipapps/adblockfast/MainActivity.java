@@ -103,12 +103,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        if (dialog != null && dialog.isShowing()) dialog.dismiss();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         initPlayServices();
@@ -121,6 +115,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Plausible.INSTANCE.pageView("/", "", null);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
     }
 
     @Override
