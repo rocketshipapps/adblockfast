@@ -27,6 +27,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -646,6 +648,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void getAccounts() {
+        ActivityResultLauncher<Intent> launcher =
+            registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), (result) -> {
+                    // If “result.getResultCode() == Activity.RESULT_OK)”, “result.getData()”
+                    // contains retrieved account info
+                }
+            );
         Intent intent =
             AccountPicker.newChooseAccountIntent(
                 new AccountPicker
@@ -654,7 +663,8 @@ public class MainActivity extends AppCompatActivity {
                     .setAllowableAccountsTypes(Collections.singletonList("com.google"))
                     .build()
             );
-        startActivityForResult(intent, REQUEST_CODE_ACCOUNT_INTENT);
+
+        launcher.launch(intent);
     }
 
     void showAccountPermissionAlert() {
