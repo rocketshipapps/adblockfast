@@ -172,16 +172,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onAboutPressed(View v) {
-        dialog = presentDialog(R.layout.about_dialog);
-        TextView defaultText = dialog.findViewById(R.id.default_text);
-        TextView upgradeText = dialog.findViewById(R.id.upgrade_text);
+        Dialog about = presentDialog(R.layout.about_dialog);
+        TextView defaultText = about.findViewById(R.id.default_text);
+        TextView upgradeText = about.findViewById(R.id.upgrade_text);
 
-        ((TextView) dialog.findViewById(R.id.version_text))
+        ((TextView) about.findViewById(R.id.version_text))
             .setText(String.format(" %s", AdblockFastApplication.VERSION_NUMBER));
-        setHtml(dialog.findViewById(R.id.tag_text), R.string.tagline, false);
+        setHtml(about.findViewById(R.id.tag_text), R.string.tagline, false);
         setHtml(defaultText, R.string.default_link, false);
         setHtml(upgradeText, R.string.upgrade_link, false);
-        setHtml(dialog.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
+        setHtml(about.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
         if (Ruleset.isUpgraded()) {
             upgradeText.setTypeface(emphasisFont);
@@ -202,32 +202,32 @@ public class MainActivity extends AppCompatActivity {
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
         });
 
-        dialog.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
-            dialog.dismiss();
+        about.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
+            about.dismiss();
             Plausible.INSTANCE.event("Dismiss", "/about", "", null);
         });
 
         Plausible.INSTANCE.pageView("/about", "", null);
     }
 
-    void presentModeChoices(Runnable continuationHandler) {
-        dialog = presentDialog(R.layout.mode_dialog);
-        Button defaultButton = dialog.findViewById(R.id.default_button);
-        Button upgradeButton = dialog.findViewById(R.id.upgrade_button);
+    void presentModes(Runnable continuationHandler) {
+        Dialog modes = presentDialog(R.layout.mode_dialog);
+        Button defaultButton = modes.findViewById(R.id.default_button);
+        Button upgradeButton = modes.findViewById(R.id.upgrade_button);
 
-        ((TextView) dialog.findViewById(R.id.summary_text)).setText(R.string.mode_summary);
-        setHtml(dialog.findViewById(R.id.details_text), R.string.mode_details, true);
+        ((TextView) modes.findViewById(R.id.summary_text)).setText(R.string.mode_summary);
+        setHtml(modes.findViewById(R.id.details_text), R.string.mode_details, true);
 
         defaultButton.setOnClickListener((v) -> {
             Ruleset.downgrade(this);
-            dialog.dismiss();
+            modes.dismiss();
             Plausible.INSTANCE.event("Default", "/mode", "", null);
             if (continuationHandler != null) continuationHandler.run();
         });
 
         upgradeButton.setOnClickListener((v) -> {
             Ruleset.upgrade(this);
-            dialog.dismiss();
+            modes.dismiss();
             Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
             if (continuationHandler != null) continuationHandler.run();
         });
@@ -235,8 +235,8 @@ public class MainActivity extends AppCompatActivity {
         Plausible.INSTANCE.pageView("/mode", "", null);
     }
 
-    void presentNotificationsChoices(Runnable continuationHandler) {
-        dialog = presentDialog(R.layout.notifications_dialog);
+    void presentNotificationsOptIn(Runnable continuationHandler) {
+        Dialog notificationsOptIn = presentDialog(R.layout.notifications_dialog);
         SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
 
         editor
@@ -247,10 +247,13 @@ public class MainActivity extends AppCompatActivity {
                     .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
             )
             .apply();
-        setHtml(dialog.findViewById(R.id.request_text), R.string.notifications_request, false);
+        setHtml(
+            notificationsOptIn.findViewById(R.id.request_text),
+            R.string.notifications_request, false
+        );
 
-        dialog.findViewById(R.id.accept_button).setOnClickListener((v) -> {
-            dialog.dismiss();
+        notificationsOptIn.findViewById(R.id.accept_button).setOnClickListener((v) -> {
+            notificationsOptIn.dismiss();
             Plausible.INSTANCE.event("Pre-accept", "/notifications", "", null);
 
             OneSignal.getNotifications().requestPermission(true, Continue.with((r) -> {
@@ -272,8 +275,8 @@ public class MainActivity extends AppCompatActivity {
             }));
         });
 
-        dialog.findViewById(R.id.decline_button).setOnClickListener((v) -> {
-            dialog.dismiss();
+        notificationsOptIn.findViewById(R.id.decline_button).setOnClickListener((v) -> {
+            notificationsOptIn.dismiss();
             Plausible.INSTANCE.event("Pre-decline", "/notifications", "", null);
             if (continuationHandler != null) continuationHandler.run();
         });
@@ -282,10 +285,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
-        dialog = presentDialog(R.layout.help_dialog);
-        TextView summaryText = dialog.findViewById(R.id.summary_text);
-        TextView detailsText = dialog.findViewById(R.id.details_text);
-        Button dismissButton = dialog.findViewById(R.id.dismiss_button);
+        Dialog help = presentDialog(R.layout.help_dialog);
+        TextView summaryText = help.findViewById(R.id.summary_text);
+        TextView detailsText = help.findViewById(R.id.details_text);
+        Button dismissButton = help.findViewById(R.id.dismiss_button);
 
         if (hasSamsungBrowser) {
             summaryText.setText(R.string.settings_summary);
@@ -300,19 +303,19 @@ public class MainActivity extends AppCompatActivity {
             setHtml(detailsText, R.string.install_details, true);
         }
 
-        setHtml(dialog.findViewById(R.id.contact_text), R.string.contact_info, true);
+        setHtml(help.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         if (continuationHandler != null) {
             if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
 
             dismissButton.setOnClickListener((v) -> {
-                dialog.dismiss();
+                help.dismiss();
                 Plausible.INSTANCE.event("Dismiss", "/help", "", null);
                 continuationHandler.run();
             });
         } else {
             dismissButton.setOnClickListener((v) -> {
-                dialog.dismiss();
+                help.dismiss();
                 Plausible.INSTANCE.event("Dismiss", "/help", "", null);
             });
         }
@@ -499,8 +502,8 @@ public class MainActivity extends AppCompatActivity {
             Plausible.INSTANCE.event("Onboard", "/", "", null);
 
             if (!AdblockFastApplication.prefs.contains(AdblockFastApplication.BLOCKING_MODE_KEY)) {
-                presentModeChoices(() ->
-                    presentNotificationsChoices(() -> {
+                presentModes(() ->
+                    presentNotificationsOptIn(() -> {
                         if (hasSamsungBrowser) {
                             presentHelp(() ->
                                 AdblockFastApplication
@@ -519,7 +522,7 @@ public class MainActivity extends AppCompatActivity {
                     .prefs
                     .contains(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY)
             ) {
-                presentNotificationsChoices(() -> {
+                presentNotificationsOptIn(() -> {
                     if (hasSamsungBrowser) {
                         presentHelp(() ->
                             AdblockFastApplication
