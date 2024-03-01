@@ -651,8 +651,8 @@ public class MainActivity extends AppCompatActivity {
         ActivityResultLauncher<Intent> launcher =
             registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), (result) -> {
-                    // If “result.getResultCode() == Activity.RESULT_OK)”, “result.getData()”
-                    // contains retrieved account info
+                    /* TODO: If “result.getResultCode() == Activity.RESULT_OK)”, “result.getData()”
+                             contains retrieved account info */
                 }
             );
         Intent intent =

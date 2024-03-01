@@ -3,15 +3,12 @@ package com.rocketshipapps.adblockfast.service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 
 public class UpdateReceiver extends BroadcastReceiver {
-
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent updateIntent = new Intent();
-        updateIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
-        updateIntent.setData(Uri.parse("package:" + context.getApplicationContext().getPackageName()));
-        context.sendBroadcast(updateIntent);
+        if ("android.intent.action.PACKAGE_REPLACED".equals(intent.getAction())) {
+            // TODO: Use “NotificationManager” and “PendingIntent” to launch app on update
+        }
     }
 }
