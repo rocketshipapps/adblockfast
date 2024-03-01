@@ -124,18 +124,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        if (dialog != null && dialog.isShowing()) dialog.dismiss();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (dialog != null && dialog.isShowing()) dialog.dismiss();
-    }
-
-    @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(base));
     }
@@ -333,6 +321,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
+
         dialog = new Dialog(this);
         Window window = dialog.getWindow();
 
