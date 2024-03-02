@@ -1,6 +1,6 @@
-# ![Adblock Fast](assets/promo/adblockfast-optimized.png) [![Tweet](assets/promo/tweet-optimized.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20Chrome,%20or%20Opera:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
+# ![Adblock Fast](assets/promo/adblockfast-optimized.png) [![Tweet](assets/promo/tweet-optimized.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20or%20Chrome:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
 
-*A faster ad blocker for Windows, Android, iOS, Chrome, and Opera!*
+*A faster ad blocker for Windows, Android, iOS, and, Chrome!*
 
 Try Adblock Fast:
 
@@ -10,7 +10,7 @@ Try Adblock Fast:
 * [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) (iOS 9 and up on 64-bit
   devices, iPhone 5s and up and iPad mini 2 and up)
 * [Chrome](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
-* [Opera](https://addons.opera.com/en/extensions/details/adblock-fast/)
+* ~~Opera~~
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated with little-used
 filtering rules and features that sap their speed and hog your computer or device’s CPU, memory, and
