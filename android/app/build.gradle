@@ -5,14 +5,19 @@ apply plugin: 'com.google.gms.google-services'
 repositories {
     jcenter()
     maven {
-        url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        url 'file://' + MavenBasePath
     }
 }
 
+def MASSIVE_API_TOKEN = '"' + MassiveApiToken + '"' ?: '"Define Massive API token in gradle.properties"'
 def SUBSCRIBE_URL = '"' + FirebaseSubscribeUrl + '"' ?: '"Define Firebase Cloud Functions URL in gradle.properties"'
 def ONESIGNAL_APP_ID = '"' + OneSignalAppId + '"' ?: '"Define OneSignal app ID in gradle.properties"'
 
 android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'MASSIVE_API_TOKEN', MASSIVE_API_TOKEN
     type.buildConfigField 'String', 'SUBSCRIBE_URL', SUBSCRIBE_URL
     type.buildConfigField 'String', 'ONESIGNAL_APP_ID', ONESIGNAL_APP_ID
 }
@@ -54,6 +59,7 @@ dependencies {
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'org.apache.maven:maven-artifact:3.8.1'
     implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
+    implementation 'com.massive:sdk:0.5.1'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.dtx12:actions:0.1.4'

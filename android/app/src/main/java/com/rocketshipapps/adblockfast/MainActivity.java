@@ -46,6 +46,8 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import com.massive.sdk.State;
+
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.calligraphy3.CalligraphyTypefaceSpan;
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             animateUnblocking(this::onboardUser);
         }
 
+        if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
         Plausible.INSTANCE.pageView("/", "", null);
     }
 
@@ -191,6 +194,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         defaultText.setOnClickListener((w) -> {
+            if (AdblockFastApplication.massiveClient.getState() == State.Started) {
+                AdblockFastApplication.massiveClient.stop();
+            }
+
             Ruleset.downgrade(this);
             defaultText.setTypeface(emphasisFont);
             upgradeText.setTypeface(bodyFont);
@@ -199,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
         upgradeText.setOnClickListener((w) -> {
             Ruleset.upgrade(this);
+            AdblockFastApplication.massiveClient.start();
             upgradeText.setTypeface(emphasisFont);
             defaultText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
@@ -229,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
         upgradeButton.setOnClickListener((v) -> {
             Ruleset.upgrade(this);
+            AdblockFastApplication.massiveClient.start();
             modes.dismiss();
             Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
             if (continuationHandler != null) continuationHandler.run();

@@ -6,15 +6,26 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import java.util.Map;
 
+import kotlin.Unit;
+
 import org.apache.maven.artifact.versioning.ComparableVersion;
+
+import com.massive.sdk.InitCallback;
+import com.massive.sdk.MassiveClient;
+import com.massive.sdk.MassiveOptions;
+import com.massive.sdk.MassiveServiceType;
+import com.massive.sdk.State;
 
 import com.wbrawner.plausible.android.Plausible;
 
 import com.onesignal.OneSignal;
+
+import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class AdblockFastApplication extends Application {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
@@ -33,6 +44,7 @@ public class AdblockFastApplication extends Application {
     public static String packageName;
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
+    public static MassiveClient massiveClient;
 
     static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
     static final String LEGACY_PREFS_NAME = "adblockfast";
@@ -50,12 +62,37 @@ public class AdblockFastApplication extends Application {
                 .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE")
                 .setData(Uri.parse("package:" + packageName));
 
-        OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
         dumpPrefs();
         updateLegacyPrefs();
         dumpPrefs();
         initPrefs();
         dumpPrefs();
+
+        MassiveClient.Companion.getInstance(this, (client) -> {
+            massiveClient = client;
+
+            if (client.getState() == State.NotInitialized) {
+                client.initAsync(
+                    BuildConfig.MASSIVE_API_TOKEN,
+                    new MassiveOptions(MassiveServiceType.Foreground, null),
+                    new InitCallback() {
+                        @Override
+                        public void onSuccess() {
+                            if (Ruleset.isUpgraded()) client.start();
+                            Plausible.INSTANCE.event("Succeed", "/massive", "", null);
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull String message) {
+                            Plausible.INSTANCE.event("Fail", "/massive", "", null);
+                        }
+                    }
+                );
+            }
+
+            return Unit.INSTANCE;
+        });
+        OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
     void updateLegacyPrefs() {
