@@ -46,8 +46,6 @@ import java.util.List;
 
 import org.json.JSONObject;
 
-import com.massive.sdk.State;
-
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.calligraphy3.CalligraphyTypefaceSpan;
@@ -111,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         initPlayServices();
         detectSamsungBrowser();
+        if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
 
         if (Ruleset.isEnabled()) {
             animateBlocking(this::onboardUser);
@@ -118,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             animateUnblocking(this::onboardUser);
         }
 
-        if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
         Plausible.INSTANCE.pageView("/", "", null);
     }
 
@@ -194,10 +192,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         defaultText.setOnClickListener((w) -> {
-            if (AdblockFastApplication.massiveClient.getState() == State.Started) {
-                AdblockFastApplication.massiveClient.stop();
-            }
-
+            AdblockFastApplication.massiveClient.stop();
             Ruleset.downgrade(this);
             defaultText.setTypeface(emphasisFont);
             upgradeText.setTypeface(bodyFont);
