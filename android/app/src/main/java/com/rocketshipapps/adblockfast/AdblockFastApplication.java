@@ -17,6 +17,7 @@ import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import com.massive.sdk.InitCallback;
 import com.massive.sdk.MassiveClient;
+import com.massive.sdk.MassiveNotificationOptions;
 import com.massive.sdk.MassiveOptions;
 import com.massive.sdk.MassiveServiceType;
 import com.massive.sdk.State;
@@ -74,7 +75,14 @@ public class AdblockFastApplication extends Application {
             if (client.getState() == State.NotInitialized) {
                 client.initAsync(
                     BuildConfig.MASSIVE_API_TOKEN,
-                    new MassiveOptions(MassiveServiceType.Foreground, null),
+                    new MassiveOptions(
+                        MassiveServiceType.Foreground,
+                        new MassiveNotificationOptions(
+                            this.getString(R.string.name),
+                            this.getString(R.string.foreground_text),
+                            R.drawable.icon
+                        )
+                    ),
                     new InitCallback() {
                         @Override
                         public void onSuccess() {

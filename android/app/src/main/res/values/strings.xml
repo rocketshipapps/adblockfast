@@ -56,4 +56,5 @@
     <string name="upgrade_label">Faster</string>
     <string name="accept_label">Yes</string>
     <string name="decline_label">Not now</string>
+    <string name="foreground_text">Adblock Fast is running in the background.</string>
 </resources>
