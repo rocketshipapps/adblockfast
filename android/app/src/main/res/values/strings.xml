@@ -11,7 +11,7 @@
     <string name="help_label">Help</string>
     <string name="about_label">About</string>
     <string name="mode_summary">
-        Block ads in just three steps, starting by choosing a blocking mode:
+        Block ads in just a couple steps, starting by choosing a blocking mode:
     </string>
     <string name="mode_details">
         <![CDATA[<b>Fast</b> mode uses our default filtering rules.<br><br><b>Faster</b> (beta)

@@ -61,6 +61,8 @@ import com.onesignal.OneSignal;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
+    static final boolean IS_NOTIFICATIONS_PERMISSION_REQUIRED =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU;
     // TODO: Refactor subscription constants
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
@@ -508,8 +510,22 @@ public class MainActivity extends AppCompatActivity {
             Plausible.INSTANCE.event("Onboard", "/", "", null);
 
             if (!AdblockFastApplication.prefs.contains(AdblockFastApplication.BLOCKING_MODE_KEY)) {
-                presentModes(() ->
-                    presentNotificationsOptIn(() -> {
+                presentModes(() -> {
+                    if (IS_NOTIFICATIONS_PERMISSION_REQUIRED) {
+                        presentNotificationsOptIn(() -> {
+                            if (hasSamsungBrowser) {
+                                presentHelp(() ->
+                                    AdblockFastApplication
+                                        .prefs
+                                        .edit()
+                                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                                        .apply()
+                                );
+                            } else {
+                                presentHelp(this::onBackPressed);
+                            }
+                        });
+                    } else {
                         if (hasSamsungBrowser) {
                             presentHelp(() ->
                                 AdblockFastApplication
@@ -521,12 +537,13 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             presentHelp(this::onBackPressed);
                         }
-                    })
-                );
+                    }
+                });
             } else if (
-                AdblockFastApplication
-                    .prefs
-                    .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
+                IS_NOTIFICATIONS_PERMISSION_REQUIRED &&
+                    AdblockFastApplication
+                        .prefs
+                        .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
             ) {
                 presentNotificationsOptIn(() -> {
                     if (hasSamsungBrowser) {

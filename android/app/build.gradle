@@ -65,6 +65,6 @@ dependencies {
     implementation 'com.dtx12:actions:0.1.4'
     implementation 'com.wbrawner.plausible:plausible-android:0.1.0-SNAPSHOT'
     implementation 'com.google.firebase:firebase-functions:20.4.0'
-    implementation 'com.onesignal:OneSignal:5.1.4'
+    implementation 'com.onesignal:OneSignal:5.1.6'
     testImplementation 'junit:junit:4.12'
 }
