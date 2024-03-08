@@ -133,11 +133,11 @@ public class AdblockFastApplication extends Application {
 
             if (prefs.contains(VERSION_NUMBER_KEY)) {
                 editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber).apply();
-                Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
-            } else {
                 Plausible
                     .INSTANCE
                     .event("Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null);
+            } else {
+                Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
             }
 
             editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
