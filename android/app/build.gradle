@@ -1,51 +1,70 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.google.gms.google-services'
 
 repositories {
     jcenter()
+    maven {
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        url 'file://' + MavenBasePath
+    }
 }
 
-//Add these lines
-def APP_SECRET = '"' + AppSecret + '"' ?: '"Define application secret into grandle.properties"';
-def HOST = '"' + Host + '"' ?: '"Define your host into grandle.properties"';
-def GA_TRAKING_ID = '"' + GATrackingId + '"' ?: '"Define Google Analytics tracking ID into grandle.properties"';
-def GCM_DEFAULT_SENDER_ID = '"' + GCMDefaultSenderId + '"' ?: '"Define Google Cloud Message sender ID into grandle.properties"';
+def MASSIVE_API_TOKEN = '"' + MassiveApiToken + '"' ?: '"Define Massive API token in gradle.properties"'
+def SUBSCRIBE_URL = '"' + FirebaseSubscribeUrl + '"' ?: '"Define Firebase Cloud Functions URL in gradle.properties"'
+def ONESIGNAL_APP_ID = '"' + OneSignalAppId + '"' ?: '"Define OneSignal app ID in gradle.properties"'
 
 android.buildTypes.each { type ->
-    type.buildConfigField 'String', 'APP_SECRET', APP_SECRET
-    type.buildConfigField 'String', 'HOST', HOST
-    type.buildConfigField 'String', 'GA_TRAKING_ID', GA_TRAKING_ID
-    type.buildConfigField 'String', 'GCM_DEFAULT_SENDER_ID', GCM_DEFAULT_SENDER_ID
+    type.buildConfigField 'String', 'MASSIVE_API_TOKEN', MASSIVE_API_TOKEN
+    type.buildConfigField 'String', 'SUBSCRIBE_URL', SUBSCRIBE_URL
+    type.buildConfigField 'String', 'ONESIGNAL_APP_ID', ONESIGNAL_APP_ID
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdk 33
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
+        versionName "2.2.0"
+        versionCode 9
         minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 8
-        versionName "2.1.0"
+        targetSdkVersion 33
+        manifestPlaceholders = [
+            onesignal_app_id: OneSignalAppId,
+            onesignal_google_project_number: 'REMOTE'
+        ]
     }
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
+    }
+    buildFeatures {
+        buildConfig true
     }
     productFlavors {
     }
+    namespace 'com.rocketshipapps.adblockfast'
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'org.apache.maven:maven-artifact:3.8.1'
+    implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
+    implementation 'com.massive:sdk:0.5.1'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.dtx12:actions:0.1.4'
-    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
-    implementation 'com.google.android.gms:play-services-analytics:10.2.4'
-    implementation 'com.google.android.gms:play-services-gcm:10.2.4'
-    implementation 'com.github.kittinunf.fuel:fuel-android:1.6.0'
-    implementation project(':NodleSDK-release-10')
+    implementation 'com.wbrawner.plausible:plausible-android:0.1.0-SNAPSHOT'
+    implementation 'com.google.firebase:firebase-functions:20.4.0'
+    implementation 'com.onesignal:OneSignal:5.1.6'
+    testImplementation 'junit:junit:4.12'
 }

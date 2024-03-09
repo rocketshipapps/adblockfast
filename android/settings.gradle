@@ -1,1 +1,1 @@
-include ':app', ':NodleSDK-release-10'
+include ':app'

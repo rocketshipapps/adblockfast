@@ -1,26 +1,60 @@
 <resources>
     <string name="google_app_id">18676242394</string>
-    <string name="name">ADBLOCK FAST</string>
-    <string name="status">STATUS: </string>
-    <string name="blocked_message">BLOCKING ADS</string>
-    <string name="unblocked_message">NOT BLOCKING ADS</string>
-    <string name="blocked_hint">TAP ICON TO UNBLOCK</string>
-    <string name="unblocked_hint">TAP ICON TO BLOCK</string>
-    <string name="help">Help</string>
-    <string name="about">About</string>
+    <string name="plausible_domain">android.adblockfast.com</string>
+    <string name="name">Adblock Fast</string>
+    <string name="logo_description">Block or unblock ads</string>
+    <string name="status_label">Status:\u0020</string>
+    <string name="blocked_message">Blocking ads</string>
+    <string name="unblocked_message">Not blocking ads</string>
+    <string name="blocked_hint">Tap to unblock</string>
+    <string name="unblocked_hint">Tap to block</string>
+    <string name="help_label">Help</string>
+    <string name="about_label">About</string>
+    <string name="mode_summary">
+        Block ads in just a couple steps, starting by choosing a blocking mode:
+    </string>
+    <string name="mode_details">
+        <![CDATA[<b>Fast</b> mode uses our default filtering rules.<br><br><b>Faster</b> (beta)
+        uses a bit of your idle bandwidth to crawl the web and find more ads to filter.<br><br>You
+        can switch anytime by going to <b>About</b> or can read <a
+        href="https://adblockfast.com/license">our terms</a> and <a
+        href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a> first.]]>
+    </string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
+    <string name="settings_details">
+        <![CDATA[Go to <font color="#de0421"><u>your home screen > Internet > ⋮ > Ad
+        blockers</u></font> then toggle <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to
+        this app then tap the Adblock Fast logo.]]>
+    </string>
     <string name="install_summary">Adblock Fast requires Samsung Internet 4.0+.</string>
-    <string name="settings_details"><![CDATA[Go to <font color="#de0421"><u>your home screen > Internet > ⋮ (the browser menu) > Extensions > Content blockers</u></font> then switch <b>Adblock Fast</b> to <b><small>ON</small></b>.<br><br>To unblock ads, come back to this app then tap the Adblock Fast button.]]></string>
-    <string name="install_details"><![CDATA[Install or update to the latest version of the <a href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung Internet browser from Google Play</a> then come back to this app for instructions on how to block ads.]]></string>
-    <string name="contact"><![CDATA[If you have any questions or comments, follow and message <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a href="https://twitter.com/adblockfast">on Twitter</a>.]]></string>
+    <string name="install_details">
+        <![CDATA[Install or update to the latest version of the <a
+        href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
+        Internet browser</a> then come back to this app for instructions on how to block ads.]]>
+    </string>
+    <string name="notifications_request">
+        <![CDATA[Adblock Fast should also be kept up to date to block new ad types.<br><br>Would you
+        like to be notified (infrequently) as soon as important updates are available<i>?</i>]]>
+    </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
-    <string name="copyright"><![CDATA[© <a href="https://rocketshipapps.com/">Rocketship</a> · <a href="https://www.facebook.com/rocketship">Facebook</a> · <a href="https://twitter.com/rocketship">Twitter</a>]]></string>
-    <string name="dismiss">CLOSE</string>
-    <string name="upgrade_to">UPGRADE TO PREMIUM FOR FREE</string>
-    <string name="downgrade_to">DOWNGRADE TO REGULAR</string>
-    <string name="upgrade">UPGRADE</string>
-    <string name="back">BACK</string>
-    <string name="premium_instruction_1"><![CDATA[Access <b>PREMIUM FEATURES</b> by<br/><b>CLICKING UPGRADE</b> below.]]></string>
-    <string name="premium_instruction_2"><![CDATA[With <b>ADBLOCK FAST PREMIUM</b> you will get <font color="#475993"><b>Facebook ad blocking</b></font> as well as <font color="#f61c0d"><b>Youtube ad blocking</b></font> in exchange for a small amount of your unused smartphone resources. For more info, please see our <a href="https://adblockfast.com/#faq">FAQ</a>]]></string>
-    <string name="description">BLOCK ADS ON SAMSUNG INTERNET</string>
+    <string name="mode_label">Blocking mode:\u0020</string>
+    <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>
+    <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>Faster</u></font>]]></string>
+    <string name="mode_separator">\u0020·\u0020</string>
+    <string name="contact_info">
+        <![CDATA[If you have any questions or comments, follow and message
+        <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a
+        href="https://twitter.com/adblockfast">on Twitter</a>.]]>
+    </string>
+    <string name="copyright_notice">
+        <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
+        href="https://twitter.com/rocketship">Twitter</a>&gt;]]>
+    </string>
+    <string name="continue_label">Done</string>
+    <string name="dismiss_label">Close</string>
+    <string name="default_label">Fast</string>
+    <string name="upgrade_label">Faster</string>
+    <string name="accept_label">Yes</string>
+    <string name="decline_label">Not now</string>
+    <string name="foreground_text">Adblock Fast is running in the background.</string>
 </resources>
