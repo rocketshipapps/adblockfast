@@ -175,14 +175,28 @@ input:checked + .slider:before {
   user-select: none;
 }
 
-.body #detailsLabel {
+.Toastify__toast--info {
+  background: #fff;
+  color: #000;
+}
+
+.row {
+  display: flex;
+  align-items: center;
   position: absolute;
   bottom: 0.5rem;
   font-size: 0.75rem;
   user-select: none;
 }
 
-.Toastify__toast--info {
-  background: #fff;
-  color: #000;
+#detailsLabel {
+  user-select: none;
+}
+
+#whitelistButton {
+  margin-left: 10px;
+  border: none;
+  color: #4884ea;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { getActiveTab } from "../domain/utils";
+import { getActiveTab, getHost } from "../domain/utils";
 
 class BlockingInfo {
   constructor(private _matchedRules: number = 0, private _activeTabUrl: string = "") {}
@@ -17,6 +17,10 @@ class BlockingInfo {
 
   set activeTabUrl(url: string) {
     this._activeTabUrl = url;
+  }
+
+  get host(): string {
+    return getHost(this._activeTabUrl);
   }
 
   static async fetch(): Promise<BlockingInfo> {

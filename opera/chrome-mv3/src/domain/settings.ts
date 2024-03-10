@@ -3,6 +3,7 @@ import { NativeAppStatus } from "./native";
 export interface StorageData {
   isBlockingEnabled: boolean;
   nativeAppStatus: NativeAppStatus;
+  whitelist: string[];
 }
 
 export type StorageKeys = keyof StorageData;
@@ -22,19 +23,24 @@ export class Settings {
   activate(): void {
     this.setBlockingEnabled(true);
     this.setNativeAppStatus(NativeAppStatus.Active);
-    this.updateRulesets(true, ["default"]);
+    this.updateRulesets(true);
   }
 
   pause(): void {
     this.setBlockingEnabled(false);
     this.setNativeAppStatus(NativeAppStatus.Paused);
-    this.updateRulesets(false, ["default"]);
+    this.updateRulesets(false);
   }
 
   disable(): void {
     this.setBlockingEnabled(false);
     this.setNativeAppStatus(NativeAppStatus.NoApp);
-    this.updateRulesets(false, ["default"]);
+    this.updateRulesets(false);
+  }
+
+  init(): void {
+    this.disable();
+    this.setWhitelist([]);
   }
 
   setBlockingEnabled(isEnabled: boolean): Promise<void> {
@@ -63,7 +69,7 @@ export class Settings {
     });
   }
 
-  updateRulesets(shouldEnable: boolean, ruleset: string[]): void {
+  updateRulesets(shouldEnable: boolean, ruleset: string[] = ["default"]): void {
     const rulesetOptions = {
       [shouldEnable ? "enableRulesetIds" : "disableRulesetIds"]: ruleset,
     };
@@ -91,6 +97,32 @@ export class Settings {
           reject(chrome.runtime.lastError);
         } else {
           resolve(result.nativeAppStatus);
+        }
+      });
+    });
+  }
+
+  setWhitelist(whitelist: string[]): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      chrome.storage.sync.set({ whitelist: whitelist }, () => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+
+  getWhitelist(): Promise<string[]> {
+    const keys: StorageKeys[] = ["whitelist"];
+
+    return new Promise<string[]>((resolve, reject) => {
+      chrome.storage.sync.get(keys, (result) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(result.whitelist || []);
         }
       });
     });
