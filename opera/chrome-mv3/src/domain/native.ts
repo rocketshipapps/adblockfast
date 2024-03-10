@@ -19,8 +19,7 @@ export async function pingNativeApp() {
   fetch(await makeUrl(settings))
     .then((response) => response.json())
     .then(async (data) => {
-      const previousStatus: NativeAppStatus =
-        await settings.getNativeAppStatus();
+      const previousStatus: NativeAppStatus = await settings.getNativeAppStatus();
       const currentStatus: NativeAppStatus = data.status.toLowerCase();
       if (previousStatus !== currentStatus) {
         if (currentStatus === NativeAppStatus.Active) {
@@ -31,8 +30,7 @@ export async function pingNativeApp() {
       }
     })
     .catch(async (_) => {
-      const previousStatus: NativeAppStatus =
-        await settings.getNativeAppStatus();
+      const previousStatus: NativeAppStatus = await settings.getNativeAppStatus();
       if (previousStatus !== NativeAppStatus.NoApp) {
         settings.disable();
       }

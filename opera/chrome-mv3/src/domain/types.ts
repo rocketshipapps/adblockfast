@@ -1,10 +1,7 @@
 import { getActiveTab, getHost } from "../domain/utils";
 
 class BlockingInfo {
-  constructor(
-    private _matchedRules: number = 0,
-    private _activeTabUrl: string = ""
-  ) {}
+  constructor(private _matchedRules: number = 0, private _activeTabUrl: string = "") {}
 
   get matchedRules(): number {
     return this._matchedRules;
