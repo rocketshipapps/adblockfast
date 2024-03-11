@@ -256,9 +256,7 @@ if (!previousBuild || previousBuild < 9) {
 }
 
 if (isUpdatingToCurrent) {
-  allowlist[ 'dashboard.onesignal.com' ] = true;
-  localStorage.allowlist                 = JSON.stringify(allowlist);
-  localStorage.build                     = build;
+  localStorage.build = build;
 
   if (previousBuild) {
     delete localStorage.whitelist;
