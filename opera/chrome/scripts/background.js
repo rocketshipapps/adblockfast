@@ -16,7 +16,7 @@
 
     Brian Kennish <brian@rocketshipapps.com>
 */
-const build               = 9;
+const build               = 10;
 const previousBuild       = localStorage.build;
 const isUpdatingToCurrent = !previousBuild || previousBuild < build;
 const path                = isInOpera ? 'chrome/' : '';
@@ -256,7 +256,9 @@ if (!previousBuild || previousBuild < 9) {
 }
 
 if (isUpdatingToCurrent) {
-  localStorage.build = build;
+  allowlist[ 'dashboard.onesignal.com' ] = true;
+  localStorage.allowlist                 = JSON.stringify(allowlist);
+  localStorage.build                     = build;
 
   if (previousBuild) {
     delete localStorage.whitelist;
