@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        initPlayServices();
         detectSamsungBrowser();
         if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
 
