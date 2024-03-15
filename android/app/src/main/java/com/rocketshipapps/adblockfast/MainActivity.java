@@ -539,8 +539,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             } else if (
-                IS_NOTIFICATIONS_PERMISSION_REQUIRED &&
-                    AdblockFastApplication
+                IS_NOTIFICATIONS_PERMISSION_REQUIRED
+                    && AdblockFastApplication
                         .prefs
                         .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
             ) {
