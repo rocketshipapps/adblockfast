@@ -79,8 +79,8 @@ public class AdblockFastApplication extends Application {
                     new MassiveOptions(
                         MassiveServiceType.Foreground,
                         new MassiveNotificationOptions(
-                            this.getString(R.string.name),
-                            this.getString(R.string.foreground_text),
+                            getString(R.string.name),
+                            getString(R.string.foreground_text),
                             R.drawable.icon
                         )
                     ),
@@ -104,10 +104,10 @@ public class AdblockFastApplication extends Application {
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
-    void updateLegacyPrefs() {
+    public void updateLegacyPrefs() {
         if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
             SharedPreferences.Editor editor = prefs.edit();
-            SharedPreferences legacyPrefs = this.getSharedPreferences(LEGACY_PREFS_NAME, 0);
+            SharedPreferences legacyPrefs = getSharedPreferences(LEGACY_PREFS_NAME, 0);
 
             editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
             editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
@@ -123,7 +123,7 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    void initPrefs() {
+    public void initPrefs() {
         String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
         if (
@@ -159,7 +159,7 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    void dumpPrefs() {
+    public void dumpPrefs() {
         Map<String, ?> entries = prefs.getAll();
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {
