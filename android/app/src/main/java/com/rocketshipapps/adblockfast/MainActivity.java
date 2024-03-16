@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -41,6 +42,7 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collections;
+import java.util.List;
 
 import org.json.JSONObject;
 
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     TextView hintText;
     Dialog dialog;
     boolean isLogoAnimating = false;
+    boolean hasSamsungBrowser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AdblockFastApplication.detectSamsungBrowser(this);
+        detectSamsungBrowser();
         if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
 
         if (Ruleset.isEnabled()) {
@@ -137,6 +140,20 @@ public class MainActivity extends AppCompatActivity {
             Plausible.INSTANCE.event("Miss", "/play-services", "", null);
         } else {
             Plausible.INSTANCE.event("Hit", "/play-services", "", null);
+        }
+    }
+
+    void detectSamsungBrowser() {
+        List<ResolveInfo> list =
+            getPackageManager()
+                .queryIntentActivities(AdblockFastApplication.SAMSUNG_BROWSER_INTENT, 0);
+
+        if (list.size() > 0) {
+            hasSamsungBrowser = true;
+
+            Plausible.INSTANCE.event("Hit", "/samsung-browser", "", null);
+        } else {
+            Plausible.INSTANCE.event("Miss", "/samsung-browser", "", null);
         }
     }
 
@@ -280,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
         TextView detailsText = help.findViewById(R.id.details_text);
         Button dismissButton = help.findViewById(R.id.dismiss_button);
 
-        if (AdblockFastApplication.hasSamsungBrowser) {
+        if (hasSamsungBrowser) {
             summaryText.setText(R.string.settings_summary);
             setHtml(detailsText, R.string.settings_details, false);
 
@@ -296,9 +313,7 @@ public class MainActivity extends AppCompatActivity {
         setHtml(help.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         if (continuationHandler != null) {
-            if (AdblockFastApplication.hasSamsungBrowser) {
-                dismissButton.setText(R.string.continue_label);
-            }
+            if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
 
             dismissButton.setOnClickListener((v) -> {
                 help.dismiss();
@@ -497,7 +512,7 @@ public class MainActivity extends AppCompatActivity {
                 presentModes(() -> {
                     if (IS_NOTIFICATIONS_PERMISSION_REQUIRED) {
                         presentNotificationsOptIn(() -> {
-                            if (AdblockFastApplication.hasSamsungBrowser) {
+                            if (hasSamsungBrowser) {
                                 presentHelp(() ->
                                     AdblockFastApplication
                                         .prefs
@@ -510,7 +525,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     } else {
-                        if (AdblockFastApplication.hasSamsungBrowser) {
+                        if (hasSamsungBrowser) {
                             presentHelp(() ->
                                 AdblockFastApplication
                                     .prefs
@@ -530,7 +545,7 @@ public class MainActivity extends AppCompatActivity {
                         .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
             ) {
                 presentNotificationsOptIn(() -> {
-                    if (AdblockFastApplication.hasSamsungBrowser) {
+                    if (hasSamsungBrowser) {
                         presentHelp(() ->
                             AdblockFastApplication
                                 .prefs
@@ -543,7 +558,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             } else {
-                if (AdblockFastApplication.hasSamsungBrowser) {
+                if (hasSamsungBrowser) {
                     presentHelp(() ->
                         AdblockFastApplication
                             .prefs
@@ -555,7 +570,7 @@ public class MainActivity extends AppCompatActivity {
                     presentHelp(this::onBackPressed);
                 }
             }
-        } else if (!AdblockFastApplication.hasSamsungBrowser) {
+        } else if (!hasSamsungBrowser) {
             presentHelp(this::onBackPressed);
         }
     }
@@ -606,7 +621,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            AdblockFastApplication.detectSamsungBrowser(this);
+            detectSamsungBrowser();
         }
     }
 

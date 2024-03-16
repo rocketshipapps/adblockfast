@@ -4,14 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
-import java.util.List;
 import java.util.Map;
 
 import kotlin.Unit;
@@ -49,7 +47,6 @@ public class AdblockFastApplication extends Application {
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
     public static MassiveClient massiveClient;
-    public static boolean hasSamsungBrowser = false;
 
     static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
     static final String LEGACY_PREFS_NAME = "adblockfast";
@@ -72,8 +69,7 @@ public class AdblockFastApplication extends Application {
         dumpPrefs();
         initPrefs();
         dumpPrefs();
-        detectSamsungBrowser(this);
-        if (hasSamsungBrowser) sendBroadcast(blockingUpdateIntent);
+        sendBroadcast(blockingUpdateIntent);
 
         MassiveClient.Companion.getInstance(this, (client) -> {
             massiveClient = client;
@@ -169,21 +165,6 @@ public class AdblockFastApplication extends Application {
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {
             Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
-        }
-    }
-
-    public static void detectSamsungBrowser(Context context) {
-        List<ResolveInfo> list =
-            context
-                .getPackageManager()
-                .queryIntentActivities(AdblockFastApplication.SAMSUNG_BROWSER_INTENT, 0);
-
-        if (list.size() > 0) {
-            hasSamsungBrowser = true;
-
-            Plausible.INSTANCE.event("Hit", "/samsung-browser", "", null);
-        } else {
-            Plausible.INSTANCE.event("Miss", "/samsung-browser", "", null);
         }
     }
 }

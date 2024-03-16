@@ -19,10 +19,7 @@ public class Ruleset {
             .edit()
             .putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true)
             .apply();
-
-        if (AdblockFastApplication.hasSamsungBrowser) {
-            context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
-        }
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static void disable(Context context) {
@@ -31,10 +28,7 @@ public class Ruleset {
             .edit()
             .putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, false)
             .apply();
-
-        if (AdblockFastApplication.hasSamsungBrowser) {
-            context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
-        }
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static void upgrade(Context context) {
@@ -46,10 +40,7 @@ public class Ruleset {
                 AdblockFastApplication.LUDICROUS_MODE_VALUE
             )
             .apply();
-
-        if (AdblockFastApplication.hasSamsungBrowser) {
-            context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
-        }
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static void downgrade(Context context) {
@@ -60,10 +51,7 @@ public class Ruleset {
                 AdblockFastApplication.BLOCKING_MODE_KEY, AdblockFastApplication.STANDARD_MODE_VALUE
             )
             .apply();
-
-        if (AdblockFastApplication.hasSamsungBrowser) {
-            context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
-        }
+        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
     }
 
     public static File get(Context context) {
