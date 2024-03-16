@@ -22,7 +22,11 @@ public class UpdateReceiver extends BroadcastReceiver {
             AdblockFastApplication.dumpPrefs();
             AdblockFastApplication.initPrefs();
             AdblockFastApplication.dumpPrefs();
-            context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+            AdblockFastApplication.detectSamsungBrowser(context);
+
+            if (AdblockFastApplication.hasSamsungBrowser) {
+                context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+            }
 
             // TODO: Use “NotificationManager” and “PendingIntent” to launch app on update
         }
