@@ -1,6 +1,7 @@
 package com.rocketshipapps.adblockfast;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -64,7 +65,7 @@ public class AdblockFastApplication extends Application {
                 .setData(Uri.parse("package:" + packageName));
 
         dumpPrefs();
-        updateLegacyPrefs();
+        updateLegacyPrefs(this);
         dumpPrefs();
         initPrefs();
         dumpPrefs();
@@ -104,10 +105,10 @@ public class AdblockFastApplication extends Application {
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
-    public void updateLegacyPrefs() {
+    public static void updateLegacyPrefs(Context context) {
         if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
             SharedPreferences.Editor editor = prefs.edit();
-            SharedPreferences legacyPrefs = getSharedPreferences(LEGACY_PREFS_NAME, 0);
+            SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
 
             editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
             editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
@@ -123,7 +124,7 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    public void initPrefs() {
+    public static void initPrefs() {
         String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
         if (
@@ -159,7 +160,7 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    public void dumpPrefs() {
+    public static void dumpPrefs() {
         Map<String, ?> entries = prefs.getAll();
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {

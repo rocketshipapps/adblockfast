@@ -17,13 +17,11 @@ public class UpdateReceiver extends BroadcastReceiver {
                 && data != null
                 && context.getPackageName().equals(data.getSchemeSpecificPart())
         ) {
-            AdblockFastApplication application = new AdblockFastApplication();
-
-            application.dumpPrefs();
-            application.updateLegacyPrefs();
-            application.dumpPrefs();
-            application.initPrefs();
-            application.dumpPrefs();
+            AdblockFastApplication.dumpPrefs();
+            AdblockFastApplication.updateLegacyPrefs(context);
+            AdblockFastApplication.dumpPrefs();
+            AdblockFastApplication.initPrefs();
+            AdblockFastApplication.dumpPrefs();
             context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
 
             // TODO: Use “NotificationManager” and “PendingIntent” to launch app on update
