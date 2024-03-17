@@ -69,7 +69,6 @@ public class AdblockFastApplication extends Application {
         dumpPrefs();
         initPrefs();
         dumpPrefs();
-        sendBroadcast(blockingUpdateIntent);
 
         MassiveClient.Companion.getInstance(this, (client) -> {
             massiveClient = client;
