@@ -1,6 +1,6 @@
 # ![Adblock Fast](assets/promo/adblockfast-optimized.png) [![Tweet](assets/promo/tweet-optimized.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20or%20Chrome:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
 
-*A faster ad blocker for Windows, Android, iOS, and, Chrome!*
+*A faster ad blocker for Windows, Android, iOS, [and] Chrome<del>, and Opera</del>!*
 
 Try Adblock Fast:
 
