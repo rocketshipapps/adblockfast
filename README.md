@@ -124,7 +124,7 @@ To see the effect of Adblock Fast on a particular page, you may have to clear
 Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
 Data**) before reloading the page.
 
-### In Chrome or Opera
+### In Chrome ~~or Opera~~
 
 Adblock Fast installs a button in your browser’s toolbar. To show the button:
 
@@ -167,8 +167,8 @@ Adblock Fast is a faster ad blocker for desktop computers and mobile browsers.
 ### When will Adblock Fast be available on [insert platform here]<em>?</em>
 
 Adblock Fast is available for Windows 7 and up, Android 5.0 and up with Samsung Internet 4.0 and up,
-iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and up), and the Chrome and Opera
-desktop browsers. Follow [us on Facebook](https://www.facebook.com/adblockfast) or
+iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and up), and the Chrome ~~and
+Opera~~ desktop browser~~s~~. Follow [us on Facebook](https://www.facebook.com/adblockfast) or
 [on Twitter](https://twitter.com/adblockfast) for news about additional platform availability.
 
 ### Where does Adblock Fast’s filtering ruleset come from<em>?</em>
