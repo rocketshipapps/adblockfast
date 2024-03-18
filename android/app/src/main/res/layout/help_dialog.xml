@@ -27,6 +27,39 @@
             android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
             style="@style/Body" />
+        <LinearLayout
+            android:id="@+id/mode_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_spacing"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_label"
+                android:textColor="@android:color/white"
+                style="@style/Body" />
+            <TextView
+                android:id="@+id/default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@null"
+                android:textColor="@android:color/white"
+                style="@style/Emphasis" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_separator"
+                android:textColor="@android:color/white"
+                style="@style/Body" />
+            <TextView
+                android:id="@+id/upgrade_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@null"
+                android:textColor="@android:color/white"
+                style="@style/Body" />
+        </LinearLayout>
         <TextView
             android:id="@+id/contact_text"
             android:layout_width="wrap_content"

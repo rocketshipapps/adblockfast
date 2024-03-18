@@ -306,8 +306,35 @@ public class MainActivity extends AppCompatActivity {
                 Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
             });
         } else {
+            TextView defaultText = help.findViewById(R.id.default_text);
+            TextView upgradeText = help.findViewById(R.id.upgrade_text);
+
             summaryText.setText(R.string.install_summary);
             setHtml(detailsText, R.string.install_details, true);
+            help.findViewById(R.id.mode_container).setVisibility(View.VISIBLE);
+            setHtml(defaultText, R.string.default_link, false);
+            setHtml(upgradeText, R.string.upgrade_link, false);
+
+            if (Ruleset.isUpgraded()) {
+                upgradeText.setTypeface(emphasisFont);
+                defaultText.setTypeface(bodyFont);
+            }
+
+            defaultText.setOnClickListener((w) -> {
+                AdblockFastApplication.massiveClient.stop();
+                Ruleset.downgrade(this);
+                defaultText.setTypeface(emphasisFont);
+                upgradeText.setTypeface(bodyFont);
+                Plausible.INSTANCE.event("Default", "/help", "", null);
+            });
+
+            upgradeText.setOnClickListener((w) -> {
+                Ruleset.upgrade(this);
+                AdblockFastApplication.massiveClient.start();
+                upgradeText.setTypeface(emphasisFont);
+                defaultText.setTypeface(bodyFont);
+                Plausible.INSTANCE.event("Upgrade", "/help", "", null);
+            });
         }
 
         setHtml(help.findViewById(R.id.contact_text), R.string.contact_info, true);
