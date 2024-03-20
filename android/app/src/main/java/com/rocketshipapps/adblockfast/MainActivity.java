@@ -145,8 +145,9 @@ public class MainActivity extends AppCompatActivity {
 
     void detectSamsungBrowser() {
         List<ResolveInfo> list =
-            getPackageManager()
-                .queryIntentActivities(AdblockFastApplication.SAMSUNG_BROWSER_INTENT, 0);
+            getPackageManager().queryIntentActivities(
+                AdblockFastApplication.SAMSUNG_BROWSER_INTENT, PackageManager.MATCH_DEFAULT_ONLY
+            );
 
         if (list.size() > 0) {
             hasSamsungBrowser = true;
