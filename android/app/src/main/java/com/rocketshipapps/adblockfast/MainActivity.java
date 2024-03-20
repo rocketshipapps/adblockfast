@@ -1,314 +1,734 @@
 package com.rocketshipapps.adblockfast;
 
+import android.Manifest;
+import android.accounts.AccountManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.rocketshipapps.adblockfast.service.RegistrationIntentService;
-import com.rocketshipapps.adblockfast.utils.Rule;
 
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 
-import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import org.json.JSONObject;
+
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.calligraphy3.CalligraphyTypefaceSpan;
+import io.github.inflationx.calligraphy3.TypefaceUtils;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
+import com.wbrawner.plausible.android.Plausible;
+
+import com.onesignal.Continue;
+import com.onesignal.OneSignal;
+
+import com.rocketshipapps.adblockfast.utils.Ruleset;
+
 public class MainActivity extends AppCompatActivity {
-
-    boolean animating = false;
-
-    ImageButton btnAdblock;
-    TextView txtStatus;
-    TextView txtTap;
-
-    String packageName;
-    String version;
-
-    Tracker tracker;
-
-    SharedPreferences preferences;
-
-    boolean hasBlockingBrowser = false;
-    Intent samsungBrowserIntent;
+    static final boolean IS_NOTIFICATIONS_PERMISSION_REQUIRED =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU;
+    // TODO: Refactor subscription constants
+    static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
+    static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
+    static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
+    Typeface bodyFont;
+    Typeface emphasisFont;
+    ImageButton logoButton;
+    TextView statusText;
+    TextView hintText;
+    Dialog dialog;
+    boolean isLogoAnimating = false;
+    boolean hasSamsungBrowser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         ViewPump.init(
-            ViewPump.builder().addInterceptor(
-                new CalligraphyInterceptor(
-                    new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
+            ViewPump
+                .builder()
+                .addInterceptor(
+                    new CalligraphyInterceptor(
+                        new CalligraphyConfig
+                            .Builder()
+                            .setDefaultFontPath("fonts/AvenirNextLTPro-Light.otf")
+                            .setFontAttrId(R.attr.fontPath)
+                            .build()
+                    )
                 )
-            ).build()
+                .build()
         );
+        setContentView(R.layout.main_view);
 
-        packageName = getApplicationContext().getPackageName();
-        version = BuildConfig.VERSION_NAME;
+        bodyFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNextLTPro-Light.otf");
+        emphasisFont = TypefaceUtils.load(getAssets(), "fonts/AvenirNext-Medium.otf");
+        logoButton = findViewById(R.id.logo_button);
+        statusText = findViewById(R.id.status_text);
+        hintText = findViewById(R.id.hint_text);
 
-        btnAdblock = (ImageButton) findViewById(R.id.btn_adblock);
-        txtStatus = (TextView) findViewById(R.id.txt_status);
-        txtTap = (TextView) findViewById(R.id.txt_tap);
-
-        if (!Rule.exists(this)) {
-            Rule.enable(this);
-            enableAnimation();
-        } else if (Rule.active(this)) {
-            enableAnimation();
-        } else {
-            disableAnimation();
-        }
-
-        AdblockfastApplication application = (AdblockfastApplication) getApplication();
-        tracker = application.getDefaultTracker();
-
-        if (checkPlayServices()) {
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        samsungBrowserIntent = new Intent();
-        samsungBrowserIntent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
-
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+        logoButton.setOnClickListener(this::onLogoPressed);
+        findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
+        findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        detectSamsungBrowser();
+        if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
 
-        tracker.setScreenName("/");
-        tracker.send(new HitBuilders.ScreenViewBuilder().build());
-
-        List<ResolveInfo> list = getPackageManager().queryIntentActivities(samsungBrowserIntent, 0);
-        if (list.size() > 0) hasBlockingBrowser = true;
-
-        if (!hasBlockingBrowser) {
-            showHelpDialog(false);
-        } else if (preferences.getBoolean("first_run", true)) {
-            showHelpDialog(true);
-            preferences.edit().putBoolean("first_run", false).apply();
+        if (Ruleset.isEnabled()) {
+            animateBlocking(this::onboardUser);
+        } else {
+            animateUnblocking(this::onboardUser);
         }
 
+        Plausible.INSTANCE.pageView("/", "", null);
     }
 
-    private boolean checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, 9000)
-                    .show();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(base));
+    }
+
+    void initPlayServices() {
+        GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
+
+        if (availability.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS) {
+            availability.makeGooglePlayServicesAvailable(this);
+            Plausible.INSTANCE.event("Miss", "/play-services", "", null);
+        } else {
+            Plausible.INSTANCE.event("Hit", "/play-services", "", null);
+        }
+    }
+
+    void detectSamsungBrowser() {
+        List<ResolveInfo> list =
+            getPackageManager().queryIntentActivities(
+                AdblockFastApplication.SAMSUNG_BROWSER_INTENT, PackageManager.MATCH_DEFAULT_ONLY
+            );
+
+        if (list.size() > 0) {
+            hasSamsungBrowser = true;
+
+            Plausible.INSTANCE.event("Hit", "/samsung-browser", "", null);
+        } else {
+            Plausible.INSTANCE.event("Miss", "/samsung-browser", "", null);
+        }
+    }
+
+    public void onLogoPressed(View v) {
+        if (!isLogoAnimating) {
+            if (Ruleset.isEnabled()) {
+                Ruleset.disable(this);
+                animateUnblocking(null);
+                Plausible.INSTANCE.event("Unblock", "/", "", null);
             } else {
-                finish();
+                Ruleset.enable(this);
+                animateBlocking(null);
+                Plausible.INSTANCE.event("Block", "/", "", null);
             }
-            return false;
         }
-        return true;
     }
 
-    //region OnClick
-
-    public void onAdBlockPressed(View v) {
-        if (animating) return;
-
-        if (Rule.active(this)) {
-            Rule.disable(this);
-            disableAnimation();
-        } else {
-            Rule.enable(this);
-            enableAnimation();
-        }
-
-        Intent intent = new Intent();
-        intent.setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE");
-        intent.setData(Uri.parse("package:" + packageName));
-        sendBroadcast(intent);
+    void onHelpPressed(View v) {
+        presentHelp(null);
     }
 
-    public void onAboutPressed(View v) {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.alert_dialog_about);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    void onAboutPressed(View v) {
+        Dialog about = presentDialog(R.layout.about_dialog);
+        TextView defaultText = about.findViewById(R.id.default_text);
+        TextView upgradeText = about.findViewById(R.id.upgrade_text);
 
-        ((TextView)dialog.findViewById(R.id.tagline)).setText(Html.fromHtml(getString(R.string.tagline)));
+        ((TextView) about.findViewById(R.id.version_text))
+            .setText(String.format(" %s", AdblockFastApplication.VERSION_NUMBER));
+        setHtml(about.findViewById(R.id.tag_text), R.string.tagline, false);
+        setHtml(defaultText, R.string.default_link, false);
+        setHtml(upgradeText, R.string.upgrade_link, false);
+        setHtml(about.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
-        TextView copyright = (TextView) dialog.findViewById(R.id.copyright);
-        copyright.setText(Html.fromHtml(getString(R.string.copyright)));
-        copyright.setMovementMethod(LinkMovementMethod.getInstance());
+        if (Ruleset.isUpgraded()) {
+            upgradeText.setTypeface(emphasisFont);
+            defaultText.setTypeface(bodyFont);
+        }
 
-        dialog.setCancelable(false);
-        dialog.show();
-
-        ((TextView) dialog.findViewById(R.id.txt_version)).setText(version);
-
-        dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
+        defaultText.setOnClickListener((w) -> {
+            AdblockFastApplication.massiveClient.stop();
+            Ruleset.downgrade(this);
+            defaultText.setTypeface(emphasisFont);
+            upgradeText.setTypeface(bodyFont);
+            Plausible.INSTANCE.event("Default", "/about", "", null);
         });
+
+        upgradeText.setOnClickListener((w) -> {
+            Ruleset.upgrade(this);
+            AdblockFastApplication.massiveClient.start();
+            upgradeText.setTypeface(emphasisFont);
+            defaultText.setTypeface(bodyFont);
+            Plausible.INSTANCE.event("Upgrade", "/about", "", null);
+        });
+
+        about.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
+            about.dismiss();
+            Plausible.INSTANCE.event("Dismiss", "/about", "", null);
+        });
+
+        Plausible.INSTANCE.pageView("/about", "", null);
     }
 
-    public void onHelpPressed(View v) {
-        showHelpDialog(true);
+    void presentModes(Runnable continuationHandler) {
+        Dialog modes = presentDialog(R.layout.mode_dialog);
+        Button defaultButton = modes.findViewById(R.id.default_button);
+        Button upgradeButton = modes.findViewById(R.id.upgrade_button);
+
+        ((TextView) modes.findViewById(R.id.summary_text)).setText(R.string.mode_summary);
+        setHtml(modes.findViewById(R.id.details_text), R.string.mode_details, true);
+
+        defaultButton.setOnClickListener((v) -> {
+            Ruleset.downgrade(this);
+            modes.dismiss();
+            Plausible.INSTANCE.event("Default", "/mode", "", null);
+            if (continuationHandler != null) continuationHandler.run();
+        });
+
+        upgradeButton.setOnClickListener((v) -> {
+            Ruleset.upgrade(this);
+            AdblockFastApplication.massiveClient.start();
+            modes.dismiss();
+            Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
+            if (continuationHandler != null) continuationHandler.run();
+        });
+
+        Plausible.INSTANCE.pageView("/mode", "", null);
     }
 
-    //endregion
+    void presentNotificationsOptIn(Runnable continuationHandler) {
+        Dialog notificationsOptIn = presentDialog(R.layout.notifications_dialog);
+        SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
 
-    //region Dialog
-    void showHelpDialog(boolean cancelable) {
-        final Dialog dialog = new Dialog(this);
+        editor
+            .putInt(
+                AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY,
+                AdblockFastApplication
+                    .prefs
+                    .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
+            )
+            .apply();
+        setHtml(
+            notificationsOptIn.findViewById(R.id.request_text),
+            R.string.notifications_request, false
+        );
+
+        notificationsOptIn.findViewById(R.id.accept_button).setOnClickListener((v) -> {
+            notificationsOptIn.dismiss();
+            Plausible.INSTANCE.event("Pre-accept", "/notifications", "", null);
+
+            OneSignal.getNotifications().requestPermission(true, Continue.with((r) -> {
+                if (r.isSuccess()) {
+                    if (Boolean.TRUE.equals(r.getData())) {
+                        editor
+                            .putBoolean(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY, true)
+                            .apply();
+                        Plausible.INSTANCE.event("Accept", "/notifications", "", null);
+                    } else {
+                        editor
+                            .putBoolean(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY, false)
+                            .apply();
+                        Plausible.INSTANCE.event("Decline", "/notifications", "", null);
+                    }
+                }
+
+                if (continuationHandler != null) continuationHandler.run();
+            }));
+        });
+
+        notificationsOptIn.findViewById(R.id.decline_button).setOnClickListener((v) -> {
+            notificationsOptIn.dismiss();
+            Plausible.INSTANCE.event("Pre-decline", "/notifications", "", null);
+            if (continuationHandler != null) continuationHandler.run();
+        });
+
+        Plausible.INSTANCE.pageView("/notifications", "", null);
+    }
+
+    void presentHelp(Runnable continuationHandler) {
+        Dialog help = presentDialog(R.layout.help_dialog);
+        TextView summaryText = help.findViewById(R.id.summary_text);
+        TextView detailsText = help.findViewById(R.id.details_text);
+        Button dismissButton = help.findViewById(R.id.dismiss_button);
+
+        if (hasSamsungBrowser) {
+            summaryText.setText(R.string.settings_summary);
+            setHtml(detailsText, R.string.settings_details, false);
+
+            detailsText.setOnClickListener((v) -> {
+                startActivity(AdblockFastApplication.SAMSUNG_BROWSER_INTENT);
+                Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
+            });
+        } else {
+            TextView defaultText = help.findViewById(R.id.default_text);
+            TextView upgradeText = help.findViewById(R.id.upgrade_text);
+
+            summaryText.setText(R.string.install_summary);
+            setHtml(detailsText, R.string.install_details, true);
+            help.findViewById(R.id.mode_container).setVisibility(View.VISIBLE);
+            setHtml(defaultText, R.string.default_link, false);
+            setHtml(upgradeText, R.string.upgrade_link, false);
+
+            if (Ruleset.isUpgraded()) {
+                upgradeText.setTypeface(emphasisFont);
+                defaultText.setTypeface(bodyFont);
+            }
+
+            defaultText.setOnClickListener((w) -> {
+                AdblockFastApplication.massiveClient.stop();
+                Ruleset.downgrade(this);
+                defaultText.setTypeface(emphasisFont);
+                upgradeText.setTypeface(bodyFont);
+                Plausible.INSTANCE.event("Default", "/help", "", null);
+            });
+
+            upgradeText.setOnClickListener((w) -> {
+                Ruleset.upgrade(this);
+                AdblockFastApplication.massiveClient.start();
+                upgradeText.setTypeface(emphasisFont);
+                defaultText.setTypeface(bodyFont);
+                Plausible.INSTANCE.event("Upgrade", "/help", "", null);
+            });
+        }
+
+        setHtml(help.findViewById(R.id.contact_text), R.string.contact_info, true);
+
+        if (continuationHandler != null) {
+            if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
+
+            dismissButton.setOnClickListener((v) -> {
+                help.dismiss();
+                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+                continuationHandler.run();
+            });
+        } else {
+            dismissButton.setOnClickListener((v) -> {
+                help.dismiss();
+                Plausible.INSTANCE.event("Dismiss", "/help", "", null);
+            });
+        }
+
+        Plausible.INSTANCE.pageView("/help", "", null);
+    }
+
+    Dialog presentDialog(int id) {
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
+
+        dialog = new Dialog(this);
+        Window window = dialog.getWindow();
+
+        if (window != null) {
+            window.getAttributes().windowAnimations = R.style.Animation;
+
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.alert_dialog_help);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(id);
         dialog.setCancelable(false);
-        dialog.show();
+        if (!isFinishing()) dialog.show();
 
-        TextView summary = (TextView) dialog.findViewById(R.id.summary);
-        TextView details = (TextView) dialog.findViewById(R.id.details);
+        return dialog;
+    }
 
-        if (hasBlockingBrowser) {
-            summary.setText(R.string.settings_summary);
-            details.setText(Html.fromHtml(getString(R.string.settings_details)));
-            details.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(samsungBrowserIntent);
-                }
-            });
-        } else {
-            summary.setText(R.string.install_summary);
-            details.setText(Html.fromHtml(getString(R.string.install_details)));
+    void setHtml(TextView view, int id, boolean shouldLink) {
+        SpannableStringBuilder html = new SpannableStringBuilder(Html.fromHtml(getString(id)));
+        StyleSpan[] spans = html.getSpans(0, html.length(), StyleSpan.class);
+
+        for (StyleSpan span : spans) {
+            if (span.getStyle() == Typeface.BOLD) {
+                CalligraphyTypefaceSpan typefaceSpan = new CalligraphyTypefaceSpan(emphasisFont);
+                int start = html.getSpanStart(span);
+                int end = html.getSpanEnd(span);
+
+                html.removeSpan(span);
+                html.setSpan(typefaceSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
         }
-        details.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView contact = (TextView) dialog.findViewById(R.id.contact);
-        contact.setText(Html.fromHtml(getString(R.string.contact)));
-        contact.setMovementMethod(LinkMovementMethod.getInstance());
 
-        if (cancelable) {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-        } else {
-            dialog.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
-        }
-    }
-    //endregion
-
-    //region Block Animation
-
-    void disableAnimation() {
-        animator(new int[] {
-            R.drawable.blocked_0,
-            R.drawable.blocked_1,
-            R.drawable.blocked_2,
-            R.drawable.blocked_3,
-            R.drawable.blocked_4,
-            R.drawable.blocked_5,
-            R.drawable.blocked_6,
-            R.drawable.blocked_7,
-            R.drawable.blocked_8,
-            R.drawable.blocked_9,
-            R.drawable.blocked_10,
-            R.drawable.blocked_11,
-            R.drawable.blocked_12,
-            R.drawable.blocked_13,
-            R.drawable.blocked_14,
-            R.drawable.blocked_15
-        }, R.string.unblocked_message, R.string.unblocked_hint);
+        view.setText(html, TextView.BufferType.SPANNABLE);
+        if (shouldLink) view.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    void enableAnimation() {
-        animator(new int[] {
-            R.drawable.unblocked_0,
-            R.drawable.unblocked_1,
-            R.drawable.unblocked_2,
-            R.drawable.unblocked_3,
-            R.drawable.unblocked_4,
-            R.drawable.unblocked_5,
-            R.drawable.unblocked_6,
-            R.drawable.unblocked_7,
-            R.drawable.unblocked_8,
-            R.drawable.unblocked_9,
-            R.drawable.unblocked_10,
-            R.drawable.unblocked_11,
-            R.drawable.unblocked_12,
-            R.drawable.unblocked_13,
-            R.drawable.unblocked_14,
-            R.drawable.unblocked_15
-        }, R.string.blocked_message, R.string.blocked_hint);
+    void animateBlocking(Runnable callback) {
+        animateLogo(new int[] {
+            R.drawable.blocked_frame_0,
+            R.drawable.blocked_frame_1,
+            R.drawable.blocked_frame_2,
+            R.drawable.blocked_frame_3,
+            R.drawable.blocked_frame_4,
+            R.drawable.blocked_frame_5,
+            R.drawable.blocked_frame_6,
+            R.drawable.blocked_frame_7,
+            R.drawable.blocked_frame_8,
+            R.drawable.blocked_frame_9,
+            R.drawable.blocked_frame_10,
+            R.drawable.blocked_frame_11,
+            R.drawable.blocked_frame_12,
+            R.drawable.blocked_frame_13,
+            R.drawable.blocked_frame_14,
+            R.drawable.blocked_frame_15,
+            R.drawable.unblocked_frame_0,
+            R.drawable.unblocked_frame_1,
+            R.drawable.unblocked_frame_2,
+            R.drawable.unblocked_frame_3,
+            R.drawable.unblocked_frame_4,
+            R.drawable.unblocked_frame_5,
+            R.drawable.unblocked_frame_6,
+            R.drawable.unblocked_frame_7,
+            R.drawable.unblocked_frame_8,
+            R.drawable.unblocked_frame_9,
+            R.drawable.unblocked_frame_10,
+            R.drawable.unblocked_frame_11,
+            R.drawable.unblocked_frame_12,
+            R.drawable.unblocked_frame_13,
+            R.drawable.unblocked_frame_14,
+            R.drawable.unblocked_frame_15,
+            R.drawable.blocked_frame_0,
+            R.drawable.blocked_frame_1,
+            R.drawable.blocked_frame_2,
+            R.drawable.blocked_frame_3,
+            R.drawable.blocked_frame_4,
+            R.drawable.blocked_frame_5,
+            R.drawable.blocked_frame_6,
+            R.drawable.blocked_frame_7,
+            R.drawable.blocked_frame_8,
+            R.drawable.blocked_frame_9,
+            R.drawable.blocked_frame_10,
+            R.drawable.blocked_frame_11,
+            R.drawable.blocked_frame_12,
+            R.drawable.blocked_frame_13,
+            R.drawable.blocked_frame_14,
+            R.drawable.blocked_frame_15
+        }, R.string.blocked_message, R.string.blocked_hint, callback);
     }
 
-    void animator(final int[] res, final int resTxtStatus, final int resTxtTap) {
-        animating = true;
+    void animateUnblocking(Runnable callback) {
+        animateLogo(new int[] {
+            R.drawable.unblocked_frame_0,
+            R.drawable.unblocked_frame_1,
+            R.drawable.unblocked_frame_2,
+            R.drawable.unblocked_frame_3,
+            R.drawable.unblocked_frame_4,
+            R.drawable.unblocked_frame_5,
+            R.drawable.unblocked_frame_6,
+            R.drawable.unblocked_frame_7,
+            R.drawable.unblocked_frame_8,
+            R.drawable.unblocked_frame_9,
+            R.drawable.unblocked_frame_10,
+            R.drawable.unblocked_frame_11,
+            R.drawable.unblocked_frame_12,
+            R.drawable.unblocked_frame_13,
+            R.drawable.unblocked_frame_14,
+            R.drawable.unblocked_frame_15,
+            R.drawable.blocked_frame_0,
+            R.drawable.blocked_frame_1,
+            R.drawable.blocked_frame_2,
+            R.drawable.blocked_frame_3,
+            R.drawable.blocked_frame_4,
+            R.drawable.blocked_frame_5,
+            R.drawable.blocked_frame_6,
+            R.drawable.blocked_frame_7,
+            R.drawable.blocked_frame_8,
+            R.drawable.blocked_frame_9,
+            R.drawable.blocked_frame_10,
+            R.drawable.blocked_frame_11,
+            R.drawable.blocked_frame_12,
+            R.drawable.blocked_frame_13,
+            R.drawable.blocked_frame_14,
+            R.drawable.blocked_frame_15,
+            R.drawable.unblocked_frame_0,
+            R.drawable.unblocked_frame_1,
+            R.drawable.unblocked_frame_2,
+            R.drawable.unblocked_frame_3,
+            R.drawable.unblocked_frame_4,
+            R.drawable.unblocked_frame_5,
+            R.drawable.unblocked_frame_6,
+            R.drawable.unblocked_frame_7,
+            R.drawable.unblocked_frame_8,
+            R.drawable.unblocked_frame_9,
+            R.drawable.unblocked_frame_10,
+            R.drawable.unblocked_frame_11,
+            R.drawable.unblocked_frame_12,
+            R.drawable.unblocked_frame_13,
+            R.drawable.unblocked_frame_14,
+            R.drawable.unblocked_frame_15
+        }, R.string.unblocked_message, R.string.unblocked_hint, callback);
+    }
 
+    void animateLogo(int[] resources, int status, int hint, Runnable callback) {
+        isLogoAnimating = true;
         double delay = 62.5;
 
-        for (int i = 0; i < res.length; i++) {
+        for (int i = 0; i < resources.length; i++) {
             if (i == 0) {
-                btnAdblock.setImageResource(res[i]);
+                logoButton.setImageResource(resources[i]);
             } else {
-                Handler handler = new Handler();
-                final int finalI = i;
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                btnAdblock.setImageResource(res[finalI]);
+                final int I = i;
 
-                                if (finalI == res.length - 1) {
-                                    animating = false;
-                                    txtStatus.setText(resTxtStatus);
-                                    txtTap.setText(resTxtTap);
-                                }
-                            }
-                        });
+                new Handler().postDelayed(() ->
+                    runOnUiThread(() -> {
+                        logoButton.setImageResource(resources[I]);
+
+                        if (I == resources.length - 1) {
+                            isLogoAnimating = false;
+
+                            statusText.setText(status);
+                            hintText.setText(hint);
+                            if (callback != null) callback.run();
+                        }
                     }
-                }, Math.round(delay * i));
+                ), Math.round(i * delay));
             }
         }
     }
 
-    //endregion
+    void onboardUser() {
+        if (
+            AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, true)
+        ) {
+            Plausible.INSTANCE.event("Onboard", "/", "", null);
+
+            if (!AdblockFastApplication.prefs.contains(AdblockFastApplication.BLOCKING_MODE_KEY)) {
+                presentModes(() -> {
+                    if (IS_NOTIFICATIONS_PERMISSION_REQUIRED) {
+                        presentNotificationsOptIn(() -> {
+                            if (hasSamsungBrowser) {
+                                presentHelp(() ->
+                                    AdblockFastApplication
+                                        .prefs
+                                        .edit()
+                                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                                        .apply()
+                                );
+                            } else {
+                                presentHelp(this::onBackPressed);
+                            }
+                        });
+                    } else {
+                        if (hasSamsungBrowser) {
+                            presentHelp(() ->
+                                AdblockFastApplication
+                                    .prefs
+                                    .edit()
+                                    .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                                    .apply()
+                            );
+                        } else {
+                            presentHelp(this::onBackPressed);
+                        }
+                    }
+                });
+            } else if (
+                IS_NOTIFICATIONS_PERMISSION_REQUIRED
+                    && AdblockFastApplication
+                        .prefs
+                        .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
+            ) {
+                presentNotificationsOptIn(() -> {
+                    if (hasSamsungBrowser) {
+                        presentHelp(() ->
+                            AdblockFastApplication
+                                .prefs
+                                .edit()
+                                .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                                .apply()
+                        );
+                    } else {
+                        presentHelp(this::onBackPressed);
+                    }
+                });
+            } else {
+                if (hasSamsungBrowser) {
+                    presentHelp(() ->
+                        AdblockFastApplication
+                            .prefs
+                            .edit()
+                            .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                            .apply()
+                    );
+                } else {
+                    presentHelp(this::onBackPressed);
+                }
+            }
+        } else if (!hasSamsungBrowser) {
+            presentHelp(this::onBackPressed);
+        }
+    }
+
+    // TODO: Refactor subscription methods
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_ACCOUNT_INTENT) {
+            if (data != null) {
+                String email = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+
+                if (email != null) {
+                    new Thread(() -> {
+                        try {
+                            URL url = new URL(BuildConfig.SUBSCRIBE_URL);
+                            HttpURLConnection req = (HttpURLConnection) url.openConnection();
+
+                            req.setRequestMethod("POST");
+                            req.setRequestProperty(
+                                "Content-Type", "application/json;charset=UTF-8"
+                            );
+                            req.setRequestProperty("Accept", "application/json");
+                            req.setDoOutput(true);
+                            req.setDoInput(true);
+
+                            JSONObject params = new JSONObject();
+                            params.put("email", email);
+
+                            DataOutputStream os = new DataOutputStream(req.getOutputStream());
+                            os.writeBytes(params.toString());
+
+                            os.flush();
+                            os.close();
+
+                            req.disconnect();
+
+                            AdblockFastApplication
+                                .prefs
+                                .edit()
+                                .putBoolean(RETRIEVED_ACCOUNT_PREF, true)
+                                .apply();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
+                }
+            }
+
+            detectSamsungBrowser();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_PERMISSION_GET_ACCOUNTS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
+                getAccounts();
+            } else {
+                Toast.makeText(MainActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+            }
+
+            getAccounts();
+        }
+    }
+
+    void checkAccountPermission() {
+        if (AdblockFastApplication.prefs.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
+
+        if (
+            ContextCompat.checkSelfPermission(
+                this, Manifest.permission.GET_ACCOUNTS
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
+            getAccounts();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (
+                ActivityCompat
+                    .shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)
+            ) {
+                showAccountPermissionAlert();
+            } else {
+                requestPermissions(
+                    new String[] { Manifest.permission.GET_ACCOUNTS },
+                    REQUEST_PERMISSION_GET_ACCOUNTS
+                );
+            }
+        }
+    }
+
+    void getAccounts() {
+        ActivityResultLauncher<Intent> launcher =
+            registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), (result) -> {
+                    /* TODO: If “result.getResultCode() == Activity.RESULT_OK)”, “result.getData()”
+                             contains retrieved account info */
+                }
+            );
+        Intent intent =
+            AccountPicker.newChooseAccountIntent(
+                new AccountPicker
+                    .AccountChooserOptions
+                    .Builder()
+                    .setAllowableAccountsTypes(Collections.singletonList("com.google"))
+                    .build()
+            );
+
+        launcher.launch(intent);
+    }
+
+    void showAccountPermissionAlert() {
+        new AlertDialog
+            .Builder(this)
+            .setTitle("Permission needed")
+            .setMessage("Get email address")
+            .setPositiveButton(android.R.string.ok, (d, w) -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(
+                        new String[] { Manifest.permission.GET_ACCOUNTS },
+                        REQUEST_PERMISSION_GET_ACCOUNTS
+                    );
+                }
+            })
+            .create()
+            .show();
+    }
 }
