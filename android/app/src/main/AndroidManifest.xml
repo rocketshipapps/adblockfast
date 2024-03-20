@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
         <provider
+            android:name=".contentBlocker.contentProvider.BlockerProvider"
             android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
-            android:name=".contentBlocker.contentProvider.FilterContentProvider"
             android:exported="true" />
         <meta-data
             android:name="com.samsung.android.sbrowser.contentBlocker.interfaceVersion"

@@ -15,7 +15,7 @@ import java.util.Objects;
 
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
-public class FilterContentProvider extends ContentProvider {
+public class BlockerProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         return false;
