@@ -630,7 +630,12 @@ public class MainActivity extends AppCompatActivity {
                     presentHelp(this::onBackPressed);
                 }
             }
-        } else if (!hasSamsungBrowser) {
+        } else if (
+            !hasSamsungBrowser &&
+                !AdblockFastApplication
+                    .prefs
+                    .getBoolean(AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false)
+        ) {
             presentHelp(this::onBackPressed);
         }
     }
