@@ -13,9 +13,9 @@ public class UpdateReceiver extends BroadcastReceiver {
         Uri data = intent.getData();
 
         if (
-            "android.intent.action.PACKAGE_REPLACED".equals(intent.getAction())
-                && data != null
-                && context.getPackageName().equals(data.getSchemeSpecificPart())
+            "android.intent.action.PACKAGE_REPLACED".equals(intent.getAction()) &&
+                data != null &&
+                context.getPackageName().equals(data.getSchemeSpecificPart())
         ) {
             AdblockFastApplication.dumpPrefs();
             AdblockFastApplication.updateLegacyPrefs(context);

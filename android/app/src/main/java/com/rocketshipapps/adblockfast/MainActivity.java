@@ -293,6 +293,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
+        hasSamsungBrowser =
+            hasSamsungBrowser ||
+                AdblockFastApplication.prefs.getBoolean(
+                    AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false
+                );
         Dialog help = presentDialog(R.layout.help_dialog);
         TextView summaryText = help.findViewById(R.id.summary_text);
         TextView detailsText = help.findViewById(R.id.details_text);
@@ -307,11 +312,15 @@ public class MainActivity extends AppCompatActivity {
                 Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
             });
         } else {
+            TextView overrideText = help.findViewById(R.id.override_text);
             TextView defaultText = help.findViewById(R.id.default_text);
             TextView upgradeText = help.findViewById(R.id.upgrade_text);
+            SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
 
             summaryText.setText(R.string.install_summary);
             setHtml(detailsText, R.string.install_details, true);
+            setHtml(overrideText, R.string.install_override, false);
+            overrideText.setVisibility(View.VISIBLE);
             help.findViewById(R.id.mode_container).setVisibility(View.VISIBLE);
             setHtml(defaultText, R.string.default_link, false);
             setHtml(upgradeText, R.string.upgrade_link, false);
@@ -320,6 +329,21 @@ public class MainActivity extends AppCompatActivity {
                 upgradeText.setTypeface(emphasisFont);
                 defaultText.setTypeface(bodyFont);
             }
+
+            overrideText.setOnClickListener((v) -> {
+                editor
+                    .putBoolean(AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true)
+                    .apply();
+                help.dismiss();
+                Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
+                presentHelp(() ->
+                    AdblockFastApplication
+                        .prefs
+                        .edit()
+                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                        .apply()
+                );
+            });
 
             defaultText.setOnClickListener((w) -> {
                 AdblockFastApplication.massiveClient.stop();
@@ -341,7 +365,8 @@ public class MainActivity extends AppCompatActivity {
         setHtml(help.findViewById(R.id.contact_text), R.string.contact_info, true);
 
         if (continuationHandler != null) {
-            if (hasSamsungBrowser) dismissButton.setText(R.string.continue_label);
+            dismissButton
+                .setText(hasSamsungBrowser ? R.string.continue_label : R.string.dismiss_label);
 
             dismissButton.setOnClickListener((v) -> {
                 help.dismiss();
@@ -349,6 +374,8 @@ public class MainActivity extends AppCompatActivity {
                 continuationHandler.run();
             });
         } else {
+            dismissButton.setText(R.string.dismiss_label);
+
             dismissButton.setOnClickListener((v) -> {
                 help.dismiss();
                 Plausible.INSTANCE.event("Dismiss", "/help", "", null);
@@ -567,8 +594,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             } else if (
-                IS_NOTIFICATIONS_PERMISSION_REQUIRED
-                    && AdblockFastApplication
+                IS_NOTIFICATIONS_PERMISSION_REQUIRED &&
+                    AdblockFastApplication
                         .prefs
                         .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
             ) {

@@ -39,6 +39,8 @@ public class AdblockFastApplication extends Application {
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
     public static final String ARE_NOTIFICATIONS_ALLOWED_KEY = "are_notifications_allowed";
+    public static final String SHOULD_OVERRIDE_BROWSER_DETECTION_KEY =
+        "should_override_browser_detection";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
     public static final Intent SAMSUNG_BROWSER_INTENT =

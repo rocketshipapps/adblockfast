@@ -26,11 +26,17 @@
         blockers</u></font> then toggle <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to
         this app then tap the Adblock Fast logo.]]>
     </string>
-    <string name="install_summary">Adblock Fast requires Samsung Internet 4.0+.</string>
+    <string name="install_summary">
+        Adblock Fast requires Samsung Internet 4.0+, which you don’t seem to have.
+    </string>
     <string name="install_details">
         <![CDATA[Install or update to the latest version of the <a
         href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
         Internet browser</a> then come back to this app for instructions on how to block ads.]]>
+    </string>
+    <string name="install_override">
+        <![CDATA[If you do have Samsung Internet 4.0+ installed, <font color="#de0421"><u>dismiss
+        this dialog permanently</u></font> to finish setting Adblock Fast up.]]>
     </string>
     <string name="notifications_request">
         <![CDATA[Adblock Fast should also be kept up to date to block new ad types.<br><br>Would you
