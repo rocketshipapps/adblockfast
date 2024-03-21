@@ -27,7 +27,7 @@ android {
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
         versionName "2.4.0"
-        versionCode 12
+        versionCode 11
         minSdkVersion 21
         targetSdkVersion 33
         manifestPlaceholders = [
