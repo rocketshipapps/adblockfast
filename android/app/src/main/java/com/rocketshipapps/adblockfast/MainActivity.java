@@ -110,7 +110,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         detectSamsungBrowser();
-        if (Ruleset.isUpgraded()) AdblockFastApplication.massiveClient.start();
+
+        if (AdblockFastApplication.massiveClient == null) {
+            AdblockFastApplication.initMassive(this);
+        } else if (Ruleset.isUpgraded()) {
+            AdblockFastApplication.massiveClient.start();
+        }
 
         if (Ruleset.isEnabled()) {
             animateBlocking(this::onboardUser);

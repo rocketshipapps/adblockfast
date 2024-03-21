@@ -72,37 +72,7 @@ public class AdblockFastApplication extends Application {
         initPrefs();
         dumpPrefs();
 
-        MassiveClient.Companion.getInstance(this, (client) -> {
-            massiveClient = client;
-
-            if (client.getState() == State.NotInitialized) {
-                client.initAsync(
-                    BuildConfig.MASSIVE_API_TOKEN,
-                    new MassiveOptions(
-                        MassiveServiceType.Foreground,
-                        new MassiveNotificationOptions(
-                            getString(R.string.name),
-                            getString(R.string.foreground_text),
-                            R.drawable.icon
-                        )
-                    ),
-                    new InitCallback() {
-                        @Override
-                        public void onSuccess() {
-                            if (Ruleset.isUpgraded()) client.start();
-                            Plausible.INSTANCE.event("Succeed", "/massive", "", null);
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull String message) {
-                            Plausible.INSTANCE.event("Fail", "/massive", "", null);
-                        }
-                    }
-                );
-            }
-
-            return Unit.INSTANCE;
-        });
+        initMassive(this);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
@@ -167,5 +137,39 @@ public class AdblockFastApplication extends Application {
         for (Map.Entry<String, ?> entry : entries.entrySet()) {
             Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
         }
+    }
+
+    public static void initMassive(Context context) {
+        MassiveClient.Companion.getInstance(context, (client) -> {
+            massiveClient = client;
+
+            if (client.getState() == State.NotInitialized) {
+                client.initAsync(
+                    BuildConfig.MASSIVE_API_TOKEN,
+                    new MassiveOptions(
+                        MassiveServiceType.Foreground,
+                        new MassiveNotificationOptions(
+                            context.getString(R.string.name),
+                            context.getString(R.string.foreground_text),
+                            R.drawable.icon
+                        )
+                    ),
+                    new InitCallback() {
+                        @Override
+                        public void onSuccess() {
+                            if (Ruleset.isUpgraded()) client.start();
+                            Plausible.INSTANCE.event("Succeed", "/massive", "", null);
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull String message) {
+                            Plausible.INSTANCE.event("Fail", "/massive", "", null);
+                        }
+                    }
+                );
+            }
+
+            return Unit.INSTANCE;
+        });
     }
 }
