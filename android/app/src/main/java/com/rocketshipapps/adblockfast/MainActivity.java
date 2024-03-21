@@ -391,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
-        if (dialog != null && dialog.isShowing()) dialog.dismiss();
+        if (dialog != null) dialog.dismiss();
 
         dialog = new Dialog(this);
         Window window = dialog.getWindow();
