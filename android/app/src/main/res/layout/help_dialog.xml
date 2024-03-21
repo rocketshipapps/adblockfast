@@ -27,15 +27,6 @@
             android:textColor="@android:color/white"
             android:textColorLink="@color/highlight"
             style="@style/Body" />
-        <TextView
-            android:id="@+id/override_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/vertical_spacing"
-            android:text="@null"
-            android:textColor="@android:color/white"
-            android:visibility="gone"
-            style="@style/Body" />
         <LinearLayout
             android:id="@+id/mode_container"
             android:layout_width="wrap_content"
@@ -69,6 +60,15 @@
                 android:textColor="@android:color/white"
                 style="@style/Body" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/override_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_spacing"
+            android:text="@null"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            style="@style/Body" />
         <TextView
             android:id="@+id/contact_text"
             android:layout_width="wrap_content"

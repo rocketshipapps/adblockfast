@@ -34,10 +34,6 @@
         href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
         Internet browser</a> then come back to this app for instructions on how to block ads.]]>
     </string>
-    <string name="install_override">
-        <![CDATA[If you do have Samsung Internet 4.0+ installed, <font color="#de0421"><u>dismiss
-        this dialog permanently</u></font> to finish setting Adblock Fast up.]]>
-    </string>
     <string name="notifications_request">
         <![CDATA[Adblock Fast should also be kept up to date to block new ad types.<br><br>Would you
         like to be notified (infrequently) as soon as important updates are available<i>?</i>]]>
@@ -47,6 +43,10 @@
     <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>
     <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>Faster</u></font>]]></string>
     <string name="mode_separator">\u0020·\u0020</string>
+    <string name="install_override">
+        <![CDATA[If you do have Samsung Internet 4.0+, <font color="#de0421"><u>dismiss this dialog
+        permanently</u></font> to finish your setup.]]>
+    </string>
     <string name="contact_info">
         <![CDATA[If you have any questions or comments, follow and message
         <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a

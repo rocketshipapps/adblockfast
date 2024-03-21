@@ -317,38 +317,23 @@ public class MainActivity extends AppCompatActivity {
                 Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
             });
         } else {
-            TextView overrideText = help.findViewById(R.id.override_text);
             TextView defaultText = help.findViewById(R.id.default_text);
             TextView upgradeText = help.findViewById(R.id.upgrade_text);
+            TextView overrideText = help.findViewById(R.id.override_text);
             SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
 
             summaryText.setText(R.string.install_summary);
             setHtml(detailsText, R.string.install_details, true);
-            setHtml(overrideText, R.string.install_override, false);
-            overrideText.setVisibility(View.VISIBLE);
             help.findViewById(R.id.mode_container).setVisibility(View.VISIBLE);
             setHtml(defaultText, R.string.default_link, false);
             setHtml(upgradeText, R.string.upgrade_link, false);
+            setHtml(overrideText, R.string.install_override, false);
+            overrideText.setVisibility(View.VISIBLE);
 
             if (Ruleset.isUpgraded()) {
                 upgradeText.setTypeface(emphasisFont);
                 defaultText.setTypeface(bodyFont);
             }
-
-            overrideText.setOnClickListener((v) -> {
-                editor
-                    .putBoolean(AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true)
-                    .apply();
-                help.dismiss();
-                Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
-                presentHelp(() ->
-                    AdblockFastApplication
-                        .prefs
-                        .edit()
-                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                        .apply()
-                );
-            });
 
             defaultText.setOnClickListener((w) -> {
                 AdblockFastApplication.massiveClient.stop();
@@ -364,6 +349,21 @@ public class MainActivity extends AppCompatActivity {
                 upgradeText.setTypeface(emphasisFont);
                 defaultText.setTypeface(bodyFont);
                 Plausible.INSTANCE.event("Upgrade", "/help", "", null);
+            });
+
+            overrideText.setOnClickListener((v) -> {
+                editor
+                    .putBoolean(AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true)
+                    .apply();
+                help.dismiss();
+                Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
+                presentHelp(() ->
+                    AdblockFastApplication
+                        .prefs
+                        .edit()
+                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
+                        .apply()
+                );
             });
         }
 
