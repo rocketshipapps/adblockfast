@@ -625,12 +625,12 @@
                                    overlayHeight:height
                                       frameWidth:frameWidth];
         [_notificationOverlay addSubview:allowButton];
-        [denyButton addGestureRecognizer:
-            [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(denyNotifications)]];
-        [allowButton addGestureRecognizer:
-            [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(allowNotifications)]];
+//        [denyButton addGestureRecognizer:
+//            [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                    action:@selector(denyNotifications)]];
+//        [allowButton addGestureRecognizer:
+//            [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                    action:@selector(allowNotifications)]];
     }
 
     return _notificationOverlay;
