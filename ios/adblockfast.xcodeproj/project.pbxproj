@@ -71,7 +71,6 @@
 		CD2B5C511C4CC93600C7B550 /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */; };
 		CD2B5C521C4CC93600C7B550 /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */; };
 		CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */; };
-		CD38E5691D70473F00EA2220 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD38E5681D70473F00EA2220 /* OneSignal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,7 +194,6 @@
 		CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-13.pdf"; sourceTree = "<group>"; };
 		CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-14.pdf"; sourceTree = "<group>"; };
 		CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-15.pdf"; sourceTree = "<group>"; };
-		CD38E5681D70473F00EA2220 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +211,6 @@
 				8378FCE81BCBEF8800E0D0D9 /* QuartzCore.framework in Frameworks */,
 				8378FCE61BCBEF8100E0D0D9 /* CoreLocation.framework in Frameworks */,
 				8378FCE21BCBEF7400E0D0D9 /* CFNetwork.framework in Frameworks */,
-				CD38E5691D70473F00EA2220 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +378,6 @@
 				8378FCE71BCBEF8800E0D0D9 /* QuartzCore.framework */,
 				8378FCE51BCBEF8100E0D0D9 /* CoreLocation.framework */,
 				8378FCE11BCBEF7400E0D0D9 /* CFNetwork.framework */,
-				CD38E5681D70473F00EA2220 /* OneSignal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -473,7 +469,6 @@
 				TargetAttributes = {
 					4A30CE6C1BA3F50F00465842 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = X3GWZFREMG;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -794,7 +789,7 @@
 				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				DEVELOPMENT_TEAM = N6ACJPNW7J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -820,7 +815,7 @@
 				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				DEVELOPMENT_TEAM = N6ACJPNW7J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -830,6 +825,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketshipapps.adblockfast;
 				PRODUCT_NAME = "$(TARGET_NAME)";

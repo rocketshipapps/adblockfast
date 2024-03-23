@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <OneSignal/OneSignal.h>
+//#import <OneSignal/OneSignal.h>
 #import "Constants.h"
 
 @interface AppDelegate ()
@@ -33,10 +33,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [OneSignal initWithLaunchOptions:launchOptions
-                               appId:@"0490dddc-22c0-47b8-b9b2-26bfa035ce0c"
-            handleNotificationAction:nil
-                            settings:@{kOSSettingsKeyAutoPrompt: @NO}];
+//    [OneSignal initWithLaunchOptions:launchOptions
+//                               appId:@"0490dddc-22c0-47b8-b9b2-26bfa035ce0c"
+//            handleNotificationAction:nil
+//                            settings:@{kOSSettingsKeyAutoPrompt: @NO}];
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }

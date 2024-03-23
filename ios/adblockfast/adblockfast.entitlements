@@ -5,8 +5,6 @@
 	<key>aps-environment</key>
 	<string>development</string>
 	<key>com.apple.security.application-groups</key>
-	<array>
-		<string>group.com.rocketshipapps.blocker</string>
-	</array>
+	<array/>
 </dict>
 </plist>

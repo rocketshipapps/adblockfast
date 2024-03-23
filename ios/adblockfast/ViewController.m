@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import <SafariServices/SFContentBlockerManager.h>
-#import <OneSignal/OneSignal.h>
+//#import <OneSignal/OneSignal.h>
 #import "Constants.h"
 #import "StatusLabel.h"
 #import "ActionLabel.h"
@@ -262,23 +262,23 @@
 
 - (void)openHelp { [self.helpOverlay open]; }
 
-- (void)denyNotifications
-{
-    if (![self.preferences boolForKey:BLOCKER_PERMISSION_KEY]) [self openHelp];
-    else [self.notificationOverlay close];
-}
-
-- (void)allowNotifications
-{
-    [self.preferences setBool:YES forKey:NOTIFICATION_PERMISSION_KEY];
-    [self.notificationOverlay close];
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
-        dispatch_after(
-                       dispatch_time(DISPATCH_TIME_NOW, MEDIUM_DURATION * NSEC_PER_SEC),
-                       dispatch_get_main_queue(),
-                       ^{ [OneSignal registerForPushNotifications]; }
-                       );
-}
+//- (void)denyNotifications
+//{
+//    if (![self.preferences boolForKey:BLOCKER_PERMISSION_KEY]) [self openHelp];
+//    else [self.notificationOverlay close];
+//}
+//
+//- (void)allowNotifications
+//{
+//    [self.preferences setBool:YES forKey:NOTIFICATION_PERMISSION_KEY];
+//    [self.notificationOverlay close];
+//    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+//        dispatch_after(
+//                       dispatch_time(DISPATCH_TIME_NOW, MEDIUM_DURATION * NSEC_PER_SEC),
+//                       dispatch_get_main_queue(),
+//                       ^{ [OneSignal registerForPushNotifications]; }
+//                       );
+//}
 
 - (void)closeHelp { [self.helpOverlay close]; }
 
