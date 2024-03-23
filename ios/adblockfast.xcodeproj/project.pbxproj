@@ -71,6 +71,7 @@
 		CD2B5C511C4CC93600C7B550 /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */; };
 		CD2B5C521C4CC93600C7B550 /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */; };
 		CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */; };
+		DDC1A17B2BAF800600CCF354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-13.pdf"; sourceTree = "<group>"; };
 		CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-14.pdf"; sourceTree = "<group>"; };
 		CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-15.pdf"; sourceTree = "<group>"; };
+		DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 				4A30CE811BA3F50F00465842 /* Info.plist */,
 				4A45501D1BA40424002C0CAD /* Defaults.plist */,
 				4A30CE701BA3F50F00465842 /* Supporting Files */,
+				DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */,
 			);
 			path = adblockfast;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */,
 				CD2B5C261C4CC82600C7B550 /* blocked-2.pdf in Resources */,
 				CD2B5C321C4CC82600C7B550 /* blocked-14.pdf in Resources */,
+				DDC1A17B2BAF800600CCF354 /* LaunchScreen.storyboard in Resources */,
 				CD2B5C2A1C4CC82600C7B550 /* blocked-6.pdf in Resources */,
 				4A79E3641BA3FDC300A8388C /* AvenirNextLTPro-Light.otf in Resources */,
 				CD2B5C2E1C4CC82600C7B550 /* blocked-10.pdf in Resources */,
@@ -785,7 +789,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -811,7 +815,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = adblockfast/adblockfast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
