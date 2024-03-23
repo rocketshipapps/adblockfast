@@ -1,3 +1,5 @@
 google-services.json
 *.pem
 builds/adblockfast
+.DS_Store
+xcuserdata
