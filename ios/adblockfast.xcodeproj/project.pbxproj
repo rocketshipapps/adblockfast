@@ -12,7 +12,6 @@
 		4A30CE781BA3F50F00465842 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE771BA3F50F00465842 /* ViewController.m */; };
 		4A30CE7B1BA3F50F00465842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CE791BA3F50F00465842 /* Main.storyboard */; };
 		4A30CE7D1BA3F50F00465842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CE7C1BA3F50F00465842 /* Assets.xcassets */; };
-		4A30CE801BA3F50F00465842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */; };
 		4A30CE8B1BA3F50F00465842 /* adblockfastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE8A1BA3F50F00465842 /* adblockfastTests.m */; };
 		4A30CE961BA3F50F00465842 /* adblockfastUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30CE951BA3F50F00465842 /* adblockfastUITests.m */; };
 		4A30CEAA1BA3F59E00465842 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A30CEA91BA3F59E00465842 /* blockerList.json */; };
@@ -121,7 +120,6 @@
 		4A30CE771BA3F50F00465842 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4A30CE7A1BA3F50F00465842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A30CE7C1BA3F50F00465842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4A30CE7F1BA3F50F00465842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A30CE811BA3F50F00465842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A30CE861BA3F50F00465842 /* adblockfastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adblockfastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A30CE8A1BA3F50F00465842 /* adblockfastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = adblockfastTests.m; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 				4A30CE811BA3F50F00465842 /* Info.plist */,
 				4A45501D1BA40424002C0CAD /* Defaults.plist */,
 				4A30CE701BA3F50F00465842 /* Supporting Files */,
-				DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */,
 			);
 			path = adblockfast;
 			sourceTree = "<group>";
@@ -297,8 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				4A30CE711BA3F50F00465842 /* main.m */,
-				4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */,
 				4A30CE791BA3F50F00465842 /* Main.storyboard */,
+				DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */,
 				4A79E3611BA3FDB600A8388C /* Andrew Footit - Hudson NY.otf */,
 				4A79E3631BA3FDC300A8388C /* AvenirNextLTPro-Light.otf */,
 				CD2B5C141C4CC82600C7B550 /* blocked-0.pdf */,
@@ -527,7 +524,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD2B5C4F1C4CC93600C7B550 /* unblocked-11.pdf in Resources */,
-				4A30CE801BA3F50F00465842 /* LaunchScreen.storyboard in Resources */,
 				CD2B5C4E1C4CC93600C7B550 /* unblocked-10.pdf in Resources */,
 				CD2B5C2C1C4CC82600C7B550 /* blocked-8.pdf in Resources */,
 				CD2B5C281C4CC82600C7B550 /* blocked-4.pdf in Resources */,
@@ -662,14 +658,6 @@
 				4A30CE7A1BA3F50F00465842 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4A30CE7E1BA3F50F00465842 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4A30CE7F1BA3F50F00465842 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
