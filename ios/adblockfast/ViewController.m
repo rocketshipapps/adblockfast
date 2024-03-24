@@ -40,6 +40,10 @@
 #define DENY_LABEL @"Not now"
 #define ALLOW_LABEL @"Okay"
 #define CLOSE_LABEL @"Okay"
+#define ALLOW_CANCEL @"Fast"
+#define CLOSE_CANCEL @"Fast"
+#define ALLOW_UPGRADE @"Faster"
+#define CLOSE_UPGRADE @"Faster"
 #define OVERLAY_LINE_SPACING 2
 #define LIGHT_COLOR_R (255. / 255)
 #define LIGHT_COLOR_G (255. / 255)

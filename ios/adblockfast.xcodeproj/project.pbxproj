@@ -70,6 +70,8 @@
 		CD2B5C511C4CC93600C7B550 /* unblocked-13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */; };
 		CD2B5C521C4CC93600C7B550 /* unblocked-14.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */; };
 		CD2B5C531C4CC93600C7B550 /* unblocked-15.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */; };
+		DD80A6DF2BB0398C00271086 /* Massive.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD80A6DD2BB0397600271086 /* Massive.xcframework */; };
+		DD80A6E02BB0398C00271086 /* Massive.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD80A6DD2BB0397600271086 /* Massive.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DDC1A17B2BAF800600CCF354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +109,17 @@
 				4A30CEB11BA3F59E00465842 /* blocker.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD80A6E12BB0398C00271086 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DD80A6E02BB0398C00271086 /* Massive.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -193,6 +206,7 @@
 		CD2B5C411C4CC93600C7B550 /* unblocked-13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-13.pdf"; sourceTree = "<group>"; };
 		CD2B5C421C4CC93600C7B550 /* unblocked-14.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-14.pdf"; sourceTree = "<group>"; };
 		CD2B5C431C4CC93600C7B550 /* unblocked-15.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "unblocked-15.pdf"; sourceTree = "<group>"; };
+		DD80A6DD2BB0397600271086 /* Massive.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Massive.xcframework; sourceTree = SOURCE_ROOT; };
 		DDC1A17A2BAF800600CCF354 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +218,7 @@
 				83590EA81BDEA24A00CA224E /* AudioToolbox.framework in Frameworks */,
 				83590EA61BDEA23B00CA224E /* libsqlite3.0.tbd in Frameworks */,
 				8378FCF41BCBEFCA00E0D0D9 /* Accounts.framework in Frameworks */,
+				DD80A6DF2BB0398C00271086 /* Massive.xcframework in Frameworks */,
 				8378FCF01BCBEFA200E0D0D9 /* libz.tbd in Frameworks */,
 				8378FCEE1BCBEF9700E0D0D9 /* SystemConfiguration.framework in Frameworks */,
 				8378FCEC1BCBEF9200E0D0D9 /* StoreKit.framework in Frameworks */,
@@ -282,6 +297,7 @@
 				4AE9A81C1BCA020D004D5899 /* OverlayButton.m */,
 				4A30CE761BA3F50F00465842 /* ViewController.h */,
 				4A30CE771BA3F50F00465842 /* ViewController.m */,
+				DD80A6DD2BB0397600271086 /* Massive.xcframework */,
 				4A30CE7C1BA3F50F00465842 /* Assets.xcassets */,
 				4A30CE811BA3F50F00465842 /* Info.plist */,
 				4A45501D1BA40424002C0CAD /* Defaults.plist */,
@@ -393,6 +409,7 @@
 				4A30CE6A1BA3F50F00465842 /* Frameworks */,
 				4A30CE6B1BA3F50F00465842 /* Resources */,
 				4A30CEB51BA3F59E00465842 /* Embed Foundation Extensions */,
+				DD80A6E12BB0398C00271086 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
