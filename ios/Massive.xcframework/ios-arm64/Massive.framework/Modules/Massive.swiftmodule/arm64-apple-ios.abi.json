@@ -1,0 +1,1062 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "BackgroundTasks",
+        "printedName": "BackgroundTasks",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MassiveStatus",
+        "printedName": "MassiveStatus",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "uninitialized",
+            "printedName": "uninitialized",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus.Type) -> Massive.MassiveStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveStatus",
+                    "printedName": "Massive.MassiveStatus",
+                    "usr": "s:7Massive0A6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Massive.MassiveStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7Massive0A6StatusO13uninitializedyA2CmF",
+            "mangledName": "$s7Massive0A6StatusO13uninitializedyA2CmF",
+            "moduleName": "Massive"
+          },
+          {
+            "kind": "Var",
+            "name": "initializing",
+            "printedName": "initializing",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus.Type) -> Massive.MassiveStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveStatus",
+                    "printedName": "Massive.MassiveStatus",
+                    "usr": "s:7Massive0A6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Massive.MassiveStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7Massive0A6StatusO12initializingyA2CmF",
+            "mangledName": "$s7Massive0A6StatusO12initializingyA2CmF",
+            "moduleName": "Massive"
+          },
+          {
+            "kind": "Var",
+            "name": "initialized",
+            "printedName": "initialized",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus.Type) -> Massive.MassiveStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveStatus",
+                    "printedName": "Massive.MassiveStatus",
+                    "usr": "s:7Massive0A6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Massive.MassiveStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7Massive0A6StatusO11initializedyA2CmF",
+            "mangledName": "$s7Massive0A6StatusO11initializedyA2CmF",
+            "moduleName": "Massive"
+          },
+          {
+            "kind": "Var",
+            "name": "started",
+            "printedName": "started",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus.Type) -> Massive.MassiveStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveStatus",
+                    "printedName": "Massive.MassiveStatus",
+                    "usr": "s:7Massive0A6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Massive.MassiveStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7Massive0A6StatusO7startedyA2CmF",
+            "mangledName": "$s7Massive0A6StatusO7startedyA2CmF",
+            "moduleName": "Massive"
+          },
+          {
+            "kind": "Var",
+            "name": "stoped",
+            "printedName": "stoped",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus.Type) -> Massive.MassiveStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveStatus",
+                    "printedName": "Massive.MassiveStatus",
+                    "usr": "s:7Massive0A6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Massive.MassiveStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7Massive0A6StatusO6stopedyA2CmF",
+            "mangledName": "$s7Massive0A6StatusO6stopedyA2CmF",
+            "moduleName": "Massive"
+          },
+          {
+            "kind": "Var",
+            "name": "error",
+            "printedName": "error",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus.Type) -> Massive.MassiveStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveStatus",
+                    "printedName": "Massive.MassiveStatus",
+                    "usr": "s:7Massive0A6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Massive.MassiveStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7Massive0A6StatusO5erroryA2CmF",
+            "mangledName": "$s7Massive0A6StatusO5erroryA2CmF",
+            "moduleName": "Massive"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MassiveStatus",
+                "printedName": "Massive.MassiveStatus",
+                "usr": "s:7Massive0A6StatusO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MassiveStatus",
+                "printedName": "Massive.MassiveStatus",
+                "usr": "s:7Massive0A6StatusO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Massive0A6StatusO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s7Massive0A6StatusO2eeoiySbAC_ACtFZ",
+            "moduleName": "Massive",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7Massive0A6StatusO9hashValueSivp",
+            "mangledName": "$s7Massive0A6StatusO9hashValueSivp",
+            "moduleName": "Massive",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Massive0A6StatusO9hashValueSivg",
+                "mangledName": "$s7Massive0A6StatusO9hashValueSivg",
+                "moduleName": "Massive",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Massive0A6StatusO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s7Massive0A6StatusO4hash4intoys6HasherVz_tF",
+            "moduleName": "Massive",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:7Massive0A6StatusO",
+        "mangledName": "$s7Massive0A6StatusO",
+        "moduleName": "Massive",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MassiveClient",
+        "printedName": "MassiveClient",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MassiveClient",
+                "printedName": "Massive.MassiveClient",
+                "usr": "s:7Massive0A6ClientC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7Massive0A6ClientC6sharedACvpZ",
+            "mangledName": "$s7Massive0A6ClientC6sharedACvpZ",
+            "moduleName": "Massive",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MassiveClient",
+                    "printedName": "Massive.MassiveClient",
+                    "usr": "s:7Massive0A6ClientC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Massive0A6ClientC6sharedACvgZ",
+                "mangledName": "$s7Massive0A6ClientC6sharedACvgZ",
+                "moduleName": "Massive",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "initAsync",
+            "printedName": "initAsync(apiToken:initCallback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Massive.MassiveStatus?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Massive.MassiveStatus?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MassiveStatus",
+                        "printedName": "Massive.MassiveStatus",
+                        "usr": "s:7Massive0A6StatusO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Massive0A6ClientC9initAsync8apiToken0C8CallbackySS_yAA0A6StatusOSgctF",
+            "mangledName": "$s7Massive0A6ClientC9initAsync8apiToken0C8CallbackySS_yAA0A6StatusOSgctF",
+            "moduleName": "Massive",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Massive0A6ClientC5startSbyF",
+            "mangledName": "$s7Massive0A6ClientC5startSbyF",
+            "moduleName": "Massive",
+            "declAttributes": [
+              "AccessControl",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Massive0A6ClientC4stopSbyF",
+            "mangledName": "$s7Massive0A6ClientC4stopSbyF",
+            "moduleName": "Massive",
+            "declAttributes": [
+              "AccessControl",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStatus",
+            "printedName": "getStatus()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MassiveStatus",
+                "printedName": "Massive.MassiveStatus",
+                "usr": "s:7Massive0A6StatusO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Massive0A6ClientC9getStatusAA0aD0OyF",
+            "mangledName": "$s7Massive0A6ClientC9getStatusAA0aD0OyF",
+            "moduleName": "Massive",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:7Massive0A6ClientC",
+        "mangledName": "$s7Massive0A6ClientC",
+        "moduleName": "Massive",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Network",
+        "printedName": "Network",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Network",
+        "printedName": "Network",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Massive"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/utils\/Stopwatch.swift",
+      "kind": "Array",
+      "offset": 214,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/api\/MassiveApi.swift",
+      "kind": "StringLiteral",
+      "offset": 76,
+      "length": 13,
+      "value": "\"\/sdk\/config\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/api\/MassiveApi.swift",
+      "kind": "StringLiteral",
+      "offset": 111,
+      "length": 12,
+      "value": "\"\/telemetry\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/api\/MassiveApi.swift",
+      "kind": "StringLiteral",
+      "offset": 140,
+      "length": 17,
+      "value": "\"\/telemetry\/ping\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/api\/MassiveApi.swift",
+      "kind": "StringLiteral",
+      "offset": 76,
+      "length": 13,
+      "value": "\"\/sdk\/config\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/api\/MassiveApi.swift",
+      "kind": "StringLiteral",
+      "offset": 111,
+      "length": 12,
+      "value": "\"\/telemetry\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/api\/MassiveApi.swift",
+      "kind": "StringLiteral",
+      "offset": 140,
+      "length": 17,
+      "value": "\"\/telemetry\/ping\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Proxy.swift",
+      "kind": "StringLiteral",
+      "offset": 421,
+      "length": 3,
+      "value": "\"1\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Proxy.swift",
+      "kind": "Dictionary",
+      "offset": 519,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/sysinfo\/SystemInfo.swift",
+      "kind": "StringLiteral",
+      "offset": 328,
+      "length": 8,
+      "value": "\"anonId\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/DataUtils.swift",
+      "kind": "IntegerLiteral",
+      "offset": 73,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/DataUtils.swift",
+      "kind": "IntegerLiteral",
+      "offset": 99,
+      "length": 3,
+      "value": "443"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/ActivityReporter.swift",
+      "kind": "FloatLiteral",
+      "offset": 123,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/ActivityReporter.swift",
+      "kind": "FloatLiteral",
+      "offset": 176,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/ActivityReporter.swift",
+      "kind": "BooleanLiteral",
+      "offset": 330,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/ActivityReporter.swift",
+      "kind": "FloatLiteral",
+      "offset": 389,
+      "length": 4,
+      "value": "60.0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/ActivityReporter.swift",
+      "kind": "FloatLiteral",
+      "offset": 461,
+      "length": 6,
+      "value": "3840.0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/ActivityReporter.swift",
+      "kind": "FloatLiteral",
+      "offset": 523,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 432,
+      "length": 6,
+      "value": "\"http\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 456,
+      "length": 7,
+      "value": "\"https\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 432,
+      "length": 6,
+      "value": "\"http\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 456,
+      "length": 7,
+      "value": "\"https\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "BooleanLiteral",
+      "offset": 596,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "Array",
+      "offset": 676,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/ProxyStatsProvider.swift",
+      "kind": "Array",
+      "offset": 699,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/TelemetryMessage.swift",
+      "kind": "StringLiteral",
+      "offset": 279,
+      "length": 17,
+      "value": "\"Massive.SystemInfoMessage\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/telemetry\/TelemetryMessage.swift",
+      "kind": "StringLiteral",
+      "offset": 538,
+      "length": 13,
+      "value": "\"Massive.ActionMessage\""
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 118,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 145,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 171,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 195,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 118,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 145,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 171,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 195,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 118,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 145,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 171,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 195,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 268,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 306,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 333,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 364,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 268,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 306,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 333,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 364,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 268,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 306,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 333,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/diego\/Devel\/massive\/repos\/massivernd\/ios\/Massive\/Massive\/proxy\/Data.swift",
+      "kind": "IntegerLiteral",
+      "offset": 364,
+      "length": 1,
+      "value": "3"
+    }
+  ]
+}

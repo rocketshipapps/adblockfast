@@ -1,0 +1,37 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target x86_64-apple-ios16.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name Massive
+import BackgroundTasks
+import Foundation
+import Network
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum MassiveStatus {
+  case uninitialized
+  case initializing
+  case initialized
+  case started
+  case stoped
+  case error
+  public static func == (a: Massive.MassiveStatus, b: Massive.MassiveStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public typealias InitCallback = (Massive.MassiveStatus?) -> Swift.Void
+@_hasMissingDesignatedInitializers public class MassiveClient {
+  public static let shared: Massive.MassiveClient
+  public func initAsync(apiToken: Swift.String, initCallback: @escaping Massive.InitCallback)
+  @discardableResult
+  public func start() -> Swift.Bool
+  @discardableResult
+  public func stop() -> Swift.Bool
+  public func getStatus() -> Massive.MassiveStatus
+  @objc deinit
+}
+extension Massive.MassiveStatus : Swift.Equatable {}
+extension Massive.MassiveStatus : Swift.Hashable {}

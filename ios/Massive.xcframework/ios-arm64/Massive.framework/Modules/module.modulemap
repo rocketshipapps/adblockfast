@@ -1,0 +1,4 @@
+framework module Massive {
+  header "Massive-Swift.h"
+  requires objc
+}
