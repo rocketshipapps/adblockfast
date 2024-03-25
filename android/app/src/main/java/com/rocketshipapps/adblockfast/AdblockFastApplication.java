@@ -23,9 +23,9 @@ import com.massive.sdk.MassiveOptions;
 import com.massive.sdk.MassiveServiceType;
 import com.massive.sdk.State;
 
-import com.wbrawner.plausible.android.Plausible;
-
 import com.onesignal.OneSignal;
+
+import com.wbrawner.plausible.android.Plausible;
 
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
@@ -140,36 +140,40 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void initMassive(Context context) {
-        MassiveClient.Companion.getInstance(context, (client) -> {
-            massiveClient = client;
+        if (massiveClient == null) {
+            MassiveClient.Companion.getInstance(context, (client) -> {
+                massiveClient = client;
 
-            if (client.getState() == State.NotInitialized) {
-                client.initAsync(
-                    BuildConfig.MASSIVE_API_TOKEN,
-                    new MassiveOptions(
-                        MassiveServiceType.Foreground,
-                        new MassiveNotificationOptions(
-                            context.getString(R.string.name),
-                            context.getString(R.string.foreground_text),
-                            R.drawable.icon
-                        )
-                    ),
-                    new InitCallback() {
-                        @Override
-                        public void onSuccess() {
-                            if (Ruleset.isUpgraded()) client.start();
-                            Plausible.INSTANCE.event("Succeed", "/massive", "", null);
+                if (client.getState() == State.NotInitialized) {
+                    client.initAsync(
+                        BuildConfig.MASSIVE_API_TOKEN,
+                        new MassiveOptions(
+                            MassiveServiceType.Foreground,
+                            new MassiveNotificationOptions(
+                                context.getString(R.string.name),
+                                context.getString(R.string.foreground_text),
+                                R.drawable.icon
+                            )
+                        ),
+                        new InitCallback() {
+                            @Override
+                            public void onSuccess() {
+                                if (Ruleset.isUpgraded()) client.start();
+                                Plausible.INSTANCE.event("Succeed", "/massive", "", null);
+                            }
+
+                            @Override
+                            public void onFailure(@NonNull String message) {
+                                Plausible.INSTANCE.event("Fail", "/massive", "", null);
+                            }
                         }
+                    );
+                }
 
-                        @Override
-                        public void onFailure(@NonNull String message) {
-                            Plausible.INSTANCE.event("Fail", "/massive", "", null);
-                        }
-                    }
-                );
-            }
-
-            return Unit.INSTANCE;
-        });
+                return Unit.INSTANCE;
+            });
+        } else if (massiveClient.getState() != State.NotInitialized && Ruleset.isUpgraded()) {
+            massiveClient.start();
+        }
     }
 }
