@@ -54,10 +54,12 @@ import io.github.inflationx.calligraphy3.TypefaceUtils;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
-import com.wbrawner.plausible.android.Plausible;
+import com.massive.sdk.State;
 
 import com.onesignal.Continue;
 import com.onesignal.OneSignal;
+
+import com.wbrawner.plausible.android.Plausible;
 
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
@@ -114,7 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (AdblockFastApplication.massiveClient == null) {
             AdblockFastApplication.initMassive(this);
-        } else if (Ruleset.isUpgraded()) {
+        } else if (
+            AdblockFastApplication.massiveClient.getState() != State.NotInitialized &&
+                Ruleset.isUpgraded()
+        ) {
             AdblockFastApplication.massiveClient.start();
         }
 
