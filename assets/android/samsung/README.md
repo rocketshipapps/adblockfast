@@ -8,15 +8,15 @@
 
 **Country/region:** USA
 
-**Company address 1:** 340 South Lemon Avenue
+**Company address 1:** 440 North Barranca Avenue
 
 **Company address 2:** 1849
 
-**ZIP/postal code:** 91789
+**ZIP/postal code:** 91723
 
 **State/region:** California
 
-**City:** Walnut
+**City:** Covina
 
 ## Information for seller page
 
@@ -26,8 +26,8 @@
 
 **Introduction:**
 
-Rocketship is an award-winning app studio whose mission is to design and develop the finest mobile
-and web experiences in the universe.
+Rocketship is an award-winning app studio whose mission is to design and develop the finest desktop,
+mobile, and web experiences in the universe.
 
 **Background image:**
 
