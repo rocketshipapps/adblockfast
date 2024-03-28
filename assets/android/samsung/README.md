@@ -36,3 +36,5 @@ mobile, and web experiences in the universe.
 **Profile image:**
 
 ![Profile](profile.jpg)
+
+_Copyright 2016– [Rocketship](https://rocketshipapps.com/). Some rights reserved._
