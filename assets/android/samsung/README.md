@@ -31,8 +31,8 @@ mobile, and web experiences in the universe.
 
 **Background image:**
 
-![Background](background.png)
+![Background](background.jpg)
 
 **Profile image:**
 
-![Profile](profile.png)
+![Profile](profile.jpg)
