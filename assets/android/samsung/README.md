@@ -1,24 +1,24 @@
 # Profile
 
-## Basic Information
+## Basic information
 
-**Company Name:** Rocketship
+**Company name:** Rocketship
 
-**Representative’s Name:** Brian Kennish
+**Representative name:** Brian Kennish
 
-**Country/Region:** USA
+**Country/region:** USA
 
-**Company Address 1:** 340 South Lemon Avenue
+**Company address 1:** 340 South Lemon Avenue
 
-**Company Address 2:** 1849
+**Company address 2:** 1849
 
-**ZIP/Postal Code:** 91789
+**ZIP/postal code:** 91789
 
-**State/Region:** California
+**State/region:** California
 
 **City:** Walnut
 
-## Information for Seller Page
+## Information for seller page
 
 **Home URL:** https://rocketshipapps.com/
 
@@ -29,10 +29,10 @@
 Rocketship is an award-winning app studio whose mission is to design and develop the finest mobile
 and web experiences in the universe.
 
-**Background Image:**
+**Background image:**
 
 ![Background](background.png)
 
-**Profile Image:**
+**Profile image:**
 
 ![Profile](profile.png)
