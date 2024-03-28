@@ -2,7 +2,7 @@
 
 **Description:**
 
-Adblock Fast is a new, faster ad blocker for Android, iOS, Chrome, and Opera.
+Adblock Fast is a faster ad blocker for Windows, Android, iOS, Chrome, and Opera.
 
 **Website:** https://adblockfast.com/
 
