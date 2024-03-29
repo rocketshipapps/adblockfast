@@ -24,3 +24,5 @@ mobile, and web experiences in the universe.
 ![Header](header.png)
 
 **Featured app:** [Adblock Fast](LISTING.md)
+
+_Copyright 2016– [Rocketship](https://rocketshipapps.com/). Some rights reserved._
