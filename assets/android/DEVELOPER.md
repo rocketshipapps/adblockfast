@@ -23,4 +23,4 @@ mobile, and web experiences in the universe.
 
 ![Header](header.png)
 
-**Featured app:** Adblock Fast
+**Featured app:** [Adblock Fast](LISTING.md)
