@@ -5,15 +5,15 @@
 **Physical address:**
 
 Rocketship  
-PO Box 702  
-Palo Alto, California 94301
+440 North Barranca Avenue #1849  
+Covina, California 91723
 
 **Promotional text:**
 
-Rocketship is an award-winning app studio whose mission is to design and develop the finest mobile
-and web experiences in the universe.
+Rocketship is an award-winning app studio whose mission is to craft the finest desktop, mobile, and
+web experiences in the universe.
 
-**Website address:** http://rocketshipapps.com/
+**Website address:** https://rocketshipapps.com/
 
 **Developer icon:**
 
