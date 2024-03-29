@@ -10,8 +10,8 @@ Covina, California 91723
 
 **Promotional text:**
 
-Rocketship is an award-winning app studio whose mission is to craft the finest desktop, mobile, and
-web experiences in the universe.
+Rocketship is an award-winning app studio whose mission is to design and develop the finest desktop,
+mobile, and web experiences in the universe.
 
 **Website address:** https://rocketshipapps.com/
 
