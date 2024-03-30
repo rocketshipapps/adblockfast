@@ -17,7 +17,7 @@ mobile, and web experiences in the universe.
 
 **Developer icon:**
 
-![Icon](developer-icon.png)
+![Icon](icons/developer.png)
 
 **Header image:**
 

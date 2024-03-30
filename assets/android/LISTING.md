@@ -36,7 +36,7 @@ If you have any questions or comments, follow and message us:
 
 **App icon:**
 
-![Icon](icon.png)
+![Icon](icons/app.png)
 
 **Feature graphic:**
 
