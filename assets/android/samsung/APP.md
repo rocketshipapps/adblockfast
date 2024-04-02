@@ -41,7 +41,7 @@ If you have any questions or comments, follow and message us:
 
 ![Feature](feature.png)
 
-**Category:** Decoration
+**Category:** Tool
 
 **Age restriction:** 0+
 
