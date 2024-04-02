@@ -36,7 +36,7 @@ If you have any questions or comments, follow and message us:
 
 **App icon:**
 
-![Icon](icons/app.png)
+![Icon](samsung/icons/app.png)
 
 **Feature graphic:**
 
@@ -48,10 +48,10 @@ If you have any questions or comments, follow and message us:
 
 **Screenshots:**
 
-![Block ads free](screenshots/blocking.png)
+![Block ads free](samsung/screenshots/blocking.png)
 
-![Load webpages faster](screenshots/loading.png)
+![Load webpages faster](samsung/screenshots/loading.png)
 
-![Tap to unblock](screenshots/unblocking.png)
+![Tap to unblock](samsung/screenshots/unblocking.png)
 
 _Copyright 2016– [Rocketship](https://rocketshipapps.com/). Some rights reserved._
