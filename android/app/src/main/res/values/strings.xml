@@ -14,9 +14,9 @@
         Block ads in just a couple steps, starting by choosing a blocking mode:
     </string>
     <string name="mode_details">
-        <![CDATA[<b>Fast</b> mode uses our default filtering rules.<br><br><b>Faster</b> (beta)
-        uses a bit of your idle bandwidth to crawl the web and find more ads to filter.<br><br>You
-        can switch anytime by going to <b>About</b> or can read <a
+        <![CDATA[<b>Fast</b> mode uses our default filtering rules.<br><br><b>Faster</b> (beta) uses
+        a small amount of your background bandwidth to crawl the web and find more ads to
+        filter.<br><br>You can switch anytime by going to <b>About</b> or can read <a
         href="https://adblockfast.com/license">our terms</a> and <a
         href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a> first.]]>
     </string>
@@ -39,9 +39,10 @@
         like to be notified (infrequently) as soon as important updates are available<i>?</i>]]>
     </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
-    <string name="mode_label">Blocking mode:\u0020</string>
+    <string name="mode_label">Mode:\u0020</string>
     <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>
     <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>Faster</u></font>]]></string>
+    <string name="upgrade_note">\u0020(runs in background)</string>
     <string name="mode_separator">\u0020·\u0020</string>
     <string name="install_override">
         <![CDATA[If you do have Samsung Internet 4.0+, <font color="#de0421"><u>dismiss this dialog
@@ -54,7 +55,8 @@
     </string>
     <string name="copyright_notice">
         <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
-        href="https://twitter.com/rocketship">Twitter</a>&gt;]]>
+        href="https://twitter.com/rocketship">Twitter</a> · <a
+        href="https://adblockfast.com/license">Terms</a>&gt;]]>
     </string>
     <string name="continue_label">Done</string>
     <string name="dismiss_label">Close</string>

@@ -66,6 +66,12 @@
                 android:text="@null"
                 android:textColor="@android:color/white"
                 style="@style/Body" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upgrade_note"
+                android:textColor="@color/highlight"
+                style="@style/Body" />
         </LinearLayout>
         <TextView
             android:id="@+id/copyright_text"
