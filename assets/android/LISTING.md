@@ -36,7 +36,7 @@ If you have any questions or comments, follow and message us:
 
 **App icon:**
 
-![Icon](samsung/icons/app.png)
+![Icon](samsung/icons/icon.png)
 
 **Feature graphic:**
 
