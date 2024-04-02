@@ -17,7 +17,7 @@ web experiences in the universe.
 
 **Developer icon:**
 
-![Icon](samsung/icons/developer.png)
+![Icon](icon.png)
 
 **Header image:**
 

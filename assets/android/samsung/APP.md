@@ -29,7 +29,7 @@ If you have any questions or comments, follow and message us:
 
 **Icon:**
 
-![Icon](icons/app.png)
+![Icon](icons/icon.png)
 
 **Screenshots:**
 
