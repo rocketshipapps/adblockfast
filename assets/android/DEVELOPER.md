@@ -17,7 +17,7 @@ web experiences in the universe.
 
 **Developer icon:**
 
-![Icon](icon.png)
+![Icon](icons/icon.png)
 
 **Header image:**
 
