@@ -182,6 +182,15 @@ Like all (functional) ad blockers, Adblock Fast prompts you for the permissions 
 requests by intercepting HTTP traffic and to hide ad elements by injecting CSS and JavaScript into
 visited pages.
 
+### How do Adblock Fast’s mobile blocking modes work<em>?</em>
+
+Adblock Fast for mobile now lets you choose between blocking modes. Fast mode uses our default
+filtering rules. Faster mode uses a larger set of filtering rules. Faster is an experimental mode
+that consumes what should be an unnoticeable amount of your background bandwidth, per
+[our terms of use](https://adblockfast.com/license) and
+[privacy policy](https://www.iubenda.com/privacy-policy/216992), to crawl the web and detect new ad
+domains to filter (code for the latter will be open-sourced here once cleaned up).
+
 ### How can Adblock Fast for Windows be uninstalled<em>?</em>
 
 Open the Start menu, go to **Settings** > **Apps** > **Apps & features**, choose the
