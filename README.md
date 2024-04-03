@@ -184,12 +184,12 @@ visited pages.
 
 ### How do Adblock Fast’s mobile blocking modes work<em>?</em>
 
-Adblock Fast for mobile now lets you choose between blocking modes. Fast mode uses our default
-filtering rules. Faster mode uses a larger set of filtering rules. Faster is an experimental mode
-that consumes what should be an unnoticeable amount of your background bandwidth, per
-[our terms of use](https://adblockfast.com/license) and
-[privacy policy](https://www.iubenda.com/privacy-policy/216992), to crawl the web and detect new ad
-domains to filter (code for the latter will be open-sourced here once cleaned up).
+Adblock Fast for mobile lets you choose your blocking mode. If you tap the **Fast** button or link,
+our default filtering rules are activated. If you tap the **Faster** button or link, a more
+comprehensive, up-to-date set of filtering rules are activated; Faster is an experimental mode that
+uses what should be an unnoticeable amount of your background bandwidth to crawl the web and detect
+new ad domain names to filter (code for the latter will be open-sourced here once sufficiently
+cleaned up).
 
 ### How can Adblock Fast for Windows be uninstalled<em>?</em>
 
