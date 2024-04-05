@@ -72,7 +72,7 @@ public class AdblockFastApplication extends Application {
         initPrefs();
         dumpPrefs();
 
-        initMassive(this);
+        if (Ruleset.isUpgraded()) initMassive(this);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
@@ -158,7 +158,7 @@ public class AdblockFastApplication extends Application {
                         new InitCallback() {
                             @Override
                             public void onSuccess() {
-                                if (Ruleset.isUpgraded()) client.start();
+                                client.start();
                                 Plausible.INSTANCE.event("Succeed", "/massive", "", null);
                             }
 
@@ -172,7 +172,7 @@ public class AdblockFastApplication extends Application {
 
                 return Unit.INSTANCE;
             });
-        } else if (massiveClient.getState() != State.NotInitialized && Ruleset.isUpgraded()) {
+        } else if (massiveClient.getState() != State.NotInitialized) {
             massiveClient.start();
         }
     }

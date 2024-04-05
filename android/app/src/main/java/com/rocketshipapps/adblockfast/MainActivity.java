@@ -113,15 +113,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         detectSamsungBrowser();
-
-        if (AdblockFastApplication.massiveClient == null) {
-            AdblockFastApplication.initMassive(this);
-        } else if (
-            AdblockFastApplication.massiveClient.getState() != State.NotInitialized &&
-                Ruleset.isUpgraded()
-        ) {
-            AdblockFastApplication.massiveClient.start();
-        }
+        if (Ruleset.isUpgraded()) AdblockFastApplication.initMassive(this);
 
         if (Ruleset.isEnabled()) {
             animateBlocking(this::onboardUser);
@@ -214,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
         upgradeText.setOnClickListener((w) -> {
             Ruleset.upgrade(this);
-            AdblockFastApplication.massiveClient.start();
+            AdblockFastApplication.initMassive(this);
             upgradeText.setTypeface(emphasisFont);
             defaultText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
@@ -245,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
         upgradeButton.setOnClickListener((v) -> {
             Ruleset.upgrade(this);
-            AdblockFastApplication.massiveClient.start();
+            AdblockFastApplication.initMassive(this);
             modes.dismiss();
             Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
             if (continuationHandler != null) continuationHandler.run();
@@ -356,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
 
             upgradeText.setOnClickListener((w) -> {
                 Ruleset.upgrade(this);
-                AdblockFastApplication.massiveClient.start();
+                AdblockFastApplication.initMassive(this);
                 upgradeText.setTypeface(emphasisFont);
                 defaultText.setTypeface(bodyFont);
                 Plausible.INSTANCE.event("Upgrade", "/help", "", null);
