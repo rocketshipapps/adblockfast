@@ -54,8 +54,6 @@ import io.github.inflationx.calligraphy3.TypefaceUtils;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
-import com.massive.sdk.State;
-
 import com.onesignal.Continue;
 import com.onesignal.OneSignal;
 
