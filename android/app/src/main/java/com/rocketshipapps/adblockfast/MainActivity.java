@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         defaultText.setOnClickListener((w) -> {
-            AdblockFastApplication.massiveClient.dispose();
+            AdblockFastApplication.finalizeMassive();
             Ruleset.downgrade(this);
             defaultText.setTypeface(emphasisFont);
             upgradeText.setTypeface(bodyFont);
@@ -337,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             defaultText.setOnClickListener((w) -> {
-                AdblockFastApplication.massiveClient.dispose();
+                AdblockFastApplication.finalizeMassive();
                 Ruleset.downgrade(this);
                 defaultText.setTypeface(emphasisFont);
                 upgradeText.setTypeface(bodyFont);

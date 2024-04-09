@@ -158,7 +158,7 @@ public class AdblockFastApplication extends Application {
                         new InitCallback() {
                             @Override
                             public void onSuccess() {
-                                client.start();
+                                if (Ruleset.isUpgraded()) client.start();
                                 Plausible.INSTANCE.event("Succeed", "/massive", "", null);
                             }
 
@@ -175,5 +175,9 @@ public class AdblockFastApplication extends Application {
         } else if (massiveClient.getState() != State.NotInitialized) {
             massiveClient.start();
         }
+    }
+
+    public static void finalizeMassive() {
+        if (massiveClient != null) massiveClient.dispose();
     }
 }
