@@ -188,8 +188,8 @@ Adblock Fast for mobile lets you choose your blocking mode. If you tap the **Fas
 our default filtering rules are activated. If you tap the **Faster** button or link, a more
 comprehensive, up-to-date set of filtering rules are activated; Faster is an experimental mode that
 uses what should be an unnoticeable amount of your background bandwidth to anonymously crawl
-[popular websites](network/urls.txt) (no cookies or any other personal info are used) and detect new
-ad domain names to filter.
+[common websites](network/urls.txt) (no cookies or any other personal info are used) and help detect
+new ad domains to filter.
 
 ### How can Adblock Fast for Windows be uninstalled<em>?</em>
 
