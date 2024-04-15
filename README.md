@@ -185,7 +185,7 @@ visited pages.
 ### How do Adblock Fast’s mobile blocking modes work<em>?</em>
 
 Adblock Fast for mobile lets you choose your blocking mode. If you tap the **Fast** button or link
-(or have installed an older app version), our default filtering rules are activated. If you tap the
+(or have previously installed the app), our default filtering rules are activated. If you tap the
 **Faster** button or link, a more comprehensive, up-to-date set of filtering rules are activated;
 Faster is an experimental mode that uses what should be an unnoticeable amount of your background
 bandwidth to anonymously crawl [common websites](network/urls.txt) (no cookies or any other personal
