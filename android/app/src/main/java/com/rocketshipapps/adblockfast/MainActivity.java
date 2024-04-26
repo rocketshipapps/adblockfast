@@ -4,7 +4,6 @@ import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -307,16 +306,6 @@ public class MainActivity extends AppCompatActivity {
         if (hasSamsungBrowser) {
             summaryText.setText(R.string.settings_summary);
             setHtml(detailsText, R.string.settings_details, false);
-
-            detailsText.setOnClickListener((v) -> {
-                try {
-                    startActivity(AdblockFastApplication.SAMSUNG_BROWSER_INTENT);
-                    Plausible.INSTANCE.event("Install", "/samsung-browser", "", null);
-                } catch (ActivityNotFoundException ignored) {
-                    Plausible.INSTANCE.event("Back", "/samsung-browser", "", null);
-                    onBackPressed();
-                }
-            });
         } else {
             TextView defaultText = help.findViewById(R.id.default_text);
             TextView upgradeText = help.findViewById(R.id.upgrade_text);
