@@ -48,14 +48,14 @@
         permanently</u></font> to finish your setup.]]>
     </string>
     <string name="contact_info">
-        <![CDATA[If you have any questions or comments, follow and message
+        <![CDATA[If you have questions or comments, you can follow and message
         <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a
-        href="https://twitter.com/adblockfast">on Twitter</a>.]]>
+        href="https://x.com/adblockfast">on X</a>.]]>
     </string>
     <string name="copyright_notice">
         <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
-        href="https://twitter.com/rocketship">Twitter</a> · <a
-        href="https://adblockfast.com/license">Terms</a>&gt;]]>
+        href="https://x.com/rocketship">X</a> · <a href="https://adblockfast.com/license">ToS</a> ·
+        <a href="https://www.iubenda.com/privacy-policy/216992">Privacy</a>&gt;]]>
     </string>
     <string name="continue_label">Done</string>
     <string name="dismiss_label">Close</string>
