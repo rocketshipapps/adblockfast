@@ -30,10 +30,9 @@
         <meta-data
             android:name="com.samsung.android.sbrowser.contentBlocker.interfaceVersion"
             android:value="API_1.0" />
-        <receiver android:name=".service.UpdateReceiver" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package" />
+        <receiver android:name=".service.UpdateReceiver" android:exported="true" android:enabled="true">
+            <intent-filter >
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
     </application>
