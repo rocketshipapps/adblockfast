@@ -2798,9 +2798,7 @@ www.ebay.ie###rtm_html_11575
 www.ebay.ie###gf-mrecs-ads
 www.ebay.ie##.ft-btyle
 m.facebook.com##div[style="margin: 0px; width: 760px; height: 90px; text-align: center; vertical-align: middle;"]
-m.facebook.com###m_newsfeed_stream article[data-ft*="\\"ei\\":\\""]
 m.facebook.com##.aymlCoverFlow
-m.facebook.com##.aymlNewCoverFlow[data-ft*="\\"is_sponsored\\":\\"1\\""]
 m.facebook.com##.pyml
 m.facebook.com##.storyStream > ._6t2[data-sigil="marea"]
 m.facebook.com##.storyStream > .fullwidth._539p
@@ -2809,7 +2807,6 @@ m.facebook.com##.storyStream > article[id^="u_"].storyAggregation
 m.facebook.com##[data-xt]
 m.facebook.com###MessagingNetegoWrapper
 m.facebook.com###home_sponsor_nile
-m.facebook.com###home_stream > .uiUnifiedStory[data-ft*="\\"ei\\":\\""]
 m.facebook.com###pagelet_ads_when_no_friend_list_suggestion
 m.facebook.com##.-cx-PRIVATE-fbAdUnit__root
 m.facebook.com##.-cx-PRIVATE-fbEmu__root
@@ -2851,12 +2848,9 @@ m.facebook.com##div[class="ego_column pagelet"]
 m.facebook.com##div[class="ego_column"]
 m.facebook.com##div[id^="sponsoredTickerStory_"]
 m.facebook.com##div[id^="substream_"] .userContentWrapper > ._1ifo
-m.facebook.com##div[id^="substream_"] div[data-ft*="\\"ei\\":\\""]
-m.facebook.com##div[id^="topnews_main_stream_"] div[id^="u_"][data-ft*="\\"ei\\":\\""]
 m.facebook.com##ul[id^="typeahead_list_"] > ._20e._6_k._55y_
 m.facebook.com###pagelet_ego_pane
 touch.facebook.com##.aymlCoverFlow
-touch.facebook.com##.aymlNewCoverFlow[data-ft*="\\"is_sponsored\\":\\"1\\""]
 touch.facebook.com##.pyml
 touch.facebook.com##.storyStream > ._6t2[data-sigil="marea"]
 touch.facebook.com##.storyStream > .fullwidth._539p
@@ -3159,7 +3153,6 @@ www.theroot.com##.ad-top.ad-wide
 www.theroot.com##.ad-non-sticky
 www.theroot.com##.ad-promotions-container
 www.theroot.com##.contained-ad-container
-m.youtube.com##a[onclick*="\\"ping_url\\":\\"http://www.google.com/aclk?"]
 m.youtube.com##.jkb
 m.youtube.com###feed-pyv-container
 m.youtube.com###feedmodule-PRO
@@ -3183,10 +3176,6 @@ m.youtube.com##.ad-div div
 m.youtube.com###masthead-ad
 m.youtube.com##.ytd-player-legacy-desktop-watch-ads-renderer
 m.youtube.com##ytd-compact-promoted-video-renderer
-mail.google.com###\\:rr .nH[role="main"] .mq:first-child
-mail.google.com###\\:rr > .nH > .nH[role="main"] > .aKB
-mail.google.com###\\:rr > .nH > .nH[role="main"] > .nH > .nH > .AT[style]
-mail.google.com###\\:rr > .nH > div[role="main"] > .mq:last-child
 mail.google.com##.aeF .nH[role="main"] > .mq:last-child
 mail.google.com##.aeF > .nH > .nH[role="main"] > .aKB
 mail.google.com##.aeF > .nH > .nH[role="main"] > .afn:first-child + .mq
