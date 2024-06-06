@@ -1504,29 +1504,20 @@ bunshun.jp##.sp-list-thumb > li[-ext-has='.pr']
 mdpr.jp##aside > .ad-f__link[-ext-has='.ad-f__sup--pr']
 mdpr.jp##.media__list > .media__item[-ext-has='.media__sup:contains(PR)']
 s.response.jp##.ranking-list > .item[-ext-has='a > .pr']
-quora.com##.mobile_app2 .paged_list_wrapper > span[id] > .Bundle:not(.AnswerStoryBundle):has(a[href][target="_blank"][rel="noopener nofollow"]):has( > div:contains(/promoted\s*by\s*/))
-quora.com##.mobile_app2 .NewGridQuestionPage div.content_area:has(a[href][target="_blank"][rel="noopener nofollow"]):has( > div:contains(/ad\s*by\s*/))
-quora.com##.mobile_app2 .paged_list_wrapper > .pagedlist_item:has(a[href][target="_blank"][rel="noopener nofollow"]):has( > div:contains(/promoted\s*by\s*/))
 yahoo.com###YDC-Stream > ul.Wow\(bw\) > .js-stream-content > .controller:has(> [class*="smartphone_"] > a[href^="https://beap.gemini.yahoo.com/"][rel="noopener noreferrer"])
 m.prohardver.hu##.defcnt > h2 + p[align="center"][-ext-has='a[href][target="_blank"]']
 gsmarena.com##.homepage-news-list > div > div[style^="display:"][-ext-has='ins.adsbygoogle']
 news.yahoo.co.jp##.listModBox > .listModBoxS[-ext-has='a[href^="https://app-adforce.jp"]']
-gematsu.com###sidebar > #section:contains(Advertisement)
 m.auto.ru##.content > div.index.i-bem > div.section:has(> div > a[href^="https://an.yandex.ru/"])
-m.auto.ru##.content > div.card > div[class*="_type_card"]:not([data-bem]):has(> div > div[class$="__badge"]:contains(/^Реклама/))
 www-chip-de.cdn.ampproject.org##.amp-article > div:not([class]):not([id]) > .amp-article-chapter[-ext-has='.cart']
 mobile.twitter.com##section[role="region"] > div > div[style^="padding-bottom"] > div[class] > div[class][-ext-has='div.rn-1uif7bo[dir="auto"]']
 reddit.com##.PostsList > .Post[-ext-has='.PostHeader__promoted-flair']
 m.sabah.com.tr##.manset > ul > li:has(>a[href^="/haber/advertorial/"])
 m.imgur.com##.GalleryInfiniteScroll .GalleryHandler-postContainer[-ext-has='.Post-opContainer--promoted']
-chiemgau24.de##div[data-id-module="col-width-watcher"] > div.id-Container--hasNoHeadline:matches-css-before(content:*- Reklame)
-chiemgau24.de##div[data-id-module="col-width-watcher"] > div.id-Container--hasHeadline:has(> h3 > span:contains(Auch interessant))
 mobile.twitter.com##._29ahSMvH section.rn-1oszu61 div[class][style*="padding-"] > ._1_KafmK5[-ext-has='svg.YunaQoc2']
 wetter.de##.large-4 > .wrapper-teaser:has([data-adformat])
-money.cnn.com##.content-scroll > div#ng-view > section.headline_list:has(> div.section_header:contains(Partner Offers))
 lifehack.org##.visible-xs[style^="background-color: rgb"]:has(>[id^="div-gpt-ad"])
 lifehack.org##.visible-xs[style^="background-color: rgb"]:has([id^="lifehack_m_"][id*="TF"])
-womenshealth.de##body > .list__header:contains(Sponsored Section)
 drive2.ru##.l-main.js-main div.o-grid-row > div[-ext-has='> div > div[style^="min-height: calc"]']
 m.bild.de##.txt > .element[-ext-has=">.tsr-info > h3:contains(Auch Interessant)"]
 mobil.stern.de##.teaserlist__items > .teaser-medium-left.article-type-standard-article.mod-teaser[-ext-has=".teaser > .sponsorship--labels"]
@@ -1535,9 +1526,6 @@ fishki.net##.list-view-items div.content__preview[-ext-has='> div.picture-holder
 fishki.net##div[class^="list-view"] > div[class^="content__intro-text"][-ext-has='> p.content__intro-text__author > a[href="/profile/543769"]']
 lenfilm.tv##body > div.rek[-ext-has="div"]
 nasimke.ru##.body > div[class] > div[-ext-has='img[src*="/rekl/"]']
-pikabu.ru###stories_container > .post:has(> div > a > span:contains(спонсорская ссылка))
-pikabu.ru###stories_container > .post:has(> div > a > span:contains(спонсорский пост))
-pikabu.ru###stories_container > .post:has(> div > a > span:contains(спoнсорский пост))
 m.reddit.com##article[class="Post size-compact"][-ext-has=".PostHeader__sponsored-flair"]
 timeanddate.com#$#body.mob > .wrapper > .header__wrapper
 rbc.ru#$#div[class^="banners__mobile"]
