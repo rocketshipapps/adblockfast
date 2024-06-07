@@ -1,4 +1,6 @@
-[Adblock Fast]
+[Adblock Plus]
+! Title: Adblock Fast (unblocked)
+! Homepage: https://adblockfast.com/
 !
 ! Copyright 2016– Rocketship <https://rocketshipapps.com/>
 !
