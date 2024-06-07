@@ -2173,7 +2173,6 @@ mobile.donanimhaber.com##.reklamiatla
 chip.de##.amp-article-ad
 newsweekjapan.jp,chip.de##.amp-outbrain
 trustedreviews.com##.ipc-advert
-|http$third-party,script,domain=kinotut.tv
 mobil-nwzonline-de.cdn.ampproject.org##.advert
 m.sweclockers.com##.header > .container > #topBanner
 lenfilm.tv##.rek
@@ -4399,8 +4398,8 @@ timesofindia.indiatimes.com#@#style[type="text/css"] + div[class]:not([id]):not(
 @@||pubads.g.doubleclick.net/gampad/ads?env=vp&gdfp_req=1&output=xml_vast*&url=http%3A%2F%2Famp.usatoday.com
 @@||players.brightcove.net/*/index.html?videoId=$domain=amp.usatoday.com
 @@||report-ads-to.pubnation.com/dist/pnr.js?t=$domain=m.neogaf.com
-@@://googleadservices.com^|
-@@://www.googleadservices.com^|
+@@||googleadservices.com^|
+@@||www.googleadservices.com^|
 @@||15min.lt^$generichide
 15min.lt#@#.widget.ads
 15min.lt#@#.ads
