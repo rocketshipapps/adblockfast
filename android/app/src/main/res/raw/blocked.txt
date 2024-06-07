@@ -1524,15 +1524,6 @@ fishki.net##div[class^="list-view"] > div[class^="content__intro-text"][-ext-has
 lenfilm.tv##body > div.rek[-ext-has="div"]
 nasimke.ru##.body > div[class] > div[-ext-has='img[src*="/rekl/"]']
 m.reddit.com##article[class="Post size-compact"][-ext-has=".PostHeader__sponsored-flair"]
-timeanddate.com#$#body.mob > .wrapper > .header__wrapper
-rbc.ru#$#div[class^="banners__mobile"]
-m.dizilab6.com#$#.previd-link
-realthaisluts.com#$#.mobile-ads-zone
-hdmotori.it,hdblog.it#$#.banner_list_container
-med1.de#$#div[id^="imAd_"]
-15min.lt#$#.ads
-factroom.ru#$#.mobile-pop-direct
-deviantart.com#$#div[class*="dp-ad-"]
 ||images-*.ssl-images-amazon.com/images/*/ape/sf/MAsf-*_.js
 m.youtube.com##a[href^="/watch?v="][onclick^="return koya.onEvent(arguments[0]||window.event,'"]:not([role]):not([class]):not([id])
 m.youtube.com##a[href^="/watch?v="][onclick^="return koya.onEvent(arguments[0]||window.event,'"]:not([role]):not([class]):not([id]) + div
