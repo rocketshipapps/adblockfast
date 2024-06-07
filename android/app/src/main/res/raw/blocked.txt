@@ -2731,6 +2731,7 @@ www.ebay.co.uk###skyscrape
 www.ebay.co.uk##.RtmStyle
 www.ebay.co.uk##.sdcBox
 www.ebay.co.uk##.topBnrSc
+www.ebay.co.uk##div[style="margin-top: 15px; width: 160px; height: 615px; overflow: hidden; display: block;"]
 www.ebay.co.uk##div[style="width: 300px; height: 265px; overflow: hidden; display: block;"]
 www.ebay.co.uk##.beta-placement
 www.ebay.co.uk###rtm_html_393
@@ -2750,6 +2751,8 @@ www.ebay.com##.fdad1
 www.ebay.com##.ggtm
 www.ebay.com##.mrec
 www.ebay.com##.topBnrSc
+www.ebay.com##div[style="margin-top: 15px; width: 160px; height: 600px; overflow: hidden; display: block;"]
+www.ebay.com##div[style="margin-top: 15px; width: 160px; height: 615px; overflow: hidden; display: block;"]
 www.ebay.com##.beta-placement
 www.ebay.com###rtm_html_393
 www.ebay.com###rtm_html_567
@@ -2776,6 +2779,7 @@ www.ebay.ie###rtm_html_987
 www.ebay.ie###rtm_html_11575
 www.ebay.ie###gf-mrecs-ads
 www.ebay.ie##.ft-btyle
+m.facebook.com##div[style="margin: 0px; width: 760px; height: 90px; text-align: center; vertical-align: middle;"]
 m.facebook.com##.aymlCoverFlow
 m.facebook.com##.pyml
 m.facebook.com##.storyStream > ._6t2[data-sigil="marea"]
@@ -3204,6 +3208,7 @@ www.google.com##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.com##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.com##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.com##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.com##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.com###taw
 www.google.com###bottomads
@@ -3445,6 +3450,7 @@ images.search.yahoo.com###right > div > .searchRightTop + [id]:last-child
 images.search.yahoo.com###right > div:first-child:last-child > [id]:first-child:last-child
 images.search.yahoo.com##div[id^="wp_bannerize-"]
 images.search.yahoo.com##div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class]
+images.search.yahoo.com##div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"]
 mail.yahoo.com###MIP4
 mail.yahoo.com###MNW
 mail.yahoo.com###SKY
@@ -3466,6 +3472,8 @@ mail.yahoo.com##[data-test-id="infinite-scroll-AD"]
 mail.yahoo.com##[data-test-id="right-rail-ad"]
 search.yahoo.com##.searchRightBottomAds
 search.yahoo.com###bpla
+search.yahoo.com###cols > #right > ol[class] > .first > .dd[style="padding: 10px !important;border: 1px solid #ededed;"]
+search.yahoo.com###cols > #right ol[class] > .first > .dd[style="background-color:#FFF;border: 1px solid #e2e2e6; margin-top:0;"]
 search.yahoo.com###doc #cols #right #east
 search.yahoo.com###east
 search.yahoo.com###left > #main > div[id^="yui_"]
@@ -3477,6 +3485,7 @@ search.yahoo.com###main .dd .layoutCenter > .compDlink
 search.yahoo.com###main .dd[style="cursor: pointer;"] > .layoutMiddle
 search.yahoo.com###main > .reg > li[id^="yui_"][data-bid] > [data-bid]
 search.yahoo.com###main > div + div > style + * li > .dd > div[class]
+search.yahoo.com###main > div ol[class] > :first-child:last-child > li > .dd > :first-child:last-child > div[class]
 search.yahoo.com###main > div ol[class] li[id] > .dd > div + * > div
 search.yahoo.com###main > div[id^="yui_"] > ul > .res
 search.yahoo.com###main > div[id^="yui_"].rVfes:first-child
@@ -3484,6 +3493,8 @@ search.yahoo.com###main > div[id^="yui_"].rVfes:first-child + #web + div[id^="yu
 search.yahoo.com###main > div[id^="yui_"][class][data-bk][data-bns]:first-child
 search.yahoo.com###main > div[style="background-color: rgb(250, 250, 255);"]
 search.yahoo.com###main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"]
+search.yahoo.com###main > noscript + div[id^="yui_"][class][data-bk][data-bns="Yahoo"] + #web + div[id^="yui_"][class][data-bk][data-bns="Yahoo"]
+search.yahoo.com###main > style:first-child + * + #web + style + * > ol[class]:first-child:last-child
 search.yahoo.com###main > style:first-child + * > ol[class]:first-child:last-child
 search.yahoo.com###r-e
 search.yahoo.com###r-n
@@ -3492,6 +3503,7 @@ search.yahoo.com###right .dd .mb-11 + .compList
 search.yahoo.com###right .dd > .layoutMiddle
 search.yahoo.com###right .dd[style="cursor: pointer;"] > .layoutMiddle
 search.yahoo.com###right .dd[style^="background-color:#FFF;border-color:#FFF;padding:"] .compList
+search.yahoo.com###right .first > div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"]
 search.yahoo.com###right .reg > li[id^="yui_"][data-bid] > [data-bid]
 search.yahoo.com###right .res
 search.yahoo.com###right > .searchRightMiddle + div[id]:last-child
@@ -3499,11 +3511,15 @@ search.yahoo.com###right > .searchRightTop + div[id]:last-child
 search.yahoo.com###right > div > .searchRightMiddle + div[id]:last-child
 search.yahoo.com###right > div > .searchRightTop + [id]:last-child
 search.yahoo.com###right > div > style + * li .dd > div[class]
+search.yahoo.com###right > div ol[class] li > :first-child:last-child > .dd > :first-child:last-child > div[class]:first-child:last-child
 search.yahoo.com###right > div:first-child:last-child > [id]:first-child:last-child
 search.yahoo.com###right > div[class] > ol[class] .dd div[class] > ul > li[class^="mt-"]
 search.yahoo.com###right > div[class] ol[class] li[id] .dd > div + * > div[class]
+search.yahoo.com###right > div[id] > div[class] > div[class] > h2[class]:first-child + ul[class]:last-child > li[class]
+search.yahoo.com###right > span > div[id] > div[class] div[class] > span > ul[class]:last-child > li[class]
 search.yahoo.com###right [class][data-bk][data-bns]
 search.yahoo.com###right div.dd[style^="background-color:#FFF"] div > ul > li[class^="mt-"]
+search.yahoo.com###right div[style="background-color:#fafaff;border-color:#FAFAFF;padding:4px 10px 12px;"]
 search.yahoo.com###right li[id^="yui_"] .dd > .layoutMiddle
 search.yahoo.com###right ol li[id^="yui_"] > .dd > .layoutMiddle
 search.yahoo.com###sec-col
@@ -3524,9 +3540,11 @@ search.yahoo.com##.vert-ad-ttl + * > .eca[target="_blank"][href^="http://r.searc
 search.yahoo.com##a[href="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"]
 search.yahoo.com##a[href^="http://help.yahoo.com/l/us/yahoo/search/basics/basics-03.html"]
 search.yahoo.com##a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*=".r.msn.com"]
+search.yahoo.com##a[href^="http://r.search.yahoo.com/_ylt="][href*=";_ylu="][href*="beap.gemini.yahoo.com"]
 search.yahoo.com##a[href^="https://search.yahoo.com/search/ads;"]
 search.yahoo.com##div[id^="wp_bannerize-"]
 search.yahoo.com##div[id^="yui_"] > span > ul[class]:first-child:last-child > li[class]
+search.yahoo.com##div[id^="yui_"] > ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="] + * div[class^="pla"]
 search.yahoo.com##li[id^="yui_"] > div[data-bns][data-bk][style="cursor: pointer;"] > div[class]
 search.yahoo.com##ul > .res[data-bg-link^="http://r.search.yahoo.com/_ylt="]
 search.yahoo.com##.eza9f
@@ -3774,7 +3792,9 @@ www.phonearena.com##.adswidget
 www.phonearena.com##.s_ad_300x250
 www.phonearena.com##.s_ad_160x600
 www.phonearena.com###bottom_banner
+www.phonearena.com##.s_box_3 > div[style="width: 320px; height: 250px; border-top: 1px dotted #ddd; padding: 17px 20px 17px 0px;"]
 www.phonearena.com##.bannerplace728
+www.phonearena.com##div[style="height: 250px; border-top: 1px dotted #ddd; padding: 19px 10px 18px 10px;"]
 www.phonearena.com##.s_mb_15[style="min-height: 250px"]
 www.phonearena.com##.s_box_3 > div[style="width: 434px; height: 337px; margin: 10px 8px;"]
 www.phonearena.com##.spot_disclaimer
@@ -3886,6 +3906,7 @@ www.google.es##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.es##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.es##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.es##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.es##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.es##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.ru###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.ru###rhs_block > #mbEnd
@@ -3907,6 +3928,7 @@ www.google.ru##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.ru##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.ru##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.ru##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.ru##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.ru##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.ca###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.ca###rhs_block > #mbEnd
@@ -3928,6 +3950,7 @@ www.google.ca##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.ca##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.ca##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.ca##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.ca##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.ca##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.it###mbEnd[cellspacing="0"][cellpadding="0"]
 www.google.it###rhs_block > #mbEnd
@@ -3949,6 +3972,7 @@ www.google.it##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.it##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.it##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.it##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.it##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.it##div[style^="height: 16px; font: bold 12px/16px"]
 m.hao123.com##.hao123-banner
 www.google.co.uk###mbEnd[cellspacing="0"][cellpadding="0"]
@@ -3971,6 +3995,7 @@ www.google.co.uk##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.co.uk##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.co.uk##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.co.uk##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.co.uk##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.co.uk##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.co.uk##.ads-ad
 www.google.fr###mbEnd[cellspacing="0"][cellpadding="0"]
@@ -3993,6 +4018,7 @@ www.google.fr##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.fr##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.fr##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.fr##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.fr##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.fr##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.fr##.ads-ad
 www.google.de###mbEnd[cellspacing="0"][cellpadding="0"]
@@ -4015,6 +4041,7 @@ www.google.de##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.de##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.de##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.de##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.de##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.de##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.de##.ads-ad
 www.google.com.br###mbEnd[cellspacing="0"][cellpadding="0"]
@@ -4037,6 +4064,7 @@ www.google.com.br##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.com.br##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.com.br##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.com.br##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com.br##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.com.br##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.com.br##.ads-ad
 www.babycenter.com###fromOurSponsorsHome
@@ -4090,6 +4118,7 @@ www.google.com.mx##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.com.mx##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.com.mx##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.com.mx##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com.mx##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.com.mx##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.com.mx##.ads-ad
 www.google.com.hk###mbEnd[cellspacing="0"][cellpadding="0"]
@@ -4112,6 +4141,7 @@ www.google.com.hk##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.com.hk##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.com.hk##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.com.hk##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.com.hk##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.com.hk##div[style^="height: 16px; font: bold 12px/16px"]
 www.google.com.hk##.ads-ad
 www.linkedin.com###ad-container
@@ -4237,6 +4267,7 @@ www.google.co.id##[style="border: 1px solid rgb(145, 117, 77);"]
 www.google.co.id##[style="border: 1px solid rgb(241, 250, 248);"]
 www.google.co.id##[style="border: 1px solid rgb(51, 102, 153);"]
 www.google.co.id##[style="border: 1px solid rgb(51, 102, 204);"]
+www.google.co.id##body > div[align]:first-child + style + table[cellpadding="0"][width="100%"] > tbody:only-child > tr:only-child > td:only-child
 www.google.co.id##div[style^="height: 16px; font: bold 12px/16px"]
 m.xinhuanet.com##[style="z-index:5;"]
 m.xinhuanet.com###topAdv
