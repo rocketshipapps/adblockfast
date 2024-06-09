@@ -1509,11 +1509,11 @@ gsmarena.com##.homepage-news-list > div > div[style^="display:"][-ext-has='ins.a
 news.yahoo.co.jp##.listModBox > .listModBoxS[-ext-has='a[href^="https://app-adforce.jp"]']
 m.auto.ru##.content > div.index.i-bem > div.section:has(> div > a[href^="https://an.yandex.ru/"])
 www-chip-de.cdn.ampproject.org##.amp-article > div:not([class]):not([id]) > .amp-article-chapter[-ext-has='.cart']
-mobile.twitter.com##section[role="region"] > div > div[style^="padding-bottom"] > div[class] > div[class][-ext-has='div.rn-1uif7bo[dir="auto"]']
+mobile.twitter.com,x.com##section[role="region"] > div > div[style^="padding-bottom"] > div[class] > div[class][-ext-has='div.rn-1uif7bo[dir="auto"]']
 reddit.com##.PostsList > .Post[-ext-has='.PostHeader__promoted-flair']
 m.sabah.com.tr##.manset > ul > li:has(>a[href^="/haber/advertorial/"])
 m.imgur.com##.GalleryInfiniteScroll .GalleryHandler-postContainer[-ext-has='.Post-opContainer--promoted']
-mobile.twitter.com##._29ahSMvH section.rn-1oszu61 div[class][style*="padding-"] > ._1_KafmK5[-ext-has='svg.YunaQoc2']
+mobile.twitter.com,x.com##._29ahSMvH section.rn-1oszu61 div[class][style*="padding-"] > ._1_KafmK5[-ext-has='svg.YunaQoc2']
 wetter.de##.large-4 > .wrapper-teaser:has([data-adformat])
 lifehack.org##.visible-xs[style^="background-color: rgb"]:has(>[id^="div-gpt-ad"])
 lifehack.org##.visible-xs[style^="background-color: rgb"]:has([id^="lifehack_m_"][id*="TF"])
@@ -3297,12 +3297,28 @@ m.timesofindia.com##.gn-affiliate-box
 m.timesofindia.com##.rgt_ad
 www.nydailynews.com##.pb-f-ads-dfp
 www.nydailynews.com##.pb-f-ads-taboola-recommendations
-mobile.twitter.com##.promoted-account
-mobile.twitter.com##.promoted-trend
-mobile.twitter.com##.promoted-tweet
-mobile.twitter.com##.promotion
-mobile.twitter.com##.stream-item[data-item-type="tweet"][data-item-id*=":"]
-mobile.twitter.com##.stream-tweet[impression_id][label="promoted"]
+mobile.twitter.com,x.com##.promoted-account
+mobile.twitter.com,x.com##.promoted-trend
+mobile.twitter.com,x.com##.promoted-tweet
+mobile.twitter.com,x.com,racingtv.com,wral.com##.promotion
+mobile.twitter.com,x.com##.stream-item[data-item-type="tweet"][data-item-id*=":"]
+mobile.twitter.com,x.com##.stream-tweet[impression_id][label="promoted"]
+mobile.twitter.com,x.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1loqt21.r-o7ynqc.r-1j63xyz > [class="css-1dbjc4n"]
+mobile.twitter.com,x.com##[class="css-1dbjc4n r-e84r5y r-1or9b2r"]
+mobile.twitter.com,x.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > [class="css-1dbjc4n"]
+mobile.twitter.com,x.com##[aria-label="Who to follow"] [data-testid="UserCell"]:first-child
+mobile.twitter.com,x.com##.css-1dbjc4n.r-my5ep6.r-qklmqi.r-1adg3ll > .css-1dbjc4n.r-1wtj0ep.r-1sp51qo
+mobile.twitter.com,x.com##[class="css-1dbjc4n r-1jgb5lz r-1ye8kvj r-13qz1uu"] [data-testid="UserCell"]
+mobile.twitter.com,x.com##.stream-item-group-start[label="promoted"]
+mobile.twitter.com,x.com##a[href*="src=promoted_trend_click"]
+mobile.twitter.com,x.com##a[href*="src=promoted_trend_click"] + div
+mobile.twitter.com,x.com##div[data-testid="cellInnerDiv"] > div > div[class] > div[class][data-testid="placementTracking"]
+mobile.twitter.com,x.com##.tweet:has(.promo)
+mobile.twitter.com,x.com##article[data-testid="tweet"]:has(path[d$="10H8.996V8h7v7z"])
+mobile.twitter.com,x.com##div[data-testid="UserCell"]:has(path[d$="10H8.996V8h7v7z"])
+mobile.twitter.com,x.com##div[data-testid="eventHero"]:has(path[d$="10H8.996V8h7v7z"])
+mobile.twitter.com,x.com##div[data-testid="placementTracking"]:has(div[data-testid$="-impression-pixel"])
+mobile.twitter.com,x.com##div[data-testid="trend"]:has(path[d$="10H8.996V8h7v7z"])
 m.huffingtonpost.co.uk###modulous_right_rail_edit_promo
 m.huffingtonpost.co.uk###modulous_sponsorship_2
 m.huffingtonpost.co.uk##.ad_wrapper
