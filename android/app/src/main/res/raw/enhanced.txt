@@ -1115,10 +1115,12 @@
 ||dfs.digitalaccess.ru/mp4-hi/*digitalaccess.ru/contents/*.mp4$domain=ivi.ru
 @@||sp.ad.adlantis.jp/sp/load_app_ads?
 ||gameloft.com/*/index.ppp?ad=
-/get_midroll_info/$domain=m.youtube.com
-/get_video_info/$domain=m.youtube.com
-/get_video_metadata/$domain=m.youtube.com
 ||mangaapi.manhuaren.com/*/public/getRecommendedGame^
+||m.youtube.com/pagead/
+||m.youtube.com/get_midroll_
+||m.youtube.com/get_video_info?*adunit$~third-party
+||m.youtube.com/get_video_metadata/
+@@||m.youtube.com/get_video_info?$xmlhttprequest,domain=music.youtube.com|tv.youtube.com
 /adb_script/*
 /deadblocker/*
 /mod_ablockdetector/*
@@ -3306,6 +3308,17 @@ m.youtube.com##.ad-div div
 m.youtube.com###masthead-ad
 m.youtube.com##.ytd-player-legacy-desktop-watch-ads-renderer
 m.youtube.com##ytd-compact-promoted-video-renderer
+m.youtube.com###player-ads
+m.youtube.com###shorts-inner-container > .ytd-shorts:has(> .ytd-reel-video-renderer > ytd-ad-slot-renderer)
+m.youtube.com##.YtdShortsSuggestedActionStaticHostContainer
+m.youtube.com##.ytd-merch-shelf-renderer
+m.youtube.com##.ytp-suggested-action > button.ytp-suggested-action-badge
+m.youtube.com##lazy-list > ad-slot-renderer
+m.youtube.com##ytd-ad-slot-renderer
+m.youtube.com##ytd-rich-item-renderer:has(> #content > ytd-ad-slot-renderer)
+m.youtube.com##ytd-search-pyv-renderer
+m.youtube.com##ytm-companion-slot[data-content-type] > ytm-companion-ad-renderer
+m.youtube.com##ytm-rich-item-renderer > ad-slot-renderer
 mail.google.com##.aeF .nH[role="main"] > .mq:last-child
 mail.google.com##.aeF > .nH > .nH[role="main"] > .aKB
 mail.google.com##.aeF > .nH > .nH[role="main"] > .afn:first-child + .mq
@@ -4861,6 +4874,8 @@ m.veporns.com#@##topAds
 @@||79423.analytics.edgekey.net^|
 @@||79423.analytics.edgekey.net/html5/akamaihtml5-min.js$domain=nhk.or.jp
 @@||s.youtube.com^|
+@@||tv.youtube.com^$generichide
+@@||www.youtube.com^$generichide
 @@||pics.porndroids.com^
 @@||api.gamer.com.tw/mobile_app/anime/*/stat_ad.php
 @@||ssl-stat.amebame.com/pub/ads^$domain=ameblo.jp
