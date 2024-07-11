@@ -66,10 +66,7 @@ public class AdblockFastApplication extends Application {
         initPrefs();
         dumpPrefs();
 
-        MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> {
-            return Unit.INSTANCE;
-        });
-
+        MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
