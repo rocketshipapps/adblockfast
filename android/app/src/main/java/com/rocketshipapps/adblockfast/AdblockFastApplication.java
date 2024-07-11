@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import java.util.Map;
@@ -16,18 +15,14 @@ import kotlin.Unit;
 
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
-import com.massive.sdk.InitCallback;
 import com.massive.sdk.MassiveClient;
 import com.massive.sdk.MassiveNotificationOptions;
 import com.massive.sdk.MassiveOptions;
 import com.massive.sdk.MassiveServiceType;
-import com.massive.sdk.State;
 
 import com.onesignal.OneSignal;
 
 import com.wbrawner.plausible.android.Plausible;
-
-import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class AdblockFastApplication extends Application {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
@@ -48,7 +43,6 @@ public class AdblockFastApplication extends Application {
     public static String packageName;
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
-    public static MassiveClient massiveClient;
 
     static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
     static final String LEGACY_PREFS_NAME = "adblockfast";
@@ -72,7 +66,10 @@ public class AdblockFastApplication extends Application {
         initPrefs();
         dumpPrefs();
 
-        if (Ruleset.isUpgraded()) initMassive(this);
+        MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> {
+            return Unit.INSTANCE;
+        });
+
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
@@ -140,44 +137,27 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void initMassive(Context context) {
-        if (massiveClient == null) {
-            MassiveClient.Companion.getInstance(context, (client) -> {
-                massiveClient = client;
-
-                if (client.getState() == State.NotInitialized) {
-                    client.initAsync(
-                        BuildConfig.MASSIVE_API_TOKEN,
-                        new MassiveOptions(
-                            MassiveServiceType.Foreground,
-                            new MassiveNotificationOptions(
-                                context.getString(R.string.name),
-                                context.getString(R.string.foreground_text),
-                                R.drawable.icon
-                            )
-                        ),
-                        new InitCallback() {
-                            @Override
-                            public void onSuccess() {
-                                if (Ruleset.isUpgraded()) client.start();
-                                Plausible.INSTANCE.event("Succeed", "/massive", "", null);
-                            }
-
-                            @Override
-                            public void onFailure(@NonNull String message) {
-                                Plausible.INSTANCE.event("Fail", "/massive", "", null);
-                            }
-                        }
-                    );
-                }
+        MassiveClient.Companion.start(
+            new MassiveOptions(
+                MassiveServiceType.Foreground,
+                new MassiveNotificationOptions(
+                    context.getString(R.string.name),
+                    context.getString(R.string.foreground_text),
+                    R.drawable.icon
+                )
+            ), (result) -> {
+                Plausible.INSTANCE.event("Start", "/massive", "", null);
 
                 return Unit.INSTANCE;
-            });
-        } else if (massiveClient.getState() != State.NotInitialized) {
-            massiveClient.start();
-        }
+            }
+        );
     }
 
     public static void finalizeMassive() {
-        if (massiveClient != null) massiveClient.dispose();
+        MassiveClient.Companion.stop((result) -> {
+            Plausible.INSTANCE.event("Stop", "/massive", "", null);
+
+            return Unit.INSTANCE;
+        });
     }
 }
