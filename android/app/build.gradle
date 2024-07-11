@@ -23,7 +23,7 @@ android.buildTypes.each { type ->
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
         versionName "2.4.0"
