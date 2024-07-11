@@ -5,10 +5,10 @@ apply plugin: 'com.google.gms.google-services'
 repositories {
     jcenter()
     maven {
-        url 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+        url 'https://downloads.joinmassive.com/sdk/android/release'
     }
     maven {
-        url 'file://' + MavenBasePath
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots'
     }
 }
 
@@ -55,15 +55,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'org.apache.maven:maven-artifact:3.8.1'
     implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.dtx12:actions:0.1.4'
-    implementation 'com.massive:sdk:0.7.0'
-    implementation 'com.google.firebase:firebase-functions:20.4.0'
+    implementation 'com.massive:sdk:1.0.0'
+    implementation 'com.google.firebase:firebase-functions:21.0.0'
     implementation 'com.onesignal:OneSignal:5.1.8'
     implementation 'com.wbrawner.plausible:plausible-android:0.1.0-SNAPSHOT'
     testImplementation 'junit:junit:4.12'
