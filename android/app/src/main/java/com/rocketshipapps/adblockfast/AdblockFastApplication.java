@@ -138,7 +138,7 @@ public class AdblockFastApplication extends Application {
             new MassiveOptions(
                 MassiveServiceType.Foreground,
                 new MassiveNotificationOptions(
-                    context.getString(R.string.name),
+                    context.getString(R.string.foreground_title),
                     context.getString(R.string.foreground_text),
                     R.drawable.icon
                 )
