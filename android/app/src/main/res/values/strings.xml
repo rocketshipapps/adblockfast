@@ -22,8 +22,9 @@
     </string>
     <string name="settings_summary">To block ads in Samsung Internet:</string>
     <string name="settings_details">
-        <![CDATA[Go to your home screen > Internet > ☰ > Ad blockers then toggle <b>Adblock
-        Fast</b> on.<br><br>To unblock ads, come back to this app then tap the Adblock Fast logo.]]>
+        <![CDATA[Go to your home screen > <b>Internet</b> > ☰ > <b>Ad blockers</b> then toggle
+        <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to this app then tap the Adblock
+        Fast logo.]]>
     </string>
     <string name="install_summary">
         Adblock Fast requires Samsung Internet 4.0+, which you don’t seem to have.
@@ -63,6 +64,6 @@
     <string name="upgrade_label">Faster</string>
     <string name="accept_label">Yes</string>
     <string name="decline_label">Not now</string>
-    <string name="foreground_title">Faster blocking mode (beta)</string>
+    <string name="foreground_title">Faster blocking (beta)</string>
     <string name="foreground_text">Adblock Fast is searching for new ad domains to filter.</string>
 </resources>
