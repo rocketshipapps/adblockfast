@@ -26,10 +26,10 @@ android {
     compileSdk 34
     defaultConfig {
         applicationId "com.rocketshipapps.adblockfast"
-        versionName "2.4.1"
-        versionCode 12
+        versionName "2.4.2"
+        versionCode 13
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         manifestPlaceholders = [
             onesignal_app_id: OneSignalAppId,
             onesignal_google_project_number: 'REMOTE'
