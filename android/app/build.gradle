@@ -8,7 +8,7 @@ def SUBSCRIBE_URL = '"' + FirebaseSubscribeUrl + '"' ?: '"Define Firebase Cloud 
 
 android {
     namespace 'com.rocketshipapps.adblockfast'
-    compileSdk 34
+    compileSdk 33
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -58,7 +58,7 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'org.apache.maven:maven-artifact:3.8.1'
     implementation 'com.github.kittinunf.fuel:fuel:1.6.0'
