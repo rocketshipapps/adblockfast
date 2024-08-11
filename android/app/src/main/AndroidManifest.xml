@@ -16,6 +16,7 @@
         android:label="@string/name"
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
+        <meta-data android:name="io.sentry.dsn" android:value="@string/glitchtip_dsn" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
