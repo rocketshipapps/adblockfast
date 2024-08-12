@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import io.sentry.Sentry;
+
 import com.rocketshipapps.adblockfast.AdblockFastApplication;
 import com.rocketshipapps.adblockfast.R;
 
@@ -62,9 +64,7 @@ public class Ruleset {
         try {
             file = new File(context.getFilesDir(), PATHNAME);
 
-            if (file.exists()) {
-                boolean ignored = file.delete();
-            }
+            if (file.exists()) { boolean ignored = file.delete(); }
 
             if (file.createNewFile()) {
                 input =
@@ -81,14 +81,20 @@ public class Ruleset {
 
                 while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
             }
-        } catch (IOException ignored) {} finally {
+        } catch (IOException exception) {
+            Sentry.captureException(exception);
+        } finally {
             try {
                 if (input != null) input.close();
-            } catch (Exception ignored) {}
+            } catch (Exception exception) {
+                Sentry.captureException(exception);
+            }
 
             try {
                 if (output != null) output.close();
-            } catch (Exception ignored) {}
+            } catch (Exception exception) {
+                Sentry.captureException(exception);
+            }
         }
 
         return file;
