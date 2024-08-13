@@ -13,7 +13,7 @@ import com.rocketshipapps.adblockfast.AdblockFastApplication;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
-    static final String PATHNAME = "rules.txt";
+    static final String PATHNAME = "ruleset.txt";
 
     public static void enable(Context context) {
         AdblockFastApplication
