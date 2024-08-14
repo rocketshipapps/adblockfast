@@ -2,9 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'org.jetbrains.kotlin.android'
 
-def MASSIVE_API_TOKEN = '"' + MassiveApiToken + '"' ?: '"Define Massive API token in gradle.properties"'
-def ONESIGNAL_APP_ID = '"' + OneSignalAppId + '"' ?: '"Define OneSignal app ID in gradle.properties"'
-def SUBSCRIBE_URL = '"' + FirebaseSubscribeUrl + '"' ?: '"Define Firebase Cloud Functions URL in gradle.properties"'
+def MASSIVE_API_TOKEN =
+    "\"${MassiveApiToken}\"" ?: '"Define Massive API token in gradle.properties"'
+def ONESIGNAL_APP_ID = "\"${OneSignalAppId}\"" ?: '"Define OneSignal app ID in gradle.properties"'
+def SUBSCRIBE_URL =
+    "\"${FirebaseSubscribeUrl}\"" ?: '"Define Firebase Cloud Functions URL in gradle.properties"'
 
 android {
     namespace 'com.rocketshipapps.adblockfast'
@@ -25,18 +27,10 @@ android {
         ]
         resValue "string", "glitchtip_dsn", GlitchTipDsn
     }
-    buildTypes {
-        release {
-            debuggable false
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            debuggable true
-        }
-    }
-    buildFeatures {
-        buildConfig true
+    buildFeatures.buildConfig true
+    buildTypes.release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
 }
 
