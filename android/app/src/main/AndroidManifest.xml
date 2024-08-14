@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rocketshipapps.adblockfast">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -16,6 +18,9 @@
         android:label="@string/name"
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
+        <meta-data
+            android:name="com.samsung.android.sbrowser.contentBlocker.interfaceVersion"
+            android:value="API_1.0" />
         <meta-data android:name="io.sentry.dsn" android:value="@string/glitchtip_dsn" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
@@ -27,12 +32,14 @@
             android:name=".contentBlocker.contentProvider.BlockerProvider"
             android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:exported="true" />
-        <meta-data
-            android:name="com.samsung.android.sbrowser.contentBlocker.interfaceVersion"
-            android:value="API_1.0" />
-        <receiver android:name=".service.UpdateReceiver" android:exported="true" android:enabled="true">
+        <receiver android:name=".service.UpdateReceiver" android:exported="true">
             <intent-filter >
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" android:path="com.sec.android.app.sbrowser" />
             </intent-filter>
         </receiver>
     </application>
