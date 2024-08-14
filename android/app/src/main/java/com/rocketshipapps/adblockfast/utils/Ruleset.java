@@ -57,9 +57,9 @@ public class Ruleset {
     }
 
     public static File get(Context context) {
+        File file = null;
         InputStream input = null;
         FileOutputStream output = null;
-        File file = null;
 
         try {
             file = new File(context.getFilesDir(), PATHNAME);
