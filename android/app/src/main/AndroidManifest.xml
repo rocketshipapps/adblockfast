@@ -33,13 +33,10 @@
             android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:exported="true" />
         <receiver android:name=".service.UpdateReceiver" android:exported="true">
-            <intent-filter >
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package" android:path="com.rocketshipapps.adblockfast" />
-            </intent-filter>
-            <intent-filter >
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package" android:path="com.sec.android.app.sbrowser" />
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
     </application>
