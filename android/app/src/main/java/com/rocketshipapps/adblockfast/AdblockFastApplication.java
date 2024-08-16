@@ -15,10 +15,10 @@ import kotlin.Unit;
 
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
-import com.massive.sdk.MassiveClient;
-import com.massive.sdk.MassiveNotificationOptions;
-import com.massive.sdk.MassiveOptions;
-import com.massive.sdk.MassiveServiceType;
+import com.joinmassive.sdk.MassiveClient;
+import com.joinmassive.sdk.MassiveNotificationOptions;
+import com.joinmassive.sdk.MassiveOptions;
+import com.joinmassive.sdk.MassiveServiceType;
 
 import com.onesignal.OneSignal;
 
