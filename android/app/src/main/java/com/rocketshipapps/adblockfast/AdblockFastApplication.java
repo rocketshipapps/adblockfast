@@ -46,7 +46,7 @@ public class AdblockFastApplication extends Application {
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
 
-    static final String LEGACY_VERSION_NUMBER = "<=2.3.0";
+    static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
