@@ -19,10 +19,10 @@ import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
     static final String PATHNAME = "ruleset.txt";
-    public static SharedPreferences prefs;
-    public static Intent blockingUpdateIntent;
+    static SharedPreferences prefs;
+    static Intent blockingUpdateIntent;
 
-    public static void init(Context context) {
+    static void init(Context context) {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         blockingUpdateIntent =
             new Intent()
