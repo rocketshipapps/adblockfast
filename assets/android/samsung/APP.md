@@ -23,6 +23,10 @@ If you have any questions or comments, follow and message us:
 • https://www.facebook.com/adblockfast  
 • https://x.com/adblockfast
 
+**Short description:**
+
+Adblock Fast is a faster, open-source ad blocker.
+
 **Search keywords:**
 
 `ad blocker` `ad blocking` `adblock plus` `ads` `crystal`
