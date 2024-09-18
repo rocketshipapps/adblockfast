@@ -38,6 +38,8 @@ public class AdblockFastApplication extends Application {
         "should_override_browser_detection";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
+    public static final String BLOCKING_UPDATE_ACTION =
+        "com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE";
     public static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
     public static String packageName;
@@ -57,7 +59,7 @@ public class AdblockFastApplication extends Application {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         blockingUpdateIntent =
             new Intent()
-                .setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE")
+                .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + packageName));
 
         dumpPrefs();

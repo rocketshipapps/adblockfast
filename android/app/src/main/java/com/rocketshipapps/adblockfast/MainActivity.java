@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         detectSamsungBrowser();
-        if (Ruleset.isUpgraded()) AdblockFastApplication.initMassive(this);
+        if (Ruleset.isUpgraded(this)) AdblockFastApplication.initMassive(this);
 
-        if (Ruleset.isEnabled()) {
+        if (Ruleset.isEnabled(this)) {
             animateBlocking(this::onboardUser);
         } else {
             animateUnblocking(this::onboardUser);
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLogoPressed(View v) {
         if (!isLogoAnimating) {
-            if (Ruleset.isEnabled()) {
+            if (Ruleset.isEnabled(this)) {
                 Ruleset.disable(this);
                 animateUnblocking(null);
                 Plausible.INSTANCE.event("Unblock", "/", "", null);
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         setHtml(upgradeText, R.string.upgrade_link, false);
         setHtml(about.findViewById(R.id.copyright_text), R.string.copyright_notice, true);
 
-        if (Ruleset.isUpgraded()) {
+        if (Ruleset.isUpgraded(this)) {
             upgradeText.setTypeface(emphasisFont);
             defaultText.setTypeface(bodyFont);
         }
@@ -320,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
             setHtml(overrideText, R.string.install_override, false);
             overrideText.setVisibility(View.VISIBLE);
 
-            if (Ruleset.isUpgraded()) {
+            if (Ruleset.isUpgraded(this)) {
                 upgradeText.setTypeface(emphasisFont);
                 defaultText.setTypeface(bodyFont);
             }

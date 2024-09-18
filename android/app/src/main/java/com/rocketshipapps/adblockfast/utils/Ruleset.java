@@ -1,6 +1,11 @@
 package com.rocketshipapps.adblockfast.utils;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+
+import androidx.preference.PreferenceManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,46 +19,50 @@ import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
     static final String PATHNAME = "ruleset.txt";
+    public static SharedPreferences prefs;
+    public static Intent blockingUpdateIntent;
+
+    public static void init(Context context) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        blockingUpdateIntent =
+            new Intent()
+                .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
+                .setData(Uri.parse("package:" + context.getPackageName()));
+    }
 
     public static void enable(Context context) {
-        AdblockFastApplication
-            .prefs
-            .edit()
-            .putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true)
-            .apply();
-        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+        if (prefs == null || blockingUpdateIntent == null) init(context);
+        prefs.edit().putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true).apply();
+        context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static void disable(Context context) {
-        AdblockFastApplication
-            .prefs
-            .edit()
-            .putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, false)
-            .apply();
-        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+        if (prefs == null || blockingUpdateIntent == null) init(context);
+        prefs.edit().putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, false).apply();
+        context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static void upgrade(Context context) {
-        AdblockFastApplication
-            .prefs
+        if (prefs == null || blockingUpdateIntent == null) init(context);
+        prefs
             .edit()
             .putString(
                 AdblockFastApplication.BLOCKING_MODE_KEY,
                 AdblockFastApplication.LUDICROUS_MODE_VALUE
             )
             .apply();
-        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+        context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static void downgrade(Context context) {
-        AdblockFastApplication
-            .prefs
+        if (prefs == null || blockingUpdateIntent == null) init(context);
+        prefs
             .edit()
             .putString(
                 AdblockFastApplication.BLOCKING_MODE_KEY, AdblockFastApplication.STANDARD_MODE_VALUE
             )
             .apply();
-        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+        context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static File get(Context context) {
@@ -69,8 +78,8 @@ public class Ruleset {
             if (file.createNewFile()) {
                 input =
                     context.getResources().openRawResource(
-                        isEnabled()
-                            ? isUpgraded()
+                        isEnabled(context)
+                            ? isUpgraded(context)
                                 ? R.raw.enhanced
                                 : R.raw.blocked
                             : R.raw.unblocked
@@ -100,15 +109,15 @@ public class Ruleset {
         return file;
     }
 
-    public static boolean isEnabled() {
-        return
-            AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true);
+    public static boolean isEnabled(Context context) {
+        if (prefs == null) init(context);
+        return prefs.getBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true);
     }
 
-    public static boolean isUpgraded() {
+    public static boolean isUpgraded(Context context) {
+        if (prefs == null) init(context);
         return
-            AdblockFastApplication
-                .prefs
+            prefs
                 .getString(
                     AdblockFastApplication.BLOCKING_MODE_KEY,
                     AdblockFastApplication.STANDARD_MODE_VALUE
