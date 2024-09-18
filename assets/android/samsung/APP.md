@@ -25,7 +25,7 @@ If you have any questions or comments, follow and message us:
 
 **Short description:**
 
-Adblock Fast is a faster, open-source ad blocker.
+The world’s fastest ad blocker! Same blocking, 8x more accelerated page loading.
 
 **Search keywords:**
 
