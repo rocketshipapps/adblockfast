@@ -30,7 +30,7 @@ https://github.com/rocketshipapps/adblockfast
 If you have any questions or comments, follow and message us:
 
 • https://www.facebook.com/adblockfast  
-• https://twitter.com/adblockfast
+• https://x.com/adblockfast
 
 ### Graphics
 
