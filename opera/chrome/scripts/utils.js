@@ -31,7 +31,9 @@ const getHost         = (url) => {
 const injectPlausible = (path) => {
                           script.src = `${ path }plausible.js`;
 
-                          script.setAttribute('data-api', 'https://plausible.io/api/event');
+                          script.setAttribute(
+                            'data-api', 'https://plausible.adblockfast.com/api/event'
+                          );
                           script.setAttribute('data-domain', domain);
                           document.body.prepend(script);
                         };
