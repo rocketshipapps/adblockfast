@@ -77,23 +77,29 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    static void updateLegacyPrefs(Context context) {
-        if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
-            SharedPreferences.Editor editor = prefs.edit();
-            SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
+    public static void initMassive(Context context) {
+        MassiveClient.Companion.start(
+            new MassiveOptions(
+                MassiveServiceType.Foreground,
+                new MassiveNotificationOptions(
+                    context.getString(R.string.foreground_title),
+                    context.getString(R.string.foreground_text),
+                    R.drawable.icon
+                )
+            ), (result) -> {
+                Plausible.INSTANCE.event("Start", "/massive", "", null);
 
-            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
-            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
-            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
-            editor
-                .putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true))
-                .apply();
-            editor
-                .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true))
-                .apply();
-            editor.remove(LEGACY_IS_FIRST_RUN_KEY).apply();
-            legacyPrefs.edit().clear().apply();
-        }
+                return Unit.INSTANCE;
+            }
+        );
+    }
+
+    public static void finalizeMassive() {
+        MassiveClient.Companion.stop((result) -> {
+            Plausible.INSTANCE.event("Stop", "/massive", "", null);
+
+            return Unit.INSTANCE;
+        });
     }
 
     static void initPrefs() {
@@ -132,36 +138,30 @@ public class AdblockFastApplication extends Application {
         }
     }
 
+    static void updateLegacyPrefs(Context context) {
+        if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
+            SharedPreferences.Editor editor = prefs.edit();
+            SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
+
+            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
+            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
+            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
+            editor
+                .putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true))
+                .apply();
+            editor
+                .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true))
+                .apply();
+            editor.remove(LEGACY_IS_FIRST_RUN_KEY).apply();
+            legacyPrefs.edit().clear().apply();
+        }
+    }
+
     static void dumpPrefs() {
         Map<String, ?> entries = prefs.getAll();
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {
             Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
         }
-    }
-
-    public static void initMassive(Context context) {
-        MassiveClient.Companion.start(
-            new MassiveOptions(
-                MassiveServiceType.Foreground,
-                new MassiveNotificationOptions(
-                    context.getString(R.string.foreground_title),
-                    context.getString(R.string.foreground_text),
-                    R.drawable.icon
-                )
-            ), (result) -> {
-                Plausible.INSTANCE.event("Start", "/massive", "", null);
-
-                return Unit.INSTANCE;
-            }
-        );
-    }
-
-    public static void finalizeMassive() {
-        MassiveClient.Companion.stop((result) -> {
-            Plausible.INSTANCE.event("Stop", "/massive", "", null);
-
-            return Unit.INSTANCE;
-        });
     }
 }

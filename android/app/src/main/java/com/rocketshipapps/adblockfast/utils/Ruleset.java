@@ -22,16 +22,6 @@ public class Ruleset {
     static SharedPreferences prefs;
     static Intent blockingUpdateIntent;
 
-    static void init(Context context) {
-        synchronized (Ruleset.class) {
-            prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            blockingUpdateIntent =
-                new Intent()
-                    .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
-                    .setData(Uri.parse("package:" + context.getPackageName()));
-        }
-    }
-
     public static void enable(Context context) {
         if (prefs == null || blockingUpdateIntent == null) init(context);
         prefs.edit().putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true).apply();
@@ -125,5 +115,15 @@ public class Ruleset {
                     AdblockFastApplication.STANDARD_MODE_VALUE
                 )
                 .equals(AdblockFastApplication.LUDICROUS_MODE_VALUE);
+    }
+
+    static void init(Context context) {
+        synchronized (Ruleset.class) {
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            blockingUpdateIntent =
+                new Intent()
+                    .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
+                    .setData(Uri.parse("package:" + context.getPackageName()));
+        }
     }
 }
