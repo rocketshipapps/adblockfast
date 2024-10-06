@@ -17,11 +17,7 @@ public class UpdateReceiver extends BroadcastReceiver {
             switch (action) {
                 case Intent.ACTION_MY_PACKAGE_REPLACED:
 
-                AdblockFastApplication.dumpPrefs();
-                AdblockFastApplication.updateLegacyPrefs(context);
-                AdblockFastApplication.dumpPrefs();
-                AdblockFastApplication.initPrefs();
-                AdblockFastApplication.dumpPrefs();
+                AdblockFastApplication.handlePrefs(context);
                 context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
 
                 break;

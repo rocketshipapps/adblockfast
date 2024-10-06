@@ -62,17 +62,22 @@ public class AdblockFastApplication extends Application {
                 .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + packageName));
 
-        dumpPrefs();
-        updateLegacyPrefs(this);
-        dumpPrefs();
-        initPrefs();
-        dumpPrefs();
-
+        handlePrefs(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
-    public static void updateLegacyPrefs(Context context) {
+    public static void handlePrefs(Context context) {
+        synchronized (AdblockFastApplication.class) {
+            dumpPrefs();
+            updateLegacyPrefs(context);
+            dumpPrefs();
+            initPrefs();
+            dumpPrefs();
+        }
+    }
+
+    static void updateLegacyPrefs(Context context) {
         if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
             SharedPreferences.Editor editor = prefs.edit();
             SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
@@ -91,7 +96,7 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    public static void initPrefs() {
+    static void initPrefs() {
         String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
         if (
@@ -127,7 +132,7 @@ public class AdblockFastApplication extends Application {
         }
     }
 
-    public static void dumpPrefs() {
+    static void dumpPrefs() {
         Map<String, ?> entries = prefs.getAll();
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {

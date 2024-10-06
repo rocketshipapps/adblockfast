@@ -23,11 +23,13 @@ public class Ruleset {
     static Intent blockingUpdateIntent;
 
     static void init(Context context) {
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        blockingUpdateIntent =
-            new Intent()
-                .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
-                .setData(Uri.parse("package:" + context.getPackageName()));
+        synchronized (Ruleset.class) {
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            blockingUpdateIntent =
+                new Intent()
+                    .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
+                    .setData(Uri.parse("package:" + context.getPackageName()));
+        }
     }
 
     public static void enable(Context context) {
