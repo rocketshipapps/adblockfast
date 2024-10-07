@@ -244,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentNotificationsOptIn(Runnable continuationHandler) {
+        if (AdblockFastApplication.prefs == null) AdblockFastApplication.handlePrefs(this);
+
         Dialog notificationsOptIn = presentDialog(R.layout.notifications_dialog);
         SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
 
@@ -293,6 +295,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
+        if (AdblockFastApplication.prefs == null) AdblockFastApplication.handlePrefs(this);
+
         hasSamsungBrowser =
             hasSamsungBrowser ||
                 AdblockFastApplication.prefs.getBoolean(
@@ -554,6 +558,7 @@ public class MainActivity extends AppCompatActivity {
 
     void onboardUser() {
         if (AdblockFastApplication.prefs == null) AdblockFastApplication.handlePrefs(this);
+
         if (
             AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, true)
         ) {
