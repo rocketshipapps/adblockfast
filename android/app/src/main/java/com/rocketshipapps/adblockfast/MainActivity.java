@@ -401,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(id);
             dialog.setCancelable(false);
-            if (!isDestroyed() && !isFinishing()) dialog.show();
+            dialog.show();
         }
 
         return dialog;
