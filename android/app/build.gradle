@@ -60,7 +60,7 @@ dependencies {
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.dtx12:actions:0.1.4'
-    implementation 'com.joinmassive:sdk:1.2.0'
+    implementation 'com.joinmassive:sdk:1.3.0'
     implementation 'com.onesignal:OneSignal:5.1.8'
     implementation 'com.google.firebase:firebase-functions:21.0.0'
     implementation 'com.wbrawner.plausible:plausible-android:0.1.0-SNAPSHOT'
