@@ -385,21 +385,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Dialog presentDialog(int id) {
-        if (dialog != null) dialog.dismiss();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
 
         dialog = new Dialog(this);
-        Window window = dialog.getWindow();
 
-        if (window != null) {
-            window.getAttributes().windowAnimations = R.style.Animation;
+        if (!isDestroyed() && !isFinishing()) {
+            Window window = dialog.getWindow();
 
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            if (window != null) {
+                window.getAttributes().windowAnimations = R.style.Animation;
+
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(id);
+            dialog.setCancelable(false);
+            if (!isDestroyed() && !isFinishing()) dialog.show();
         }
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(id);
-        dialog.setCancelable(false);
-        if (!isFinishing()) dialog.show();
 
         return dialog;
     }
