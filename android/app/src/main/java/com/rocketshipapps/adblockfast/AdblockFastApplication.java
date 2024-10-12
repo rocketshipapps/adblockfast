@@ -50,6 +50,7 @@ public class AdblockFastApplication extends Application {
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
+    static ComparableVersion versionNumber;
 
     @Override
     public void onCreate() {
@@ -61,6 +62,7 @@ public class AdblockFastApplication extends Application {
             new Intent()
                 .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + packageName));
+        versionNumber = new ComparableVersion(VERSION_NUMBER);
 
         handlePrefs(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
@@ -103,38 +105,33 @@ public class AdblockFastApplication extends Application {
     }
 
     static void initPrefs() {
-        String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
+        String previousVersionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
-        if (
-            new ComparableVersion(versionNumber)
-                .compareTo(new ComparableVersion(VERSION_NUMBER)) < 0
-        ) {
+        if (new ComparableVersion(previousVersionNumber).compareTo(versionNumber) < 0) {
             SharedPreferences.Editor editor = prefs.edit();
 
             if (prefs.contains(VERSION_NUMBER_KEY)) {
-                editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber).apply();
-                Plausible
-                    .INSTANCE
-                    .event("Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null);
+                editor.putString(PREVIOUS_VERSION_NUMBER_KEY, previousVersionNumber);
+                Plausible.INSTANCE.event(
+                    "Update", "/v" + previousVersionNumber + "-to-v" + VERSION_NUMBER, "", null
+                );
             } else {
                 Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
             }
 
-            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
+            editor.putString(VERSION_NUMBER_KEY, VERSION_NUMBER);
 
             if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
-                editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER).apply();
+                editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER);
             }
 
             if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
-                editor.putInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0).apply();
+                editor.putInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0);
             }
 
-            if (!prefs.contains(IS_FIRST_RUN_KEY)) {
-                editor.putBoolean(IS_FIRST_RUN_KEY, true).apply();
-            }
-
-            if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true).apply();
+            if (!prefs.contains(IS_FIRST_RUN_KEY)) editor.putBoolean(IS_FIRST_RUN_KEY, true);
+            if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true);
+            editor.apply();
         }
     }
 
@@ -143,16 +140,14 @@ public class AdblockFastApplication extends Application {
             SharedPreferences.Editor editor = prefs.edit();
             SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
 
-            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
-            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER).apply();
-            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
+            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER);
+            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER);
+            editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE);
+            editor.putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true));
             editor
-                .putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true))
-                .apply();
-            editor
-                .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true))
-                .apply();
-            editor.remove(LEGACY_IS_FIRST_RUN_KEY).apply();
+                .putBoolean(IS_BLOCKING_KEY, legacyPrefs.getBoolean(LEGACY_IS_BLOCKING_KEY, true));
+            editor.remove(LEGACY_IS_FIRST_RUN_KEY);
+            editor.apply();
             legacyPrefs.edit().clear().apply();
         }
     }
