@@ -10,29 +10,35 @@ import com.rocketshipapps.adblockfast.AdblockFastApplication;
 public class UpdateReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        String action = intent.getAction();
+        final PendingResult result = goAsync();
 
-        if (action != null) {
-            // TODO: Use “NotificationManager” and “PendingIntent” to launch app on update
-            switch (action) {
-                case Intent.ACTION_MY_PACKAGE_REPLACED:
+        new Thread(() -> {
+            String action = intent.getAction();
 
-                AdblockFastApplication.handlePrefs(context);
-                context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+            if (action != null) {
+                // TODO: Use “NotificationManager” and “PendingIntent” to launch app on update
+                switch (action) {
+                    case Intent.ACTION_MY_PACKAGE_REPLACED:
 
-                break;
-
-                case Intent.ACTION_PACKAGE_REPLACED:
-
-                Uri data = intent.getData();
-
-                if (
-                    data != null &&
-                        "com.sec.android.app.sbrowser".equals(data.getSchemeSpecificPart())
-                ) {
+                    AdblockFastApplication.handlePrefs(context);
                     context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+
+                    break;
+
+                    case Intent.ACTION_PACKAGE_REPLACED:
+
+                    Uri data = intent.getData();
+
+                    if (
+                        data != null &&
+                            "com.sec.android.app.sbrowser".equals(data.getSchemeSpecificPart())
+                    ) {
+                        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+                    }
                 }
             }
-        }
+
+            result.finish();
+        }).start();
     }
 }
