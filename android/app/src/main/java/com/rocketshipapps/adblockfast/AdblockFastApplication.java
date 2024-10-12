@@ -50,7 +50,7 @@ public class AdblockFastApplication extends Application {
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
-    static ComparableVersion versionNumber;
+    static final ComparableVersion COMPARABLE_VERSION = new ComparableVersion(VERSION_NUMBER);
 
     @Override
     public void onCreate() {
@@ -62,7 +62,6 @@ public class AdblockFastApplication extends Application {
             new Intent()
                 .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + packageName));
-        versionNumber = new ComparableVersion(VERSION_NUMBER);
 
         handlePrefs(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
@@ -105,16 +104,16 @@ public class AdblockFastApplication extends Application {
     }
 
     static void initPrefs() {
-        String previousVersionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
+        String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
-        if (new ComparableVersion(previousVersionNumber).compareTo(versionNumber) < 0) {
+        if (new ComparableVersion(versionNumber).compareTo(COMPARABLE_VERSION) < 0) {
             SharedPreferences.Editor editor = prefs.edit();
 
             if (prefs.contains(VERSION_NUMBER_KEY)) {
-                editor.putString(PREVIOUS_VERSION_NUMBER_KEY, previousVersionNumber);
-                Plausible.INSTANCE.event(
-                    "Update", "/v" + previousVersionNumber + "-to-v" + VERSION_NUMBER, "", null
-                );
+                editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber);
+                Plausible
+                    .INSTANCE
+                    .event("Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null);
             } else {
                 Plausible.INSTANCE.event("Install", "/v" + VERSION_NUMBER, "", null);
             }
