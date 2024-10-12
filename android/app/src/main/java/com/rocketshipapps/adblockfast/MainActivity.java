@@ -53,6 +53,8 @@ import io.github.inflationx.calligraphy3.TypefaceUtils;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
+import com.bumptech.glide.Glide;
+
 import com.onesignal.Continue;
 import com.onesignal.OneSignal;
 
@@ -538,23 +540,21 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < resources.length; i++) {
             if (i == 0) {
-                logoButton.setImageResource(resources[i]);
+                Glide.with(this).load(resources[i]).into(logoButton);
             } else {
                 final int I = i;
 
-                new Handler().postDelayed(() ->
-                    runOnUiThread(() -> {
-                        logoButton.setImageResource(resources[I]);
+                new Handler().postDelayed(() -> runOnUiThread(() -> {
+                    Glide.with(this).load(resources[I]).into(logoButton);
 
-                        if (I == resources.length - 1) {
-                            isLogoAnimating = false;
+                    if (I == resources.length - 1) {
+                        isLogoAnimating = false;
 
-                            statusText.setText(status);
-                            hintText.setText(hint);
-                            if (callback != null) callback.run();
-                        }
+                        statusText.setText(status);
+                        hintText.setText(hint);
+                        if (callback != null) callback.run();
                     }
-                ), Math.round(i * delay));
+                }), Math.round(i * delay));
             }
         }
     }
