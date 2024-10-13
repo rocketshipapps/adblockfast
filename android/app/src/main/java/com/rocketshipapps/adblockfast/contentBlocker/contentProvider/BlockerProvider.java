@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
+import io.sentry.Sentry;
+
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class BlockerProvider extends ContentProvider {
@@ -64,23 +66,45 @@ public class BlockerProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public ParcelFileDescriptor openFile(@NonNull Uri uri,
-                                         @NonNull String mode) throws FileNotFoundException {
-        return ParcelFileDescriptor.open(
-            Ruleset.get(Objects.requireNonNull(getContext())), ParcelFileDescriptor.MODE_READ_ONLY
-        );
+    public ParcelFileDescriptor openFile(@NonNull Uri uri, @NonNull String mode) {
+        File file = Ruleset.get(Objects.requireNonNull(getContext()));
+        ParcelFileDescriptor fileDescriptor = null;
+
+        try {
+            if (file.exists()) {
+                fileDescriptor =
+                    ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+            } else {
+                Sentry.captureException(
+                    new FileNotFoundException(String.format("File at %s not found", file.getPath()))
+                );
+            }
+        } catch (Exception exception) {
+            Sentry.captureException(exception);
+        }
+
+        return fileDescriptor;
     }
 
     @Nullable
     @Override
     public ParcelFileDescriptor openFile(@NonNull Uri uri,
                                          @NonNull String mode,
-                                         CancellationSignal signal) throws FileNotFoundException {
+                                         CancellationSignal signal) {
         File file = Ruleset.get(Objects.requireNonNull(getContext()));
         ParcelFileDescriptor fileDescriptor = null;
 
-        if (file.exists()) {
-            fileDescriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+        try {
+            if (file.exists()) {
+                fileDescriptor =
+                    ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+            } else {
+                Sentry.captureException(
+                    new FileNotFoundException(String.format("File at %s not found", file.getPath()))
+                );
+            }
+        } catch (Exception exception) {
+            Sentry.captureException(exception);
         }
 
         return fileDescriptor;
