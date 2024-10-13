@@ -9,10 +9,7 @@ import androidx.preference.PreferenceManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-
-import io.sentry.Sentry;
 
 import com.rocketshipapps.adblockfast.AdblockFastApplication;
 import com.rocketshipapps.adblockfast.R;
@@ -58,13 +55,11 @@ public class Ruleset {
     }
 
     public static File get(Context context) {
-        File file = null;
+        File file = new File(context.getFilesDir(), PATHNAME);
         InputStream input = null;
         FileOutputStream output = null;
 
         try {
-            file = new File(context.getFilesDir(), PATHNAME);
-
             if (file.exists()) { boolean ignored = file.delete(); }
 
             if (file.createNewFile()) {
@@ -81,21 +76,14 @@ public class Ruleset {
                 int byteCount;
 
                 while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
+            } else {
+                file = null;
             }
-        } catch (IOException exception) {
-            Sentry.captureException(exception);
+        } catch (Exception exception) {
+            file = null;
         } finally {
-            try {
-                if (input != null) input.close();
-            } catch (Exception exception) {
-                Sentry.captureException(exception);
-            }
-
-            try {
-                if (output != null) output.close();
-            } catch (Exception exception) {
-                Sentry.captureException(exception);
-            }
+            try { if (input != null) input.close(); } catch (Exception ignored) {}
+            try { if (output != null) output.close(); } catch (Exception ignored) {}
         }
 
         return file;

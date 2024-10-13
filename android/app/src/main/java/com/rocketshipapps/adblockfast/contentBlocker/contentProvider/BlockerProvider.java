@@ -11,6 +11,7 @@ import android.os.ParcelFileDescriptor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
@@ -75,8 +76,13 @@ public class BlockerProvider extends ContentProvider {
     public ParcelFileDescriptor openFile(@NonNull Uri uri,
                                          @NonNull String mode,
                                          CancellationSignal signal) throws FileNotFoundException {
-        return ParcelFileDescriptor.open(
-            Ruleset.get(Objects.requireNonNull(getContext())), ParcelFileDescriptor.MODE_READ_ONLY
-        );
+        File file = Ruleset.get(Objects.requireNonNull(getContext()));
+        ParcelFileDescriptor fileDescriptor = null;
+
+        if (file.exists()) {
+            fileDescriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+        }
+
+        return fileDescriptor;
     }
 }
