@@ -21,6 +21,9 @@
         <meta-data
             android:name="com.samsung.android.sbrowser.contentBlocker.interfaceVersion"
             android:value="API_1.0" />
+        <meta-data
+            android:name="com.onesignal.NotificationServiceExtension"
+            android:value="com.rocketshipapps.adblockfast.service.NotificationExtension" />
         <meta-data android:name="io.sentry.dsn" android:value="@string/glitchtip_dsn" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
