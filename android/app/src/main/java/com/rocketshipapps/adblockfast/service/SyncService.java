@@ -22,7 +22,7 @@ public class SyncService extends Service {
                 .build()
         );
 
-        // Perform ruleset sync.
+        // Sync ruleset.
 
         stopForeground(true);
         stopSelf();
