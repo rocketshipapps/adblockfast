@@ -1,10 +1,12 @@
 package com.rocketshipapps.adblockfast;
 
 import android.app.Application;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
@@ -34,6 +36,8 @@ public class AdblockFastApplication extends Application {
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
     public static final String ARE_NOTIFICATIONS_ALLOWED_KEY = "are_notifications_allowed";
+    public static final String ARE_NOTIFICATIONS_STILL_ALLOWED_KEY =
+        "are_notifications_still_allowed";
     public static final String SHOULD_OVERRIDE_BROWSER_DETECTION_KEY =
         "should_override_browser_detection";
     public static final String STANDARD_MODE_VALUE = "standard";
@@ -74,6 +78,34 @@ public class AdblockFastApplication extends Application {
             updateLegacyPrefs(context);
             dumpPrefs();
             initPrefs();
+            dumpPrefs();
+        }
+    }
+
+    public static void handleNotificationPrefs(Context context) {
+        if (AdblockFastApplication.prefs == null) handlePrefs(context);
+
+        synchronized (AdblockFastApplication.class) {
+            NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            SharedPreferences.Editor editor = prefs.edit();
+
+            if (notificationManager != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    if (!notificationManager.isNotificationPolicyAccessGranted()) {
+                        editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, false);
+                    } else {
+                        editor.putBoolean(
+                            ARE_NOTIFICATIONS_STILL_ALLOWED_KEY,
+                            notificationManager.areNotificationsEnabled()
+                        );
+                    }
+                } else {
+                    editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, true);
+                }
+            }
+
+            editor.apply();
             dumpPrefs();
         }
     }
