@@ -83,26 +83,22 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void handleNotificationPrefs(Context context) {
-        if (AdblockFastApplication.prefs == null) handlePrefs(context);
+        if (AdblockFastApplication.prefs == null) {
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        }
 
         synchronized (AdblockFastApplication.class) {
             NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             SharedPreferences.Editor editor = prefs.edit();
 
-            if (notificationManager != null) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    if (!notificationManager.isNotificationPolicyAccessGranted()) {
-                        editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, false);
-                    } else {
-                        editor.putBoolean(
-                            ARE_NOTIFICATIONS_STILL_ALLOWED_KEY,
-                            notificationManager.areNotificationsEnabled()
-                        );
-                    }
-                } else {
-                    editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, true);
-                }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && notificationManager != null) {
+                editor.putBoolean(
+                    ARE_NOTIFICATIONS_STILL_ALLOWED_KEY,
+                    notificationManager.areNotificationsEnabled()
+                );
+            } else {
+                editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, true);
             }
 
             editor.apply();
