@@ -17,9 +17,6 @@ import kotlin.Unit;
 
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
-
 import com.joinmassive.sdk.MassiveClient;
 import com.joinmassive.sdk.MassiveNotificationOptions;
 import com.joinmassive.sdk.MassiveOptions;
@@ -63,7 +60,6 @@ public class AdblockFastApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
         packageName = getApplicationContext().getPackageName();
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         blockingUpdateIntent =
@@ -72,12 +68,6 @@ public class AdblockFastApplication extends Application {
                 .setData(Uri.parse("package:" + packageName));
 
         handlePrefs(this);
-        remoteConfig.setConfigSettingsAsync(
-            new FirebaseRemoteConfigSettings
-                .Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
-                .build()
-        );
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
