@@ -142,7 +142,7 @@ public class AdblockFastApplication extends Application {
     static void initPrefs() {
         String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
-        if (new ComparableVersion(versionNumber).compareTo(COMPARABLE_VERSION) < 0) {
+        if (COMPARABLE_VERSION.compareTo(new ComparableVersion(versionNumber)) > 0) {
             SharedPreferences.Editor editor = prefs.edit();
 
             if (!prefs.contains(DISTRIBUTION_CHANNEL_KEY)) {
@@ -164,7 +164,9 @@ public class AdblockFastApplication extends Application {
                 editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER);
             }
 
-            editor.putInt(ANDROID_VERSION_NUMBER_KEY, ANDROID_VERSION_NUMBER);
+            if (ANDROID_VERSION_NUMBER != prefs.getInt(ANDROID_VERSION_NUMBER_KEY, 0)) {
+                editor.putInt(ANDROID_VERSION_NUMBER_KEY, ANDROID_VERSION_NUMBER);
+            }
 
             if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
                 editor.putInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0);
