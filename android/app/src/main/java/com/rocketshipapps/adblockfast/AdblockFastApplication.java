@@ -54,11 +54,11 @@ public class AdblockFastApplication extends Application {
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
 
-    static final String LEGACY_VERSION_NUMBER = "<=2.1.0";
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
     static final ComparableVersion COMPARABLE_VERSION = new ComparableVersion(VERSION_NUMBER);
+    static String legacyVersionNumber;
 
     @Override
     public void onCreate() {
@@ -70,6 +70,7 @@ public class AdblockFastApplication extends Application {
             new Intent()
                 .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + packageName));
+        legacyVersionNumber = this.getString(R.string.legacy_version_number);
 
         handlePrefs(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
@@ -171,8 +172,8 @@ public class AdblockFastApplication extends Application {
             SharedPreferences.Editor editor = prefs.edit();
             SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
 
-            editor.putString(VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER);
-            editor.putString(INITIAL_VERSION_NUMBER_KEY, LEGACY_VERSION_NUMBER);
+            editor.putString(VERSION_NUMBER_KEY, legacyVersionNumber);
+            editor.putString(INITIAL_VERSION_NUMBER_KEY, legacyVersionNumber);
             editor.putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE);
             editor.putBoolean(IS_FIRST_RUN_KEY, prefs.getBoolean(LEGACY_IS_FIRST_RUN_KEY, true));
             editor
