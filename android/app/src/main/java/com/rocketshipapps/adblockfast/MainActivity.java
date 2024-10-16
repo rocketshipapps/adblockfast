@@ -649,7 +649,7 @@ public class MainActivity extends AppCompatActivity {
                 if (email != null) {
                     new Thread(() -> {
                         try {
-                            URL url = new URL(BuildConfig.SUBSCRIBE_URL);
+                            URL url = new URL(BuildConfig.EMAIL_SUBSCRIPTION_URL);
                             HttpURLConnection req = (HttpURLConnection) url.openConnection();
 
                             req.setRequestMethod("POST");
