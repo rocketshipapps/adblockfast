@@ -28,9 +28,11 @@ import com.wbrawner.plausible.android.Plausible;
 
 public class AdblockFastApplication extends Application {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
+    public static final int ANDROID_VERSION_NUMBER = Build.VERSION.SDK_INT;
     public static final String VERSION_NUMBER_KEY = "version_number";
     public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
     public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
+    public static final String ANDROID_VERSION_NUMBER_KEY = "android_version_number";
     public static final String BLOCKING_MODE_KEY = "blocking_mode";
     public static final String NOTIFICATIONS_REQUEST_COUNT_KEY = "notifications_request_count";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
@@ -40,6 +42,8 @@ public class AdblockFastApplication extends Application {
         "are_notifications_still_allowed";
     public static final String SHOULD_OVERRIDE_BROWSER_DETECTION_KEY =
         "should_override_browser_detection";
+    public static final String SHOULD_BUBBLE_WRAP_MODE_KEY = "should_bubble_wrap_mode";
+    public static final String SHOULD_PAUSE_NOTIFICATIONS_KEY = "should_pause_notifications";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
     public static final String BLOCKING_UPDATE_ACTION =
@@ -92,7 +96,7 @@ public class AdblockFastApplication extends Application {
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             SharedPreferences.Editor editor = prefs.edit();
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && notificationManager != null) {
+            if (ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.N && notificationManager != null) {
                 editor.putBoolean(
                     ARE_NOTIFICATIONS_STILL_ALLOWED_KEY,
                     notificationManager.areNotificationsEnabled()
