@@ -1,5 +1,6 @@
 <resources>
-    <string name="legacy_version_number">&lt;=2.1.0</string>
+    <string name="distribution_channel">Play</string>
+    <string name="legacy_version">&lt;=2.1.0</string>
     <string name="google_app_id">18676242394</string>
     <string name="plausible_host">https://plausible.adblockfast.com</string>
     <string name="plausible_domain">android.adblockfast.com</string>

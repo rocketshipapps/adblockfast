@@ -29,6 +29,7 @@ import com.wbrawner.plausible.android.Plausible;
 public class AdblockFastApplication extends Application {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
     public static final int ANDROID_VERSION_NUMBER = Build.VERSION.SDK_INT;
+    public static final String DISTRIBUTION_CHANNEL_KEY = "distribution_channel";
     public static final String VERSION_NUMBER_KEY = "version_number";
     public static final String PREVIOUS_VERSION_NUMBER_KEY = "previous_version_number";
     public static final String INITIAL_VERSION_NUMBER_KEY = "initial_version_number";
@@ -58,6 +59,7 @@ public class AdblockFastApplication extends Application {
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
     static final ComparableVersion COMPARABLE_VERSION = new ComparableVersion(VERSION_NUMBER);
+    static String distributionChannel;
     static String legacyVersionNumber;
 
     @Override
@@ -70,7 +72,8 @@ public class AdblockFastApplication extends Application {
             new Intent()
                 .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + packageName));
-        legacyVersionNumber = this.getString(R.string.legacy_version_number);
+        distributionChannel = this.getString(R.string.distribution_channel);
+        legacyVersionNumber = this.getString(R.string.legacy_version);
 
         handlePrefs(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
@@ -142,6 +145,10 @@ public class AdblockFastApplication extends Application {
         if (new ComparableVersion(versionNumber).compareTo(COMPARABLE_VERSION) < 0) {
             SharedPreferences.Editor editor = prefs.edit();
 
+            if (!prefs.contains(DISTRIBUTION_CHANNEL_KEY)) {
+                editor.putString(DISTRIBUTION_CHANNEL_KEY, distributionChannel);
+            }
+
             if (prefs.contains(VERSION_NUMBER_KEY)) {
                 editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber);
                 Plausible
@@ -156,6 +163,8 @@ public class AdblockFastApplication extends Application {
             if (!prefs.contains(INITIAL_VERSION_NUMBER_KEY)) {
                 editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER);
             }
+
+            editor.putInt(ANDROID_VERSION_NUMBER_KEY, ANDROID_VERSION_NUMBER);
 
             if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
                 editor.putInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0);
