@@ -42,8 +42,8 @@ public class AdblockFastApplication extends Application {
         "are_notifications_still_allowed";
     public static final String SHOULD_OVERRIDE_BROWSER_DETECTION_KEY =
         "should_override_browser_detection";
-    public static final String SHOULD_BUBBLE_WRAP_MODE_KEY = "should_bubble_wrap_mode";
-    public static final String SHOULD_PAUSE_NOTIFICATIONS_KEY = "should_pause_notifications";
+    public static final String SHOULD_BUBBLEWRAP_MODE_KEY = "should_bubblewrap_mode";
+    public static final String SHOULD_SUPPRESS_NOTIFICATIONS_KEY = "should_suppress_notifications";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
     public static final String BLOCKING_UPDATE_ACTION =
