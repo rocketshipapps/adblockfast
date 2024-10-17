@@ -1,6 +1,7 @@
 [Adblock Plus]
 ! Title: Adblock Fast (enhanced)
 ! Homepage: https://adblockfast.com/
+! Last modified: 2024-10-17T00:00:00Z
 !
 ! Copyright 2016– Rocketship <https://rocketshipapps.com/>
 ! Copyright 2005– The EasyList authors <https://easylist.to/>
