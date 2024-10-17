@@ -191,14 +191,7 @@ public class AdblockFastApplication extends Application {
                 Sentry.captureException(exception);
             } finally {
                 if (connection != null) connection.disconnect();
-
-                if (input != null) {
-                    try {
-                        input.close();
-                    } catch (Exception exception) {
-                        Sentry.captureException(exception);
-                    }
-                }
+                if (input != null) try { input.close(); } catch (Exception ignored) {}
             }
         }).start();
     }

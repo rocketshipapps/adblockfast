@@ -82,8 +82,8 @@ public class Ruleset {
         } catch (Exception exception) {
             file = null;
         } finally {
-            try { if (input != null) input.close(); } catch (Exception ignored) {}
-            try { if (output != null) output.close(); } catch (Exception ignored) {}
+            if (input != null) try { input.close(); } catch (Exception ignored) {}
+            if (output != null) try { output.close(); } catch (Exception ignored) {}
         }
 
         return file;
