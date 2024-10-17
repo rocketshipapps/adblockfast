@@ -15,6 +15,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -533,16 +534,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateLogo(int[] resources, int status, int hint, Runnable callback) {
-        isLogoAnimating = true;
-        double delay = 62.5;
+        new Handler(Looper.getMainLooper()).post(() -> {
+            isLogoAnimating = true;
+            double delay = 62.5;
 
-        for (int i = 0; i < resources.length; i++) {
-            if (i == 0) {
-                logoButton.setImageResource(resources[i]);
-            } else {
+            for (int i = 0; i < resources.length; i++) {
                 final int I = i;
 
-                new Handler().postDelayed(() -> runOnUiThread(() -> {
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     logoButton.setImageResource(resources[I]);
 
                     if (I == resources.length - 1) {
@@ -552,9 +551,9 @@ public class MainActivity extends AppCompatActivity {
                         hintText.setText(hint);
                         if (callback != null) callback.run();
                     }
-                }), Math.round(i * delay));
+                }, Math.round(i * delay));
             }
-        }
+        });
     }
 
     void onboardUser() {
