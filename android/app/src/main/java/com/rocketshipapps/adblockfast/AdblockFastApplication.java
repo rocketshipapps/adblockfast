@@ -5,15 +5,25 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import kotlin.Unit;
+
+import org.json.JSONObject;
 
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
@@ -25,6 +35,8 @@ import com.joinmassive.sdk.MassiveServiceType;
 import com.onesignal.OneSignal;
 
 import com.wbrawner.plausible.android.Plausible;
+
+import io.sentry.Sentry;
 
 public class AdblockFastApplication extends Application {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
@@ -58,6 +70,8 @@ public class AdblockFastApplication extends Application {
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
+    static final String SHOULD_BUBBLEWRAP_MODE_PROPERTY = "shouldBubblewrapMode";
+    static final String SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY = "shouldSuppressNotifications";
     static final ComparableVersion COMPARABLE_VERSION = new ComparableVersion(VERSION_NUMBER);
     static String distributionChannel;
     static String legacyVersionNumber;
@@ -81,6 +95,8 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void handlePrefs(Context context) {
+        if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
         synchronized (AdblockFastApplication.class) {
             dumpPrefs();
             updateLegacyPrefs(context);
@@ -91,14 +107,12 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void handleNotificationPrefs(Context context) {
-        if (AdblockFastApplication.prefs == null) {
-            prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        }
+        if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         synchronized (AdblockFastApplication.class) {
             NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            SharedPreferences.Editor editor = prefs.edit();
+            Editor editor = prefs.edit();
 
             if (ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.N && notificationManager != null) {
                 editor.putBoolean(
@@ -112,6 +126,81 @@ public class AdblockFastApplication extends Application {
             editor.apply();
             dumpPrefs();
         }
+    }
+
+    public static void getFeatureFlags(Context context) {
+        if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            BufferedReader input = null;
+
+            try {
+                connection =
+                    (HttpURLConnection) new URL(BuildConfig.FEATURE_FLAGS_URL).openConnection();
+                Map<String, ?> entries = prefs.getAll();
+                JSONObject params = new JSONObject();
+
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setDoOutput(true);
+                connection.setDoInput(true);
+
+                for (Map.Entry<String, ?> entry : entries.entrySet()) {
+                    params.put(entry.getKey(), entry.getValue());
+                }
+
+                try (OutputStream output = connection.getOutputStream()) {
+                    byte[] buffer = params.toString().getBytes(StandardCharsets.UTF_8);
+
+                    output.write(buffer, 0, buffer.length);
+                }
+
+                int responseCode = connection.getResponseCode();
+
+                if (
+                    responseCode >= HttpURLConnection.HTTP_OK &&
+                        responseCode < HttpURLConnection.HTTP_MULT_CHOICE
+                ) {
+                    input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+
+                    while ((line = input.readLine()) != null) response.append(line);
+
+                    JSONObject flags = new JSONObject(response.toString());
+                    Editor editor = prefs.edit();
+
+                    editor.putBoolean(
+                        SHOULD_BUBBLEWRAP_MODE_KEY,
+                        flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY) &&
+                            flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
+                    );
+                    editor.putBoolean(
+                        SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
+                        flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY) &&
+                            flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
+                    );
+                    editor.apply();
+                    dumpPrefs();
+                } else {
+                    Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
+                }
+            } catch (Exception exception) {
+                Sentry.captureException(exception);
+            } finally {
+                if (connection != null) connection.disconnect();
+
+                if (input != null) {
+                    try {
+                        input.close();
+                    } catch (Exception exception) {
+                        Sentry.captureException(exception);
+                    }
+                }
+            }
+        }).start();
     }
 
     public static void initMassive(Context context) {
@@ -143,7 +232,7 @@ public class AdblockFastApplication extends Application {
         String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
         if (COMPARABLE_VERSION.compareTo(new ComparableVersion(versionNumber)) > 0) {
-            SharedPreferences.Editor editor = prefs.edit();
+            Editor editor = prefs.edit();
 
             if (!prefs.contains(DISTRIBUTION_CHANNEL_KEY)) {
                 editor.putString(DISTRIBUTION_CHANNEL_KEY, distributionChannel);
@@ -180,7 +269,7 @@ public class AdblockFastApplication extends Application {
 
     static void updateLegacyPrefs(Context context) {
         if (prefs.contains(LEGACY_IS_FIRST_RUN_KEY)) {
-            SharedPreferences.Editor editor = prefs.edit();
+            Editor editor = prefs.edit();
             SharedPreferences legacyPrefs = context.getSharedPreferences(LEGACY_PREFS_NAME, 0);
 
             editor.putString(VERSION_NUMBER_KEY, legacyVersionNumber);
@@ -199,7 +288,7 @@ public class AdblockFastApplication extends Application {
         Map<String, ?> entries = prefs.getAll();
 
         for (Map.Entry<String, ?> entry : entries.entrySet()) {
-            Log.d("SharedPreferences", entry.getKey() + ": " + entry.getValue().toString());
+            Log.d("AdblockFastApplication", entry.getKey() + ": " + entry.getValue().toString());
         }
     }
 }

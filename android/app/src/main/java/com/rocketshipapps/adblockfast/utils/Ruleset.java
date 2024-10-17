@@ -91,14 +91,16 @@ public class Ruleset {
 
     public static boolean isEnabled(Context context) {
         if (prefs == null) init(context);
+
         return prefs.getBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true);
     }
 
     public static boolean isUpgraded(Context context) {
         if (prefs == null) init(context);
+
         return
-            prefs
-                .getString(
+            prefs.getBoolean(AdblockFastApplication.SHOULD_BUBBLEWRAP_MODE_KEY, false) ||
+                prefs.getString(
                     AdblockFastApplication.BLOCKING_MODE_KEY,
                     AdblockFastApplication.STANDARD_MODE_VALUE
                 )
@@ -106,12 +108,10 @@ public class Ruleset {
     }
 
     static void init(Context context) {
-        synchronized (Ruleset.class) {
-            prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            blockingUpdateIntent =
-                new Intent()
-                    .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
-                    .setData(Uri.parse("package:" + context.getPackageName()));
-        }
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        blockingUpdateIntent =
+            new Intent()
+                .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
+                .setData(Uri.parse("package:" + context.getPackageName()));
     }
 }
