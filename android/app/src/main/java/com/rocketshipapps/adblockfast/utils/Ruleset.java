@@ -113,15 +113,12 @@ public class Ruleset {
                 try {
                     connection =
                         (HttpURLConnection) new URL(
-                            String.format(
-                                "%s/%s",
-                                BuildConfig.RULESETS_URL,
+                            BuildConfig.RULESETS_URL + "/" + (
                                 isEnabled(context)
                                     ? isUpgraded(context) ? "enhanced" : "blocked"
                                     : "unblocked"
                             )
                         ).openConnection();
-                    connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept", "text/plain");
                     connection.setDoInput(true);
 
@@ -166,13 +163,15 @@ public class Ruleset {
                                         .putLong(AdblockFastApplication.UPDATED_AT_KEY, timestamp)
                                         .apply();
                                 } else {
-                                    Log.d("Ruleset", "Older remote timestamp: " + timestamp);
+                                    Log.d("Ruleset", "Stale remote timestamp: " + timestamp);
                                 }
                             } else {
-                                Log.e("Ruleset", "Unparsable header value: " + lastModified);
+                                Sentry.captureException(
+                                    new Exception("Unparsable header value: " + lastModified)
+                                );
                             }
                         } else {
-                            Log.e("Ruleset", "Missing header: Last-Modified");
+                            Sentry.captureException(new Exception("Missing header: Last-Modified"));
                         }
                     } else {
                         Log.e("Ruleset", "HTTP response code: " + responseCode);
