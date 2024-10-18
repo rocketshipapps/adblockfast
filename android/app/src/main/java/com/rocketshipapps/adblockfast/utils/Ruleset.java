@@ -166,12 +166,10 @@ public class Ruleset {
                                     Log.d("Ruleset", "Stale remote timestamp: " + timestamp);
                                 }
                             } else {
-                                Sentry.captureException(
-                                    new Exception("Unparsable header value: " + lastModified)
-                                );
+                                Log.e("Ruleset", "Unparsable header value: " + lastModified);
                             }
                         } else {
-                            Sentry.captureException(new Exception("Missing header: Last-Modified"));
+                            Log.e("Ruleset", "Missing header: Last-Modified");
                         }
                     } else {
                         Log.e("Ruleset", "HTTP response code: " + responseCode);
