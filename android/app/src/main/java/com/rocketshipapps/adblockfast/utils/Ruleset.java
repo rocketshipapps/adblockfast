@@ -8,11 +8,10 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -79,7 +78,7 @@ public class Ruleset {
             if (file.createNewFile()) {
                 input = context.getResources().openRawResource(getIdentifier(context));
                 output = new FileOutputStream(file);
-                byte[] buffer = new byte[1024];
+                byte[] buffer = new byte[4096];
                 int byteCount;
 
                 while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
@@ -102,7 +101,7 @@ public class Ruleset {
         if (!prefs.getBoolean(AdblockFastApplication.SHOULD_DISABLE_SYNCING_KEY, false)) {
             new Thread(() -> {
                 HttpURLConnection connection = null;
-                BufferedReader input = null;
+                InputStream input = null;
                 FileOutputStream output = null;
 
                 try {
@@ -135,24 +134,23 @@ public class Ruleset {
                                     timestamp >
                                         prefs.getLong(AdblockFastApplication.UPDATED_AT_KEY, 0)
                                 ) {
-                                    input =
-                                        new BufferedReader(
-                                            new InputStreamReader(connection.getInputStream())
-                                        );
+                                    input = connection.getInputStream();
                                     output =
                                         new FileOutputStream(
                                             new File(context.getFilesDir(), PATHNAME)
                                         );
-                                    StringBuilder response = new StringBuilder();
-                                    String line;
+                                    ByteArrayOutputStream response = new ByteArrayOutputStream();
+                                    byte[] buffer = new byte[4096];
+                                    int byteCount;
 
-                                    while ((line = input.readLine()) != null) {
-                                        response.append(line).append("\n");
+                                    while ((byteCount = input.read(buffer)) != -1) {
+                                        response.write(buffer, 0, byteCount);
                                     }
 
-                                    String content = response.toString();
+                                    String content =
+                                        response.toString(StandardCharsets.UTF_8.name());
 
-                                    if (content.contains(SANITY_CHECK)) {
+                                    if (content.contains(SANITY_CHECK) && content.endsWith("\n")) {
                                         output.write(content.getBytes(StandardCharsets.UTF_8));
                                         output.flush();
                                         prefs
