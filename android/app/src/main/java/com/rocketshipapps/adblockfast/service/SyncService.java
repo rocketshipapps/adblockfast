@@ -7,6 +7,7 @@ import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 
 import com.rocketshipapps.adblockfast.R;
+import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class SyncService extends Service {
     @Override
@@ -22,8 +23,7 @@ public class SyncService extends Service {
                 .build()
         );
 
-        // Sync ruleset.
-
+        Ruleset.sync(this);
         stopForeground(true);
         stopSelf();
 

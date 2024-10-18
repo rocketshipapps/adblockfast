@@ -4,14 +4,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import io.sentry.Sentry;
 
 import com.rocketshipapps.adblockfast.AdblockFastApplication;
+import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
@@ -87,6 +99,93 @@ public class Ruleset {
         }
 
         return file;
+    }
+
+    public static void sync(Context context) {
+        if (prefs == null) init(context);
+
+        if (!prefs.getBoolean(AdblockFastApplication.SHOULD_DISABLE_SYNCING_KEY, false)) {
+            new Thread(() -> {
+                HttpURLConnection connection = null;
+                BufferedReader input = null;
+                FileOutputStream output = null;
+
+                try {
+                    connection =
+                        (HttpURLConnection) new URL(
+                            String.format(
+                                "%s/%s",
+                                BuildConfig.RULESETS_URL,
+                                isEnabled(context)
+                                    ? isUpgraded(context) ? "enhanced" : "blocked"
+                                    : "unblocked"
+                            )
+                        ).openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Accept", "text/plain");
+                    connection.setDoInput(true);
+
+                    int responseCode = connection.getResponseCode();
+
+                    if (
+                        responseCode >= HttpURLConnection.HTTP_OK &&
+                            responseCode < HttpURLConnection.HTTP_MULT_CHOICE
+                    ) {
+                        String lastModified = connection.getHeaderField("Last-Modified");
+
+                        if (lastModified != null) {
+                            Date date =
+                                new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US)
+                                    .parse(lastModified);
+
+                            if (date != null) {
+                                long timestamp = date.getTime();
+
+                                if (
+                                    timestamp >
+                                        prefs.getLong(AdblockFastApplication.UPDATED_AT_KEY, 0)
+                                ) {
+                                    input =
+                                        new BufferedReader(
+                                            new InputStreamReader(connection.getInputStream())
+                                        );
+                                    output =
+                                        new FileOutputStream(
+                                            new File(context.getFilesDir(), PATHNAME)
+                                        );
+                                    StringBuilder response = new StringBuilder();
+                                    String line;
+
+                                    while ((line = input.readLine()) != null) response.append(line);
+                                    output.write(
+                                        response.toString().getBytes(StandardCharsets.UTF_8)
+                                    );
+                                    output.flush();
+                                    prefs
+                                        .edit()
+                                        .putLong(AdblockFastApplication.UPDATED_AT_KEY, timestamp)
+                                        .apply();
+                                } else {
+                                    Log.d("Ruleset", "Older remote timestamp: " + timestamp);
+                                }
+                            } else {
+                                Log.e("Ruleset", "Unparsable header value: " + lastModified);
+                            }
+                        } else {
+                            Log.e("Ruleset", "Missing header: Last-Modified");
+                        }
+                    } else {
+                        Log.e("Ruleset", "HTTP response code: " + responseCode);
+                    }
+                } catch (Exception exception) {
+                    Sentry.captureException(exception);
+                } finally {
+                    if (connection != null) connection.disconnect();
+                    if (input != null) try { input.close(); } catch (Exception ignored) {}
+                    if (output != null) try { output.close(); } catch (Exception ignored) {}
+                }
+            }).start();
+        }
     }
 
     public static boolean isEnabled(Context context) {

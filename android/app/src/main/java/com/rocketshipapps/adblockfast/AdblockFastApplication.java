@@ -48,6 +48,8 @@ public class AdblockFastApplication extends Application {
     public static final String ANDROID_VERSION_NUMBER_KEY = "android_version_number";
     public static final String BLOCKING_MODE_KEY = "blocking_mode";
     public static final String NOTIFICATIONS_REQUEST_COUNT_KEY = "notifications_request_count";
+    public static final String SYNCED_AT_KEY = "synced_at";
+    public static final String UPDATED_AT_KEY = "updated_at";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
     public static final String IS_BLOCKING_KEY = "is_blocking";
     public static final String ARE_NOTIFICATIONS_ALLOWED_KEY = "are_notifications_allowed";
@@ -57,6 +59,7 @@ public class AdblockFastApplication extends Application {
         "should_override_browser_detection";
     public static final String SHOULD_BUBBLEWRAP_MODE_KEY = "should_bubblewrap_mode";
     public static final String SHOULD_SUPPRESS_NOTIFICATIONS_KEY = "should_suppress_notifications";
+    public static final String SHOULD_DISABLE_SYNCING_KEY = "should_disable_syncing";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
     public static final String BLOCKING_UPDATE_ACTION =
@@ -72,6 +75,7 @@ public class AdblockFastApplication extends Application {
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
     static final String SHOULD_BUBBLEWRAP_MODE_PROPERTY = "shouldBubblewrapMode";
     static final String SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY = "shouldSuppressNotifications";
+    static final String SHOULD_DISABLE_SYNCING_PROPERTY = "shouldDisableSyncing";
     static final ComparableVersion COMPARABLE_VERSION = new ComparableVersion(VERSION_NUMBER);
     static String distributionChannel;
     static String legacyVersionNumber;
@@ -181,6 +185,11 @@ public class AdblockFastApplication extends Application {
                         SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
                         flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY) &&
                             flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
+                    );
+                    editor.putBoolean(
+                        SHOULD_DISABLE_SYNCING_KEY,
+                        flags.has(SHOULD_DISABLE_SYNCING_PROPERTY) &&
+                            flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
                     );
                     editor.apply();
                     dumpPrefs();
