@@ -209,6 +209,8 @@ public class Ruleset {
     }
 
     static String getFilename(Context context) {
-        return isEnabled(context) ? isUpgraded(context) ? "enhanced" : "blocked" : "unblocked";
+        return isEnabled(context)
+            ? isUpgraded(context) ? "enhanced" : "blocked"
+            : "unblocked";
     }
 }
