@@ -27,8 +27,9 @@ import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
-    static final String LAST_MODIFIED_HEADER = "Last-Modified";
     static final String PATHNAME = "ruleset.txt";
+    static final String LAST_MODIFIED_HEADER = "Last-Modified";
+    static final String SANITY_CHECK = "! Title: Adblock Fast";
     static SharedPreferences prefs;
     static Intent blockingUpdateIntent;
 
@@ -145,15 +146,24 @@ public class Ruleset {
                                     StringBuilder response = new StringBuilder();
                                     String line;
 
-                                    while ((line = input.readLine()) != null) response.append(line);
-                                    output.write(
-                                        response.toString().getBytes(StandardCharsets.UTF_8)
-                                    );
-                                    output.flush();
-                                    prefs
-                                        .edit()
-                                        .putLong(AdblockFastApplication.UPDATED_AT_KEY, timestamp)
-                                        .apply();
+                                    while ((line = input.readLine()) != null) {
+                                        response.append(line).append("\n");
+                                    }
+
+                                    String content = response.toString();
+
+                                    if (content.contains(SANITY_CHECK)) {
+                                        output.write(content.getBytes(StandardCharsets.UTF_8));
+                                        output.flush();
+                                        prefs
+                                            .edit()
+                                            .putLong(
+                                                AdblockFastApplication.UPDATED_AT_KEY, timestamp
+                                            )
+                                            .apply();
+                                    } else {
+                                        Log.e("Ruleset", "Unexpected content: " + content);
+                                    }
                                 } else {
                                     Log.d("Ruleset", "Stale remote timestamp: " + timestamp);
                                 }
