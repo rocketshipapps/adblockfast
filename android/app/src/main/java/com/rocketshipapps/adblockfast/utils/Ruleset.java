@@ -160,13 +160,17 @@ public class Ruleset {
                                             )
                                             .apply();
                                     } else {
-                                        Log.e("Ruleset", "Unexpected content: " + content);
+                                        Sentry.captureException(
+                                            new Exception("Unexpected content: " + content)
+                                        );
                                     }
                                 } else {
                                     Log.d("Ruleset", "Stale remote timestamp: " + timestamp);
                                 }
                             } else {
-                                Log.e("Ruleset", "Unparsable header value: " + lastModified);
+                                Sentry.captureException(
+                                    new Exception("Unparsable header value: " + lastModified)
+                                );
                             }
                         } else {
                             Log.e("Ruleset", "Missing header: " + LAST_MODIFIED_HEADER);
