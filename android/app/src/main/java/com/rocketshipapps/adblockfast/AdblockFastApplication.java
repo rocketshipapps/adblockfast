@@ -173,26 +173,33 @@ public class AdblockFastApplication extends Application {
 
                     while ((line = input.readLine()) != null) response.append(line);
 
-                    JSONObject flags = new JSONObject(response.toString());
-                    Editor editor = prefs.edit();
+                    String content = response.toString();
+                    JSONObject flags = new JSONObject(content);
+                    boolean hasModeFlag = flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY);
+                    boolean hasNotificationFlag = flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY);
+                    boolean hasSyncingFlag = flags.has(SHOULD_DISABLE_SYNCING_PROPERTY);
 
-                    editor.putBoolean(
-                        SHOULD_BUBBLEWRAP_MODE_KEY,
-                        flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY) &&
-                            flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
-                    );
-                    editor.putBoolean(
-                        SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
-                        flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY) &&
-                            flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
-                    );
-                    editor.putBoolean(
-                        SHOULD_DISABLE_SYNCING_KEY,
-                        flags.has(SHOULD_DISABLE_SYNCING_PROPERTY) &&
-                            flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
-                    );
-                    editor.apply();
-                    dumpPrefs();
+                    if (hasModeFlag || hasNotificationFlag || hasSyncingFlag) {
+                        Editor editor = prefs.edit();
+
+                        editor.putBoolean(
+                            SHOULD_BUBBLEWRAP_MODE_KEY,
+                            hasModeFlag && flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
+                        );
+                        editor.putBoolean(
+                            SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
+                            hasNotificationFlag &&
+                                flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
+                        );
+                        editor.putBoolean(
+                            SHOULD_DISABLE_SYNCING_KEY,
+                            hasSyncingFlag && flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
+                        );
+                        editor.apply();
+                        dumpPrefs();
+                    } else {
+                        Sentry.captureException(new Exception("Unexpected content: " + content));
+                    }
                 } else {
                     Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
                 }
