@@ -76,14 +76,7 @@ public class Ruleset {
             if (file.exists()) { boolean ignored = file.delete(); }
 
             if (file.createNewFile()) {
-                input =
-                    context.getResources().openRawResource(
-                        isEnabled(context)
-                            ? isUpgraded(context)
-                                ? R.raw.enhanced
-                                : R.raw.blocked
-                            : R.raw.unblocked
-                    );
+                input = context.getResources().openRawResource(getIdentifier(context));
                 output = new FileOutputStream(file);
                 byte[] buffer = new byte[1024];
                 int byteCount;
@@ -114,7 +107,9 @@ public class Ruleset {
                 try {
                     connection =
                         (HttpURLConnection) new URL(
-                            BuildConfig.RULESETS_URL + "/" + getFilename(context)
+                            BuildConfig.RULESETS_URL +
+                                "/" +
+                                context.getResources().getResourceEntryName(getIdentifier(context))
                         ).openConnection();
                     connection.setRequestProperty("Accept", "text/plain");
                     connection.setDoInput(true);
@@ -208,9 +203,9 @@ public class Ruleset {
                 .setData(Uri.parse("package:" + context.getPackageName()));
     }
 
-    static String getFilename(Context context) {
+    static int getIdentifier(Context context) {
         return isEnabled(context)
-            ? isUpgraded(context) ? "enhanced" : "blocked"
-            : "unblocked";
+            ? isUpgraded(context) ? R.raw.enhanced : R.raw.blocked
+            : R.raw.unblocked;
     }
 }
