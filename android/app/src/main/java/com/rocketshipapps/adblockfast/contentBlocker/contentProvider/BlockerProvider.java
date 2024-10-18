@@ -76,7 +76,7 @@ public class BlockerProvider extends ContentProvider {
                     ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
             } else {
                 Sentry.captureException(
-                    new FileNotFoundException(String.format("File at %s not found", file.getPath()))
+                    new FileNotFoundException("File at " + file.getPath() + " not found")
                 );
             }
         } catch (Exception exception) {
@@ -100,7 +100,7 @@ public class BlockerProvider extends ContentProvider {
                     ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
             } else {
                 Sentry.captureException(
-                    new FileNotFoundException(String.format("File at %s not found", file.getPath()))
+                    new FileNotFoundException("File at " + file.getPath() + " not found")
                 );
             }
         } catch (Exception exception) {
