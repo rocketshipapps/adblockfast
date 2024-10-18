@@ -27,6 +27,7 @@ import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
+    static final String LAST_MODIFIED_HEADER = "Last-Modified";
     static final String PATHNAME = "ruleset.txt";
     static SharedPreferences prefs;
     static Intent blockingUpdateIntent;
@@ -113,11 +114,7 @@ public class Ruleset {
                 try {
                     connection =
                         (HttpURLConnection) new URL(
-                            BuildConfig.RULESETS_URL + "/" + (
-                                isEnabled(context)
-                                    ? isUpgraded(context) ? "enhanced" : "blocked"
-                                    : "unblocked"
-                            )
+                            BuildConfig.RULESETS_URL + "/" + getFilename(context)
                         ).openConnection();
                     connection.setRequestProperty("Accept", "text/plain");
                     connection.setDoInput(true);
@@ -128,7 +125,7 @@ public class Ruleset {
                         responseCode >= HttpURLConnection.HTTP_OK &&
                             responseCode < HttpURLConnection.HTTP_MULT_CHOICE
                     ) {
-                        String lastModified = connection.getHeaderField("Last-Modified");
+                        String lastModified = connection.getHeaderField(LAST_MODIFIED_HEADER);
 
                         if (lastModified != null) {
                             Date date =
@@ -169,7 +166,7 @@ public class Ruleset {
                                 Log.e("Ruleset", "Unparsable header value: " + lastModified);
                             }
                         } else {
-                            Log.e("Ruleset", "Missing header: Last-Modified");
+                            Log.e("Ruleset", "Missing header: " + LAST_MODIFIED_HEADER);
                         }
                     } else {
                         Log.e("Ruleset", "HTTP response code: " + responseCode);
@@ -209,5 +206,9 @@ public class Ruleset {
             new Intent()
                 .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + context.getPackageName()));
+    }
+
+    static String getFilename(Context context) {
+        return isEnabled(context) ? isUpgraded(context) ? "enhanced" : "blocked" : "unblocked";
     }
 }
