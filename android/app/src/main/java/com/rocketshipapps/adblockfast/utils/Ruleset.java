@@ -30,7 +30,6 @@ import com.rocketshipapps.adblockfast.R;
 public class Ruleset {
     static final String FILENAME = "ruleset";
     static final String TEXT_EXTENSION = ".txt";
-    static final String TEMP_EXTENSION = ".tmp";
     static final String LAST_MODIFIED_HEADER = "Last-Modified";
     static final String SANITY_CHECK = "! Title: Adblock Fast";
     static SharedPreferences prefs;
@@ -72,9 +71,11 @@ public class Ruleset {
     }
 
     public static File get(Context context) {
-        File file = null;
         InputStream input = null;
         FileOutputStream output = null;
+        byte[] buffer = new byte[4096];
+        File file;
+        int byteCount;
 
         try {
             file = new File(context.getFilesDir(), getName(context) + TEXT_EXTENSION);
@@ -83,25 +84,22 @@ public class Ruleset {
                 file = new File(context.getFilesDir(), FILENAME + TEXT_EXTENSION);
                 input = context.getResources().openRawResource(getIdentifier(context));
                 output = new FileOutputStream(file);
-                byte[] buffer = new byte[4096];
-                int byteCount;
 
                 while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
             }
         } catch (Exception exception) {
-            Log.e("Ruleset", "Writing permanent file failed");
+            Log.e("Ruleset", "Permanent write failed: " + exception.getMessage());
+            if (input != null) try { input.close(); } catch (Exception ignored) {}
 
             try {
-                file = File.createTempFile(FILENAME, TEMP_EXTENSION, context.getCacheDir());
+                file = File.createTempFile(FILENAME, TEXT_EXTENSION, context.getCacheDir());
                 input = context.getResources().openRawResource(getIdentifier(context));
                 output = new FileOutputStream(file);
-                byte[] buffer = new byte[4096];
-                int byteCount;
 
                 file.deleteOnExit();
                 while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
             } catch (Exception tempException) {
-                Log.e("Ruleset", "Writing temporary file failed");
+                Log.e("Ruleset", "Temporary write failed: " + tempException.getMessage());
 
                 file = null;
             }
