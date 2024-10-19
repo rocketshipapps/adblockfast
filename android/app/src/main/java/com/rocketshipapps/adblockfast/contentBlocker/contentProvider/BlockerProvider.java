@@ -83,7 +83,7 @@ public class BlockerProvider extends ContentProvider {
                     );
                 }
             } else {
-                Log.e("BlockerProvider", "Getting ruleset failed");
+                Log.e("BlockerProvider", "Ruleset acquisition failed");
             }
         } catch (Exception exception) {
             Sentry.captureException(exception);
@@ -112,7 +112,7 @@ public class BlockerProvider extends ContentProvider {
                     );
                 }
             } else {
-                Log.e("BlockerProvider", "Getting ruleset failed");
+                Log.e("BlockerProvider", "Ruleset acquisition failed");
             }
         } catch (Exception exception) {
             Sentry.captureException(exception);

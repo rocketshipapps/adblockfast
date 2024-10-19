@@ -11,10 +11,12 @@ import androidx.preference.PreferenceManager;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -161,7 +163,7 @@ public class Ruleset {
                                             .apply();
                                     } else {
                                         Sentry.captureException(
-                                            new Exception("Unexpected content: " + content)
+                                            new IOException("Unexpected content: " + content)
                                         );
                                     }
                                 } else {
@@ -169,7 +171,9 @@ public class Ruleset {
                                 }
                             } else {
                                 Sentry.captureException(
-                                    new Exception("Unparsable header value: " + lastModified)
+                                    new ParseException(
+                                        "Unparsable header value: " + lastModified, 0
+                                    )
                                 );
                             }
                         } else {
