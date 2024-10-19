@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -67,17 +68,22 @@ public class BlockerProvider extends ContentProvider {
     @Nullable
     @Override
     public ParcelFileDescriptor openFile(@NonNull Uri uri, @NonNull String mode) {
-        File file = Ruleset.get(Objects.requireNonNull(getContext()));
         ParcelFileDescriptor fileDescriptor = null;
 
         try {
-            if (file.exists()) {
-                fileDescriptor =
-                    ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+            File file = Ruleset.get(Objects.requireNonNull(getContext()));
+
+            if (file != null) {
+                if (file.exists()) {
+                    fileDescriptor =
+                        ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+                } else {
+                    Sentry.captureException(
+                        new FileNotFoundException("File at " + file.getPath() + " not found")
+                    );
+                }
             } else {
-                Sentry.captureException(
-                    new FileNotFoundException("File at " + file.getPath() + " not found")
-                );
+                Log.e("BlockerProvider", "Getting ruleset failed");
             }
         } catch (Exception exception) {
             Sentry.captureException(exception);
@@ -91,17 +97,22 @@ public class BlockerProvider extends ContentProvider {
     public ParcelFileDescriptor openFile(@NonNull Uri uri,
                                          @NonNull String mode,
                                          CancellationSignal signal) {
-        File file = Ruleset.get(Objects.requireNonNull(getContext()));
         ParcelFileDescriptor fileDescriptor = null;
 
         try {
-            if (file.exists()) {
-                fileDescriptor =
-                    ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+            File file = Ruleset.get(Objects.requireNonNull(getContext()));
+
+            if (file != null) {
+                if (file.exists()) {
+                    fileDescriptor =
+                        ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+                } else {
+                    Sentry.captureException(
+                        new FileNotFoundException("File at " + file.getPath() + " not found")
+                    );
+                }
             } else {
-                Sentry.captureException(
-                    new FileNotFoundException("File at " + file.getPath() + " not found")
-                );
+                Log.e("BlockerProvider", "Getting ruleset failed");
             }
         } catch (Exception exception) {
             Sentry.captureException(exception);
