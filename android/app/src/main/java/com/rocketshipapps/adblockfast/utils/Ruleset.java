@@ -28,7 +28,9 @@ import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 
 public class Ruleset {
-    static final String PATHNAME = "ruleset.txt";
+    static final String FILENAME = "ruleset";
+    static final String TEXT_EXTENSION = ".txt";
+    static final String TEMP_EXTENSION = ".tmp";
     static final String LAST_MODIFIED_HEADER = "Last-Modified";
     static final String SANITY_CHECK = "! Title: Adblock Fast";
     static SharedPreferences prefs;
@@ -70,25 +72,39 @@ public class Ruleset {
     }
 
     public static File get(Context context) {
-        File file = new File(context.getFilesDir(), PATHNAME);
+        File file = null;
         InputStream input = null;
         FileOutputStream output = null;
 
         try {
-            if (file.exists()) { boolean ignored = file.delete(); }
+            file = new File(context.getFilesDir(), getName(context) + TEXT_EXTENSION);
 
-            if (file.createNewFile()) {
+            if (!file.exists()) {
+                file = new File(context.getFilesDir(), FILENAME + TEXT_EXTENSION);
                 input = context.getResources().openRawResource(getIdentifier(context));
                 output = new FileOutputStream(file);
                 byte[] buffer = new byte[4096];
                 int byteCount;
 
                 while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
-            } else {
-                file = null;
             }
         } catch (Exception exception) {
-            file = null;
+            Log.e("Ruleset", "Writing permanent file failed");
+
+            try {
+                file = File.createTempFile(FILENAME, TEMP_EXTENSION, context.getCacheDir());
+                input = context.getResources().openRawResource(getIdentifier(context));
+                output = new FileOutputStream(file);
+                byte[] buffer = new byte[4096];
+                int byteCount;
+
+                file.deleteOnExit();
+                while ((byteCount = input.read(buffer)) != -1) output.write(buffer, 0, byteCount);
+            } catch (Exception tempException) {
+                Log.e("Ruleset", "Writing temporary file failed");
+
+                file = null;
+            }
         } finally {
             if (input != null) try { input.close(); } catch (Exception ignored) {}
             if (output != null) try { output.close(); } catch (Exception ignored) {}
@@ -107,12 +123,12 @@ public class Ruleset {
                 FileOutputStream output = null;
 
                 try {
+                    String name = getName(context);
                     connection =
                         (HttpURLConnection) new URL(
-                            BuildConfig.RULESETS_URL +
-                                "/" +
-                                context.getResources().getResourceEntryName(getIdentifier(context))
+                            BuildConfig.RULESETS_URL + "/" + name
                         ).openConnection();
+
                     connection.setRequestProperty("Accept", "text/plain");
                     connection.setDoInput(true);
 
@@ -139,7 +155,7 @@ public class Ruleset {
                                     input = connection.getInputStream();
                                     output =
                                         new FileOutputStream(
-                                            new File(context.getFilesDir(), PATHNAME)
+                                            new File(context.getFilesDir(), name + TEXT_EXTENSION)
                                         );
                                     ByteArrayOutputStream response = new ByteArrayOutputStream();
                                     byte[] buffer = new byte[4096];
@@ -223,5 +239,9 @@ public class Ruleset {
         return isEnabled(context)
             ? isUpgraded(context) ? R.raw.enhanced : R.raw.blocked
             : R.raw.unblocked;
+    }
+
+    static String getName(Context context) {
+        return context.getResources().getResourceEntryName(getIdentifier(context));
     }
 }
