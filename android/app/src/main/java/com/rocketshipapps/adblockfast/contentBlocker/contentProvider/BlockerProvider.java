@@ -71,6 +71,7 @@ public class BlockerProvider extends ContentProvider {
         ParcelFileDescriptor fileDescriptor = null;
 
         try {
+            fileDescriptor = ParcelFileDescriptor.createPipe()[0];
             File file = Ruleset.get(Objects.requireNonNull(getContext()));
 
             if (file != null) {
@@ -100,6 +101,7 @@ public class BlockerProvider extends ContentProvider {
         ParcelFileDescriptor fileDescriptor = null;
 
         try {
+            fileDescriptor = ParcelFileDescriptor.createPipe()[0];
             File file = Ruleset.get(Objects.requireNonNull(getContext()));
 
             if (file != null) {
