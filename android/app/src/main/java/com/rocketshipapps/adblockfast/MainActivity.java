@@ -535,26 +535,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void animateLogo(int[] resources, int status, int hint, Runnable callback) {
-        new Handler(Looper.getMainLooper()).post(() -> {
-            isLogoAnimating = true;
-            double delay = 62.5;
+        isLogoAnimating = true;
+        Handler handler = new Handler(Looper.getMainLooper());
+        double delay = 62.5;
 
-            for (int i = 0; i < resources.length; i++) {
-                final int I = i;
+        for (int i = 0; i < resources.length; i++) {
+            final int I = i;
 
-                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    logoButton.setImageResource(resources[I]);
+            handler.postDelayed(() -> {
+                logoButton.setImageResource(resources[I]);
 
-                    if (I == resources.length - 1) {
-                        isLogoAnimating = false;
+                if (I == resources.length - 1) {
+                    isLogoAnimating = false;
 
-                        statusText.setText(status);
-                        hintText.setText(hint);
-                        if (callback != null) callback.run();
-                    }
-                }, Math.round(i * delay));
-            }
-        });
+                    statusText.setText(status);
+                    hintText.setText(hint);
+                    if (callback != null) callback.run();
+                }
+            }, Math.round(i * delay));
+        }
     }
 
     void onboardUser() {
