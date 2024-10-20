@@ -50,6 +50,7 @@ public class AdblockFastApplication extends Application {
     public static final String ANDROID_VERSION_NUMBER_KEY = "android_version_number";
     public static final String BLOCKING_MODE_KEY = "blocking_mode";
     public static final String NOTIFICATIONS_REQUEST_COUNT_KEY = "notifications_request_count";
+    public static final String SYNC_INTERVAL_KEY = "sync_interval";
     public static final String SYNCED_AT_KEY = "synced_at";
     public static final String UPDATED_AT_KEY = "updated_at";
     public static final String IS_FIRST_RUN_KEY = "is_first_run";
@@ -68,7 +69,7 @@ public class AdblockFastApplication extends Application {
         "com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE";
     public static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
-    public static final long SYNC_INTERVAL = 12 * 60 * 60 * 1000;
+    public static final long DEFAULT_SYNC_INTERVAL = 12 * 60 * 60 * 1000;
     public static String packageName;
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
@@ -76,6 +77,7 @@ public class AdblockFastApplication extends Application {
     static final String LEGACY_PREFS_NAME = "adblockfast";
     static final String LEGACY_IS_FIRST_RUN_KEY = "first_run";
     static final String LEGACY_IS_BLOCKING_KEY = "rule_status";
+    static final String SYNC_INTERVAL_PROPERTY = "syncInterval";
     static final String SHOULD_BUBBLEWRAP_MODE_PROPERTY = "shouldBubblewrapMode";
     static final String SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY = "shouldSuppressNotifications";
     static final String SHOULD_DISABLE_SYNCING_PROPERTY = "shouldDisableSyncing";
@@ -139,11 +141,15 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void getFeatureFlags(Context context) {
-        long timestamp = System.currentTimeMillis();
-
         if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (timestamp > prefs.getLong(SYNCED_AT_KEY, 0) + SYNC_INTERVAL) {
+        long timestamp = System.currentTimeMillis();
+
+        if (
+            timestamp >
+                prefs.getLong(SYNCED_AT_KEY, 0) +
+                    prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL)
+        ) {
             new Thread(() -> {
                 HttpURLConnection connection = null;
                 BufferedReader input = null;
@@ -187,14 +193,22 @@ public class AdblockFastApplication extends Application {
 
                         String content = response.toString();
                         JSONObject flags = new JSONObject(content);
+                        boolean hasIntervalFlag = flags.has(SYNC_INTERVAL_PROPERTY);
                         boolean hasModeFlag = flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY);
                         boolean hasNotificationFlag =
                             flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY);
                         boolean hasSyncingFlag = flags.has(SHOULD_DISABLE_SYNCING_PROPERTY);
 
-                        if (hasModeFlag || hasNotificationFlag || hasSyncingFlag) {
+                        if (
+                            hasIntervalFlag || hasModeFlag || hasNotificationFlag || hasSyncingFlag
+                        ) {
                             Editor editor = prefs.edit();
 
+                            editor.putLong(
+                                SYNC_INTERVAL_KEY,
+                                hasIntervalFlag
+                                    ? flags.getLong(SYNC_INTERVAL_PROPERTY) : DEFAULT_SYNC_INTERVAL
+                            );
                             editor.putBoolean(
                                 SHOULD_BUBBLEWRAP_MODE_KEY,
                                 hasModeFlag && flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
