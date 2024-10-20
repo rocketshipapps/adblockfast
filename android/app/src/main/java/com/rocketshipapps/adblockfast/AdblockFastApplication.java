@@ -38,6 +38,8 @@ import com.wbrawner.plausible.android.Plausible;
 
 import io.sentry.Sentry;
 
+import com.rocketshipapps.adblockfast.utils.Ruleset;
+
 public class AdblockFastApplication extends Application {
     public static final String VERSION_NUMBER = BuildConfig.VERSION_NAME;
     public static final int ANDROID_VERSION_NUMBER = Build.VERSION.SDK_INT;
@@ -66,6 +68,7 @@ public class AdblockFastApplication extends Application {
         "com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE";
     public static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+    public static final long SYNC_INTERVAL = 12 * 60 * 60 * 1000;
     public static String packageName;
     public static SharedPreferences prefs;
     public static Intent blockingUpdateIntent;
@@ -94,7 +97,10 @@ public class AdblockFastApplication extends Application {
         legacyVersionNumber = this.getString(R.string.legacy_version);
 
         handlePrefs(this);
+        getFeatureFlags(this);
+
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
+        if (Ruleset.isUpgraded(this)) initMassive(this);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
@@ -133,83 +139,96 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void getFeatureFlags(Context context) {
+        long timestamp = System.currentTimeMillis();
+
         if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        new Thread(() -> {
-            HttpURLConnection connection = null;
-            BufferedReader input = null;
+        if (timestamp > prefs.getLong(SYNCED_AT_KEY, 0) + SYNC_INTERVAL) {
+            new Thread(() -> {
+                HttpURLConnection connection = null;
+                BufferedReader input = null;
 
-            try {
-                connection =
-                    (HttpURLConnection) new URL(BuildConfig.FEATURE_FLAGS_URL).openConnection();
-                Map<String, ?> entries = prefs.getAll();
-                JSONObject params = new JSONObject();
+                try {
+                    connection =
+                        (HttpURLConnection) new URL(BuildConfig.FEATURE_FLAGS_URL).openConnection();
+                    Map<String, ?> entries = prefs.getAll();
+                    JSONObject params = new JSONObject();
 
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                connection.setRequestProperty("Accept", "application/json");
-                connection.setDoOutput(true);
-                connection.setDoInput(true);
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty(
+                        "Content-Type", "application/json; charset=UTF-8"
+                    );
+                    connection.setRequestProperty("Accept", "application/json");
+                    connection.setDoOutput(true);
+                    connection.setDoInput(true);
 
-                for (Map.Entry<String, ?> entry : entries.entrySet()) {
-                    params.put(entry.getKey(), entry.getValue());
-                }
-
-                try (OutputStream output = connection.getOutputStream()) {
-                    byte[] buffer = params.toString().getBytes(StandardCharsets.UTF_8);
-
-                    output.write(buffer, 0, buffer.length);
-                }
-
-                int responseCode = connection.getResponseCode();
-
-                if (
-                    responseCode >= HttpURLConnection.HTTP_OK &&
-                        responseCode < HttpURLConnection.HTTP_MULT_CHOICE
-                ) {
-                    input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    StringBuilder response = new StringBuilder();
-                    String line;
-
-                    while ((line = input.readLine()) != null) response.append(line);
-
-                    String content = response.toString();
-                    JSONObject flags = new JSONObject(content);
-                    boolean hasModeFlag = flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY);
-                    boolean hasNotificationFlag = flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY);
-                    boolean hasSyncingFlag = flags.has(SHOULD_DISABLE_SYNCING_PROPERTY);
-
-                    if (hasModeFlag || hasNotificationFlag || hasSyncingFlag) {
-                        Editor editor = prefs.edit();
-
-                        editor.putBoolean(
-                            SHOULD_BUBBLEWRAP_MODE_KEY,
-                            hasModeFlag && flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
-                        );
-                        editor.putBoolean(
-                            SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
-                            hasNotificationFlag &&
-                                flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
-                        );
-                        editor.putBoolean(
-                            SHOULD_DISABLE_SYNCING_KEY,
-                            hasSyncingFlag && flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
-                        );
-                        editor.apply();
-                        dumpPrefs();
-                    } else {
-                        Sentry.captureException(new Exception("Unexpected content: " + content));
+                    for (Map.Entry<String, ?> entry : entries.entrySet()) {
+                        params.put(entry.getKey(), entry.getValue());
                     }
-                } else {
-                    Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
+
+                    try (OutputStream output = connection.getOutputStream()) {
+                        byte[] buffer = params.toString().getBytes(StandardCharsets.UTF_8);
+
+                        output.write(buffer, 0, buffer.length);
+                    }
+
+                    int responseCode = connection.getResponseCode();
+
+                    if (
+                        responseCode >= HttpURLConnection.HTTP_OK &&
+                            responseCode < HttpURLConnection.HTTP_MULT_CHOICE
+                    ) {
+                        input =
+                            new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                        StringBuilder response = new StringBuilder();
+                        String line;
+
+                        while ((line = input.readLine()) != null) response.append(line);
+
+                        String content = response.toString();
+                        JSONObject flags = new JSONObject(content);
+                        boolean hasModeFlag = flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY);
+                        boolean hasNotificationFlag =
+                            flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY);
+                        boolean hasSyncingFlag = flags.has(SHOULD_DISABLE_SYNCING_PROPERTY);
+
+                        if (hasModeFlag || hasNotificationFlag || hasSyncingFlag) {
+                            Editor editor = prefs.edit();
+
+                            editor.putBoolean(
+                                SHOULD_BUBBLEWRAP_MODE_KEY,
+                                hasModeFlag && flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
+                            );
+                            editor.putBoolean(
+                                SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
+                                hasNotificationFlag &&
+                                    flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
+                            );
+                            editor.putBoolean(
+                                SHOULD_DISABLE_SYNCING_KEY,
+                                hasSyncingFlag && flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
+                            );
+                            editor.putLong(SYNCED_AT_KEY, timestamp);
+                            editor.apply();
+                            dumpPrefs();
+                        } else {
+                            Sentry.captureException(
+                                new Exception("Unexpected content: " + content)
+                            );
+                        }
+                    } else {
+                        Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
+                    }
+                } catch (Exception exception) {
+                    Sentry.captureException(exception);
+                } finally {
+                    if (connection != null) connection.disconnect();
+                    if (input != null) try { input.close(); } catch (Exception ignored) {}
                 }
-            } catch (Exception exception) {
-                Sentry.captureException(exception);
-            } finally {
-                if (connection != null) connection.disconnect();
-                if (input != null) try { input.close(); } catch (Exception ignored) {}
-            }
-        }).start();
+            }).start();
+        } else {
+            Log.d("AdblockFastApplication", "Feature flags already synced");
+        }
     }
 
     public static void initMassive(Context context) {
