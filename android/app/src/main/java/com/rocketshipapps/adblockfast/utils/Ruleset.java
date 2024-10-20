@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import com.wbrawner.plausible.android.Plausible;
+
 import io.sentry.Sentry;
 
 import com.rocketshipapps.adblockfast.AdblockFastApplication;
@@ -175,6 +177,7 @@ public class Ruleset {
                                                 AdblockFastApplication.UPDATED_AT_KEY, timestamp
                                             )
                                             .apply();
+                                        Plausible.INSTANCE.event("Sync", "/ruleset", "", null);
                                     } else {
                                         Sentry.captureException(
                                             new IOException("Unexpected content: " + content)

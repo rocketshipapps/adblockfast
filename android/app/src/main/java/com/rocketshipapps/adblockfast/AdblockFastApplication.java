@@ -113,8 +113,7 @@ public class AdblockFastApplication extends Application {
             dumpPrefs();
             updateLegacyPrefs(context);
             dumpPrefs();
-            initPrefs();
-            dumpPrefs();
+            initPrefs(context);
         }
     }
 
@@ -224,6 +223,7 @@ public class AdblockFastApplication extends Application {
                             );
                             editor.putLong(SYNCED_AT_KEY, timestamp);
                             editor.apply();
+                            Plausible.INSTANCE.event("Sync", "/flags", "", null);
                             dumpPrefs();
                         } else {
                             Sentry.captureException(
@@ -241,7 +241,7 @@ public class AdblockFastApplication extends Application {
                 }
             }).start();
         } else {
-            Log.d("AdblockFastApplication", "Feature flags already synced");
+            Log.d("AdblockFastApplication", "Flags already synced");
         }
     }
 
@@ -270,11 +270,12 @@ public class AdblockFastApplication extends Application {
         });
     }
 
-    static void initPrefs() {
+    static void initPrefs(Context context) {
         String versionNumber = prefs.getString(VERSION_NUMBER_KEY, "0.0.0");
 
         if (COMPARABLE_VERSION.compareTo(new ComparableVersion(versionNumber)) > 0) {
             Editor editor = prefs.edit();
+            int androidVersionNumber = prefs.getInt(ANDROID_VERSION_NUMBER_KEY, 0);
 
             if (!prefs.contains(DISTRIBUTION_CHANNEL_KEY)) {
                 editor.putString(DISTRIBUTION_CHANNEL_KEY, distributionChannel);
@@ -282,6 +283,7 @@ public class AdblockFastApplication extends Application {
 
             if (prefs.contains(VERSION_NUMBER_KEY)) {
                 editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber);
+                handleNotificationPrefs(context);
                 Plausible
                     .INSTANCE
                     .event("Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null);
@@ -295,8 +297,17 @@ public class AdblockFastApplication extends Application {
                 editor.putString(INITIAL_VERSION_NUMBER_KEY, VERSION_NUMBER);
             }
 
-            if (ANDROID_VERSION_NUMBER != prefs.getInt(ANDROID_VERSION_NUMBER_KEY, 0)) {
+            if (ANDROID_VERSION_NUMBER != androidVersionNumber) {
                 editor.putInt(ANDROID_VERSION_NUMBER_KEY, ANDROID_VERSION_NUMBER);
+
+                if (androidVersionNumber != 0) {
+                    Plausible.INSTANCE.event(
+                        "Update",
+                        "/a" + androidVersionNumber + "-to-a" + ANDROID_VERSION_NUMBER,
+                        "",
+                        null
+                    );
+                }
             }
 
             if (!prefs.contains(NOTIFICATIONS_REQUEST_COUNT_KEY)) {
@@ -306,6 +317,8 @@ public class AdblockFastApplication extends Application {
             if (!prefs.contains(IS_FIRST_RUN_KEY)) editor.putBoolean(IS_FIRST_RUN_KEY, true);
             if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true);
             editor.apply();
+        } else {
+            handleNotificationPrefs(context);
         }
     }
 

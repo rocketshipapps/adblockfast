@@ -352,13 +352,14 @@ public class MainActivity extends AppCompatActivity {
                     .apply();
                 help.dismiss();
                 Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
-                presentHelp(() ->
+                presentHelp(() -> {
                     AdblockFastApplication
                         .prefs
                         .edit()
                         .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                        .apply()
-                );
+                        .apply();
+                    AdblockFastApplication.handleNotificationPrefs(this);
+                });
             });
         }
 
@@ -569,26 +570,28 @@ public class MainActivity extends AppCompatActivity {
                     if (IS_NOTIFICATIONS_PERMISSION_REQUIRED) {
                         presentNotificationsOptIn(() -> {
                             if (hasSamsungBrowser) {
-                                presentHelp(() ->
+                                presentHelp(() -> {
                                     AdblockFastApplication
                                         .prefs
                                         .edit()
                                         .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                                        .apply()
-                                );
+                                        .apply();
+                                    AdblockFastApplication.handleNotificationPrefs(this);
+                                });
                             } else {
                                 presentHelp(this::onBackPressed);
                             }
                         });
                     } else {
                         if (hasSamsungBrowser) {
-                            presentHelp(() ->
+                            presentHelp(() -> {
                                 AdblockFastApplication
                                     .prefs
                                     .edit()
                                     .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                                    .apply()
-                            );
+                                    .apply();
+                                AdblockFastApplication.handleNotificationPrefs(this);
+                            });
                         } else {
                             presentHelp(this::onBackPressed);
                         }
@@ -602,26 +605,28 @@ public class MainActivity extends AppCompatActivity {
             ) {
                 presentNotificationsOptIn(() -> {
                     if (hasSamsungBrowser) {
-                        presentHelp(() ->
+                        presentHelp(() -> {
                             AdblockFastApplication
                                 .prefs
                                 .edit()
                                 .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                                .apply()
-                        );
+                                .apply();
+                            AdblockFastApplication.handleNotificationPrefs(this);
+                        });
                     } else {
                         presentHelp(this::onBackPressed);
                     }
                 });
             } else {
                 if (hasSamsungBrowser) {
-                    presentHelp(() ->
+                    presentHelp(() -> {
                         AdblockFastApplication
                             .prefs
                             .edit()
                             .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                            .apply()
-                    );
+                            .apply();
+                        AdblockFastApplication.handleNotificationPrefs(this);
+                    });
                 } else {
                     presentHelp(this::onBackPressed);
                 }
