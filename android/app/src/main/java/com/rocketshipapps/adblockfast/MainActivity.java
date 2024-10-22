@@ -392,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
         sync.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
             sync.dismiss();
             Plausible.INSTANCE.event("Dismiss", "/sync", "", null);
+            getOnBackPressedDispatcher().onBackPressed();
         });
 
         Plausible.INSTANCE.pageView("/sync", "", null);
@@ -583,7 +584,7 @@ public class MainActivity extends AppCompatActivity {
                                     handleNotificationPrefs(this);
                                 });
                             } else {
-                                presentHelp(this::onBackPressed);
+                                presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
                             }
                         });
                     } else {
@@ -593,7 +594,7 @@ public class MainActivity extends AppCompatActivity {
                                 handleNotificationPrefs(this);
                             });
                         } else {
-                            presentHelp(this::onBackPressed);
+                            presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
                         }
                     }
                 });
@@ -608,7 +609,7 @@ public class MainActivity extends AppCompatActivity {
                             handleNotificationPrefs(this);
                         });
                     } else {
-                        presentHelp(this::onBackPressed);
+                        presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
                     }
                 });
             } else {
@@ -618,14 +619,14 @@ public class MainActivity extends AppCompatActivity {
                         handleNotificationPrefs(this);
                     });
                 } else {
-                    presentHelp(this::onBackPressed);
+                    presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
                 }
             }
         } else if (
             !hasSamsungBrowser &&
                 !prefs.getBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false)
         ) {
-            presentHelp(this::onBackPressed);
+            presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
         }
     }
 
