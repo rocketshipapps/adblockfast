@@ -41,7 +41,10 @@
         <![CDATA[Adblock Fast should also be kept up to date to block new ad types.<br><br>Would you
         like to be notified (infrequently) as soon as important updates are available<i>?</i>]]>
     </string>
-    <string name="sync_preview">TODO</string>
+    <string name="sync_preview">
+        Adblock Fast will start updating ad domains to filter momentarily. You can safely close the
+        app now.
+    </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
     <string name="mode_label">Mode:\u0020</string>
     <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>
