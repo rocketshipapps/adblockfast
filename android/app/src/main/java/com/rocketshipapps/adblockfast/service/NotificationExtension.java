@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import com.onesignal.notifications.INotificationReceivedEvent;
 import com.onesignal.notifications.INotificationServiceExtension;
 
+import com.wbrawner.plausible.android.Plausible;
+
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class NotificationExtension implements INotificationServiceExtension {
@@ -26,8 +28,10 @@ public class NotificationExtension implements INotificationServiceExtension {
                     .getInstance(context)
                     .enqueue(new OneTimeWorkRequest.Builder(SyncWorker.class).build());
                 event.preventDefault();
+                Plausible.INSTANCE.event("Sync", "/background", "", null);
             } else if ("foreground".equals(sync) && !Ruleset.isUpgraded(context)) {
                 event.preventDefault();
+                Plausible.INSTANCE.event("Sync", "/foreground", "", null);
             }
         }
     }
