@@ -26,8 +26,8 @@ public class NotificationExtension implements INotificationServiceExtension {
                     .getInstance(context)
                     .enqueue(new OneTimeWorkRequest.Builder(SyncWorker.class).build());
                 event.preventDefault();
-            } else if ("foreground".equals(sync)) {
-                if (!Ruleset.isUpgraded(context)) event.preventDefault();
+            } else if ("foreground".equals(sync) && !Ruleset.isUpgraded(context)) {
+                event.preventDefault();
             }
         }
     }

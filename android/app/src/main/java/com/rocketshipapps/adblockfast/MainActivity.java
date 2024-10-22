@@ -391,8 +391,6 @@ public class MainActivity extends AppCompatActivity {
     void presentSync() {
         Dialog sync = presentDialog(R.layout.sync_dialog);
 
-        ((TextView) sync.findViewById(R.id.prelude_text)).setText(R.string.sync_prelude);
-
         sync.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
             sync.dismiss();
             Plausible.INSTANCE.event("Dismiss", "/sync", "", null);
