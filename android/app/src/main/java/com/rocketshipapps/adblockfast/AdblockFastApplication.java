@@ -96,7 +96,7 @@ public class AdblockFastApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        packageName = this.getPackageName();
+        packageName = getPackageName();
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         blockingUpdateIntent =
             new Intent()
