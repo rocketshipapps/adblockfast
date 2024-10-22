@@ -101,10 +101,12 @@ public class MainActivity extends AppCompatActivity {
         logoButton = findViewById(R.id.logo_button);
         statusText = findViewById(R.id.status_text);
         hintText = findViewById(R.id.hint_text);
+        Uri data = getIntent().getData();
 
         logoButton.setOnClickListener(this::onLogoPressed);
         findViewById(R.id.help_button).setOnClickListener(this::onHelpPressed);
         findViewById(R.id.about_button).setOnClickListener(this::onAboutPressed);
+        if (data != null && "/sync".equals(data.getPath())) presentSync();
     }
 
     @Override
@@ -384,6 +386,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Plausible.INSTANCE.pageView("/help", "", null);
+    }
+
+    void presentSync() {
+        Dialog sync = presentDialog(R.layout.sync_dialog);
+
+        ((TextView) sync.findViewById(R.id.prelude_text)).setText(R.string.sync_prelude);
+
+        sync.findViewById(R.id.dismiss_button).setOnClickListener((w) -> {
+            sync.dismiss();
+            Plausible.INSTANCE.event("Dismiss", "/sync", "", null);
+        });
+
+        Plausible.INSTANCE.pageView("/sync", "", null);
     }
 
     Dialog presentDialog(int id) {

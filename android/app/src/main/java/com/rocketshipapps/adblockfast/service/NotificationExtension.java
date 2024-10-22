@@ -1,34 +1,34 @@
 package com.rocketshipapps.adblockfast.service;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 
-import androidx.core.content.ContextCompat;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import org.json.JSONObject;
 
 import com.onesignal.notifications.INotificationReceivedEvent;
 import com.onesignal.notifications.INotificationServiceExtension;
 
+import com.rocketshipapps.adblockfast.utils.Ruleset;
+
 public class NotificationExtension implements INotificationServiceExtension {
     @Override
     public void onNotificationReceived(INotificationReceivedEvent event) {
-        JSONObject additionalData = event.getNotification().getAdditionalData();
+        JSONObject data = event.getNotification().getAdditionalData();
 
-        if (
-            additionalData != null && "sync_ruleset".equals(additionalData.optString("action", ""))
-        ) {
+        if (data != null) {
+            String sync = data.optString("sync", "");
             Context context = event.getContext();
-            Intent intent = new Intent(context, SyncService.class);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                ContextCompat.startForegroundService(context, intent);
-            } else {
-                context.startService(intent);
+            if ("background".equals(sync)) {
+                WorkManager
+                    .getInstance(context)
+                    .enqueue(new OneTimeWorkRequest.Builder(SyncWorker.class).build());
+                event.preventDefault();
+            } else if ("foreground".equals(sync)) {
+                if (!Ruleset.isUpgraded(context)) event.preventDefault();
             }
-
-            event.preventDefault();
         }
     }
 }

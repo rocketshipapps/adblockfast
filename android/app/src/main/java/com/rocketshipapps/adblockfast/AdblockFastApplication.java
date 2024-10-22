@@ -12,6 +12,11 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import kotlin.Unit;
 
@@ -38,6 +44,7 @@ import com.wbrawner.plausible.android.Plausible;
 
 import io.sentry.Sentry;
 
+import com.rocketshipapps.adblockfast.service.SyncWorker;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class AdblockFastApplication extends Application {
@@ -100,6 +107,20 @@ public class AdblockFastApplication extends Application {
 
         handlePrefs(this);
         getFeatureFlags(this);
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "SyncWork",
+            ExistingPeriodicWorkPolicy.KEEP,
+            new PeriodicWorkRequest
+                .Builder(
+                    SyncWorker.class,
+                    prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
+                    TimeUnit.MILLISECONDS
+                )
+                .setConstraints(
+                    new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+                )
+                .build()
+        );
 
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         if (Ruleset.isUpgraded(this)) initMassive(this);
