@@ -25,7 +25,14 @@ import com.wbrawner.plausible.android.Plausible;
 
 import io.sentry.Sentry;
 
-import com.rocketshipapps.adblockfast.AdblockFastApplication;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.BLOCKING_MODE_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.BLOCKING_UPDATE_ACTION;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.IS_BLOCKING_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.LUDICROUS_MODE_VALUE;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_BUBBLEWRAP_MODE_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_DISABLE_SYNCING_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.STANDARD_MODE_VALUE;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.UPDATED_AT_KEY;
 import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 
@@ -39,36 +46,25 @@ public class Ruleset {
 
     public static void enable(Context context) {
         if (prefs == null || blockingUpdateIntent == null) init(context);
-        prefs.edit().putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true).apply();
+        prefs.edit().putBoolean(IS_BLOCKING_KEY, true).apply();
         context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static void disable(Context context) {
         if (prefs == null || blockingUpdateIntent == null) init(context);
-        prefs.edit().putBoolean(AdblockFastApplication.IS_BLOCKING_KEY, false).apply();
+        prefs.edit().putBoolean(IS_BLOCKING_KEY, false).apply();
         context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static void upgrade(Context context) {
         if (prefs == null || blockingUpdateIntent == null) init(context);
-        prefs
-            .edit()
-            .putString(
-                AdblockFastApplication.BLOCKING_MODE_KEY,
-                AdblockFastApplication.LUDICROUS_MODE_VALUE
-            )
-            .apply();
+        prefs.edit().putString(BLOCKING_MODE_KEY, LUDICROUS_MODE_VALUE).apply();
         context.sendBroadcast(blockingUpdateIntent);
     }
 
     public static void downgrade(Context context) {
         if (prefs == null || blockingUpdateIntent == null) init(context);
-        prefs
-            .edit()
-            .putString(
-                AdblockFastApplication.BLOCKING_MODE_KEY, AdblockFastApplication.STANDARD_MODE_VALUE
-            )
-            .apply();
+        prefs.edit().putString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE).apply();
         context.sendBroadcast(blockingUpdateIntent);
     }
 
@@ -116,7 +112,7 @@ public class Ruleset {
     public static void sync(Context context) {
         if (prefs == null) init(context);
 
-        if (!prefs.getBoolean(AdblockFastApplication.SHOULD_DISABLE_SYNCING_KEY, false)) {
+        if (!prefs.getBoolean(SHOULD_DISABLE_SYNCING_KEY, false)) {
             new Thread(() -> {
                 HttpURLConnection connection = null;
                 InputStream input = null;
@@ -148,10 +144,7 @@ public class Ruleset {
                             if (date != null) {
                                 long timestamp = date.getTime();
 
-                                if (
-                                    timestamp >
-                                        prefs.getLong(AdblockFastApplication.UPDATED_AT_KEY, 0)
-                                ) {
+                                if (timestamp > prefs.getLong(UPDATED_AT_KEY, 0)) {
                                     input = connection.getInputStream();
                                     output =
                                         new FileOutputStream(
@@ -171,12 +164,7 @@ public class Ruleset {
                                     if (content.contains(SANITY_CHECK) && content.endsWith("\n")) {
                                         output.write(content.getBytes(StandardCharsets.UTF_8));
                                         output.flush();
-                                        prefs
-                                            .edit()
-                                            .putLong(
-                                                AdblockFastApplication.UPDATED_AT_KEY, timestamp
-                                            )
-                                            .apply();
+                                        prefs.edit().putLong(UPDATED_AT_KEY, timestamp).apply();
                                         Plausible.INSTANCE.event("Sync", "/ruleset", "", null);
                                     } else {
                                         Sentry.captureException(
@@ -213,26 +201,24 @@ public class Ruleset {
     public static boolean isEnabled(Context context) {
         if (prefs == null) init(context);
 
-        return prefs.getBoolean(AdblockFastApplication.IS_BLOCKING_KEY, true);
+        return prefs.getBoolean(IS_BLOCKING_KEY, true);
     }
 
     public static boolean isUpgraded(Context context) {
         if (prefs == null) init(context);
 
         return
-            prefs.getBoolean(AdblockFastApplication.SHOULD_BUBBLEWRAP_MODE_KEY, false) ||
-                prefs.getString(
-                    AdblockFastApplication.BLOCKING_MODE_KEY,
-                    AdblockFastApplication.STANDARD_MODE_VALUE
-                )
-                .equals(AdblockFastApplication.LUDICROUS_MODE_VALUE);
+            prefs.getBoolean(SHOULD_BUBBLEWRAP_MODE_KEY, false) ||
+                prefs
+                    .getString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE)
+                    .equals(LUDICROUS_MODE_VALUE);
     }
 
     static void init(Context context) {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         blockingUpdateIntent =
             new Intent()
-                .setAction(AdblockFastApplication.BLOCKING_UPDATE_ACTION)
+                .setAction(BLOCKING_UPDATE_ACTION)
                 .setData(Uri.parse("package:" + context.getPackageName()));
     }
 
