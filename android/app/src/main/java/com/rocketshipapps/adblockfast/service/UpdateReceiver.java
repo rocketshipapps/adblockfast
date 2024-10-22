@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.rocketshipapps.adblockfast.AdblockFastApplication;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.blockingUpdateIntent;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.getFeatureFlags;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.handlePrefs;
 
 public class UpdateReceiver extends BroadcastReceiver {
     @Override
@@ -20,8 +22,9 @@ public class UpdateReceiver extends BroadcastReceiver {
                 switch (action) {
                     case Intent.ACTION_MY_PACKAGE_REPLACED:
 
-                    AdblockFastApplication.handlePrefs(context);
-                    context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+                    handlePrefs(context);
+                    getFeatureFlags(context);
+                    context.sendBroadcast(blockingUpdateIntent);
 
                     break;
 
@@ -33,7 +36,7 @@ public class UpdateReceiver extends BroadcastReceiver {
                         data != null &&
                             "com.sec.android.app.sbrowser".equals(data.getSchemeSpecificPart())
                     ) {
-                        context.sendBroadcast(AdblockFastApplication.blockingUpdateIntent);
+                        context.sendBroadcast(blockingUpdateIntent);
                     }
                 }
             }
