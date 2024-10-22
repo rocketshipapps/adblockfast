@@ -60,6 +60,18 @@ import com.onesignal.OneSignal;
 
 import com.wbrawner.plausible.android.Plausible;
 
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.BLOCKING_MODE_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.IS_FIRST_RUN_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.SAMSUNG_BROWSER_INTENT;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.VERSION_NUMBER;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.finalizeMassive;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.handleNotificationPrefs;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.handlePrefs;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.initMassive;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.prefs;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
@@ -114,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         detectSamsungBrowser();
-        if (Ruleset.isUpgraded(this)) AdblockFastApplication.initMassive(this);
+        if (Ruleset.isUpgraded(this)) initMassive(this);
 
         if (Ruleset.isEnabled(this)) {
             animateBlocking(this::onboardUser);
@@ -150,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
     void detectSamsungBrowser() {
         List<ResolveInfo> list =
             getPackageManager().queryIntentActivities(
-                AdblockFastApplication.SAMSUNG_BROWSER_INTENT, PackageManager.MATCH_DEFAULT_ONLY
+                SAMSUNG_BROWSER_INTENT, PackageManager.MATCH_DEFAULT_ONLY
             );
 
         if (list.size() > 0) {
@@ -186,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         TextView upgradeText = about.findViewById(R.id.upgrade_text);
 
         ((TextView) about.findViewById(R.id.version_text))
-            .setText(String.format(" %s", AdblockFastApplication.VERSION_NUMBER));
+            .setText(String.format(" %s", VERSION_NUMBER));
         setHtml(about.findViewById(R.id.tag_text), R.string.tagline, false);
         setHtml(defaultText, R.string.default_link, false);
         setHtml(upgradeText, R.string.upgrade_link, false);
@@ -198,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         defaultText.setOnClickListener((w) -> {
-            AdblockFastApplication.finalizeMassive();
+            finalizeMassive();
             Ruleset.downgrade(this);
             defaultText.setTypeface(emphasisFont);
             upgradeText.setTypeface(bodyFont);
@@ -207,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
         upgradeText.setOnClickListener((w) -> {
             Ruleset.upgrade(this);
-            AdblockFastApplication.initMassive(this);
+            initMassive(this);
             upgradeText.setTypeface(emphasisFont);
             defaultText.setTypeface(bodyFont);
             Plausible.INSTANCE.event("Upgrade", "/about", "", null);
@@ -238,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
 
         upgradeButton.setOnClickListener((v) -> {
             Ruleset.upgrade(this);
-            AdblockFastApplication.initMassive(this);
+            initMassive(this);
             modes.dismiss();
             Plausible.INSTANCE.event("Upgrade", "/mode", "", null);
             if (continuationHandler != null) continuationHandler.run();
@@ -248,17 +260,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentNotificationsOptIn(Runnable continuationHandler) {
-        if (AdblockFastApplication.prefs == null) AdblockFastApplication.handlePrefs(this);
+        if (prefs == null) handlePrefs(this);
 
         Dialog notificationsOptIn = presentDialog(R.layout.notifications_dialog);
-        SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
+        SharedPreferences.Editor editor = prefs.edit();
 
         editor
             .putInt(
-                AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY,
-                AdblockFastApplication
-                    .prefs
-                    .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
+                NOTIFICATIONS_REQUEST_COUNT_KEY,
+                prefs.getInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0) + 1
             )
             .apply();
         setHtml(
@@ -270,17 +280,13 @@ public class MainActivity extends AppCompatActivity {
             notificationsOptIn.dismiss();
             Plausible.INSTANCE.event("Pre-accept", "/notifications", "", null);
 
-            OneSignal.getNotifications().requestPermission(true, Continue.with((r) -> {
-                if (r.isSuccess()) {
-                    if (Boolean.TRUE.equals(r.getData())) {
-                        editor
-                            .putBoolean(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY, true)
-                            .apply();
+            OneSignal.getNotifications().requestPermission(true, Continue.with((result) -> {
+                if (result.isSuccess()) {
+                    if (Boolean.TRUE.equals(result.getData())) {
+                        editor.putBoolean(ARE_NOTIFICATIONS_ALLOWED_KEY, true).apply();
                         Plausible.INSTANCE.event("Accept", "/notifications", "", null);
                     } else {
-                        editor
-                            .putBoolean(AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY, false)
-                            .apply();
+                        editor.putBoolean(ARE_NOTIFICATIONS_ALLOWED_KEY, false).apply();
                         Plausible.INSTANCE.event("Decline", "/notifications", "", null);
                     }
                 }
@@ -299,13 +305,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
-        if (AdblockFastApplication.prefs == null) AdblockFastApplication.handlePrefs(this);
+        if (prefs == null) handlePrefs(this);
 
         hasSamsungBrowser =
-            hasSamsungBrowser ||
-                AdblockFastApplication.prefs.getBoolean(
-                    AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false
-                );
+            hasSamsungBrowser || prefs.getBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false);
         Dialog help = presentDialog(R.layout.help_dialog);
         TextView summaryText = help.findViewById(R.id.summary_text);
         TextView detailsText = help.findViewById(R.id.details_text);
@@ -318,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
             TextView defaultText = help.findViewById(R.id.default_text);
             TextView upgradeText = help.findViewById(R.id.upgrade_text);
             TextView overrideText = help.findViewById(R.id.override_text);
-            SharedPreferences.Editor editor = AdblockFastApplication.prefs.edit();
+            SharedPreferences.Editor editor = prefs.edit();
 
             summaryText.setText(R.string.install_summary);
             setHtml(detailsText, R.string.install_details, true);
@@ -334,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             defaultText.setOnClickListener((w) -> {
-                AdblockFastApplication.finalizeMassive();
+                finalizeMassive();
                 Ruleset.downgrade(this);
                 defaultText.setTypeface(emphasisFont);
                 upgradeText.setTypeface(bodyFont);
@@ -343,25 +346,19 @@ public class MainActivity extends AppCompatActivity {
 
             upgradeText.setOnClickListener((w) -> {
                 Ruleset.upgrade(this);
-                AdblockFastApplication.initMassive(this);
+                initMassive(this);
                 upgradeText.setTypeface(emphasisFont);
                 defaultText.setTypeface(bodyFont);
                 Plausible.INSTANCE.event("Upgrade", "/help", "", null);
             });
 
             overrideText.setOnClickListener((v) -> {
-                editor
-                    .putBoolean(AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true)
-                    .apply();
+                editor.putBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true).apply();
                 help.dismiss();
                 Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
                 presentHelp(() -> {
-                    AdblockFastApplication
-                        .prefs
-                        .edit()
-                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                        .apply();
-                    AdblockFastApplication.handleNotificationPrefs(this);
+                    prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+                    handleNotificationPrefs(this);
                 });
             });
         }
@@ -571,25 +568,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onboardUser() {
-        if (AdblockFastApplication.prefs == null) AdblockFastApplication.handlePrefs(this);
+        if (prefs == null) handlePrefs(this);
 
-        if (
-            AdblockFastApplication.prefs.getBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, true)
-        ) {
+        if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
             Plausible.INSTANCE.event("Onboard", "/", "", null);
 
-            if (!AdblockFastApplication.prefs.contains(AdblockFastApplication.BLOCKING_MODE_KEY)) {
+            if (!prefs.contains(BLOCKING_MODE_KEY)) {
                 presentModes(() -> {
                     if (IS_NOTIFICATIONS_PERMISSION_REQUIRED) {
                         presentNotificationsOptIn(() -> {
                             if (hasSamsungBrowser) {
                                 presentHelp(() -> {
-                                    AdblockFastApplication
-                                        .prefs
-                                        .edit()
-                                        .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                                        .apply();
-                                    AdblockFastApplication.handleNotificationPrefs(this);
+                                    prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+                                    handleNotificationPrefs(this);
                                 });
                             } else {
                                 presentHelp(this::onBackPressed);
@@ -598,12 +589,8 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         if (hasSamsungBrowser) {
                             presentHelp(() -> {
-                                AdblockFastApplication
-                                    .prefs
-                                    .edit()
-                                    .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                                    .apply();
-                                AdblockFastApplication.handleNotificationPrefs(this);
+                                prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+                                handleNotificationPrefs(this);
                             });
                         } else {
                             presentHelp(this::onBackPressed);
@@ -612,19 +599,13 @@ public class MainActivity extends AppCompatActivity {
                 });
             } else if (
                 IS_NOTIFICATIONS_PERMISSION_REQUIRED &&
-                    AdblockFastApplication
-                        .prefs
-                        .getInt(AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
+                    prefs.getInt(NOTIFICATIONS_REQUEST_COUNT_KEY, 0) == 0
             ) {
                 presentNotificationsOptIn(() -> {
                     if (hasSamsungBrowser) {
                         presentHelp(() -> {
-                            AdblockFastApplication
-                                .prefs
-                                .edit()
-                                .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                                .apply();
-                            AdblockFastApplication.handleNotificationPrefs(this);
+                            prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+                            handleNotificationPrefs(this);
                         });
                     } else {
                         presentHelp(this::onBackPressed);
@@ -633,12 +614,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 if (hasSamsungBrowser) {
                     presentHelp(() -> {
-                        AdblockFastApplication
-                            .prefs
-                            .edit()
-                            .putBoolean(AdblockFastApplication.IS_FIRST_RUN_KEY, false)
-                            .apply();
-                        AdblockFastApplication.handleNotificationPrefs(this);
+                        prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+                        handleNotificationPrefs(this);
                     });
                 } else {
                     presentHelp(this::onBackPressed);
@@ -646,9 +623,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else if (
             !hasSamsungBrowser &&
-                !AdblockFastApplication
-                    .prefs
-                    .getBoolean(AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false)
+                !prefs.getBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false)
         ) {
             presentHelp(this::onBackPressed);
         }
@@ -688,11 +663,7 @@ public class MainActivity extends AppCompatActivity {
 
                             req.disconnect();
 
-                            AdblockFastApplication
-                                .prefs
-                                .edit()
-                                .putBoolean(RETRIEVED_ACCOUNT_PREF, true)
-                                .apply();
+                            prefs.edit().putBoolean(RETRIEVED_ACCOUNT_PREF, true).apply();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -723,7 +694,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void checkAccountPermission() {
-        if (AdblockFastApplication.prefs.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
+        if (prefs.getBoolean(RETRIEVED_ACCOUNT_PREF, false)) return;
 
         if (
             ContextCompat.checkSelfPermission(
