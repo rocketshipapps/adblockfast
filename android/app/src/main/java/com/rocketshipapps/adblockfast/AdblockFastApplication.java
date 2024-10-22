@@ -12,6 +12,7 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
+import androidx.work.Configuration;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
@@ -107,6 +108,8 @@ public class AdblockFastApplication extends Application {
 
         handlePrefs(this);
         getFeatureFlags(this);
+
+        WorkManager.initialize(this, new Configuration.Builder().build());
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             "SyncWork",
             ExistingPeriodicWorkPolicy.KEEP,

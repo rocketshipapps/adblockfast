@@ -41,6 +41,10 @@
             </intent-filter>
         </activity>
         <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.rocketshipapps.adblockfast.androidx-startup"
+            tools:node="remove" />
+        <provider
             android:name=".contentBlocker.contentProvider.BlockerProvider"
             android:authorities="com.rocketshipapps.adblockfast.contentBlocker.contentProvider"
             android:exported="true"
