@@ -321,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
             TextView defaultText = help.findViewById(R.id.default_text);
             TextView upgradeText = help.findViewById(R.id.upgrade_text);
             TextView overrideText = help.findViewById(R.id.override_text);
-            SharedPreferences.Editor editor = prefs.edit();
 
             summaryText.setText(R.string.install_summary);
             setHtml(detailsText, R.string.install_details, true);
@@ -353,11 +352,13 @@ public class MainActivity extends AppCompatActivity {
             });
 
             overrideText.setOnClickListener((v) -> {
+                SharedPreferences.Editor editor = prefs.edit();
+
                 editor.putBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true).apply();
                 help.dismiss();
                 Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
                 presentHelp(() -> {
-                    prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
+                    editor.putBoolean(IS_FIRST_RUN_KEY, false).apply();
                     handleNotificationPrefs(this);
                 });
             });
