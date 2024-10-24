@@ -24,8 +24,8 @@
     </string>
     <string name="settings_summary">要在 Samsung Internet 中屏蔽广告：</string>
     <string name="settings_details">
-        <![CDATA[前往主屏幕 > <b>Internet</b> > ☰ > <b>广告拦截器</b>，然后打开 <b>Adblock
-        Fast</b>。<br><br>要解除屏蔽广告，请返回此应用并点击 Adblock Fast 标志。]]>
+        <![CDATA[前往主屏幕 > <b>浏览器</b> > ☰ > <b>广告拦截器</b>，然后打开 <b>Adblock Fast</b>。<br><br>
+        要解除屏蔽广告，请返回此应用并点击 Adblock Fast 标志。]]>
     </string>
     <string name="install_summary">Adblock Fast 需要 Samsung Internet 4.0+，而你似乎没有。</string>
     <string name="install_details">
