@@ -48,7 +48,11 @@
         <![CDATA[如果您已安装 Samsung Internet 4.0+，<font
         color="#de0421"><u>请永久关闭此对话框</u></font>以完成设置。]]>
     </string>
-    <string name="contact_info">TODO</string>
+    <string name="contact_info">
+        <![CDATA[如果您有任何问题或意见，您可以关注并留言到<a
+        href="https://www.facebook.com/adblockfast">我们的 Facebook</a> 或<a
+        href="https://x.com/adblockfast">我们的 X</a>。]]>
+    </string>
     <string name="copyright_notice">
         <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
         href="https://x.com/rocketship">X</a> · <a
