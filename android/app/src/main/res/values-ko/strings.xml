@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="distribution_channel" translatable="false">Play</string>
-    <string name="legacy_version" translatable="false">&lt;=2.1.0</string>
-    <string name="google_app_id" translatable="false">18676242394</string>
-    <string name="plausible_host" translatable="false">https://plausible.adblockfast.com</string>
-    <string name="plausible_domain" translatable="false">android.adblockfast.com</string>
-    <string name="name" translatable="false">Adblock Fast</string>
-    <string name="logo_description">Block or unblock ads</string>
-    <string name="status_label">Status:\u0020</string>
-    <string name="blocked_message">Blocking ads</string>
-    <string name="unblocked_message">Not blocking ads</string>
-    <string name="blocked_hint">Tap to unblock</string>
-    <string name="unblocked_hint">Tap to block</string>
-    <string name="help_label">Help</string>
-    <string name="about_label">About</string>
+    <string name="logo_description">광고 차단 또는 차단 해제</string>
+    <string name="status_label">상태:\u0020</string>
+    <string name="blocked_message">광고 차단 중</string>
+    <string name="unblocked_message">광고 차단 안 함</string>
+    <string name="blocked_hint">탭하여 차단 해제</string>
+    <string name="unblocked_hint">탭하여 차단</string>
+    <string name="help_label">도움말</string>
+    <string name="about_label">정보</string>
     <string name="mode_summary">
         Block ads in just a couple steps, starting by choosing a blocking mode:
     </string>
@@ -24,7 +18,7 @@
         href="https://adblockfast.com/license">our full terms</a> and <a
         href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a> first.]]>
     </string>
-    <string name="settings_summary">To block ads in Samsung Internet:</string>
+    <string name="settings_summary">Samsung Internet에서 광고를 차단하려면:</string>
     <string name="settings_details">
         <![CDATA[Go to your home screen > <b>Internet</b> > ☰ > <b>Ad blockers</b> then toggle
         <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to this app then tap the Adblock
@@ -46,10 +40,10 @@
         Adblock Fast will fetch the latest ad domains to filter in a moment …
     </string>
     <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
-    <string name="mode_label">Mode:\u0020</string>
-    <string name="default_link"><![CDATA[<font color="#de0421"><u>Fast</u></font>]]></string>
-    <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>Faster</u></font>]]></string>
-    <string name="upgrade_note">\u0020(runs in background)</string>
+    <string name="mode_label">모드:\u0020</string>
+    <string name="default_link"><![CDATA[<font color="#de0421"><u>빠름</u></font>]]></string>
+    <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>더 빠름</u></font>]]></string>
+    <string name="upgrade_note">\u0020(백그라운드에서 실행)</string>
     <string name="mode_separator">\u0020·\u0020</string>
     <string name="install_override">
         <![CDATA[If you do have Samsung Internet 4.0+, <font color="#de0421"><u>dismiss this dialog
@@ -65,12 +59,12 @@
         href="https://x.com/rocketship">X</a> · <a href="https://adblockfast.com/license">ToS</a> ·
         <a href="https://www.iubenda.com/privacy-policy/216992">Privacy</a>&gt;]]>
     </string>
-    <string name="continue_label">Done</string>
-    <string name="dismiss_label">Close</string>
-    <string name="default_label">Fast</string>
-    <string name="upgrade_label">Faster</string>
-    <string name="accept_label">Yes</string>
-    <string name="decline_label">Not now</string>
-    <string name="foreground_title">Faster blocking (beta)</string>
-    <string name="foreground_text">Adblock Fast is searching for new ad domains to filter.</string>
+    <string name="continue_label">완료</string>
+    <string name="dismiss_label">닫기</string>
+    <string name="default_label">빠름</string>
+    <string name="upgrade_label">더 빠름</string>
+    <string name="accept_label">예</string>
+    <string name="decline_label">지금은 안 함</string>
+    <string name="foreground_title">더 빠른 차단 (베타)</string>
+    <string name="foreground_text">Adblock Fast가 필터링할 새 광고 도메인을 검색 중입니다.</string>
 </resources>
