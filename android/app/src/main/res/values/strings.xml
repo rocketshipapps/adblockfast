@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="distribution_channel">Play</string>
     <string name="legacy_version">&lt;=2.1.0</string>

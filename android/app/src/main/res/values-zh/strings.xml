@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="distribution_channel">Play</string>
+    <string name="legacy_version">&lt;=2.1.0</string>
+    <string name="google_app_id">18676242394</string>
+    <string name="plausible_host">https://plausible.adblockfast.com</string>
+    <string name="plausible_domain">android.adblockfast.com</string>
+    <string name="name">Adblock Fast</string>
+    <string name="logo_description">屏蔽或解除屏蔽广告</string>
+    <string name="status_label">状态：\u0020</string>
+    <string name="blocked_message">正在屏蔽广告</string>
+    <string name="unblocked_message">不屏蔽广告</string>
+    <string name="blocked_hint">点击解除屏蔽</string>
+    <string name="unblocked_hint">点击屏蔽</string>
+    <string name="help_label">帮助</string>
+    <string name="about_label">关于</string>
+    <string name="mode_summary">只需几步就能屏蔽广告，首先选择屏蔽模式：</string>
+    <string name="mode_details">
+        <![CDATA[<b>快速</b>模式使用我们的默认过滤规则。<br><br>
+        <b>更快</b>（测试版）使用少量后台带宽来抓取网页并查找更多广告进行过滤。<br><br>
+        您可以随时进<b>关于</b>进行切换，也可以先阅读<a
+        href="https://adblockfast.com/license">我们的完整条款</a>和<a
+        href="https://www.iubenda.com/privacy-policy/216992">隐私政策</a>。]]>
+    </string>
+    <string name="settings_summary">要在 Samsung Internet 中屏蔽广告：</string>
+    <string name="settings_details">
+        <![CDATA[前往主屏幕 > <b>Internet</b> > ☰ > <b>广告拦截器</b>，然后打开 <b>Adblock
+        Fast</b>。<br><br>要解除屏蔽广告，请返回此应用并点击 Adblock Fast 标志。]]>
+    </string>
+    <string name="install_summary">Adblock Fast 需要 Samsung Internet 4.0+，而你似乎没有。</string>
+    <string name="install_details">
+        <![CDATA[安装或更新到最新版本的 <a
+        href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
+        Internet 浏览器</a>，然后返回此应用以获取屏蔽广告的说明。]]>
+    </string>
+    <string name="notifications_request">
+        <![CDATA[Adblock Fast 也应保持更新以屏蔽新的广告类型。<br><br>
+        您是否希望在有重要更新时收到通知（不定期）？]]>
+    </string>
+    <string name="sync_preview">Adblock Fast 稍后将获取最新的广告域进行过滤…</string>
+    <string name="tagline"><![CDATA[世界上最快的广告拦截器！]]></string>
+    <string name="mode_label">模式：\u0020</string>
+    <string name="default_link"><![CDATA[<font color="#de0421"><u>快速</u></font>]]></string>
+    <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>更快</u></font>]]></string>
+    <string name="upgrade_note">（后台运行）</string>
+    <string name="mode_separator">\u0020·\u0020</string>
+    <string name="install_override">
+        <![CDATA[如果您已安装 Samsung Internet 4.0+，<font
+        color="#de0421"><u>请永久关闭此对话框</u></font>以完成设置。]]>
+    </string>
+    <string name="contact_info">TODO</string>
+    <string name="copyright_notice">
+        <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
+        href="https://x.com/rocketship">X</a> · <a
+        href="https://adblockfast.com/license">服务条款</a> · <a
+        href="https://www.iubenda.com/privacy-policy/216992">隐私</a>&gt;]]>
+    </string>
+    <string name="continue_label">完成</string>
+    <string name="dismiss_label">关闭</string>
+    <string name="default_label">快速</string>
+    <string name="upgrade_label">更快</string>
+    <string name="accept_label">是</string>
+    <string name="decline_label">暂时不要</string>
+    <string name="foreground_title">更快的屏蔽（测试版）</string>
+    <string name="foreground_text">Adblock Fast 正在搜索要过滤的新广告域。</string>
+</resources>
