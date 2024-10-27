@@ -14,14 +14,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLHandshakeException;
 
 import com.wbrawner.plausible.android.Plausible;
 
@@ -200,10 +206,26 @@ public class Ruleset {
                         } else {
                             Log.e("Ruleset", "HTTP response code: " + responseCode);
                         }
+                    } catch (UnknownHostException hostException) {
+                        Log.e("Ruleset", "Host unresolvable: " + hostException.getMessage());
+                    } catch (SSLHandshakeException handshakeException) {
+                        Log.e(
+                            "Ruleset", "SSL handshake failed: " + handshakeException.getMessage()
+                        );
+                    } catch (SSLException sslException) {
+                        Log.e("Ruleset", "SSL error occurred: " + sslException.getMessage());
+                    } catch (ConnectException connectException) {
+                        Log.e(
+                            "Ruleset", "Connection error occurred: " + connectException.getMessage()
+                        );
                     } catch (SocketTimeoutException timeoutException) {
-                        Log.e("Ruleset", "Connection timed out: " + timeoutException.getMessage());
+                        Log.e("Ruleset", "Socket timed out: " + timeoutException.getMessage());
+                    } catch (SocketException socketException) {
+                        Log.e("Ruleset", "Socket error occurred: " + socketException.getMessage());
                     } catch (EOFException eofException) {
                         Log.e("Ruleset", "Unexpected EOF: " + eofException.getMessage());
+                    } catch (IOException ioException) {
+                        Log.e("Ruleset", "IO error occurred: " + ioException.getMessage());
                     } catch (Exception exception) {
                         Sentry.captureException(exception);
                     } finally {

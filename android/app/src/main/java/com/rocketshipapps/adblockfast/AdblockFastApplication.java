@@ -27,12 +27,18 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLHandshakeException;
 
 import kotlin.Unit;
 
@@ -260,14 +266,41 @@ public class AdblockFastApplication extends Application {
                         } else {
                             Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
                         }
+                    } catch (UnknownHostException hostException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "Host unresolvable: " + hostException.getMessage()
+                        );
+                    } catch (SSLHandshakeException handshakeException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "SSL handshake failed: " + handshakeException.getMessage()
+                        );
+                    } catch (SSLException sslException) {
+                        Log.e("AdblockFastApplication", "SSL error occurred: " + sslException.getMessage());
+                    } catch (ConnectException connectException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "Connection error occurred: " + connectException.getMessage()
+                        );
                     } catch (SocketTimeoutException timeoutException) {
                         Log.e(
                             "AdblockFastApplication",
-                            "Connection timed out: " + timeoutException.getMessage()
+                            "Socket timed out: " + timeoutException.getMessage()
+                        );
+                    } catch (SocketException socketException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "Socket error occurred: " + socketException.getMessage()
                         );
                     } catch (EOFException eofException) {
                         Log.e(
                             "AdblockFastApplication", "Unexpected EOF: " + eofException.getMessage()
+                        );
+                    } catch (IOException ioException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "IO error occurred: " + ioException.getMessage()
                         );
                     } catch (Exception exception) {
                         Sentry.captureException(exception);
