@@ -19,7 +19,6 @@ import io.sentry.Sentry;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.ANDROID_VERSION_NUMBER;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.getFeatureFlags;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.initMassive;
-import com.rocketshipapps.adblockfast.AdblockFastApplication;
 import com.rocketshipapps.adblockfast.R;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
@@ -37,10 +36,10 @@ public class SyncWorker extends Worker {
         Context context = getApplicationContext();
 
         try {
-            NotificationManager manager = null;
             boolean shouldSyncInForeground = Ruleset.isUpgraded(context);
             boolean isNotificationChannelRequired = ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.O;
             boolean canNotificationsBePosted = false;
+            NotificationManager manager = null;
 
             if (shouldSyncInForeground) {
                 if (isNotificationChannelRequired) {

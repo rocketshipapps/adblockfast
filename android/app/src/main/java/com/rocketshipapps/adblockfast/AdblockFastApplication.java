@@ -6,6 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -19,6 +23,7 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -146,116 +151,132 @@ public class AdblockFastApplication extends Application {
     }
 
     public static void getFeatureFlags(Context context) {
-        if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (isConnected(context)) {
+            if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        long timestamp = System.currentTimeMillis();
+            long timestamp = System.currentTimeMillis();
 
-        if (
-            timestamp >
-                prefs.getLong(SYNCED_AT_KEY, 0) +
-                    prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL)
-        ) {
-            new Thread(() -> {
-                HttpURLConnection connection = null;
-                BufferedReader input = null;
+            if (
+                timestamp >
+                    prefs.getLong(SYNCED_AT_KEY, 0) +
+                        prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL)
+            ) {
+                new Thread(() -> {
+                    HttpURLConnection connection = null;
+                    BufferedReader input = null;
 
-                try {
-                    connection =
-                        (HttpURLConnection) new URL(BuildConfig.FEATURE_FLAGS_URL).openConnection();
-                    Map<String, ?> entries = prefs.getAll();
-                    JSONObject params = new JSONObject();
+                    try {
+                        connection =
+                            (HttpURLConnection) new URL(BuildConfig.FEATURE_FLAGS_URL)
+                                .openConnection();
+                        Map<String, ?> entries = prefs.getAll();
+                        JSONObject params = new JSONObject();
 
-                    connection.setRequestMethod("POST");
-                    connection.setRequestProperty(
-                        "Content-Type", "application/json; charset=UTF-8"
-                    );
-                    connection.setRequestProperty("Accept", "application/json");
-                    connection.setDoOutput(true);
-                    connection.setDoInput(true);
-                    connection.setConnectTimeout(CONNECT_TIMEOUT);
-                    connection.setReadTimeout(READ_TIMEOUT);
+                        connection.setRequestMethod("POST");
+                        connection.setRequestProperty(
+                            "Content-Type", "application/json; charset=UTF-8"
+                        );
+                        connection.setRequestProperty("Accept", "application/json");
+                        connection.setDoOutput(true);
+                        connection.setDoInput(true);
+                        connection.setConnectTimeout(CONNECT_TIMEOUT);
+                        connection.setReadTimeout(READ_TIMEOUT);
 
-                    for (Map.Entry<String, ?> entry : entries.entrySet()) {
-                        params.put(entry.getKey(), entry.getValue());
-                    }
+                        for (Map.Entry<String, ?> entry : entries.entrySet()) {
+                            params.put(entry.getKey(), entry.getValue());
+                        }
 
-                    try (OutputStream output = connection.getOutputStream()) {
-                        byte[] buffer = params.toString().getBytes(StandardCharsets.UTF_8);
+                        try (OutputStream output = connection.getOutputStream()) {
+                            byte[] buffer = params.toString().getBytes(StandardCharsets.UTF_8);
 
-                        output.write(buffer, 0, buffer.length);
-                        output.flush();
-                    }
+                            output.write(buffer, 0, buffer.length);
+                            output.flush();
+                        }
 
-                    int responseCode = connection.getResponseCode();
-
-                    if (
-                        responseCode >= HttpURLConnection.HTTP_OK &&
-                            responseCode < HttpURLConnection.HTTP_MULT_CHOICE
-                    ) {
-                        input =
-                            new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                        StringBuilder response = new StringBuilder();
-                        String line;
-
-                        while ((line = input.readLine()) != null) response.append(line);
-
-                        String content = response.toString();
-                        JSONObject flags = new JSONObject(content);
-                        boolean hasIntervalFlag = flags.has(SYNC_INTERVAL_PROPERTY);
-                        boolean hasModeFlag = flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY);
-                        boolean hasNotificationFlag =
-                            flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY);
-                        boolean hasSyncingFlag = flags.has(SHOULD_DISABLE_SYNCING_PROPERTY);
+                        int responseCode = connection.getResponseCode();
 
                         if (
-                            hasIntervalFlag || hasModeFlag || hasNotificationFlag || hasSyncingFlag
+                            responseCode >= HttpURLConnection.HTTP_OK &&
+                                responseCode < HttpURLConnection.HTTP_MULT_CHOICE
                         ) {
-                            Editor editor = prefs.edit();
+                            input =
+                                new BufferedReader(
+                                    new InputStreamReader(connection.getInputStream())
+                                );
+                            StringBuilder response = new StringBuilder();
+                            String line;
 
-                            editor.putLong(
-                                SYNC_INTERVAL_KEY,
-                                hasIntervalFlag
-                                    ? flags.getLong(SYNC_INTERVAL_PROPERTY) : DEFAULT_SYNC_INTERVAL
-                            );
-                            editor.putBoolean(
-                                SHOULD_BUBBLEWRAP_MODE_KEY,
-                                hasModeFlag && flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
-                            );
-                            editor.putBoolean(
-                                SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
-                                hasNotificationFlag &&
-                                    flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
-                            );
-                            editor.putBoolean(
-                                SHOULD_DISABLE_SYNCING_KEY,
-                                hasSyncingFlag && flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
-                            );
-                            editor.putLong(SYNCED_AT_KEY, timestamp);
-                            editor.apply();
-                            Plausible.INSTANCE.event("Sync", "/flags", "", null);
-                            dumpPrefs();
+                            while ((line = input.readLine()) != null) response.append(line);
+
+                            String content = response.toString();
+                            JSONObject flags = new JSONObject(content);
+                            boolean hasIntervalFlag = flags.has(SYNC_INTERVAL_PROPERTY);
+                            boolean hasModeFlag = flags.has(SHOULD_BUBBLEWRAP_MODE_PROPERTY);
+                            boolean hasNotificationFlag =
+                                flags.has(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY);
+                            boolean hasSyncingFlag = flags.has(SHOULD_DISABLE_SYNCING_PROPERTY);
+
+                            if (
+                                hasIntervalFlag ||
+                                    hasModeFlag ||
+                                        hasNotificationFlag ||
+                                            hasSyncingFlag
+                            ) {
+                                Editor editor = prefs.edit();
+
+                                editor.putLong(
+                                    SYNC_INTERVAL_KEY,
+                                    hasIntervalFlag
+                                        ? flags.getLong(SYNC_INTERVAL_PROPERTY)
+                                        : DEFAULT_SYNC_INTERVAL
+                                );
+                                editor.putBoolean(
+                                    SHOULD_BUBBLEWRAP_MODE_KEY,
+                                    hasModeFlag && flags.getBoolean(SHOULD_BUBBLEWRAP_MODE_PROPERTY)
+                                );
+                                editor.putBoolean(
+                                    SHOULD_SUPPRESS_NOTIFICATIONS_KEY,
+                                    hasNotificationFlag &&
+                                        flags.getBoolean(SHOULD_SUPPRESS_NOTIFICATIONS_PROPERTY)
+                                );
+                                editor.putBoolean(
+                                    SHOULD_DISABLE_SYNCING_KEY,
+                                    hasSyncingFlag &&
+                                        flags.getBoolean(SHOULD_DISABLE_SYNCING_PROPERTY)
+                                );
+                                editor.putLong(SYNCED_AT_KEY, timestamp);
+                                editor.apply();
+                                Plausible.INSTANCE.event("Sync", "/flags", "", null);
+                                dumpPrefs();
+                            } else {
+                                Sentry.captureException(
+                                    new IOException("Unexpected content: " + content)
+                                );
+                            }
                         } else {
-                            Sentry.captureException(
-                                new IOException("Unexpected content: " + content)
-                            );
+                            Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
                         }
-                    } else {
-                        Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
+                    } catch (SocketTimeoutException timeoutException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "Connection timed out: " + timeoutException.getMessage()
+                        );
+                    } catch (EOFException eofException) {
+                        Log.e(
+                            "AdblockFastApplication", "Unexpected EOF: " + eofException.getMessage()
+                        );
+                    } catch (Exception exception) {
+                        Sentry.captureException(exception);
+                    } finally {
+                        if (connection != null) connection.disconnect();
+                        if (input != null) try { input.close(); } catch (Exception ignored) {}
                     }
-                } catch (SocketTimeoutException timeoutException) {
-                    Log.e(
-                        "AdblockFastApplication",
-                        "Connection timed out: " + timeoutException.getMessage()
-                    );
-                } catch (Exception exception) {
-                    Sentry.captureException(exception);
-                } finally {
-                    if (connection != null) connection.disconnect();
-                    if (input != null) try { input.close(); } catch (Exception ignored) {}
-                }
-            }).start();
+                }).start();
+            } else {
+                Log.d("AdblockFastApplication", "Flags already synced");
+            }
         } else {
-            Log.d("AdblockFastApplication", "Flags already synced");
+            Log.e("AdblockFastApplication", "Internet unavailable");
         }
     }
 
@@ -282,6 +303,36 @@ public class AdblockFastApplication extends Application {
 
             return Unit.INSTANCE;
         });
+    }
+
+    public static boolean isConnected(Context context) {
+        boolean isConnected = false;
+        ConnectivityManager manager =
+            (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (manager != null) {
+            if (ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.M) {
+                Network network = manager.getActiveNetwork();
+
+                if (network != null) {
+                    NetworkCapabilities capabilities = manager.getNetworkCapabilities(network);
+
+                    isConnected =
+                        capabilities != null && (
+                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                                    capabilities
+                                        .hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
+                        );
+                }
+            } else {
+                NetworkInfo info = manager.getActiveNetworkInfo();
+
+                isConnected = info != null && info.isConnected();
+            }
+        }
+
+        return isConnected;
     }
 
     static void initPrefs(Context context) {

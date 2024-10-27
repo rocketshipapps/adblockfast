@@ -9,6 +9,7 @@ import android.util.Log;
 import androidx.preference.PreferenceManager;
 
 import java.io.ByteArrayOutputStream;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,6 +37,7 @@ import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_BUBBL
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_DISABLE_SYNCING_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.STANDARD_MODE_VALUE;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.UPDATED_AT_KEY;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.isConnected;
 import com.rocketshipapps.adblockfast.BuildConfig;
 import com.rocketshipapps.adblockfast.R;
 
@@ -113,95 +115,106 @@ public class Ruleset {
     }
 
     public static void sync(Context context) {
-        if (prefs == null) init(context);
+        if (isConnected(context)) {
+            if (prefs == null) init(context);
 
-        if (!prefs.getBoolean(SHOULD_DISABLE_SYNCING_KEY, false)) {
-            new Thread(() -> {
-                HttpURLConnection connection = null;
-                InputStream input = null;
-                FileOutputStream output = null;
+            if (!prefs.getBoolean(SHOULD_DISABLE_SYNCING_KEY, false)) {
+                new Thread(() -> {
+                    HttpURLConnection connection = null;
+                    InputStream input = null;
+                    FileOutputStream output = null;
 
-                try {
-                    String name = getName(context);
-                    connection =
-                        (HttpURLConnection) new URL(
-                            BuildConfig.RULESETS_URL + "/" + name
-                        ).openConnection();
+                    try {
+                        String name = getName(context);
+                        connection =
+                            (HttpURLConnection) new URL(
+                                BuildConfig.RULESETS_URL + "/" + name
+                            ).openConnection();
 
-                    connection.setRequestProperty("Accept", "text/plain");
-                    connection.setDoInput(true);
-                    connection.setConnectTimeout(CONNECT_TIMEOUT);
-                    connection.setReadTimeout(READ_TIMEOUT);
+                        connection.setRequestProperty("Accept", "text/plain");
+                        connection.setDoInput(true);
+                        connection.setConnectTimeout(CONNECT_TIMEOUT);
+                        connection.setReadTimeout(READ_TIMEOUT);
 
-                    int responseCode = connection.getResponseCode();
+                        int responseCode = connection.getResponseCode();
 
-                    if (
-                        responseCode >= HttpURLConnection.HTTP_OK &&
-                            responseCode < HttpURLConnection.HTTP_MULT_CHOICE
-                    ) {
-                        String lastModified = connection.getHeaderField(LAST_MODIFIED_HEADER);
+                        if (
+                            responseCode >= HttpURLConnection.HTTP_OK &&
+                                responseCode < HttpURLConnection.HTTP_MULT_CHOICE
+                        ) {
+                            String lastModified = connection.getHeaderField(LAST_MODIFIED_HEADER);
 
-                        if (lastModified != null) {
-                            Date date =
-                                new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US)
-                                    .parse(lastModified);
+                            if (lastModified != null) {
+                                Date date =
+                                    new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US)
+                                        .parse(lastModified);
 
-                            if (date != null) {
-                                long timestamp = date.getTime();
+                                if (date != null) {
+                                    long timestamp = date.getTime();
 
-                                if (timestamp > prefs.getLong(UPDATED_AT_KEY, 0)) {
-                                    input = connection.getInputStream();
-                                    output =
-                                        new FileOutputStream(
-                                            new File(context.getFilesDir(), name + TEXT_EXTENSION)
-                                        );
-                                    ByteArrayOutputStream response = new ByteArrayOutputStream();
-                                    byte[] buffer = new byte[4096];
-                                    int byteCount;
+                                    if (timestamp > prefs.getLong(UPDATED_AT_KEY, 0)) {
+                                        input = connection.getInputStream();
+                                        output =
+                                            new FileOutputStream(
+                                                new File(
+                                                    context.getFilesDir(), name + TEXT_EXTENSION
+                                                )
+                                            );
+                                        ByteArrayOutputStream response =
+                                            new ByteArrayOutputStream();
+                                        byte[] buffer = new byte[4096];
+                                        int byteCount;
 
-                                    while ((byteCount = input.read(buffer)) != -1) {
-                                        response.write(buffer, 0, byteCount);
-                                    }
+                                        while ((byteCount = input.read(buffer)) != -1) {
+                                            response.write(buffer, 0, byteCount);
+                                        }
 
-                                    String content =
-                                        response.toString(StandardCharsets.UTF_8.name());
+                                        String content =
+                                            response.toString(StandardCharsets.UTF_8.name());
 
-                                    if (content.contains(SANITY_CHECK) && content.endsWith("\n")) {
-                                        output.write(content.getBytes(StandardCharsets.UTF_8));
-                                        output.flush();
-                                        prefs.edit().putLong(UPDATED_AT_KEY, timestamp).apply();
-                                        Plausible.INSTANCE.event("Sync", "/ruleset", "", null);
+                                        if (
+                                            content.contains(SANITY_CHECK) && content.endsWith("\n")
+                                        ) {
+                                            output.write(content.getBytes(StandardCharsets.UTF_8));
+                                            output.flush();
+                                            prefs.edit().putLong(UPDATED_AT_KEY, timestamp).apply();
+                                            Plausible.INSTANCE.event("Sync", "/ruleset", "", null);
+                                        } else {
+                                            Sentry.captureException(
+                                                new IOException("Unexpected content: " + content)
+                                            );
+                                        }
                                     } else {
-                                        Sentry.captureException(
-                                            new IOException("Unexpected content: " + content)
-                                        );
+                                        Log.d("Ruleset", "Stale remote timestamp: " + timestamp);
                                     }
                                 } else {
-                                    Log.d("Ruleset", "Stale remote timestamp: " + timestamp);
+                                    Sentry.captureException(
+                                        new ParseException(
+                                            "Unparsable header value: " + lastModified, 0
+                                        )
+                                    );
                                 }
                             } else {
-                                Sentry.captureException(
-                                    new ParseException(
-                                        "Unparsable header value: " + lastModified, 0
-                                    )
-                                );
+                                Log.e("Ruleset", "Missing header: " + LAST_MODIFIED_HEADER);
                             }
                         } else {
-                            Log.e("Ruleset", "Missing header: " + LAST_MODIFIED_HEADER);
+                            Log.e("Ruleset", "HTTP response code: " + responseCode);
                         }
-                    } else {
-                        Log.e("Ruleset", "HTTP response code: " + responseCode);
+                    } catch (SocketTimeoutException timeoutException) {
+                        Log.e("Ruleset", "Connection timed out: " + timeoutException.getMessage());
+                    } catch (EOFException eofException) {
+                        Log.e("Ruleset", "Unexpected EOF: " + eofException.getMessage());
+                    } catch (Exception exception) {
+                        Sentry.captureException(exception);
+                    } finally {
+                        if (connection != null) connection.disconnect();
+                        if (input != null) try { input.close(); } catch (Exception ignored) {}
+                        if (output != null) try { output.close(); } catch (Exception ignored) {}
                     }
-                } catch (SocketTimeoutException timeoutException) {
-                    Log.e("Ruleset", "Connection timed out: " + timeoutException.getMessage());
-                } catch (Exception exception) {
-                    Sentry.captureException(exception);
-                } finally {
-                    if (connection != null) connection.disconnect();
-                    if (input != null) try { input.close(); } catch (Exception ignored) {}
-                    if (output != null) try { output.close(); } catch (Exception ignored) {}
-                }
-            }).start();
+                }).start();
+            }
+        } else {
+            Log.e("Ruleset", "Internet unavailable");
         }
     }
 
