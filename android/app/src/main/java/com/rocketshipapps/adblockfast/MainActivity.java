@@ -35,6 +35,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
@@ -70,7 +71,6 @@ import static
     com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.VERSION_NUMBER;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.finalizeMassive;
-import static com.rocketshipapps.adblockfast.AdblockFastApplication.init;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.initMassive;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.prefs;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
@@ -149,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(base));
     }
 
+    void init(Context context) { prefs = PreferenceManager.getDefaultSharedPreferences(context); }
+
     void initPlayServices() {
         GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
 
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onLogoPressed(View v) {
+    void onLogoPressed(View v) {
         if (!isLogoAnimating) {
             if (Ruleset.isEnabled(this)) {
                 Ruleset.disable(this);
@@ -360,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
                 Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
                 presentHelp(() -> {
                     editor.putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                    init(this);
+                    AdblockFastApplication.init(this);
                 });
             });
         }
@@ -583,7 +585,7 @@ public class MainActivity extends AppCompatActivity {
                             if (hasSamsungBrowser) {
                                 presentHelp(() -> {
                                     prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                                    init(this);
+                                    AdblockFastApplication.init(this);
                                 });
                             } else {
                                 presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
@@ -593,7 +595,7 @@ public class MainActivity extends AppCompatActivity {
                         if (hasSamsungBrowser) {
                             presentHelp(() -> {
                                 prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                                init(this);
+                                AdblockFastApplication.init(this);
                             });
                         } else {
                             presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
@@ -608,7 +610,7 @@ public class MainActivity extends AppCompatActivity {
                     if (hasSamsungBrowser) {
                         presentHelp(() -> {
                             prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                            init(this);
+                            AdblockFastApplication.init(this);
                         });
                     } else {
                         presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
@@ -618,7 +620,7 @@ public class MainActivity extends AppCompatActivity {
                 if (hasSamsungBrowser) {
                     presentHelp(() -> {
                         prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                        init(this);
+                        AdblockFastApplication.init(this);
                     });
                 } else {
                     presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
