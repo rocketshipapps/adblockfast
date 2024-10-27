@@ -17,6 +17,7 @@ import com.wbrawner.plausible.android.Plausible;
 import io.sentry.Sentry;
 
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.ANDROID_VERSION_NUMBER;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.getFeatureFlags;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.initMassive;
 import com.rocketshipapps.adblockfast.AdblockFastApplication;
 import com.rocketshipapps.adblockfast.R;
@@ -74,7 +75,7 @@ public class SyncWorker extends Worker {
                 }
             }
 
-            AdblockFastApplication.getFeatureFlags(context);
+            getFeatureFlags(context);
             Ruleset.sync(context);
 
             if (shouldSyncInForeground && canNotificationsBePosted) {
