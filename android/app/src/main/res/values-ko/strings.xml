@@ -50,14 +50,13 @@
         permanently</u></font> to finish your setup.]]>
     </string>
     <string name="contact_info">
-        <![CDATA[If you have questions or comments, you can follow and message
-        <a href="https://www.facebook.com/adblockfast">us on Facebook</a> or <a
-        href="https://x.com/adblockfast">on X</a>.]]>
+        <![CDATA[질문이나 의견이 있으시면 <a href="https://www.facebook.com/adblockfast">저희의
+        Facebook</a> 또는 <a href="https://x.com/adblockfast">저희의 X</a>를 팔로우하고 메시지를 보내주세요.]]>
     </string>
     <string name="copyright_notice">
         <![CDATA[© Rocketship &lt;<a href="https://www.facebook.com/rocketship">Facebook</a> · <a
-        href="https://x.com/rocketship">X</a> · <a href="https://adblockfast.com/license">ToS</a> ·
-        <a href="https://www.iubenda.com/privacy-policy/216992">Privacy</a>&gt;]]>
+        href="https://x.com/rocketship">X</a> · <a href="https://adblockfast.com/license">이용
+        약관</a> · <a href="https://www.iubenda.com/privacy-policy/216992">개인 정보</a>&gt;]]>
     </string>
     <string name="continue_label">완료</string>
     <string name="dismiss_label">닫기</string>
