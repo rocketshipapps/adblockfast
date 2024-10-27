@@ -22,9 +22,7 @@ import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class BlockerProvider extends ContentProvider {
     @Override
-    public boolean onCreate() {
-        return false;
-    }
+    public boolean onCreate() { return false; }
 
     @Nullable
     @Override
@@ -38,9 +36,7 @@ public class BlockerProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Uri insert(@NonNull Uri uri, ContentValues values) {
-        return null;
-    }
+    public Uri insert(@NonNull Uri uri, ContentValues values) { return null; }
 
     @Override
     public int update(@NonNull Uri uri,
@@ -51,9 +47,7 @@ public class BlockerProvider extends ContentProvider {
     }
 
     @Override
-    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
-        return 0;
-    }
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) { return 0; }
 
     @Nullable
     @Override
@@ -61,9 +55,7 @@ public class BlockerProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public String getType(@NonNull Uri uri) {
-        return null;
-    }
+    public String getType(@NonNull Uri uri) { return null; }
 
     @Nullable
     @Override
