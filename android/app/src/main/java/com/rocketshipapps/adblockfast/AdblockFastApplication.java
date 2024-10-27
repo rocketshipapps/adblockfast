@@ -130,23 +130,27 @@ public class AdblockFastApplication extends Application {
             dumpPrefs();
             getFeatureFlags(context);
 
-            WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                "SyncWork",
-                ExistingPeriodicWorkPolicy.REPLACE,
-                new PeriodicWorkRequest
-                    .Builder(
-                        SyncWorker.class,
-                        prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
-                        TimeUnit.MILLISECONDS
-                    )
-                    .setConstraints(
-                        new Constraints
-                            .Builder()
-                            .setRequiredNetworkType(NetworkType.CONNECTED)
-                            .build()
-                    )
-                    .build()
-            );
+            try {
+                WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+                    "SyncWork",
+                    ExistingPeriodicWorkPolicy.REPLACE,
+                    new PeriodicWorkRequest
+                        .Builder(
+                            SyncWorker.class,
+                            prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
+                            TimeUnit.MILLISECONDS
+                        )
+                        .setConstraints(
+                            new Constraints
+                                .Builder()
+                                .setRequiredNetworkType(NetworkType.CONNECTED)
+                                .build()
+                        )
+                        .build()
+                );
+            } catch (Exception exception) {
+                Sentry.captureException(exception);
+            }
         }
     }
 
