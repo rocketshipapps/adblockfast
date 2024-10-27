@@ -120,7 +120,12 @@ public class AdblockFastApplication extends Application {
         distributionChannel = this.getString(R.string.distribution_channel);
         legacyVersionNumber = this.getString(R.string.legacy_version);
 
-        WorkManager.initialize(this, new Configuration.Builder().build());
+        try {
+            WorkManager.initialize(this, new Configuration.Builder().build());
+        } catch (Exception exception) {
+            Sentry.captureException(exception);
+        }
+
         init(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         if (Ruleset.isUpgraded(this)) initMassive(this);
@@ -136,27 +141,23 @@ public class AdblockFastApplication extends Application {
             dumpPrefs();
             getFeatureFlags(context);
 
-            try {
-                WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                    "SyncWork",
-                    ExistingPeriodicWorkPolicy.REPLACE,
-                    new PeriodicWorkRequest
-                        .Builder(
-                            SyncWorker.class,
-                            prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
-                            TimeUnit.MILLISECONDS
-                        )
-                        .setConstraints(
-                            new Constraints
-                                .Builder()
-                                .setRequiredNetworkType(NetworkType.CONNECTED)
-                                .build()
-                        )
-                        .build()
-                );
-            } catch (Exception exception) {
-                Sentry.captureException(exception);
-            }
+            WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+                "SyncWork",
+                ExistingPeriodicWorkPolicy.REPLACE,
+                new PeriodicWorkRequest
+                    .Builder(
+                        SyncWorker.class,
+                        prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
+                        TimeUnit.MILLISECONDS
+                    )
+                    .setConstraints(
+                        new Constraints
+                            .Builder()
+                            .setRequiredNetworkType(NetworkType.CONNECTED)
+                            .build()
+                    )
+                    .build()
+            );
         }
     }
 
