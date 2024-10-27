@@ -4,9 +4,9 @@ apply plugin: 'org.jetbrains.kotlin.android'
 
 def FEATURE_FLAGS_URL =
     "\"${FeatureFlagsUrl}\"" ?: '"Define feature flags URL in gradle.properties"'
+def RULESETS_URL = "\"${RulesetsUrl}\"" ?: '"Define rulesets URL in gradle.properties"'
 def EMAIL_SUBSCRIPTION_URL =
     "\"${EmailSubscriptionUrl}\"" ?: '"Define email subscription URL in gradle.properties"'
-def RULESETS_URL = "\"${RulesetsUrl}\"" ?: '"Define rulesets URL in gradle.properties"'
 def MASSIVE_API_TOKEN =
     "\"${MassiveApiToken}\"" ?: '"Define Massive API token in gradle.properties"'
 def ONESIGNAL_APP_ID = "\"${OneSignalAppId}\"" ?: '"Define OneSignal app ID in gradle.properties"'
@@ -40,8 +40,8 @@ android {
 
 android.buildTypes.each { type ->
     type.buildConfigField 'String', 'FEATURE_FLAGS_URL', FEATURE_FLAGS_URL
-    type.buildConfigField 'String', 'EMAIL_SUBSCRIPTION_URL', EMAIL_SUBSCRIPTION_URL
     type.buildConfigField 'String', 'RULESETS_URL', RULESETS_URL
+    type.buildConfigField 'String', 'EMAIL_SUBSCRIPTION_URL', EMAIL_SUBSCRIPTION_URL
     type.buildConfigField 'String', 'MASSIVE_API_TOKEN', MASSIVE_API_TOKEN
     type.buildConfigField 'String', 'ONESIGNAL_APP_ID', ONESIGNAL_APP_ID
 }

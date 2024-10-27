@@ -19,6 +19,7 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -72,10 +73,10 @@ public class AdblockFastApplication extends Application {
     public static final String SHOULD_DISABLE_SYNCING_KEY = "should_disable_syncing";
     public static final String STANDARD_MODE_VALUE = "standard";
     public static final String LUDICROUS_MODE_VALUE = "ludicrous";
-    public static final String BLOCKING_UPDATE_ACTION =
-        "com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE";
     public static final Intent SAMSUNG_BROWSER_INTENT =
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
+    public static final String BLOCKING_UPDATE_ACTION =
+        "com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE";
     public static final long DEFAULT_SYNC_INTERVAL = 12 * 60 * 60 * 1000;
     public static String packageName;
     public static SharedPreferences prefs;
@@ -105,60 +106,39 @@ public class AdblockFastApplication extends Application {
         distributionChannel = this.getString(R.string.distribution_channel);
         legacyVersionNumber = this.getString(R.string.legacy_version);
 
-        handlePrefs(this);
-        getFeatureFlags(this);
-
         WorkManager.initialize(this, new Configuration.Builder().build());
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "SyncWork",
-            ExistingPeriodicWorkPolicy.KEEP,
-            new PeriodicWorkRequest
-                .Builder(
-                    SyncWorker.class,
-                    prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
-                    TimeUnit.MILLISECONDS
-                )
-                .setConstraints(
-                    new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-                )
-                .build()
-        );
-
+        init(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         if (Ruleset.isUpgraded(this)) initMassive(this);
         OneSignal.initWithContext(this, BuildConfig.ONESIGNAL_APP_ID);
     }
 
-    public static void handlePrefs(Context context) {
+    public static void init(Context context) {
         if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         synchronized (AdblockFastApplication.class) {
-            dumpPrefs();
             updateLegacyPrefs(context);
-            dumpPrefs();
             initPrefs(context);
-        }
-    }
-
-    public static void handleNotificationPrefs(Context context) {
-        if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-        synchronized (AdblockFastApplication.class) {
-            NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            Editor editor = prefs.edit();
-
-            if (ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.N && notificationManager != null) {
-                editor.putBoolean(
-                    ARE_NOTIFICATIONS_STILL_ALLOWED_KEY,
-                    notificationManager.areNotificationsEnabled()
-                );
-            } else {
-                editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, true);
-            }
-
-            editor.apply();
             dumpPrefs();
+            getFeatureFlags(context);
+
+            WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+                "SyncWork",
+                ExistingPeriodicWorkPolicy.REPLACE,
+                new PeriodicWorkRequest
+                    .Builder(
+                        SyncWorker.class,
+                        prefs.getLong(SYNC_INTERVAL_KEY, DEFAULT_SYNC_INTERVAL),
+                        TimeUnit.MILLISECONDS
+                    )
+                    .setConstraints(
+                        new Constraints
+                            .Builder()
+                            .setRequiredNetworkType(NetworkType.CONNECTED)
+                            .build()
+                    )
+                    .build()
+            );
         }
     }
 
@@ -198,6 +178,7 @@ public class AdblockFastApplication extends Application {
                         byte[] buffer = params.toString().getBytes(StandardCharsets.UTF_8);
 
                         output.write(buffer, 0, buffer.length);
+                        output.flush();
                     }
 
                     int responseCode = connection.getResponseCode();
@@ -250,7 +231,7 @@ public class AdblockFastApplication extends Application {
                             dumpPrefs();
                         } else {
                             Sentry.captureException(
-                                new Exception("Unexpected content: " + content)
+                                new IOException("Unexpected content: " + content)
                             );
                         }
                     } else {
@@ -306,7 +287,7 @@ public class AdblockFastApplication extends Application {
 
             if (prefs.contains(VERSION_NUMBER_KEY)) {
                 editor.putString(PREVIOUS_VERSION_NUMBER_KEY, versionNumber);
-                handleNotificationPrefs(context);
+                updateNotificationPrefs(context);
                 Plausible
                     .INSTANCE
                     .event("Update", "/v" + versionNumber + "-to-v" + VERSION_NUMBER, "", null);
@@ -341,7 +322,29 @@ public class AdblockFastApplication extends Application {
             if (!prefs.contains(IS_BLOCKING_KEY)) editor.putBoolean(IS_BLOCKING_KEY, true);
             editor.apply();
         } else {
-            handleNotificationPrefs(context);
+            updateNotificationPrefs(context);
+        }
+    }
+
+    static void updateNotificationPrefs(Context context) {
+        if (prefs == null) prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        synchronized (AdblockFastApplication.class) {
+            NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            Editor editor = prefs.edit();
+
+            if (ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.N && notificationManager != null) {
+                editor.putBoolean(
+                    ARE_NOTIFICATIONS_STILL_ALLOWED_KEY,
+                    notificationManager.areNotificationsEnabled()
+                );
+            } else {
+                editor.putBoolean(ARE_NOTIFICATIONS_STILL_ALLOWED_KEY, true);
+            }
+
+            editor.apply();
+            dumpPrefs();
         }
     }
 

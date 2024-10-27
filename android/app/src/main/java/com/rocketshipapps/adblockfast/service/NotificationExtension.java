@@ -1,6 +1,7 @@
 package com.rocketshipapps.adblockfast.service;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -28,10 +29,14 @@ public class NotificationExtension implements INotificationServiceExtension {
                     .getInstance(context)
                     .enqueue(new OneTimeWorkRequest.Builder(SyncWorker.class).build());
                 event.preventDefault();
-                Plausible.INSTANCE.event("Sync", "/background", "", null);
-            } else if ("foreground".equals(sync) && !Ruleset.isUpgraded(context)) {
-                event.preventDefault();
-                Plausible.INSTANCE.event("Sync", "/foreground", "", null);
+                Plausible.INSTANCE.event("Notify", "/background", "", null);
+            } else if ("foreground".equals(sync)) {
+                if (!Ruleset.isUpgraded(context)) {
+                    event.preventDefault();
+                    Log.d("NotificationExtension", "Notification ignored");
+                } else {
+                    Plausible.INSTANCE.event("Notify", "/foreground", "", null);
+                }
             }
         }
     }

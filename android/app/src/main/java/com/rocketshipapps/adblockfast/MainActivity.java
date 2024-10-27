@@ -60,23 +60,24 @@ import com.onesignal.OneSignal;
 
 import com.wbrawner.plausible.android.Plausible;
 
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.ANDROID_VERSION_NUMBER;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.ARE_NOTIFICATIONS_ALLOWED_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.BLOCKING_MODE_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.IS_FIRST_RUN_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.NOTIFICATIONS_REQUEST_COUNT_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.SAMSUNG_BROWSER_INTENT;
-import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY;
+import static
+    com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_OVERRIDE_BROWSER_DETECTION_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.VERSION_NUMBER;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.finalizeMassive;
-import static com.rocketshipapps.adblockfast.AdblockFastApplication.handleNotificationPrefs;
-import static com.rocketshipapps.adblockfast.AdblockFastApplication.handlePrefs;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.init;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.initMassive;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.prefs;
 import com.rocketshipapps.adblockfast.utils.Ruleset;
 
 public class MainActivity extends AppCompatActivity {
     static final boolean IS_NOTIFICATIONS_PERMISSION_REQUIRED =
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU;
+        ANDROID_VERSION_NUMBER >= Build.VERSION_CODES.TIRAMISU;
     // TODO: Refactor subscription constants
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
@@ -260,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentNotificationsOptIn(Runnable continuationHandler) {
-        if (prefs == null) handlePrefs(this);
+        if (prefs == null) init(this);
 
         Dialog notificationsOptIn = presentDialog(R.layout.notifications_dialog);
         SharedPreferences.Editor editor = prefs.edit();
@@ -305,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void presentHelp(Runnable continuationHandler) {
-        if (prefs == null) handlePrefs(this);
+        if (prefs == null) init(this);
 
         hasSamsungBrowser =
             hasSamsungBrowser || prefs.getBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false);
@@ -359,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
                 Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
                 presentHelp(() -> {
                     editor.putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                    handleNotificationPrefs(this);
+                    init(this);
                 });
             });
         }
@@ -570,7 +571,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void onboardUser() {
-        if (prefs == null) handlePrefs(this);
+        if (prefs == null) init(this);
 
         if (prefs.getBoolean(IS_FIRST_RUN_KEY, true)) {
             Plausible.INSTANCE.event("Onboard", "/", "", null);
@@ -582,7 +583,7 @@ public class MainActivity extends AppCompatActivity {
                             if (hasSamsungBrowser) {
                                 presentHelp(() -> {
                                     prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                                    handleNotificationPrefs(this);
+                                    init(this);
                                 });
                             } else {
                                 presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
@@ -592,7 +593,7 @@ public class MainActivity extends AppCompatActivity {
                         if (hasSamsungBrowser) {
                             presentHelp(() -> {
                                 prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                                handleNotificationPrefs(this);
+                                init(this);
                             });
                         } else {
                             presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
@@ -607,7 +608,7 @@ public class MainActivity extends AppCompatActivity {
                     if (hasSamsungBrowser) {
                         presentHelp(() -> {
                             prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                            handleNotificationPrefs(this);
+                            init(this);
                         });
                     } else {
                         presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
@@ -617,7 +618,7 @@ public class MainActivity extends AppCompatActivity {
                 if (hasSamsungBrowser) {
                     presentHelp(() -> {
                         prefs.edit().putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                        handleNotificationPrefs(this);
+                        init(this);
                     });
                 } else {
                     presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
