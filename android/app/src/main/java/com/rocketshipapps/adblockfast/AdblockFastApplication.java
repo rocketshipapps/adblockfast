@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -77,6 +78,8 @@ public class AdblockFastApplication extends Application {
         new Intent().setAction("com.samsung.android.sbrowser.contentBlocker.ACTION_SETTING");
     public static final String BLOCKING_UPDATE_ACTION =
         "com.samsung.android.sbrowser.contentBlocker.ACTION_UPDATE";
+    public static final int CONNECT_TIMEOUT = 15 * 1000;
+    public static final int READ_TIMEOUT = 30 * 1000;
     public static final long DEFAULT_SYNC_INTERVAL = 12 * 60 * 60 * 1000;
     public static String packageName;
     public static SharedPreferences prefs;
@@ -169,6 +172,8 @@ public class AdblockFastApplication extends Application {
                     connection.setRequestProperty("Accept", "application/json");
                     connection.setDoOutput(true);
                     connection.setDoInput(true);
+                    connection.setConnectTimeout(CONNECT_TIMEOUT);
+                    connection.setReadTimeout(READ_TIMEOUT);
 
                     for (Map.Entry<String, ?> entry : entries.entrySet()) {
                         params.put(entry.getKey(), entry.getValue());
@@ -237,6 +242,11 @@ public class AdblockFastApplication extends Application {
                     } else {
                         Log.e("AdblockFastApplication", "HTTP response code: " + responseCode);
                     }
+                } catch (SocketTimeoutException timeoutException) {
+                    Log.e(
+                        "AdblockFastApplication",
+                        "Connection timed out: " + timeoutException.getMessage()
+                    );
                 } catch (Exception exception) {
                     Sentry.captureException(exception);
                 } finally {

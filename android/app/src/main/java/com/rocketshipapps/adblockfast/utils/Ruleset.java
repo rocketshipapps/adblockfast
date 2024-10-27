@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
@@ -27,8 +28,10 @@ import io.sentry.Sentry;
 
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.BLOCKING_MODE_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.BLOCKING_UPDATE_ACTION;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.CONNECT_TIMEOUT;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.IS_BLOCKING_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.LUDICROUS_MODE_VALUE;
+import static com.rocketshipapps.adblockfast.AdblockFastApplication.READ_TIMEOUT;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_BUBBLEWRAP_MODE_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.SHOULD_DISABLE_SYNCING_KEY;
 import static com.rocketshipapps.adblockfast.AdblockFastApplication.STANDARD_MODE_VALUE;
@@ -127,6 +130,8 @@ public class Ruleset {
 
                     connection.setRequestProperty("Accept", "text/plain");
                     connection.setDoInput(true);
+                    connection.setConnectTimeout(CONNECT_TIMEOUT);
+                    connection.setReadTimeout(READ_TIMEOUT);
 
                     int responseCode = connection.getResponseCode();
 
@@ -187,6 +192,8 @@ public class Ruleset {
                     } else {
                         Log.e("Ruleset", "HTTP response code: " + responseCode);
                     }
+                } catch (SocketTimeoutException timeoutException) {
+                    Log.e("Ruleset", "Connection timed out: " + timeoutException.getMessage());
                 } catch (Exception exception) {
                     Sentry.captureException(exception);
                 } finally {
