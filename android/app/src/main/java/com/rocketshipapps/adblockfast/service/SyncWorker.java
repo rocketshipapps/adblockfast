@@ -83,8 +83,6 @@ public class SyncWorker extends Worker {
             } else {
                 Plausible.INSTANCE.event("Sync", "/background", "", null);
             }
-
-            Log.d("SyncWorker", "Config successfully synced");
         } catch (Exception exception) {
             result = Result.retry();
 
