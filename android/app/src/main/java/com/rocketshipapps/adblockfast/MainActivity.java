@@ -82,14 +82,14 @@ public class MainActivity extends AppCompatActivity {
     static final String RETRIEVED_ACCOUNT_PREF = "retrieved_account";
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1;
     static final int REQUEST_CODE_ACCOUNT_INTENT = 2;
+    boolean hasSamsungBrowser = false;
+    boolean isLogoAnimating = false;
     Typeface bodyFont;
     Typeface emphasisFont;
     ImageButton logoButton;
     TextView statusText;
     TextView hintText;
     Dialog dialog;
-    boolean isLogoAnimating = false;
-    boolean hasSamsungBrowser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -360,10 +360,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, true).apply();
                 help.dismiss();
                 Plausible.INSTANCE.event("Override", "/samsung-browser", "", null);
-                presentHelp(() -> {
-                    editor.putBoolean(IS_FIRST_RUN_KEY, false).apply();
-                    AdblockFastApplication.init(this);
-                });
+                presentHelp(() -> editor.putBoolean(IS_FIRST_RUN_KEY, false).apply());
             });
         }
 
@@ -406,21 +403,18 @@ public class MainActivity extends AppCompatActivity {
         if (dialog != null && dialog.isShowing()) dialog.dismiss();
 
         dialog = new Dialog(this);
+        Window window = dialog.getWindow();
 
-        if (!isDestroyed() && !isFinishing()) {
-            Window window = dialog.getWindow();
+        if (window != null) {
+            window.getAttributes().windowAnimations = R.style.Animation;
 
-            if (window != null) {
-                window.getAttributes().windowAnimations = R.style.Animation;
-
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            }
-
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(id);
-            dialog.setCancelable(false);
-            dialog.show();
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(id);
+        dialog.setCancelable(false);
+        if (!isDestroyed() && !isFinishing()) dialog.show();
 
         return dialog;
     }
@@ -588,7 +582,10 @@ public class MainActivity extends AppCompatActivity {
                                     AdblockFastApplication.init(this);
                                 });
                             } else {
-                                presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
+                                presentHelp(() -> {
+                                    AdblockFastApplication.init(this);
+                                    getOnBackPressedDispatcher().onBackPressed();
+                                });
                             }
                         });
                     } else {
@@ -598,7 +595,10 @@ public class MainActivity extends AppCompatActivity {
                                 AdblockFastApplication.init(this);
                             });
                         } else {
-                            presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
+                            presentHelp(() -> {
+                                AdblockFastApplication.init(this);
+                                getOnBackPressedDispatcher().onBackPressed();
+                            });
                         }
                     }
                 });
@@ -613,7 +613,10 @@ public class MainActivity extends AppCompatActivity {
                             AdblockFastApplication.init(this);
                         });
                     } else {
-                        presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
+                        presentHelp(() -> {
+                            AdblockFastApplication.init(this);
+                            getOnBackPressedDispatcher().onBackPressed();
+                        });
                     }
                 });
             } else {
@@ -623,14 +626,20 @@ public class MainActivity extends AppCompatActivity {
                         AdblockFastApplication.init(this);
                     });
                 } else {
-                    presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
+                    presentHelp(() -> {
+                        AdblockFastApplication.init(this);
+                        getOnBackPressedDispatcher().onBackPressed();
+                    });
                 }
             }
         } else if (
             !hasSamsungBrowser &&
                 !prefs.getBoolean(SHOULD_OVERRIDE_BROWSER_DETECTION_KEY, false)
         ) {
-            presentHelp(() -> getOnBackPressedDispatcher().onBackPressed());
+            presentHelp(() -> {
+                AdblockFastApplication.init(this);
+                getOnBackPressedDispatcher().onBackPressed();
+            });
         }
     }
 
