@@ -8,46 +8,42 @@
     <string name="unblocked_hint">탭하여 차단</string>
     <string name="help_label">도움말</string>
     <string name="about_label">정보</string>
-    <string name="mode_summary">
-        Block ads in just a couple steps, starting by choosing a blocking mode:
-    </string>
+    <string name="mode_summary">차단 모드를 선택하는 것부터 시작하여 몇 단계만 거치면 광고를 차단할 수 있습니다:</string>
     <string name="mode_details">
-        <![CDATA[<b>Fast</b> mode uses our default filtering rules.<br><br><b>Faster</b> (beta) uses
-        a small amount of your background bandwidth to crawl the web and find more ads to
-        filter.<br><br>You can switch anytime by going to <b>About</b> or can read <a
-        href="https://adblockfast.com/license">our full terms</a> and <a
-        href="https://www.iubenda.com/privacy-policy/216992">privacy policy</a> first.]]>
+        <![CDATA[<b>빠른</b> 모드는 기본 필터링 규칙을 사용합니다.<br><br><b>더 빠름</b>(베타)은 소량의 백그라운드
+        대역폭을 사용하여 웹을 크롤링하고 필터링할 광고를 더 많이 찾습니다.<br><br>언제든지 <b>정보</b>로 이동하여 전환하거나
+        전체 <a href="https://adblockfast.com/license">이용약관</a> 및 <a
+        href="https://www.iubenda.com/privacy-policy/216992">개인정보처리방침</a>을 먼저 읽어보실 수
+        있습니다.]]>
     </string>
     <string name="settings_summary">Samsung Internet에서 광고를 차단하려면:</string>
     <string name="settings_details">
-        <![CDATA[Go to your home screen > <b>Internet</b> > ☰ > <b>Ad blockers</b> then toggle
-        <b>Adblock Fast</b> on.<br><br>To unblock ads, come back to this app then tap the Adblock
-        Fast logo.]]>
+        <![CDATA[홈 화면으로 이동 > <b>인터넷</b> > ☰ > <b>광고 차단 기능</b> 그런 다음 <b>Adblock Fast</b>를
+        켜세요.<br><br>광고 차단을 해제하려면 이 앱으로 돌아와서 Adblock Fast 로고를 탭하세요.]]>
     </string>
     <string name="install_summary">
-        Adblock Fast requires Samsung Internet 4.0+, which you don’t seem to have.
+        Adblock Fast는 Samsung Internet 4.0+이 필요하지만, 아직 설치하지 않은 것 같습니다.
     </string>
     <string name="install_details">
-        <![CDATA[Install or update to the latest version of the <a
+        <![CDATA[<a
         href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung
-        Internet browser</a> then come back to this app for instructions on how to block ads.]]>
+        Internet 브라우저</a>의 최신 버전을 설치하거나 업데이트한 후 그런 다음 광고 차단 방법에 대한 안내를 위해 이 앱으로
+        돌아오세요.]]>
     </string>
     <string name="notifications_request">
-        <![CDATA[Adblock Fast should also be kept up to date to block new ad types.<br><br>Would you
-        like to be notified (infrequently) as soon as important updates are available<i>?</i>]]>
+        <![CDATA[새로운 광고 유형을 차단하려면 Adblock Fast도 최신 상태로 유지해야 합니다.<br><br>중요한 업데이트가 있을
+        때마다 (드물게) 알림을 받고 싶으신가요?]]>
     </string>
-    <string name="sync_preview">
-        Adblock Fast will fetch the latest ad domains to filter in a moment …
-    </string>
-    <string name="tagline"><![CDATA[The world’s fastest ad blocker<i>!</i>]]></string>
+    <string name="sync_preview">Adblock Fast는 곧 필터링할 최신 광고 도메인을 가져옵니다 …</string>
+    <string name="tagline"><![CDATA[세계에서 가장 빠른 광고 차단기!]]></string>
     <string name="mode_label">모드:\u0020</string>
-    <string name="default_link"><![CDATA[<font color="#de0421"><u>빠름</u></font>]]></string>
+    <string name="default_link"><![CDATA[<font color="#de0421"><u>빠른</u></font>]]></string>
     <string name="upgrade_link"><![CDATA[<font color="#de0421"><u>더 빠름</u></font>]]></string>
     <string name="upgrade_note">\u0020(백그라운드에서 실행)</string>
     <string name="mode_separator">\u0020·\u0020</string>
     <string name="install_override">
-        <![CDATA[If you do have Samsung Internet 4.0+, <font color="#de0421"><u>dismiss this dialog
-        permanently</u></font> to finish your setup.]]>
+        <![CDATA[Samsung Internet 4.0+을 사용하는 경우, <font color="#de0421"><u>이 대화 상자를 영구적으로
+        닫아</u></font> 설정을 완료하세요.]]>
     </string>
     <string name="contact_info">
         <![CDATA[질문이나 의견이 있으시면 <a href="https://www.facebook.com/adblockfast">저희의
@@ -60,7 +56,7 @@
     </string>
     <string name="continue_label">완료</string>
     <string name="dismiss_label">닫기</string>
-    <string name="default_label">빠름</string>
+    <string name="default_label">빠른</string>
     <string name="upgrade_label">더 빠름</string>
     <string name="accept_label">예</string>
     <string name="decline_label">지금은 안 함</string>
