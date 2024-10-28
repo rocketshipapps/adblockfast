@@ -21,7 +21,7 @@ public class UpdateReceiver extends BroadcastReceiver {
                 switch (action) {
                     case Intent.ACTION_MY_PACKAGE_REPLACED:
 
-                    init(context);
+                    init(context); // Initialization is redundantly initialized
                     context.sendBroadcast(blockingUpdateIntent);
 
                     break;
