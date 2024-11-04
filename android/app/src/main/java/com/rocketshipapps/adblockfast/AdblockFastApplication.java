@@ -38,6 +38,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 import kotlin.Unit;
 
@@ -265,13 +266,21 @@ public class AdblockFastApplication extends Application {
                             "AdblockFastApplication",
                             "Host unresolvable: " + hostException.getMessage()
                         );
+                    } catch (SSLPeerUnverifiedException peerException) {
+                        Log.e(
+                            "AdblockFastApplication",
+                            "SSL peer unverified: " + peerException.getMessage()
+                        );
                     } catch (SSLHandshakeException handshakeException) {
                         Log.e(
                             "AdblockFastApplication",
                             "SSL handshake failed: " + handshakeException.getMessage()
                         );
                     } catch (SSLException sslException) {
-                        Log.e("AdblockFastApplication", "SSL error occurred: " + sslException.getMessage());
+                        Log.e(
+                            "AdblockFastApplication",
+                            "SSL error occurred: " + sslException.getMessage()
+                        );
                     } catch (ConnectException connectException) {
                         Log.e(
                             "AdblockFastApplication",

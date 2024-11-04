@@ -28,6 +28,7 @@ import java.util.Locale;
 
 import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 import com.wbrawner.plausible.android.Plausible;
 
@@ -208,6 +209,8 @@ public class Ruleset {
                         }
                     } catch (UnknownHostException hostException) {
                         Log.e("Ruleset", "Host unresolvable: " + hostException.getMessage());
+                    } catch (SSLPeerUnverifiedException peerException) {
+                        Log.e("Ruleset", "SSL peer unverified: " + peerException.getMessage());
                     } catch (SSLHandshakeException handshakeException) {
                         Log.e(
                             "Ruleset", "SSL handshake failed: " + handshakeException.getMessage()
