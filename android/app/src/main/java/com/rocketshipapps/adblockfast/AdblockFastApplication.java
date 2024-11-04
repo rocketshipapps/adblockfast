@@ -120,12 +120,6 @@ public class AdblockFastApplication extends Application {
         distributionChannel = this.getString(R.string.distribution_channel);
         legacyVersionNumber = this.getString(R.string.legacy_version);
 
-        try {
-            WorkManager.initialize(this, new Configuration.Builder().build());
-        } catch (Exception exception) {
-            Sentry.captureException(exception);
-        }
-
         init(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
         if (Ruleset.isUpgraded(this)) initMassive(this);
