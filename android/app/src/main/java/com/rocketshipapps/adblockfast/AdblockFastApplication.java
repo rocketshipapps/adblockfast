@@ -15,7 +15,6 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
-import androidx.work.Configuration;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
