@@ -5017,6 +5017,7 @@ deviantart.com#@#.mobile-ad
 @@||sumo.com^$document
 @@||www.cnet.com^$document
 @@||www.stitcher.com^$document
+@@||blog3news.tistory.com^$document
 @@/advertisement.js$script,~third-party,domain=arabe-media.com
 @@||play.bokracdn.run/v2/adsjs/ads.js$script,~third-party
 @@/advertisement.js$script,~third-party,domain=fun-animes.fr|macupload.net|upload.ac

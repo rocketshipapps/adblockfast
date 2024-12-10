@@ -4549,3 +4549,4 @@ deviantart.com#@#.mobile-ad
 @@||sumo.com^$document
 @@||www.cnet.com^$document
 @@||www.stitcher.com^$document
+@@||blog3news.tistory.com^$document
