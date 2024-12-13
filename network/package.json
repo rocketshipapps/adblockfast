@@ -1,0 +1,25 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "description": "A web crawler that identifies possible ad domains to block.",
+  "keywords": [
+    "ad",
+    "domains",
+    "web",
+    "crawler"
+  ],
+  "author": "Brian Kennish <oldestlivingboy@gmail.com>",
+  "license": "GPL-3.0",
+  "type": "module",
+  "main": "crawler.js",
+  "scripts": {
+    "start": "node crawler.js"
+  },
+  "dependencies": {
+    "crawlee": "^3.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rocketshipapps/adblockfast"
+  }
+}

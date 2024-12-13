@@ -1,3 +1,4 @@
+node_modules
 google-services.json
 *.pem
 builds/adblockfast
