@@ -1,7 +1,7 @@
 {
   "name": "crawler",
   "version": "1.0.0",
-  "description": "A web crawler that identifies possible ad domains to block.",
+  "description": "A web crawler that detects potential ad domains to filter.",
   "keywords": [
     "ad",
     "domains",
