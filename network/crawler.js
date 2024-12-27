@@ -66,7 +66,7 @@ if (args.length < 5) {
     isNaN(overrideCheckpoint) || overrideCheckpoint < 0 || overrideCheckpoint >= maxUrlCount
   )) {
     console.error(
-      'URL checkpoint must be number greater than or equal to 0 and less than', maxUrlCount
+      `URL checkpoint must be number greater than or equal to 0 and less than ${ maxUrlCount }`
     );
 
     process.exit(1);
@@ -75,7 +75,9 @@ if (args.length < 5) {
   if (isDefined(overrideCount) && (
     isNaN(overrideCount) || overrideCount <= 0 || overrideCount > maxUrlCount
   )) {
-    console.error('URL count must be number greater than 0 and less than or equal to', maxUrlCount);
+    console.error(
+      `URL count must be number greater than 0 and less than or equal to ${ maxUrlCount }`
+    );
 
     process.exit(1);
   }
@@ -101,7 +103,7 @@ if (args.length < 5) {
       const documentUrl = request.url;
       const crawlDepth  = request.userData.crawlDepth || 0;
 
-      console.log('Fetching URL', documentUrl, 'at depth', crawlDepth, '...');
+      console.log('Fetching URL', documentUrl, `at depth ${ crawlDepth } ...`);
 
       (await page.evaluate((resources) => {
         const urls = [];
