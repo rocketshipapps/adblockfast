@@ -1,0 +1,33 @@
+{
+  "settings": {
+                "frontierUrlsFilePath": "urls.txt",
+                "candidateAdsFilePath": "ads.txt",
+                          "networkUrl": "network.joinmassive.com:65534",
+                       "maxCrawlDepth": 2,
+                         "adResources": [{
+                                            "element": "img",
+                                          "attribute": "src"
+                                        }, {
+                                            "element": "audio",
+                                          "attribute": "src"
+                                        }, {
+                                            "element": "video",
+                                          "attribute": "src"
+                                        }, {
+                                            "element": "object",
+                                          "attribute": "data"
+                                        }, {
+                                            "element": "embed",
+                                          "attribute": "src"
+                                        }, {
+                                            "element": "iframe",
+                                          "attribute": "src"
+                                        }, {
+                                            "element": "link",
+                                          "attribute": "href"
+                                        }, {
+                                            "element": "script",
+                                          "attribute": "src"
+                                        }]
+              }
+}
