@@ -16,7 +16,9 @@
     "start": "node crawler.js"
   },
   "dependencies": {
-    "crawlee": "^3.12.1"
+    "crawlee": "^3.12.1",
+    "dotenv": "^16.4.7",
+    "playwright": "^1.49.1"
   },
   "repository": {
     "type": "git",

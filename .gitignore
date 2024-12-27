@@ -1,4 +1,9 @@
 node_modules
 google-services.json
+.env
+
+network/storage
 *.pem
+
 builds/adblockfast
+ads.txt
