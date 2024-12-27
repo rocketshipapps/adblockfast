@@ -46,7 +46,9 @@ process.on('unhandledRejection', (reason) => {
 });
 
 try {
-  frontierUrls = filesystem.readFileSync(settings.frontierUrlsFilePath, 'utf-8').split('\n');
+  frontierUrls = filesystem.readFileSync(settings.frontierUrlsFilePath, 'utf-8')
+                           .split('\n')
+                           .slice(0, -1);
   maxUrlCount  = frontierUrls.length;
 } catch (error) {
   console.error('URLs read failure:', error.message);
@@ -88,10 +90,7 @@ if (args.length < 5) {
 
 (async () => {
   const proxyConfiguration = new ProxyConfiguration({
-                               proxyUrls: [ 'http://' + loginEmail
-                                                      + ':'
-                                                      + apiToken
-                                                      + '@'
+                               proxyUrls: [ 'http://' + `${ loginEmail }:${ apiToken }@`
                                                       + settings.networkUrl ]
                              });
 
@@ -135,17 +134,23 @@ if (args.length < 5) {
       }
     },
     failedRequestHandler({ request }) {
-      console.error(request.url, 'crawl failure:', request.errorMessages.at(-1).split('\n')[0]);
+      console.error(
+        request.url,
+        'crawl failure:',
+        request.errorMessages.at(-1).split('\n')[0].replace('Error: ', '')
+      );
     }
   }).run(frontierUrls.slice(urlCheckpoint, urlCheckpoint + urlCount));
 
-  console.log('Saving candidate ads ...');
+  if (candidateAds.size) {
+    console.log('Saving candidate ads ...');
 
-  filesystem.appendFile(
-    settings.candidateAdsFilePath, Array.from(candidateAds).join('\n'), (error) => {
-      if (error) console.error('Ads write failure:', error.message);
-    }
-  );
+    filesystem.appendFile(
+      settings.candidateAdsFilePath, `${ Array.from(candidateAds).join('\n') }\n`, (error) => {
+        if (error) console.error('Ads write failure:', error.message);
+      }
+    );
+  }
 })().catch((error) => {
   console.error('Web crawl failure:', error.message);
 });
