@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="distribution_channel" translatable="false">Play</string>
-    <string name="legacy_version" translatable="false">&lt;=2.1.0</string>
+    <string name="distribution_channel" translatable="false">Galaxy Store</string>
+    <string name="legacy_version" translatable="false">&lt;=2.3.0</string>
     <string name="google_app_id" translatable="false">18676242394</string>
     <string name="plausible_host" translatable="false">https://plausible.adblockfast.com</string>
-    <string name="plausible_domain" translatable="false">android.adblockfast.com</string>
+    <string name="plausible_domain" translatable="false">samsung.adblockfast.com</string>
     <string name="name" translatable="false">Adblock Fast</string>
     <string name="logo_description">Block or unblock ads</string>
     <string name="status_label">Status:\u0020</string>
