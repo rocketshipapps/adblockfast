@@ -252,7 +252,7 @@ public class Ruleset {
     public static boolean isUpgraded(Context context) {
         if (prefs == null) init(context);
 
-        return prefs.getBoolean(SHOULD_BUBBLEWRAP_MODE_KEY, false) ||
+        return !prefs.getBoolean(SHOULD_BUBBLEWRAP_MODE_KEY, false) &&
             prefs
                 .getString(BLOCKING_MODE_KEY, STANDARD_MODE_VALUE)
                 .equals(LUDICROUS_MODE_VALUE);
