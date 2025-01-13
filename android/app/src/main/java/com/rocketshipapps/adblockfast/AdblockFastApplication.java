@@ -15,6 +15,7 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
+import androidx.work.Configuration;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
@@ -119,6 +120,12 @@ public class AdblockFastApplication extends Application {
                 .setData(Uri.parse("package:" + packageName));
         distributionChannel = this.getString(R.string.distribution_channel);
         legacyVersionNumber = this.getString(R.string.legacy_version);
+
+        try {
+            WorkManager.initialize(this, new Configuration.Builder().build());
+        } catch (Exception exception) {
+            Sentry.captureException(exception);
+        }
 
         init(this);
         MassiveClient.Companion.init(BuildConfig.MASSIVE_API_TOKEN, this, (state) -> Unit.INSTANCE);
