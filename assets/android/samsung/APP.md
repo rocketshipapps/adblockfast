@@ -27,6 +27,10 @@ If you have any questions or comments, follow and message us:
 
 The world’s fastest ad blocker! Same blocking, 8x more accelerated page loading.
 
+**New feature:**
+
+Patched intermittent “isn’t working” errors.
+
 **Search keywords:**
 
 `ad blocker` `ad blocking` `adblock plus` `ads` `crystal`
