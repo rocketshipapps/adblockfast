@@ -11,7 +11,6 @@ dotenv.config();
 const settings      = config.get('settings');
 const loginEmail    = encodeURIComponent(process.env.MASSIVE_LOGIN_EMAIL);
 const apiToken      = encodeURIComponent(process.env.MASSIVE_API_TOKEN);
-const args          = process.argv;
 const candidateAds  = new Set();
 const isDefined     = (variable) => { return typeof variable != 'undefined'; };
 const isThirdParty  = (resourceUrl, documentUrl) => {
@@ -58,9 +57,9 @@ try {
 
 console.log('Parsing command-line arguments ...');
 
-if (args.length < 5) {
-  const overrideCheckpoint = args[2];
-  const overrideCount      = args[3];
+if (process.argv.length < 5) {
+  const overrideCheckpoint = process.argv[2];
+  const overrideCount      = process.argv[3];
 
   if (isDefined(overrideCheckpoint) && (
     isNaN(overrideCheckpoint) || overrideCheckpoint < 0 || overrideCheckpoint >= maxUrlCount
