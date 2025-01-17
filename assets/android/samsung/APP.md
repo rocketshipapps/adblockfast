@@ -29,7 +29,7 @@ The world’s fastest ad blocker! Same blocking, 8x more accelerated page loadin
 
 **New feature:**
 
-Patched intermittent “isn’t working” errors.
+Improved blocking functionality; translated into Chinese, Korean.
 
 **Search keywords:**
 
@@ -52,6 +52,10 @@ Patched intermittent “isn’t working” errors.
 **Category:** Tool
 
 **Age restriction:** 0+
+
+**Supported languages:**
+
+`Chinese simplified` `English` `Korean`
 
 **Open-source URL:** github.com/rocketshipapps/adblockfast
 
