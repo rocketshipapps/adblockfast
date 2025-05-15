@@ -906,7 +906,6 @@
 ||trafmag.com^
 ||traktum.com^
 ||trax-ad.jp^
-||trc.taboola.com^
 ||tribalfusion.com^
 ||trk.glispa.com^
 ||tubemogul.com^
@@ -990,8 +989,6 @@
 ||cloud.rovio.com/ads/
 ||cloudads-a.akamaihd.net^
 ||banner.globalsolutions.uz/api/getbanners/
-||api.taboola.com/*/recommendations.multiple-get^
-||api.taboola.com/*/recommendations.get^
 ||api.tinyhoneybee.com/api/getADConfig
 ||api.tinyhoneybee.com/api/getADResource
 ||50.17.161.250/appodeal/
@@ -4549,4 +4546,3 @@ deviantart.com#@#.mobile-ad
 @@||sumo.com^$document
 @@||www.cnet.com^$document
 @@||www.stitcher.com^$document
-@@||blog3news.tistory.com^$document
