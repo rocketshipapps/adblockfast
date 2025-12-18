@@ -19,7 +19,7 @@
     "config": "^3.3.12",
     "crawlee": "^3.12.1",
     "dotenv": "^16.4.7",
-    "playwright": "^1.49.1"
+    "playwright": "^1.56.1"
   },
   "repository": {
     "type": "git",
