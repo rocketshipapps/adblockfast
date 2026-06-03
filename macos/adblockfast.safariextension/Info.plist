@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Tse Kit Yam</string>
+	<key>Builder Version</key>
+	<string>12602.3.12.0.1</string>
+	<key>CFBundleDisplayName</key>
+	<string>Adblock Fast</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.rocketshipapps.adblockfast</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Content</key>
+	<dict>
+		<key>Content Blocker</key>
+		<string>blockerList.json</string>
+	</dict>
+	<key>Description</key>
+	<string>Adblock Fast is a new, faster ad blocker and the first open-source ad blocker for macOS </string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Website</key>
+	<string>https://adblockfast.com</string>
+</dict>
+</plist>
