@@ -1,6 +1,6 @@
-# ![Adblock Fast](assets/promo/adblockfast-optimized.png) [![Tweet](assets/promo/tweet-optimized.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20iOS,%20or%20Chrome:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
+# ![Adblock Fast](assets/promo/adblockfast-optimized.png) [![Tweet](assets/promo/tweet-optimized.png)](https://twitter.com/intent/tweet?text=Get%20a%20faster%20ad%20blocker%20for%20Windows,%20Android,%20or%20iOS:&url=https://adblockfast.com/?ref=GitHub&via=adblockfast)
 
-*A faster ad blocker for Windows, Android, iOS, [and] Chrome<del>, and Opera</del>!*
+*A faster ad blocker for Windows, Android, and iOS!*
 
 Try Adblock Fast:
 
@@ -9,7 +9,7 @@ Try Adblock Fast:
   5.0 and up with Samsung Internet 4.0 and up)
 * [iOS](https://itunes.apple.com/app/adblock-fast/id1032930802?at=1001lwfP) (iOS 9 and up on 64-bit
   devices, iPhone 5s and up and iPad mini 2 and up)
-* [Chrome](https://chrome.google.com/webstore/detail/adblock-fast/nneejgmhfoecfeoffakdnolopppbbkfi)
+* Chrome: the legacy extension uses Manifest V2, is incompatible with current Chrome releases, and is no longer available in the Chrome Web Store.
 * ~~Opera~~
 
 Just as webpages grew bloated with ads, so too have ad blockers grown bloated with little-used
@@ -124,7 +124,7 @@ To see the effect of Adblock Fast on a particular page, you may have to clear
 Safari’s cache (tap **Settings** > **Safari** > **Clear History and Website
 Data**) before reloading the page.
 
-### In Chrome ~~or Opera~~
+### In legacy Chrome (current Chrome releases are unsupported)
 
 Adblock Fast installs a button in your browser’s toolbar. To show the button:
 
@@ -167,8 +167,9 @@ Adblock Fast is a faster ad blocker for desktop computers and mobile browsers.
 ### When will Adblock Fast be available on [insert platform here]<em>?</em>
 
 Adblock Fast is available for Windows 7 and up, Android 5.0 and up with Samsung Internet 4.0 and up,
-iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and up), and the Chrome ~~and
-Opera~~ desktop browser~~s~~. Follow [us on Facebook](https://www.facebook.com/adblockfast) or
+and iOS 9 and up on 64-bit devices (iPhone 5s and up and iPad mini 2 and up). The Chrome extension
+uses the retired Manifest V2 format and does not work in current Chrome releases. Follow
+[us on Facebook](https://www.facebook.com/adblockfast) or
 [on Twitter](https://twitter.com/adblockfast) for news about additional platform availability.
 
 ### Where does Adblock Fast’s filtering ruleset come from<em>?</em>
@@ -237,7 +238,10 @@ Adblock Fast is open for pull-request business. Follow the steps below to get st
 9. Push your changes.
 10. Send us pull requests<em>!</em>
 
-### For Chrome
+### For legacy Chrome (Manifest V2)
+
+These instructions apply only to older Chrome versions that support Manifest V2; the extension
+does not work in current Chrome releases.
 
 1.  [Fork this repository](https://github.com/rocketshipapps/adblockfast/fork).
 2.  Go to your working directory of choice.
